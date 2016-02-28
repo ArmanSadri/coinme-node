@@ -4,9 +4,7 @@ import AbstractBuilder from './AbstractBuilder';
 import AttachmentBuilder from './AttachmentBuilder';
 import request from 'request-promise';
 import Promise from 'bluebird';
-import winston from 'winston';
 
-// winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
 class NotificationBuilder extends AbstractBuilder {
 

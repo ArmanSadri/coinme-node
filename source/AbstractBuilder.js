@@ -7,6 +7,8 @@ let $ = Preconditions.singleton();
 
 import winston from 'winston';
 
+// winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
+
 class AbstractBuilder {
 
     constructor(options) {
