@@ -5,13 +5,12 @@ import AttachmentBuilder from './AttachmentBuilder';
 import request from 'request-promise';
 import Promise from 'bluebird';
 
-
 class NotificationBuilder extends AbstractBuilder {
 
     constructor(options) {
         super(options);
 
-        this.$.shouldBeString(this.url, 'url');
+        this.$.shouldBeString(this.url, 'NotificationBuilder.constructor(): url must be a string');
     }
 
     /**

@@ -1,12 +1,40 @@
 'use strict';
 import { expect } from 'chai';
-import NotificationBuilder from '../source/';
+import NotificationService from '../source/';
+import { NotificationBuilder, NotificationTemplate } from '../source/';
 import Utility from '../source/Utility';
 
 describe('CoinmeSlack', function() {
 
     let { Object } = Utility;
     let $ = Utility.$;
+
+    it('Service', () => {
+        NotificationService.url = 'https://hooks.slack.com/services/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';
+
+        NotificationService.registerTemplate('USER_SIGNED_UP', new NotificationTemplate({
+
+            name: 'UserSignedUpNotificationTemplate',
+
+            /**
+             *
+             * @param {NotificationBuilder} builder
+             * @param {Object} data
+             * @returns {*}
+             */
+            applyToNotificationBuilder(builder, data) {
+                return builder
+                    .username('New User Monitor (unit test)')
+                    .text(`A new user signed up! ${data.firstName} ${data.lastName} with an address of '${data.address}'`);
+            }
+        }));
+
+        NotificationService.notify('USER_SIGNED_UP', {
+            firstName: 'Michael',
+            lastName: 'Smyers',
+            address: 'asdfasdfasdfasdfasdf'
+        });
+    });
 
     it('Utility can set and get', () => {
         var object = {};
@@ -18,7 +46,6 @@ describe('CoinmeSlack', function() {
         $.shouldBeBoolean(Object.get(object, 'fieldName'));
         $.shouldNotBeFalsey(Object.get(object, 'fieldName'));
     });
-
 
     it('Utility can set and get array', () => {
         var object = {};
@@ -43,6 +70,11 @@ describe('CoinmeSlack', function() {
 });
 
 describe('CoinmeSlack', function() {
+
+    it('Can register templates', function() {
+
+
+    });
 
     it('Can be instantiated', () => {
         var builder = new NotificationBuilder({
