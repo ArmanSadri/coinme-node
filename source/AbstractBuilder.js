@@ -5,6 +5,8 @@ import _ from 'lodash';
 import Preconditions from 'preconditions';
 let $ = Preconditions.singleton();
 
+import winston from 'winston';
+
 class AbstractBuilder {
 
     constructor(options) {
@@ -12,6 +14,10 @@ class AbstractBuilder {
 
         if (!this.payload) {
             this.payload = {};
+        }
+
+        if (!this.Logger) {
+            this.Logger = winston;
         }
 
         this.$ = $;
