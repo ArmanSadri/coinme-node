@@ -18,6 +18,10 @@ var _requestPromise = require('request-promise');
 
 var _requestPromise2 = _interopRequireDefault(_requestPromise);
 
+var _bluebird = require('bluebird');
+
+var _bluebird2 = _interopRequireDefault(_bluebird);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34,7 +38,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).call(this, options));
 
-        _this.$.shouldBeString(_this.url, 'url');
+        _this.$.shouldBeString(_this.url, 'NotificationBuilder.constructor(): url must be a string');
         return _this;
     }
 
@@ -91,14 +95,14 @@ var NotificationBuilder = function (_AbstractBuilder) {
             return new _AttachmentBuilder2.default(this);
         }
     }, {
-        key: 'toObject',
-        value: function toObject() {
+        key: 'toPayload',
+        value: function toPayload() {
             return this.payload;
         }
     }, {
         key: 'toJson',
         value: function toJson() {
-            return JSON.stringify(this.toObject());
+            return JSON.stringify(this.toPayload());
         }
 
         /**
@@ -109,26 +113,55 @@ var NotificationBuilder = function (_AbstractBuilder) {
     }, {
         key: 'execute',
         value: function execute() {
-            //https://www.npmjs.com/package/request-promise
-            //var options = {
-            //    method: 'POST',
-            //    uri: 'http://posttestserver.com/post.php',
-            //    body: {
-            //        some: 'payload'
-            //    },
-            //    json: true // Automatically stringifies the body to JSON
-            //};
+            var scope = this;
 
-            var object = this.toObject();
+            var url = this.url;
+            var payload = this.toPayload();
 
-            console.log('obj', object);
+            return _bluebird2.default.resolve().then(function () {
+                //
+                // https://www.npmjs.com/package/request-promise
+                //
+                // var options = {
+                //    method: 'POST',
+                //    uri: 'http://posttestserver.com/post.php',
+                //    body: {
+                //        some: 'payload'
+                //    },
+                //    json: true // Automatically stringifies the body to JSON
+                // };
 
-            return (0, _requestPromise2.default)({
-                uri: this.url,
-                method: 'POST',
-                body: this.toObject(),
-                json: true
+                var requestOptions = {
+                    uri: url,
+                    method: 'POST',
+                    body: payload,
+                    json: true
+                };
+
+                scope.Logger.debug('[SLACK:' + scope.name + '] webhook ', requestOptions);
+
+                return _bluebird2.default.resolve((0, _requestPromise2.default)(requestOptions)).then(function (value) {
+                    scope.Logger.debug('[SLACK:' + scope.name + '] webhook succeeded.', arguments);
+
+                    return value;
+                }).catch(function (err) {
+                    scope.Logger.warn('[SLACK:' + scope.name + '] webhook failed.', arguments);
+
+                    throw err;
+                });
             });
+        }
+
+        /**
+         * Convenience method for triggering execute. It makes this class a Promise, kind of. (Thenable)
+         *
+         * @returns {Promise}
+         */
+
+    }, {
+        key: 'then',
+        value: function then() {
+            return this.execute();
         }
     }]);
 

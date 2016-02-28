@@ -37,8 +37,9 @@
   "dependencies": {
     "async": "^1.5.2",
     "lodash": "^4.5.0",
+    "preconditions": "1.0.8",
     "request-promise": "^2.0.1",
-    "preconditions": "1.0.8"
+    "winston": "^2.2.0"
   },
   "babel": {
     "presets": [
