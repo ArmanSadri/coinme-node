@@ -3,13 +3,14 @@
 import AbstractBuilder from './AbstractBuilder';
 import AttachmentBuilder from './AttachmentBuilder';
 import request from 'request-promise';
+import Promise from 'bluebird';
 
 class NotificationBuilder extends AbstractBuilder {
 
     constructor(options) {
         super(options);
 
-        this.$.shouldBeString(this.url, 'url');
+        this.$.shouldBeString(this.url, 'NotificationBuilder.constructor(): url must be a string');
     }
 
     /**
@@ -52,12 +53,12 @@ class NotificationBuilder extends AbstractBuilder {
         return new AttachmentBuilder(this);
     }
 
-    toObject() {
+    toPayload() {
         return this.payload;
     }
 
     toJson() {
-        return JSON.stringify(this.toObject());
+        return JSON.stringify(this.toPayload());
     }
 
     /**
@@ -65,28 +66,56 @@ class NotificationBuilder extends AbstractBuilder {
      * @return {Promise}
      */
     execute() {
-        //https://www.npmjs.com/package/request-promise
-        //var options = {
-        //    method: 'POST',
-        //    uri: 'http://posttestserver.com/post.php',
-        //    body: {
-        //        some: 'payload'
-        //    },
-        //    json: true // Automatically stringifies the body to JSON
-        //};
+        let scope = this;
 
-        let object = this.toObject();
+        let url = this.url;
+        let payload = this.toPayload();
 
-        console.log('obj', object);
+        return Promise.resolve()
+            .then(() => {
+                //
+                // https://www.npmjs.com/package/request-promise
+                //
+                // var options = {
+                //    method: 'POST',
+                //    uri: 'http://posttestserver.com/post.php',
+                //    body: {
+                //        some: 'payload'
+                //    },
+                //    json: true // Automatically stringifies the body to JSON
+                // };
 
-        return request({
-            uri: this.url,
-            method: 'POST',
-            body: this.toObject(),
-            json: true
-        });
+                let requestOptions = {
+                    uri: url,
+                    method: 'POST',
+                    body: payload,
+                    json: true
+                };
+
+                scope.Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);
+
+                return Promise.resolve(request(requestOptions))
+                    .then(function(value) {
+                        scope.Logger.debug(`[SLACK:${scope.name}] webhook succeeded.`, arguments);
+
+                        return value;
+                    })
+                    .catch(function(err) {
+                        scope.Logger.warn(`[SLACK:${scope.name}] webhook failed.`, arguments);
+
+                        throw err;
+                    });
+            });
     }
 
+    /**
+     * Convenience method for triggering execute. It makes this class a Promise, kind of. (Thenable)
+     *
+     * @returns {Promise}
+     */
+    then() {
+        return this.execute();
+    }
 }
 
 export default NotificationBuilder;

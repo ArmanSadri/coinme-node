@@ -5,6 +5,10 @@ import _ from 'lodash';
 import Preconditions from 'preconditions';
 let $ = Preconditions.singleton();
 
+import winston from 'winston';
+
+// winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
+
 class AbstractBuilder {
 
     constructor(options) {
@@ -12,6 +16,10 @@ class AbstractBuilder {
 
         if (!this.payload) {
             this.payload = {};
+        }
+
+        if (!this.Logger) {
+            this.Logger = winston;
         }
 
         this.$ = $;
