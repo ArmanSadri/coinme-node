@@ -98,6 +98,23 @@ var AbstractBuilder = function () {
         }
 
         /**
+         * @public
+         * @param object
+         * @return {AbstractBuilder}
+         */
+
+    }, {
+        key: 'mergeIntoPayload',
+        value: function mergeIntoPayload(object) {
+            this.$.shouldBeDefined(object, 'Cannot merge null');
+            this.$.shouldBeObject(object, 'should be object');
+
+            _lodash2.default.assign(this.payload, object);
+
+            return this;
+        }
+
+        /**
          *
          * @param {String} path
          * @param {*} defaultValue

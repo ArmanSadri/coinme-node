@@ -66,6 +66,20 @@ class AbstractBuilder {
     }
 
     /**
+     * @public
+     * @param object
+     * @return {AbstractBuilder}
+     */
+    mergeIntoPayload(object) {
+        this.$.shouldBeDefined(object, 'Cannot merge null');
+        this.$.shouldBeObject(object, 'should be object');
+
+        _.assign(this.payload, object);
+
+        return this;
+    }
+
+    /**
      *
      * @param {String} path
      * @param {*} defaultValue

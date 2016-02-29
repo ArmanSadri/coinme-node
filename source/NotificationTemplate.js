@@ -20,6 +20,15 @@ class NotificationTemplate {
      * @return {NotificationBuilder}
      */
     applyToNotificationBuilder(notificationBuilder, data) {
+
+        if (_.isObject(this.payload)) {
+            notificationBuilder.mergeIntoPayload(this.payload);
+        }
+
+        if (_.isObject(data)) {
+            notificationBuilder.mergeIntoPayload(data);
+        }
+
         // The default implementation
         // This is where you would modify your builder.
         return notificationBuilder;
