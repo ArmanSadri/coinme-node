@@ -12,5 +12,6 @@ export { FieldBuilder };
 export { AttachmentBuilder };
 export { NotificationBuilder };
 export { NotificationTemplate };
+export { NotificationService };
 
 export default NotificationService;

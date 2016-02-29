@@ -18,11 +18,17 @@ var _preconditions = require('preconditions');
 
 var _preconditions2 = _interopRequireDefault(_preconditions);
 
+var _winston = require('winston');
+
+var _winston2 = _interopRequireDefault(_winston);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var $ = _preconditions2.default.singleton();
+
+// winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
 var AbstractBuilder = function () {
     function AbstractBuilder(options) {
@@ -32,6 +38,10 @@ var AbstractBuilder = function () {
 
         if (!this.payload) {
             this.payload = {};
+        }
+
+        if (!this.Logger) {
+            this.Logger = _winston2.default;
         }
 
         this.$ = $;
