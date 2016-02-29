@@ -72,8 +72,17 @@ describe('CoinmeSlack', function() {
 describe('CoinmeSlack', function() {
 
     it('Can register templates', function() {
+        NotificationService.registerTemplate('EVENT_NAME', {
+            name: 'InlineTemplate',
 
+            payload: {
+                username: 'InlineTemplate'
+            }
+        });
 
+        NotificationService.notify('EVENT_NAME', {
+            text: 'text'
+        });
     });
 
     it('Can be instantiated', () => {
@@ -99,6 +108,16 @@ describe('CoinmeSlack', function() {
                 }]
             }
         });
+
+        builder.mergeIntoPayload({
+            merged: true
+        });
+
+        if (!builder.payload.merged) {
+            throw new Error('Must exist');
+        }
+
+        //expect(builder.payload.merged).to.exist();
 
         builder.text('asdfasdf');
 

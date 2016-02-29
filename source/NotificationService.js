@@ -38,6 +38,15 @@ class NotificationService {
      * @return {NotificationService}
      */
     registerTemplate(notificationType, notificationTemplate) {
+        this.$.shouldBeString(notificationType, 'notificationType must be string');
+        this.$.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
+
+        if (!(notificationTemplate instanceof NotificationTemplate)) {
+            let options = notificationTemplate;
+
+            notificationTemplate = new NotificationTemplate(options);
+        }
+
         this.mappings[notificationType] = notificationTemplate.name;
         this.templates[notificationTemplate.name] = notificationTemplate;
 
@@ -96,8 +105,6 @@ class NotificationService {
 
         return builder.execute();
     }
-
-
 }
 
 export { NotificationService };
