@@ -2,7 +2,6 @@
 
 import _ from 'lodash';
 import Preconditions from 'preconditions';
-var $ = Preconditions.singleton();
 
 import NotificationTemplate from './NotificationTemplate';
 import NotificationBuilder from './NotificationBuilder';
@@ -26,7 +25,7 @@ class NotificationService {
             this.mappings = {};
         }
 
-        this.registerTemplate('DEFAULT_TYPE', new NotificationTemplate({
+        this.register('DEFAULT_TYPE', new NotificationTemplate({
             name: 'DEFAULT_TEMPLATE'
         }));
     }
@@ -37,7 +36,7 @@ class NotificationService {
      * @param {NotificationTemplate} notificationTemplate
      * @return {NotificationService}
      */
-    registerTemplate(notificationType, notificationTemplate) {
+    register(notificationType, notificationTemplate) {
         this.$.shouldBeString(notificationType, 'notificationType must be string');
         this.$.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
 
@@ -59,7 +58,7 @@ class NotificationService {
      * @param {Object} data
      * @return {NotificationBuilder}
      */
-    notificationBuilder(notificationType, data) {
+    builder(notificationType, data) {
         if (!notificationType) {
             notificationType = 'DEFAULT_TYPE';
         }
@@ -94,7 +93,7 @@ class NotificationService {
         data = data || {};
 
         let url = this.url;
-        let builder = this.notificationBuilder(type, data);
+        let builder = this.builder(type, data);
 
         this.$.shouldBeDefined(builder, 'No builder for ' + type);
 

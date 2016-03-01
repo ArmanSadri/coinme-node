@@ -12,7 +12,7 @@ describe('CoinmeSlack', function() {
     it('Service', () => {
         NotificationService.url = 'https://hooks.slack.com/services/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';
 
-        NotificationService.registerTemplate('USER_SIGNED_UP', new NotificationTemplate({
+        NotificationService.register('USER_SIGNED_UP', new NotificationTemplate({
 
             name: 'UserSignedUpNotificationTemplate',
 
@@ -72,7 +72,7 @@ describe('CoinmeSlack', function() {
 describe('CoinmeSlack', function() {
 
     it('Can register templates', function() {
-        NotificationService.registerTemplate('EVENT_NAME', {
+        NotificationService.register('EVENT_NAME', {
             name: 'InlineTemplate',
 
             payload: {
