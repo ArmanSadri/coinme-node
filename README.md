@@ -77,14 +77,25 @@ var builder = new NotificationBuilder({
 ## NotificationService
 
 ```javascript
+
+/**
+ * 
+ * @param {String} eventName
+ * @param {NotificationTemplate|Object} template
+ */
 NotificationService.register('EVENT_NAME', {
-    name: 'InlineTemplate',
+    name: 'InlineTemplate', // This is the TemplateName (required, for both Object-mode and NotificationTempate-mode)
 
     payload: {
         username: 'InlineTemplate'
     }
 });
 
+/**
+ * @param {String} eventName 
+ * @param {Object|undefined} data
+ * @return undefined
+ */
 NotificationService.notify('EVENT_NAME', {
     text: 'text'
 });
