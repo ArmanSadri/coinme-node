@@ -27,8 +27,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var $ = _preconditions2.default.singleton();
-
 var NotificationService = function () {
 
     /**
@@ -51,7 +49,7 @@ var NotificationService = function () {
             this.mappings = {};
         }
 
-        this.registerTemplate('DEFAULT_TYPE', new _NotificationTemplate2.default({
+        this.register('DEFAULT_TYPE', new _NotificationTemplate2.default({
             name: 'DEFAULT_TEMPLATE'
         }));
     }
@@ -65,8 +63,8 @@ var NotificationService = function () {
 
 
     _createClass(NotificationService, [{
-        key: 'registerTemplate',
-        value: function registerTemplate(notificationType, notificationTemplate) {
+        key: 'register',
+        value: function register(notificationType, notificationTemplate) {
             this.$.shouldBeString(notificationType, 'notificationType must be string');
             this.$.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
 
@@ -90,8 +88,8 @@ var NotificationService = function () {
          */
 
     }, {
-        key: 'notificationBuilder',
-        value: function notificationBuilder(notificationType, data) {
+        key: 'builder',
+        value: function builder(notificationType, data) {
             if (!notificationType) {
                 notificationType = 'DEFAULT_TYPE';
             }
@@ -117,7 +115,7 @@ var NotificationService = function () {
         /**
          *
          * @param {String} type
-         * @param {Object} data
+         * @param {*|undefined} data
          * @return {Promise}
          */
 
@@ -125,10 +123,11 @@ var NotificationService = function () {
         key: 'notify',
         value: function notify(type, data) {
             this.$.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');
-            this.$.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');
+            //this.$.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');
+            data = data || {};
 
             var url = this.url;
-            var builder = this.notificationBuilder(type, data);
+            var builder = this.builder(type, data);
 
             this.$.shouldBeDefined(builder, 'No builder for ' + type);
 
