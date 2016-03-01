@@ -1,16 +1,18 @@
 'use strict';
 
-import _ from 'lodash';
-import Preconditions from 'preconditions';
 import NotificationBuilder from './NotificationBuilder';
+import AbstractObject from './AbstractObject';
 
-class NotificationTemplate {
+class NotificationTemplate extends AbstractObject {
 
     constructor(options) {
-        _.assign(this, options);
+        super(options);
 
-        this.$ = Preconditions.singleton();
-        this.$.shouldBeString(this.name, 'You must define a name for this template');
+        this.Lodash.defaults(this, {
+            name: 'NotificationTemplate'
+        });
+
+        this.Preconditions.shouldBeString(this.name, 'You must define a name for this template');
     }
 
     /**
@@ -20,12 +22,11 @@ class NotificationTemplate {
      * @return {NotificationBuilder}
      */
     applyToNotificationBuilder(notificationBuilder, data) {
-
-        if (_.isObject(this.payload)) {
+        if (this.Lodash.isObject(this.payload)) {
             notificationBuilder.mergeIntoPayload(this.payload);
         }
 
-        if (_.isObject(data)) {
+        if (this.Lodash.isObject(data)) {
             notificationBuilder.mergeIntoPayload(data);
         }
 

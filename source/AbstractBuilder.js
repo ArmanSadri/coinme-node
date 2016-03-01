@@ -1,28 +1,20 @@
 'use strict';
 
 import Utility from './Utility';
-import _ from 'lodash';
-import Preconditions from 'preconditions';
-let $ = Preconditions.singleton();
-
-import winston from 'winston';
+import AbstractObject from './AbstractObject';
 
 // winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
-class AbstractBuilder {
+class AbstractBuilder extends AbstractObject {
 
     constructor(options) {
-        _.assign(this, options);
+        super(options);
 
-        if (!this.payload) {
-            this.payload = {};
-        }
+        this.Lodash.defaults(this, {
+            payload: {
 
-        if (!this.Logger) {
-            this.Logger = winston;
-        }
-
-        this.$ = $;
+            }
+        });
     }
 
     /**
@@ -32,7 +24,7 @@ class AbstractBuilder {
      * @protected
      */
     get(path) {
-        if (_.isUndefined(path)) {
+        if (this.Lodash.isUndefined(path)) {
             return this.payload;
         } else {
             return Utility.Object.get(this.payload, path);
@@ -59,8 +51,8 @@ class AbstractBuilder {
      * @protected
      */
     setString(path, string) {
-        this.$.shouldBeString(path, 'path');
-        this.$.shouldBeString(string, 'string');
+        this.Preconditions.shouldBeString(path, 'path');
+        this.Preconditions.shouldBeString(string, 'string');
 
         return this.set(path, string);
     }
@@ -71,10 +63,10 @@ class AbstractBuilder {
      * @return {AbstractBuilder}
      */
     mergeIntoPayload(object) {
-        this.$.shouldBeDefined(object, 'Cannot merge null');
-        this.$.shouldBeObject(object, 'should be object');
+        this.Preconditions.shouldBeDefined(object, 'Cannot merge null');
+        this.Preconditions.shouldBeObject(object, 'should be object');
 
-        _.assign(this.payload, object);
+        this.Lodash.assign(this.payload, object);
 
         return this;
     }
