@@ -84,8 +84,19 @@ var builder = new NotificationBuilder({
  * @param {NotificationTemplate|Object} template
  */
 NotificationService.register('EVENT_NAME', {
-    name: 'InlineTemplate', // This is the TemplateName (required, for both Object-mode and NotificationTempate-mode)
 
+    /**
+     * The name of the template. Useful for debugging.
+     *
+     * @type {String} 
+     * @required
+     */
+    name: 'InlineTemplate', 
+
+    /**
+     * @type {Object}
+     * @optional
+     */
     payload: {
         username: 'InlineTemplate'
     }
