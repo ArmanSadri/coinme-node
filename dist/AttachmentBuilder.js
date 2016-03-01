@@ -54,7 +54,7 @@ var AttachmentBuilder = function (_AbstractBuilder) {
         value: function fields() {
             var fields = this.getWithDefaultValue('fields', []);
 
-            this.$.shouldBeArray(fields, 'fields');
+            this.Preconditions.shouldBeArray(fields, 'fields');
 
             return fields;
         }

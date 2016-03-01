@@ -1,21 +1,17 @@
 'use strict';
 
-import _ from 'lodash';
-import Preconditions from 'preconditions';
-
 import NotificationTemplate from './NotificationTemplate';
 import NotificationBuilder from './NotificationBuilder';
+import AbstractObject from './AbstractObject';
 
-class NotificationService {
+class NotificationService extends AbstractObject {
 
     /**
      *
      * @param {Object} options
      */
     constructor(options) {
-        _.assign(this, options);
-
-        this.$ = Preconditions.singleton();
+        super(options);
 
         if (!this.templates) {
             this.templates = {};
@@ -37,8 +33,8 @@ class NotificationService {
      * @return {NotificationService}
      */
     register(notificationType, notificationTemplate) {
-        this.$.shouldBeString(notificationType, 'notificationType must be string');
-        this.$.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
+        this.Preconditions.shouldBeString(notificationType, 'notificationType must be string');
+        this.Preconditions.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
 
         if (!(notificationTemplate instanceof NotificationTemplate)) {
             let options = notificationTemplate;
@@ -72,7 +68,7 @@ class NotificationService {
         let notificationTemplateName = this.mappings[notificationType];
         var notificationTemplate = this.templates[notificationTemplateName];
 
-        this.$.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);
+        this.Preconditions.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);
 
         let builder = new NotificationBuilder({
             url: this.url
@@ -88,16 +84,16 @@ class NotificationService {
      * @return {Promise}
      */
     notify(type, data) {
-        this.$.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');
-        //this.$.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');
+        this.Preconditions.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');
+        //this.Preconditions.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');
         data = data || {};
 
         let url = this.url;
         let builder = this.builder(type, data);
 
-        this.$.shouldBeDefined(builder, 'No builder for ' + type);
+        this.Preconditions.shouldBeDefined(builder, 'No builder for ' + type);
 
-        this.$.shouldBeString(url || builder.url, '');
+        this.Preconditions.shouldBeString(url || builder.url, '');
 
         if (!builder.url) {
             builder.url = url;
