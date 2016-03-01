@@ -10,41 +10,32 @@ var _Utility = require('./Utility');
 
 var _Utility2 = _interopRequireDefault(_Utility);
 
-var _lodash = require('lodash');
+var _AbstractObject2 = require('./AbstractObject');
 
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _preconditions = require('preconditions');
-
-var _preconditions2 = _interopRequireDefault(_preconditions);
-
-var _winston = require('winston');
-
-var _winston2 = _interopRequireDefault(_winston);
+var _AbstractObject3 = _interopRequireDefault(_AbstractObject2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var $ = _preconditions2.default.singleton();
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
-var AbstractBuilder = function () {
+var AbstractBuilder = function (_AbstractObject) {
+    _inherits(AbstractBuilder, _AbstractObject);
+
     function AbstractBuilder(options) {
         _classCallCheck(this, AbstractBuilder);
 
-        _lodash2.default.assign(this, options);
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractBuilder).call(this, options));
 
-        if (!this.payload) {
-            this.payload = {};
-        }
-
-        if (!this.Logger) {
-            this.Logger = _winston2.default;
-        }
-
-        this.$ = $;
+        _this.Lodash.defaults(_this, {
+            payload: {}
+        });
+        return _this;
     }
 
     /**
@@ -58,7 +49,7 @@ var AbstractBuilder = function () {
     _createClass(AbstractBuilder, [{
         key: 'get',
         value: function get(path) {
-            if (_lodash2.default.isUndefined(path)) {
+            if (this.Lodash.isUndefined(path)) {
                 return this.payload;
             } else {
                 return _Utility2.default.Object.get(this.payload, path);
@@ -91,8 +82,8 @@ var AbstractBuilder = function () {
     }, {
         key: 'setString',
         value: function setString(path, string) {
-            this.$.shouldBeString(path, 'path');
-            this.$.shouldBeString(string, 'string');
+            this.Preconditions.shouldBeString(path, 'path');
+            this.Preconditions.shouldBeString(string, 'string');
 
             return this.set(path, string);
         }
@@ -106,10 +97,10 @@ var AbstractBuilder = function () {
     }, {
         key: 'mergeIntoPayload',
         value: function mergeIntoPayload(object) {
-            this.$.shouldBeDefined(object, 'Cannot merge null');
-            this.$.shouldBeObject(object, 'should be object');
+            this.Preconditions.shouldBeDefined(object, 'Cannot merge null');
+            this.Preconditions.shouldBeObject(object, 'should be object');
 
-            _lodash2.default.assign(this.payload, object);
+            this.Lodash.assign(this.payload, object);
 
             return this;
         }
@@ -130,6 +121,6 @@ var AbstractBuilder = function () {
     }]);
 
     return AbstractBuilder;
-}();
+}(_AbstractObject3.default);
 
 exports.default = AbstractBuilder;

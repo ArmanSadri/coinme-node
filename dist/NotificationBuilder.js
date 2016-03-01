@@ -18,10 +18,6 @@ var _requestPromise = require('request-promise');
 
 var _requestPromise2 = _interopRequireDefault(_requestPromise);
 
-var _bluebird = require('bluebird');
-
-var _bluebird2 = _interopRequireDefault(_bluebird);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38,7 +34,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).call(this, options));
 
-        _this.$.shouldBeString(_this.url, 'NotificationBuilder.constructor(): url must be a string');
+        _this.Preconditions.shouldBeString(_this.url, 'NotificationBuilder.constructor(): url must be a string');
         return _this;
     }
 
@@ -118,7 +114,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
             var url = this.url;
             var payload = this.toPayload();
 
-            return _bluebird2.default.resolve().then(function () {
+            return Promise.resolve().then(function () {
                 //
                 // https://www.npmjs.com/package/request-promise
                 //
@@ -140,7 +136,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
 
                 scope.Logger.debug('[SLACK:' + scope.name + '] webhook ', requestOptions);
 
-                return _bluebird2.default.resolve((0, _requestPromise2.default)(requestOptions)).then(function (value) {
+                return Promise.resolve((0, _requestPromise2.default)(requestOptions)).then(function (value) {
                     scope.Logger.debug('[SLACK:' + scope.name + '] webhook succeeded.', arguments);
 
                     return value;
