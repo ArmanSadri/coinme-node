@@ -85,12 +85,13 @@ class NotificationService {
     /**
      *
      * @param {String} type
-     * @param {Object} data
+     * @param {*|undefined} data
      * @return {Promise}
      */
     notify(type, data) {
         this.$.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');
-        this.$.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');
+        //this.$.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');
+        data = data || {};
 
         let url = this.url;
         let builder = this.notificationBuilder(type, data);
