@@ -74,6 +74,22 @@ var builder = new NotificationBuilder({
 
 ```
 
+## NotificationService
+
+```javascript
+NotificationService.register('EVENT_NAME', {
+    name: 'InlineTemplate',
+
+    payload: {
+        username: 'InlineTemplate'
+    }
+});
+
+NotificationService.notify('EVENT_NAME', {
+    text: 'text'
+});
+```
+
 ## Install
 
 ```
