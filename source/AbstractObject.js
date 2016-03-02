@@ -5,7 +5,13 @@ import Preconditions from 'preconditions';
 import winston from 'winston';
 import Promise from 'bluebird';
 
-class AbstractObject {
+/**
+ * This is the base class for all classes in our architecture.
+ *
+ * @abstract
+ * @class
+ */
+class CoreObject {
 
     /**
      *
@@ -27,4 +33,4 @@ class AbstractObject {
     }
 }
 
-export default AbstractObject;
+export default CoreObject;

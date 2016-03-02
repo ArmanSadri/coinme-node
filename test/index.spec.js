@@ -71,6 +71,37 @@ describe('CoinmeSlack', function() {
 
 describe('CoinmeSlack', function() {
 
+    it('User Did Something', function() {
+        //NotificationService.register('EVENT_NAME', {
+        //    payload: {
+        //        username: 'InlineTemplate'
+        //    },
+        //
+        //    /**
+        //     *
+        //     * @param {NotificationBuilder} builder
+        //     * @param {Object} data
+        //     * @returns {*}
+        //     */
+        //    applyToNotificationBuilder(builder, data) {
+        //        builder
+        //            .username('New User Monitor (unit test)')
+        //            .text(`A new user signed up! ${data.firstName} ${data.lastName} with an address of '${data.address}'`);
+        //
+        //        let attachment = builder.attachment();
+        //
+        //        {
+        //            attachment.title('');
+        //        }
+        //
+        //    }
+        //});
+
+        //NotificationService.notify('EVENT_NAME', {
+        //    text: 'text'
+        //});
+    });
+
     it('Can register templates', function() {
         NotificationService.register('EVENT_NAME', {
             name: 'InlineTemplate',

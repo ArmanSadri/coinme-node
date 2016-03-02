@@ -1,7 +1,7 @@
 {
-  "name": "coinme-slack",
+  "name": "coinme",
   "version": "1.4.0",
-  "description": "My node module",
+  "description": "The common library for Coinme Node apps",
   "main": "dist/index.js",
   "scripts": {
     "test:debug": "npm run mocha",
@@ -15,12 +15,18 @@
     "build": "rm -rf dist/* && npm run copy:others && babel source --out-dir dist && npm run relink",
     "copy:others": "rsync -avm --exclude='*.js' ./source/* ./dist"
   },
-  "repository": "msmyers/coinme-slack",
-  "author": {
-    "name": "msmyers",
-    "email": "michael@topspectrum.com"
-  },
-  "license": "ISC",
+  "repository": "coinme/coinme-node",
+  "contributors": [{
+    "name": "Michael Smyers",
+    "email": "michael@coinmekiosk.com"
+  }, {
+    "name": "Sebastian Imlay",
+    "email": "sebastian@coinmekiosk.com"
+  }, {
+    "name": "Judd Deaver",
+    "email": "judd@coinmekiosk.com"
+  }],
+  "license": "LicenseRef-LICENSE",
   "devDependencies": {
     "babel-cli": "^6.4.0",
     "babel-core": "^6.4.0",
