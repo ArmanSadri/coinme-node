@@ -1,7 +1,7 @@
 'use strict';
 
-import Utility from './Utility';
-import AbstractObject from './AbstractObject';
+import Utility from '../Utility';
+import AbstractObject from '../CoreObject';
 
 // winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
@@ -64,7 +64,7 @@ class AbstractBuilder extends AbstractObject {
      */
     mergeIntoPayload(object) {
         this.Preconditions.shouldBeDefined(object, 'Cannot merge null');
-        this.Preconditions.shouldBeObject(object, 'should be object');
+        this.Preconditions.shouldBeObject(object, 'Should be object');
 
         this.Lodash.assign(this.payload, object);
 

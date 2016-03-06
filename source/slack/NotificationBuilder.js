@@ -1,15 +1,21 @@
 'use strict';
 
-import AbstractBuilder from './AbstractBuilder';
-import AttachmentBuilder from './AttachmentBuilder';
+import Lodash from 'lodash';
+import Promise from 'bluebird';
+import Preconditions from 'preconditions';
 import request from 'request-promise';
+
+import CoreObject from '../CoreObject';
+import AbstractBuilder from '../slack/AbstractBuilder';
+import AttachmentBuilder from '../slack/AttachmentBuilder';
 
 class NotificationBuilder extends AbstractBuilder {
 
     constructor(options) {
         super(options);
 
-        this.Preconditions.shouldBeString(this.url, 'NotificationBuilder.constructor(): url must be a string');
+        // Allow the URL to be defined later.
+        //this.Preconditions.shouldBeString(this.url, 'NotificationBuilder.constructor(): url must be a string');
     }
 
     /**
@@ -70,6 +76,8 @@ class NotificationBuilder extends AbstractBuilder {
         let url = this.url;
         let payload = this.toPayload();
 
+        scope.Preconditions.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
+
         return Promise.resolve()
             .then(() => {
                 //
@@ -83,6 +91,7 @@ class NotificationBuilder extends AbstractBuilder {
                 //    },
                 //    json: true // Automatically stringifies the body to JSON
                 // };
+
 
                 let requestOptions = {
                     uri: url,
@@ -108,12 +117,32 @@ class NotificationBuilder extends AbstractBuilder {
     }
 
     /**
-     * Convenience method for triggering execute. It makes this class a Promise, kind of. (Thenable)
+     * Do not insert a Promise into this method.
      *
-     * @returns {Promise}
+     * @param {Object|NotificationBuilder} object
+     * @param {Object|undefined} deps
+     * @param {Preconditions|undefined} deps.Preconditions
+     * @return {Promise<NotificationBuilder>}
      */
-    then() {
-        return this.execute();
+    static innerCast(object, deps) {
+        deps = CoreObject.toDependencyMap(deps);
+
+        let Preconditions = deps.Preconditions;
+
+        Preconditions.shouldBeDefined(object);
+
+        return Promise.resolve(object)
+            .then(function(result) {
+                Preconditions.shouldBeDefined(object, 'Casted object must be defined.');
+                Preconditions.shouldNotBeArray(object, 'Casted object must NOT be an array.');
+                Preconditions.shouldBeObject(object, 'Casted object must be an object.');
+
+                if (result instanceof NotificationBuilder) {
+                    return result;
+                }
+
+                return new NotificationBuilder(object);
+            });
     }
 }
 

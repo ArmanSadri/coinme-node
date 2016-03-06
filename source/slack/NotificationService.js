@@ -2,7 +2,7 @@
 
 import NotificationTemplate from './NotificationTemplate';
 import NotificationBuilder from './NotificationBuilder';
-import AbstractObject from './AbstractObject';
+import AbstractObject from '../CoreObject';
 
 class NotificationService extends AbstractObject {
 
@@ -24,6 +24,13 @@ class NotificationService extends AbstractObject {
         this.register('DEFAULT_TYPE', new NotificationTemplate({
             name: 'DEFAULT_TEMPLATE'
         }));
+
+        this.payload = {};
+    }
+
+    mergeIntoPayload(payload) {
+        this.Preconditions.shouldBeObject(payload, 'Payload must be object');
+        this.Lodash.assign(this.payload, payload);
     }
 
     /**
@@ -48,33 +55,25 @@ class NotificationService extends AbstractObject {
         return this;
     }
 
-    /**
-     *
-     * @param {String} notificationType
-     * @param {Object} data
-     * @return {NotificationBuilder}
-     */
-    builder(notificationType, data) {
-        if (!notificationType) {
-            notificationType = 'DEFAULT_TYPE';
+    builder() {
+        let builder = new NotificationBuilder({
+            url: this.url
+        });
+
+        if (this.payload) {
+            builder.mergeIntoPayload(this.payload);
         }
 
-        if (!data) {
-            data = {
-                // TODO: apply some defaults?
-            };
-        }
+        return builder;
+    }
 
+    notificationTemplate(notificationType) {
         let notificationTemplateName = this.mappings[notificationType];
         var notificationTemplate = this.templates[notificationTemplateName];
 
         this.Preconditions.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);
 
-        let builder = new NotificationBuilder({
-            url: this.url
-        });
-
-        return notificationTemplate.applyToNotificationBuilder(builder, data);
+        return notificationTemplate;
     }
 
     /**
@@ -89,17 +88,31 @@ class NotificationService extends AbstractObject {
         data = data || {};
 
         let url = this.url;
-        let builder = this.builder(type, data);
+        let scope = this;
+        let Preconditions = this.Preconditions;
 
-        this.Preconditions.shouldBeDefined(builder, 'No builder for ' + type);
+        let notificationTemplate = this.notificationTemplate(type);
+        let builder = this.builder();
+        let promise = notificationTemplate.render(builder, data);
 
-        this.Preconditions.shouldBeString(url || builder.url, '');
+        return promise
+            .then((builder) => {
+                // Let's sanity the builder before executing.
 
-        if (!builder.url) {
-            builder.url = url;
-        }
+                Preconditions.shouldBeDefined(builder, 'No builder for ' + type);
 
-        return builder.execute();
+                if (!builder.url) {
+                    builder.url = url;
+                }
+
+                let payload = builder.payload;
+
+                Preconditions.shouldBeString(builder.url, 'NotificationService.notify(): builder.url was undefined');
+                // Attachments without top level text are valid.
+                //Preconditions.shouldBeString(payload.text, 'builder did not complete \'text\' property. ' + JSON.stringify(payload));
+
+                return builder.execute();
+            });
     }
 }
 

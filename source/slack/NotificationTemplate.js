@@ -1,9 +1,9 @@
 'use strict';
 
-import NotificationBuilder from './NotificationBuilder';
-import AbstractObject from './AbstractObject';
+import NotificationBuilder from '../slack/NotificationBuilder';
+import AbstractNotificationTemplate from '../slack/AbstractNotificationTemplate';
 
-class NotificationTemplate extends AbstractObject {
+class NotificationTemplate extends AbstractNotificationTemplate {
 
     constructor(options) {
         super(options);
@@ -25,6 +25,8 @@ class NotificationTemplate extends AbstractObject {
         if (this.Lodash.isObject(this.payload)) {
             builder.mergeIntoPayload(this.payload);
         }
+
+        this.Logger.silly('Data', data);
 
         // This is actually not useful 'by default'
         // It's useful if you want to do inline stuff, but if we do this in the common base-class,

@@ -1,7 +1,7 @@
 'use strict';
 
-import AbstractBuilder from './AbstractBuilder';
-import FieldBuilder from './FieldBuilder';
+import AbstractBuilder from '../slack/AbstractBuilder';
+import FieldBuilder from '../slack/FieldBuilder';
 
 class AttachmentBuilder extends AbstractBuilder {
 

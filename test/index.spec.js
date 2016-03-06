@@ -1,38 +1,30 @@
 'use strict';
 import { expect } from 'chai';
-import NotificationService from '../source/';
-import { NotificationBuilder, NotificationTemplate } from '../source/';
+import Coinme from '../source/';
+import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '../source/';
 import Utility from '../source/Utility';
+
+NotificationService.url = 'https://hooks.slack.com/services/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';
+
+NotificationService.mergeIntoPayload({
+    channel: '#events-test',
+    username: 'coinme-node/index.spec.js'
+});
 
 describe('CoinmeSlack', function() {
 
     let { Object } = Utility;
     let $ = Utility.$;
-
+    //
     it('Service', () => {
-        NotificationService.url = 'https://hooks.slack.com/services/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';
-
-        NotificationService.register('USER_SIGNED_UP', new NotificationTemplate({
-
-            name: 'UserSignedUpNotificationTemplate',
-
-            /**
-             *
-             * @param {NotificationBuilder} builder
-             * @param {Object} data
-             * @returns {*}
-             */
-            applyToNotificationBuilder(builder, data) {
-                return builder
-                    .username('New User Monitor (unit test)')
-                    .text(`A new user signed up! ${data.firstName} ${data.lastName} with an address of '${data.address}'`);
-            }
-        }));
+        NotificationService.register('USER_SIGNED_UP', new UserNotificationTemplate());
 
         NotificationService.notify('USER_SIGNED_UP', {
+            id: 324,
             firstName: 'Michael',
             lastName: 'Smyers',
-            address: 'asdfasdfasdfasdfasdf'
+            address: 'asdfasdfasdfasdfasdf',
+            url: 'https://www.coinmewallet.com/admin/users/' + 324
         });
     });
 
@@ -103,13 +95,13 @@ describe('CoinmeSlack', function() {
     });
 
     it('Can register templates', function() {
-        NotificationService.register('EVENT_NAME', {
+        NotificationService.register('EVENT_NAME', new InlineNotificationTemplate({
             name: 'InlineTemplate',
 
             payload: {
                 username: 'InlineTemplate'
             }
-        });
+        }));
 
         NotificationService.notify('EVENT_NAME', {
             text: 'text'
@@ -148,8 +140,6 @@ describe('CoinmeSlack', function() {
             throw new Error('Must exist');
         }
 
-        //expect(builder.payload.merged).to.exist();
-
         builder.text('asdfasdf');
 
         let attachment = builder.attachment();
@@ -167,8 +157,6 @@ describe('CoinmeSlack', function() {
             .text('this is text for a new attachment')
             .field()
             .title('this is the title');
-
-        builder.execute();
 
         //expect(builder)
         //    .to
