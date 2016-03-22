@@ -1,0 +1,116 @@
+{
+  "coverage": "39.34%",
+  "expectCount": 61,
+  "actualCount": 24,
+  "files": {
+    "js/slack/AbstractBuilder.js": {
+      "expectCount": 7,
+      "actualCount": 5,
+      "undocumentLines": [
+        8,
+        10
+      ]
+    },
+    "js/slack/AbstractNotificationTemplate.js": {
+      "expectCount": 4,
+      "actualCount": 3,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "js/slack/AttachmentBuilder.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        37,
+        8,
+        41,
+        29,
+        25,
+        21
+      ]
+    },
+    "js/Coinme.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "js/CoreObject.js": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        42,
+        38
+      ]
+    },
+    "js/slack/FieldBuilder.js": {
+      "expectCount": 7,
+      "actualCount": 5,
+      "undocumentLines": [
+        5,
+        7
+      ]
+    },
+    "js/slack/InlineNotificationTemplate.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    },
+    "js/slack/NotificationBuilder.js": {
+      "expectCount": 12,
+      "actualCount": 5,
+      "undocumentLines": [
+        10,
+        55,
+        51,
+        12,
+        63,
+        59,
+        47
+      ]
+    },
+    "js/slack/NotificationService.js": {
+      "expectCount": 11,
+      "actualCount": 3,
+      "undocumentLines": [
+        7,
+        58,
+        21,
+        31,
+        121,
+        70,
+        28,
+        17
+      ]
+    },
+    "js/slack/NotificationTemplate.js": {
+      "expectCount": 3,
+      "actualCount": 1,
+      "undocumentLines": [
+        6,
+        8
+      ]
+    },
+    "js/slack/UserNotificationTemplate.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    },
+    "js/Utility.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        6
+      ]
+    }
+  }
+}
