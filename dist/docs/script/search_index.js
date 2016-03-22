@@ -444,12 +444,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/ember/ember-runtime.js",
-    "file/js/ember/ember-runtime.js.html",
-    "js/ember/ember-runtime.js",
-    "file"
-  ],
-  [
     "js/index.js",
     "file/js/index.js.html",
     "js/index.js",

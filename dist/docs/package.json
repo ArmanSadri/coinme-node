@@ -1,6 +1,6 @@
 {
   "name": "coinme",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "The common library for Coinme Node apps",
   "main": "dist/js/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "relink": "npm unlink && npm link",
     "clean": "rm -rf dist/*",
     "copy:others": "rsync -avm --exclude='*.js' ./src/js/* ./dist/js",
-    "babel": "babel src/js --out-dir dist/js",
+    "babel": "./node_modules/.bin/babel src/js --out-dir dist/js",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
     "build": "npm run clean && npm run copy:others && npm run babel && npm run docs && npm run relink"
   },
