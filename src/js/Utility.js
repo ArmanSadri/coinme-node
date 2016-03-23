@@ -1,80 +1,123 @@
 'use strict';
 
-import _ from 'lodash';
-import Preconditions from 'preconditions';
+import Lodash from 'lodash';
+import Preconditions from '~/Preconditions';
+import Ember from '~/ember';
 
-let Utility = {
+/**
+ * @class
+ * @singleton
+ */
+export default class Utility {
 
-    $: Preconditions.singleton()
-
-};
-
-_.merge(Utility, {
-
-    Object: {
-        /**
-         * Set a value
-         *
-         * @param {Object} object
-         * @param {String} path
-         * @param {*} value
-         */
-        set: function(object, path, value) {
-            Utility.$.shouldBeDefined(object);
-            Utility.$.shouldBeString(path);
-
-            _.set(object, path, value);
-
-            let sanity = this.get(object, path);
-
-            if (value !== sanity) {
-                throw new Error('Does not match');
-            }
-        },
-
-        /**
-         *
-         * @param {Object} object
-         * @param {String} path
-         * @param {String} string
-         */
-        setString: function(object, path, string) {
-            Utility.$.shouldBeDefined(object);
-            Utility.$.shouldBeString(path);
-            Utility.$.shouldBeString(string);
-
-            return _.set(object, path, string);
-        },
-
-        /**
-         *
-         * @param {Object} object
-         * @param {String} path
-         * @returns {*}
-         */
-        get: function(object, path) {
-            return _.get(object, path);
-        },
-
-        /**
-         *
-         * @param {Object} object
-         * @param {String} path
-         * @param {Object} defaultValue
-         * @return {*}
-         */
-        getWithDefaultValue(object, path, defaultValue) {
-            var result = this.get(object, path);
-
-            if (!result) {
-                this.set(object, path, defaultValue);
-
-                result = defaultValue;
-            }
-
-            return result;
-        }
+    /**
+     *
+     * @returns {String}
+     */
+    static typeOf(object) {
+        return Ember.typeOf(object);
     }
-});
 
-export default Utility;
+    /**
+     *
+     * @param {*} object
+     * @return boolean
+     */
+    static isUndefined(object) {
+        return Lodash.isUndefined(object);
+    }
+
+    /**
+     * @param {*} object
+     * @return {boolean}
+     */
+    static isExisting(object) {
+        let u = Utility.isUndefined(object);
+        let n = Utility.isNaN(object);
+        let nu = Utility.isNull(object);
+
+        return !(u || n || nu);
+    }
+
+    static isNaN(object) {
+        return Lodash.isNaN(object);
+    }
+
+    static isNull(object) {
+        return null === object;
+    }
+
+    static isNotExisting(object) {
+        return !this.isExisting(object);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isFalsey(object) {
+        return !object;
+    }
+
+    static isFunction(fn) {
+        return this.typeOf(fn) === 'function';
+    }
+
+    /**
+     *
+     * @param {String} string
+     * @return {boolean}
+     */
+    static isNotBlank(string) {
+        return !this.isBlank(string);
+    }
+
+    /**
+     *
+     * @param {String} string
+     * @return {boolean}
+     */
+    static isBlank(string) {
+        Preconditions.shouldBeString(string);
+
+        return Ember.isBlank(string);
+    }
+
+    /**
+     *
+     * @param {String} type
+     * @return {function}
+     */
+    static typeMatcher(type) {
+
+        /**
+         * @param {*} object
+         */
+        return function(object) {
+            return Utility.typeOf(object) === type;
+        };
+    }
+
+    /**
+     *
+     * @param {Object} object
+     * @param {Object} defaults
+     * @returns {Object} The original object.
+     */
+    static defaults(object, defaults) {
+        Preconditions.shouldBeObject(object);
+        Preconditions.shouldBeObject(defaults);
+
+        let updates = Object.keys(defaults);
+
+        for (let i = 0, l = updates.length; i < l; i++) {
+            let prop = updates[i];
+            let value = Ember.get(defaults, prop);
+
+            Ember.set(object, prop, value);
+        }
+
+        return object;
+    }
+};

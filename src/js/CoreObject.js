@@ -1,11 +1,7 @@
 'use strict';
 
-import _ from 'lodash';
-import Preconditions from 'preconditions';
-import winston from 'winston';
-import Promise from 'bluebird';
-
-let $ = Preconditions.singleton();
+import Ember from "~/ember";
+import Preconditions from '~/Preconditions';
 
 /**
  * This is the base class for all classes in our architecture.
@@ -14,43 +10,28 @@ let $ = Preconditions.singleton();
  * @abstract
  * @class
  */
-class CoreObject {
+class CoreObject extends Ember.CoreObject {
 
     /**
      *
-     * @param {Object} options
+     * @param {String} path
+     * @returns {*}
      */
-    constructor(options) {
-        options = options || {};
+    get(path) {
+        Preconditions.shouldBeString(path);
 
-        let chosenLodashVersion = options.Lodash || _;
-
-        options = chosenLodashVersion.defaults(options, {
-            Preconditions: $,
-            Lodash: chosenLodashVersion,
-            Logger: winston,
-            Promise: Promise
-        });
-
-        chosenLodashVersion.assign(this, options);
+        return Ember.get(this, path);
     }
 
-    toDependencyMap() {
-        return CoreObject.toDependencyMap(this);
-    }
+    /**
+     *
+     * @param {String} path
+     * @param {*} value
+     */
+    set(path, value) {
+        Preconditions.shouldBeString(path);
 
-    static toDependencyMap(options) {
-        options = options || {
-                Lodash: _
-            };
-
-        let Lodash = options.Lodash;
-
-        return Lodash.defaults(options, {
-            Preconditions: $,
-            Logger: winston,
-            Promise: Promise
-        });
+        return Ember.set(this, path, value);
     }
 }
 

@@ -1,5 +1,6 @@
 # coinme-slack  [![npm version](https://badge.fury.io/js/coinme-slack.svg)](https://badge.fury.io/js/coinme-slack)
 
+* https://esdoc.org/config.html#full-config
 * https://api.slack.com/incoming-webhooks
 * https://api.slack.com/docs/attachments
 * https://github.com/request/request

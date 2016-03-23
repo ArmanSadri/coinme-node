@@ -1,20 +1,16 @@
 'use strict';
 
-import Promise from "bluebird";
-import Preconditions from "preconditions";
-import request from "request-promise";
-import CoreObject from "../CoreObject";
-import AbstractBuilder from "../slack/AbstractBuilder";
-import AttachmentBuilder from "../slack/AttachmentBuilder";
+import Promise from 'bluebird';
+import Logger from 'winston';
+import Preconditions from 'preconditions';
+import request from 'request-promise';
+
+import CoreObject from '~/CoreObject';
+import AbstractBuilder from '../slack/AbstractBuilder';
+import AttachmentBuilder from '../slack/AttachmentBuilder';
+import Ember from '~/ember';
 
 class NotificationBuilder extends AbstractBuilder {
-
-    constructor(options) {
-        super(options);
-
-        // Allow the URL to be defined later.
-        //this.Preconditions.shouldBeString(this.url, 'NotificationBuilder.constructor(): url must be a string');
-    }
 
     /**
      *
@@ -22,7 +18,9 @@ class NotificationBuilder extends AbstractBuilder {
      * @returns {NotificationBuilder}
      */
     channel(value) {
-        return this.setString('channel', value);
+        Preconditions.shouldBeString(value);
+
+        return this.set('channel', value);
     }
 
     /**
@@ -32,7 +30,9 @@ class NotificationBuilder extends AbstractBuilder {
      * @returns {NotificationBuilder}
      */
     text(text) {
-        return this.setString('text', text);
+        Preconditions.shouldBeString(value);
+
+        return this.set('text', text);
     }
 
     /**
@@ -41,15 +41,19 @@ class NotificationBuilder extends AbstractBuilder {
      * @returns {icon}
      */
     icon(icon) {
-        return this.setString('icon_emoji', icon);
+        Preconditions.shouldBeString(value);
+
+        return this.set('icon_emoji', icon);
     }
 
     username(username) {
-        return this.setString('username', username);
+        Preconditions.shouldBeString(username);
+
+        return this.set('username', username);
     }
 
     attachments() {
-        return this.getWithDefaultValue('attachments', []);
+        return Ember.getWithDefault(this, 'attachments', []);
     }
 
     attachment() {
@@ -57,7 +61,7 @@ class NotificationBuilder extends AbstractBuilder {
     }
 
     toPayload() {
-        return this.payload;
+        return this.get('payload');
     }
 
     toJson() {
@@ -74,7 +78,7 @@ class NotificationBuilder extends AbstractBuilder {
         let url = this.url;
         let payload = this.toPayload();
 
-        scope.Preconditions.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
+        Preconditions.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
 
         return Promise.resolve()
             .then(() => {
@@ -98,16 +102,16 @@ class NotificationBuilder extends AbstractBuilder {
                     json: true
                 };
 
-                scope.Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);
+                Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);
 
                 return Promise.resolve(request(requestOptions))
                     .then(function(value) {
-                        scope.Logger.debug(`[SLACK:${scope.name}] webhook succeeded.`, arguments);
+                        Logger.debug(`[SLACK:${scope.name}] webhook succeeded.`, arguments);
 
                         return value;
                     })
                     .catch(function(err) {
-                        scope.Logger.warn(`[SLACK:${scope.name}] webhook failed.`, arguments);
+                        Logger.warn(`[SLACK:${scope.name}] webhook failed.`, arguments);
 
                         throw err;
                     });

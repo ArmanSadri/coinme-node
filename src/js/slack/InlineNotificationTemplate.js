@@ -1,4 +1,4 @@
-import NotificationTemplate from '../slack/NotificationTemplate';
+import NotificationTemplate from '~/slack/NotificationTemplate';
 
 class InlineNotificationTemplate extends NotificationTemplate {
 

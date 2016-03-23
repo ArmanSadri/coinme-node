@@ -1,8 +1,11 @@
 'use strict';
 
+import Logger from 'winston';
+import Lodash from 'lodash/index';
+import Preconditions from '~/Preconditions';
 import NotificationTemplate from './NotificationTemplate';
 import NotificationBuilder from './NotificationBuilder';
-import AbstractObject from '../CoreObject';
+import AbstractObject from '~/CoreObject';
 
 class NotificationService extends AbstractObject {
 
@@ -29,8 +32,8 @@ class NotificationService extends AbstractObject {
     }
 
     mergeIntoPayload(payload) {
-        this.Preconditions.shouldBeObject(payload, 'Payload must be object');
-        this.Lodash.assign(this.payload, payload);
+        Preconditions.shouldBeObject(payload, 'Payload must be object');
+        Lodash.assign(this.payload, payload);
     }
 
     /**
@@ -40,8 +43,8 @@ class NotificationService extends AbstractObject {
      * @return {NotificationService}
      */
     register(notificationType, notificationTemplate) {
-        this.Preconditions.shouldBeString(notificationType, 'notificationType must be string');
-        this.Preconditions.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
+        Preconditions.shouldBeString(notificationType, 'notificationType must be string');
+        Preconditions.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
 
         if (!(notificationTemplate instanceof NotificationTemplate)) {
             let options = notificationTemplate;
@@ -71,7 +74,7 @@ class NotificationService extends AbstractObject {
         let notificationTemplateName = this.mappings[notificationType];
         var notificationTemplate = this.templates[notificationTemplateName];
 
-        this.Preconditions.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);
+        Preconditions.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);
 
         return notificationTemplate;
     }
@@ -83,13 +86,12 @@ class NotificationService extends AbstractObject {
      * @return {Promise}
      */
     notify(type, data) {
-        this.Preconditions.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');
+        Preconditions.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');
         //this.Preconditions.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');
         data = data || {};
 
         let url = this.url;
         let scope = this;
-        let Preconditions = this.Preconditions;
 
         let notificationTemplate = this.notificationTemplate(type);
         let builder = this.builder();

@@ -1,20 +1,28 @@
 'use strict';
+
 import { expect } from 'chai';
-import Coinme from '../source/';
-import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '../source/';
-import Utility from '../source/Utility';
+import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '~/slack';
+import Utility from '~/Utility';
+import Ember from '~/ember';
+import Preconditions from '~/Preconditions';
+
+Preconditions.shouldBe(function() { return true; }, 'expected', 'actual', 'message');
 
 NotificationService.url = 'https://hooks.slack.com/services/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';
 
 NotificationService.mergeIntoPayload({
     channel: '#events-test',
-    username: 'coinme-node/index.spec.js'
+    username: 'coinme-node/slack.spec.js'
 });
 
 describe('CoinmeSlack', function() {
 
     let { Object } = Utility;
-    let $ = Utility.$;
+
+    it('Utility tests', () => {
+        
+    });
+
     //
     it('Service', () => {
         NotificationService.register('USER_SIGNED_UP', new UserNotificationTemplate());
@@ -31,33 +39,33 @@ describe('CoinmeSlack', function() {
     it('Utility can set and get', () => {
         var object = {};
 
-        $.shouldBeUndefined(Object.get(object, 'fieldName'));
+        Preconditions.shouldBeUndefined(Object.get(object, 'fieldName'));
 
         Object.set(object, 'fieldName', true);
 
-        $.shouldBeBoolean(Object.get(object, 'fieldName'));
-        $.shouldNotBeFalsey(Object.get(object, 'fieldName'));
+        Preconditions.shouldBeBoolean(Object.get(object, 'fieldName'));
+        Preconditions.shouldNotBeFalsey(Object.get(object, 'fieldName'));
     });
 
     it('Utility can set and get array', () => {
         var object = {};
 
-        $.shouldBeUndefined(Object.get(object, 'fieldName'));
+        Preconditions.shouldBeUndefined(Object.get(object, 'fieldName'));
 
         Object.set(object, 'fieldName', []);
 
-        $.shouldBeArray(Object.get(object, 'fieldName'));
+        Preconditions.shouldBeArray(Object.get(object, 'fieldName'));
     });
 
     it('getWithDefaultValue', () => {
         var object = {};
 
-        $.shouldBeUndefined(Object.get(object, 'fields'));
+        Preconditions.shouldBeUndefined(Object.get(object, 'fields'));
 
-        var fields = Object.getWithDefaultValue(object, 'fields', []);
+        var fields = Ember.getWithDefault(object, 'fields', []);
 
-        $.shouldBeArray(fields);
-        $.shouldNotBeFalsey(fields);
+        Preconditions.shouldBeArray(fields);
+        Preconditions.shouldNotBeFalsey(fields);
     });
 });
 

@@ -1,7 +1,11 @@
 'use strict';
 
-import CoreObject from '../CoreObject';
-import NotificationBuilder from '../slack/NotificationBuilder';
+import Logger from "winston";
+import CoreObject from "~/CoreObject";
+import Ember from '~/ember';
+import Utility from "~/Utility";
+import NotificationBuilder from "~/slack/NotificationBuilder";
+import Preconditions from "~/Preconditions";
 
 /**
  *
@@ -9,14 +13,12 @@ import NotificationBuilder from '../slack/NotificationBuilder';
  */
 class AbstractNotificationTemplate extends CoreObject {
 
-    constructor(options) {
-        super(options);
-
-        this.Lodash.defaults(this, {
+    init() {
+        Utility.defaults(this, {
             name: 'NotificationTemplate'
         });
-
-        this.Preconditions.shouldBeString(this.name, 'You must define a name for this template');
+        
+        Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');
     }
 
     /**
@@ -31,9 +33,7 @@ class AbstractNotificationTemplate extends CoreObject {
 
         result = result || builder;
 
-        return NotificationBuilder.innerCast(
-            result,
-            this.toDependencyMap());
+        return result;
     }
 
     /**
@@ -44,8 +44,8 @@ class AbstractNotificationTemplate extends CoreObject {
      * @return {Promise|NotificationBuilder|Object}
      */
     applyTemplate(builder, data) {
-        this.Logger.silly('Builder', builder);
-        this.Logger.silly('Data', data);
+        Logger.silly('Builder', builder);
+        Logger.silly('Data', data);
 
         throw new Error('This method must be overridden by a subclass');
     }

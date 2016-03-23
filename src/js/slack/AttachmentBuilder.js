@@ -1,41 +1,47 @@
 'use strict';
 
-import AbstractBuilder from '~/slack/AbstractBuilder';
-import FieldBuilder from '~/slack/FieldBuilder';
+import Preconditions from "~/Preconditions";
+import Ember from "~/ember";
+import AbstractBuilder from "~/slack/AbstractBuilder";
+import FieldBuilder from "~/slack/FieldBuilder";
 
 class AttachmentBuilder extends AbstractBuilder {
 
-    constructor(parent) {
-        super({
-            parent: parent
-        });
+    init() {
+        super.init(...arguments);
 
-        this.parent
+        this.get('parent')
             .attachments()
-            .push(this.payload);
+            .push(this.get('payload'));
 
         this.set('mrkdwn_in', ['pretext', 'text', 'fields']);
         this.set('color', 'good');
     }
 
     title(value) {
-        return this.setString('title', value);
+        Preconditions.shouldBeString(value);
+        
+        return this.set('title', value);
     }
 
     text(value) {
-        return this.setString('text', value);
+        Preconditions.shouldBeString(value);
+
+        return this.set('text', value);
     }
 
     fields() {
-        let fields = this.getWithDefaultValue('fields', []);
+        let fields = Ember.getWithDefault(this, 'fields', []);
 
-        this.Preconditions.shouldBeArray(fields, 'fields');
+        Preconditions.shouldBeArray(fields, 'fields');
 
         return fields;
     }
 
     color(color) {
-        return this.setString('color', color);
+        Preconditions.shouldBeString(color);
+
+        return this.set('color', color);
     }
 
     field() {

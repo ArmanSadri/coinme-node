@@ -1,18 +1,22 @@
 'use strict';
 
-import NotificationBuilder from '../slack/NotificationBuilder';
-import AbstractNotificationTemplate from '../slack/AbstractNotificationTemplate';
+import Lodash from 'lodash/index';
+import Logger from 'winston';
+
+import Preconditions from '~/Preconditions';
+import NotificationBuilder from '~/slack/NotificationBuilder';
+import AbstractNotificationTemplate from '~/slack/AbstractNotificationTemplate';
 
 class NotificationTemplate extends AbstractNotificationTemplate {
 
     constructor(options) {
         super(options);
 
-        this.Lodash.defaults(this, {
+        Lodash.defaults(this, {
             name: 'NotificationTemplate'
         });
 
-        this.Preconditions.shouldBeString(this.name, 'You must define a name for this template');
+        Preconditions.shouldBeString(this.name, 'You must define a name for this template');
     }
 
     /**
@@ -22,11 +26,11 @@ class NotificationTemplate extends AbstractNotificationTemplate {
      * @return {NotificationBuilder}
      */
     applyTemplate(builder, data) {
-        if (this.Lodash.isObject(this.payload)) {
-            builder.mergeIntoPayload(this.payload);
+        if (Lodash.isObject(this.get('payload'))) {
+            builder.mergeIntoPayload(this.get('payload'));
         }
 
-        this.Logger.silly('Data', data);
+        Logger.silly('Data', data);
 
         // This is actually not useful 'by default'
         // It's useful if you want to do inline stuff, but if we do this in the common base-class,
