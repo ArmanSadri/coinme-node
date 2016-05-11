@@ -1,33 +1,33 @@
 {
-  "coverage": "39.34%",
-  "expectCount": 61,
-  "actualCount": 24,
+  "coverage": "57.3%",
+  "expectCount": 89,
+  "actualCount": 51,
   "files": {
     "js/slack/AbstractBuilder.js": {
-      "expectCount": 7,
-      "actualCount": 5,
+      "expectCount": 3,
+      "actualCount": 1,
       "undocumentLines": [
-        8,
-        10
+        12,
+        14
       ]
     },
     "js/slack/AbstractNotificationTemplate.js": {
       "expectCount": 4,
       "actualCount": 3,
       "undocumentLines": [
-        12
+        16
       ]
     },
     "js/slack/AttachmentBuilder.js": {
       "expectCount": 7,
       "actualCount": 0,
       "undocumentLines": [
-        6,
-        37,
         8,
         41,
-        29,
-        25,
+        47,
+        33,
+        10,
+        27,
         21
       ]
     },
@@ -39,12 +39,9 @@
       ]
     },
     "js/CoreObject.js": {
-      "expectCount": 4,
-      "actualCount": 2,
-      "undocumentLines": [
-        42,
-        38
-      ]
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
     },
     "js/slack/FieldBuilder.js": {
       "expectCount": 7,
@@ -63,39 +60,43 @@
       ]
     },
     "js/slack/NotificationBuilder.js": {
-      "expectCount": 12,
+      "expectCount": 11,
       "actualCount": 5,
       "undocumentLines": [
-        10,
-        55,
-        51,
-        12,
-        63,
+        13,
         59,
-        47
+        55,
+        67,
+        63,
+        49
       ]
     },
     "js/slack/NotificationService.js": {
       "expectCount": 11,
       "actualCount": 3,
       "undocumentLines": [
-        7,
-        58,
-        21,
+        10,
+        61,
+        24,
+        34,
+        123,
+        73,
         31,
-        121,
-        70,
-        28,
-        17
+        20
       ]
     },
     "js/slack/NotificationTemplate.js": {
       "expectCount": 3,
       "actualCount": 1,
       "undocumentLines": [
-        6,
-        8
+        10,
+        12
       ]
+    },
+    "js/Preconditions.js": {
+      "expectCount": 21,
+      "actualCount": 21,
+      "undocumentLines": []
     },
     "js/slack/UserNotificationTemplate.js": {
       "expectCount": 2,
@@ -106,10 +107,14 @@
       ]
     },
     "js/Utility.js": {
-      "expectCount": 1,
-      "actualCount": 0,
+      "expectCount": 14,
+      "actualCount": 9,
       "undocumentLines": [
-        6
+        67,
+        46,
+        54,
+        50,
+        30
       ]
     }
   }

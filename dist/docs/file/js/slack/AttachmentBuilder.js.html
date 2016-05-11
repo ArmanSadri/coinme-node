@@ -34,7 +34,9 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Utility">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -52,42 +54,48 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/slack/AttachmentBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import AbstractBuilder from &apos;~/slack/AbstractBuilder&apos;;
-import FieldBuilder from &apos;~/slack/FieldBuilder&apos;;
+import Preconditions from &quot;~/Preconditions&quot;;
+import Ember from &quot;~/ember&quot;;
+import AbstractBuilder from &quot;~/slack/AbstractBuilder&quot;;
+import FieldBuilder from &quot;~/slack/FieldBuilder&quot;;
 
 class AttachmentBuilder extends AbstractBuilder {
 
-    constructor(parent) {
-        super({
-            parent: parent
-        });
+    init() {
+        super.init(...arguments);
 
-        this.parent
+        this.get(&apos;parent&apos;)
             .attachments()
-            .push(this.payload);
+            .push(this.get(&apos;payload&apos;));
 
         this.set(&apos;mrkdwn_in&apos;, [&apos;pretext&apos;, &apos;text&apos;, &apos;fields&apos;]);
         this.set(&apos;color&apos;, &apos;good&apos;);
     }
 
     title(value) {
-        return this.setString(&apos;title&apos;, value);
+        Preconditions.shouldBeString(value);
+        
+        return this.set(&apos;title&apos;, value);
     }
 
     text(value) {
-        return this.setString(&apos;text&apos;, value);
+        Preconditions.shouldBeString(value);
+
+        return this.set(&apos;text&apos;, value);
     }
 
     fields() {
-        let fields = this.getWithDefaultValue(&apos;fields&apos;, []);
+        let fields = Ember.getWithDefault(this, &apos;fields&apos;, []);
 
-        this.Preconditions.shouldBeArray(fields, &apos;fields&apos;);
+        Preconditions.shouldBeArray(fields, &apos;fields&apos;);
 
         return fields;
     }
 
     color(color) {
-        return this.setString(&apos;color&apos;, color);
+        Preconditions.shouldBeString(color);
+
+        return this.set(&apos;color&apos;, color);
     }
 
     field() {

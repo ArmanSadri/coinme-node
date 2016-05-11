@@ -14,7 +14,7 @@
     "relink": "npm unlink && npm link",
     "clean": "rm -rf dist/*",
     "copy:others": "rsync -avm --exclude='*.js' ./src/js/* ./dist/js",
-    "babel": "./node_modules/.bin/babel src/js --out-dir dist/js",
+    "babel": "./node_modules/.bin/babel src/js --out-dir dist/js -s",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
     "build": "npm run clean && npm run copy:others && npm run babel && npm run docs && npm run relink"
   },
@@ -45,6 +45,7 @@
     "babel-plugin-transform-remove-console": "^6.5.0",
     "babel-plugin-transform-remove-debugger": "^6.5.0",
     "babel-preset-es2015": "^6.1.18",
+    "babel-register": "^6.7.2",
     "babel-root-import": "^3.2.2",
     "chai": "^3.4.1",
     "coveralls": "^2.11.6",
@@ -101,6 +102,6 @@
       ],
       "add-module-exports"
     ],
-    "sourceMaps": true
+    "sourceMaps": "true"
   }
 }

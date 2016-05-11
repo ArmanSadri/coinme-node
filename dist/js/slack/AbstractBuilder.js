@@ -6,13 +6,29 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Utility = require('../Utility');
+var _winston = require('winston');
+
+var _winston2 = _interopRequireDefault(_winston);
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _ember = require('/Users/msmyers/projects/coinme/coinme-node/src/js/ember');
+
+var _ember2 = _interopRequireDefault(_ember);
+
+var _Utility = require('/Users/msmyers/projects/coinme/coinme-node/src/js/Utility');
 
 var _Utility2 = _interopRequireDefault(_Utility);
 
-var _CoreObject = require('../CoreObject');
+var _Preconditions = require('/Users/msmyers/projects/coinme/coinme-node/src/js/Preconditions');
 
-var _CoreObject2 = _interopRequireDefault(_CoreObject);
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
+var _CoreObject2 = require('/Users/msmyers/projects/coinme/coinme-node/src/js/CoreObject');
+
+var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,68 +40,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
-var AbstractBuilder = function (_AbstractObject) {
-    _inherits(AbstractBuilder, _AbstractObject);
+var AbstractBuilder = function (_CoreObject) {
+    _inherits(AbstractBuilder, _CoreObject);
 
-    function AbstractBuilder(options) {
+    function AbstractBuilder() {
         _classCallCheck(this, AbstractBuilder);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractBuilder).call(this, options));
-
-        _this.Lodash.defaults(_this, {
-            payload: {}
-        });
-        return _this;
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractBuilder).apply(this, arguments));
     }
 
-    /**
-     *
-     * @param path
-     * @return {*}
-     * @protected
-     */
-
-
     _createClass(AbstractBuilder, [{
-        key: 'get',
-        value: function get(path) {
-            if (this.Lodash.isUndefined(path)) {
-                return this.payload;
-            } else {
-                return _Utility2.default.Object.get(this.payload, path);
-            }
-        }
-
-        /**
-         *
-         * @param {String} path
-         * @param {*} value
-         * @return {AbstractBuilder}
-         * @protected
-         */
-
-    }, {
-        key: 'set',
-        value: function set(path, value) {
-            _Utility2.default.Object.set(this.payload, path, value);
-
-            return this;
-        }
-
-        /**
-         *
-         * @param {String} path
-         * @param {String} string
-         * @protected
-         */
-
-    }, {
-        key: 'setString',
-        value: function setString(path, string) {
-            this.Preconditions.shouldBeString(path, 'path');
-            this.Preconditions.shouldBeString(string, 'string');
-
-            return this.set(path, string);
+        key: 'init',
+        value: function init() {
+            _Utility2.default.defaults(this, {
+                name: 'AbstractBuilder',
+                payload: {}
+            });
         }
 
         /**
@@ -97,31 +67,20 @@ var AbstractBuilder = function (_AbstractObject) {
     }, {
         key: 'mergeIntoPayload',
         value: function mergeIntoPayload(object) {
-            this.Preconditions.shouldBeDefined(object, 'Cannot merge null');
-            this.Preconditions.shouldBeObject(object, 'Should be object');
+            _Preconditions2.default.shouldBeDefined(object, 'Cannot merge null');
+            _Preconditions2.default.shouldBeObject(object, 'Should be object');
 
-            this.Lodash.assign(this.payload, object);
+            _ember2.default.assign(this, {
+                payload: object
+            });
 
             return this;
-        }
-
-        /**
-         *
-         * @param {String} path
-         * @param {*} defaultValue
-         * @return {*}
-         * @public
-         */
-
-    }, {
-        key: 'getWithDefaultValue',
-        value: function getWithDefaultValue(path, defaultValue) {
-            return _Utility2.default.Object.getWithDefaultValue(this.payload, path, defaultValue);
         }
     }]);
 
     return AbstractBuilder;
-}(_CoreObject2.default);
+}(_CoreObject3.default);
 
 exports.default = AbstractBuilder;
 module.exports = exports['default'];
+//# sourceMappingURL=AbstractBuilder.js.map

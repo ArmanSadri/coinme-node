@@ -34,7 +34,9 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Utility">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -52,12 +54,8 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/CoreObject.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import _ from &apos;lodash&apos;;
-import Preconditions from &apos;preconditions&apos;;
-import winston from &apos;winston&apos;;
-import Promise from &apos;bluebird&apos;;
-
-let $ = Preconditions.singleton();
+import Ember from &quot;~/ember&quot;;
+import Preconditions from &apos;~/Preconditions&apos;;
 
 /**
  * This is the base class for all classes in our architecture.
@@ -66,48 +64,32 @@ let $ = Preconditions.singleton();
  * @abstract
  * @class
  */
-class CoreObject {
+class CoreObject extends Ember.CoreObject {
 
     /**
      *
-     * @param {Object} options
+     * @param {String} path
+     * @returns {*}
      */
-    constructor(options) {
-        options = options || {};
+    get(path) {
+        Preconditions.shouldBeString(path);
 
-        let chosenLodashVersion = options.Lodash || _;
-
-        options = chosenLodashVersion.defaults(options, {
-            Preconditions: $,
-            Lodash: chosenLodashVersion,
-            Logger: winston,
-            Promise: Promise
-        });
-
-        chosenLodashVersion.assign(this, options);
+        return Ember.get(this, path);
     }
 
-    toDependencyMap() {
-        return CoreObject.toDependencyMap(this);
-    }
+    /**
+     *
+     * @param {String} path
+     * @param {*} value
+     */
+    set(path, value) {
+        Preconditions.shouldBeString(path);
 
-    static toDependencyMap(options) {
-        options = options || {
-                Lodash: _
-            };
-
-        let Lodash = options.Lodash;
-
-        return Lodash.defaults(options, {
-            Preconditions: $,
-            Logger: winston,
-            Promise: Promise
-        });
+        return Ember.set(this, path, value);
     }
 }
 
-export default CoreObject;
-</code></pre>
+export default CoreObject;</code></pre>
 
 </div>
 

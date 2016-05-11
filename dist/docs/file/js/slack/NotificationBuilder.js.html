@@ -34,7 +34,9 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Utility">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -52,21 +54,17 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/slack/NotificationBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Promise from &quot;bluebird&quot;;
-import Preconditions from &quot;preconditions&quot;;
-import request from &quot;request-promise&quot;;
-import CoreObject from &quot;../CoreObject&quot;;
-import AbstractBuilder from &quot;../slack/AbstractBuilder&quot;;
-import AttachmentBuilder from &quot;../slack/AttachmentBuilder&quot;;
+import Promise from &apos;bluebird&apos;;
+import Logger from &apos;winston&apos;;
+import Preconditions from &apos;preconditions&apos;;
+import request from &apos;request-promise&apos;;
+
+import CoreObject from &apos;~/CoreObject&apos;;
+import AbstractBuilder from &apos;../slack/AbstractBuilder&apos;;
+import AttachmentBuilder from &apos;../slack/AttachmentBuilder&apos;;
+import Ember from &apos;~/ember&apos;;
 
 class NotificationBuilder extends AbstractBuilder {
-
-    constructor(options) {
-        super(options);
-
-        // Allow the URL to be defined later.
-        //this.Preconditions.shouldBeString(this.url, &apos;NotificationBuilder.constructor(): url must be a string&apos;);
-    }
 
     /**
      *
@@ -74,7 +72,9 @@ class NotificationBuilder extends AbstractBuilder {
      * @returns {NotificationBuilder}
      */
     channel(value) {
-        return this.setString(&apos;channel&apos;, value);
+        Preconditions.shouldBeString(value);
+
+        return this.set(&apos;channel&apos;, value);
     }
 
     /**
@@ -84,7 +84,9 @@ class NotificationBuilder extends AbstractBuilder {
      * @returns {NotificationBuilder}
      */
     text(text) {
-        return this.setString(&apos;text&apos;, text);
+        Preconditions.shouldBeString(value);
+
+        return this.set(&apos;text&apos;, text);
     }
 
     /**
@@ -93,15 +95,19 @@ class NotificationBuilder extends AbstractBuilder {
      * @returns {icon}
      */
     icon(icon) {
-        return this.setString(&apos;icon_emoji&apos;, icon);
+        Preconditions.shouldBeString(value);
+
+        return this.set(&apos;icon_emoji&apos;, icon);
     }
 
     username(username) {
-        return this.setString(&apos;username&apos;, username);
+        Preconditions.shouldBeString(username);
+
+        return this.set(&apos;username&apos;, username);
     }
 
     attachments() {
-        return this.getWithDefaultValue(&apos;attachments&apos;, []);
+        return Ember.getWithDefault(this, &apos;attachments&apos;, []);
     }
 
     attachment() {
@@ -109,7 +115,7 @@ class NotificationBuilder extends AbstractBuilder {
     }
 
     toPayload() {
-        return this.payload;
+        return this.get(&apos;payload&apos;);
     }
 
     toJson() {
@@ -126,7 +132,7 @@ class NotificationBuilder extends AbstractBuilder {
         let url = this.url;
         let payload = this.toPayload();
 
-        scope.Preconditions.shouldBeString(scope.url, &apos;NotificationBuilder.execute(): url must be a string&apos;);
+        Preconditions.shouldBeString(scope.url, &apos;NotificationBuilder.execute(): url must be a string&apos;);
 
         return Promise.resolve()
             .then(() =&gt; {
@@ -150,16 +156,16 @@ class NotificationBuilder extends AbstractBuilder {
                     json: true
                 };
 
-                scope.Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);
+                Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);
 
                 return Promise.resolve(request(requestOptions))
                     .then(function(value) {
-                        scope.Logger.debug(`[SLACK:${scope.name}] webhook succeeded.`, arguments);
+                        Logger.debug(`[SLACK:${scope.name}] webhook succeeded.`, arguments);
 
                         return value;
                     })
                     .catch(function(err) {
-                        scope.Logger.warn(`[SLACK:${scope.name}] webhook failed.`, arguments);
+                        Logger.warn(`[SLACK:${scope.name}] webhook failed.`, arguments);
 
                         throw err;
                     });

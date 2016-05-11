@@ -6,29 +6,37 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _bluebird = require("bluebird");
+var _bluebird = require('bluebird');
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
-var _preconditions = require("preconditions");
+var _winston = require('winston');
+
+var _winston2 = _interopRequireDefault(_winston);
+
+var _preconditions = require('preconditions');
 
 var _preconditions2 = _interopRequireDefault(_preconditions);
 
-var _requestPromise = require("request-promise");
+var _requestPromise = require('request-promise');
 
 var _requestPromise2 = _interopRequireDefault(_requestPromise);
 
-var _CoreObject = require("../CoreObject");
+var _CoreObject = require('/Users/msmyers/projects/coinme/coinme-node/src/js/CoreObject');
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
-var _AbstractBuilder2 = require("../slack/AbstractBuilder");
+var _AbstractBuilder2 = require('../slack/AbstractBuilder');
 
 var _AbstractBuilder3 = _interopRequireDefault(_AbstractBuilder2);
 
-var _AttachmentBuilder = require("../slack/AttachmentBuilder");
+var _AttachmentBuilder = require('../slack/AttachmentBuilder');
 
 var _AttachmentBuilder2 = _interopRequireDefault(_AttachmentBuilder);
+
+var _ember = require('/Users/msmyers/projects/coinme/coinme-node/src/js/ember');
+
+var _ember2 = _interopRequireDefault(_ember);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41,26 +49,25 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var NotificationBuilder = function (_AbstractBuilder) {
     _inherits(NotificationBuilder, _AbstractBuilder);
 
-    function NotificationBuilder(options) {
+    function NotificationBuilder() {
         _classCallCheck(this, NotificationBuilder);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).call(this, options));
-
-        // Allow the URL to be defined later.
-        //this.Preconditions.shouldBeString(this.url, 'NotificationBuilder.constructor(): url must be a string');
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).apply(this, arguments));
     }
 
-    /**
-     *
-     * @param {String} value
-     * @returns {NotificationBuilder}
-     */
-
-
     _createClass(NotificationBuilder, [{
-        key: "channel",
+        key: 'channel',
+
+
+        /**
+         *
+         * @param {String} value
+         * @returns {NotificationBuilder}
+         */
         value: function channel(value) {
-            return this.setString('channel', value);
+            _preconditions2.default.shouldBeString(value);
+
+            return this.set('channel', value);
         }
 
         /**
@@ -71,9 +78,11 @@ var NotificationBuilder = function (_AbstractBuilder) {
          */
 
     }, {
-        key: "text",
+        key: 'text',
         value: function text(_text) {
-            return this.setString('text', _text);
+            _preconditions2.default.shouldBeString(value);
+
+            return this.set('text', _text);
         }
 
         /**
@@ -83,32 +92,36 @@ var NotificationBuilder = function (_AbstractBuilder) {
          */
 
     }, {
-        key: "icon",
+        key: 'icon',
         value: function icon(_icon) {
-            return this.setString('icon_emoji', _icon);
+            _preconditions2.default.shouldBeString(value);
+
+            return this.set('icon_emoji', _icon);
         }
     }, {
-        key: "username",
+        key: 'username',
         value: function username(_username) {
-            return this.setString('username', _username);
+            _preconditions2.default.shouldBeString(_username);
+
+            return this.set('username', _username);
         }
     }, {
-        key: "attachments",
+        key: 'attachments',
         value: function attachments() {
-            return this.getWithDefaultValue('attachments', []);
+            return _ember2.default.getWithDefault(this, 'attachments', []);
         }
     }, {
-        key: "attachment",
+        key: 'attachment',
         value: function attachment() {
             return new _AttachmentBuilder2.default(this);
         }
     }, {
-        key: "toPayload",
+        key: 'toPayload',
         value: function toPayload() {
-            return this.payload;
+            return this.get('payload');
         }
     }, {
-        key: "toJson",
+        key: 'toJson',
         value: function toJson() {
             return JSON.stringify(this.toPayload());
         }
@@ -119,14 +132,14 @@ var NotificationBuilder = function (_AbstractBuilder) {
          */
 
     }, {
-        key: "execute",
+        key: 'execute',
         value: function execute() {
             var scope = this;
 
             var url = this.url;
             var payload = this.toPayload();
 
-            scope.Preconditions.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
+            _preconditions2.default.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
 
             return _bluebird2.default.resolve().then(function () {
                 //
@@ -148,14 +161,14 @@ var NotificationBuilder = function (_AbstractBuilder) {
                     json: true
                 };
 
-                scope.Logger.debug("[SLACK:" + scope.name + "] webhook ", requestOptions);
+                _winston2.default.debug('[SLACK:' + scope.name + '] webhook ', requestOptions);
 
                 return _bluebird2.default.resolve((0, _requestPromise2.default)(requestOptions)).then(function (value) {
-                    scope.Logger.debug("[SLACK:" + scope.name + "] webhook succeeded.", arguments);
+                    _winston2.default.debug('[SLACK:' + scope.name + '] webhook succeeded.', arguments);
 
                     return value;
                 }).catch(function (err) {
-                    scope.Logger.warn("[SLACK:" + scope.name + "] webhook failed.", arguments);
+                    _winston2.default.warn('[SLACK:' + scope.name + '] webhook failed.', arguments);
 
                     throw err;
                 });
@@ -172,7 +185,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
          */
 
     }], [{
-        key: "innerCast",
+        key: 'innerCast',
         value: function innerCast(object, deps) {
             deps = _CoreObject2.default.toDependencyMap(deps);
 
@@ -199,3 +212,4 @@ var NotificationBuilder = function (_AbstractBuilder) {
 
 exports.default = NotificationBuilder;
 module.exports = exports['default'];
+//# sourceMappingURL=NotificationBuilder.js.map

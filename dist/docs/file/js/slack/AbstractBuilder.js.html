@@ -34,7 +34,9 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Utility">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -52,61 +54,22 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/slack/AbstractBuilder.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Utility from &apos;../Utility&apos;;
-import AbstractObject from &apos;../CoreObject&apos;;
+import Logger from &apos;winston&apos;;
+import Lodash from &apos;lodash&apos;;
+import Ember from &apos;~/ember&apos;;
+import Utility from &apos;~/Utility&apos;;
+import Preconditions from &apos;~/Preconditions&apos;;
+import CoreObject from &apos;~/CoreObject&apos;;
 
 // winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
-class AbstractBuilder extends AbstractObject {
+class AbstractBuilder extends CoreObject {
 
-    constructor(options) {
-        super(options);
-
-        this.Lodash.defaults(this, {
-            payload: {
-
-            }
+    init() {
+        Utility.defaults(this, {
+            name: &apos;AbstractBuilder&apos;,
+            payload: {}
         });
-    }
-
-    /**
-     *
-     * @param path
-     * @return {*}
-     * @protected
-     */
-    get(path) {
-        if (this.Lodash.isUndefined(path)) {
-            return this.payload;
-        } else {
-            return Utility.Object.get(this.payload, path);
-        }
-    }
-
-    /**
-     *
-     * @param {String} path
-     * @param {*} value
-     * @return {AbstractBuilder}
-     * @protected
-     */
-    set(path, value) {
-        Utility.Object.set(this.payload, path, value);
-
-        return this;
-    }
-
-    /**
-     *
-     * @param {String} path
-     * @param {String} string
-     * @protected
-     */
-    setString(path, string) {
-        this.Preconditions.shouldBeString(path, &apos;path&apos;);
-        this.Preconditions.shouldBeString(string, &apos;string&apos;);
-
-        return this.set(path, string);
     }
 
     /**
@@ -115,23 +78,17 @@ class AbstractBuilder extends AbstractObject {
      * @return {AbstractBuilder}
      */
     mergeIntoPayload(object) {
-        this.Preconditions.shouldBeDefined(object, &apos;Cannot merge null&apos;);
-        this.Preconditions.shouldBeObject(object, &apos;Should be object&apos;);
+        Preconditions.shouldBeDefined(object, &apos;Cannot merge null&apos;);
+        Preconditions.shouldBeObject(object, &apos;Should be object&apos;);
 
-        this.Lodash.assign(this.payload, object);
+        console.log(Ember);
+        console.log(Ember.assign);
+
+        Ember.assign(this, {
+            payload: object
+        });
 
         return this;
-    }
-
-    /**
-     *
-     * @param {String} path
-     * @param {*} defaultValue
-     * @return {*}
-     * @public
-     */
-    getWithDefaultValue(path, defaultValue) {
-        return Utility.Object.getWithDefaultValue(this.payload, path, defaultValue);
     }
 
 }

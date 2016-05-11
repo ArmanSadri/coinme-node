@@ -6,11 +6,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _NotificationBuilder = require('../slack/NotificationBuilder');
+var _index = require('lodash/index');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _winston = require('winston');
+
+var _winston2 = _interopRequireDefault(_winston);
+
+var _Preconditions = require('/Users/msmyers/projects/coinme/coinme-node/src/js/Preconditions');
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
+var _NotificationBuilder = require('/Users/msmyers/projects/coinme/coinme-node/src/js/slack/NotificationBuilder');
 
 var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
 
-var _AbstractNotificationTemplate = require('../slack/AbstractNotificationTemplate');
+var _AbstractNotificationTemplate = require('/Users/msmyers/projects/coinme/coinme-node/src/js/slack/AbstractNotificationTemplate');
 
 var _AbstractNotificationTemplate2 = _interopRequireDefault(_AbstractNotificationTemplate);
 
@@ -30,11 +42,11 @@ var NotificationTemplate = function (_AbstractNotification) {
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationTemplate).call(this, options));
 
-        _this.Lodash.defaults(_this, {
+        _index2.default.defaults(_this, {
             name: 'NotificationTemplate'
         });
 
-        _this.Preconditions.shouldBeString(_this.name, 'You must define a name for this template');
+        _Preconditions2.default.shouldBeString(_this.name, 'You must define a name for this template');
         return _this;
     }
 
@@ -49,11 +61,11 @@ var NotificationTemplate = function (_AbstractNotification) {
     _createClass(NotificationTemplate, [{
         key: 'applyTemplate',
         value: function applyTemplate(builder, data) {
-            if (this.Lodash.isObject(this.payload)) {
-                builder.mergeIntoPayload(this.payload);
+            if (_index2.default.isObject(this.get('payload'))) {
+                builder.mergeIntoPayload(this.get('payload'));
             }
 
-            this.Logger.silly('Data', data);
+            _winston2.default.silly('Data', data);
 
             // This is actually not useful 'by default'
             // It's useful if you want to do inline stuff, but if we do this in the common base-class,
@@ -76,3 +88,4 @@ var NotificationTemplate = function (_AbstractNotification) {
 
 exports.default = NotificationTemplate;
 module.exports = exports['default'];
+//# sourceMappingURL=NotificationTemplate.js.map

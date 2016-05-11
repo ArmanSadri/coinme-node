@@ -18,7 +18,7 @@ class AbstractNotificationTemplate extends CoreObject {
             name: 'NotificationTemplate'
         });
         
-        Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');
+        // Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');
     }
 
     /**

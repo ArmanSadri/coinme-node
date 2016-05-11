@@ -1,32 +1,26 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _lodash = require('lodash');
+var _ember = require('/Users/msmyers/projects/coinme/coinme-node/src/js/ember');
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _ember2 = _interopRequireDefault(_ember);
 
-var _preconditions = require('preconditions');
+var _Preconditions = require('/Users/msmyers/projects/coinme/coinme-node/src/js/Preconditions');
 
-var _preconditions2 = _interopRequireDefault(_preconditions);
-
-var _winston = require('winston');
-
-var _winston2 = _interopRequireDefault(_winston);
-
-var _bluebird = require('bluebird');
-
-var _bluebird2 = _interopRequireDefault(_bluebird);
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var $ = _preconditions2.default.singleton();
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * This is the base class for all classes in our architecture.
@@ -36,54 +30,48 @@ var $ = _preconditions2.default.singleton();
  * @class
  */
 
-var CoreObject = function () {
+var CoreObject = function (_Ember$CoreObject) {
+  _inherits(CoreObject, _Ember$CoreObject);
+
+  function CoreObject() {
+    _classCallCheck(this, CoreObject);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).apply(this, arguments));
+  }
+
+  _createClass(CoreObject, [{
+    key: 'get',
+
 
     /**
      *
-     * @param {Object} options
+     * @param {String} path
+     * @returns {*}
      */
+    value: function get(path) {
+      _Preconditions2.default.shouldBeString(path);
 
-    function CoreObject(options) {
-        _classCallCheck(this, CoreObject);
-
-        options = options || {};
-
-        var chosenLodashVersion = options.Lodash || _lodash2.default;
-
-        options = chosenLodashVersion.defaults(options, {
-            Preconditions: $,
-            Lodash: chosenLodashVersion,
-            Logger: _winston2.default,
-            Promise: _bluebird2.default
-        });
-
-        chosenLodashVersion.assign(this, options);
+      return _ember2.default.get(this, path);
     }
 
-    _createClass(CoreObject, [{
-        key: 'toDependencyMap',
-        value: function toDependencyMap() {
-            return CoreObject.toDependencyMap(this);
-        }
-    }], [{
-        key: 'toDependencyMap',
-        value: function toDependencyMap(options) {
-            options = options || {
-                Lodash: _lodash2.default
-            };
+    /**
+     *
+     * @param {String} path
+     * @param {*} value
+     */
 
-            var Lodash = options.Lodash;
+  }, {
+    key: 'set',
+    value: function set(path, value) {
+      _Preconditions2.default.shouldBeString(path);
 
-            return Lodash.defaults(options, {
-                Preconditions: $,
-                Logger: _winston2.default,
-                Promise: _bluebird2.default
-            });
-        }
-    }]);
+      return _ember2.default.set(this, path, value);
+    }
+  }]);
 
-    return CoreObject;
-}();
+  return CoreObject;
+}(_ember2.default.CoreObject);
 
 exports.default = CoreObject;
 module.exports = exports['default'];
+//# sourceMappingURL=CoreObject.js.map

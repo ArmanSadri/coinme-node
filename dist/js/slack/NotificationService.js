@@ -7,6 +7,18 @@ exports.NotificationService = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _winston = require('winston');
+
+var _winston2 = _interopRequireDefault(_winston);
+
+var _index = require('lodash/index');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _Preconditions = require('/Users/msmyers/projects/coinme/coinme-node/src/js/Preconditions');
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
 var _NotificationTemplate = require('./NotificationTemplate');
 
 var _NotificationTemplate2 = _interopRequireDefault(_NotificationTemplate);
@@ -15,7 +27,7 @@ var _NotificationBuilder = require('./NotificationBuilder');
 
 var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
 
-var _CoreObject = require('../CoreObject');
+var _CoreObject = require('/Users/msmyers/projects/coinme/coinme-node/src/js/CoreObject');
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
@@ -59,8 +71,8 @@ var NotificationService = function (_AbstractObject) {
     _createClass(NotificationService, [{
         key: 'mergeIntoPayload',
         value: function mergeIntoPayload(payload) {
-            this.Preconditions.shouldBeObject(payload, 'Payload must be object');
-            this.Lodash.assign(this.payload, payload);
+            _Preconditions2.default.shouldBeObject(payload, 'Payload must be object');
+            _index2.default.assign(this.payload, payload);
         }
 
         /**
@@ -73,8 +85,8 @@ var NotificationService = function (_AbstractObject) {
     }, {
         key: 'register',
         value: function register(notificationType, notificationTemplate) {
-            this.Preconditions.shouldBeString(notificationType, 'notificationType must be string');
-            this.Preconditions.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
+            _Preconditions2.default.shouldBeString(notificationType, 'notificationType must be string');
+            _Preconditions2.default.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');
 
             if (!(notificationTemplate instanceof _NotificationTemplate2.default)) {
                 var options = notificationTemplate;
@@ -106,7 +118,7 @@ var NotificationService = function (_AbstractObject) {
             var notificationTemplateName = this.mappings[notificationType];
             var notificationTemplate = this.templates[notificationTemplateName];
 
-            this.Preconditions.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);
+            _Preconditions2.default.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);
 
             return notificationTemplate;
         }
@@ -121,13 +133,12 @@ var NotificationService = function (_AbstractObject) {
     }, {
         key: 'notify',
         value: function notify(type, data) {
-            this.Preconditions.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');
+            _Preconditions2.default.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');
             //this.Preconditions.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');
             data = data || {};
 
             var url = this.url;
             var scope = this;
-            var Preconditions = this.Preconditions;
 
             var notificationTemplate = this.notificationTemplate(type);
             var builder = this.builder();
@@ -136,7 +147,7 @@ var NotificationService = function (_AbstractObject) {
             return promise.then(function (builder) {
                 // Let's sanity the builder before executing.
 
-                Preconditions.shouldBeDefined(builder, 'No builder for ' + type);
+                _Preconditions2.default.shouldBeDefined(builder, 'No builder for ' + type);
 
                 if (!builder.url) {
                     builder.url = url;
@@ -144,7 +155,7 @@ var NotificationService = function (_AbstractObject) {
 
                 var payload = builder.payload;
 
-                Preconditions.shouldBeString(builder.url, 'NotificationService.notify(): builder.url was undefined');
+                _Preconditions2.default.shouldBeString(builder.url, 'NotificationService.notify(): builder.url was undefined');
                 // Attachments without top level text are valid.
                 //Preconditions.shouldBeString(payload.text, 'builder did not complete \'text\' property. ' + JSON.stringify(payload));
 
@@ -158,3 +169,4 @@ var NotificationService = function (_AbstractObject) {
 
 exports.NotificationService = NotificationService;
 exports.default = new NotificationService({});
+//# sourceMappingURL=NotificationService.js.map

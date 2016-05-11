@@ -34,7 +34,9 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Utility">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -52,8 +54,12 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/slack/AbstractNotificationTemplate.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import CoreObject from &apos;../CoreObject&apos;;
-import NotificationBuilder from &apos;../slack/NotificationBuilder&apos;;
+import Logger from &quot;winston&quot;;
+import CoreObject from &quot;~/CoreObject&quot;;
+import Ember from &apos;~/ember&apos;;
+import Utility from &quot;~/Utility&quot;;
+import NotificationBuilder from &quot;~/slack/NotificationBuilder&quot;;
+import Preconditions from &quot;~/Preconditions&quot;;
 
 /**
  *
@@ -61,14 +67,12 @@ import NotificationBuilder from &apos;../slack/NotificationBuilder&apos;;
  */
 class AbstractNotificationTemplate extends CoreObject {
 
-    constructor(options) {
-        super(options);
-
-        this.Lodash.defaults(this, {
+    init() {
+        Utility.defaults(this, {
             name: &apos;NotificationTemplate&apos;
         });
-
-        this.Preconditions.shouldBeString(this.name, &apos;You must define a name for this template&apos;);
+        
+        // Preconditions.shouldBeString(Ember.get(this, &apos;name&apos;), &apos;You must define a name for this template&apos;);
     }
 
     /**
@@ -83,9 +87,7 @@ class AbstractNotificationTemplate extends CoreObject {
 
         result = result || builder;
 
-        return NotificationBuilder.innerCast(
-            result,
-            this.toDependencyMap());
+        return result;
     }
 
     /**
@@ -96,8 +98,8 @@ class AbstractNotificationTemplate extends CoreObject {
      * @return {Promise|NotificationBuilder|Object}
      */
     applyTemplate(builder, data) {
-        this.Logger.silly(&apos;Builder&apos;, builder);
-        this.Logger.silly(&apos;Data&apos;, data);
+        Logger.silly(&apos;Builder&apos;, builder);
+        Logger.silly(&apos;Data&apos;, data);
 
         throw new Error(&apos;This method must be overridden by a subclass&apos;);
     }

@@ -1,8 +1,32 @@
 'use strict';
 
-import Utility from '~/Utility';
-import Lodash from 'lodash/index';
-import preconditions from 'preconditions';
+import Utility from "~/Utility";
+import Lodash from "lodash/index";
+
+// class PreconditionsError extends AbstractError {
+//
+//     /**
+//      *
+//      * @param {*} actualValue
+//      * @param {*} expectedValue
+//      * @param {String} [message]
+//      * @param {Error} [optionalCause]
+//      * @constructor
+//      */
+//     constructor(expectedValue, actualValue, message, optionalCause) {
+//         super(message);
+//
+//         console.log('capture stack A');
+//
+//         this.name = 'PreconditionsError';
+//         // this.stack = error.stack;
+//         this.cause = optionalCause;
+//
+//         this.expectedValue = expectedValue || '';
+//         this.actualValue = actualValue || '';
+//         this.message = `failure (expected: ${this.expectedValue}) (actual: ${this.actualValue}) (message: ${this.message})`;
+//     }
+// }
 
 /**
  *
@@ -10,7 +34,6 @@ import preconditions from 'preconditions';
  * @param {*} expectedValue
  * @param {String} [message]
  * @param {Error} [optionalCause]
- * @class
  * @constructor
  */
 function PreconditionsError(expectedValue, actualValue, message, optionalCause) {
@@ -20,18 +43,15 @@ function PreconditionsError(expectedValue, actualValue, message, optionalCause) 
     this.stack = error.stack;
     this.cause = optionalCause;
 
-    this.expectedValue = expectedValue || '';
-    this.actualValue = actualValue || '';
-
-    this.message = `failure (expected: ${this.expectedValue}) (actual: ${this.actualValue}) (message: ${this.message})`;
+    this.expectedValue = expectedValue;
+    this.actualValue = actualValue;
+    this.message = `failure (expected: '${this.expectedValue}' [${Utility.typeOf(this.expectedValue)}]) (actual: '${this.actualValue}' [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;
 }
 
 PreconditionsError.prototype = Object.create(Error.prototype);
 PreconditionsError.prototype.constructor = PreconditionsError;
 
 export { PreconditionsError }
-
-let $ = preconditions.singleton();
 
 /**
  * @singleton
@@ -56,7 +76,7 @@ export default class Preconditions {
      * return {*} object
      */
     static shouldBeUndefined(object, message) {
-        return this.shouldBe(object, Utility.isUndefined, 'undefined', message || 'must be undefined');
+        return Preconditions.shouldBe(Utility.isUndefined, object, 'undefined', message || 'must be undefined');
     }
 
     /**
@@ -66,7 +86,17 @@ export default class Preconditions {
      * @returns {*}
      */
     static shouldNotBeFalsey(object, message) {
-        return this.shouldBe(object, Utility.isFalsey, message, 'must be falsey');
+        return Preconditions.shouldBe(Utility.isNotFalsey, object, message, 'must not be falsey')
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {String} [message]
+     * @returns {*}
+     */
+    static shouldBeFalsey(object, message) {
+        return Preconditions.shouldBe(Utility.isFalsey, object, message, 'must be falsey')
     }
 
     /**
@@ -77,8 +107,8 @@ export default class Preconditions {
      * @return {*}
      */
     static shouldBeDefined(object, message) {
-        if (Lodash.isUndefined(object)) {
-            this.fail('defined', 'undefined', message || 'must be defined.');
+        if (Utility.isUndefined(object)) {
+            Preconditions.fail('defined', 'undefined', message || 'must be defined.');
         }
 
         return object;
@@ -91,7 +121,7 @@ export default class Preconditions {
      * @param {String} [message]
      */
     static shouldBeExisting(object, message) {
-        return this.shouldBe(Utility.exists, 'exist', object, message || 'must exist.');
+        return Preconditions.shouldBe(Utility.isExisting, 'exist', object, message || 'must exist.');
     }
 
     /**
@@ -101,9 +131,9 @@ export default class Preconditions {
      * @return {String}
      */
     static shouldNotBeBlank(string, message) {
-        this.shouldBeString(string);
+        Preconditions.shouldBeString(string);
 
-        return this.shouldBe(Utility.isNotBlank, 'not blank', string, message || 'must not be blank.');
+        return Preconditions.shouldBe(Utility.isNotBlank, 'not blank', string, message || 'must not be blank.');
     }
 
     /**
@@ -113,7 +143,7 @@ export default class Preconditions {
      * @return {function}
      */
     static shouldBeFunction(fn, message) {
-        return this.shouldBeType('function', fn, message);
+        return Preconditions.shouldBeType('function', fn, message);
     }
 
     /**
@@ -123,8 +153,8 @@ export default class Preconditions {
      * @return {Number}
      */
     static shouldBeNumber(number, message) {
-        this.shouldBeType(number, 'number', message);
-        this.shouldBeFinite(number, message);
+        Preconditions.shouldBeType(number, 'number', message);
+        Preconditions.shouldBeFinite(number, message);
 
         return number;
     }
@@ -139,13 +169,11 @@ export default class Preconditions {
      */
     static shouldBe(testFn, expectedValue, actualValue, message) {
         if (!Utility.isFunction(testFn)) {
-            throw new Error(Utility.typeOf(testFn));
-
-            this.fail('function', testFn, 'must be function.');
+            Preconditions.fail('function', testFn, `testFn must be function, but was ${Utility.typeOf(testFn)}.`);
         }
 
         if (!testFn.call(this, actualValue)) {
-            this.fail(expectedValue, actualValue, message || 'must pass test.');
+            Preconditions.fail(expectedValue, actualValue, message || 'must pass test.');
         }
 
         return actualValue;
@@ -159,7 +187,7 @@ export default class Preconditions {
      */
     static shouldBeFinite(number, message) {
         if (!Lodash.isFinite(number)) {
-            this.fail('finite', number, message || 'must be finite.');
+            Preconditions.fail('finite', number, message || 'must be finite.');
         }
 
         return number;
@@ -169,17 +197,16 @@ export default class Preconditions {
      *
      * @param {Object} object
      * @param {String} [message]
-     *
      * @return {Object}
      */
     static shouldBeObject(object, message) {
-        this.shouldBeExisting(object);
+        Preconditions.shouldBeExisting(object, message);
 
         let fn = Utility.typeMatcher('object');
 
-        throw new Error(Utility.typeOf(fn));
+        // throw new Error(Utility.typeOf(fn));
 
-        return this.shouldBe(fn, 'object', object, message);
+        return Preconditions.shouldBe(fn, 'object', object, message);
     }
 
     /**
@@ -189,9 +216,11 @@ export default class Preconditions {
      * @return {String}
      */
     static shouldBeString(string, message) {
-        this.shouldBeExisting(string);
+        Preconditions.shouldBeExisting(string);
 
-        return this.shouldBe(Utility.typeMatcher('string'), 'object', object, message);
+        let fn = Utility.typeMatcher('string');
+
+        return Preconditions.shouldBe(fn, 'object', object, message);
     }
 
     /**
@@ -202,23 +231,23 @@ export default class Preconditions {
      * @returns {*}
      */
     static shouldBeType(typeName, value, message) {
-        return this.shouldBe(Utility.typeMatcher(typeName), typeName, value, message);
+        return Preconditions.shouldBe(Utility.typeMatcher(typeName), typeName, value, message);
     }
 
     /**
      *
      * @param {*} boolean
-     * @param {String} message
+     * @param {String} [message]
      * @return {boolean}
      */
     static shouldBeTrue(boolean, message) {
-        this.shouldBeBoolean(boolean);
+        Preconditions.shouldBeBoolean(boolean, message);
 
         if (true === boolean) {
             return boolean;
         }
 
-        this.fail(boolean, true, message || 'was not true');
+        Preconditions.fail(boolean, true, message || 'was not true');
     }
 
     /**
@@ -228,11 +257,11 @@ export default class Preconditions {
      * @returns {Number}
      */
     static shouldNotBeNegativeNumber(number, message) {
-        this.shouldBeDefined(number, message);
-        this.shouldBeNumber(number, message);
+        Preconditions.shouldBeDefined(number, message);
+        Preconditions.shouldBeNumber(number, message);
 
         if (number < 0) {
-            this.fail('positive', number, message || 'Number should be positive. Was: ' + number);
+            Preconditions.fail('positive', number, message || 'Number should be positive. Was: ' + number);
         }
 
         return number;
@@ -244,10 +273,10 @@ export default class Preconditions {
      * @param {String} [message]
      */
     static shouldBeBoolean(boolean, message) {
-        this.shouldBeDefined(boolean);
+        Preconditions.shouldBeDefined(boolean);
 
-        if (!Lodash.isBoolean(boolean)) {
-            this.fail('boolean', boolean, message || 'was not boolean');
+        if (!Utility.isBoolean(boolean)) {
+            Preconditions.fail('boolean', boolean, message || 'was not boolean');
         }
 
         return boolean;
@@ -257,15 +286,14 @@ export default class Preconditions {
      *
      * @param {*} number1
      * @param {*} number2
-     *
      * @param {String} [message]
      */
     static shouldBeGreaterThan(number1, number2, message) {
-        this.shouldBeNumber(number1, message);
-        this.shouldBeNumber(number2, message);
+        Preconditions.shouldBeNumber(number1, message);
+        Preconditions.shouldBeNumber(number2, message);
 
         if (number1 <= number2) {
-            this.fail('larger than ' + number2, number1, message);
+            Preconditions.fail('larger than ' + number2, number1, message);
         }
 
         return number1;
@@ -278,10 +306,10 @@ export default class Preconditions {
      * @return {Number}
      */
     static shouldBePositiveNumber(number, message) {
-        this.shouldBeNumber(number, message);
+        Preconditions.shouldBeNumber(number, message);
 
         if (number <= 0) {
-            this.fail('positive', number, message || 'Number should be positive. Was: ' + number);
+            Preconditions.fail('positive', number, message || 'Number should be positive. Was: ' + number);
         }
 
         return number;

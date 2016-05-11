@@ -60,6 +60,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme/js/preconditions.js~preconditions",
+    "class/js/Preconditions.js~Preconditions.html",
+    "<span>Preconditions</span> <span class=\"search-result-import-path\">coinme/js/Preconditions.js</span>",
+    "class"
+  ],
+  [
+    "coinme/js/preconditions.js~preconditionserror",
+    "function/index.html#static-function-PreconditionsError",
+    "<span>PreconditionsError</span> <span class=\"search-result-import-path\">coinme/js/Preconditions.js</span>",
+    "function"
+  ],
+  [
     "coinme/js/slack/usernotificationtemplate.js~usernotificationtemplate",
     "class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html",
     "<span>UserNotificationTemplate</span> <span class=\"search-result-import-path\">coinme/js/slack/UserNotificationTemplate.js</span>",
@@ -67,9 +79,9 @@ window.esdocSearchIndex = [
   ],
   [
     "coinme/js/utility.js~utility",
-    "variable/index.html#static-variable-Utility",
+    "class/js/Utility.js~Utility.html",
     "<span>Utility</span> <span class=\"search-result-import-path\">coinme/js/Utility.js</span>",
-    "variable"
+    "class"
   ],
   [
     "coinme/js/slack/notificationservice.js~notificationservice",
@@ -420,27 +432,225 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/coreobject.js~coreobject#constructor",
-    "class/js/CoreObject.js~CoreObject.html#instance-constructor-constructor",
-    "js/CoreObject.js~CoreObject#constructor",
+    "js/coreobject.js~coreobject#get",
+    "class/js/CoreObject.js~CoreObject.html#instance-method-get",
+    "js/CoreObject.js~CoreObject#get",
     "method"
   ],
   [
-    "js/coreobject.js~coreobject#todependencymap",
-    "class/js/CoreObject.js~CoreObject.html#instance-method-toDependencyMap",
-    "js/CoreObject.js~CoreObject#toDependencyMap",
+    "js/coreobject.js~coreobject#set",
+    "class/js/CoreObject.js~CoreObject.html#instance-method-set",
+    "js/CoreObject.js~CoreObject#set",
     "method"
   ],
   [
-    "js/coreobject.js~coreobject.todependencymap",
-    "class/js/CoreObject.js~CoreObject.html#static-method-toDependencyMap",
-    "js/CoreObject.js~CoreObject.toDependencyMap",
+    "js/preconditions.js",
+    "file/js/Preconditions.js.html",
+    "js/Preconditions.js",
+    "file"
+  ],
+  [
+    "js/preconditions.js~preconditions.fail",
+    "class/js/Preconditions.js~Preconditions.html#static-method-fail",
+    "js/Preconditions.js~Preconditions.fail",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbe",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBe",
+    "js/Preconditions.js~Preconditions.shouldBe",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbeboolean",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeBoolean",
+    "js/Preconditions.js~Preconditions.shouldBeBoolean",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbedefined",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeDefined",
+    "js/Preconditions.js~Preconditions.shouldBeDefined",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbeexisting",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeExisting",
+    "js/Preconditions.js~Preconditions.shouldBeExisting",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbefalsey",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeFalsey",
+    "js/Preconditions.js~Preconditions.shouldBeFalsey",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbefinite",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeFinite",
+    "js/Preconditions.js~Preconditions.shouldBeFinite",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbefunction",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeFunction",
+    "js/Preconditions.js~Preconditions.shouldBeFunction",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbegreaterthan",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeGreaterThan",
+    "js/Preconditions.js~Preconditions.shouldBeGreaterThan",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbenumber",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeNumber",
+    "js/Preconditions.js~Preconditions.shouldBeNumber",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbeobject",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeObject",
+    "js/Preconditions.js~Preconditions.shouldBeObject",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbepositivenumber",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBePositiveNumber",
+    "js/Preconditions.js~Preconditions.shouldBePositiveNumber",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbestring",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeString",
+    "js/Preconditions.js~Preconditions.shouldBeString",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbetrue",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeTrue",
+    "js/Preconditions.js~Preconditions.shouldBeTrue",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbetype",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeType",
+    "js/Preconditions.js~Preconditions.shouldBeType",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbeundefined",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeUndefined",
+    "js/Preconditions.js~Preconditions.shouldBeUndefined",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldnotbeblank",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldNotBeBlank",
+    "js/Preconditions.js~Preconditions.shouldNotBeBlank",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldnotbefalsey",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldNotBeFalsey",
+    "js/Preconditions.js~Preconditions.shouldNotBeFalsey",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldnotbenegativenumber",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldNotBeNegativeNumber",
+    "js/Preconditions.js~Preconditions.shouldNotBeNegativeNumber",
     "method"
   ],
   [
     "js/utility.js",
     "file/js/Utility.js.html",
     "js/Utility.js",
+    "file"
+  ],
+  [
+    "js/utility.js~utility.defaults",
+    "class/js/Utility.js~Utility.html#static-method-defaults",
+    "js/Utility.js~Utility.defaults",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isblank",
+    "class/js/Utility.js~Utility.html#static-method-isBlank",
+    "js/Utility.js~Utility.isBlank",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isexisting",
+    "class/js/Utility.js~Utility.html#static-method-isExisting",
+    "js/Utility.js~Utility.isExisting",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isfalsey",
+    "class/js/Utility.js~Utility.html#static-method-isFalsey",
+    "js/Utility.js~Utility.isFalsey",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isfunction",
+    "class/js/Utility.js~Utility.html#static-method-isFunction",
+    "js/Utility.js~Utility.isFunction",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isnan",
+    "class/js/Utility.js~Utility.html#static-method-isNaN",
+    "js/Utility.js~Utility.isNaN",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isnotblank",
+    "class/js/Utility.js~Utility.html#static-method-isNotBlank",
+    "js/Utility.js~Utility.isNotBlank",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isnotexisting",
+    "class/js/Utility.js~Utility.html#static-method-isNotExisting",
+    "js/Utility.js~Utility.isNotExisting",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isnull",
+    "class/js/Utility.js~Utility.html#static-method-isNull",
+    "js/Utility.js~Utility.isNull",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isstring",
+    "class/js/Utility.js~Utility.html#static-method-isString",
+    "js/Utility.js~Utility.isString",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isundefined",
+    "class/js/Utility.js~Utility.html#static-method-isUndefined",
+    "js/Utility.js~Utility.isUndefined",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.typematcher",
+    "class/js/Utility.js~Utility.html#static-method-typeMatcher",
+    "js/Utility.js~Utility.typeMatcher",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.typeof",
+    "class/js/Utility.js~Utility.html#static-method-typeOf",
+    "js/Utility.js~Utility.typeOf",
+    "method"
+  ],
+  [
+    "js/ember/index.js",
+    "file/js/ember/index.js.html",
+    "js/ember/index.js",
     "file"
   ],
   [
@@ -456,39 +666,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/slack/abstractbuilder.js~abstractbuilder#constructor",
-    "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-constructor-constructor",
-    "js/slack/AbstractBuilder.js~AbstractBuilder#constructor",
-    "method"
-  ],
-  [
-    "js/slack/abstractbuilder.js~abstractbuilder#get",
-    "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-method-get",
-    "js/slack/AbstractBuilder.js~AbstractBuilder#get",
-    "method"
-  ],
-  [
-    "js/slack/abstractbuilder.js~abstractbuilder#getwithdefaultvalue",
-    "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-method-getWithDefaultValue",
-    "js/slack/AbstractBuilder.js~AbstractBuilder#getWithDefaultValue",
+    "js/slack/abstractbuilder.js~abstractbuilder#init",
+    "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-method-init",
+    "js/slack/AbstractBuilder.js~AbstractBuilder#init",
     "method"
   ],
   [
     "js/slack/abstractbuilder.js~abstractbuilder#mergeintopayload",
     "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-method-mergeIntoPayload",
     "js/slack/AbstractBuilder.js~AbstractBuilder#mergeIntoPayload",
-    "method"
-  ],
-  [
-    "js/slack/abstractbuilder.js~abstractbuilder#set",
-    "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-method-set",
-    "js/slack/AbstractBuilder.js~AbstractBuilder#set",
-    "method"
-  ],
-  [
-    "js/slack/abstractbuilder.js~abstractbuilder#setstring",
-    "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-method-setString",
-    "js/slack/AbstractBuilder.js~AbstractBuilder#setString",
     "method"
   ],
   [
@@ -504,9 +690,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#constructor",
-    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-constructor-constructor",
-    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#constructor",
+    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#init",
+    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-method-init",
+    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#init",
     "method"
   ],
   [
@@ -528,12 +714,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/slack/attachmentbuilder.js~attachmentbuilder#constructor",
-    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-constructor-constructor",
-    "js/slack/AttachmentBuilder.js~AttachmentBuilder#constructor",
-    "method"
-  ],
-  [
     "js/slack/attachmentbuilder.js~attachmentbuilder#field",
     "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-method-field",
     "js/slack/AttachmentBuilder.js~AttachmentBuilder#field",
@@ -543,6 +723,12 @@ window.esdocSearchIndex = [
     "js/slack/attachmentbuilder.js~attachmentbuilder#fields",
     "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-method-fields",
     "js/slack/AttachmentBuilder.js~AttachmentBuilder#fields",
+    "method"
+  ],
+  [
+    "js/slack/attachmentbuilder.js~attachmentbuilder#init",
+    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-method-init",
+    "js/slack/AttachmentBuilder.js~AttachmentBuilder#init",
     "method"
   ],
   [
@@ -633,12 +819,6 @@ window.esdocSearchIndex = [
     "js/slack/notificationbuilder.js~notificationbuilder#channel",
     "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-channel",
     "js/slack/NotificationBuilder.js~NotificationBuilder#channel",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#constructor",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-constructor-constructor",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#constructor",
     "method"
   ],
   [
@@ -772,5 +952,11 @@ window.esdocSearchIndex = [
     "class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html#instance-method-applyTemplate",
     "js/slack/UserNotificationTemplate.js~UserNotificationTemplate#applyTemplate",
     "method"
+  ],
+  [
+    "js/slack/index.js",
+    "file/js/slack/index.js.html",
+    "js/slack/index.js",
+    "file"
   ]
 ]

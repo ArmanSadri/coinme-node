@@ -34,7 +34,9 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Utility">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -52,9 +54,12 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/slack/NotificationService.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
+import Logger from &apos;winston&apos;;
+import Lodash from &apos;lodash/index&apos;;
+import Preconditions from &apos;~/Preconditions&apos;;
 import NotificationTemplate from &apos;./NotificationTemplate&apos;;
 import NotificationBuilder from &apos;./NotificationBuilder&apos;;
-import AbstractObject from &apos;../CoreObject&apos;;
+import AbstractObject from &apos;~/CoreObject&apos;;
 
 class NotificationService extends AbstractObject {
 
@@ -81,8 +86,8 @@ class NotificationService extends AbstractObject {
     }
 
     mergeIntoPayload(payload) {
-        this.Preconditions.shouldBeObject(payload, &apos;Payload must be object&apos;);
-        this.Lodash.assign(this.payload, payload);
+        Preconditions.shouldBeObject(payload, &apos;Payload must be object&apos;);
+        Lodash.assign(this.payload, payload);
     }
 
     /**
@@ -92,8 +97,8 @@ class NotificationService extends AbstractObject {
      * @return {NotificationService}
      */
     register(notificationType, notificationTemplate) {
-        this.Preconditions.shouldBeString(notificationType, &apos;notificationType must be string&apos;);
-        this.Preconditions.shouldBeObject(notificationTemplate, &apos;notificationTemplate must be an object&apos;);
+        Preconditions.shouldBeString(notificationType, &apos;notificationType must be string&apos;);
+        Preconditions.shouldBeObject(notificationTemplate, &apos;notificationTemplate must be an object&apos;);
 
         if (!(notificationTemplate instanceof NotificationTemplate)) {
             let options = notificationTemplate;
@@ -123,7 +128,7 @@ class NotificationService extends AbstractObject {
         let notificationTemplateName = this.mappings[notificationType];
         var notificationTemplate = this.templates[notificationTemplateName];
 
-        this.Preconditions.shouldBeDefined(notificationTemplate, &apos;Notification template not found for &apos; + notificationType);
+        Preconditions.shouldBeDefined(notificationTemplate, &apos;Notification template not found for &apos; + notificationType);
 
         return notificationTemplate;
     }
@@ -135,13 +140,12 @@ class NotificationService extends AbstractObject {
      * @return {Promise}
      */
     notify(type, data) {
-        this.Preconditions.shouldBeString(type, &apos;NotificationService.notify(type, data): type must be string.&apos;);
+        Preconditions.shouldBeString(type, &apos;NotificationService.notify(type, data): type must be string.&apos;);
         //this.Preconditions.shouldBeDefined(data, &apos;NotificationService.notify(type, data): data must be defined.&apos;);
         data = data || {};
 
         let url = this.url;
         let scope = this;
-        let Preconditions = this.Preconditions;
 
         let notificationTemplate = this.notificationTemplate(type);
         let builder = this.builder();
