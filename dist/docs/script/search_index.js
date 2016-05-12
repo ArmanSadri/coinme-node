@@ -6,6 +6,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme/js/abstracterror.js~abstracterror",
+    "class/js/AbstractError.js~AbstractError.html",
+    "<span>AbstractError</span> <span class=\"search-result-import-path\">coinme/js/AbstractError.js</span>",
+    "class"
+  ],
+  [
     "coinme/js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate",
     "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html",
     "<span>AbstractNotificationTemplate</span> <span class=\"search-result-import-path\">coinme/js/slack/AbstractNotificationTemplate.js</span>",
@@ -33,6 +39,12 @@ window.esdocSearchIndex = [
     "coinme/js/slack/fieldbuilder.js~fieldbuilder",
     "class/js/slack/FieldBuilder.js~FieldBuilder.html",
     "<span>FieldBuilder</span> <span class=\"search-result-import-path\">coinme/js/slack/FieldBuilder.js</span>",
+    "class"
+  ],
+  [
+    "coinme/js/functions.js~functions",
+    "class/js/Functions.js~Functions.html",
+    "<span>Functions</span> <span class=\"search-result-import-path\">coinme/js/Functions.js</span>",
     "class"
   ],
   [
@@ -70,6 +82,18 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-PreconditionsError",
     "<span>PreconditionsError</span> <span class=\"search-result-import-path\">coinme/js/Preconditions.js</span>",
     "function"
+  ],
+  [
+    "coinme/js/data/user.js~user",
+    "class/js/data/User.js~User.html",
+    "<span>User</span> <span class=\"search-result-import-path\">coinme/js/data/User.js</span>",
+    "class"
+  ],
+  [
+    "coinme/js/data/userbuilder.js~userbuilder",
+    "class/js/data/UserBuilder.js~UserBuilder.html",
+    "<span>UserBuilder</span> <span class=\"search-result-import-path\">coinme/js/data/UserBuilder.js</span>",
+    "class"
   ],
   [
     "coinme/js/slack/usernotificationtemplate.js~usernotificationtemplate",
@@ -420,6 +444,36 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "js/abstracterror.js",
+    "file/js/AbstractError.js.html",
+    "js/AbstractError.js",
+    "file"
+  ],
+  [
+    "js/abstracterror.js~abstracterror#constructor",
+    "class/js/AbstractError.js~AbstractError.html#instance-constructor-constructor",
+    "js/AbstractError.js~AbstractError#constructor",
+    "method"
+  ],
+  [
+    "js/abstracterror.js~abstracterror#message",
+    "class/js/AbstractError.js~AbstractError.html#instance-member-message",
+    "js/AbstractError.js~AbstractError#message",
+    "member"
+  ],
+  [
+    "js/abstracterror.js~abstracterror#name",
+    "class/js/AbstractError.js~AbstractError.html#instance-member-name",
+    "js/AbstractError.js~AbstractError#name",
+    "member"
+  ],
+  [
+    "js/abstracterror.js~abstracterror#stack",
+    "class/js/AbstractError.js~AbstractError.html#instance-member-stack",
+    "js/AbstractError.js~AbstractError#stack",
+    "member"
+  ],
+  [
     "js/coinme.js",
     "file/js/Coinme.js.html",
     "js/Coinme.js",
@@ -441,6 +495,30 @@ window.esdocSearchIndex = [
     "js/coreobject.js~coreobject#set",
     "class/js/CoreObject.js~CoreObject.html#instance-method-set",
     "js/CoreObject.js~CoreObject#set",
+    "method"
+  ],
+  [
+    "js/functions.js",
+    "file/js/Functions.js.html",
+    "js/Functions.js",
+    "file"
+  ],
+  [
+    "js/functions.js~functions.identity",
+    "class/js/Functions.js~Functions.html#static-method-identity",
+    "js/Functions.js~Functions.identity",
+    "method"
+  ],
+  [
+    "js/functions.js~functions.no",
+    "class/js/Functions.js~Functions.html#static-method-no",
+    "js/Functions.js~Functions.no",
+    "method"
+  ],
+  [
+    "js/functions.js~functions.yes",
+    "class/js/Functions.js~Functions.html#static-method-yes",
+    "js/Functions.js~Functions.yes",
     "method"
   ],
   [
@@ -582,6 +660,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.isboolean",
+    "class/js/Utility.js~Utility.html#static-method-isBoolean",
+    "js/Utility.js~Utility.isBoolean",
+    "method"
+  ],
+  [
     "js/utility.js~utility.isexisting",
     "class/js/Utility.js~Utility.html#static-method-isExisting",
     "js/Utility.js~Utility.isExisting",
@@ -618,9 +702,21 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.isnotfalsey",
+    "class/js/Utility.js~Utility.html#static-method-isNotFalsey",
+    "js/Utility.js~Utility.isNotFalsey",
+    "method"
+  ],
+  [
     "js/utility.js~utility.isnull",
     "class/js/Utility.js~Utility.html#static-method-isNull",
     "js/Utility.js~Utility.isNull",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isnullorundefined",
+    "class/js/Utility.js~Utility.html#static-method-isNullOrUndefined",
+    "js/Utility.js~Utility.isNullOrUndefined",
     "method"
   ],
   [
@@ -636,6 +732,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.tolowercase",
+    "class/js/Utility.js~Utility.html#static-method-toLowerCase",
+    "js/Utility.js~Utility.toLowerCase",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.touppercase",
+    "class/js/Utility.js~Utility.html#static-method-toUpperCase",
+    "js/Utility.js~Utility.toUpperCase",
+    "method"
+  ],
+  [
     "js/utility.js~utility.typematcher",
     "class/js/Utility.js~Utility.html#static-method-typeMatcher",
     "js/Utility.js~Utility.typeMatcher",
@@ -646,6 +754,138 @@ window.esdocSearchIndex = [
     "class/js/Utility.js~Utility.html#static-method-typeOf",
     "js/Utility.js~Utility.typeOf",
     "method"
+  ],
+  [
+    "js/data/user.js",
+    "file/js/data/User.js.html",
+    "js/data/User.js",
+    "file"
+  ],
+  [
+    "js/data/user.js~user#addresscity",
+    "class/js/data/User.js~User.html#instance-member-addressCity",
+    "js/data/User.js~User#addressCity",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#addresscountry",
+    "class/js/data/User.js~User.html#instance-member-addressCountry",
+    "js/data/User.js~User#addressCountry",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#addressline1",
+    "class/js/data/User.js~User.html#instance-member-addressLine1",
+    "js/data/User.js~User#addressLine1",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#addressline2",
+    "class/js/data/User.js~User.html#instance-member-addressLine2",
+    "js/data/User.js~User#addressLine2",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#addressstate",
+    "class/js/data/User.js~User.html#instance-member-addressState",
+    "js/data/User.js~User#addressState",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#addresszipcode",
+    "class/js/data/User.js~User.html#instance-member-addressZipcode",
+    "js/data/User.js~User#addressZipcode",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#birthdate",
+    "class/js/data/User.js~User.html#instance-member-birthDate",
+    "js/data/User.js~User#birthDate",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#constructor",
+    "class/js/data/User.js~User.html#instance-constructor-constructor",
+    "js/data/User.js~User#constructor",
+    "method"
+  ],
+  [
+    "js/data/user.js~user#expirationdate",
+    "class/js/data/User.js~User.html#instance-member-expirationDate",
+    "js/data/User.js~User#expirationDate",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#firstname",
+    "class/js/data/User.js~User.html#instance-member-firstName",
+    "js/data/User.js~User#firstName",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#gender",
+    "class/js/data/User.js~User.html#instance-member-gender",
+    "js/data/User.js~User#gender",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#lastname",
+    "class/js/data/User.js~User.html#instance-member-lastName",
+    "js/data/User.js~User#lastName",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#middlename",
+    "class/js/data/User.js~User.html#instance-member-middleName",
+    "js/data/User.js~User#middleName",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#phonenumber",
+    "class/js/data/User.js~User.html#instance-member-phoneNumber",
+    "js/data/User.js~User#phoneNumber",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#race",
+    "class/js/data/User.js~User.html#instance-member-race",
+    "js/data/User.js~User#race",
+    "member"
+  ],
+  [
+    "js/data/user.js~user#username",
+    "class/js/data/User.js~User.html#instance-member-username",
+    "js/data/User.js~User#username",
+    "member"
+  ],
+  [
+    "js/data/userbuilder.js",
+    "file/js/data/UserBuilder.js.html",
+    "js/data/UserBuilder.js",
+    "file"
+  ],
+  [
+    "js/data/userbuilder.js~userbuilder.spec_version_8",
+    "class/js/data/UserBuilder.js~UserBuilder.html#static-get-SPEC_VERSION_8",
+    "js/data/UserBuilder.js~UserBuilder.SPEC_VERSION_8",
+    "member"
+  ],
+  [
+    "js/data/userbuilder.js~userbuilder.fromspec",
+    "class/js/data/UserBuilder.js~UserBuilder.html#static-method-fromSpec",
+    "js/data/UserBuilder.js~UserBuilder.fromSpec",
+    "method"
+  ],
+  [
+    "js/data/userbuilder.js~userbuilder.fromversion8",
+    "class/js/data/UserBuilder.js~UserBuilder.html#static-method-fromVersion8",
+    "js/data/UserBuilder.js~UserBuilder.fromVersion8",
+    "method"
+  ],
+  [
+    "js/data/index.js",
+    "file/js/data/index.js.html",
+    "js/data/index.js",
+    "file"
   ],
   [
     "js/ember/index.js",

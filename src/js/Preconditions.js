@@ -30,8 +30,8 @@ import Lodash from "lodash/index";
 
 /**
  *
- * @param {*} actualValue
  * @param {*} expectedValue
+ * @param {*} actualValue
  * @param {String} [message]
  * @param {Error} [optionalCause]
  * @constructor

@@ -32,11 +32,15 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -54,19 +58,141 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/Utility.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Lodash from &apos;lodash&apos;;
-import Preconditions from &apos;~/Preconditions&apos;;
-import Ember from &apos;~/ember&apos;;
+import Lodash from &quot;lodash&quot;;
+import Preconditions from &quot;~/Preconditions&quot;;
+import Ember from &quot;~/ember&quot;;
 
 /**
  * @class
  * @singleton
  */
-export default class Utility {
+class Utility {
 
     /**
+     * Creates a test method. Uses Utility.typeOf()
      *
-     * @returns {String}
+     * @param {String} type
+     * @return {function}
+     */
+    static typeMatcher(type) {
+        // Ember.typeOf();                       // &apos;undefined&apos;
+        // Ember.typeOf(null);                   // &apos;null&apos;
+        // Ember.typeOf(undefined);              // &apos;undefined&apos;
+        // Ember.typeOf(&apos;michael&apos;);              // &apos;string&apos;
+        // Ember.typeOf(new String(&apos;michael&apos;));  // &apos;string&apos;
+        // Ember.typeOf(101);                    // &apos;number&apos;
+        // Ember.typeOf(new Number(101));        // &apos;number&apos;
+        // Ember.typeOf(true);                   // &apos;boolean&apos;
+        // Ember.typeOf(new Boolean(true));      // &apos;boolean&apos;
+        // Ember.typeOf(Ember.makeArray);        // &apos;function&apos;
+        // Ember.typeOf([1, 2, 90]);             // &apos;array&apos;
+        // Ember.typeOf(/abc/);                  // &apos;regexp&apos;
+        // Ember.typeOf(new Date());             // &apos;date&apos;
+        // Ember.typeOf(Ember.Object.extend());  // &apos;class&apos;
+        // Ember.typeOf(Ember.Object.create());  // &apos;instance&apos;
+        // Ember.typeOf(new Error(&apos;teamocil&apos;));  // &apos;error&apos;
+        // // &apos;normal&apos; JavaScript object
+        // Ember.typeOf({ a: &apos;b&apos; });             // &apos;object&apos;
+
+        let knownTypes = {
+            &apos;undefined&apos;: true,
+            &apos;null&apos;: true,
+            &apos;string&apos;: true,
+            &apos;number&apos;: true,
+            &apos;boolean&apos;: true,
+            &apos;function&apos;: true,
+            &apos;array&apos;: true,
+            &apos;instance&apos;: true,
+            &apos;error&apos;: true,
+            &apos;object&apos;: true,
+            &apos;class&apos;: true,
+            &apos;regexp&apos;: true,
+            &apos;date&apos;: true
+        };
+
+        /**
+         * Should be string.
+         */
+        {
+            let typeOfType = Utility.typeOf(type);
+
+            if (&apos;string&apos; !== typeOfType) {
+                Preconditions.fail(&apos;string&apos;, type, `The type passed in was not a string. It was ${typeOfType}`);
+            }
+        }
+
+        /**
+         * Should be known type.
+         */
+        {
+            // This will cause an infinite loop.
+            // Preconditions.shouldNotBeBlank(type, &apos;type missing&apos;);
+            // type = Utility.toLowerCase(type);
+            type = type.toLowerCase();
+
+            Preconditions.shouldBeTrue(knownTypes[type], &apos;unknown type: &apos; + type);
+        }
+
+        /**
+         * @param {*} object
+         */
+        return (function(object) {
+            return type === Utility.typeOf(object);
+        });
+    }
+
+    /**
+     * Returns a consistent type for the passed item.
+     *
+     * Use this instead of the built-in `typeof` to get the type of an item.
+     * It will return the same result across all browsers and includes a bit
+     * more detail. Here is what will be returned:
+     *
+     * | Return Value  | Meaning                                              |
+     * |---------------|------------------------------------------------------|
+     * | &apos;string&apos;      | String primitive or String object.                   |
+     * | &apos;number&apos;      | Number primitive or Number object.                   |
+     * | &apos;boolean&apos;     | Boolean primitive or Boolean object.                 |
+     * | &apos;null&apos;        | Null value                                           |
+     * | &apos;undefined&apos;   | Undefined value                                      |
+     * | &apos;function&apos;    | A function                                           |
+     * | &apos;array&apos;       | An instance of Array                                 |
+     * | &apos;regexp&apos;      | An instance of RegExp                                |
+     * | &apos;date&apos;        | An instance of Date                                  |
+     * | &apos;class&apos;       | An Ember class (created using Ember.Object.extend()) |
+     * | &apos;instance&apos;    | An Ember object instance                             |
+     * | &apos;error&apos;       | An instance of the Error object                      |
+     * | &apos;object&apos;      | A JavaScript object not inheriting from Ember.Object |
+     *
+     * Examples:
+     *
+      ```javascript
+     Ember.typeOf();                       // &apos;undefined&apos;
+     Ember.typeOf(null);                   // &apos;null&apos;
+     Ember.typeOf(undefined);              // &apos;undefined&apos;
+     Ember.typeOf(&apos;michael&apos;);              // &apos;string&apos;
+     Ember.typeOf(new String(&apos;michael&apos;));  // &apos;string&apos;
+     Ember.typeOf(101);                    // &apos;number&apos;
+     Ember.typeOf(new Number(101));        // &apos;number&apos;
+     Ember.typeOf(true);                   // &apos;boolean&apos;
+     Ember.typeOf(new Boolean(true));      // &apos;boolean&apos;
+     Ember.typeOf(Ember.makeArray);        // &apos;function&apos;
+     Ember.typeOf([1, 2, 90]);             // &apos;array&apos;
+     Ember.typeOf(/abc/);                  // &apos;regexp&apos;
+     Ember.typeOf(new Date());             // &apos;date&apos;
+     Ember.typeOf(Ember.Object.extend());  // &apos;class&apos;
+     Ember.typeOf(Ember.Object.create());  // &apos;instance&apos;
+     Ember.typeOf(new Error(&apos;teamocil&apos;));  // &apos;error&apos;
+
+     // &apos;normal&apos; JavaScript object
+     Ember.typeOf({ a: &apos;b&apos; });             // &apos;object&apos;
+     ```
+     *
+     * @method typeOf
+     * @for Ember
+     * @param {Object} object the item to check
+     * @return {String} the type
+     * @public
      */
     static typeOf(object) {
         return Ember.typeOf(object);
@@ -75,38 +201,103 @@ export default class Utility {
     /**
      *
      * @param {*} object
-     * @return boolean
+     * @returns {boolean}
+     */
+    static isBoolean(object) {
+        return &apos;boolean&apos; === Utility.typeOf(object);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @return {boolean}
      */
     static isUndefined(object) {
         return &apos;undefined&apos; === Utility.typeOf(object);
     }
 
+    /**
+     * Shorthand: Utility.typeOf() === string
+     *
+     * This is for functional programming.
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
     static isString(object) {
         return &apos;string&apos; === Utility.typeOf(object);
     }
 
-    /**
-     * @param {*} object
-     * @return {boolean}
-     */
-    static isExisting(object) {
-        let u = Utility.isUndefined(object);
-        let n = Utility.isNaN(object);
-        let nu = Utility.isNull(object);
-
-        return !(u || n || nu);
+    static isFunction(fn) {
+        return &apos;function&apos; === Utility.typeOf(fn);
     }
 
     static isNaN(object) {
         return Lodash.isNaN(object);
     }
 
-    static isNull(object) {
-        return null === object;
+    /**
+     *
+     * @param {*} anything
+     * @returns {boolean}
+     */
+    static isNull(anything) {
+        return &apos;null&apos; === Utility.typeOf(anything);
     }
 
-    static isNotExisting(object) {
-        return !this.isExisting(object);
+    /**
+     * Null-safe way to lowercase
+     * @param {String} string
+     * @returns {String}
+     */
+    static toLowerCase(string) {
+        if (Utility.isBlank(string)) {
+            return string;
+        }
+
+        Preconditions.shouldBeString(string);
+
+        return string.toLowerCase();
+    }
+
+    /**
+     * Null-safe way to uppercase.
+     *
+     * @param {String} string
+     * @returns {String}
+     */
+    static toUpperCase(string) {
+        if (Utility.isBlank(string)) {
+            return string;
+        }
+
+        Preconditions.shouldBeString(string);
+
+        return string.toUpperCase();
+    }
+
+    /**
+     * Determines if the input is NotNull, NotNaN, and NotUndefined.
+     *
+     * @param {*} anything
+     * @return {boolean}
+     */
+    static isExisting(anything) {
+        let u = Utility.isUndefined(anything);
+        let n = Utility.isNaN(anything);
+        let nu = Utility.isNull(anything);
+
+        return !(u || n || nu);
+    }
+
+    /**
+     * The opposite of existing.
+     *
+     * @param {*} anything
+     * @returns {boolean}
+     */
+    static isNotExisting(anything) {
+        return !Utility.isExisting(anything);
     }
 
     /**
@@ -118,17 +309,22 @@ export default class Utility {
         return !object;
     }
 
-    static isFunction(fn) {
-        return this.typeOf(fn) === &apos;function&apos;;
+    /**
+     *
+     * @param object
+     */
+    static isNotFalsey(object) {
+        return !Utility.isFalsey(object);
     }
 
     /**
+     * Shorthand for value
      *
-     * @param {String} string
-     * @return {boolean}
+     * @param value
+     * @returns {boolean}
      */
-    static isNotBlank(string) {
-        return !this.isBlank(string);
+    static isNullOrUndefined(value) {
+        return Utility.isNull(value) || Utility.isUndefined(value);
     }
 
     /**
@@ -137,6 +333,10 @@ export default class Utility {
      * @return {boolean}
      */
     static isBlank(string) {
+        if (Utility.isNullOrUndefined(string)) {
+            return true;
+        }
+
         Preconditions.shouldBeString(string);
 
         return Ember.isBlank(string);
@@ -144,17 +344,11 @@ export default class Utility {
 
     /**
      *
-     * @param {String} type
-     * @return {function}
+     * @param {String} string
+     * @return {boolean}
      */
-    static typeMatcher(type) {
-
-        /**
-         * @param {*} object
-         */
-        return function(object) {
-            return Utility.typeOf(object) === type;
-        };
+    static isNotBlank(string) {
+        return !Utility.isBlank(string);
     }
 
     /**
@@ -178,7 +372,9 @@ export default class Utility {
 
         return object;
     }
-};</code></pre>
+}
+
+export default Utility;</code></pre>
 
 </div>
 

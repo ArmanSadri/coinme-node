@@ -1,7 +1,7 @@
 {
-  "coverage": "57.3%",
-  "expectCount": 89,
-  "actualCount": 51,
+  "coverage": "66.12%",
+  "expectCount": 124,
+  "actualCount": 82,
   "files": {
     "js/slack/AbstractBuilder.js": {
       "expectCount": 3,
@@ -9,6 +9,16 @@
       "undocumentLines": [
         12,
         14
+      ]
+    },
+    "js/AbstractError.js": {
+      "expectCount": 5,
+      "actualCount": 1,
+      "undocumentLines": [
+        9,
+        15,
+        14,
+        22
       ]
     },
     "js/slack/AbstractNotificationTemplate.js": {
@@ -50,6 +60,11 @@
         5,
         7
       ]
+    },
+    "js/Functions.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
     },
     "js/slack/InlineNotificationTemplate.js": {
       "expectCount": 2,
@@ -98,6 +113,20 @@
       "actualCount": 21,
       "undocumentLines": []
     },
+    "js/data/UserBuilder.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        24,
+        22,
+        52
+      ]
+    },
+    "js/data/User.js": {
+      "expectCount": 17,
+      "actualCount": 17,
+      "undocumentLines": []
+    },
     "js/slack/UserNotificationTemplate.js": {
       "expectCount": 2,
       "actualCount": 0,
@@ -107,14 +136,11 @@
       ]
     },
     "js/Utility.js": {
-      "expectCount": 14,
-      "actualCount": 9,
+      "expectCount": 19,
+      "actualCount": 17,
       "undocumentLines": [
-        67,
-        46,
-        54,
-        50,
-        30
+        173,
+        177
       ]
     }
   }

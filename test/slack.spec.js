@@ -7,10 +7,13 @@
 import { expect, assert } from 'chai';
 
 // import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '~/slack';
+import Lodash from 'lodash';
 import Utility from '~/Utility';
 import Ember from '~/ember';
 import Preconditions from '~/Preconditions';
 import Functions from '~/Functions';
+import User from '~/data/User';
+import UserBuilder from '~/data/UserBuilder';
 
 // Preconditions.shouldBe(function() { return true; }, 'expected', 'actual', 'message');
 
@@ -52,6 +55,62 @@ describe('Utility', function() {
     });
 
 });
+
+describe('User', () => {
+
+    it('UserBuilder', () => {
+        let SPEC_VERSION_8 = {
+            'DBA': 'expirationDate',
+            'DAC': 'firstName',
+            'DCS': 'lastName',
+            'DAD': 'middleName',
+            'DBB': 'birthDate',
+            'DCB': 'gender',
+            'DAG': 'addressLine1',
+            'DAH': 'addressLine2',
+            'DAI': 'addressCity',
+            'DAJ': 'addressState',
+            'DAK': 'addressZipcode',
+            'DAQ': 'username',
+            'DCG': 'addressCountry',
+            'DCL': 'race'
+        };
+
+        let user = UserBuilder.fromVersion8({
+            'DBA': 'expirationDate',
+            'DAC': 'firstName',
+            'DCS': 'lastName',
+            'DAD': 'middleName',
+            'DBB': 'birthDate',
+            'DCB': 'gender',
+            'DAG': 'addressLine1',
+            'DAH': 'addressLine2',
+            'DAI': 'addressCity',
+            'DAJ': 'addressState',
+            'DAK': 'addressZipcode',
+            'DAQ': 'username',
+            'DCG': 'addressCountry',
+            'DCL': 'race'
+        });
+
+        assert.equal(user.expirationDate, 'expirationDate');
+        assert.equal(user.username, 'username');
+        assert.equal(user.firstName, 'firstName');
+        assert.equal(user.lastName, 'lastName');
+        assert.equal(user.middleName, 'middleName');
+        assert.equal(user.birthDate, 'birthDate');
+        assert.equal(user.addressLine1, 'addressLine1');
+        assert.equal(user.addressLine2, 'addressLine2');
+        assert.equal(user.addressCity, 'addressCity');
+        assert.equal(user.addressState, 'addressState');
+        assert.equal(user.addressZipcode, 'addressZipcode');
+        assert.equal(user.addressCountry, 'addressCountry');
+        assert.equal(user.gender, 'gender');
+        assert.equal(user.race, 'race');
+    });
+
+});
+
 
 describe('Ember', () => {
 

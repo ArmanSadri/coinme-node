@@ -62,7 +62,7 @@ class NotificationService extends AbstractObject {
         let builder = new NotificationBuilder({
             url: this.url
         });
-
+        
         if (this.payload) {
             builder.mergeIntoPayload(this.payload);
         }
