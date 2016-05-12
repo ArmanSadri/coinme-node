@@ -1,0 +1,5101 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/AbstractError.js",
+    "memberof": null,
+    "longname": "js/AbstractError.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "console.log('capture stack -1');\n\n/**\n *\n * @class\n */\nclass AbstractError extends Error {\n\n    constructor(message) {\n        super(message);\n\n        console.log('capture stack 0');\n\n        this.name = this.constructor.name;\n        this.message = message;\n\n        if (typeof Error.captureStackTrace === 'function') {\n            console.log('capture stack 1');\n            Error.captureStackTrace(this, this.constructor);\n        } else {\n            console.log('capture stack 2');\n            this.stack = (new Error(message)).stack;\n        }\n    }\n}\n\nexport default AbstractError;"
+  },
+  {
+    "__docId__": 1,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AbstractError",
+    "memberof": "js/AbstractError.js",
+    "longname": "js/AbstractError.js~AbstractError",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/AbstractError.js",
+    "importStyle": "AbstractError",
+    "description": "",
+    "lineNumber": 7,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "interface": false,
+    "extends": [
+      "Error"
+    ]
+  },
+  {
+    "__docId__": 2,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "js/AbstractError.js~AbstractError",
+    "longname": "js/AbstractError.js~AbstractError#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "params": [
+      {
+        "name": "message",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 3,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "name",
+    "memberof": "js/AbstractError.js~AbstractError",
+    "longname": "js/AbstractError.js~AbstractError#name",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "message",
+    "memberof": "js/AbstractError.js~AbstractError",
+    "longname": "js/AbstractError.js~AbstractError#message",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "stack",
+    "memberof": "js/AbstractError.js~AbstractError",
+    "longname": "js/AbstractError.js~AbstractError#stack",
+    "access": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 6,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/Coinme.js",
+    "memberof": null,
+    "longname": "js/Coinme.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "class Coinme {\n\n}\n\nexport default Coinme;"
+  },
+  {
+    "__docId__": 7,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Coinme",
+    "memberof": "js/Coinme.js",
+    "longname": "js/Coinme.js~Coinme",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/Coinme.js",
+    "importStyle": "Coinme",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 8,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/CoreObject.js",
+    "memberof": null,
+    "longname": "js/CoreObject.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Ember from \"~/ember\";\nimport Preconditions from '~/Preconditions';\n\n/**\n * This is the base class for all classes in our architecture.\n *\n *\n * @abstract\n * @class\n */\nclass CoreObject extends Ember.CoreObject {\n\n    /**\n     *\n     * @param {String} path\n     * @returns {*}\n     */\n    get(path) {\n        Preconditions.shouldBeString(path);\n\n        return Ember.get(this, path);\n    }\n\n    /**\n     *\n     * @param {String} path\n     * @param {*} value\n     */\n    set(path, value) {\n        Preconditions.shouldBeString(path);\n\n        return Ember.set(this, path, value);\n    }\n}\n\nexport default CoreObject;"
+  },
+  {
+    "__docId__": 9,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "CoreObject",
+    "memberof": "js/CoreObject.js",
+    "longname": "js/CoreObject.js~CoreObject",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/CoreObject.js",
+    "importStyle": "CoreObject",
+    "description": "This is the base class for all classes in our architecture.",
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "abstract": true,
+    "interface": false,
+    "extends": [
+      "~Ember.CoreObject"
+    ]
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "get",
+    "memberof": "js/CoreObject.js~CoreObject",
+    "longname": "js/CoreObject.js~CoreObject#get",
+    "access": null,
+    "description": "",
+    "lineNumber": 20,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{*}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 11,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "set",
+    "memberof": "js/CoreObject.js~CoreObject",
+    "longname": "js/CoreObject.js~CoreObject#set",
+    "access": null,
+    "description": "",
+    "lineNumber": 31,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "path",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 12,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/Functions.js",
+    "memberof": null,
+    "longname": "js/Functions.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\n/**\n * This class should contain all of our reusable functions\n */\nexport default class Functions {\n\n    /**\n     * Returns the current scope that you're calling from.\n     *\n     * @returns {Functions}\n     */\n    static identity() {\n        return this;\n    }\n\n    /**\n     * Always returns true\n     *\n     * @returns {boolean} true\n     */\n    static yes() {\n        return true;\n    }\n\n    /**\n     * Always returns false\n     *\n     * @returns {boolean} false\n     */\n    static no() {\n        return false;\n    }\n\n}"
+  },
+  {
+    "__docId__": 13,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Functions",
+    "memberof": "js/Functions.js",
+    "longname": "js/Functions.js~Functions",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/Functions.js",
+    "importStyle": "Functions",
+    "description": "This class should contain all of our reusable functions",
+    "lineNumber": 6,
+    "interface": false
+  },
+  {
+    "__docId__": 14,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "identity",
+    "memberof": "js/Functions.js~Functions",
+    "longname": "js/Functions.js~Functions.identity",
+    "access": null,
+    "description": "Returns the current scope that you're calling from.",
+    "lineNumber": 13,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Functions}"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Functions"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 15,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "yes",
+    "memberof": "js/Functions.js~Functions",
+    "longname": "js/Functions.js~Functions.yes",
+    "access": null,
+    "description": "Always returns true",
+    "lineNumber": 22,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean} true"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "true"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 16,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "no",
+    "memberof": "js/Functions.js~Functions",
+    "longname": "js/Functions.js~Functions.no",
+    "access": null,
+    "description": "Always returns false",
+    "lineNumber": 31,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean} false"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": "false"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 17,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/Preconditions.js",
+    "memberof": null,
+    "longname": "js/Preconditions.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Utility from \"~/Utility\";\nimport Lodash from \"lodash/index\";\n\n// class PreconditionsError extends AbstractError {\n//\n//     /**\n//      *\n//      * @param {*} actualValue\n//      * @param {*} expectedValue\n//      * @param {String} [message]\n//      * @param {Error} [optionalCause]\n//      * @constructor\n//      */\n//     constructor(expectedValue, actualValue, message, optionalCause) {\n//         super(message);\n//\n//         console.log('capture stack A');\n//\n//         this.name = 'PreconditionsError';\n//         // this.stack = error.stack;\n//         this.cause = optionalCause;\n//\n//         this.expectedValue = expectedValue || '';\n//         this.actualValue = actualValue || '';\n//         this.message = `failure (expected: ${this.expectedValue}) (actual: ${this.actualValue}) (message: ${this.message})`;\n//     }\n// }\n\n/**\n *\n * @param {*} expectedValue\n * @param {*} actualValue\n * @param {String} [message]\n * @param {Error} [optionalCause]\n * @constructor\n */\nfunction PreconditionsError(expectedValue, actualValue, message, optionalCause) {\n    var error = Error.call(this, message);\n\n    this.name = 'PreconditionsError';\n    this.stack = error.stack;\n    this.cause = optionalCause;\n\n    this.expectedValue = expectedValue;\n    this.actualValue = actualValue;\n    this.message = `failure (expected: '${this.expectedValue}' [${Utility.typeOf(this.expectedValue)}]) (actual: '${this.actualValue}' [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;\n}\n\nPreconditionsError.prototype = Object.create(Error.prototype);\nPreconditionsError.prototype.constructor = PreconditionsError;\n\nexport { PreconditionsError }\n\n/**\n * @singleton\n * @class Preconditions\n */\nexport default class Preconditions {\n\n    /**\n     *\n     * @param {*} expectedValue\n     * @param {*} actualValue\n     * @param {String} [message]\n     */\n    static fail(expectedValue, actualValue, message) {\n        throw new PreconditionsError(expectedValue, actualValue, message || 'Preconditions failure');\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * return {*} object\n     */\n    static shouldBeUndefined(object, message) {\n        return Preconditions.shouldBe(Utility.isUndefined, object, 'undefined', message || 'must be undefined');\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldNotBeFalsey(object, message) {\n        return Preconditions.shouldBe(Utility.isNotFalsey, object, message, 'must not be falsey')\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBeFalsey(object, message) {\n        return Preconditions.shouldBe(Utility.isFalsey, object, message, 'must be falsey')\n    }\n\n    /**\n     * This method checks for UNDEFINED, NAN, and NULL\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @return {*}\n     */\n    static shouldBeDefined(object, message) {\n        if (Utility.isUndefined(object)) {\n            Preconditions.fail('defined', 'undefined', message || 'must be defined.');\n        }\n\n        return object;\n    }\n\n    /**\n     * Make sure an object is not: undefined, null, NaN\n     *\n     * @param {*} object\n     * @param {String} [message]\n     */\n    static shouldBeExisting(object, message) {\n        return Preconditions.shouldBe(Utility.isExisting, 'exist', object, message || 'must exist.');\n    }\n\n    /**\n     *\n     * @param {*} string\n     * @param {String} [message]\n     * @return {String}\n     */\n    static shouldNotBeBlank(string, message) {\n        Preconditions.shouldBeString(string);\n\n        return Preconditions.shouldBe(Utility.isNotBlank, 'not blank', string, message || 'must not be blank.');\n    }\n\n    /**\n     *\n     * @param {*} fn\n     * @param {String} [message]\n     * @return {function}\n     */\n    static shouldBeFunction(fn, message) {\n        return Preconditions.shouldBeType('function', fn, message);\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBeNumber(number, message) {\n        Preconditions.shouldBeType(number, 'number', message);\n        Preconditions.shouldBeFinite(number, message);\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {function} testFn\n     * @param {*} [expectedValue]\n     * @param {*} actualValue\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBe(testFn, expectedValue, actualValue, message) {\n        if (!Utility.isFunction(testFn)) {\n            Preconditions.fail('function', testFn, `testFn must be function, but was ${Utility.typeOf(testFn)}.`);\n        }\n\n        if (!testFn.call(this, actualValue)) {\n            Preconditions.fail(expectedValue, actualValue, message || 'must pass test.');\n        }\n\n        return actualValue;\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBeFinite(number, message) {\n        if (!Lodash.isFinite(number)) {\n            Preconditions.fail('finite', number, message || 'must be finite.');\n        }\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {Object} object\n     * @param {String} [message]\n     * @return {Object}\n     */\n    static shouldBeObject(object, message) {\n        Preconditions.shouldBeExisting(object, message);\n\n        let fn = Utility.typeMatcher('object');\n\n        // throw new Error(Utility.typeOf(fn));\n\n        return Preconditions.shouldBe(fn, 'object', object, message);\n    }\n\n    /**\n     *\n     * @param {*} string\n     * @param {String} [message]\n     * @return {String}\n     */\n    static shouldBeString(string, message) {\n        Preconditions.shouldBeExisting(string);\n\n        let fn = Utility.typeMatcher('string');\n\n        return Preconditions.shouldBe(fn, 'object', object, message);\n    }\n\n    /**\n     *\n     * @param {String} typeName\n     * @param {*} value\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBeType(typeName, value, message) {\n        return Preconditions.shouldBe(Utility.typeMatcher(typeName), typeName, value, message);\n    }\n\n    /**\n     *\n     * @param {*} boolean\n     * @param {String} [message]\n     * @return {boolean}\n     */\n    static shouldBeTrue(boolean, message) {\n        Preconditions.shouldBeBoolean(boolean, message);\n\n        if (true === boolean) {\n            return boolean;\n        }\n\n        Preconditions.fail(boolean, true, message || 'was not true');\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @returns {Number}\n     */\n    static shouldNotBeNegativeNumber(number, message) {\n        Preconditions.shouldBeDefined(number, message);\n        Preconditions.shouldBeNumber(number, message);\n\n        if (number < 0) {\n            Preconditions.fail('positive', number, message || 'Number should be positive. Was: ' + number);\n        }\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {boolean} boolean\n     * @param {String} [message]\n     */\n    static shouldBeBoolean(boolean, message) {\n        Preconditions.shouldBeDefined(boolean);\n\n        if (!Utility.isBoolean(boolean)) {\n            Preconditions.fail('boolean', boolean, message || 'was not boolean');\n        }\n\n        return boolean;\n    }\n\n    /**\n     *\n     * @param {*} number1\n     * @param {*} number2\n     * @param {String} [message]\n     */\n    static shouldBeGreaterThan(number1, number2, message) {\n        Preconditions.shouldBeNumber(number1, message);\n        Preconditions.shouldBeNumber(number2, message);\n\n        if (number1 <= number2) {\n            Preconditions.fail('larger than ' + number2, number1, message);\n        }\n\n        return number1;\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBePositiveNumber(number, message) {\n        Preconditions.shouldBeNumber(number, message);\n\n        if (number <= 0) {\n            Preconditions.fail('positive', number, message || 'Number should be positive. Was: ' + number);\n        }\n\n        return number;\n    }\n}"
+  },
+  {
+    "__docId__": 18,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Preconditions",
+    "memberof": "js/Preconditions.js",
+    "longname": "js/Preconditions.js~Preconditions",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/Preconditions.js",
+    "importStyle": "Preconditions",
+    "description": "",
+    "lineNumber": 60,
+    "unknown": [
+      {
+        "tagName": "@singleton",
+        "tagValue": ""
+      },
+      {
+        "tagName": "@class",
+        "tagValue": "Preconditions"
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 19,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "fail",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.fail",
+    "access": null,
+    "description": "",
+    "lineNumber": 68,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "expectedValue",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actualValue",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 20,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeUndefined",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeUndefined",
+    "access": null,
+    "description": "",
+    "lineNumber": 78,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": "return {*} object"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldNotBeFalsey",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldNotBeFalsey",
+    "access": null,
+    "description": "",
+    "lineNumber": 88,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{*}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 22,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeFalsey",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeFalsey",
+    "access": null,
+    "description": "",
+    "lineNumber": 98,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{*}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 23,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeDefined",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeDefined",
+    "access": null,
+    "description": "This method checks for UNDEFINED, NAN, and NULL",
+    "lineNumber": 109,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 24,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeExisting",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeExisting",
+    "access": null,
+    "description": "Make sure an object is not: undefined, null, NaN",
+    "lineNumber": 123,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 25,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldNotBeBlank",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldNotBeBlank",
+    "access": null,
+    "description": "",
+    "lineNumber": 133,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 26,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeFunction",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeFunction",
+    "access": null,
+    "description": "",
+    "lineNumber": 145,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "fn",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "function"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 27,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeNumber",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeNumber",
+    "access": null,
+    "description": "",
+    "lineNumber": 155,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 28,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBe",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBe",
+    "access": null,
+    "description": "",
+    "lineNumber": 170,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{*}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "testFn",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "expectedValue",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actualValue",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 29,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeFinite",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeFinite",
+    "access": null,
+    "description": "",
+    "lineNumber": 188,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 30,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeObject",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeObject",
+    "access": null,
+    "description": "",
+    "lineNumber": 202,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 31,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeString",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeString",
+    "access": null,
+    "description": "",
+    "lineNumber": 218,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 32,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeType",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeType",
+    "access": null,
+    "description": "",
+    "lineNumber": 233,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{*}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "typeName",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 33,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeTrue",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeTrue",
+    "access": null,
+    "description": "",
+    "lineNumber": 243,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "boolean",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 34,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldNotBeNegativeNumber",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldNotBeNegativeNumber",
+    "access": null,
+    "description": "",
+    "lineNumber": 259,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Number}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeBoolean",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeBoolean",
+    "access": null,
+    "description": "",
+    "lineNumber": 275,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "boolean",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 36,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBeGreaterThan",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBeGreaterThan",
+    "access": null,
+    "description": "",
+    "lineNumber": 291,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number1",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number2",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 37,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "shouldBePositiveNumber",
+    "memberof": "js/Preconditions.js~Preconditions",
+    "longname": "js/Preconditions.js~Preconditions.shouldBePositiveNumber",
+    "access": null,
+    "description": "",
+    "lineNumber": 308,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Number"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 38,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "PreconditionsError",
+    "memberof": "js/Preconditions.js",
+    "longname": "js/Preconditions.js~PreconditionsError",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/Preconditions.js",
+    "importStyle": "{PreconditionsError}",
+    "description": "",
+    "lineNumber": 39,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "expectedValue",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actualValue",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "message",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Error"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "optionalCause",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 39,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/Utility.js",
+    "memberof": null,
+    "longname": "js/Utility.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Lodash from \"lodash\";\nimport Preconditions from \"~/Preconditions\";\nimport Ember from \"~/ember\";\n\n/**\n * @class\n * @singleton\n */\nclass Utility {\n\n    /**\n     * Creates a test method. Uses Utility.typeOf()\n     *\n     * @param {String} type\n     * @return {function}\n     */\n    static typeMatcher(type) {\n        // Ember.typeOf();                       // 'undefined'\n        // Ember.typeOf(null);                   // 'null'\n        // Ember.typeOf(undefined);              // 'undefined'\n        // Ember.typeOf('michael');              // 'string'\n        // Ember.typeOf(new String('michael'));  // 'string'\n        // Ember.typeOf(101);                    // 'number'\n        // Ember.typeOf(new Number(101));        // 'number'\n        // Ember.typeOf(true);                   // 'boolean'\n        // Ember.typeOf(new Boolean(true));      // 'boolean'\n        // Ember.typeOf(Ember.makeArray);        // 'function'\n        // Ember.typeOf([1, 2, 90]);             // 'array'\n        // Ember.typeOf(/abc/);                  // 'regexp'\n        // Ember.typeOf(new Date());             // 'date'\n        // Ember.typeOf(Ember.Object.extend());  // 'class'\n        // Ember.typeOf(Ember.Object.create());  // 'instance'\n        // Ember.typeOf(new Error('teamocil'));  // 'error'\n        // // 'normal' JavaScript object\n        // Ember.typeOf({ a: 'b' });             // 'object'\n\n        let knownTypes = {\n            'undefined': true,\n            'null': true,\n            'string': true,\n            'number': true,\n            'boolean': true,\n            'function': true,\n            'array': true,\n            'instance': true,\n            'error': true,\n            'object': true,\n            'class': true,\n            'regexp': true,\n            'date': true\n        };\n\n        /**\n         * Should be string.\n         */\n        {\n            let typeOfType = Utility.typeOf(type);\n\n            if ('string' !== typeOfType) {\n                Preconditions.fail('string', type, `The type passed in was not a string. It was ${typeOfType}`);\n            }\n        }\n\n        /**\n         * Should be known type.\n         */\n        {\n            // This will cause an infinite loop.\n            // Preconditions.shouldNotBeBlank(type, 'type missing');\n            // type = Utility.toLowerCase(type);\n            type = type.toLowerCase();\n\n            Preconditions.shouldBeTrue(knownTypes[type], 'unknown type: ' + type);\n        }\n\n        /**\n         * @param {*} object\n         */\n        return (function(object) {\n            return type === Utility.typeOf(object);\n        });\n    }\n\n    /**\n     * Returns a consistent type for the passed item.\n     *\n     * Use this instead of the built-in `typeof` to get the type of an item.\n     * It will return the same result across all browsers and includes a bit\n     * more detail. Here is what will be returned:\n     *\n     * | Return Value  | Meaning                                              |\n     * |---------------|------------------------------------------------------|\n     * | 'string'      | String primitive or String object.                   |\n     * | 'number'      | Number primitive or Number object.                   |\n     * | 'boolean'     | Boolean primitive or Boolean object.                 |\n     * | 'null'        | Null value                                           |\n     * | 'undefined'   | Undefined value                                      |\n     * | 'function'    | A function                                           |\n     * | 'array'       | An instance of Array                                 |\n     * | 'regexp'      | An instance of RegExp                                |\n     * | 'date'        | An instance of Date                                  |\n     * | 'class'       | An Ember class (created using Ember.Object.extend()) |\n     * | 'instance'    | An Ember object instance                             |\n     * | 'error'       | An instance of the Error object                      |\n     * | 'object'      | A JavaScript object not inheriting from Ember.Object |\n     *\n     * Examples:\n     *\n      ```javascript\n     Ember.typeOf();                       // 'undefined'\n     Ember.typeOf(null);                   // 'null'\n     Ember.typeOf(undefined);              // 'undefined'\n     Ember.typeOf('michael');              // 'string'\n     Ember.typeOf(new String('michael'));  // 'string'\n     Ember.typeOf(101);                    // 'number'\n     Ember.typeOf(new Number(101));        // 'number'\n     Ember.typeOf(true);                   // 'boolean'\n     Ember.typeOf(new Boolean(true));      // 'boolean'\n     Ember.typeOf(Ember.makeArray);        // 'function'\n     Ember.typeOf([1, 2, 90]);             // 'array'\n     Ember.typeOf(/abc/);                  // 'regexp'\n     Ember.typeOf(new Date());             // 'date'\n     Ember.typeOf(Ember.Object.extend());  // 'class'\n     Ember.typeOf(Ember.Object.create());  // 'instance'\n     Ember.typeOf(new Error('teamocil'));  // 'error'\n\n     // 'normal' JavaScript object\n     Ember.typeOf({ a: 'b' });             // 'object'\n     ```\n     *\n     * @method typeOf\n     * @for Ember\n     * @param {Object} object the item to check\n     * @return {String} the type\n     * @public\n     */\n    static typeOf(object) {\n        return Ember.typeOf(object);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isBoolean(object) {\n        return 'boolean' === Utility.typeOf(object);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @return {boolean}\n     */\n    static isUndefined(object) {\n        return 'undefined' === Utility.typeOf(object);\n    }\n\n    /**\n     * Shorthand: Utility.typeOf() === string\n     *\n     * This is for functional programming.\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isString(object) {\n        return 'string' === Utility.typeOf(object);\n    }\n\n    static isFunction(fn) {\n        return 'function' === Utility.typeOf(fn);\n    }\n\n    static isNaN(object) {\n        return Lodash.isNaN(object);\n    }\n\n    /**\n     *\n     * @param {*} anything\n     * @returns {boolean}\n     */\n    static isNull(anything) {\n        return 'null' === Utility.typeOf(anything);\n    }\n\n    /**\n     * Null-safe way to lowercase\n     * @param {String} string\n     * @returns {String}\n     */\n    static toLowerCase(string) {\n        if (Utility.isBlank(string)) {\n            return string;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return string.toLowerCase();\n    }\n\n    /**\n     * Null-safe way to uppercase.\n     *\n     * @param {String} string\n     * @returns {String}\n     */\n    static toUpperCase(string) {\n        if (Utility.isBlank(string)) {\n            return string;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return string.toUpperCase();\n    }\n\n    /**\n     * Determines if the input is NotNull, NotNaN, and NotUndefined.\n     *\n     * @param {*} anything\n     * @return {boolean}\n     */\n    static isExisting(anything) {\n        let u = Utility.isUndefined(anything);\n        let n = Utility.isNaN(anything);\n        let nu = Utility.isNull(anything);\n\n        return !(u || n || nu);\n    }\n\n    /**\n     * The opposite of existing.\n     *\n     * @param {*} anything\n     * @returns {boolean}\n     */\n    static isNotExisting(anything) {\n        return !Utility.isExisting(anything);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isFalsey(object) {\n        return !object;\n    }\n\n    /**\n     *\n     * @param object\n     */\n    static isNotFalsey(object) {\n        return !Utility.isFalsey(object);\n    }\n\n    /**\n     * Shorthand for value\n     *\n     * @param value\n     * @returns {boolean}\n     */\n    static isNullOrUndefined(value) {\n        return Utility.isNull(value) || Utility.isUndefined(value);\n    }\n\n    /**\n     *\n     * @param {String} string\n     * @return {boolean}\n     */\n    static isBlank(string) {\n        if (Utility.isNullOrUndefined(string)) {\n            return true;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return Ember.isBlank(string);\n    }\n\n    /**\n     *\n     * @param {String} string\n     * @return {boolean}\n     */\n    static isNotBlank(string) {\n        return !Utility.isBlank(string);\n    }\n\n    /**\n     *\n     * @param {Object} object\n     * @param {Object} defaults\n     * @returns {Object} The original object.\n     */\n    static defaults(object, defaults) {\n        Preconditions.shouldBeObject(object);\n        Preconditions.shouldBeObject(defaults);\n\n        let updates = Object.keys(defaults);\n\n        for (let i = 0, l = updates.length; i < l; i++) {\n            let prop = updates[i];\n            let value = Ember.get(defaults, prop);\n\n            Ember.set(object, prop, value);\n        }\n\n        return object;\n    }\n}\n\nexport default Utility;"
+  },
+  {
+    "__docId__": 40,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "Utility",
+    "memberof": "js/Utility.js",
+    "longname": "js/Utility.js~Utility",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/Utility.js",
+    "importStyle": "Utility",
+    "description": "",
+    "lineNumber": 11,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      },
+      {
+        "tagName": "@singleton",
+        "tagValue": ""
+      }
+    ],
+    "interface": false
+  },
+  {
+    "__docId__": 41,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "typeMatcher",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.typeMatcher",
+    "access": null,
+    "description": "Creates a test method. Uses Utility.typeOf()",
+    "lineNumber": 19,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "type",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "function"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 42,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "typeOf",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.typeOf",
+    "access": "public",
+    "description": "Returns a consistent type for the passed item.\n\nUse this instead of the built-in `typeof` to get the type of an item.\nIt will return the same result across all browsers and includes a bit\nmore detail. Here is what will be returned:\n\n| Return Value  | Meaning                                              |\n|---------------|------------------------------------------------------|\n| 'string'      | String primitive or String object.                   |\n| 'number'      | Number primitive or Number object.                   |\n| 'boolean'     | Boolean primitive or Boolean object.                 |\n| 'null'        | Null value                                           |\n| 'undefined'   | Undefined value                                      |\n| 'function'    | A function                                           |\n| 'array'       | An instance of Array                                 |\n| 'regexp'      | An instance of RegExp                                |\n| 'date'        | An instance of Date                                  |\n| 'class'       | An Ember class (created using Ember.Object.extend()) |\n| 'instance'    | An Ember object instance                             |\n| 'error'       | An instance of the Error object                      |\n| 'object'      | A JavaScript object not inheriting from Ember.Object |\n\nExamples:\n\n```javascript\nEmber.typeOf();                       // 'undefined'\nEmber.typeOf(null);                   // 'null'\nEmber.typeOf(undefined);              // 'undefined'\nEmber.typeOf('michael');              // 'string'\nEmber.typeOf(new String('michael'));  // 'string'\nEmber.typeOf(101);                    // 'number'\nEmber.typeOf(new Number(101));        // 'number'\nEmber.typeOf(true);                   // 'boolean'\nEmber.typeOf(new Boolean(true));      // 'boolean'\nEmber.typeOf(Ember.makeArray);        // 'function'\nEmber.typeOf([1, 2, 90]);             // 'array'\nEmber.typeOf(/abc/);                  // 'regexp'\nEmber.typeOf(new Date());             // 'date'\nEmber.typeOf(Ember.Object.extend());  // 'class'\nEmber.typeOf(Ember.Object.create());  // 'instance'\nEmber.typeOf(new Error('teamocil'));  // 'error'\n\n// 'normal' JavaScript object\nEmber.typeOf({ a: 'b' });             // 'object'\n```",
+    "lineNumber": 139,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "typeOf"
+      },
+      {
+        "tagName": "@for",
+        "tagValue": "Ember"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": "the item to check"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "the type"
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 43,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isBoolean",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isBoolean",
+    "access": null,
+    "description": "",
+    "lineNumber": 148,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 44,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isUndefined",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isUndefined",
+    "access": null,
+    "description": "",
+    "lineNumber": 157,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 45,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isString",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isString",
+    "access": null,
+    "description": "Shorthand: Utility.typeOf() === string\n\nThis is for functional programming.",
+    "lineNumber": 169,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 46,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isFunction",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isFunction",
+    "access": null,
+    "description": null,
+    "lineNumber": 173,
+    "undocument": true,
+    "params": [
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 47,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isNaN",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isNaN",
+    "access": null,
+    "description": null,
+    "lineNumber": 177,
+    "undocument": true,
+    "params": [
+      {
+        "name": "object",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 48,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isNull",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isNull",
+    "access": null,
+    "description": "",
+    "lineNumber": 186,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "anything",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 49,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "toLowerCase",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.toLowerCase",
+    "access": null,
+    "description": "Null-safe way to lowercase",
+    "lineNumber": 195,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 50,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "toUpperCase",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.toUpperCase",
+    "access": null,
+    "description": "Null-safe way to uppercase.",
+    "lineNumber": 211,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 51,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isExisting",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isExisting",
+    "access": null,
+    "description": "Determines if the input is NotNull, NotNaN, and NotUndefined.",
+    "lineNumber": 227,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "anything",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 52,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isNotExisting",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isNotExisting",
+    "access": null,
+    "description": "The opposite of existing.",
+    "lineNumber": 241,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "anything",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isFalsey",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isFalsey",
+    "access": null,
+    "description": "",
+    "lineNumber": 250,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 54,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isNotFalsey",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isNotFalsey",
+    "access": null,
+    "description": "",
+    "lineNumber": 258,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 55,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isNullOrUndefined",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isNullOrUndefined",
+    "access": null,
+    "description": "Shorthand for value",
+    "lineNumber": 268,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isBlank",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isBlank",
+    "access": null,
+    "description": "",
+    "lineNumber": 277,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "isNotBlank",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isNotBlank",
+    "access": null,
+    "description": "",
+    "lineNumber": 292,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "defaults",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.defaults",
+    "access": null,
+    "description": "",
+    "lineNumber": 302,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Object} The original object."
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "defaults",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "The original object."
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 59,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/data/User.js",
+    "memberof": null,
+    "longname": "js/data/User.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport CoreObject from \"~/CoreObject\";\n\n/**\n * This is the base class for all classes in our architecture.\n *\n * @abstract\n * @class\n */\nclass User extends CoreObject {\n\n    /**\n     *\n     * @param {Object} config\n     * @param {String} config.phoneNumber\n     * @param {String} config.username\n     * @param {String} config.firstName\n     * @param {String} config.middleName\n     * @param {String} config.lastName\n     * @param {String} config.race\n     * @param {String} config.gender\n     * @param {String} config.addressLine1\n     * @param {String} config.addressLine2\n     * @param {String} config.addressCity\n     * @param {String} config.addressState\n     * @param {String} config.addressZipcode\n     * @param {String} config.addressCountry\n     * @param {String} config.birthDate\n     * @param {String} config.expirationDate\n     */\n    constructor(config) {\n        super(config);\n\n        /** @type {String} */\n        this.firstName = config.firstName;\n\n        /** @type {String} */\n        this.lastName = config.lastName;\n\n        /** @type {String} */\n        this.middleName = config.middleName;\n\n        /** @type {String} */\n        this.addressLine1 = config.addressLine1;\n\n        /** @type {String} */\n        this.addressLine2 = config.addressLine2;\n\n        /** @type {String} */\n        this.addressCity = config.addressCity;\n\n        /** @type {String} */\n        this.addressState = config.addressState;\n\n        /** @type {String} */\n        this.addressCountry = config.addressCountry;\n\n        /** @type {String} */\n        this.expirationDate = config.expirationDate;\n\n        /** @type {String} */\n        this.birthDate = config.birthDate;\n\n        /** @type {String} */\n        this.gender = config.gender;\n\n        /** @type {String} */\n        this.race = config.race;\n\n        /** @type {String} */\n        this.addressZipcode = config.addressZipcode;\n\n        /** @type {String} */\n        this.username = config.username;\n\n        /** @type {String} */\n        this.phoneNumber = config.phoneNumber;\n    }\n}\n\nexport default User;"
+  },
+  {
+    "__docId__": 60,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "User",
+    "memberof": "js/data/User.js",
+    "longname": "js/data/User.js~User",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/data/User.js",
+    "importStyle": "User",
+    "description": "This is the base class for all classes in our architecture.",
+    "lineNumber": 11,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": ""
+      }
+    ],
+    "abstract": true,
+    "interface": false,
+    "extends": [
+      "~/CoreObject~CoreObject"
+    ]
+  },
+  {
+    "__docId__": 61,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#constructor",
+    "access": null,
+    "description": "",
+    "lineNumber": 32,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.phoneNumber",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.username",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.firstName",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.middleName",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.lastName",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.race",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.gender",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.addressLine1",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.addressLine2",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.addressCity",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.addressState",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.addressZipcode",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.addressCountry",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.birthDate",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "config.expirationDate",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 62,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "firstName",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#firstName",
+    "access": null,
+    "description": null,
+    "lineNumber": 36,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "lastName",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#lastName",
+    "access": null,
+    "description": null,
+    "lineNumber": 39,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "middleName",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#middleName",
+    "access": null,
+    "description": null,
+    "lineNumber": 42,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "addressLine1",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#addressLine1",
+    "access": null,
+    "description": null,
+    "lineNumber": 45,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "addressLine2",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#addressLine2",
+    "access": null,
+    "description": null,
+    "lineNumber": 48,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "addressCity",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#addressCity",
+    "access": null,
+    "description": null,
+    "lineNumber": 51,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "addressState",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#addressState",
+    "access": null,
+    "description": null,
+    "lineNumber": 54,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "addressCountry",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#addressCountry",
+    "access": null,
+    "description": null,
+    "lineNumber": 57,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "expirationDate",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#expirationDate",
+    "access": null,
+    "description": null,
+    "lineNumber": 60,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "birthDate",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#birthDate",
+    "access": null,
+    "description": null,
+    "lineNumber": 63,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "gender",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#gender",
+    "access": null,
+    "description": null,
+    "lineNumber": 66,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "race",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#race",
+    "access": null,
+    "description": null,
+    "lineNumber": 69,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 74,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "addressZipcode",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#addressZipcode",
+    "access": null,
+    "description": null,
+    "lineNumber": 72,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 75,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "username",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#username",
+    "access": null,
+    "description": null,
+    "lineNumber": 75,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 76,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "phoneNumber",
+    "memberof": "js/data/User.js~User",
+    "longname": "js/data/User.js~User#phoneNumber",
+    "access": null,
+    "description": null,
+    "lineNumber": 78,
+    "type": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 77,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/data/UserBuilder.js",
+    "memberof": null,
+    "longname": "js/data/UserBuilder.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import CoreObject from \"~/CoreObject\";\nimport User from \"~/data/User\";\nimport Lodash from \"lodash\";\n\nlet SPEC_VERSION_8 = {\n    'DBA': 'expirationDate',\n    'DAC': 'firstName',\n    'DCS': 'lastName',\n    'DAD': 'middleName',\n    'DBB': 'birthDate',\n    'DCB': 'gender',\n    'DAG': 'addressLine1',\n    'DAH': 'addressLine2',\n    'DAI': 'addressCity',\n    'DAJ': 'addressState',\n    'DAK': 'addressZipcode',\n    'DAQ': 'username',\n    'DCG': 'addressCountry',\n    'DCL': 'race'\n};\n\nclass UserBuilder extends CoreObject {\n    \n    static get SPEC_VERSION_8() {\n        return SPEC_VERSION_8;\n    }\n\n    /**\n     *\n     * @param {Object} options\n     * @param {String} options.DBA expirationDate\n     * @param {String} options.DAC firstName\n     * @param {String} options.DCS lastName\n     * @param {String} options.DAD middleName\n     * @param {String} options.DBB birthDate\n     * @param {String} options.DCB gender\n     * @param {String} options.DAG addressLine1\n     * @param {String} options.DAH addressLine2\n     * @param {String} options.DAI addressCity\n     * @param {String} options.DAJ addressState\n     * @param {String} options.DAK addressZipcode\n     * @param {String} options.DAQ username\n     * @param {String} options.DCG addressCountry\n     * @param {String} options.DCL race\n     *\n     * @returns {User}\n     */\n    static fromVersion8(options) {\n        return UserBuilder.fromSpec(UserBuilder.SPEC_VERSION_8, options);\n    }\n\n    static fromSpec(spec, options) {\n        var object = {};\n\n        Lodash.forEach(spec, function(value, key) {\n            object[value] = options[key];\n        });\n\n        return new User(object);\n    }\n}\n\nexport default UserBuilder;"
+  },
+  {
+    "__docId__": 78,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "SPEC_VERSION_8",
+    "memberof": "js/data/UserBuilder.js",
+    "longname": "js/data/UserBuilder.js~SPEC_VERSION_8",
+    "access": null,
+    "export": false,
+    "importPath": "coinme/js/data/UserBuilder.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 79,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "UserBuilder",
+    "memberof": "js/data/UserBuilder.js",
+    "longname": "js/data/UserBuilder.js~UserBuilder",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/data/UserBuilder.js",
+    "importStyle": "UserBuilder",
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "~/CoreObject~CoreObject"
+    ]
+  },
+  {
+    "__docId__": 80,
+    "kind": "get",
+    "static": true,
+    "variation": null,
+    "name": "SPEC_VERSION_8",
+    "memberof": "js/data/UserBuilder.js~UserBuilder",
+    "longname": "js/data/UserBuilder.js~UserBuilder.SPEC_VERSION_8",
+    "access": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 81,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "fromVersion8",
+    "memberof": "js/data/UserBuilder.js~UserBuilder",
+    "longname": "js/data/UserBuilder.js~UserBuilder.fromVersion8",
+    "access": null,
+    "description": "",
+    "lineNumber": 48,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{User}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DBA",
+        "description": "expirationDate"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DAC",
+        "description": "firstName"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DCS",
+        "description": "lastName"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DAD",
+        "description": "middleName"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DBB",
+        "description": "birthDate"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DCB",
+        "description": "gender"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DAG",
+        "description": "addressLine1"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DAH",
+        "description": "addressLine2"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DAI",
+        "description": "addressCity"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DAJ",
+        "description": "addressState"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DAK",
+        "description": "addressZipcode"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DAQ",
+        "description": "username"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DCG",
+        "description": "addressCountry"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.DCL",
+        "description": "race"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "User"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 82,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "fromSpec",
+    "memberof": "js/data/UserBuilder.js~UserBuilder",
+    "longname": "js/data/UserBuilder.js~UserBuilder.fromSpec",
+    "access": null,
+    "description": null,
+    "lineNumber": 52,
+    "undocument": true,
+    "params": [
+      {
+        "name": "spec",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 83,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/data/index.js",
+    "memberof": null,
+    "longname": "js/data/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport User from \"~/data/User\";\nimport UserBuilder from \"~/data/UserBuilder\";\n\nexport {User};\nexport {UserBuilder};"
+  },
+  {
+    "__docId__": 84,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/ember/index.js",
+    "memberof": null,
+    "longname": "js/ember/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Ember from \"~/ember/ember-runtime\";\n\nexport default Ember;\n"
+  },
+  {
+    "__docId__": 85,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/index.js",
+    "memberof": null,
+    "longname": "js/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Ember from './ember/ember-runtime';\nimport Coinme from './Coinme';\n\nimport AbstractBuilder from './slack/AbstractBuilder';\nimport FieldBuilder from './slack/FieldBuilder';\nimport AttachmentBuilder from './slack/AttachmentBuilder';\nimport NotificationBuilder from './slack/NotificationBuilder';\nimport NotificationService from './slack/NotificationService';\nimport NotificationTemplate from './slack/NotificationTemplate';\nimport InlineNotificationTemplate from './slack/InlineNotificationTemplate';\nimport UserNotificationTemplate from './slack/UserNotificationTemplate';\n\nexport { Ember };\nexport { AbstractBuilder };\nexport { FieldBuilder };\nexport { AttachmentBuilder };\nexport { NotificationBuilder };\nexport { NotificationTemplate };\nexport { NotificationService };\nexport { InlineNotificationTemplate };\nexport { UserNotificationTemplate };\n\nexport default Coinme;\n"
+  },
+  {
+    "__docId__": 86,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/AbstractBuilder.js",
+    "memberof": null,
+    "longname": "js/slack/AbstractBuilder.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Logger from 'winston';\nimport Lodash from 'lodash';\nimport Ember from '~/ember';\nimport Utility from '~/Utility';\nimport Preconditions from '~/Preconditions';\nimport CoreObject from '~/CoreObject';\n\n// winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/\n\nclass AbstractBuilder extends CoreObject {\n\n    init() {\n        Utility.defaults(this, {\n            name: 'AbstractBuilder',\n            payload: {}\n        });\n    }\n\n    /**\n     * @public\n     * @param object\n     * @return {AbstractBuilder}\n     */\n    mergeIntoPayload(object) {\n        Preconditions.shouldBeDefined(object, 'Cannot merge null');\n        Preconditions.shouldBeObject(object, 'Should be object');\n\n        console.log(Ember);\n        console.log(Ember.assign);\n\n        Ember.assign(this, {\n            payload: object\n        });\n\n        return this;\n    }\n\n}\n\nexport default AbstractBuilder;\n"
+  },
+  {
+    "__docId__": 87,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AbstractBuilder",
+    "memberof": "js/slack/AbstractBuilder.js",
+    "longname": "js/slack/AbstractBuilder.js~AbstractBuilder",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/AbstractBuilder.js",
+    "importStyle": "AbstractBuilder",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "~/CoreObject~CoreObject"
+    ]
+  },
+  {
+    "__docId__": 88,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "init",
+    "memberof": "js/slack/AbstractBuilder.js~AbstractBuilder",
+    "longname": "js/slack/AbstractBuilder.js~AbstractBuilder#init",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 89,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "mergeIntoPayload",
+    "memberof": "js/slack/AbstractBuilder.js~AbstractBuilder",
+    "longname": "js/slack/AbstractBuilder.js~AbstractBuilder#mergeIntoPayload",
+    "access": "public",
+    "description": "",
+    "lineNumber": 26,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "AbstractBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 90,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/AbstractNotificationTemplate.js",
+    "memberof": null,
+    "longname": "js/slack/AbstractNotificationTemplate.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Logger from \"winston\";\nimport CoreObject from \"~/CoreObject\";\nimport Ember from '~/ember';\nimport Utility from \"~/Utility\";\nimport NotificationBuilder from \"~/slack/NotificationBuilder\";\nimport Preconditions from \"~/Preconditions\";\n\n/**\n *\n * This class is intended to be instantiated early and (generally) once in your app.\n */\nclass AbstractNotificationTemplate extends CoreObject {\n\n    init() {\n        Utility.defaults(this, {\n            name: 'NotificationTemplate'\n        });\n        \n        // Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');\n    }\n\n    /**\n     * @public\n     * @param {NotificationBuilder} builder\n     * @param {*|undefined} data\n     * @returns {Promise}\n     */\n    render(builder, data) {\n        // Apply the template. Might be a promise though.\n        var result = this.applyTemplate(builder, data);\n\n        result = result || builder;\n\n        return result;\n    }\n\n    /**\n     *\n     * @protected\n     * @param {NotificationBuilder} builder\n     * @param {Object} data\n     * @return {Promise|NotificationBuilder|Object}\n     */\n    applyTemplate(builder, data) {\n        Logger.silly('Builder', builder);\n        Logger.silly('Data', data);\n\n        throw new Error('This method must be overridden by a subclass');\n    }\n\n}\n\nexport default AbstractNotificationTemplate;"
+  },
+  {
+    "__docId__": 91,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AbstractNotificationTemplate",
+    "memberof": "js/slack/AbstractNotificationTemplate.js",
+    "longname": "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/AbstractNotificationTemplate.js",
+    "importStyle": "AbstractNotificationTemplate",
+    "description": "\nThis class is intended to be instantiated early and (generally) once in your app.",
+    "lineNumber": 14,
+    "interface": false,
+    "extends": [
+      "~/CoreObject~CoreObject"
+    ]
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "init",
+    "memberof": "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate",
+    "longname": "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#init",
+    "access": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 93,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "render",
+    "memberof": "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate",
+    "longname": "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#render",
+    "access": "public",
+    "description": "",
+    "lineNumber": 30,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Promise}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "NotificationBuilder"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "builder",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*",
+          "undefined"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 94,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "applyTemplate",
+    "memberof": "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate",
+    "longname": "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#applyTemplate",
+    "access": "protected",
+    "description": "",
+    "lineNumber": 46,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "NotificationBuilder"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "builder",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise",
+        "NotificationBuilder",
+        "Object"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 95,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/AttachmentBuilder.js",
+    "memberof": null,
+    "longname": "js/slack/AttachmentBuilder.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Preconditions from \"~/Preconditions\";\nimport Ember from \"~/ember\";\nimport AbstractBuilder from \"~/slack/AbstractBuilder\";\nimport FieldBuilder from \"~/slack/FieldBuilder\";\n\nclass AttachmentBuilder extends AbstractBuilder {\n\n    init() {\n        super.init(...arguments);\n\n        this.get('parent')\n            .attachments()\n            .push(this.get('payload'));\n\n        this.set('mrkdwn_in', ['pretext', 'text', 'fields']);\n        this.set('color', 'good');\n    }\n\n    title(value) {\n        Preconditions.shouldBeString(value);\n        \n        return this.set('title', value);\n    }\n\n    text(value) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('text', value);\n    }\n\n    fields() {\n        let fields = Ember.getWithDefault(this, 'fields', []);\n\n        Preconditions.shouldBeArray(fields, 'fields');\n\n        return fields;\n    }\n\n    color(color) {\n        Preconditions.shouldBeString(color);\n\n        return this.set('color', color);\n    }\n\n    field() {\n        return new FieldBuilder(this)\n            .small();\n    }\n}\n\nexport default AttachmentBuilder;\n"
+  },
+  {
+    "__docId__": 96,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "AttachmentBuilder",
+    "memberof": "js/slack/AttachmentBuilder.js",
+    "longname": "js/slack/AttachmentBuilder.js~AttachmentBuilder",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/AttachmentBuilder.js",
+    "importStyle": "AttachmentBuilder",
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "~/slack/AbstractBuilder~AbstractBuilder"
+    ]
+  },
+  {
+    "__docId__": 97,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "init",
+    "memberof": "js/slack/AttachmentBuilder.js~AttachmentBuilder",
+    "longname": "js/slack/AttachmentBuilder.js~AttachmentBuilder#init",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "__docId__": 98,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "title",
+    "memberof": "js/slack/AttachmentBuilder.js~AttachmentBuilder",
+    "longname": "js/slack/AttachmentBuilder.js~AttachmentBuilder#title",
+    "access": null,
+    "description": null,
+    "lineNumber": 21,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 99,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "text",
+    "memberof": "js/slack/AttachmentBuilder.js~AttachmentBuilder",
+    "longname": "js/slack/AttachmentBuilder.js~AttachmentBuilder#text",
+    "access": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 100,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "fields",
+    "memberof": "js/slack/AttachmentBuilder.js~AttachmentBuilder",
+    "longname": "js/slack/AttachmentBuilder.js~AttachmentBuilder#fields",
+    "access": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 101,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "color",
+    "memberof": "js/slack/AttachmentBuilder.js~AttachmentBuilder",
+    "longname": "js/slack/AttachmentBuilder.js~AttachmentBuilder#color",
+    "access": null,
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [
+      {
+        "name": "color",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 102,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "field",
+    "memberof": "js/slack/AttachmentBuilder.js~AttachmentBuilder",
+    "longname": "js/slack/AttachmentBuilder.js~AttachmentBuilder#field",
+    "access": null,
+    "description": null,
+    "lineNumber": 47,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 103,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/FieldBuilder.js",
+    "memberof": null,
+    "longname": "js/slack/FieldBuilder.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport AbstractBuilder from '~/slack/AbstractBuilder';\n\nclass FieldBuilder extends AbstractBuilder {\n\n    constructor(parent) {\n        super({\n            parent: parent\n        });\n\n        this.parent\n            .fields()\n            .push(this.payload);\n    }\n\n    /**\n     * @param {String} value\n     * @returns {FieldBuilder}\n     */\n    title(value) {\n        return this.setString('title', value);\n    }\n\n    /**\n     * @param {String} value\n     * @returns {FieldBuilder}\n     */\n    text(value) {\n        return this.setString('value', value);\n    }\n\n    /**\n     *\n     * @returns {FieldBuilder}\n     */\n    small() {\n        return this.set('short', true);\n    }\n\n    /**\n     *\n     * @param {String} stringToAdd\n     * @returns {FieldBuilder}\n     */\n    add(stringToAdd) {\n        var sb = this.get('value');\n\n        {\n            sb += (`\\n${stringToAdd}`);\n        }\n\n        return this.text(sb);\n    }\n\n    /**\n     *\n     * @param {String} key\n     * @param {String} value\n     * @returns {FieldBuilder}\n     */\n    addKeyValuePair(key, value) {\n        var sb = this.get('value');\n\n        {\n            sb += (`\\n_${key}:_ ${value}`);\n        }\n\n        return this.text(sb);\n    }\n\n}\n\nexport default FieldBuilder;\n"
+  },
+  {
+    "__docId__": 104,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "FieldBuilder",
+    "memberof": "js/slack/FieldBuilder.js",
+    "longname": "js/slack/FieldBuilder.js~FieldBuilder",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/FieldBuilder.js",
+    "importStyle": "FieldBuilder",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "~/slack/AbstractBuilder~AbstractBuilder"
+    ]
+  },
+  {
+    "__docId__": 105,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "js/slack/FieldBuilder.js~FieldBuilder",
+    "longname": "js/slack/FieldBuilder.js~FieldBuilder#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "params": [
+      {
+        "name": "parent",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 106,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "title",
+    "memberof": "js/slack/FieldBuilder.js~FieldBuilder",
+    "longname": "js/slack/FieldBuilder.js~FieldBuilder#title",
+    "access": null,
+    "description": "",
+    "lineNumber": 21,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{FieldBuilder}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "FieldBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 107,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "text",
+    "memberof": "js/slack/FieldBuilder.js~FieldBuilder",
+    "longname": "js/slack/FieldBuilder.js~FieldBuilder#text",
+    "access": null,
+    "description": "",
+    "lineNumber": 29,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{FieldBuilder}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "FieldBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 108,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "small",
+    "memberof": "js/slack/FieldBuilder.js~FieldBuilder",
+    "longname": "js/slack/FieldBuilder.js~FieldBuilder#small",
+    "access": null,
+    "description": "",
+    "lineNumber": 37,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{FieldBuilder}"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "FieldBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 109,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "add",
+    "memberof": "js/slack/FieldBuilder.js~FieldBuilder",
+    "longname": "js/slack/FieldBuilder.js~FieldBuilder#add",
+    "access": null,
+    "description": "",
+    "lineNumber": 46,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{FieldBuilder}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "stringToAdd",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "FieldBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 110,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "addKeyValuePair",
+    "memberof": "js/slack/FieldBuilder.js~FieldBuilder",
+    "longname": "js/slack/FieldBuilder.js~FieldBuilder#addKeyValuePair",
+    "access": null,
+    "description": "",
+    "lineNumber": 62,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{FieldBuilder}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "FieldBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 111,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/InlineNotificationTemplate.js",
+    "memberof": null,
+    "longname": "js/slack/InlineNotificationTemplate.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import NotificationTemplate from '~/slack/NotificationTemplate';\n\nclass InlineNotificationTemplate extends NotificationTemplate {\n\n    applyTemplate(builder, data) {\n        builder.mergeIntoPayload(data);\n    }\n\n}\n\nexport default InlineNotificationTemplate;"
+  },
+  {
+    "__docId__": 112,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "InlineNotificationTemplate",
+    "memberof": "js/slack/InlineNotificationTemplate.js",
+    "longname": "js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/InlineNotificationTemplate.js",
+    "importStyle": "InlineNotificationTemplate",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "~/slack/NotificationTemplate~NotificationTemplate"
+    ]
+  },
+  {
+    "__docId__": 113,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "applyTemplate",
+    "memberof": "js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate",
+    "longname": "js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate#applyTemplate",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "builder",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 114,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/NotificationBuilder.js",
+    "memberof": null,
+    "longname": "js/slack/NotificationBuilder.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Promise from 'bluebird';\nimport Logger from 'winston';\nimport Preconditions from 'preconditions';\nimport request from 'request-promise';\n\nimport CoreObject from '~/CoreObject';\nimport AbstractBuilder from '../slack/AbstractBuilder';\nimport AttachmentBuilder from '../slack/AttachmentBuilder';\nimport Ember from '~/ember';\n\nclass NotificationBuilder extends AbstractBuilder {\n\n    /**\n     *\n     * @param {String} value\n     * @returns {NotificationBuilder}\n     */\n    channel(value) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('channel', value);\n    }\n\n    /**\n     *\n     *\n     * @param text\n     * @returns {NotificationBuilder}\n     */\n    text(text) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('text', text);\n    }\n\n    /**\n     *\n     * @param icon\n     * @returns {icon}\n     */\n    icon(icon) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('icon_emoji', icon);\n    }\n\n    username(username) {\n        Preconditions.shouldBeString(username);\n\n        return this.set('username', username);\n    }\n\n    attachments() {\n        return Ember.getWithDefault(this, 'attachments', []);\n    }\n\n    attachment() {\n        return new AttachmentBuilder(this);\n    }\n\n    toPayload() {\n        return this.get('payload');\n    }\n\n    toJson() {\n        return JSON.stringify(this.toPayload());\n    }\n\n    /**\n     *\n     * @return {Promise}\n     */\n    execute() {\n        let scope = this;\n\n        let url = this.url;\n        let payload = this.toPayload();\n\n        Preconditions.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');\n\n        return Promise.resolve()\n            .then(() => {\n                //\n                // https://www.npmjs.com/package/request-promise\n                //\n                // var options = {\n                //    method: 'POST',\n                //    uri: 'http://posttestserver.com/post.php',\n                //    body: {\n                //        some: 'payload'\n                //    },\n                //    json: true // Automatically stringifies the body to JSON\n                // };\n\n\n                let requestOptions = {\n                    uri: url,\n                    method: 'POST',\n                    body: payload,\n                    json: true\n                };\n\n                Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);\n\n                return Promise.resolve(request(requestOptions))\n                    .then(function(value) {\n                        Logger.debug(`[SLACK:${scope.name}] webhook succeeded.`, arguments);\n\n                        return value;\n                    })\n                    .catch(function(err) {\n                        Logger.warn(`[SLACK:${scope.name}] webhook failed.`, arguments);\n\n                        throw err;\n                    });\n            });\n    }\n\n    /**\n     * Do not insert a Promise into this method.\n     *\n     * @param {Object|NotificationBuilder} object\n     * @param {Object|undefined} deps\n     * @param {Preconditions|undefined} deps.Preconditions\n     * @return {Promise<NotificationBuilder>}\n     */\n    static innerCast(object, deps) {\n        deps = CoreObject.toDependencyMap(deps);\n\n        let Preconditions = deps.Preconditions;\n\n        Preconditions.shouldBeDefined(object);\n\n        return Promise.resolve(object)\n            .then(function(result) {\n                Preconditions.shouldBeDefined(object, 'Casted object must be defined.');\n                Preconditions.shouldNotBeArray(object, 'Casted object must NOT be an array.');\n                Preconditions.shouldBeObject(object, 'Casted object must be an object.');\n\n                if (result instanceof NotificationBuilder) {\n                    return result;\n                }\n\n                return new NotificationBuilder(object);\n            });\n    }\n}\n\nexport default NotificationBuilder;"
+  },
+  {
+    "__docId__": 115,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "NotificationBuilder",
+    "memberof": "js/slack/NotificationBuilder.js",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/NotificationBuilder.js",
+    "importStyle": "NotificationBuilder",
+    "description": null,
+    "lineNumber": 13,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "js/slack/AbstractBuilder.js~AbstractBuilder"
+    ]
+  },
+  {
+    "__docId__": 116,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "channel",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#channel",
+    "access": null,
+    "description": "",
+    "lineNumber": 20,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{NotificationBuilder}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "NotificationBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 117,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "text",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#text",
+    "access": null,
+    "description": "",
+    "lineNumber": 32,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{NotificationBuilder}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "text",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "NotificationBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 118,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "icon",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#icon",
+    "access": null,
+    "description": "",
+    "lineNumber": 43,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{icon}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "icon",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "icon"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 119,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "username",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#username",
+    "access": null,
+    "description": null,
+    "lineNumber": 49,
+    "undocument": true,
+    "params": [
+      {
+        "name": "username",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 120,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "attachments",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#attachments",
+    "access": null,
+    "description": null,
+    "lineNumber": 55,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 121,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "attachment",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#attachment",
+    "access": null,
+    "description": null,
+    "lineNumber": 59,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 122,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "toPayload",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#toPayload",
+    "access": null,
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 123,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "toJson",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#toJson",
+    "access": null,
+    "description": null,
+    "lineNumber": 67,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 124,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "execute",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder#execute",
+    "access": null,
+    "description": "",
+    "lineNumber": 75,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 125,
+    "kind": "method",
+    "static": true,
+    "variation": null,
+    "name": "innerCast",
+    "memberof": "js/slack/NotificationBuilder.js~NotificationBuilder",
+    "longname": "js/slack/NotificationBuilder.js~NotificationBuilder.innerCast",
+    "access": null,
+    "description": "Do not insert a Promise into this method.",
+    "lineNumber": 129,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object",
+          "NotificationBuilder"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object",
+          "undefined"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "deps",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Preconditions",
+          "undefined"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "deps.Preconditions",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<NotificationBuilder>"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 126,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/NotificationService.js",
+    "memberof": null,
+    "longname": "js/slack/NotificationService.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Logger from 'winston';\nimport Lodash from 'lodash/index';\nimport Preconditions from '~/Preconditions';\nimport NotificationTemplate from './NotificationTemplate';\nimport NotificationBuilder from './NotificationBuilder';\nimport AbstractObject from '~/CoreObject';\n\nclass NotificationService extends AbstractObject {\n\n    /**\n     *\n     * @param {Object} options\n     */\n    constructor(options) {\n        super(options);\n\n        if (!this.templates) {\n            this.templates = {};\n        }\n\n        if (!this.mappings) {\n            this.mappings = {};\n        }\n\n        this.register('DEFAULT_TYPE', new NotificationTemplate({\n            name: 'DEFAULT_TEMPLATE'\n        }));\n\n        this.payload = {};\n    }\n\n    mergeIntoPayload(payload) {\n        Preconditions.shouldBeObject(payload, 'Payload must be object');\n        Lodash.assign(this.payload, payload);\n    }\n\n    /**\n     *\n     * @param {String} notificationType\n     * @param {NotificationTemplate} notificationTemplate\n     * @return {NotificationService}\n     */\n    register(notificationType, notificationTemplate) {\n        Preconditions.shouldBeString(notificationType, 'notificationType must be string');\n        Preconditions.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');\n\n        if (!(notificationTemplate instanceof NotificationTemplate)) {\n            let options = notificationTemplate;\n\n            notificationTemplate = new NotificationTemplate(options);\n        }\n\n        this.mappings[notificationType] = notificationTemplate.name;\n        this.templates[notificationTemplate.name] = notificationTemplate;\n\n        return this;\n    }\n\n    builder() {\n        let builder = new NotificationBuilder({\n            url: this.url\n        });\n        \n        if (this.payload) {\n            builder.mergeIntoPayload(this.payload);\n        }\n\n        return builder;\n    }\n\n    notificationTemplate(notificationType) {\n        let notificationTemplateName = this.mappings[notificationType];\n        var notificationTemplate = this.templates[notificationTemplateName];\n\n        Preconditions.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);\n\n        return notificationTemplate;\n    }\n\n    /**\n     *\n     * @param {String} type\n     * @param {*|undefined} data\n     * @return {Promise}\n     */\n    notify(type, data) {\n        Preconditions.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');\n        //this.Preconditions.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');\n        data = data || {};\n\n        let url = this.url;\n        let scope = this;\n\n        let notificationTemplate = this.notificationTemplate(type);\n        let builder = this.builder();\n        let promise = notificationTemplate.render(builder, data);\n\n        return promise\n            .then((builder) => {\n                // Let's sanity the builder before executing.\n\n                Preconditions.shouldBeDefined(builder, 'No builder for ' + type);\n\n                if (!builder.url) {\n                    builder.url = url;\n                }\n\n                let payload = builder.payload;\n\n                Preconditions.shouldBeString(builder.url, 'NotificationService.notify(): builder.url was undefined');\n                // Attachments without top level text are valid.\n                //Preconditions.shouldBeString(payload.text, 'builder did not complete \\'text\\' property. ' + JSON.stringify(payload));\n\n                return builder.execute();\n            });\n    }\n}\n\nexport { NotificationService };\n\nexport default new NotificationService({\n\n});\n"
+  },
+  {
+    "__docId__": 127,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "NotificationService",
+    "memberof": "js/slack/NotificationService.js",
+    "longname": "js/slack/NotificationService.js~NotificationService",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/NotificationService.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "pseudoExport": true,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "~/CoreObject~AbstractObject"
+    ]
+  },
+  {
+    "__docId__": 128,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#constructor",
+    "access": null,
+    "description": "",
+    "lineNumber": 16,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": ""
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 129,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "templates",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#templates",
+    "access": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 130,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "mappings",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#mappings",
+    "access": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 131,
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "payload",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#payload",
+    "access": null,
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 132,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "mergeIntoPayload",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#mergeIntoPayload",
+    "access": null,
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "params": [
+      {
+        "name": "payload",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 133,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "register",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#register",
+    "access": null,
+    "description": "",
+    "lineNumber": 45,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "notificationType",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "NotificationTemplate"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "notificationTemplate",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "NotificationService"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 134,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "builder",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#builder",
+    "access": null,
+    "description": null,
+    "lineNumber": 61,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 135,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "notificationTemplate",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#notificationTemplate",
+    "access": null,
+    "description": null,
+    "lineNumber": 73,
+    "undocument": true,
+    "params": [
+      {
+        "name": "notificationType",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 136,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "notify",
+    "memberof": "js/slack/NotificationService.js~NotificationService",
+    "longname": "js/slack/NotificationService.js~NotificationService#notify",
+    "access": null,
+    "description": "",
+    "lineNumber": 88,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "type",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*",
+          "undefined"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 137,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "notificationService",
+    "memberof": "js/slack/NotificationService.js",
+    "longname": "js/slack/NotificationService.js~notificationService",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/NotificationService.js",
+    "importStyle": "notificationService",
+    "description": null,
+    "lineNumber": 123,
+    "undocument": true,
+    "type": {
+      "types": [
+        "js/slack/NotificationService.js~NotificationService"
+      ]
+    }
+  },
+  {
+    "__docId__": 138,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/NotificationTemplate.js",
+    "memberof": null,
+    "longname": "js/slack/NotificationTemplate.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport Lodash from 'lodash/index';\nimport Logger from 'winston';\n\nimport Preconditions from '~/Preconditions';\nimport NotificationBuilder from '~/slack/NotificationBuilder';\nimport AbstractNotificationTemplate from '~/slack/AbstractNotificationTemplate';\n\nclass NotificationTemplate extends AbstractNotificationTemplate {\n\n    constructor(options) {\n        super(options);\n\n        Lodash.defaults(this, {\n            name: 'NotificationTemplate'\n        });\n\n        Preconditions.shouldBeString(this.name, 'You must define a name for this template');\n    }\n\n    /**\n     *\n     * @param {NotificationBuilder} builder\n     * @param {Object} data\n     * @return {NotificationBuilder}\n     */\n    applyTemplate(builder, data) {\n        if (Lodash.isObject(this.get('payload'))) {\n            builder.mergeIntoPayload(this.get('payload'));\n        }\n\n        Logger.silly('Data', data);\n\n        // This is actually not useful 'by default'\n        // It's useful if you want to do inline stuff, but if we do this in the common base-class,\n        // then we are actually prevented from ever using this.super() in subclasses that use strongly\n        // typed objects instead of slack formatted json. Since the architecture of this project is to\n        // abstract away the slack parts, applying the \"data\" to the slack payload was a limiting design mistake.\n        //\n        //if (this.Lodash.isObject(data)) {\n        //    notificationBuilder.mergeIntoPayload(data);\n        //}\n\n        // The default implementation\n        // This is where you would modify your builder.\n        return builder;\n    }\n}\n\nexport default NotificationTemplate;"
+  },
+  {
+    "__docId__": 139,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "NotificationTemplate",
+    "memberof": "js/slack/NotificationTemplate.js",
+    "longname": "js/slack/NotificationTemplate.js~NotificationTemplate",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/NotificationTemplate.js",
+    "importStyle": "NotificationTemplate",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "~/slack/AbstractNotificationTemplate~AbstractNotificationTemplate"
+    ]
+  },
+  {
+    "__docId__": 140,
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "js/slack/NotificationTemplate.js~NotificationTemplate",
+    "longname": "js/slack/NotificationTemplate.js~NotificationTemplate#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 141,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "applyTemplate",
+    "memberof": "js/slack/NotificationTemplate.js~NotificationTemplate",
+    "longname": "js/slack/NotificationTemplate.js~NotificationTemplate#applyTemplate",
+    "access": null,
+    "description": "",
+    "lineNumber": 28,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "NotificationBuilder"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "builder",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "NotificationBuilder"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 142,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/UserNotificationTemplate.js",
+    "memberof": null,
+    "longname": "js/slack/UserNotificationTemplate.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "import NotificationTemplate from '~/slack/NotificationTemplate';\n\nclass UserNotificationTemplate extends NotificationTemplate {\n\n    applyTemplate(builder, user) {\n        let id = user.id;\n        let firstName = user.firstName;\n        let lastName = user.lastName;\n        let address = user.address;\n\n        builder\n            .attachment()\n            .title(`User - ${id}`)\n            .field()\n            .addKeyValuePair('id', 'asdf')\n            .addKeyValuePair('name', `${firstName} ${lastName}`)\n            .addKeyValuePair('address', `${address}`)\n        ;\n    }\n}\n\nexport default UserNotificationTemplate;"
+  },
+  {
+    "__docId__": 143,
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "UserNotificationTemplate",
+    "memberof": "js/slack/UserNotificationTemplate.js",
+    "longname": "js/slack/UserNotificationTemplate.js~UserNotificationTemplate",
+    "access": null,
+    "export": true,
+    "importPath": "coinme/js/slack/UserNotificationTemplate.js",
+    "importStyle": "UserNotificationTemplate",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "~/slack/NotificationTemplate~NotificationTemplate"
+    ]
+  },
+  {
+    "__docId__": 144,
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "applyTemplate",
+    "memberof": "js/slack/UserNotificationTemplate.js~UserNotificationTemplate",
+    "longname": "js/slack/UserNotificationTemplate.js~UserNotificationTemplate#applyTemplate",
+    "access": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "builder",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "user",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "__docId__": 145,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/slack/index.js",
+    "memberof": null,
+    "longname": "js/slack/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nimport AbstractBuilder from \"~/slack/AbstractBuilder\";\nimport FieldBuilder from \"~/slack/FieldBuilder\";\nimport AttachmentBuilder from \"~/slack/AttachmentBuilder\";\nimport NotificationBuilder from \"~/slack/NotificationBuilder\";\nimport NotificationService from \"~/slack/NotificationService\";\nimport NotificationTemplate from \"~/slack/NotificationTemplate\";\nimport InlineNotificationTemplate from \"~/slack/InlineNotificationTemplate\";\nimport UserNotificationTemplate from \"~/slack/UserNotificationTemplate\";\n\nexport {AbstractBuilder};\nexport {FieldBuilder};\nexport {AttachmentBuilder};\nexport {NotificationBuilder};\nexport {NotificationTemplate};\nexport {NotificationService};\nexport {InlineNotificationTemplate};\nexport {UserNotificationTemplate};\n\nexport default NotificationService;\n"
+  },
+  {
+    "__docId__": 147,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 148,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 149,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 150,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 151,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 152,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 153,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 154,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 155,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 156,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 157,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 158,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 159,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 160,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 161,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 162,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 163,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 164,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 165,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 166,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 167,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 168,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 169,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 170,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 171,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 172,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 173,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 174,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 175,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 176,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 177,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 178,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 179,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 180,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 181,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 182,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 183,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 184,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 185,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 186,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 187,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 188,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 189,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 190,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 191,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 192,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 193,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 195,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 196,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 197,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 198,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 199,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 200,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 201,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 202,
+    "kind": "external",
+    "static": true,
+    "variation": null,
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  }
+]
