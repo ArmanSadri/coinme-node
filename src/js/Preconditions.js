@@ -220,7 +220,7 @@ export default class Preconditions {
 
         let fn = Utility.typeMatcher('string');
 
-        return Preconditions.shouldBe(fn, 'object', object, message);
+        return Preconditions.shouldBe(fn, 'object', string, message);
     }
 
     /**
