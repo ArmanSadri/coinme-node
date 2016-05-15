@@ -10,11 +10,11 @@ var _lodash = require("lodash");
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _Preconditions = require("./../../Preconditions");
+var _Preconditions = require("./Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _ember = require("./../../ember");
+var _ember = require("./ember");
 
 var _ember2 = _interopRequireDefault(_ember);
 

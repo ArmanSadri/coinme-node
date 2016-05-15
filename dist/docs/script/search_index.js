@@ -1,116 +1,116 @@
 window.esdocSearchIndex = [
   [
-    "coinme/js/slack/abstractbuilder.js~abstractbuilder",
+    "coinme-node/js/slack/abstractbuilder.js~abstractbuilder",
     "class/js/slack/AbstractBuilder.js~AbstractBuilder.html",
-    "<span>AbstractBuilder</span> <span class=\"search-result-import-path\">coinme/js/slack/AbstractBuilder.js</span>",
+    "<span>AbstractBuilder</span> <span class=\"search-result-import-path\">coinme-node/js/slack/AbstractBuilder.js</span>",
     "class"
   ],
   [
-    "coinme/js/abstracterror.js~abstracterror",
+    "coinme-node/js/abstracterror.js~abstracterror",
     "class/js/AbstractError.js~AbstractError.html",
-    "<span>AbstractError</span> <span class=\"search-result-import-path\">coinme/js/AbstractError.js</span>",
+    "<span>AbstractError</span> <span class=\"search-result-import-path\">coinme-node/js/AbstractError.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate",
+    "coinme-node/js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate",
     "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html",
-    "<span>AbstractNotificationTemplate</span> <span class=\"search-result-import-path\">coinme/js/slack/AbstractNotificationTemplate.js</span>",
+    "<span>AbstractNotificationTemplate</span> <span class=\"search-result-import-path\">coinme-node/js/slack/AbstractNotificationTemplate.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/attachmentbuilder.js~attachmentbuilder",
+    "coinme-node/js/slack/attachmentbuilder.js~attachmentbuilder",
     "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html",
-    "<span>AttachmentBuilder</span> <span class=\"search-result-import-path\">coinme/js/slack/AttachmentBuilder.js</span>",
+    "<span>AttachmentBuilder</span> <span class=\"search-result-import-path\">coinme-node/js/slack/AttachmentBuilder.js</span>",
     "class"
   ],
   [
-    "coinme/js/coinme.js~coinme",
+    "coinme-node/js/coinme.js~coinme",
     "class/js/Coinme.js~Coinme.html",
-    "<span>Coinme</span> <span class=\"search-result-import-path\">coinme/js/Coinme.js</span>",
+    "<span>Coinme</span> <span class=\"search-result-import-path\">coinme-node/js/Coinme.js</span>",
     "class"
   ],
   [
-    "coinme/js/coreobject.js~coreobject",
+    "coinme-node/js/coreobject.js~coreobject",
     "class/js/CoreObject.js~CoreObject.html",
-    "<span>CoreObject</span> <span class=\"search-result-import-path\">coinme/js/CoreObject.js</span>",
+    "<span>CoreObject</span> <span class=\"search-result-import-path\">coinme-node/js/CoreObject.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/fieldbuilder.js~fieldbuilder",
+    "coinme-node/js/slack/fieldbuilder.js~fieldbuilder",
     "class/js/slack/FieldBuilder.js~FieldBuilder.html",
-    "<span>FieldBuilder</span> <span class=\"search-result-import-path\">coinme/js/slack/FieldBuilder.js</span>",
+    "<span>FieldBuilder</span> <span class=\"search-result-import-path\">coinme-node/js/slack/FieldBuilder.js</span>",
     "class"
   ],
   [
-    "coinme/js/functions.js~functions",
+    "coinme-node/js/functions.js~functions",
     "class/js/Functions.js~Functions.html",
-    "<span>Functions</span> <span class=\"search-result-import-path\">coinme/js/Functions.js</span>",
+    "<span>Functions</span> <span class=\"search-result-import-path\">coinme-node/js/Functions.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/inlinenotificationtemplate.js~inlinenotificationtemplate",
+    "coinme-node/js/slack/inlinenotificationtemplate.js~inlinenotificationtemplate",
     "class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html",
-    "<span>InlineNotificationTemplate</span> <span class=\"search-result-import-path\">coinme/js/slack/InlineNotificationTemplate.js</span>",
+    "<span>InlineNotificationTemplate</span> <span class=\"search-result-import-path\">coinme-node/js/slack/InlineNotificationTemplate.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/notificationbuilder.js~notificationbuilder",
+    "coinme-node/js/slack/notificationbuilder.js~notificationbuilder",
     "class/js/slack/NotificationBuilder.js~NotificationBuilder.html",
-    "<span>NotificationBuilder</span> <span class=\"search-result-import-path\">coinme/js/slack/NotificationBuilder.js</span>",
+    "<span>NotificationBuilder</span> <span class=\"search-result-import-path\">coinme-node/js/slack/NotificationBuilder.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/notificationservice.js~notificationservice",
+    "coinme-node/js/slack/notificationservice.js~notificationservice",
     "class/js/slack/NotificationService.js~NotificationService.html",
-    "<span>NotificationService</span> <span class=\"search-result-import-path\">coinme/js/slack/NotificationService.js</span>",
+    "<span>NotificationService</span> <span class=\"search-result-import-path\">coinme-node/js/slack/NotificationService.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/notificationtemplate.js~notificationtemplate",
+    "coinme-node/js/slack/notificationtemplate.js~notificationtemplate",
     "class/js/slack/NotificationTemplate.js~NotificationTemplate.html",
-    "<span>NotificationTemplate</span> <span class=\"search-result-import-path\">coinme/js/slack/NotificationTemplate.js</span>",
+    "<span>NotificationTemplate</span> <span class=\"search-result-import-path\">coinme-node/js/slack/NotificationTemplate.js</span>",
     "class"
   ],
   [
-    "coinme/js/preconditions.js~preconditions",
+    "coinme-node/js/preconditions.js~preconditions",
     "class/js/Preconditions.js~Preconditions.html",
-    "<span>Preconditions</span> <span class=\"search-result-import-path\">coinme/js/Preconditions.js</span>",
+    "<span>Preconditions</span> <span class=\"search-result-import-path\">coinme-node/js/Preconditions.js</span>",
     "class"
   ],
   [
-    "coinme/js/preconditions.js~preconditionserror",
+    "coinme-node/js/preconditions.js~preconditionserror",
     "function/index.html#static-function-PreconditionsError",
-    "<span>PreconditionsError</span> <span class=\"search-result-import-path\">coinme/js/Preconditions.js</span>",
+    "<span>PreconditionsError</span> <span class=\"search-result-import-path\">coinme-node/js/Preconditions.js</span>",
     "function"
   ],
   [
-    "coinme/js/data/user.js~user",
+    "coinme-node/js/data/user.js~user",
     "class/js/data/User.js~User.html",
-    "<span>User</span> <span class=\"search-result-import-path\">coinme/js/data/User.js</span>",
+    "<span>User</span> <span class=\"search-result-import-path\">coinme-node/js/data/User.js</span>",
     "class"
   ],
   [
-    "coinme/js/data/userbuilder.js~userbuilder",
+    "coinme-node/js/data/userbuilder.js~userbuilder",
     "class/js/data/UserBuilder.js~UserBuilder.html",
-    "<span>UserBuilder</span> <span class=\"search-result-import-path\">coinme/js/data/UserBuilder.js</span>",
+    "<span>UserBuilder</span> <span class=\"search-result-import-path\">coinme-node/js/data/UserBuilder.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/usernotificationtemplate.js~usernotificationtemplate",
+    "coinme-node/js/slack/usernotificationtemplate.js~usernotificationtemplate",
     "class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html",
-    "<span>UserNotificationTemplate</span> <span class=\"search-result-import-path\">coinme/js/slack/UserNotificationTemplate.js</span>",
+    "<span>UserNotificationTemplate</span> <span class=\"search-result-import-path\">coinme-node/js/slack/UserNotificationTemplate.js</span>",
     "class"
   ],
   [
-    "coinme/js/utility.js~utility",
+    "coinme-node/js/utility.js~utility",
     "class/js/Utility.js~Utility.html",
-    "<span>Utility</span> <span class=\"search-result-import-path\">coinme/js/Utility.js</span>",
+    "<span>Utility</span> <span class=\"search-result-import-path\">coinme-node/js/Utility.js</span>",
     "class"
   ],
   [
-    "coinme/js/slack/notificationservice.js~notificationservice",
+    "coinme-node/js/slack/notificationservice.js~notificationservice",
     "variable/index.html#static-variable-notificationService",
-    "<span>notificationService</span> <span class=\"search-result-import-path\">coinme/js/slack/NotificationService.js</span>",
+    "<span>notificationService</span> <span class=\"search-result-import-path\">coinme-node/js/slack/NotificationService.js</span>",
     "variable"
   ],
   [

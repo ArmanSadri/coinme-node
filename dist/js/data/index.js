@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.UserBuilder = exports.User = undefined;
 
-var _User = require("./../../../data/User");
+var _User = require("./User");
 
 var _User2 = _interopRequireDefault(_User);
 
-var _UserBuilder = require("./../../../data/UserBuilder");
+var _UserBuilder = require("./UserBuilder");
 
 var _UserBuilder2 = _interopRequireDefault(_UserBuilder);
 

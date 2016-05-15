@@ -22,7 +22,7 @@ var _requestPromise = require('request-promise');
 
 var _requestPromise2 = _interopRequireDefault(_requestPromise);
 
-var _CoreObject = require('./../../../CoreObject');
+var _CoreObject = require('./../CoreObject');
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
@@ -34,7 +34,7 @@ var _AttachmentBuilder = require('../slack/AttachmentBuilder');
 
 var _AttachmentBuilder2 = _interopRequireDefault(_AttachmentBuilder);
 
-var _ember = require('./../../../ember');
+var _ember = require('./../ember');
 
 var _ember2 = _interopRequireDefault(_ember);
 

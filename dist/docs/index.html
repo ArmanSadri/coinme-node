@@ -125,6 +125,41 @@ var builder = new NotificationBuilder({
     }
 }</code>
 </code></pre>
+<h2 id="notificationservice">NotificationService</h2>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">
+/**
+ * 
+ * @param {String} eventName
+ * @param {NotificationTemplate|Object} template
+ */
+NotificationService.register(&apos;EVENT_NAME&apos;, {
+
+    /**
+     * The name of the template. Useful for debugging.
+     *
+     * @type {String} 
+     * @required
+     */
+    name: &apos;InlineTemplate&apos;, 
+
+    /**
+     * @type {Object}
+     * @optional
+     */
+    payload: {
+        username: &apos;InlineTemplate&apos;
+    }
+});
+
+/**
+ * @param {String} eventName 
+ * @param {Object|undefined} data
+ * @return undefined
+ */
+NotificationService.notify(&apos;EVENT_NAME&apos;, {
+    text: &apos;text&apos;
+});</code>
+</code></pre>
 <h2 id="install">Install</h2>
 <pre><code><code class="source-code prettyprint">$ npm install --save coinme-slack</code>
 </code></pre><h2 id="license">License</h2>
