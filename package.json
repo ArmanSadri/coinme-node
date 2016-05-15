@@ -46,7 +46,6 @@
     "babel-plugin-transform-remove-debugger": "^6.5.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-register": "^6.7.2",
-    "babel-root-import": "^3.2.2",
     "chai": "^3.4.1",
     "coveralls": "^2.11.6",
     "esdoc": "^0.4.6",
@@ -69,17 +68,18 @@
   },
   "dependencies": {
     "async": "^1.5.2",
-    "lodash": "^4.5.0",
-    "preconditions": "1.0.8",
-    "request-promise": "^2.0.1",
-    "winston": "^2.2.0",
+    "babel-project-relative-import": "^2.0.0",
+    "bluebird": "^3.3.4",
     "ember-cli-get-component-path-option": "^1.0.0",
     "ember-cli-normalize-entity-name": "^1.0.0",
     "ember-cli-path-utils": "^1.0.0",
     "ember-cli-string-utils": "^1.0.0",
     "ember-cli-test-info": "^1.0.0",
     "ember-cli-valid-component-name": "^1.0.0",
-    "bluebird": "^3.3.4"
+    "lodash": "^4.5.0",
+    "preconditions": "1.0.8",
+    "request-promise": "^2.0.1",
+    "winston": "^2.2.0"
   },
   "babel": {
     "presets": [
@@ -89,9 +89,9 @@
       "transform-remove-console",
       "transform-remove-debugger",
       [
-        "babel-root-import",
+        "babel-project-relative-import",
         {
-          "rootPathSuffix": "src/js"
+          "rootPathSuffix": "src/js/"
         }
       ],
       [
