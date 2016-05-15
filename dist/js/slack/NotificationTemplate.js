@@ -14,15 +14,15 @@ var _winston = require('winston');
 
 var _winston2 = _interopRequireDefault(_winston);
 
-var _Preconditions = require('/Users/msmyers/projects/coinme/coinme-node/src/js/Preconditions');
+var _Preconditions = require('./../../../Preconditions');
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _NotificationBuilder = require('/Users/msmyers/projects/coinme/coinme-node/src/js/slack/NotificationBuilder');
+var _NotificationBuilder = require('./../../../slack/NotificationBuilder');
 
 var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
 
-var _AbstractNotificationTemplate = require('/Users/msmyers/projects/coinme/coinme-node/src/js/slack/AbstractNotificationTemplate');
+var _AbstractNotificationTemplate = require('./../../../slack/AbstractNotificationTemplate');
 
 var _AbstractNotificationTemplate2 = _interopRequireDefault(_AbstractNotificationTemplate);
 
