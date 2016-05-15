@@ -5,35 +5,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.UserNotificationTemplate = exports.InlineNotificationTemplate = exports.NotificationService = exports.NotificationTemplate = exports.NotificationBuilder = exports.AttachmentBuilder = exports.FieldBuilder = exports.AbstractBuilder = undefined;
 
-var _AbstractBuilder = require("./../../../slack/AbstractBuilder");
+var _AbstractBuilder = require("./AbstractBuilder");
 
 var _AbstractBuilder2 = _interopRequireDefault(_AbstractBuilder);
 
-var _FieldBuilder = require("./../../../slack/FieldBuilder");
+var _FieldBuilder = require("./FieldBuilder");
 
 var _FieldBuilder2 = _interopRequireDefault(_FieldBuilder);
 
-var _AttachmentBuilder = require("./../../../slack/AttachmentBuilder");
+var _AttachmentBuilder = require("./AttachmentBuilder");
 
 var _AttachmentBuilder2 = _interopRequireDefault(_AttachmentBuilder);
 
-var _NotificationBuilder = require("./../../../slack/NotificationBuilder");
+var _NotificationBuilder = require("./NotificationBuilder");
 
 var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
 
-var _NotificationService = require("./../../../slack/NotificationService");
+var _NotificationService = require("./NotificationService");
 
 var _NotificationService2 = _interopRequireDefault(_NotificationService);
 
-var _NotificationTemplate = require("./../../../slack/NotificationTemplate");
+var _NotificationTemplate = require("./NotificationTemplate");
 
 var _NotificationTemplate2 = _interopRequireDefault(_NotificationTemplate);
 
-var _InlineNotificationTemplate = require("./../../../slack/InlineNotificationTemplate");
+var _InlineNotificationTemplate = require("./InlineNotificationTemplate");
 
 var _InlineNotificationTemplate2 = _interopRequireDefault(_InlineNotificationTemplate);
 
-var _UserNotificationTemplate = require("./../../../slack/UserNotificationTemplate");
+var _UserNotificationTemplate = require("./UserNotificationTemplate");
 
 var _UserNotificationTemplate2 = _interopRequireDefault(_UserNotificationTemplate);
 

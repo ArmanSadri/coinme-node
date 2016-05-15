@@ -1,5 +1,5 @@
 {
-  "name": "coinme",
+  "name": "coinme-node",
   "version": "1.4.2",
   "description": "The common library for Coinme Node apps",
   "main": "dist/js/index.js",
@@ -91,7 +91,7 @@
       [
         "babel-project-relative-import",
         {
-          "rootPathSuffix": "src/js/"
+          "sourceDir": "src/js/"
         }
       ],
       [

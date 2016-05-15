@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emberRuntime = require("./../../../ember/ember-runtime");
+var _emberRuntime = require("./ember-runtime");
 
 var _emberRuntime2 = _interopRequireDefault(_emberRuntime);
 

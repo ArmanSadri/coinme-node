@@ -39,10 +39,10 @@
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\r\n * This class should contain all of our reusable functions\r\n ",
+          "value": "*\n * This class should contain all of our reusable functions\n ",
           "range": [
-            17,
-            85
+            15,
+            81
           ],
           "loc": {
             "start": {
@@ -65,8 +65,8 @@
           "type": "Identifier",
           "name": "Functions",
           "range": [
-            108,
-            117
+            103,
+            112
           ],
           "loc": {
             "start": {
@@ -89,8 +89,8 @@
                 "type": "Identifier",
                 "name": "identity",
                 "range": [
-                  249,
-                  257
+                  237,
+                  245
                 ],
                 "loc": {
                   "start": {
@@ -115,8 +115,8 @@
                       "argument": {
                         "type": "ThisExpression",
                         "range": [
-                          278,
-                          282
+                          265,
+                          269
                         ],
                         "loc": {
                           "start": {
@@ -130,8 +130,8 @@
                         }
                       },
                       "range": [
-                        271,
-                        283
+                        258,
+                        270
                       ],
                       "loc": {
                         "start": {
@@ -146,8 +146,8 @@
                     }
                   ],
                   "range": [
-                    260,
-                    290
+                    248,
+                    276
                   ],
                   "loc": {
                     "start": {
@@ -163,8 +163,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  257,
-                  290
+                  245,
+                  276
                 ],
                 "loc": {
                   "start": {
@@ -180,8 +180,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                242,
-                290
+                230,
+                276
               ],
               "loc": {
                 "start": {
@@ -196,10 +196,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * Returns the current scope that you're calling from.\r\n     *\r\n     * @returns {Functions}\r\n     ",
+                  "value": "*\n     * Returns the current scope that you're calling from.\n     *\n     * @returns {Functions}\n     ",
                   "range": [
-                    127,
-                    236
+                    120,
+                    225
                   ],
                   "loc": {
                     "start": {
@@ -216,10 +216,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * Always returns true\r\n     *\r\n     * @returns {boolean} true\r\n     ",
+                  "value": "*\n     * Always returns true\n     *\n     * @returns {boolean} true\n     ",
                   "range": [
-                    298,
-                    378
+                    282,
+                    358
                   ],
                   "loc": {
                     "start": {
@@ -241,8 +241,8 @@
                 "type": "Identifier",
                 "name": "yes",
                 "range": [
-                  391,
-                  394
+                  370,
+                  373
                 ],
                 "loc": {
                   "start": {
@@ -269,8 +269,8 @@
                         "value": true,
                         "raw": "true",
                         "range": [
-                          415,
-                          419
+                          393,
+                          397
                         ],
                         "loc": {
                           "start": {
@@ -284,8 +284,8 @@
                         }
                       },
                       "range": [
-                        408,
-                        420
+                        386,
+                        398
                       ],
                       "loc": {
                         "start": {
@@ -300,8 +300,8 @@
                     }
                   ],
                   "range": [
-                    397,
-                    427
+                    376,
+                    404
                   ],
                   "loc": {
                     "start": {
@@ -317,8 +317,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  394,
-                  427
+                  373,
+                  404
                 ],
                 "loc": {
                   "start": {
@@ -334,8 +334,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                384,
-                427
+                363,
+                404
               ],
               "loc": {
                 "start": {
@@ -350,10 +350,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * Always returns true\r\n     *\r\n     * @returns {boolean} true\r\n     ",
+                  "value": "*\n     * Always returns true\n     *\n     * @returns {boolean} true\n     ",
                   "range": [
-                    298,
-                    378
+                    282,
+                    358
                   ],
                   "loc": {
                     "start": {
@@ -370,10 +370,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * Always returns false\r\n     *\r\n     * @returns {boolean} false\r\n     ",
+                  "value": "*\n     * Always returns false\n     *\n     * @returns {boolean} false\n     ",
                   "range": [
-                    435,
-                    517
+                    410,
+                    488
                   ],
                   "loc": {
                     "start": {
@@ -395,8 +395,8 @@
                 "type": "Identifier",
                 "name": "no",
                 "range": [
-                  530,
-                  532
+                  500,
+                  502
                 ],
                 "loc": {
                   "start": {
@@ -423,8 +423,8 @@
                         "value": false,
                         "raw": "false",
                         "range": [
-                          553,
-                          558
+                          522,
+                          527
                         ],
                         "loc": {
                           "start": {
@@ -438,8 +438,8 @@
                         }
                       },
                       "range": [
-                        546,
-                        559
+                        515,
+                        528
                       ],
                       "loc": {
                         "start": {
@@ -454,8 +454,8 @@
                     }
                   ],
                   "range": [
-                    535,
-                    566
+                    505,
+                    534
                   ],
                   "loc": {
                     "start": {
@@ -471,8 +471,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  532,
-                  566
+                  502,
+                  534
                 ],
                 "loc": {
                   "start": {
@@ -488,8 +488,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                523,
-                566
+                493,
+                534
               ],
               "loc": {
                 "start": {
@@ -504,10 +504,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * Always returns false\r\n     *\r\n     * @returns {boolean} false\r\n     ",
+                  "value": "*\n     * Always returns false\n     *\n     * @returns {boolean} false\n     ",
                   "range": [
-                    435,
-                    517
+                    410,
+                    488
                   ],
                   "loc": {
                     "start": {
@@ -525,8 +525,8 @@
             }
           ],
           "range": [
-            118,
-            571
+            113,
+            537
           ],
           "loc": {
             "start": {
@@ -540,8 +540,8 @@
           }
         },
         "range": [
-          102,
-          571
+          97,
+          537
         ],
         "loc": {
           "start": {
@@ -556,10 +556,10 @@
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\r\n * This class should contain all of our reusable functions\r\n ",
+            "value": "*\n * This class should contain all of our reusable functions\n ",
             "range": [
-              17,
-              85
+              15,
+              81
             ],
             "loc": {
               "start": {
@@ -576,8 +576,8 @@
         "trailingComments": []
       },
       "range": [
-        87,
-        571
+        82,
+        537
       ],
       "loc": {
         "start": {
@@ -592,10 +592,10 @@
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\r\n * This class should contain all of our reusable functions\r\n ",
+          "value": "*\n * This class should contain all of our reusable functions\n ",
           "range": [
-            17,
-            85
+            15,
+            81
           ],
           "loc": {
             "start": {
@@ -614,7 +614,7 @@
   "sourceType": "module",
   "range": [
     0,
-    571
+    537
   ],
   "loc": {
     "start": {
@@ -629,10 +629,10 @@
   "comments": [
     {
       "type": "Block",
-      "value": "*\r\n * This class should contain all of our reusable functions\r\n ",
+      "value": "*\n * This class should contain all of our reusable functions\n ",
       "range": [
-        17,
-        85
+        15,
+        81
       ],
       "loc": {
         "start": {
@@ -647,10 +647,10 @@
     },
     {
       "type": "Block",
-      "value": "*\r\n     * Returns the current scope that you're calling from.\r\n     *\r\n     * @returns {Functions}\r\n     ",
+      "value": "*\n     * Returns the current scope that you're calling from.\n     *\n     * @returns {Functions}\n     ",
       "range": [
-        127,
-        236
+        120,
+        225
       ],
       "loc": {
         "start": {
@@ -665,10 +665,10 @@
     },
     {
       "type": "Block",
-      "value": "*\r\n     * Always returns true\r\n     *\r\n     * @returns {boolean} true\r\n     ",
+      "value": "*\n     * Always returns true\n     *\n     * @returns {boolean} true\n     ",
       "range": [
-        298,
-        378
+        282,
+        358
       ],
       "loc": {
         "start": {
@@ -683,10 +683,10 @@
     },
     {
       "type": "Block",
-      "value": "*\r\n     * Always returns false\r\n     *\r\n     * @returns {boolean} false\r\n     ",
+      "value": "*\n     * Always returns false\n     *\n     * @returns {boolean} false\n     ",
       "range": [
-        435,
-        517
+        410,
+        488
       ],
       "loc": {
         "start": {

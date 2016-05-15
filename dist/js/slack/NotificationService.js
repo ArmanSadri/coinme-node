@@ -15,7 +15,7 @@ var _index = require('lodash/index');
 
 var _index2 = _interopRequireDefault(_index);
 
-var _Preconditions = require('./../../../Preconditions');
+var _Preconditions = require('./../Preconditions');
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
@@ -27,7 +27,7 @@ var _NotificationBuilder = require('./NotificationBuilder');
 
 var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
 
-var _CoreObject = require('./../../../CoreObject');
+var _CoreObject = require('./../CoreObject');
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
 

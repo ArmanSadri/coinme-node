@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _CoreObject2 = require("./../../../CoreObject");
+var _CoreObject2 = require("./../CoreObject");
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 

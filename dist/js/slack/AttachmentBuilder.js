@@ -8,19 +8,19 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Preconditions = require("./../../../Preconditions");
+var _Preconditions = require("./../Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _ember = require("./../../../ember");
+var _ember = require("./../ember");
 
 var _ember2 = _interopRequireDefault(_ember);
 
-var _AbstractBuilder2 = require("./../../../slack/AbstractBuilder");
+var _AbstractBuilder2 = require("./AbstractBuilder");
 
 var _AbstractBuilder3 = _interopRequireDefault(_AbstractBuilder2);
 
-var _FieldBuilder = require("./../../../slack/FieldBuilder");
+var _FieldBuilder = require("./FieldBuilder");
 
 var _FieldBuilder2 = _interopRequireDefault(_FieldBuilder);
 
