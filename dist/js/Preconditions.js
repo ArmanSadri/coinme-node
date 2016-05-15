@@ -280,7 +280,7 @@ var Preconditions = function () {
 
             var fn = _Utility2.default.typeMatcher('string');
 
-            return Preconditions.shouldBe(fn, 'object', object, message);
+            return Preconditions.shouldBe(fn, 'object', string, message);
         }
 
         /**
