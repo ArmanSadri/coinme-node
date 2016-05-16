@@ -6,9 +6,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "coinme-node/js/abstracterror.js~abstracterror",
-    "class/js/AbstractError.js~AbstractError.html",
-    "<span>AbstractError</span> <span class=\"search-result-import-path\">coinme-node/js/AbstractError.js</span>",
+    "coinme-node/js/errors/abstracterror.js~abstracterror",
+    "class/js/errors/AbstractError.js~AbstractError.html",
+    "<span>AbstractError</span> <span class=\"search-result-import-path\">coinme-node/js/errors/AbstractError.js</span>",
     "class"
   ],
   [
@@ -33,6 +33,12 @@ window.esdocSearchIndex = [
     "coinme-node/js/coreobject.js~coreobject",
     "class/js/CoreObject.js~CoreObject.html",
     "<span>CoreObject</span> <span class=\"search-result-import-path\">coinme-node/js/CoreObject.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/errors/errors.js~errors",
+    "class/js/errors/Errors.js~Errors.html",
+    "<span>Errors</span> <span class=\"search-result-import-path\">coinme-node/js/errors/Errors.js</span>",
     "class"
   ],
   [
@@ -444,36 +450,6 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "js/abstracterror.js",
-    "file/js/AbstractError.js.html",
-    "js/AbstractError.js",
-    "file"
-  ],
-  [
-    "js/abstracterror.js~abstracterror#constructor",
-    "class/js/AbstractError.js~AbstractError.html#instance-constructor-constructor",
-    "js/AbstractError.js~AbstractError#constructor",
-    "method"
-  ],
-  [
-    "js/abstracterror.js~abstracterror#message",
-    "class/js/AbstractError.js~AbstractError.html#instance-member-message",
-    "js/AbstractError.js~AbstractError#message",
-    "member"
-  ],
-  [
-    "js/abstracterror.js~abstracterror#name",
-    "class/js/AbstractError.js~AbstractError.html#instance-member-name",
-    "js/AbstractError.js~AbstractError#name",
-    "member"
-  ],
-  [
-    "js/abstracterror.js~abstracterror#stack",
-    "class/js/AbstractError.js~AbstractError.html#instance-member-stack",
-    "js/AbstractError.js~AbstractError#stack",
-    "member"
-  ],
-  [
     "js/coinme.js",
     "file/js/Coinme.js.html",
     "js/Coinme.js",
@@ -496,6 +472,12 @@ window.esdocSearchIndex = [
     "class/js/CoreObject.js~CoreObject.html#instance-method-set",
     "js/CoreObject.js~CoreObject#set",
     "method"
+  ],
+  [
+    "js/ember.js",
+    "file/js/Ember.js.html",
+    "js/Ember.js",
+    "file"
   ],
   [
     "js/functions.js",
@@ -888,9 +870,45 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/ember/index.js",
-    "file/js/ember/index.js.html",
-    "js/ember/index.js",
+    "js/errors/abstracterror.js",
+    "file/js/errors/AbstractError.js.html",
+    "js/errors/AbstractError.js",
+    "file"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror#constructor",
+    "class/js/errors/AbstractError.js~AbstractError.html#instance-constructor-constructor",
+    "js/errors/AbstractError.js~AbstractError#constructor",
+    "method"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror#message",
+    "class/js/errors/AbstractError.js~AbstractError.html#instance-member-message",
+    "js/errors/AbstractError.js~AbstractError#message",
+    "member"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror#name",
+    "class/js/errors/AbstractError.js~AbstractError.html#instance-member-name",
+    "js/errors/AbstractError.js~AbstractError#name",
+    "member"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror#stack",
+    "class/js/errors/AbstractError.js~AbstractError.html#instance-member-stack",
+    "js/errors/AbstractError.js~AbstractError#stack",
+    "member"
+  ],
+  [
+    "js/errors/errors.js",
+    "file/js/errors/Errors.js.html",
+    "js/errors/Errors.js",
+    "file"
+  ],
+  [
+    "js/errors/index.js",
+    "file/js/errors/index.js.html",
+    "js/errors/index.js",
     "file"
   ],
   [
