@@ -153,7 +153,7 @@ export default class Preconditions {
      * @return {Number}
      */
     static shouldBeNumber(number, message) {
-        Preconditions.shouldBeType(number, 'number', message);
+        Preconditions.shouldBeType('number', number, message);
         Preconditions.shouldBeFinite(number, message);
 
         return number;

@@ -12,6 +12,7 @@ import Preconditions from '~/Preconditions';
  */
 class CoreObject extends Ember.CoreObject {
 
+    
     /**
      *
      * @param {String} path
