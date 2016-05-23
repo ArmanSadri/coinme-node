@@ -201,7 +201,7 @@ var Preconditions = function () {
     }, {
         key: "shouldBeNumber",
         value: function shouldBeNumber(number, message) {
-            Preconditions.shouldBeType(number, 'number', message);
+            Preconditions.shouldBeType('number', number, message);
             Preconditions.shouldBeFinite(number, message);
 
             return number;

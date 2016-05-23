@@ -6,8 +6,8 @@ import Preconditions from 'preconditions';
 import request from 'request-promise';
 
 import CoreObject from '~/CoreObject';
-import AbstractBuilder from '../slack/AbstractBuilder';
-import AttachmentBuilder from '../slack/AttachmentBuilder';
+import AbstractBuilder from './AbstractBuilder';
+import AttachmentBuilder from './AttachmentBuilder';
 import Ember from '~/ember';
 
 class NotificationBuilder extends AbstractBuilder {

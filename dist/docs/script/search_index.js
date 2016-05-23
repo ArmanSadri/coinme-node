@@ -714,6 +714,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.take",
+    "class/js/Utility.js~Utility.html#static-method-take",
+    "js/Utility.js~Utility.take",
+    "method"
+  ],
+  [
     "js/utility.js~utility.tolowercase",
     "class/js/Utility.js~Utility.html#static-method-toLowerCase",
     "js/Utility.js~Utility.toLowerCase",
@@ -909,6 +915,12 @@ window.esdocSearchIndex = [
     "js/errors/index.js",
     "file/js/errors/index.js.html",
     "js/errors/index.js",
+    "file"
+  ],
+  [
+    "js/index-compiled.js",
+    "file/js/index-compiled.js.html",
+    "js/index-compiled.js",
     "file"
   ],
   [

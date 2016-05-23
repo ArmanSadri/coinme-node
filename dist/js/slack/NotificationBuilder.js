@@ -26,11 +26,11 @@ var _CoreObject = require('./../CoreObject');
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
-var _AbstractBuilder2 = require('../slack/AbstractBuilder');
+var _AbstractBuilder2 = require('./AbstractBuilder');
 
 var _AbstractBuilder3 = _interopRequireDefault(_AbstractBuilder2);
 
-var _AttachmentBuilder = require('../slack/AttachmentBuilder');
+var _AttachmentBuilder = require('./AttachmentBuilder');
 
 var _AttachmentBuilder2 = _interopRequireDefault(_AttachmentBuilder);
 

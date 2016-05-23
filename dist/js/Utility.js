@@ -22,6 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+//asdfasdf
 /**
  * @class
  * @singleton
@@ -33,8 +34,30 @@ var Utility = function () {
     }
 
     _createClass(Utility, null, [{
-        key: "typeMatcher",
+        key: "take",
 
+
+        ///asdfasdfasdfasdfasdfasdf
+        value: function take(object, key) {
+            if (!object) {
+                return undefined;
+            }
+
+            var value = _lodash2.default.get(object, key);
+
+            if (key.indexOf('.')) {
+                // It's an object path.
+                var parentPath = key.substring(0, key.lastIndexOf('.'));
+                var itemKey = key.substring(key.lastIndexOf('.') + 1);
+                var parent = _lodash2.default.get(object, parentPath);
+
+                delete parent[itemKey];
+            } else {
+                delete object[key];
+            }
+
+            return value;
+        }
 
         /**
          * Creates a test method. Uses Utility.typeOf()
@@ -42,6 +65,9 @@ var Utility = function () {
          * @param {String} type
          * @return {function}
          */
+
+    }, {
+        key: "typeMatcher",
         value: function typeMatcher(type) {
             // Ember.typeOf();                       // 'undefined'
             // Ember.typeOf(null);                   // 'null'

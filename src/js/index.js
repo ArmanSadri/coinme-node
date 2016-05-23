@@ -6,7 +6,7 @@ import CoreObject from "./CoreObject";
 import Functions from "./Functions";
 import Preconditions from "./Preconditions";
 import Utility from "./Utility";
-import AbstractError from "./errors/AbstractError";
+import AbstractError from "errors/AbstractError";
 
 export {AbstractError};
 export {Ember};

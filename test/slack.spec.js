@@ -4,17 +4,17 @@
  * How to use Chai
  * @see http://chaijs.com/api/assert/
  */
-import { expect, assert } from 'chai';
+import {expect, assert} from "chai";
+import Utility from "~/Utility";
+import Ember from "~/ember";
+import Preconditions from "~/Preconditions";
+import Functions from "~/Functions";
+import UserBuilder from "~/data/UserBuilder";
+import "source-map-support/register";
 
 // import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '~/slack';
-import Lodash from 'lodash';
-import Utility from '~/Utility';
-import Ember from '~/ember';
-import Preconditions from '~/Preconditions';
-import Functions from '~/Functions';
-import User from '~/data/User';
-import UserBuilder from '~/data/UserBuilder';
 
+//sadf
 // Preconditions.shouldBe(function() { return true; }, 'expected', 'actual', 'message');
 
 // NotificationService.url = 'https://hooks.slack.com/services/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';
@@ -24,10 +24,11 @@ import UserBuilder from '~/data/UserBuilder';
 //     username: 'coinme-node/slack.spec.js'
 // });
 
-describe('Utility', function() {
+describe('Utility', function () {
 
     it('function', () => {
-        let fn = () => {};
+        let fn = () => {
+        };
 
         assert.isFunction(fn);
         assert.isTrue(Utility.isFunction(fn));
@@ -36,19 +37,26 @@ describe('Utility', function() {
         assert.isFalse(Utility.isFunction(NaN));
     });
 
-    it('existing', function() {
-        assert.isTrue(Utility.isExisting('string'));
-        assert.isTrue(Utility.isExisting({ }));
+    it('take', function () {
+        var object = {one: {two: 3}};
+        var three = Utility.take(object, 'one.two');
 
+        assert.equal(three, 3, 'Should be 3');
+        assert.isTrue(Utility.isUndefined(object.one.two));
     });
 
-    it('string', function() {
+    it('existing', function () {
+        assert.isTrue(Utility.isExisting('string'));
+        assert.isTrue(Utility.isExisting({}));
+    });
+
+    it('string', function () {
         assert.isFunction(Utility.typeMatcher('string'));
         assert.isTrue(Utility.typeMatcher('string')('string'));
         assert.isTrue(Utility.isString('asdfad'));
     });
 
-    it('shouldBe', function() {
+    it('shouldBe', function () {
         Preconditions.shouldBeFalsey(undefined);
         Preconditions.shouldBeFalsey(false);
         Preconditions.shouldBeFalsey(null);
@@ -118,7 +126,7 @@ describe('Ember', () => {
 
         var Record = Ember.Object.extend({
 
-            thong: Ember.computed('thingy', function() {
+            thong: Ember.computed('thingy', function () {
                 return this.get('thingy') + 'thong';
             })
 

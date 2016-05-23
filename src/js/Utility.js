@@ -3,12 +3,34 @@
 import Lodash from "lodash";
 import Preconditions from "~/Preconditions";
 import Ember from "~/ember";
-
+//asdfasdf
 /**
  * @class
  * @singleton
  */
 class Utility {
+
+    ///asdfasdfasdfasdfasdfasdf
+    static take(object, key) {
+        if (!object) {
+            return undefined;
+        }
+
+        let value = Lodash.get(object, key);
+
+        if (key.indexOf('.')) {
+            // It's an object path.
+            let parentPath = key.substring(0, key.lastIndexOf('.'));
+            let itemKey = key.substring(key.lastIndexOf('.') + 1);
+            let parent = Lodash.get(object, parentPath);
+
+            delete parent[itemKey];
+        } else {
+            delete object[key];
+        }
+
+        return value;
+    }
 
     /**
      * Creates a test method. Uses Utility.typeOf()

@@ -5841,11 +5841,12 @@
                         },
                         "arguments": [
                           {
-                            "type": "Identifier",
-                            "name": "number",
+                            "type": "Literal",
+                            "value": "number",
+                            "raw": "'number'",
                             "range": [
                               4199,
-                              4205
+                              4207
                             ],
                             "loc": {
                               "start": {
@@ -5854,22 +5855,21 @@
                               },
                               "end": {
                                 "line": 156,
-                                "column": 41
+                                "column": 43
                               }
                             }
                           },
                           {
-                            "type": "Literal",
-                            "value": "number",
-                            "raw": "'number'",
+                            "type": "Identifier",
+                            "name": "number",
                             "range": [
-                              4207,
+                              4209,
                               4215
                             ],
                             "loc": {
                               "start": {
                                 "line": 156,
-                                "column": 43
+                                "column": 45
                               },
                               "end": {
                                 "line": 156,

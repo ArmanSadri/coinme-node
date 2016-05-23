@@ -40,7 +40,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\n\nimport Ember from \"~/ember\";\nimport Preconditions from '~/Preconditions';\n\n/**\n * This is the base class for all classes in our architecture.\n *\n *\n * @abstract\n * @class\n */\nclass CoreObject extends Ember.CoreObject {\n\n    /**\n     *\n     * @param {String} path\n     * @returns {*}\n     */\n    get(path) {\n        Preconditions.shouldBeString(path);\n\n        return Ember.get(this, path);\n    }\n\n    /**\n     *\n     * @param {String} path\n     * @param {*} value\n     */\n    set(path, value) {\n        Preconditions.shouldBeString(path);\n\n        return Ember.set(this, path, value);\n    }\n}\n\nexport default CoreObject;"
+    "content": "'use strict';\n\nimport Ember from \"~/ember\";\nimport Preconditions from '~/Preconditions';\n\n/**\n * This is the base class for all classes in our architecture.\n *\n *\n * @abstract\n * @class\n */\nclass CoreObject extends Ember.CoreObject {\n\n    \n    /**\n     *\n     * @param {String} path\n     * @returns {*}\n     */\n    get(path) {\n        Preconditions.shouldBeString(path);\n\n        return Ember.get(this, path);\n    }\n\n    /**\n     *\n     * @param {String} path\n     * @param {*} value\n     */\n    set(path, value) {\n        Preconditions.shouldBeString(path);\n\n        return Ember.set(this, path, value);\n    }\n}\n\nexport default CoreObject;"
   },
   {
     "__docId__": 3,
@@ -78,7 +78,7 @@
     "longname": "js/CoreObject.js~CoreObject#get",
     "access": null,
     "description": "",
-    "lineNumber": 20,
+    "lineNumber": 21,
     "unknown": [
       {
         "tagName": "@returns",
@@ -117,7 +117,7 @@
     "longname": "js/CoreObject.js~CoreObject#set",
     "access": null,
     "description": "",
-    "lineNumber": 31,
+    "lineNumber": 32,
     "params": [
       {
         "nullable": null,
@@ -284,7 +284,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\n\nimport Utility from \"~/Utility\";\nimport Lodash from \"lodash/index\";\n\n// class PreconditionsError extends AbstractError {\n//\n//     /**\n//      *\n//      * @param {*} actualValue\n//      * @param {*} expectedValue\n//      * @param {String} [message]\n//      * @param {Error} [optionalCause]\n//      * @constructor\n//      */\n//     constructor(expectedValue, actualValue, message, optionalCause) {\n//         super(message);\n//\n//         console.log('capture stack A');\n//\n//         this.name = 'PreconditionsError';\n//         // this.stack = error.stack;\n//         this.cause = optionalCause;\n//\n//         this.expectedValue = expectedValue || '';\n//         this.actualValue = actualValue || '';\n//         this.message = `failure (expected: ${this.expectedValue}) (actual: ${this.actualValue}) (message: ${this.message})`;\n//     }\n// }\n\n/**\n *\n * @param {*} expectedValue\n * @param {*} actualValue\n * @param {String} [message]\n * @param {Error} [optionalCause]\n * @constructor\n */\nfunction PreconditionsError(expectedValue, actualValue, message, optionalCause) {\n    var error = Error.call(this, message);\n\n    this.name = 'PreconditionsError';\n    this.stack = error.stack;\n    this.cause = optionalCause;\n\n    this.expectedValue = expectedValue;\n    this.actualValue = actualValue;\n    this.message = `failure (expected: '${this.expectedValue}' [${Utility.typeOf(this.expectedValue)}]) (actual: '${this.actualValue}' [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;\n}\n\nPreconditionsError.prototype = Object.create(Error.prototype);\nPreconditionsError.prototype.constructor = PreconditionsError;\n\nexport { PreconditionsError }\n\n/**\n * @singleton\n * @class Preconditions\n */\nexport default class Preconditions {\n\n    /**\n     *\n     * @param {*} expectedValue\n     * @param {*} actualValue\n     * @param {String} [message]\n     */\n    static fail(expectedValue, actualValue, message) {\n        throw new PreconditionsError(expectedValue, actualValue, message || 'Preconditions failure');\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * return {*} object\n     */\n    static shouldBeUndefined(object, message) {\n        return Preconditions.shouldBe(Utility.isUndefined, object, 'undefined', message || 'must be undefined');\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldNotBeFalsey(object, message) {\n        return Preconditions.shouldBe(Utility.isNotFalsey, object, message, 'must not be falsey')\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBeFalsey(object, message) {\n        return Preconditions.shouldBe(Utility.isFalsey, object, message, 'must be falsey')\n    }\n\n    /**\n     * This method checks for UNDEFINED, NAN, and NULL\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @return {*}\n     */\n    static shouldBeDefined(object, message) {\n        if (Utility.isUndefined(object)) {\n            Preconditions.fail('defined', 'undefined', message || 'must be defined.');\n        }\n\n        return object;\n    }\n\n    /**\n     * Make sure an object is not: undefined, null, NaN\n     *\n     * @param {*} object\n     * @param {String} [message]\n     */\n    static shouldBeExisting(object, message) {\n        return Preconditions.shouldBe(Utility.isExisting, 'exist', object, message || 'must exist.');\n    }\n\n    /**\n     *\n     * @param {*} string\n     * @param {String} [message]\n     * @return {String}\n     */\n    static shouldNotBeBlank(string, message) {\n        Preconditions.shouldBeString(string);\n\n        return Preconditions.shouldBe(Utility.isNotBlank, 'not blank', string, message || 'must not be blank.');\n    }\n\n    /**\n     *\n     * @param {*} fn\n     * @param {String} [message]\n     * @return {function}\n     */\n    static shouldBeFunction(fn, message) {\n        return Preconditions.shouldBeType('function', fn, message);\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBeNumber(number, message) {\n        Preconditions.shouldBeType(number, 'number', message);\n        Preconditions.shouldBeFinite(number, message);\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {function} testFn\n     * @param {*} [expectedValue]\n     * @param {*} actualValue\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBe(testFn, expectedValue, actualValue, message) {\n        if (!Utility.isFunction(testFn)) {\n            Preconditions.fail('function', testFn, `testFn must be function, but was ${Utility.typeOf(testFn)}.`);\n        }\n\n        if (!testFn.call(this, actualValue)) {\n            Preconditions.fail(expectedValue, actualValue, message || 'must pass test.');\n        }\n\n        return actualValue;\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBeFinite(number, message) {\n        if (!Lodash.isFinite(number)) {\n            Preconditions.fail('finite', number, message || 'must be finite.');\n        }\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {Object} object\n     * @param {String} [message]\n     * @return {Object}\n     */\n    static shouldBeObject(object, message) {\n        Preconditions.shouldBeExisting(object, message);\n\n        let fn = Utility.typeMatcher('object');\n\n        // throw new Error(Utility.typeOf(fn));\n\n        return Preconditions.shouldBe(fn, 'object', object, message);\n    }\n\n    /**\n     *\n     * @param {*} string\n     * @param {String} [message]\n     * @return {String}\n     */\n    static shouldBeString(string, message) {\n        Preconditions.shouldBeExisting(string);\n\n        let fn = Utility.typeMatcher('string');\n\n        return Preconditions.shouldBe(fn, 'object', string, message);\n    }\n\n    /**\n     *\n     * @param {String} typeName\n     * @param {*} value\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBeType(typeName, value, message) {\n        return Preconditions.shouldBe(Utility.typeMatcher(typeName), typeName, value, message);\n    }\n\n    /**\n     *\n     * @param {*} boolean\n     * @param {String} [message]\n     * @return {boolean}\n     */\n    static shouldBeTrue(boolean, message) {\n        Preconditions.shouldBeBoolean(boolean, message);\n\n        if (true === boolean) {\n            return boolean;\n        }\n\n        Preconditions.fail(boolean, true, message || 'was not true');\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @returns {Number}\n     */\n    static shouldNotBeNegativeNumber(number, message) {\n        Preconditions.shouldBeDefined(number, message);\n        Preconditions.shouldBeNumber(number, message);\n\n        if (number < 0) {\n            Preconditions.fail('positive', number, message || 'Number should be positive. Was: ' + number);\n        }\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {boolean} boolean\n     * @param {String} [message]\n     */\n    static shouldBeBoolean(boolean, message) {\n        Preconditions.shouldBeDefined(boolean);\n\n        if (!Utility.isBoolean(boolean)) {\n            Preconditions.fail('boolean', boolean, message || 'was not boolean');\n        }\n\n        return boolean;\n    }\n\n    /**\n     *\n     * @param {*} number1\n     * @param {*} number2\n     * @param {String} [message]\n     */\n    static shouldBeGreaterThan(number1, number2, message) {\n        Preconditions.shouldBeNumber(number1, message);\n        Preconditions.shouldBeNumber(number2, message);\n\n        if (number1 <= number2) {\n            Preconditions.fail('larger than ' + number2, number1, message);\n        }\n\n        return number1;\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBePositiveNumber(number, message) {\n        Preconditions.shouldBeNumber(number, message);\n\n        if (number <= 0) {\n            Preconditions.fail('positive', number, message || 'Number should be positive. Was: ' + number);\n        }\n\n        return number;\n    }\n}"
+    "content": "'use strict';\n\nimport Utility from \"~/Utility\";\nimport Lodash from \"lodash/index\";\n\n// class PreconditionsError extends AbstractError {\n//\n//     /**\n//      *\n//      * @param {*} actualValue\n//      * @param {*} expectedValue\n//      * @param {String} [message]\n//      * @param {Error} [optionalCause]\n//      * @constructor\n//      */\n//     constructor(expectedValue, actualValue, message, optionalCause) {\n//         super(message);\n//\n//         console.log('capture stack A');\n//\n//         this.name = 'PreconditionsError';\n//         // this.stack = error.stack;\n//         this.cause = optionalCause;\n//\n//         this.expectedValue = expectedValue || '';\n//         this.actualValue = actualValue || '';\n//         this.message = `failure (expected: ${this.expectedValue}) (actual: ${this.actualValue}) (message: ${this.message})`;\n//     }\n// }\n\n/**\n *\n * @param {*} expectedValue\n * @param {*} actualValue\n * @param {String} [message]\n * @param {Error} [optionalCause]\n * @constructor\n */\nfunction PreconditionsError(expectedValue, actualValue, message, optionalCause) {\n    var error = Error.call(this, message);\n\n    this.name = 'PreconditionsError';\n    this.stack = error.stack;\n    this.cause = optionalCause;\n\n    this.expectedValue = expectedValue;\n    this.actualValue = actualValue;\n    this.message = `failure (expected: '${this.expectedValue}' [${Utility.typeOf(this.expectedValue)}]) (actual: '${this.actualValue}' [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;\n}\n\nPreconditionsError.prototype = Object.create(Error.prototype);\nPreconditionsError.prototype.constructor = PreconditionsError;\n\nexport { PreconditionsError }\n\n/**\n * @singleton\n * @class Preconditions\n */\nexport default class Preconditions {\n\n    /**\n     *\n     * @param {*} expectedValue\n     * @param {*} actualValue\n     * @param {String} [message]\n     */\n    static fail(expectedValue, actualValue, message) {\n        throw new PreconditionsError(expectedValue, actualValue, message || 'Preconditions failure');\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * return {*} object\n     */\n    static shouldBeUndefined(object, message) {\n        return Preconditions.shouldBe(Utility.isUndefined, object, 'undefined', message || 'must be undefined');\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldNotBeFalsey(object, message) {\n        return Preconditions.shouldBe(Utility.isNotFalsey, object, message, 'must not be falsey')\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBeFalsey(object, message) {\n        return Preconditions.shouldBe(Utility.isFalsey, object, message, 'must be falsey')\n    }\n\n    /**\n     * This method checks for UNDEFINED, NAN, and NULL\n     *\n     * @param {*} object\n     * @param {String} [message]\n     * @return {*}\n     */\n    static shouldBeDefined(object, message) {\n        if (Utility.isUndefined(object)) {\n            Preconditions.fail('defined', 'undefined', message || 'must be defined.');\n        }\n\n        return object;\n    }\n\n    /**\n     * Make sure an object is not: undefined, null, NaN\n     *\n     * @param {*} object\n     * @param {String} [message]\n     */\n    static shouldBeExisting(object, message) {\n        return Preconditions.shouldBe(Utility.isExisting, 'exist', object, message || 'must exist.');\n    }\n\n    /**\n     *\n     * @param {*} string\n     * @param {String} [message]\n     * @return {String}\n     */\n    static shouldNotBeBlank(string, message) {\n        Preconditions.shouldBeString(string);\n\n        return Preconditions.shouldBe(Utility.isNotBlank, 'not blank', string, message || 'must not be blank.');\n    }\n\n    /**\n     *\n     * @param {*} fn\n     * @param {String} [message]\n     * @return {function}\n     */\n    static shouldBeFunction(fn, message) {\n        return Preconditions.shouldBeType('function', fn, message);\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBeNumber(number, message) {\n        Preconditions.shouldBeType('number', number, message);\n        Preconditions.shouldBeFinite(number, message);\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {function} testFn\n     * @param {*} [expectedValue]\n     * @param {*} actualValue\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBe(testFn, expectedValue, actualValue, message) {\n        if (!Utility.isFunction(testFn)) {\n            Preconditions.fail('function', testFn, `testFn must be function, but was ${Utility.typeOf(testFn)}.`);\n        }\n\n        if (!testFn.call(this, actualValue)) {\n            Preconditions.fail(expectedValue, actualValue, message || 'must pass test.');\n        }\n\n        return actualValue;\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBeFinite(number, message) {\n        if (!Lodash.isFinite(number)) {\n            Preconditions.fail('finite', number, message || 'must be finite.');\n        }\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {Object} object\n     * @param {String} [message]\n     * @return {Object}\n     */\n    static shouldBeObject(object, message) {\n        Preconditions.shouldBeExisting(object, message);\n\n        let fn = Utility.typeMatcher('object');\n\n        // throw new Error(Utility.typeOf(fn));\n\n        return Preconditions.shouldBe(fn, 'object', object, message);\n    }\n\n    /**\n     *\n     * @param {*} string\n     * @param {String} [message]\n     * @return {String}\n     */\n    static shouldBeString(string, message) {\n        Preconditions.shouldBeExisting(string);\n\n        let fn = Utility.typeMatcher('string');\n\n        return Preconditions.shouldBe(fn, 'object', string, message);\n    }\n\n    /**\n     *\n     * @param {String} typeName\n     * @param {*} value\n     * @param {String} [message]\n     * @returns {*}\n     */\n    static shouldBeType(typeName, value, message) {\n        return Preconditions.shouldBe(Utility.typeMatcher(typeName), typeName, value, message);\n    }\n\n    /**\n     *\n     * @param {*} boolean\n     * @param {String} [message]\n     * @return {boolean}\n     */\n    static shouldBeTrue(boolean, message) {\n        Preconditions.shouldBeBoolean(boolean, message);\n\n        if (true === boolean) {\n            return boolean;\n        }\n\n        Preconditions.fail(boolean, true, message || 'was not true');\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @returns {Number}\n     */\n    static shouldNotBeNegativeNumber(number, message) {\n        Preconditions.shouldBeDefined(number, message);\n        Preconditions.shouldBeNumber(number, message);\n\n        if (number < 0) {\n            Preconditions.fail('positive', number, message || 'Number should be positive. Was: ' + number);\n        }\n\n        return number;\n    }\n\n    /**\n     *\n     * @param {boolean} boolean\n     * @param {String} [message]\n     */\n    static shouldBeBoolean(boolean, message) {\n        Preconditions.shouldBeDefined(boolean);\n\n        if (!Utility.isBoolean(boolean)) {\n            Preconditions.fail('boolean', boolean, message || 'was not boolean');\n        }\n\n        return boolean;\n    }\n\n    /**\n     *\n     * @param {*} number1\n     * @param {*} number2\n     * @param {String} [message]\n     */\n    static shouldBeGreaterThan(number1, number2, message) {\n        Preconditions.shouldBeNumber(number1, message);\n        Preconditions.shouldBeNumber(number2, message);\n\n        if (number1 <= number2) {\n            Preconditions.fail('larger than ' + number2, number1, message);\n        }\n\n        return number1;\n    }\n\n    /**\n     *\n     * @param {*} number\n     * @param {String} [message]\n     * @return {Number}\n     */\n    static shouldBePositiveNumber(number, message) {\n        Preconditions.shouldBeNumber(number, message);\n\n        if (number <= 0) {\n            Preconditions.fail('positive', number, message || 'Number should be positive. Was: ' + number);\n        }\n\n        return number;\n    }\n}"
   },
   {
     "__docId__": 13,
@@ -1264,7 +1264,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\n\nimport Lodash from \"lodash\";\nimport Preconditions from \"~/Preconditions\";\nimport Ember from \"~/ember\";\n\n/**\n * @class\n * @singleton\n */\nclass Utility {\n\n    /**\n     * Creates a test method. Uses Utility.typeOf()\n     *\n     * @param {String} type\n     * @return {function}\n     */\n    static typeMatcher(type) {\n        // Ember.typeOf();                       // 'undefined'\n        // Ember.typeOf(null);                   // 'null'\n        // Ember.typeOf(undefined);              // 'undefined'\n        // Ember.typeOf('michael');              // 'string'\n        // Ember.typeOf(new String('michael'));  // 'string'\n        // Ember.typeOf(101);                    // 'number'\n        // Ember.typeOf(new Number(101));        // 'number'\n        // Ember.typeOf(true);                   // 'boolean'\n        // Ember.typeOf(new Boolean(true));      // 'boolean'\n        // Ember.typeOf(Ember.makeArray);        // 'function'\n        // Ember.typeOf([1, 2, 90]);             // 'array'\n        // Ember.typeOf(/abc/);                  // 'regexp'\n        // Ember.typeOf(new Date());             // 'date'\n        // Ember.typeOf(Ember.Object.extend());  // 'class'\n        // Ember.typeOf(Ember.Object.create());  // 'instance'\n        // Ember.typeOf(new Error('teamocil'));  // 'error'\n        // // 'normal' JavaScript object\n        // Ember.typeOf({ a: 'b' });             // 'object'\n\n        let knownTypes = {\n            'undefined': true,\n            'null': true,\n            'string': true,\n            'number': true,\n            'boolean': true,\n            'function': true,\n            'array': true,\n            'instance': true,\n            'error': true,\n            'object': true,\n            'class': true,\n            'regexp': true,\n            'date': true\n        };\n\n        /**\n         * Should be string.\n         */\n        {\n            let typeOfType = Utility.typeOf(type);\n\n            if ('string' !== typeOfType) {\n                Preconditions.fail('string', type, `The type passed in was not a string. It was ${typeOfType}`);\n            }\n        }\n\n        /**\n         * Should be known type.\n         */\n        {\n            // This will cause an infinite loop.\n            // Preconditions.shouldNotBeBlank(type, 'type missing');\n            // type = Utility.toLowerCase(type);\n            type = type.toLowerCase();\n\n            Preconditions.shouldBeTrue(knownTypes[type], 'unknown type: ' + type);\n        }\n\n        /**\n         * @param {*} object\n         */\n        return (function(object) {\n            return type === Utility.typeOf(object);\n        });\n    }\n\n    /**\n     * Returns a consistent type for the passed item.\n     *\n     * Use this instead of the built-in `typeof` to get the type of an item.\n     * It will return the same result across all browsers and includes a bit\n     * more detail. Here is what will be returned:\n     *\n     * | Return Value  | Meaning                                              |\n     * |---------------|------------------------------------------------------|\n     * | 'string'      | String primitive or String object.                   |\n     * | 'number'      | Number primitive or Number object.                   |\n     * | 'boolean'     | Boolean primitive or Boolean object.                 |\n     * | 'null'        | Null value                                           |\n     * | 'undefined'   | Undefined value                                      |\n     * | 'function'    | A function                                           |\n     * | 'array'       | An instance of Array                                 |\n     * | 'regexp'      | An instance of RegExp                                |\n     * | 'date'        | An instance of Date                                  |\n     * | 'class'       | An Ember class (created using Ember.Object.extend()) |\n     * | 'instance'    | An Ember object instance                             |\n     * | 'error'       | An instance of the Error object                      |\n     * | 'object'      | A JavaScript object not inheriting from Ember.Object |\n     *\n     * Examples:\n     *\n      ```javascript\n     Ember.typeOf();                       // 'undefined'\n     Ember.typeOf(null);                   // 'null'\n     Ember.typeOf(undefined);              // 'undefined'\n     Ember.typeOf('michael');              // 'string'\n     Ember.typeOf(new String('michael'));  // 'string'\n     Ember.typeOf(101);                    // 'number'\n     Ember.typeOf(new Number(101));        // 'number'\n     Ember.typeOf(true);                   // 'boolean'\n     Ember.typeOf(new Boolean(true));      // 'boolean'\n     Ember.typeOf(Ember.makeArray);        // 'function'\n     Ember.typeOf([1, 2, 90]);             // 'array'\n     Ember.typeOf(/abc/);                  // 'regexp'\n     Ember.typeOf(new Date());             // 'date'\n     Ember.typeOf(Ember.Object.extend());  // 'class'\n     Ember.typeOf(Ember.Object.create());  // 'instance'\n     Ember.typeOf(new Error('teamocil'));  // 'error'\n\n     // 'normal' JavaScript object\n     Ember.typeOf({ a: 'b' });             // 'object'\n     ```\n     *\n     * @method typeOf\n     * @for Ember\n     * @param {Object} object the item to check\n     * @return {String} the type\n     * @public\n     */\n    static typeOf(object) {\n        return Ember.typeOf(object);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isBoolean(object) {\n        return 'boolean' === Utility.typeOf(object);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @return {boolean}\n     */\n    static isUndefined(object) {\n        return 'undefined' === Utility.typeOf(object);\n    }\n\n    /**\n     * Shorthand: Utility.typeOf() === string\n     *\n     * This is for functional programming.\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isString(object) {\n        return 'string' === Utility.typeOf(object);\n    }\n\n    static isFunction(fn) {\n        return 'function' === Utility.typeOf(fn);\n    }\n\n    static isNaN(object) {\n        return Lodash.isNaN(object);\n    }\n\n    /**\n     *\n     * @param {*} anything\n     * @returns {boolean}\n     */\n    static isNull(anything) {\n        return 'null' === Utility.typeOf(anything);\n    }\n\n    /**\n     * Null-safe way to lowercase\n     * @param {String} string\n     * @returns {String}\n     */\n    static toLowerCase(string) {\n        if (Utility.isBlank(string)) {\n            return string;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return string.toLowerCase();\n    }\n\n    /**\n     * Null-safe way to uppercase.\n     *\n     * @param {String} string\n     * @returns {String}\n     */\n    static toUpperCase(string) {\n        if (Utility.isBlank(string)) {\n            return string;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return string.toUpperCase();\n    }\n\n    /**\n     * Determines if the input is NotNull, NotNaN, and NotUndefined.\n     *\n     * @param {*} anything\n     * @return {boolean}\n     */\n    static isExisting(anything) {\n        let u = Utility.isUndefined(anything);\n        let n = Utility.isNaN(anything);\n        let nu = Utility.isNull(anything);\n\n        return !(u || n || nu);\n    }\n\n    /**\n     * The opposite of existing.\n     *\n     * @param {*} anything\n     * @returns {boolean}\n     */\n    static isNotExisting(anything) {\n        return !Utility.isExisting(anything);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isFalsey(object) {\n        return !object;\n    }\n\n    /**\n     *\n     * @param object\n     */\n    static isNotFalsey(object) {\n        return !Utility.isFalsey(object);\n    }\n\n    /**\n     * Shorthand for value\n     *\n     * @param value\n     * @returns {boolean}\n     */\n    static isNullOrUndefined(value) {\n        return Utility.isNull(value) || Utility.isUndefined(value);\n    }\n\n    /**\n     *\n     * @param {String} string\n     * @return {boolean}\n     */\n    static isBlank(string) {\n        if (Utility.isNullOrUndefined(string)) {\n            return true;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return Ember.isBlank(string);\n    }\n\n    /**\n     *\n     * @param {String} string\n     * @return {boolean}\n     */\n    static isNotBlank(string) {\n        return !Utility.isBlank(string);\n    }\n\n    /**\n     *\n     * @param {Object} object\n     * @param {Object} defaults\n     * @returns {Object} The original object.\n     */\n    static defaults(object, defaults) {\n        Preconditions.shouldBeObject(object);\n        Preconditions.shouldBeObject(defaults);\n\n        let updates = Object.keys(defaults);\n\n        for (let i = 0, l = updates.length; i < l; i++) {\n            let prop = updates[i];\n            let value = Ember.get(defaults, prop);\n\n            Ember.set(object, prop, value);\n        }\n\n        return object;\n    }\n}\n\nexport default Utility;"
+    "content": "'use strict';\n\nimport Lodash from \"lodash\";\nimport Preconditions from \"~/Preconditions\";\nimport Ember from \"~/ember\";\n//asdfasdf\n/**\n * @class\n * @singleton\n */\nclass Utility {\n\n    ///asdfasdfasdfasdfasdfasdf\n    static take(object, key) {\n        if (!object) {\n            return undefined;\n        }\n\n        let value = Lodash.get(object, key);\n\n        if (key.indexOf('.')) {\n            // It's an object path.\n            let parentPath = key.substring(0, key.lastIndexOf('.'));\n            let itemKey = key.substring(key.lastIndexOf('.') + 1);\n            let parent = Lodash.get(object, parentPath);\n\n            delete parent[itemKey];\n        } else {\n            delete object[key];\n        }\n\n        return value;\n    }\n\n    /**\n     * Creates a test method. Uses Utility.typeOf()\n     *\n     * @param {String} type\n     * @return {function}\n     */\n    static typeMatcher(type) {\n        // Ember.typeOf();                       // 'undefined'\n        // Ember.typeOf(null);                   // 'null'\n        // Ember.typeOf(undefined);              // 'undefined'\n        // Ember.typeOf('michael');              // 'string'\n        // Ember.typeOf(new String('michael'));  // 'string'\n        // Ember.typeOf(101);                    // 'number'\n        // Ember.typeOf(new Number(101));        // 'number'\n        // Ember.typeOf(true);                   // 'boolean'\n        // Ember.typeOf(new Boolean(true));      // 'boolean'\n        // Ember.typeOf(Ember.makeArray);        // 'function'\n        // Ember.typeOf([1, 2, 90]);             // 'array'\n        // Ember.typeOf(/abc/);                  // 'regexp'\n        // Ember.typeOf(new Date());             // 'date'\n        // Ember.typeOf(Ember.Object.extend());  // 'class'\n        // Ember.typeOf(Ember.Object.create());  // 'instance'\n        // Ember.typeOf(new Error('teamocil'));  // 'error'\n        // // 'normal' JavaScript object\n        // Ember.typeOf({ a: 'b' });             // 'object'\n\n        let knownTypes = {\n            'undefined': true,\n            'null': true,\n            'string': true,\n            'number': true,\n            'boolean': true,\n            'function': true,\n            'array': true,\n            'instance': true,\n            'error': true,\n            'object': true,\n            'class': true,\n            'regexp': true,\n            'date': true\n        };\n\n        /**\n         * Should be string.\n         */\n        {\n            let typeOfType = Utility.typeOf(type);\n\n            if ('string' !== typeOfType) {\n                Preconditions.fail('string', type, `The type passed in was not a string. It was ${typeOfType}`);\n            }\n        }\n\n        /**\n         * Should be known type.\n         */\n        {\n            // This will cause an infinite loop.\n            // Preconditions.shouldNotBeBlank(type, 'type missing');\n            // type = Utility.toLowerCase(type);\n            type = type.toLowerCase();\n\n            Preconditions.shouldBeTrue(knownTypes[type], 'unknown type: ' + type);\n        }\n\n        /**\n         * @param {*} object\n         */\n        return (function(object) {\n            return type === Utility.typeOf(object);\n        });\n    }\n\n    /**\n     * Returns a consistent type for the passed item.\n     *\n     * Use this instead of the built-in `typeof` to get the type of an item.\n     * It will return the same result across all browsers and includes a bit\n     * more detail. Here is what will be returned:\n     *\n     * | Return Value  | Meaning                                              |\n     * |---------------|------------------------------------------------------|\n     * | 'string'      | String primitive or String object.                   |\n     * | 'number'      | Number primitive or Number object.                   |\n     * | 'boolean'     | Boolean primitive or Boolean object.                 |\n     * | 'null'        | Null value                                           |\n     * | 'undefined'   | Undefined value                                      |\n     * | 'function'    | A function                                           |\n     * | 'array'       | An instance of Array                                 |\n     * | 'regexp'      | An instance of RegExp                                |\n     * | 'date'        | An instance of Date                                  |\n     * | 'class'       | An Ember class (created using Ember.Object.extend()) |\n     * | 'instance'    | An Ember object instance                             |\n     * | 'error'       | An instance of the Error object                      |\n     * | 'object'      | A JavaScript object not inheriting from Ember.Object |\n     *\n     * Examples:\n     *\n      ```javascript\n     Ember.typeOf();                       // 'undefined'\n     Ember.typeOf(null);                   // 'null'\n     Ember.typeOf(undefined);              // 'undefined'\n     Ember.typeOf('michael');              // 'string'\n     Ember.typeOf(new String('michael'));  // 'string'\n     Ember.typeOf(101);                    // 'number'\n     Ember.typeOf(new Number(101));        // 'number'\n     Ember.typeOf(true);                   // 'boolean'\n     Ember.typeOf(new Boolean(true));      // 'boolean'\n     Ember.typeOf(Ember.makeArray);        // 'function'\n     Ember.typeOf([1, 2, 90]);             // 'array'\n     Ember.typeOf(/abc/);                  // 'regexp'\n     Ember.typeOf(new Date());             // 'date'\n     Ember.typeOf(Ember.Object.extend());  // 'class'\n     Ember.typeOf(Ember.Object.create());  // 'instance'\n     Ember.typeOf(new Error('teamocil'));  // 'error'\n\n     // 'normal' JavaScript object\n     Ember.typeOf({ a: 'b' });             // 'object'\n     ```\n     *\n     * @method typeOf\n     * @for Ember\n     * @param {Object} object the item to check\n     * @return {String} the type\n     * @public\n     */\n    static typeOf(object) {\n        return Ember.typeOf(object);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isBoolean(object) {\n        return 'boolean' === Utility.typeOf(object);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @return {boolean}\n     */\n    static isUndefined(object) {\n        return 'undefined' === Utility.typeOf(object);\n    }\n\n    /**\n     * Shorthand: Utility.typeOf() === string\n     *\n     * This is for functional programming.\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isString(object) {\n        return 'string' === Utility.typeOf(object);\n    }\n\n    static isFunction(fn) {\n        return 'function' === Utility.typeOf(fn);\n    }\n\n    static isNaN(object) {\n        return Lodash.isNaN(object);\n    }\n\n    /**\n     *\n     * @param {*} anything\n     * @returns {boolean}\n     */\n    static isNull(anything) {\n        return 'null' === Utility.typeOf(anything);\n    }\n\n    /**\n     * Null-safe way to lowercase\n     * @param {String} string\n     * @returns {String}\n     */\n    static toLowerCase(string) {\n        if (Utility.isBlank(string)) {\n            return string;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return string.toLowerCase();\n    }\n\n    /**\n     * Null-safe way to uppercase.\n     *\n     * @param {String} string\n     * @returns {String}\n     */\n    static toUpperCase(string) {\n        if (Utility.isBlank(string)) {\n            return string;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return string.toUpperCase();\n    }\n\n    /**\n     * Determines if the input is NotNull, NotNaN, and NotUndefined.\n     *\n     * @param {*} anything\n     * @return {boolean}\n     */\n    static isExisting(anything) {\n        let u = Utility.isUndefined(anything);\n        let n = Utility.isNaN(anything);\n        let nu = Utility.isNull(anything);\n\n        return !(u || n || nu);\n    }\n\n    /**\n     * The opposite of existing.\n     *\n     * @param {*} anything\n     * @returns {boolean}\n     */\n    static isNotExisting(anything) {\n        return !Utility.isExisting(anything);\n    }\n\n    /**\n     *\n     * @param {*} object\n     * @returns {boolean}\n     */\n    static isFalsey(object) {\n        return !object;\n    }\n\n    /**\n     *\n     * @param object\n     */\n    static isNotFalsey(object) {\n        return !Utility.isFalsey(object);\n    }\n\n    /**\n     * Shorthand for value\n     *\n     * @param value\n     * @returns {boolean}\n     */\n    static isNullOrUndefined(value) {\n        return Utility.isNull(value) || Utility.isUndefined(value);\n    }\n\n    /**\n     *\n     * @param {String} string\n     * @return {boolean}\n     */\n    static isBlank(string) {\n        if (Utility.isNullOrUndefined(string)) {\n            return true;\n        }\n\n        Preconditions.shouldBeString(string);\n\n        return Ember.isBlank(string);\n    }\n\n    /**\n     *\n     * @param {String} string\n     * @return {boolean}\n     */\n    static isNotBlank(string) {\n        return !Utility.isBlank(string);\n    }\n\n    /**\n     *\n     * @param {Object} object\n     * @param {Object} defaults\n     * @returns {Object} The original object.\n     */\n    static defaults(object, defaults) {\n        Preconditions.shouldBeObject(object);\n        Preconditions.shouldBeObject(defaults);\n\n        let updates = Object.keys(defaults);\n\n        for (let i = 0, l = updates.length; i < l; i++) {\n            let prop = updates[i];\n            let value = Ember.get(defaults, prop);\n\n            Ember.set(object, prop, value);\n        }\n\n        return object;\n    }\n}\n\nexport default Utility;"
   },
   {
     "__docId__": 35,
@@ -1297,12 +1297,45 @@
     "kind": "method",
     "static": true,
     "variation": null,
+    "name": "take",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.take",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "params": [
+      {
+        "name": "object",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "key",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 37,
+    "kind": "method",
+    "static": true,
+    "variation": null,
     "name": "typeMatcher",
     "memberof": "js/Utility.js~Utility",
     "longname": "js/Utility.js~Utility.typeMatcher",
     "access": null,
     "description": "Creates a test method. Uses Utility.typeOf()",
-    "lineNumber": 19,
+    "lineNumber": 41,
     "params": [
       {
         "nullable": null,
@@ -1326,7 +1359,7 @@
     "generator": false
   },
   {
-    "__docId__": 37,
+    "__docId__": 38,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1335,7 +1368,7 @@
     "longname": "js/Utility.js~Utility.typeOf",
     "access": "public",
     "description": "Returns a consistent type for the passed item.\n\nUse this instead of the built-in `typeof` to get the type of an item.\nIt will return the same result across all browsers and includes a bit\nmore detail. Here is what will be returned:\n\n| Return Value  | Meaning                                              |\n|---------------|------------------------------------------------------|\n| 'string'      | String primitive or String object.                   |\n| 'number'      | Number primitive or Number object.                   |\n| 'boolean'     | Boolean primitive or Boolean object.                 |\n| 'null'        | Null value                                           |\n| 'undefined'   | Undefined value                                      |\n| 'function'    | A function                                           |\n| 'array'       | An instance of Array                                 |\n| 'regexp'      | An instance of RegExp                                |\n| 'date'        | An instance of Date                                  |\n| 'class'       | An Ember class (created using Ember.Object.extend()) |\n| 'instance'    | An Ember object instance                             |\n| 'error'       | An instance of the Error object                      |\n| 'object'      | A JavaScript object not inheriting from Ember.Object |\n\nExamples:\n\n```javascript\nEmber.typeOf();                       // 'undefined'\nEmber.typeOf(null);                   // 'null'\nEmber.typeOf(undefined);              // 'undefined'\nEmber.typeOf('michael');              // 'string'\nEmber.typeOf(new String('michael'));  // 'string'\nEmber.typeOf(101);                    // 'number'\nEmber.typeOf(new Number(101));        // 'number'\nEmber.typeOf(true);                   // 'boolean'\nEmber.typeOf(new Boolean(true));      // 'boolean'\nEmber.typeOf(Ember.makeArray);        // 'function'\nEmber.typeOf([1, 2, 90]);             // 'array'\nEmber.typeOf(/abc/);                  // 'regexp'\nEmber.typeOf(new Date());             // 'date'\nEmber.typeOf(Ember.Object.extend());  // 'class'\nEmber.typeOf(Ember.Object.create());  // 'instance'\nEmber.typeOf(new Error('teamocil'));  // 'error'\n\n// 'normal' JavaScript object\nEmber.typeOf({ a: 'b' });             // 'object'\n```",
-    "lineNumber": 139,
+    "lineNumber": 161,
     "unknown": [
       {
         "tagName": "@method",
@@ -1369,7 +1402,7 @@
     "generator": false
   },
   {
-    "__docId__": 38,
+    "__docId__": 39,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1378,46 +1411,13 @@
     "longname": "js/Utility.js~Utility.isBoolean",
     "access": null,
     "description": "",
-    "lineNumber": 148,
+    "lineNumber": 170,
     "unknown": [
       {
         "tagName": "@returns",
         "tagValue": "{boolean}"
       }
     ],
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "*"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "object",
-        "description": ""
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "boolean"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 39,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "isUndefined",
-    "memberof": "js/Utility.js~Utility",
-    "longname": "js/Utility.js~Utility.isUndefined",
-    "access": null,
-    "description": "",
-    "lineNumber": 157,
     "params": [
       {
         "nullable": null,
@@ -1445,12 +1445,45 @@
     "kind": "method",
     "static": true,
     "variation": null,
+    "name": "isUndefined",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isUndefined",
+    "access": null,
+    "description": "",
+    "lineNumber": 179,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "object",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 41,
+    "kind": "method",
+    "static": true,
+    "variation": null,
     "name": "isString",
     "memberof": "js/Utility.js~Utility",
     "longname": "js/Utility.js~Utility.isString",
     "access": null,
     "description": "Shorthand: Utility.typeOf() === string\n\nThis is for functional programming.",
-    "lineNumber": 169,
+    "lineNumber": 191,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1480,7 +1513,7 @@
     "generator": false
   },
   {
-    "__docId__": 41,
+    "__docId__": 42,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1489,7 +1522,7 @@
     "longname": "js/Utility.js~Utility.isFunction",
     "access": null,
     "description": null,
-    "lineNumber": 173,
+    "lineNumber": 195,
     "undocument": true,
     "params": [
       {
@@ -1507,7 +1540,7 @@
     "generator": false
   },
   {
-    "__docId__": 42,
+    "__docId__": 43,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1516,7 +1549,7 @@
     "longname": "js/Utility.js~Utility.isNaN",
     "access": null,
     "description": null,
-    "lineNumber": 177,
+    "lineNumber": 199,
     "undocument": true,
     "params": [
       {
@@ -1534,7 +1567,7 @@
     "generator": false
   },
   {
-    "__docId__": 43,
+    "__docId__": 44,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1543,7 +1576,7 @@
     "longname": "js/Utility.js~Utility.isNull",
     "access": null,
     "description": "",
-    "lineNumber": 186,
+    "lineNumber": 208,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1573,7 +1606,7 @@
     "generator": false
   },
   {
-    "__docId__": 44,
+    "__docId__": 45,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1582,46 +1615,7 @@
     "longname": "js/Utility.js~Utility.toLowerCase",
     "access": null,
     "description": "Null-safe way to lowercase",
-    "lineNumber": 195,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{String}"
-      }
-    ],
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "string",
-        "description": ""
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "String"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 45,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "toUpperCase",
-    "memberof": "js/Utility.js~Utility",
-    "longname": "js/Utility.js~Utility.toUpperCase",
-    "access": null,
-    "description": "Null-safe way to uppercase.",
-    "lineNumber": 211,
+    "lineNumber": 217,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1655,28 +1649,34 @@
     "kind": "method",
     "static": true,
     "variation": null,
-    "name": "isExisting",
+    "name": "toUpperCase",
     "memberof": "js/Utility.js~Utility",
-    "longname": "js/Utility.js~Utility.isExisting",
+    "longname": "js/Utility.js~Utility.toUpperCase",
     "access": null,
-    "description": "Determines if the input is NotNull, NotNaN, and NotUndefined.",
-    "lineNumber": 227,
+    "description": "Null-safe way to uppercase.",
+    "lineNumber": 233,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String}"
+      }
+    ],
     "params": [
       {
         "nullable": null,
         "types": [
-          "*"
+          "String"
         ],
         "spread": false,
         "optional": false,
-        "name": "anything",
+        "name": "string",
         "description": ""
       }
     ],
     "return": {
       "nullable": null,
       "types": [
-        "boolean"
+        "String"
       ],
       "spread": false,
       "description": ""
@@ -1688,18 +1688,12 @@
     "kind": "method",
     "static": true,
     "variation": null,
-    "name": "isNotExisting",
+    "name": "isExisting",
     "memberof": "js/Utility.js~Utility",
-    "longname": "js/Utility.js~Utility.isNotExisting",
+    "longname": "js/Utility.js~Utility.isExisting",
     "access": null,
-    "description": "The opposite of existing.",
-    "lineNumber": 241,
-    "unknown": [
-      {
-        "tagName": "@returns",
-        "tagValue": "{boolean}"
-      }
-    ],
+    "description": "Determines if the input is NotNull, NotNaN, and NotUndefined.",
+    "lineNumber": 249,
     "params": [
       {
         "nullable": null,
@@ -1727,12 +1721,51 @@
     "kind": "method",
     "static": true,
     "variation": null,
+    "name": "isNotExisting",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isNotExisting",
+    "access": null,
+    "description": "The opposite of existing.",
+    "lineNumber": 263,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "anything",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 49,
+    "kind": "method",
+    "static": true,
+    "variation": null,
     "name": "isFalsey",
     "memberof": "js/Utility.js~Utility",
     "longname": "js/Utility.js~Utility.isFalsey",
     "access": null,
     "description": "",
-    "lineNumber": 250,
+    "lineNumber": 272,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1762,7 +1795,7 @@
     "generator": false
   },
   {
-    "__docId__": 49,
+    "__docId__": 50,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1771,7 +1804,7 @@
     "longname": "js/Utility.js~Utility.isNotFalsey",
     "access": null,
     "description": "",
-    "lineNumber": 258,
+    "lineNumber": 280,
     "params": [
       {
         "nullable": null,
@@ -1792,7 +1825,7 @@
     "generator": false
   },
   {
-    "__docId__": 50,
+    "__docId__": 51,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1801,7 +1834,7 @@
     "longname": "js/Utility.js~Utility.isNullOrUndefined",
     "access": null,
     "description": "Shorthand for value",
-    "lineNumber": 268,
+    "lineNumber": 290,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1831,7 +1864,7 @@
     "generator": false
   },
   {
-    "__docId__": 51,
+    "__docId__": 52,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -1840,40 +1873,7 @@
     "longname": "js/Utility.js~Utility.isBlank",
     "access": null,
     "description": "",
-    "lineNumber": 277,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "string",
-        "description": ""
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "boolean"
-      ],
-      "spread": false,
-      "description": ""
-    },
-    "generator": false
-  },
-  {
-    "__docId__": 52,
-    "kind": "method",
-    "static": true,
-    "variation": null,
-    "name": "isNotBlank",
-    "memberof": "js/Utility.js~Utility",
-    "longname": "js/Utility.js~Utility.isNotBlank",
-    "access": null,
-    "description": "",
-    "lineNumber": 292,
+    "lineNumber": 299,
     "params": [
       {
         "nullable": null,
@@ -1901,12 +1901,45 @@
     "kind": "method",
     "static": true,
     "variation": null,
+    "name": "isNotBlank",
+    "memberof": "js/Utility.js~Utility",
+    "longname": "js/Utility.js~Utility.isNotBlank",
+    "access": null,
+    "description": "",
+    "lineNumber": 314,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 54,
+    "kind": "method",
+    "static": true,
+    "variation": null,
     "name": "defaults",
     "memberof": "js/Utility.js~Utility",
     "longname": "js/Utility.js~Utility.defaults",
     "access": null,
     "description": "",
-    "lineNumber": 302,
+    "lineNumber": 324,
     "unknown": [
       {
         "tagName": "@returns",
@@ -1946,7 +1979,7 @@
     "generator": false
   },
   {
-    "__docId__": 54,
+    "__docId__": 55,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -1959,7 +1992,7 @@
     "content": "'use strict';\n\nimport CoreObject from \"~/CoreObject\";\n\n/**\n * This is the base class for all classes in our architecture.\n *\n * @abstract\n * @class\n */\nclass User extends CoreObject {\n\n    /**\n     *\n     * @param {Object} config\n     * @param {String} config.phoneNumber\n     * @param {String} config.username\n     * @param {String} config.firstName\n     * @param {String} config.middleName\n     * @param {String} config.lastName\n     * @param {String} config.race\n     * @param {String} config.gender\n     * @param {String} config.addressLine1\n     * @param {String} config.addressLine2\n     * @param {String} config.addressCity\n     * @param {String} config.addressState\n     * @param {String} config.addressZipcode\n     * @param {String} config.addressCountry\n     * @param {String} config.birthDate\n     * @param {String} config.expirationDate\n     */\n    constructor(config) {\n        super(config);\n\n        /** @type {String} */\n        this.firstName = config.firstName;\n\n        /** @type {String} */\n        this.lastName = config.lastName;\n\n        /** @type {String} */\n        this.middleName = config.middleName;\n\n        /** @type {String} */\n        this.addressLine1 = config.addressLine1;\n\n        /** @type {String} */\n        this.addressLine2 = config.addressLine2;\n\n        /** @type {String} */\n        this.addressCity = config.addressCity;\n\n        /** @type {String} */\n        this.addressState = config.addressState;\n\n        /** @type {String} */\n        this.addressCountry = config.addressCountry;\n\n        /** @type {String} */\n        this.expirationDate = config.expirationDate;\n\n        /** @type {String} */\n        this.birthDate = config.birthDate;\n\n        /** @type {String} */\n        this.gender = config.gender;\n\n        /** @type {String} */\n        this.race = config.race;\n\n        /** @type {String} */\n        this.addressZipcode = config.addressZipcode;\n\n        /** @type {String} */\n        this.username = config.username;\n\n        /** @type {String} */\n        this.phoneNumber = config.phoneNumber;\n    }\n}\n\nexport default User;"
   },
   {
-    "__docId__": 55,
+    "__docId__": 56,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -1985,7 +2018,7 @@
     ]
   },
   {
-    "__docId__": 56,
+    "__docId__": 57,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -2160,7 +2193,7 @@
     "generator": false
   },
   {
-    "__docId__": 57,
+    "__docId__": 58,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2180,7 +2213,7 @@
     }
   },
   {
-    "__docId__": 58,
+    "__docId__": 59,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2200,7 +2233,7 @@
     }
   },
   {
-    "__docId__": 59,
+    "__docId__": 60,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2220,7 +2253,7 @@
     }
   },
   {
-    "__docId__": 60,
+    "__docId__": 61,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2240,7 +2273,7 @@
     }
   },
   {
-    "__docId__": 61,
+    "__docId__": 62,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2260,7 +2293,7 @@
     }
   },
   {
-    "__docId__": 62,
+    "__docId__": 63,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2280,7 +2313,7 @@
     }
   },
   {
-    "__docId__": 63,
+    "__docId__": 64,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2300,7 +2333,7 @@
     }
   },
   {
-    "__docId__": 64,
+    "__docId__": 65,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2320,7 +2353,7 @@
     }
   },
   {
-    "__docId__": 65,
+    "__docId__": 66,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2340,7 +2373,7 @@
     }
   },
   {
-    "__docId__": 66,
+    "__docId__": 67,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2360,7 +2393,7 @@
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 68,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2380,7 +2413,7 @@
     }
   },
   {
-    "__docId__": 68,
+    "__docId__": 69,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2400,7 +2433,7 @@
     }
   },
   {
-    "__docId__": 69,
+    "__docId__": 70,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2420,7 +2453,7 @@
     }
   },
   {
-    "__docId__": 70,
+    "__docId__": 71,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2440,7 +2473,7 @@
     }
   },
   {
-    "__docId__": 71,
+    "__docId__": 72,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2460,7 +2493,7 @@
     }
   },
   {
-    "__docId__": 72,
+    "__docId__": 73,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2473,7 +2506,7 @@
     "content": "import CoreObject from \"~/CoreObject\";\nimport User from \"~/data/User\";\nimport Lodash from \"lodash\";\n\nlet SPEC_VERSION_8 = {\n    'DBA': 'expirationDate',\n    'DAC': 'firstName',\n    'DCS': 'lastName',\n    'DAD': 'middleName',\n    'DBB': 'birthDate',\n    'DCB': 'gender',\n    'DAG': 'addressLine1',\n    'DAH': 'addressLine2',\n    'DAI': 'addressCity',\n    'DAJ': 'addressState',\n    'DAK': 'addressZipcode',\n    'DAQ': 'username',\n    'DCG': 'addressCountry',\n    'DCL': 'race'\n};\n\nclass UserBuilder extends CoreObject {\n    \n    static get SPEC_VERSION_8() {\n        return SPEC_VERSION_8;\n    }\n\n    /**\n     *\n     * @param {Object} options\n     * @param {String} options.DBA expirationDate\n     * @param {String} options.DAC firstName\n     * @param {String} options.DCS lastName\n     * @param {String} options.DAD middleName\n     * @param {String} options.DBB birthDate\n     * @param {String} options.DCB gender\n     * @param {String} options.DAG addressLine1\n     * @param {String} options.DAH addressLine2\n     * @param {String} options.DAI addressCity\n     * @param {String} options.DAJ addressState\n     * @param {String} options.DAK addressZipcode\n     * @param {String} options.DAQ username\n     * @param {String} options.DCG addressCountry\n     * @param {String} options.DCL race\n     *\n     * @returns {User}\n     */\n    static fromVersion8(options) {\n        return UserBuilder.fromSpec(UserBuilder.SPEC_VERSION_8, options);\n    }\n\n    static fromSpec(spec, options) {\n        var object = {};\n\n        Lodash.forEach(spec, function(value, key) {\n            object[value] = options[key];\n        });\n\n        return new User(object);\n    }\n}\n\nexport default UserBuilder;"
   },
   {
-    "__docId__": 73,
+    "__docId__": 74,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -2494,7 +2527,7 @@
     }
   },
   {
-    "__docId__": 74,
+    "__docId__": 75,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -2514,7 +2547,7 @@
     ]
   },
   {
-    "__docId__": 75,
+    "__docId__": 76,
     "kind": "get",
     "static": true,
     "variation": null,
@@ -2533,7 +2566,7 @@
     "generator": false
   },
   {
-    "__docId__": 76,
+    "__docId__": 77,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -2712,7 +2745,7 @@
     "generator": false
   },
   {
-    "__docId__": 77,
+    "__docId__": 78,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -2745,7 +2778,7 @@
     "generator": false
   },
   {
-    "__docId__": 78,
+    "__docId__": 79,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2758,7 +2791,7 @@
     "content": "'use strict';\n\nimport User from \"~/data/User\";\nimport UserBuilder from \"~/data/UserBuilder\";\n\nexport {User};\nexport {UserBuilder};"
   },
   {
-    "__docId__": 79,
+    "__docId__": 80,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2771,7 +2804,7 @@
     "content": "/**\r\n *\r\n * @class\r\n */\r\nclass AbstractError extends Error {\r\n\r\n    constructor(message) {\r\n        super(message);\r\n\r\n        this.name = this.constructor.name;\r\n        this.message = message;\r\n\r\n        if (typeof Error.captureStackTrace === 'function') {\r\n            Error.captureStackTrace(this, this.constructor);\r\n        } else {\r\n            this.stack = (new Error(message)).stack;\r\n        }\r\n    }\r\n}\r\n\r\nexport default AbstractError;"
   },
   {
-    "__docId__": 80,
+    "__docId__": 81,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -2796,7 +2829,7 @@
     ]
   },
   {
-    "__docId__": 81,
+    "__docId__": 82,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -2818,7 +2851,7 @@
     "generator": false
   },
   {
-    "__docId__": 82,
+    "__docId__": 83,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2836,7 +2869,7 @@
     }
   },
   {
-    "__docId__": 83,
+    "__docId__": 84,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2854,7 +2887,7 @@
     }
   },
   {
-    "__docId__": 84,
+    "__docId__": 85,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -2872,7 +2905,7 @@
     }
   },
   {
-    "__docId__": 85,
+    "__docId__": 86,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2885,7 +2918,7 @@
     "content": "class Errors {\r\n\r\n    \r\n\r\n}\r\n\r\nexport default Errors;"
   },
   {
-    "__docId__": 86,
+    "__docId__": 87,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -2902,7 +2935,7 @@
     "interface": false
   },
   {
-    "__docId__": 87,
+    "__docId__": 88,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2915,7 +2948,344 @@
     "content": "'use strict';\r\n\r\nimport Errors from \"./Errors\";\r\nimport AbstractError from \"./AbstractError\";\r\n\r\nexport {Errors};\r\nexport {AbstractError};"
   },
   {
-    "__docId__": 88,
+    "__docId__": 89,
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "js/index-compiled.js",
+    "memberof": null,
+    "longname": "js/index-compiled.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1,
+    "content": "'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.Utility = exports.Preconditions = exports.Functions = exports.CoreObject = exports.Coinme = exports.Ember = exports.AbstractError = undefined;\n\nvar _Coinme = require(\"./Coinme\");\n\nvar _Coinme2 = _interopRequireDefault(_Coinme);\n\nvar _Ember = require(\"./Ember\");\n\nvar _Ember2 = _interopRequireDefault(_Ember);\n\nvar _CoreObject = require(\"./CoreObject\");\n\nvar _CoreObject2 = _interopRequireDefault(_CoreObject);\n\nvar _Functions = require(\"./Functions\");\n\nvar _Functions2 = _interopRequireDefault(_Functions);\n\nvar _Preconditions = require(\"./Preconditions\");\n\nvar _Preconditions2 = _interopRequireDefault(_Preconditions);\n\nvar _Utility = require(\"./Utility\");\n\nvar _Utility2 = _interopRequireDefault(_Utility);\n\nvar _AbstractError = require(\"./errors/AbstractError\");\n\nvar _AbstractError2 = _interopRequireDefault(_AbstractError);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.AbstractError = _AbstractError2.default;\nexports.Ember = _Ember2.default;\nexports.Coinme = _Coinme2.default;\nexports.CoreObject = _CoreObject2.default;\nexports.Functions = _Functions2.default;\nexports.Preconditions = _Preconditions2.default;\nexports.Utility = _Utility2.default;\nexports.default = _Coinme2.default;\n\n//# sourceMappingURL=index-compiled.js.map"
+  },
+  {
+    "__docId__": 90,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Coinme",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Coinme",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 91,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Coinme2",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Coinme2",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 92,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Ember",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Ember",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Ember2",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Ember2",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_CoreObject",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_CoreObject",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 95,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_CoreObject2",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_CoreObject2",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Functions",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Functions",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 97,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Functions2",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Functions2",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Preconditions",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Preconditions",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Preconditions2",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Preconditions2",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 26,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Utility",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Utility",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_Utility2",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_Utility2",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 102,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_AbstractError",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_AbstractError",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 103,
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "_AbstractError2",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_AbstractError2",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 104,
+    "kind": "function",
+    "static": true,
+    "variation": null,
+    "name": "_interopRequireDefault",
+    "memberof": "js/index-compiled.js",
+    "longname": "js/index-compiled.js~_interopRequireDefault",
+    "access": null,
+    "export": false,
+    "importPath": "coinme-node/js/index-compiled.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "params": [
+      {
+        "name": "obj",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "__docId__": 105,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2925,10 +3295,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\n\nimport Coinme from \"./Coinme\";\nimport Ember from \"./Ember\";\nimport CoreObject from \"./CoreObject\";\nimport Functions from \"./Functions\";\nimport Preconditions from \"./Preconditions\";\nimport Utility from \"./Utility\";\nimport AbstractError from \"./errors/AbstractError\";\n\nexport {AbstractError};\nexport {Ember};\nexport {Coinme};\nexport {CoreObject};\nexport {Functions};\nexport {Preconditions};\nexport {Utility};\n\nexport default Coinme;\n"
+    "content": "'use strict';\n\nimport Coinme from \"./Coinme\";\nimport Ember from \"./Ember\";\nimport CoreObject from \"./CoreObject\";\nimport Functions from \"./Functions\";\nimport Preconditions from \"./Preconditions\";\nimport Utility from \"./Utility\";\nimport AbstractError from \"errors/AbstractError\";\n\nexport {AbstractError};\nexport {Ember};\nexport {Coinme};\nexport {CoreObject};\nexport {Functions};\nexport {Preconditions};\nexport {Utility};\n\nexport default Coinme;"
   },
   {
-    "__docId__": 89,
+    "__docId__": 106,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -2941,7 +3311,7 @@
     "content": "'use strict';\n\nimport Logger from 'winston';\nimport Lodash from 'lodash';\nimport Ember from '~/ember';\nimport Utility from '~/Utility';\nimport Preconditions from '~/Preconditions';\nimport CoreObject from '~/CoreObject';\n\n// winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/\n\nclass AbstractBuilder extends CoreObject {\n\n    init() {\n        Utility.defaults(this, {\n            name: 'AbstractBuilder',\n            payload: {}\n        });\n    }\n\n    /**\n     * @public\n     * @param object\n     * @return {AbstractBuilder}\n     */\n    mergeIntoPayload(object) {\n        Preconditions.shouldBeDefined(object, 'Cannot merge null');\n        Preconditions.shouldBeObject(object, 'Should be object');\n\n        console.log(Ember);\n        console.log(Ember.assign);\n\n        Ember.assign(this, {\n            payload: object\n        });\n\n        return this;\n    }\n\n}\n\nexport default AbstractBuilder;\n"
   },
   {
-    "__docId__": 90,
+    "__docId__": 107,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -2961,7 +3331,7 @@
     ]
   },
   {
-    "__docId__": 91,
+    "__docId__": 108,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -2976,7 +3346,7 @@
     "generator": false
   },
   {
-    "__docId__": 92,
+    "__docId__": 109,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3009,7 +3379,7 @@
     "generator": false
   },
   {
-    "__docId__": 93,
+    "__docId__": 110,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3022,7 +3392,7 @@
     "content": "'use strict';\n\nimport Logger from \"winston\";\nimport CoreObject from \"~/CoreObject\";\nimport Ember from '~/ember';\nimport Utility from \"~/Utility\";\nimport NotificationBuilder from \"~/slack/NotificationBuilder\";\nimport Preconditions from \"~/Preconditions\";\n\n/**\n *\n * This class is intended to be instantiated early and (generally) once in your app.\n */\nclass AbstractNotificationTemplate extends CoreObject {\n\n    init() {\n        Utility.defaults(this, {\n            name: 'NotificationTemplate'\n        });\n        \n        // Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');\n    }\n\n    /**\n     * @public\n     * @param {NotificationBuilder} builder\n     * @param {*|undefined} data\n     * @returns {Promise}\n     */\n    render(builder, data) {\n        // Apply the template. Might be a promise though.\n        var result = this.applyTemplate(builder, data);\n\n        result = result || builder;\n\n        return result;\n    }\n\n    /**\n     *\n     * @protected\n     * @param {NotificationBuilder} builder\n     * @param {Object} data\n     * @return {Promise|NotificationBuilder|Object}\n     */\n    applyTemplate(builder, data) {\n        Logger.silly('Builder', builder);\n        Logger.silly('Data', data);\n\n        throw new Error('This method must be overridden by a subclass');\n    }\n\n}\n\nexport default AbstractNotificationTemplate;"
   },
   {
-    "__docId__": 94,
+    "__docId__": 111,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3041,7 +3411,7 @@
     ]
   },
   {
-    "__docId__": 95,
+    "__docId__": 112,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3056,7 +3426,7 @@
     "generator": false
   },
   {
-    "__docId__": 96,
+    "__docId__": 113,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3106,7 +3476,7 @@
     "generator": false
   },
   {
-    "__docId__": 97,
+    "__docId__": 114,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3151,7 +3521,7 @@
     "generator": false
   },
   {
-    "__docId__": 98,
+    "__docId__": 115,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3164,7 +3534,7 @@
     "content": "'use strict';\n\nimport Preconditions from \"~/Preconditions\";\nimport Ember from \"~/ember\";\nimport AbstractBuilder from \"~/slack/AbstractBuilder\";\nimport FieldBuilder from \"~/slack/FieldBuilder\";\n\nclass AttachmentBuilder extends AbstractBuilder {\n\n    init() {\n        super.init(...arguments);\n\n        this.get('parent')\n            .attachments()\n            .push(this.get('payload'));\n\n        this.set('mrkdwn_in', ['pretext', 'text', 'fields']);\n        this.set('color', 'good');\n    }\n\n    title(value) {\n        Preconditions.shouldBeString(value);\n        \n        return this.set('title', value);\n    }\n\n    text(value) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('text', value);\n    }\n\n    fields() {\n        let fields = Ember.getWithDefault(this, 'fields', []);\n\n        Preconditions.shouldBeArray(fields, 'fields');\n\n        return fields;\n    }\n\n    color(color) {\n        Preconditions.shouldBeString(color);\n\n        return this.set('color', color);\n    }\n\n    field() {\n        return new FieldBuilder(this)\n            .small();\n    }\n}\n\nexport default AttachmentBuilder;\n"
   },
   {
-    "__docId__": 99,
+    "__docId__": 116,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3184,7 +3554,7 @@
     ]
   },
   {
-    "__docId__": 100,
+    "__docId__": 117,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3199,7 +3569,7 @@
     "generator": false
   },
   {
-    "__docId__": 101,
+    "__docId__": 118,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3226,7 +3596,7 @@
     "generator": false
   },
   {
-    "__docId__": 102,
+    "__docId__": 119,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3253,7 +3623,7 @@
     "generator": false
   },
   {
-    "__docId__": 103,
+    "__docId__": 120,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3273,7 +3643,7 @@
     "generator": false
   },
   {
-    "__docId__": 104,
+    "__docId__": 121,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3300,7 +3670,7 @@
     "generator": false
   },
   {
-    "__docId__": 105,
+    "__docId__": 122,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3320,7 +3690,7 @@
     "generator": false
   },
   {
-    "__docId__": 106,
+    "__docId__": 123,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3333,7 +3703,7 @@
     "content": "'use strict';\n\nimport AbstractBuilder from '~/slack/AbstractBuilder';\n\nclass FieldBuilder extends AbstractBuilder {\n\n    constructor(parent) {\n        super({\n            parent: parent\n        });\n\n        this.parent\n            .fields()\n            .push(this.payload);\n    }\n\n    /**\n     * @param {String} value\n     * @returns {FieldBuilder}\n     */\n    title(value) {\n        return this.setString('title', value);\n    }\n\n    /**\n     * @param {String} value\n     * @returns {FieldBuilder}\n     */\n    text(value) {\n        return this.setString('value', value);\n    }\n\n    /**\n     *\n     * @returns {FieldBuilder}\n     */\n    small() {\n        return this.set('short', true);\n    }\n\n    /**\n     *\n     * @param {String} stringToAdd\n     * @returns {FieldBuilder}\n     */\n    add(stringToAdd) {\n        var sb = this.get('value');\n\n        {\n            sb += (`\\n${stringToAdd}`);\n        }\n\n        return this.text(sb);\n    }\n\n    /**\n     *\n     * @param {String} key\n     * @param {String} value\n     * @returns {FieldBuilder}\n     */\n    addKeyValuePair(key, value) {\n        var sb = this.get('value');\n\n        {\n            sb += (`\\n_${key}:_ ${value}`);\n        }\n\n        return this.text(sb);\n    }\n\n}\n\nexport default FieldBuilder;\n"
   },
   {
-    "__docId__": 107,
+    "__docId__": 124,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3353,7 +3723,7 @@
     ]
   },
   {
-    "__docId__": 108,
+    "__docId__": 125,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -3375,7 +3745,7 @@
     "generator": false
   },
   {
-    "__docId__": 109,
+    "__docId__": 126,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3414,7 +3784,7 @@
     "generator": false
   },
   {
-    "__docId__": 110,
+    "__docId__": 127,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3453,7 +3823,7 @@
     "generator": false
   },
   {
-    "__docId__": 111,
+    "__docId__": 128,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3481,7 +3851,7 @@
     "generator": false
   },
   {
-    "__docId__": 112,
+    "__docId__": 129,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3520,7 +3890,7 @@
     "generator": false
   },
   {
-    "__docId__": 113,
+    "__docId__": 130,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3569,7 +3939,7 @@
     "generator": false
   },
   {
-    "__docId__": 114,
+    "__docId__": 131,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3582,7 +3952,7 @@
     "content": "import NotificationTemplate from '~/slack/NotificationTemplate';\n\nclass InlineNotificationTemplate extends NotificationTemplate {\n\n    applyTemplate(builder, data) {\n        builder.mergeIntoPayload(data);\n    }\n\n}\n\nexport default InlineNotificationTemplate;"
   },
   {
-    "__docId__": 115,
+    "__docId__": 132,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3602,7 +3972,7 @@
     ]
   },
   {
-    "__docId__": 116,
+    "__docId__": 133,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3630,7 +4000,7 @@
     "generator": false
   },
   {
-    "__docId__": 117,
+    "__docId__": 134,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3640,10 +4010,10 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "'use strict';\n\nimport Promise from 'bluebird';\nimport Logger from 'winston';\nimport Preconditions from 'preconditions';\nimport request from 'request-promise';\n\nimport CoreObject from '~/CoreObject';\nimport AbstractBuilder from '../slack/AbstractBuilder';\nimport AttachmentBuilder from '../slack/AttachmentBuilder';\nimport Ember from '~/ember';\n\nclass NotificationBuilder extends AbstractBuilder {\n\n    /**\n     *\n     * @param {String} value\n     * @returns {NotificationBuilder}\n     */\n    channel(value) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('channel', value);\n    }\n\n    /**\n     *\n     *\n     * @param text\n     * @returns {NotificationBuilder}\n     */\n    text(text) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('text', text);\n    }\n\n    /**\n     *\n     * @param icon\n     * @returns {icon}\n     */\n    icon(icon) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('icon_emoji', icon);\n    }\n\n    username(username) {\n        Preconditions.shouldBeString(username);\n\n        return this.set('username', username);\n    }\n\n    attachments() {\n        return Ember.getWithDefault(this, 'attachments', []);\n    }\n\n    attachment() {\n        return new AttachmentBuilder(this);\n    }\n\n    toPayload() {\n        return this.get('payload');\n    }\n\n    toJson() {\n        return JSON.stringify(this.toPayload());\n    }\n\n    /**\n     *\n     * @return {Promise}\n     */\n    execute() {\n        let scope = this;\n\n        let url = this.url;\n        let payload = this.toPayload();\n\n        Preconditions.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');\n\n        return Promise.resolve()\n            .then(() => {\n                //\n                // https://www.npmjs.com/package/request-promise\n                //\n                // var options = {\n                //    method: 'POST',\n                //    uri: 'http://posttestserver.com/post.php',\n                //    body: {\n                //        some: 'payload'\n                //    },\n                //    json: true // Automatically stringifies the body to JSON\n                // };\n\n\n                let requestOptions = {\n                    uri: url,\n                    method: 'POST',\n                    body: payload,\n                    json: true\n                };\n\n                Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);\n\n                return Promise.resolve(request(requestOptions))\n                    .then(function(value) {\n                        Logger.debug(`[SLACK:${scope.name}] webhook succeeded.`, arguments);\n\n                        return value;\n                    })\n                    .catch(function(err) {\n                        Logger.warn(`[SLACK:${scope.name}] webhook failed.`, arguments);\n\n                        throw err;\n                    });\n            });\n    }\n\n    /**\n     * Do not insert a Promise into this method.\n     *\n     * @param {Object|NotificationBuilder} object\n     * @param {Object|undefined} deps\n     * @param {Preconditions|undefined} deps.Preconditions\n     * @return {Promise<NotificationBuilder>}\n     */\n    static innerCast(object, deps) {\n        deps = CoreObject.toDependencyMap(deps);\n\n        let Preconditions = deps.Preconditions;\n\n        Preconditions.shouldBeDefined(object);\n\n        return Promise.resolve(object)\n            .then(function(result) {\n                Preconditions.shouldBeDefined(object, 'Casted object must be defined.');\n                Preconditions.shouldNotBeArray(object, 'Casted object must NOT be an array.');\n                Preconditions.shouldBeObject(object, 'Casted object must be an object.');\n\n                if (result instanceof NotificationBuilder) {\n                    return result;\n                }\n\n                return new NotificationBuilder(object);\n            });\n    }\n}\n\nexport default NotificationBuilder;"
+    "content": "'use strict';\n\nimport Promise from 'bluebird';\nimport Logger from 'winston';\nimport Preconditions from 'preconditions';\nimport request from 'request-promise';\n\nimport CoreObject from '~/CoreObject';\nimport AbstractBuilder from './AbstractBuilder';\nimport AttachmentBuilder from './AttachmentBuilder';\nimport Ember from '~/ember';\n\nclass NotificationBuilder extends AbstractBuilder {\n\n    /**\n     *\n     * @param {String} value\n     * @returns {NotificationBuilder}\n     */\n    channel(value) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('channel', value);\n    }\n\n    /**\n     *\n     *\n     * @param text\n     * @returns {NotificationBuilder}\n     */\n    text(text) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('text', text);\n    }\n\n    /**\n     *\n     * @param icon\n     * @returns {icon}\n     */\n    icon(icon) {\n        Preconditions.shouldBeString(value);\n\n        return this.set('icon_emoji', icon);\n    }\n\n    username(username) {\n        Preconditions.shouldBeString(username);\n\n        return this.set('username', username);\n    }\n\n    attachments() {\n        return Ember.getWithDefault(this, 'attachments', []);\n    }\n\n    attachment() {\n        return new AttachmentBuilder(this);\n    }\n\n    toPayload() {\n        return this.get('payload');\n    }\n\n    toJson() {\n        return JSON.stringify(this.toPayload());\n    }\n\n    /**\n     *\n     * @return {Promise}\n     */\n    execute() {\n        let scope = this;\n\n        let url = this.url;\n        let payload = this.toPayload();\n\n        Preconditions.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');\n\n        return Promise.resolve()\n            .then(() => {\n                //\n                // https://www.npmjs.com/package/request-promise\n                //\n                // var options = {\n                //    method: 'POST',\n                //    uri: 'http://posttestserver.com/post.php',\n                //    body: {\n                //        some: 'payload'\n                //    },\n                //    json: true // Automatically stringifies the body to JSON\n                // };\n\n\n                let requestOptions = {\n                    uri: url,\n                    method: 'POST',\n                    body: payload,\n                    json: true\n                };\n\n                Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);\n\n                return Promise.resolve(request(requestOptions))\n                    .then(function(value) {\n                        Logger.debug(`[SLACK:${scope.name}] webhook succeeded.`, arguments);\n\n                        return value;\n                    })\n                    .catch(function(err) {\n                        Logger.warn(`[SLACK:${scope.name}] webhook failed.`, arguments);\n\n                        throw err;\n                    });\n            });\n    }\n\n    /**\n     * Do not insert a Promise into this method.\n     *\n     * @param {Object|NotificationBuilder} object\n     * @param {Object|undefined} deps\n     * @param {Preconditions|undefined} deps.Preconditions\n     * @return {Promise<NotificationBuilder>}\n     */\n    static innerCast(object, deps) {\n        deps = CoreObject.toDependencyMap(deps);\n\n        let Preconditions = deps.Preconditions;\n\n        Preconditions.shouldBeDefined(object);\n\n        return Promise.resolve(object)\n            .then(function(result) {\n                Preconditions.shouldBeDefined(object, 'Casted object must be defined.');\n                Preconditions.shouldNotBeArray(object, 'Casted object must NOT be an array.');\n                Preconditions.shouldBeObject(object, 'Casted object must be an object.');\n\n                if (result instanceof NotificationBuilder) {\n                    return result;\n                }\n\n                return new NotificationBuilder(object);\n            });\n    }\n}\n\nexport default NotificationBuilder;"
   },
   {
-    "__docId__": 118,
+    "__docId__": 135,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3663,7 +4033,7 @@
     ]
   },
   {
-    "__docId__": 119,
+    "__docId__": 136,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3702,7 +4072,7 @@
     "generator": false
   },
   {
-    "__docId__": 120,
+    "__docId__": 137,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3741,7 +4111,7 @@
     "generator": false
   },
   {
-    "__docId__": 121,
+    "__docId__": 138,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3780,7 +4150,7 @@
     "generator": false
   },
   {
-    "__docId__": 122,
+    "__docId__": 139,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3807,7 +4177,7 @@
     "generator": false
   },
   {
-    "__docId__": 123,
+    "__docId__": 140,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3827,7 +4197,7 @@
     "generator": false
   },
   {
-    "__docId__": 124,
+    "__docId__": 141,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3847,7 +4217,7 @@
     "generator": false
   },
   {
-    "__docId__": 125,
+    "__docId__": 142,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3867,7 +4237,7 @@
     "generator": false
   },
   {
-    "__docId__": 126,
+    "__docId__": 143,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3887,7 +4257,7 @@
     "generator": false
   },
   {
-    "__docId__": 127,
+    "__docId__": 144,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -3909,7 +4279,7 @@
     "generator": false
   },
   {
-    "__docId__": 128,
+    "__docId__": 145,
     "kind": "method",
     "static": true,
     "variation": null,
@@ -3965,7 +4335,7 @@
     "generator": false
   },
   {
-    "__docId__": 129,
+    "__docId__": 146,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -3978,7 +4348,7 @@
     "content": "'use strict';\n\nimport Logger from 'winston';\nimport Lodash from 'lodash/index';\nimport Preconditions from '~/Preconditions';\nimport NotificationTemplate from './NotificationTemplate';\nimport NotificationBuilder from './NotificationBuilder';\nimport AbstractObject from '~/CoreObject';\n\nclass NotificationService extends AbstractObject {\n\n    /**\n     *\n     * @param {Object} options\n     */\n    constructor(options) {\n        super(options);\n\n        if (!this.templates) {\n            this.templates = {};\n        }\n\n        if (!this.mappings) {\n            this.mappings = {};\n        }\n\n        this.register('DEFAULT_TYPE', new NotificationTemplate({\n            name: 'DEFAULT_TEMPLATE'\n        }));\n\n        this.payload = {};\n    }\n\n    mergeIntoPayload(payload) {\n        Preconditions.shouldBeObject(payload, 'Payload must be object');\n        Lodash.assign(this.payload, payload);\n    }\n\n    /**\n     *\n     * @param {String} notificationType\n     * @param {NotificationTemplate} notificationTemplate\n     * @return {NotificationService}\n     */\n    register(notificationType, notificationTemplate) {\n        Preconditions.shouldBeString(notificationType, 'notificationType must be string');\n        Preconditions.shouldBeObject(notificationTemplate, 'notificationTemplate must be an object');\n\n        if (!(notificationTemplate instanceof NotificationTemplate)) {\n            let options = notificationTemplate;\n\n            notificationTemplate = new NotificationTemplate(options);\n        }\n\n        this.mappings[notificationType] = notificationTemplate.name;\n        this.templates[notificationTemplate.name] = notificationTemplate;\n\n        return this;\n    }\n\n    builder() {\n        let builder = new NotificationBuilder({\n            url: this.url\n        });\n        \n        if (this.payload) {\n            builder.mergeIntoPayload(this.payload);\n        }\n\n        return builder;\n    }\n\n    notificationTemplate(notificationType) {\n        let notificationTemplateName = this.mappings[notificationType];\n        var notificationTemplate = this.templates[notificationTemplateName];\n\n        Preconditions.shouldBeDefined(notificationTemplate, 'Notification template not found for ' + notificationType);\n\n        return notificationTemplate;\n    }\n\n    /**\n     *\n     * @param {String} type\n     * @param {*|undefined} data\n     * @return {Promise}\n     */\n    notify(type, data) {\n        Preconditions.shouldBeString(type, 'NotificationService.notify(type, data): type must be string.');\n        //this.Preconditions.shouldBeDefined(data, 'NotificationService.notify(type, data): data must be defined.');\n        data = data || {};\n\n        let url = this.url;\n        let scope = this;\n\n        let notificationTemplate = this.notificationTemplate(type);\n        let builder = this.builder();\n        let promise = notificationTemplate.render(builder, data);\n\n        return promise\n            .then((builder) => {\n                // Let's sanity the builder before executing.\n\n                Preconditions.shouldBeDefined(builder, 'No builder for ' + type);\n\n                if (!builder.url) {\n                    builder.url = url;\n                }\n\n                let payload = builder.payload;\n\n                Preconditions.shouldBeString(builder.url, 'NotificationService.notify(): builder.url was undefined');\n                // Attachments without top level text are valid.\n                //Preconditions.shouldBeString(payload.text, 'builder did not complete \\'text\\' property. ' + JSON.stringify(payload));\n\n                return builder.execute();\n            });\n    }\n}\n\nexport { NotificationService };\n\nexport default new NotificationService({\n\n});\n"
   },
   {
-    "__docId__": 130,
+    "__docId__": 147,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -3999,7 +4369,7 @@
     ]
   },
   {
-    "__docId__": 131,
+    "__docId__": 148,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -4024,7 +4394,7 @@
     "generator": false
   },
   {
-    "__docId__": 132,
+    "__docId__": 149,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -4042,7 +4412,7 @@
     }
   },
   {
-    "__docId__": 133,
+    "__docId__": 150,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -4060,7 +4430,7 @@
     }
   },
   {
-    "__docId__": 134,
+    "__docId__": 151,
     "kind": "member",
     "static": false,
     "variation": null,
@@ -4078,7 +4448,7 @@
     }
   },
   {
-    "__docId__": 135,
+    "__docId__": 152,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4100,7 +4470,7 @@
     "generator": false
   },
   {
-    "__docId__": 136,
+    "__docId__": 153,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4143,7 +4513,7 @@
     "generator": false
   },
   {
-    "__docId__": 137,
+    "__docId__": 154,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4163,7 +4533,7 @@
     "generator": false
   },
   {
-    "__docId__": 138,
+    "__docId__": 155,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4190,7 +4560,7 @@
     "generator": false
   },
   {
-    "__docId__": 139,
+    "__docId__": 156,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4234,7 +4604,7 @@
     "generator": false
   },
   {
-    "__docId__": 140,
+    "__docId__": 157,
     "kind": "variable",
     "static": true,
     "variation": null,
@@ -4255,7 +4625,7 @@
     }
   },
   {
-    "__docId__": 141,
+    "__docId__": 158,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -4268,7 +4638,7 @@
     "content": "'use strict';\n\nimport Lodash from 'lodash/index';\nimport Logger from 'winston';\n\nimport Preconditions from '~/Preconditions';\nimport NotificationBuilder from '~/slack/NotificationBuilder';\nimport AbstractNotificationTemplate from '~/slack/AbstractNotificationTemplate';\n\nclass NotificationTemplate extends AbstractNotificationTemplate {\n\n    constructor(options) {\n        super(options);\n\n        Lodash.defaults(this, {\n            name: 'NotificationTemplate'\n        });\n\n        Preconditions.shouldBeString(this.name, 'You must define a name for this template');\n    }\n\n    /**\n     *\n     * @param {NotificationBuilder} builder\n     * @param {Object} data\n     * @return {NotificationBuilder}\n     */\n    applyTemplate(builder, data) {\n        if (Lodash.isObject(this.get('payload'))) {\n            builder.mergeIntoPayload(this.get('payload'));\n        }\n\n        Logger.silly('Data', data);\n\n        // This is actually not useful 'by default'\n        // It's useful if you want to do inline stuff, but if we do this in the common base-class,\n        // then we are actually prevented from ever using this.super() in subclasses that use strongly\n        // typed objects instead of slack formatted json. Since the architecture of this project is to\n        // abstract away the slack parts, applying the \"data\" to the slack payload was a limiting design mistake.\n        //\n        //if (this.Lodash.isObject(data)) {\n        //    notificationBuilder.mergeIntoPayload(data);\n        //}\n\n        // The default implementation\n        // This is where you would modify your builder.\n        return builder;\n    }\n}\n\nexport default NotificationTemplate;"
   },
   {
-    "__docId__": 142,
+    "__docId__": 159,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -4288,7 +4658,7 @@
     ]
   },
   {
-    "__docId__": 143,
+    "__docId__": 160,
     "kind": "constructor",
     "static": false,
     "variation": null,
@@ -4310,7 +4680,7 @@
     "generator": false
   },
   {
-    "__docId__": 144,
+    "__docId__": 161,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4353,7 +4723,7 @@
     "generator": false
   },
   {
-    "__docId__": 145,
+    "__docId__": 162,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -4366,7 +4736,7 @@
     "content": "import NotificationTemplate from '~/slack/NotificationTemplate';\n\nclass UserNotificationTemplate extends NotificationTemplate {\n\n    applyTemplate(builder, user) {\n        let id = user.id;\n        let firstName = user.firstName;\n        let lastName = user.lastName;\n        let address = user.address;\n\n        builder\n            .attachment()\n            .title(`User - ${id}`)\n            .field()\n            .addKeyValuePair('id', 'asdf')\n            .addKeyValuePair('name', `${firstName} ${lastName}`)\n            .addKeyValuePair('address', `${address}`)\n        ;\n    }\n}\n\nexport default UserNotificationTemplate;"
   },
   {
-    "__docId__": 146,
+    "__docId__": 163,
     "kind": "class",
     "static": true,
     "variation": null,
@@ -4386,7 +4756,7 @@
     ]
   },
   {
-    "__docId__": 147,
+    "__docId__": 164,
     "kind": "method",
     "static": false,
     "variation": null,
@@ -4414,7 +4784,7 @@
     "generator": false
   },
   {
-    "__docId__": 148,
+    "__docId__": 165,
     "kind": "file",
     "static": true,
     "variation": null,
@@ -4427,7 +4797,7 @@
     "content": "'use strict';\n\nimport AbstractBuilder from \"~/slack/AbstractBuilder\";\nimport FieldBuilder from \"~/slack/FieldBuilder\";\nimport AttachmentBuilder from \"~/slack/AttachmentBuilder\";\nimport NotificationBuilder from \"~/slack/NotificationBuilder\";\nimport NotificationService from \"~/slack/NotificationService\";\nimport NotificationTemplate from \"~/slack/NotificationTemplate\";\nimport InlineNotificationTemplate from \"~/slack/InlineNotificationTemplate\";\nimport UserNotificationTemplate from \"~/slack/UserNotificationTemplate\";\n\nexport {AbstractBuilder};\nexport {FieldBuilder};\nexport {AttachmentBuilder};\nexport {NotificationBuilder};\nexport {NotificationTemplate};\nexport {NotificationService};\nexport {InlineNotificationTemplate};\nexport {UserNotificationTemplate};\n\nexport default NotificationService;"
   },
   {
-    "__docId__": 150,
+    "__docId__": 167,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4440,7 +4810,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 151,
+    "__docId__": 168,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4453,7 +4823,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 152,
+    "__docId__": 169,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4466,7 +4836,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 153,
+    "__docId__": 170,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4479,7 +4849,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 154,
+    "__docId__": 171,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4492,7 +4862,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 155,
+    "__docId__": 172,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4505,7 +4875,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 156,
+    "__docId__": 173,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4518,7 +4888,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 157,
+    "__docId__": 174,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4531,7 +4901,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 158,
+    "__docId__": 175,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4544,7 +4914,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 159,
+    "__docId__": 176,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4557,7 +4927,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 160,
+    "__docId__": 177,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4570,7 +4940,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 161,
+    "__docId__": 178,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4583,7 +4953,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 162,
+    "__docId__": 179,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4596,7 +4966,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 163,
+    "__docId__": 180,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4609,7 +4979,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 164,
+    "__docId__": 181,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4622,7 +4992,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 165,
+    "__docId__": 182,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4635,7 +5005,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 166,
+    "__docId__": 183,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4648,7 +5018,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 167,
+    "__docId__": 184,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4661,7 +5031,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 168,
+    "__docId__": 185,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4674,7 +5044,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 169,
+    "__docId__": 186,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4687,7 +5057,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 170,
+    "__docId__": 187,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4700,7 +5070,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 171,
+    "__docId__": 188,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4713,7 +5083,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 172,
+    "__docId__": 189,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4726,7 +5096,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 173,
+    "__docId__": 190,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4739,7 +5109,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 174,
+    "__docId__": 191,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4752,7 +5122,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 175,
+    "__docId__": 192,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4765,7 +5135,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 176,
+    "__docId__": 193,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4778,7 +5148,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 177,
+    "__docId__": 194,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4791,7 +5161,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 178,
+    "__docId__": 195,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4804,7 +5174,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 179,
+    "__docId__": 196,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4817,7 +5187,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 180,
+    "__docId__": 197,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4830,7 +5200,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 181,
+    "__docId__": 198,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4843,7 +5213,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 182,
+    "__docId__": 199,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4856,7 +5226,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 183,
+    "__docId__": 200,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4869,7 +5239,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 184,
+    "__docId__": 201,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4882,7 +5252,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 185,
+    "__docId__": 202,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4895,7 +5265,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 186,
+    "__docId__": 203,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4908,7 +5278,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 187,
+    "__docId__": 204,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4921,7 +5291,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 188,
+    "__docId__": 205,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4934,7 +5304,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 189,
+    "__docId__": 206,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4947,7 +5317,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 190,
+    "__docId__": 207,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4960,7 +5330,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 191,
+    "__docId__": 208,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4973,7 +5343,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 192,
+    "__docId__": 209,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4986,7 +5356,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 193,
+    "__docId__": 210,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -4999,7 +5369,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 194,
+    "__docId__": 211,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5012,7 +5382,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 195,
+    "__docId__": 212,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5025,7 +5395,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 196,
+    "__docId__": 213,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5038,7 +5408,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 198,
+    "__docId__": 215,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5051,7 +5421,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 199,
+    "__docId__": 216,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5064,7 +5434,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 200,
+    "__docId__": 217,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5077,7 +5447,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 201,
+    "__docId__": 218,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5090,7 +5460,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 202,
+    "__docId__": 219,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5103,7 +5473,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 203,
+    "__docId__": 220,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5116,7 +5486,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 204,
+    "__docId__": 221,
     "kind": "external",
     "static": true,
     "variation": null,
@@ -5129,7 +5499,7 @@
     "builtinExternal": true
   },
   {
-    "__docId__": 205,
+    "__docId__": 222,
     "kind": "external",
     "static": true,
     "variation": null,
