@@ -3,14 +3,51 @@
 import Lodash from "lodash";
 import Preconditions from "~/Preconditions";
 import Ember from "~/ember";
-//asdfasdf
+import CoreObject from '~/CoreObject';
+
 /**
  * @class
  * @singleton
  */
 class Utility {
 
-    ///asdfasdfasdfasdfasdfasdf
+    /**
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isObject(object) {
+        let type = Utility.typeOf(object);
+
+        return 'object' === type || 'instance' === type;
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {Class}
+     */
+    static toClass(object) {
+        if (Utility.isClass(object)) {
+            return object;
+        } else if (Utility.isObject(object)) {
+            return object.toClass();
+        }
+
+        Preconditions.fail('object|class', Utility.typeOf(object), 'Must be correct type');
+    }
+
+    static isNumber(object) {
+        return 'number' === Utility.typeOf(object);
+    }
+
+    static isClass(object) {
+        return Utility.typeOf(object) === 'class';
+    }
+
+    static isInstance(object) {
+        return Utility.typeOf(object) === 'instance';
+    }
+    
     static take(object, key) {
         if (!object) {
             return undefined;
@@ -18,7 +55,7 @@ class Utility {
 
         let value = Lodash.get(object, key);
 
-        if (key.indexOf('.')) {
+        if (-1 != key.indexOf('.')) {
             // It's an object path.
             let parentPath = key.substring(0, key.lastIndexOf('.'));
             let itemKey = key.substring(key.lastIndexOf('.') + 1);
@@ -101,7 +138,13 @@ class Utility {
          * @param {*} object
          */
         return (function(object) {
-            return type === Utility.typeOf(object);
+            let existingType = Utility.typeOf(object);
+
+            if ('object' === type || 'instance' === type) {
+                return ('object' === existingType) || ('instance' === existingType);
+            }
+
+            return type === existingType;
         });
     }
 
@@ -159,7 +202,21 @@ class Utility {
      * @public
      */
     static typeOf(object) {
-        return Ember.typeOf(object);
+        let type = Ember.typeOf(object);
+
+        if ('function' === type) {
+            // Let's isClass a bit further.
+
+            if (CoreObject.isClass(object)) {
+                return 'class';
+            }
+        } else if ('object' === type) {
+            if (CoreObject.isInstance(object)) {
+                return 'instance';
+            }
+        }
+
+        return type;
     }
 
     /**

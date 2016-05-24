@@ -5,9 +5,9 @@ import Lodash from 'lodash/index';
 import Preconditions from '~/Preconditions';
 import NotificationTemplate from './NotificationTemplate';
 import NotificationBuilder from './NotificationBuilder';
-import AbstractObject from '~/CoreObject';
+import CoreObject from '~/CoreObject';
 
-class NotificationService extends AbstractObject {
+class NotificationService extends CoreObject {
 
     /**
      *

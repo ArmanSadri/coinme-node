@@ -482,69 +482,215 @@
           "type": "ImportDefaultSpecifier",
           "local": {
             "type": "Identifier",
-            "name": "AbstractError",
+            "name": "errors",
             "range": [
-              236,
-              249
+              237,
+              243
             ],
             "loc": {
               "start": {
-                "line": 9,
+                "line": 10,
                 "column": 7
               },
               "end": {
-                "line": 9,
-                "column": 20
+                "line": 10,
+                "column": 13
               }
             }
           },
           "range": [
-            236,
-            249
+            237,
+            243
           ],
           "loc": {
             "start": {
-              "line": 9,
+              "line": 10,
               "column": 7
             },
             "end": {
-              "line": 9,
-              "column": 20
+              "line": 10,
+              "column": 13
             }
           }
         }
       ],
       "source": {
         "type": "Literal",
-        "value": "errors/AbstractError",
-        "raw": "\"errors/AbstractError\"",
+        "value": "./errors/index",
+        "raw": "\"./errors/index\"",
         "range": [
-          255,
-          277
+          249,
+          265
         ],
         "loc": {
           "start": {
-            "line": 9,
-            "column": 26
+            "line": 10,
+            "column": 19
           },
           "end": {
-            "line": 9,
-            "column": 48
+            "line": 10,
+            "column": 35
           }
         }
       },
       "range": [
-        229,
-        278
+        230,
+        266
       ],
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 0
         },
         "end": {
-          "line": 9,
-          "column": 49
+          "line": 10,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "slack",
+            "range": [
+              274,
+              279
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 7
+              },
+              "end": {
+                "line": 11,
+                "column": 12
+              }
+            }
+          },
+          "range": [
+            274,
+            279
+          ],
+          "loc": {
+            "start": {
+              "line": 11,
+              "column": 7
+            },
+            "end": {
+              "line": 11,
+              "column": 12
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./slack/index",
+        "raw": "\"./slack/index\"",
+        "range": [
+          285,
+          300
+        ],
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 18
+          },
+          "end": {
+            "line": 11,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        267,
+        301
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "data",
+            "range": [
+              309,
+              313
+            ],
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 7
+              },
+              "end": {
+                "line": 12,
+                "column": 11
+              }
+            }
+          },
+          "range": [
+            309,
+            313
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 7
+            },
+            "end": {
+              "line": 12,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./data/index",
+        "raw": "\"./data/index\"",
+        "range": [
+          319,
+          333
+        ],
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 17
+          },
+          "end": {
+            "line": 12,
+            "column": 31
+          }
+        }
+      },
+      "range": [
+        302,
+        334
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 12,
+          "column": 32
         }
       }
     },
@@ -556,69 +702,69 @@
           "type": "ExportSpecifier",
           "exported": {
             "type": "Identifier",
-            "name": "AbstractError",
+            "name": "slack",
             "range": [
-              288,
-              301
+              345,
+              350
             ],
             "loc": {
               "start": {
-                "line": 11,
-                "column": 8
+                "line": 14,
+                "column": 9
               },
               "end": {
-                "line": 11,
-                "column": 21
+                "line": 14,
+                "column": 14
               }
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "AbstractError",
+            "name": "slack",
             "range": [
-              288,
-              301
+              345,
+              350
             ],
             "loc": {
               "start": {
-                "line": 11,
-                "column": 8
+                "line": 14,
+                "column": 9
               },
               "end": {
-                "line": 11,
-                "column": 21
+                "line": 14,
+                "column": 14
               }
             }
           },
           "range": [
-            288,
-            301
+            345,
+            350
           ],
           "loc": {
             "start": {
-              "line": 11,
-              "column": 8
+              "line": 14,
+              "column": 9
             },
             "end": {
-              "line": 11,
-              "column": 21
+              "line": 14,
+              "column": 14
             }
           }
         }
       ],
       "source": null,
       "range": [
-        280,
-        303
+        336,
+        353
       ],
       "loc": {
         "start": {
-          "line": 11,
+          "line": 14,
           "column": 0
         },
         "end": {
-          "line": 11,
-          "column": 23
+          "line": 15,
+          "column": 0
         }
       }
     },
@@ -630,51 +776,51 @@
           "type": "ExportSpecifier",
           "exported": {
             "type": "Identifier",
-            "name": "Ember",
+            "name": "data",
             "range": [
-              312,
-              317
+              362,
+              366
             ],
             "loc": {
               "start": {
-                "line": 12,
-                "column": 8
+                "line": 15,
+                "column": 9
               },
               "end": {
-                "line": 12,
+                "line": 15,
                 "column": 13
               }
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "Ember",
+            "name": "data",
             "range": [
-              312,
-              317
+              362,
+              366
             ],
             "loc": {
               "start": {
-                "line": 12,
-                "column": 8
+                "line": 15,
+                "column": 9
               },
               "end": {
-                "line": 12,
+                "line": 15,
                 "column": 13
               }
             }
           },
           "range": [
-            312,
-            317
+            362,
+            366
           ],
           "loc": {
             "start": {
-              "line": 12,
-              "column": 8
+              "line": 15,
+              "column": 9
             },
             "end": {
-              "line": 12,
+              "line": 15,
               "column": 13
             }
           }
@@ -682,16 +828,164 @@
       ],
       "source": null,
       "range": [
-        304,
-        319
+        353,
+        369
       ],
       "loc": {
         "start": {
-          "line": 12,
+          "line": 15,
           "column": 0
         },
         "end": {
-          "line": 12,
+          "line": 16,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": null,
+      "specifiers": [
+        {
+          "type": "ExportSpecifier",
+          "exported": {
+            "type": "Identifier",
+            "name": "errors",
+            "range": [
+              378,
+              384
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 9
+              },
+              "end": {
+                "line": 16,
+                "column": 15
+              }
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "name": "errors",
+            "range": [
+              378,
+              384
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 9
+              },
+              "end": {
+                "line": 16,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            378,
+            384
+          ],
+          "loc": {
+            "start": {
+              "line": 16,
+              "column": 9
+            },
+            "end": {
+              "line": 16,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "source": null,
+      "range": [
+        369,
+        388
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": null,
+      "specifiers": [
+        {
+          "type": "ExportSpecifier",
+          "exported": {
+            "type": "Identifier",
+            "name": "Ember",
+            "range": [
+              396,
+              401
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 8
+              },
+              "end": {
+                "line": 18,
+                "column": 13
+              }
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "name": "Ember",
+            "range": [
+              396,
+              401
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 8
+              },
+              "end": {
+                "line": 18,
+                "column": 13
+              }
+            }
+          },
+          "range": [
+            396,
+            401
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 8
+            },
+            "end": {
+              "line": 18,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "source": null,
+      "range": [
+        388,
+        403
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
           "column": 15
         }
       }
@@ -706,16 +1000,16 @@
             "type": "Identifier",
             "name": "Coinme",
             "range": [
-              328,
-              334
+              412,
+              418
             ],
             "loc": {
               "start": {
-                "line": 13,
+                "line": 19,
                 "column": 8
               },
               "end": {
-                "line": 13,
+                "line": 19,
                 "column": 14
               }
             }
@@ -724,31 +1018,31 @@
             "type": "Identifier",
             "name": "Coinme",
             "range": [
-              328,
-              334
+              412,
+              418
             ],
             "loc": {
               "start": {
-                "line": 13,
+                "line": 19,
                 "column": 8
               },
               "end": {
-                "line": 13,
+                "line": 19,
                 "column": 14
               }
             }
           },
           "range": [
-            328,
-            334
+            412,
+            418
           ],
           "loc": {
             "start": {
-              "line": 13,
+              "line": 19,
               "column": 8
             },
             "end": {
-              "line": 13,
+              "line": 19,
               "column": 14
             }
           }
@@ -756,16 +1050,16 @@
       ],
       "source": null,
       "range": [
-        320,
-        336
+        404,
+        420
       ],
       "loc": {
         "start": {
-          "line": 13,
+          "line": 19,
           "column": 0
         },
         "end": {
-          "line": 13,
+          "line": 19,
           "column": 16
         }
       }
@@ -780,16 +1074,16 @@
             "type": "Identifier",
             "name": "CoreObject",
             "range": [
-              345,
-              355
+              429,
+              439
             ],
             "loc": {
               "start": {
-                "line": 14,
+                "line": 20,
                 "column": 8
               },
               "end": {
-                "line": 14,
+                "line": 20,
                 "column": 18
               }
             }
@@ -798,31 +1092,31 @@
             "type": "Identifier",
             "name": "CoreObject",
             "range": [
-              345,
-              355
+              429,
+              439
             ],
             "loc": {
               "start": {
-                "line": 14,
+                "line": 20,
                 "column": 8
               },
               "end": {
-                "line": 14,
+                "line": 20,
                 "column": 18
               }
             }
           },
           "range": [
-            345,
-            355
+            429,
+            439
           ],
           "loc": {
             "start": {
-              "line": 14,
+              "line": 20,
               "column": 8
             },
             "end": {
-              "line": 14,
+              "line": 20,
               "column": 18
             }
           }
@@ -830,16 +1124,16 @@
       ],
       "source": null,
       "range": [
-        337,
-        357
+        421,
+        441
       ],
       "loc": {
         "start": {
-          "line": 14,
+          "line": 20,
           "column": 0
         },
         "end": {
-          "line": 14,
+          "line": 20,
           "column": 20
         }
       }
@@ -854,16 +1148,16 @@
             "type": "Identifier",
             "name": "Functions",
             "range": [
-              366,
-              375
+              450,
+              459
             ],
             "loc": {
               "start": {
-                "line": 15,
+                "line": 21,
                 "column": 8
               },
               "end": {
-                "line": 15,
+                "line": 21,
                 "column": 17
               }
             }
@@ -872,31 +1166,31 @@
             "type": "Identifier",
             "name": "Functions",
             "range": [
-              366,
-              375
+              450,
+              459
             ],
             "loc": {
               "start": {
-                "line": 15,
+                "line": 21,
                 "column": 8
               },
               "end": {
-                "line": 15,
+                "line": 21,
                 "column": 17
               }
             }
           },
           "range": [
-            366,
-            375
+            450,
+            459
           ],
           "loc": {
             "start": {
-              "line": 15,
+              "line": 21,
               "column": 8
             },
             "end": {
-              "line": 15,
+              "line": 21,
               "column": 17
             }
           }
@@ -904,16 +1198,16 @@
       ],
       "source": null,
       "range": [
-        358,
-        377
+        442,
+        461
       ],
       "loc": {
         "start": {
-          "line": 15,
+          "line": 21,
           "column": 0
         },
         "end": {
-          "line": 15,
+          "line": 21,
           "column": 19
         }
       }
@@ -928,16 +1222,16 @@
             "type": "Identifier",
             "name": "Preconditions",
             "range": [
-              386,
-              399
+              470,
+              483
             ],
             "loc": {
               "start": {
-                "line": 16,
+                "line": 22,
                 "column": 8
               },
               "end": {
-                "line": 16,
+                "line": 22,
                 "column": 21
               }
             }
@@ -946,31 +1240,31 @@
             "type": "Identifier",
             "name": "Preconditions",
             "range": [
-              386,
-              399
+              470,
+              483
             ],
             "loc": {
               "start": {
-                "line": 16,
+                "line": 22,
                 "column": 8
               },
               "end": {
-                "line": 16,
+                "line": 22,
                 "column": 21
               }
             }
           },
           "range": [
-            386,
-            399
+            470,
+            483
           ],
           "loc": {
             "start": {
-              "line": 16,
+              "line": 22,
               "column": 8
             },
             "end": {
-              "line": 16,
+              "line": 22,
               "column": 21
             }
           }
@@ -978,16 +1272,16 @@
       ],
       "source": null,
       "range": [
-        378,
-        401
+        462,
+        485
       ],
       "loc": {
         "start": {
-          "line": 16,
+          "line": 22,
           "column": 0
         },
         "end": {
-          "line": 16,
+          "line": 22,
           "column": 23
         }
       }
@@ -1002,16 +1296,16 @@
             "type": "Identifier",
             "name": "Utility",
             "range": [
-              410,
-              417
+              494,
+              501
             ],
             "loc": {
               "start": {
-                "line": 17,
+                "line": 23,
                 "column": 8
               },
               "end": {
-                "line": 17,
+                "line": 23,
                 "column": 15
               }
             }
@@ -1020,31 +1314,31 @@
             "type": "Identifier",
             "name": "Utility",
             "range": [
-              410,
-              417
+              494,
+              501
             ],
             "loc": {
               "start": {
-                "line": 17,
+                "line": 23,
                 "column": 8
               },
               "end": {
-                "line": 17,
+                "line": 23,
                 "column": 15
               }
             }
           },
           "range": [
-            410,
-            417
+            494,
+            501
           ],
           "loc": {
             "start": {
-              "line": 17,
+              "line": 23,
               "column": 8
             },
             "end": {
-              "line": 17,
+              "line": 23,
               "column": 15
             }
           }
@@ -1052,16 +1346,16 @@
       ],
       "source": null,
       "range": [
-        402,
-        419
+        486,
+        503
       ],
       "loc": {
         "start": {
-          "line": 17,
+          "line": 23,
           "column": 0
         },
         "end": {
-          "line": 17,
+          "line": 23,
           "column": 17
         }
       }
@@ -1072,16 +1366,16 @@
         "type": "Identifier",
         "name": "Coinme",
         "range": [
-          436,
-          442
+          520,
+          526
         ],
         "loc": {
           "start": {
-            "line": 19,
+            "line": 25,
             "column": 15
           },
           "end": {
-            "line": 19,
+            "line": 25,
             "column": 21
           }
         },
@@ -1089,16 +1383,16 @@
         "trailingComments": []
       },
       "range": [
-        421,
-        443
+        505,
+        527
       ],
       "loc": {
         "start": {
-          "line": 19,
+          "line": 25,
           "column": 0
         },
         "end": {
-          "line": 19,
+          "line": 25,
           "column": 22
         }
       }
@@ -1107,7 +1401,7 @@
   "sourceType": "module",
   "range": [
     0,
-    443
+    527
   ],
   "loc": {
     "start": {
@@ -1115,7 +1409,7 @@
       "column": 0
     },
     "end": {
-      "line": 19,
+      "line": 25,
       "column": 22
     }
   },

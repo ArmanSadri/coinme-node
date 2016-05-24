@@ -50,26 +50,23 @@ var AbstractNotificationTemplate = function (_CoreObject) {
         _classCallCheck(this, AbstractNotificationTemplate);
 
         return _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractNotificationTemplate).apply(this, arguments));
+
+        // Utility.defaults(this, {
+        //     name: 'NotificationTemplate'
+        // });
+
+        // Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');
     }
 
+    /**
+     * @public
+     * @param {NotificationBuilder} builder
+     * @param {*|undefined} data
+     * @returns {Promise}
+     */
+
+
     _createClass(AbstractNotificationTemplate, [{
-        key: "init",
-        value: function init() {
-            _Utility2.default.defaults(this, {
-                name: 'NotificationTemplate'
-            });
-
-            // Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');
-        }
-
-        /**
-         * @public
-         * @param {NotificationBuilder} builder
-         * @param {*|undefined} data
-         * @returns {Promise}
-         */
-
-    }, {
         key: "render",
         value: function render(builder, data) {
             // Apply the template. Might be a promise though.

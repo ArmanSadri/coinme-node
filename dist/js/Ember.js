@@ -2149,7 +2149,7 @@ return fn?fn.bind(perf):function(){return +new Date();};}(); /**
     @param {Object} binding Context that instrument function is called with.
     @private
   */function instrument(name,_payload,callback,binding){if(arguments.length<=3&&typeof _payload==='function'){binding=callback;callback=_payload;_payload=undefined;}if(subscribers.length===0){return callback.call(binding);}var payload=_payload||{};var finalizer=_instrumentStart(name,function(){return payload;});if(finalizer){return withFinalizer(callback,finalizer,payload,binding);}else {return callback.call(binding);}}function withFinalizer(callback,finalizer,payload,binding){try{return callback.call(binding);}catch(e){payload.exception=e;return payload;}finally {return finalizer();}} // private for now
-function _instrumentStart(name,_payload){var listeners=cache[name];if(!listeners){listeners=populateListeners(name);}if(listeners.length===0){return;}var payload=_payload();var STRUCTURED_PROFILE=_emberMetalCore.default.STRUCTURED_PROFILE;var timeName;if(STRUCTURED_PROFILE){timeName=name+': '+payload.object;}var l=listeners.length;var beforeValues=new Array(l);var i,listener;var timestamp=time();for(i=0;i<l;i++){listener=listeners[i];beforeValues[i]=listener.before(name,timestamp,payload);}return function _instrumentEnd(){var i,l,listener;var timestamp=time();for(i=0,l=listeners.length;i<l;i++){listener=listeners[i];listener.after(name,timestamp,payload,beforeValues[i]);}if(STRUCTURED_PROFILE){}};} /**
+function _instrumentStart(name,_payload){var listeners=cache[name];if(!listeners){listeners=populateListeners(name);}if(listeners.length===0){return;}var payload=_payload();var STRUCTURED_PROFILE=_emberMetalCore.default.STRUCTURED_PROFILE;var timeName;if(STRUCTURED_PROFILE){timeName=name+': '+payload.object;console.time(timeName);}var l=listeners.length;var beforeValues=new Array(l);var i,listener;var timestamp=time();for(i=0;i<l;i++){listener=listeners[i];beforeValues[i]=listener.before(name,timestamp,payload);}return function _instrumentEnd(){var i,l,listener;var timestamp=time();for(i=0,l=listeners.length;i<l;i++){listener=listeners[i];listener.after(name,timestamp,payload,beforeValues[i]);}if(STRUCTURED_PROFILE){console.timeEnd(timeName);}};} /**
     Subscribes to a particular event or instrumented block of code.
   
     @method subscribe
@@ -7717,7 +7717,7 @@ enifed('ember-runtime/system/object',['exports','ember-runtime/system/core_objec
   
     ```javascript
     object = Ember.Object.create({
-      name: 'Foo'
+      name: 'Foo'  
     });
   
     proxy = Ember.ObjectProxy.create({

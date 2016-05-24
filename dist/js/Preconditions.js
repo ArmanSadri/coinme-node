@@ -15,6 +15,10 @@ var _index = require("lodash/index");
 
 var _index2 = _interopRequireDefault(_index);
 
+var _CoreObject = require("./CoreObject");
+
+var _CoreObject2 = _interopRequireDefault(_CoreObject);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -116,7 +120,7 @@ var Preconditions = function () {
     }, {
         key: "shouldNotBeFalsey",
         value: function shouldNotBeFalsey(object, message) {
-            return Preconditions.shouldBe(_Utility2.default.isNotFalsey, object, message, 'must not be falsey');
+            return Preconditions.shouldBe(_Utility2.default.isNotFalsey, true, object, message || 'must not be falsey');
         }
 
         /**
@@ -129,7 +133,7 @@ var Preconditions = function () {
     }, {
         key: "shouldBeFalsey",
         value: function shouldBeFalsey(object, message) {
-            return Preconditions.shouldBe(_Utility2.default.isFalsey, object, message, 'must be falsey');
+            return Preconditions.shouldBe(_Utility2.default.isFalsey, false, object, message || 'must be falsey');
         }
 
         /**
@@ -232,6 +236,59 @@ var Preconditions = function () {
 
         /**
          *
+         * @param {Class|Object} object
+         * @param {Class|Object} [clazz]
+         * @param {String} [message]
+         */
+
+    }, {
+        key: "shouldBeClass",
+        value: function shouldBeClass(object, clazz, message) {
+            Preconditions.shouldBeDefined(object, 'object must be defined');
+
+            if (!clazz) {
+                clazz = _CoreObject2.default;
+            }
+
+            if (!_CoreObject2.default.isClass(clazz)) {
+                Preconditions.fail(_CoreObject2.default, clazz, 'Class not a CoreObject class');
+            }
+
+            if (!clazz.isClass(object)) {
+                Preconditions.fail(object, clazz, 'Class not a ' + clazz + ' class');
+            }
+
+            return object;
+        }
+
+        /**
+         *
+         * @param {Class|Object} object
+         * @param {Class|Object} [clazz]
+         */
+
+    }, {
+        key: "shouldBeInstance",
+        value: function shouldBeInstance(object, clazz) {
+            Preconditions.shouldBeDefined(object, 'object must be defined');
+
+            if (!clazz) {
+                clazz = _CoreObject2.default;
+            }
+
+            if (!_CoreObject2.default.isClass(clazz)) {
+                Preconditions.fail(_CoreObject2.default, clazz, 'Class not a CoreObject class');
+            }
+
+            if (!clazz.isInstance(object)) {
+                Preconditions.fail(object, clazz, 'Class not an instance of ' + clazz);
+            }
+
+            return object;
+        }
+
+        /**
+         *
          * @param {*} number
          * @param {String} [message]
          * @return {Number}
@@ -261,9 +318,7 @@ var Preconditions = function () {
 
             var fn = _Utility2.default.typeMatcher('object');
 
-            // throw new Error(Utility.typeOf(fn));
-
-            return Preconditions.shouldBe(fn, 'object', object, message);
+            return Preconditions.shouldBe(fn, 'object', object, message || 'shouldBeObject');
         }
 
         /**

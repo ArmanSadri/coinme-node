@@ -6,9 +6,15 @@ import CoreObject from "./CoreObject";
 import Functions from "./Functions";
 import Preconditions from "./Preconditions";
 import Utility from "./Utility";
-import AbstractError from "errors/AbstractError";
 
-export {AbstractError};
+import errors from "./errors/index";
+import slack from "./slack/index";
+import data from "./data/index";
+
+export { slack }
+export { data }
+export { errors }
+
 export {Ember};
 export {Coinme};
 export {CoreObject};

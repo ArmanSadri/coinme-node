@@ -27,9 +27,9 @@ var _NotificationBuilder = require('./NotificationBuilder');
 
 var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
 
-var _CoreObject = require('./../CoreObject');
+var _CoreObject2 = require('./../CoreObject');
 
-var _CoreObject2 = _interopRequireDefault(_CoreObject);
+var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39,8 +39,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var NotificationService = function (_AbstractObject) {
-    _inherits(NotificationService, _AbstractObject);
+var NotificationService = function (_CoreObject) {
+    _inherits(NotificationService, _CoreObject);
 
     /**
      *
@@ -165,7 +165,7 @@ var NotificationService = function (_AbstractObject) {
     }]);
 
     return NotificationService;
-}(_CoreObject2.default);
+}(_CoreObject3.default);
 
 exports.NotificationService = NotificationService;
 exports.default = new NotificationService({});

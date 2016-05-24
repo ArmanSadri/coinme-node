@@ -1,0 +1,3111 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "Literal",
+        "value": "use strict",
+        "raw": "'use strict'",
+        "range": [
+          0,
+          12
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        }
+      },
+      "range": [
+        0,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Utility",
+            "range": [
+              25,
+              32
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 8
+              },
+              "end": {
+                "line": 3,
+                "column": 15
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Utility",
+            "range": [
+              25,
+              32
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 8
+              },
+              "end": {
+                "line": 3,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            25,
+            32
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 8
+            },
+            "end": {
+              "line": 3,
+              "column": 15
+            }
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Preconditions",
+            "range": [
+              34,
+              47
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 17
+              },
+              "end": {
+                "line": 3,
+                "column": 30
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Preconditions",
+            "range": [
+              34,
+              47
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 17
+              },
+              "end": {
+                "line": 3,
+                "column": 30
+              }
+            }
+          },
+          "range": [
+            34,
+            47
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 17
+            },
+            "end": {
+              "line": 3,
+              "column": 30
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "~/",
+        "raw": "\"~/\"",
+        "range": [
+          54,
+          58
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 37
+          },
+          "end": {
+            "line": 3,
+            "column": 41
+          }
+        }
+      },
+      "range": [
+        17,
+        59
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Currency",
+            "range": [
+              68,
+              76
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            68,
+            76
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./Currency",
+        "raw": "\"./Currency\"",
+        "range": [
+          82,
+          94
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 21
+          },
+          "end": {
+            "line": 4,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        61,
+        95
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Money",
+            "range": [
+              104,
+              109
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 12
+              }
+            }
+          },
+          "range": [
+            104,
+            109
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 12
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./Money",
+        "raw": "\"./Money\"",
+        "range": [
+          115,
+          124
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 18
+          },
+          "end": {
+            "line": 5,
+            "column": 27
+          }
+        }
+      },
+      "range": [
+        97,
+        125
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Bitcoin",
+            "range": [
+              134,
+              141
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 7
+              },
+              "end": {
+                "line": 6,
+                "column": 14
+              }
+            }
+          },
+          "range": [
+            134,
+            141
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 7
+            },
+            "end": {
+              "line": 6,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./Bitcoin",
+        "raw": "\"./Bitcoin\"",
+        "range": [
+          147,
+          158
+        ],
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 20
+          },
+          "end": {
+            "line": 6,
+            "column": 31
+          }
+        }
+      },
+      "range": [
+        127,
+        159
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 32
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\r\n * @class Bitcoin\r\n ",
+          "range": [
+            165,
+            192
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 0
+            },
+            "end": {
+              "line": 11,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "Satoshi",
+          "range": [
+            215,
+            222
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 21
+            },
+            "end": {
+              "line": 12,
+              "column": 28
+            }
+          }
+        },
+        "superClass": {
+          "type": "Identifier",
+          "name": "Currency",
+          "range": [
+            231,
+            239
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 37
+            },
+            "end": {
+              "line": 12,
+              "column": 45
+            }
+          }
+        },
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "constructor",
+                "range": [
+                  249,
+                  260
+                ],
+                "loc": {
+                  "start": {
+                    "line": 14,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 15
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Super",
+                          "range": [
+                            274,
+                            279
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 13
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "SpreadElement",
+                            "argument": {
+                              "type": "Identifier",
+                              "name": "arguments",
+                              "range": [
+                                283,
+                                292
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 15,
+                                  "column": 17
+                                },
+                                "end": {
+                                  "line": 15,
+                                  "column": 26
+                                }
+                              }
+                            },
+                            "range": [
+                              280,
+                              292
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 14
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 26
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          274,
+                          293
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 15,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 27
+                          }
+                        }
+                      },
+                      "range": [
+                        274,
+                        294
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 15,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 28
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    263,
+                    301
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 14,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  260,
+                  301
+                ],
+                "loc": {
+                  "start": {
+                    "line": 14,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "constructor",
+              "computed": false,
+              "range": [
+                249,
+                301
+              ],
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 4
+                },
+                "end": {
+                  "line": 16,
+                  "column": 5
+                }
+              },
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     * @returns {Converter}\r\n     ",
+                  "range": [
+                    309,
+                    350
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": false
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "converter",
+                "range": [
+                  367,
+                  376
+                ],
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 24
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "MemberExpression",
+                        "computed": false,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "Bitcoin",
+                          "range": [
+                            397,
+                            404
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 22,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 22,
+                              "column": 22
+                            }
+                          }
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "name": "converter",
+                          "range": [
+                            405,
+                            414
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 22,
+                              "column": 23
+                            },
+                            "end": {
+                              "line": 22,
+                              "column": 32
+                            }
+                          }
+                        },
+                        "range": [
+                          397,
+                          414
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 22,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 22,
+                            "column": 32
+                          }
+                        }
+                      },
+                      "range": [
+                        390,
+                        415
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 22,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 22,
+                          "column": 33
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    379,
+                    422
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 27
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  376,
+                  422
+                ],
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 24
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "get",
+              "computed": false,
+              "range": [
+                356,
+                422
+              ],
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 4
+                },
+                "end": {
+                  "line": 23,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     * @returns {Converter}\r\n     ",
+                  "range": [
+                    309,
+                    350
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     * @param {Converter} value\r\n     ",
+                  "range": [
+                    430,
+                    475
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "converter",
+                "range": [
+                  492,
+                  501
+                ],
+                "loc": {
+                  "start": {
+                    "line": 28,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 28,
+                    "column": 24
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "value",
+                    "range": [
+                      502,
+                      507
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 28,
+                        "column": 25
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 30
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "Bitcoin",
+                            "range": [
+                              520,
+                              527
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 29,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 29,
+                                "column": 15
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "converter",
+                            "range": [
+                              528,
+                              537
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 29,
+                                "column": 16
+                              },
+                              "end": {
+                                "line": 29,
+                                "column": 25
+                              }
+                            }
+                          },
+                          "range": [
+                            520,
+                            537
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 29,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 29,
+                              "column": 25
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "value",
+                          "range": [
+                            540,
+                            545
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 29,
+                              "column": 28
+                            },
+                            "end": {
+                              "line": 29,
+                              "column": 33
+                            }
+                          }
+                        },
+                        "range": [
+                          520,
+                          545
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 29,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 29,
+                            "column": 33
+                          }
+                        }
+                      },
+                      "range": [
+                        520,
+                        546
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 29,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 29,
+                          "column": 34
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    509,
+                    553
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 28,
+                      "column": 32
+                    },
+                    "end": {
+                      "line": 30,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  501,
+                  553
+                ],
+                "loc": {
+                  "start": {
+                    "line": 28,
+                    "column": 24
+                  },
+                  "end": {
+                    "line": 30,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "set",
+              "computed": false,
+              "range": [
+                481,
+                553
+              ],
+              "loc": {
+                "start": {
+                  "line": 28,
+                  "column": 4
+                },
+                "end": {
+                  "line": 30,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     * @param {Converter} value\r\n     ",
+                  "range": [
+                    430,
+                    475
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     *\r\n     * @param {Number|String} valueInSatoshis\r\n     * @return {Money}\r\n     ",
+                  "range": [
+                    561,
+                    652
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "fromSatoshis",
+                "range": [
+                  665,
+                  677
+                ],
+                "loc": {
+                  "start": {
+                    "line": 37,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 37,
+                    "column": 23
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "valueInSatoshis",
+                    "range": [
+                      678,
+                      693
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 37,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 39
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "Money",
+                            "range": [
+                              710,
+                              715
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 38,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 38,
+                                "column": 17
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "isInstance",
+                            "range": [
+                              716,
+                              726
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 38,
+                                "column": 18
+                              },
+                              "end": {
+                                "line": 38,
+                                "column": 28
+                              }
+                            }
+                          },
+                          "range": [
+                            710,
+                            726
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 28
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "valueInSatoshis",
+                            "range": [
+                              727,
+                              742
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 38,
+                                "column": 29
+                              },
+                              "end": {
+                                "line": 38,
+                                "column": 44
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          710,
+                          743
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 38,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 38,
+                            "column": 45
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "Currency",
+                                  "range": [
+                                    760,
+                                    768
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 39,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 39,
+                                      "column": 20
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "shouldBeCurrency",
+                                  "range": [
+                                    769,
+                                    785
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 39,
+                                      "column": 21
+                                    },
+                                    "end": {
+                                      "line": 39,
+                                      "column": 37
+                                    }
+                                  }
+                                },
+                                "range": [
+                                  760,
+                                  785
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 39,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 39,
+                                    "column": 37
+                                  }
+                                }
+                              },
+                              "arguments": [
+                                {
+                                  "type": "CallExpression",
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "computed": false,
+                                    "object": {
+                                      "type": "Identifier",
+                                      "name": "Currency",
+                                      "range": [
+                                        786,
+                                        794
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 39,
+                                          "column": 38
+                                        },
+                                        "end": {
+                                          "line": 39,
+                                          "column": 46
+                                        }
+                                      }
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "getCurrency",
+                                      "range": [
+                                        795,
+                                        806
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 39,
+                                          "column": 47
+                                        },
+                                        "end": {
+                                          "line": 39,
+                                          "column": 58
+                                        }
+                                      }
+                                    },
+                                    "range": [
+                                      786,
+                                      806
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 39,
+                                        "column": 38
+                                      },
+                                      "end": {
+                                        "line": 39,
+                                        "column": 58
+                                      }
+                                    }
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Identifier",
+                                      "name": "valueInSatoshis",
+                                      "range": [
+                                        807,
+                                        822
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 39,
+                                          "column": 59
+                                        },
+                                        "end": {
+                                          "line": 39,
+                                          "column": 74
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "range": [
+                                    786,
+                                    823
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 39,
+                                      "column": 38
+                                    },
+                                    "end": {
+                                      "line": 39,
+                                      "column": 75
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "Identifier",
+                                  "name": "Satoshi",
+                                  "range": [
+                                    825,
+                                    832
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 39,
+                                      "column": 77
+                                    },
+                                    "end": {
+                                      "line": 39,
+                                      "column": 84
+                                    }
+                                  }
+                                }
+                              ],
+                              "range": [
+                                760,
+                                833
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 39,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 39,
+                                  "column": 85
+                                }
+                              }
+                            },
+                            "range": [
+                              760,
+                              834
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 39,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 39,
+                                "column": 86
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          745,
+                          845
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 38,
+                            "column": 47
+                          },
+                          "end": {
+                            "line": 40,
+                            "column": 9
+                          }
+                        }
+                      },
+                      "alternate": null,
+                      "range": [
+                        706,
+                        845
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 38,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 40,
+                          "column": 9
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "NewExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "Money",
+                          "range": [
+                            868,
+                            873
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 42,
+                              "column": 19
+                            },
+                            "end": {
+                              "line": 42,
+                              "column": 24
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "ObjectExpression",
+                            "properties": [
+                              {
+                                "type": "Property",
+                                "key": {
+                                  "type": "Identifier",
+                                  "name": "currency",
+                                  "range": [
+                                    889,
+                                    897
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 43,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 43,
+                                      "column": 20
+                                    }
+                                  }
+                                },
+                                "value": {
+                                  "type": "Identifier",
+                                  "name": "Satoshi",
+                                  "range": [
+                                    899,
+                                    906
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 43,
+                                      "column": 22
+                                    },
+                                    "end": {
+                                      "line": 43,
+                                      "column": 29
+                                    }
+                                  }
+                                },
+                                "kind": "init",
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "range": [
+                                  889,
+                                  906
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 43,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 43,
+                                    "column": 29
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Property",
+                                "key": {
+                                  "type": "Identifier",
+                                  "name": "value",
+                                  "range": [
+                                    921,
+                                    926
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 44,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 44,
+                                      "column": 17
+                                    }
+                                  }
+                                },
+                                "value": {
+                                  "type": "CallExpression",
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "computed": false,
+                                    "object": {
+                                      "type": "Identifier",
+                                      "name": "Currency",
+                                      "range": [
+                                        928,
+                                        936
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 44,
+                                          "column": 19
+                                        },
+                                        "end": {
+                                          "line": 44,
+                                          "column": 27
+                                        }
+                                      }
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "toValueOrFail",
+                                      "range": [
+                                        937,
+                                        950
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 44,
+                                          "column": 28
+                                        },
+                                        "end": {
+                                          "line": 44,
+                                          "column": 41
+                                        }
+                                      }
+                                    },
+                                    "range": [
+                                      928,
+                                      950
+                                    ],
+                                    "loc": {
+                                      "start": {
+                                        "line": 44,
+                                        "column": 19
+                                      },
+                                      "end": {
+                                        "line": 44,
+                                        "column": 41
+                                      }
+                                    }
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Identifier",
+                                      "name": "valueInSatoshis",
+                                      "range": [
+                                        951,
+                                        966
+                                      ],
+                                      "loc": {
+                                        "start": {
+                                          "line": 44,
+                                          "column": 42
+                                        },
+                                        "end": {
+                                          "line": 44,
+                                          "column": 57
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "range": [
+                                    928,
+                                    967
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 44,
+                                      "column": 19
+                                    },
+                                    "end": {
+                                      "line": 44,
+                                      "column": 58
+                                    }
+                                  }
+                                },
+                                "kind": "init",
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "range": [
+                                  921,
+                                  967
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 44,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 44,
+                                    "column": 58
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              874,
+                              978
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 42,
+                                "column": 25
+                              },
+                              "end": {
+                                "line": 45,
+                                "column": 9
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          864,
+                          979
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 42,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 45,
+                            "column": 10
+                          }
+                        }
+                      },
+                      "range": [
+                        857,
+                        980
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 42,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 45,
+                          "column": 11
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    695,
+                    987
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 37,
+                      "column": 41
+                    },
+                    "end": {
+                      "line": 46,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  677,
+                  987
+                ],
+                "loc": {
+                  "start": {
+                    "line": 37,
+                    "column": 23
+                  },
+                  "end": {
+                    "line": 46,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                658,
+                987
+              ],
+              "loc": {
+                "start": {
+                  "line": 37,
+                  "column": 4
+                },
+                "end": {
+                  "line": 46,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     *\r\n     * @param {Number|String} valueInSatoshis\r\n     * @return {Money}\r\n     ",
+                  "range": [
+                    561,
+                    652
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     *\r\n     * @param valueInBitcoinOrMoney\r\n     ",
+                  "range": [
+                    995,
+                    1052
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 48,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 51,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "fromBitcoin",
+                "range": [
+                  1065,
+                  1076
+                ],
+                "loc": {
+                  "start": {
+                    "line": 52,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 52,
+                    "column": 22
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "valueInBitcoinOrMoney",
+                    "range": [
+                      1077,
+                      1098
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 52,
+                        "column": 23
+                      },
+                      "end": {
+                        "line": 52,
+                        "column": 44
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "VariableDeclaration",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "name": "bitcoin",
+                            "range": [
+                              1115,
+                              1122
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 53,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 53,
+                                "column": 19
+                              }
+                            }
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "Bitcoin",
+                                "range": [
+                                  1125,
+                                  1132
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 53,
+                                    "column": 22
+                                  },
+                                  "end": {
+                                    "line": 53,
+                                    "column": 29
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "fromBitcoin",
+                                "range": [
+                                  1133,
+                                  1144
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 53,
+                                    "column": 30
+                                  },
+                                  "end": {
+                                    "line": 53,
+                                    "column": 41
+                                  }
+                                }
+                              },
+                              "range": [
+                                1125,
+                                1144
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 53,
+                                  "column": 22
+                                },
+                                "end": {
+                                  "line": 53,
+                                  "column": 41
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "valueInBitcoinOrMoney",
+                                "range": [
+                                  1145,
+                                  1166
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 53,
+                                    "column": 42
+                                  },
+                                  "end": {
+                                    "line": 53,
+                                    "column": 63
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              1125,
+                              1167
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 53,
+                                "column": 22
+                              },
+                              "end": {
+                                "line": 53,
+                                "column": 64
+                              }
+                            }
+                          },
+                          "range": [
+                            1115,
+                            1167
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 53,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 53,
+                              "column": 64
+                            }
+                          }
+                        }
+                      ],
+                      "kind": "let",
+                      "range": [
+                        1111,
+                        1168
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 53,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 53,
+                          "column": 65
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "Satoshi",
+                              "range": [
+                                1187,
+                                1194
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 55,
+                                  "column": 15
+                                },
+                                "end": {
+                                  "line": 55,
+                                  "column": 22
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "converter",
+                              "range": [
+                                1209,
+                                1218
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 56,
+                                  "column": 13
+                                },
+                                "end": {
+                                  "line": 56,
+                                  "column": 22
+                                }
+                              }
+                            },
+                            "range": [
+                              1187,
+                              1218
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 55,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 56,
+                                "column": 22
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "convert",
+                            "range": [
+                              1233,
+                              1240
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 57,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 57,
+                                "column": 20
+                              }
+                            }
+                          },
+                          "range": [
+                            1187,
+                            1240
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 55,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 57,
+                              "column": 20
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "bitcoin",
+                            "range": [
+                              1241,
+                              1248
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 57,
+                                "column": 21
+                              },
+                              "end": {
+                                "line": 57,
+                                "column": 28
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "Satoshi",
+                            "range": [
+                              1250,
+                              1257
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 57,
+                                "column": 30
+                              },
+                              "end": {
+                                "line": 57,
+                                "column": 37
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1187,
+                          1258
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 55,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 57,
+                            "column": 38
+                          }
+                        }
+                      },
+                      "range": [
+                        1180,
+                        1259
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 55,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 57,
+                          "column": 39
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1100,
+                    1266
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 52,
+                      "column": 46
+                    },
+                    "end": {
+                      "line": 58,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  1076,
+                  1266
+                ],
+                "loc": {
+                  "start": {
+                    "line": 52,
+                    "column": 22
+                  },
+                  "end": {
+                    "line": 58,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                1058,
+                1266
+              ],
+              "loc": {
+                "start": {
+                  "line": 52,
+                  "column": 4
+                },
+                "end": {
+                  "line": 58,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\r\n     *\r\n     * @param valueInBitcoinOrMoney\r\n     ",
+                  "range": [
+                    995,
+                    1052
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 48,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 51,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "convertTo",
+                "range": [
+                  1283,
+                  1292
+                ],
+                "loc": {
+                  "start": {
+                    "line": 61,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 61,
+                    "column": 20
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "valueOrMoney",
+                    "range": [
+                      1293,
+                      1305
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 61,
+                        "column": 21
+                      },
+                      "end": {
+                        "line": 61,
+                        "column": 33
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "currency",
+                    "range": [
+                      1307,
+                      1315
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 61,
+                        "column": 35
+                      },
+                      "end": {
+                        "line": 61,
+                        "column": 43
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "Currency",
+                            "range": [
+                              1328,
+                              1336
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 62,
+                                "column": 8
+                              },
+                              "end": {
+                                "line": 62,
+                                "column": 16
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "shouldBeCurrency",
+                            "range": [
+                              1337,
+                              1353
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 62,
+                                "column": 17
+                              },
+                              "end": {
+                                "line": 62,
+                                "column": 33
+                              }
+                            }
+                          },
+                          "range": [
+                            1328,
+                            1353
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 62,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 62,
+                              "column": 33
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "currency",
+                            "range": [
+                              1354,
+                              1362
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 62,
+                                "column": 34
+                              },
+                              "end": {
+                                "line": 62,
+                                "column": 42
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1328,
+                          1363
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 62,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 62,
+                            "column": 43
+                          }
+                        }
+                      },
+                      "range": [
+                        1328,
+                        1364
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 62,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 62,
+                          "column": 44
+                        }
+                      }
+                    },
+                    {
+                      "type": "VariableDeclaration",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "name": "satoshis",
+                            "range": [
+                              1380,
+                              1388
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 64,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 64,
+                                "column": 20
+                              }
+                            }
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "Satoshi",
+                                "range": [
+                                  1391,
+                                  1398
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 64,
+                                    "column": 23
+                                  },
+                                  "end": {
+                                    "line": 64,
+                                    "column": 30
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "create",
+                                "range": [
+                                  1399,
+                                  1405
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 64,
+                                    "column": 31
+                                  },
+                                  "end": {
+                                    "line": 64,
+                                    "column": 37
+                                  }
+                                }
+                              },
+                              "range": [
+                                1391,
+                                1405
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 64,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 64,
+                                  "column": 37
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "valueOrMoney",
+                                "range": [
+                                  1406,
+                                  1418
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 64,
+                                    "column": 38
+                                  },
+                                  "end": {
+                                    "line": 64,
+                                    "column": 50
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              1391,
+                              1419
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 64,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 64,
+                                "column": 51
+                              }
+                            }
+                          },
+                          "range": [
+                            1380,
+                            1419
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 64,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 64,
+                              "column": 51
+                            }
+                          }
+                        }
+                      ],
+                      "kind": "let",
+                      "range": [
+                        1376,
+                        1420
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 64,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 64,
+                          "column": 52
+                        }
+                      }
+                    },
+                    {
+                      "type": "VariableDeclaration",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "name": "converter",
+                            "range": [
+                              1434,
+                              1443
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 65,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 65,
+                                "column": 21
+                              }
+                            }
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "ThisExpression",
+                                  "range": [
+                                    1446,
+                                    1450
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 65,
+                                      "column": 24
+                                    },
+                                    "end": {
+                                      "line": 65,
+                                      "column": 28
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "converter",
+                                  "range": [
+                                    1451,
+                                    1460
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 65,
+                                      "column": 29
+                                    },
+                                    "end": {
+                                      "line": 65,
+                                      "column": 38
+                                    }
+                                  }
+                                },
+                                "range": [
+                                  1446,
+                                  1460
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 65,
+                                    "column": 24
+                                  },
+                                  "end": {
+                                    "line": 65,
+                                    "column": 38
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "convert",
+                                "range": [
+                                  1461,
+                                  1468
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 65,
+                                    "column": 39
+                                  },
+                                  "end": {
+                                    "line": 65,
+                                    "column": 46
+                                  }
+                                }
+                              },
+                              "range": [
+                                1446,
+                                1468
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 65,
+                                  "column": 24
+                                },
+                                "end": {
+                                  "line": 65,
+                                  "column": 46
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "satoshis",
+                                "range": [
+                                  1469,
+                                  1477
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 65,
+                                    "column": 47
+                                  },
+                                  "end": {
+                                    "line": 65,
+                                    "column": 55
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Identifier",
+                                "name": "currency",
+                                "range": [
+                                  1479,
+                                  1487
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 65,
+                                    "column": 57
+                                  },
+                                  "end": {
+                                    "line": 65,
+                                    "column": 65
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              1446,
+                              1488
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 65,
+                                "column": 24
+                              },
+                              "end": {
+                                "line": 65,
+                                "column": 66
+                              }
+                            }
+                          },
+                          "range": [
+                            1434,
+                            1488
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 65,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 65,
+                              "column": 66
+                            }
+                          }
+                        }
+                      ],
+                      "kind": "let",
+                      "range": [
+                        1430,
+                        1489
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 65,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 65,
+                          "column": 67
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1317,
+                    1496
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 61,
+                      "column": 45
+                    },
+                    "end": {
+                      "line": 66,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  1292,
+                  1496
+                ],
+                "loc": {
+                  "start": {
+                    "line": 61,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 66,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                1276,
+                1496
+              ],
+              "loc": {
+                "start": {
+                  "line": 61,
+                  "column": 4
+                },
+                "end": {
+                  "line": 66,
+                  "column": 5
+                }
+              },
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "toString",
+                "range": [
+                  1511,
+                  1519
+                ],
+                "loc": {
+                  "start": {
+                    "line": 68,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 68,
+                    "column": 19
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Literal",
+                        "value": "Satoshi",
+                        "raw": "'Satoshi'",
+                        "range": [
+                          1540,
+                          1549
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 69,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 69,
+                            "column": 24
+                          }
+                        }
+                      },
+                      "range": [
+                        1533,
+                        1550
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 69,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 69,
+                          "column": 25
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    1522,
+                    1557
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 68,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 70,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  1519,
+                  1557
+                ],
+                "loc": {
+                  "start": {
+                    "line": 68,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 70,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                1504,
+                1557
+              ],
+              "loc": {
+                "start": {
+                  "line": 68,
+                  "column": 4
+                },
+                "end": {
+                  "line": 70,
+                  "column": 5
+                }
+              },
+              "static": true
+            }
+          ],
+          "range": [
+            240,
+            1560
+          ],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 46
+            },
+            "end": {
+              "line": 71,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          209,
+          1560
+        ],
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 15
+          },
+          "end": {
+            "line": 71,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\r\n * @class Bitcoin\r\n ",
+            "range": [
+              165,
+              192
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 0
+              },
+              "end": {
+                "line": 11,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        194,
+        1560
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 71,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\r\n * @class Bitcoin\r\n ",
+          "range": [
+            165,
+            192
+          ],
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 0
+            },
+            "end": {
+              "line": 11,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    1560
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 71,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\r\n * @class Bitcoin\r\n ",
+      "range": [
+        165,
+        192
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\r\n     * @returns {Converter}\r\n     ",
+      "range": [
+        309,
+        350
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 4
+        },
+        "end": {
+          "line": 20,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\r\n     * @param {Converter} value\r\n     ",
+      "range": [
+        430,
+        475
+      ],
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 4
+        },
+        "end": {
+          "line": 27,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\r\n     *\r\n     * @param {Number|String} valueInSatoshis\r\n     * @return {Money}\r\n     ",
+      "range": [
+        561,
+        652
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 4
+        },
+        "end": {
+          "line": 36,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\r\n     *\r\n     * @param valueInBitcoinOrMoney\r\n     ",
+      "range": [
+        995,
+        1052
+      ],
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 4
+        },
+        "end": {
+          "line": 51,
+          "column": 7
+        }
+      }
+    }
+  ]
+}

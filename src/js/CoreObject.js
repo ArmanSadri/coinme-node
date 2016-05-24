@@ -1,7 +1,7 @@
 'use strict';
 
 import Ember from "~/ember";
-import Preconditions from '~/Preconditions';
+import Lodash from "lodash";
 
 /**
  * This is the base class for all classes in our architecture.
@@ -10,30 +10,65 @@ import Preconditions from '~/Preconditions';
  * @abstract
  * @class
  */
-class CoreObject extends Ember.CoreObject {
+export default class CoreObject extends Ember.Object {
 
-    
+    get(key) {
+        return Ember.get(this, key);
+    }
+
+    set(key, value) {
+        return Ember.set(this, key, value);
+    }
+
+    constructor(options) {
+        super(...arguments);
+        Lodash.merge(this, options);
+    }
+
+    toString() {
+        return this.toClass().toString();
+    }
+
+    toClass() {
+        return this.constructor;
+    }
+
+    static toClass() {
+        return this;
+    }
+
+    static toString() {
+        return 'CoreObject';
+    }
+
     /**
+     * Determines if a class definition is a subclass of CoreObject
      *
-     * @param {String} path
-     * @returns {*}
+     * @param {*} clazz
+     * @returns {boolean}
      */
-    get(path) {
-        Preconditions.shouldBeString(path);
+    static isClass(clazz) {
+        if ('function' !== typeof clazz) {
+            return false;
+        }
 
-        return Ember.get(this, path);
+        while (clazz) {
+            if (clazz === this) {
+                return true;
+            }
+
+            clazz = Object.getPrototypeOf(clazz);
+        }
+
+        return false;
     }
 
     /**
      *
-     * @param {String} path
-     * @param {*} value
+     * @param {object} obj
+     * @returns {boolean}
      */
-    set(path, value) {
-        Preconditions.shouldBeString(path);
-
-        return Ember.set(this, path, value);
+    static isInstance(obj) {
+        return obj instanceof this;
     }
 }
-
-export default CoreObject;

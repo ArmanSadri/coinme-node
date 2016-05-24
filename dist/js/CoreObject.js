@@ -1,18 +1,18 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ember = require('./ember');
+var _ember = require("./ember");
 
 var _ember2 = _interopRequireDefault(_ember);
 
-var _Preconditions = require('./Preconditions');
+var _lodash = require("lodash");
 
-var _Preconditions2 = _interopRequireDefault(_Preconditions);
+var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,47 +30,91 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 
-var CoreObject = function (_Ember$CoreObject) {
-  _inherits(CoreObject, _Ember$CoreObject);
+var CoreObject = function (_Ember$Object) {
+    _inherits(CoreObject, _Ember$Object);
 
-  function CoreObject() {
-    _classCallCheck(this, CoreObject);
+    _createClass(CoreObject, [{
+        key: "get",
+        value: function get(key) {
+            return _ember2.default.get(this, key);
+        }
+    }, {
+        key: "set",
+        value: function set(key, value) {
+            return _ember2.default.set(this, key, value);
+        }
+    }]);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).apply(this, arguments));
-  }
+    function CoreObject(options) {
+        _classCallCheck(this, CoreObject);
 
-  _createClass(CoreObject, [{
-    key: 'get',
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).apply(this, arguments));
 
-
-    /**
-     *
-     * @param {String} path
-     * @returns {*}
-     */
-    value: function get(path) {
-      _Preconditions2.default.shouldBeString(path);
-
-      return _ember2.default.get(this, path);
+        _lodash2.default.merge(_this, options);
+        return _this;
     }
 
-    /**
-     *
-     * @param {String} path
-     * @param {*} value
-     */
+    _createClass(CoreObject, [{
+        key: "toString",
+        value: function toString() {
+            return this.toClass().toString();
+        }
+    }, {
+        key: "toClass",
+        value: function toClass() {
+            return this.constructor;
+        }
+    }], [{
+        key: "toClass",
+        value: function toClass() {
+            return this;
+        }
+    }, {
+        key: "toString",
+        value: function toString() {
+            return 'CoreObject';
+        }
 
-  }, {
-    key: 'set',
-    value: function set(path, value) {
-      _Preconditions2.default.shouldBeString(path);
+        /**
+         * Determines if a class definition is a subclass of CoreObject
+         *
+         * @param {*} clazz
+         * @returns {boolean}
+         */
 
-      return _ember2.default.set(this, path, value);
-    }
-  }]);
+    }, {
+        key: "isClass",
+        value: function isClass(clazz) {
+            if ('function' !== typeof clazz) {
+                return false;
+            }
 
-  return CoreObject;
-}(_ember2.default.CoreObject);
+            while (clazz) {
+                if (clazz === this) {
+                    return true;
+                }
+
+                clazz = Object.getPrototypeOf(clazz);
+            }
+
+            return false;
+        }
+
+        /**
+         *
+         * @param {object} obj
+         * @returns {boolean}
+         */
+
+    }, {
+        key: "isInstance",
+        value: function isInstance(obj) {
+            return obj instanceof this;
+        }
+    }]);
+
+    return CoreObject;
+}(_ember2.default.Object);
 
 exports.default = CoreObject;
 module.exports = exports['default'];

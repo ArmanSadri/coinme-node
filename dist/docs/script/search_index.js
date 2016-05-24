@@ -24,15 +24,33 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/money/bitcoin.es6~bitcoin",
+    "class/js/money/Bitcoin.es6~Bitcoin.html",
+    "<span>Bitcoin</span> <span class=\"search-result-import-path\">coinme-node/js/money/Bitcoin.es6</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/coinme.js~coinme",
     "class/js/Coinme.js~Coinme.html",
     "<span>Coinme</span> <span class=\"search-result-import-path\">coinme-node/js/Coinme.js</span>",
     "class"
   ],
   [
+    "coinme-node/js/money/converter.es6~converter",
+    "class/js/money/Converter.es6~Converter.html",
+    "<span>Converter</span> <span class=\"search-result-import-path\">coinme-node/js/money/Converter.es6</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/coreobject.js~coreobject",
     "class/js/CoreObject.js~CoreObject.html",
     "<span>CoreObject</span> <span class=\"search-result-import-path\">coinme-node/js/CoreObject.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/money/currency.es6~currency",
+    "class/js/money/Currency.es6~Currency.html",
+    "<span>Currency</span> <span class=\"search-result-import-path\">coinme-node/js/money/Currency.es6</span>",
     "class"
   ],
   [
@@ -57,6 +75,12 @@ window.esdocSearchIndex = [
     "coinme-node/js/slack/inlinenotificationtemplate.js~inlinenotificationtemplate",
     "class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html",
     "<span>InlineNotificationTemplate</span> <span class=\"search-result-import-path\">coinme-node/js/slack/InlineNotificationTemplate.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/money/money.es6~money",
+    "class/js/money/Money.es6~Money.html",
+    "<span>Money</span> <span class=\"search-result-import-path\">coinme-node/js/money/Money.es6</span>",
     "class"
   ],
   [
@@ -88,6 +112,12 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-PreconditionsError",
     "<span>PreconditionsError</span> <span class=\"search-result-import-path\">coinme-node/js/Preconditions.js</span>",
     "function"
+  ],
+  [
+    "coinme-node/js/money/satoshi.es6~satoshi",
+    "class/js/money/Satoshi.es6~Satoshi.html",
+    "<span>Satoshi</span> <span class=\"search-result-import-path\">coinme-node/js/money/Satoshi.es6</span>",
+    "class"
   ],
   [
     "coinme-node/js/data/user.js~user",
@@ -462,6 +492,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/coreobject.js~coreobject#constructor",
+    "class/js/CoreObject.js~CoreObject.html#instance-constructor-constructor",
+    "js/CoreObject.js~CoreObject#constructor",
+    "method"
+  ],
+  [
     "js/coreobject.js~coreobject#get",
     "class/js/CoreObject.js~CoreObject.html#instance-method-get",
     "js/CoreObject.js~CoreObject#get",
@@ -471,6 +507,36 @@ window.esdocSearchIndex = [
     "js/coreobject.js~coreobject#set",
     "class/js/CoreObject.js~CoreObject.html#instance-method-set",
     "js/CoreObject.js~CoreObject#set",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject#toclass",
+    "class/js/CoreObject.js~CoreObject.html#instance-method-toClass",
+    "js/CoreObject.js~CoreObject#toClass",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject#tostring",
+    "class/js/CoreObject.js~CoreObject.html#instance-method-toString",
+    "js/CoreObject.js~CoreObject#toString",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject.isclass",
+    "class/js/CoreObject.js~CoreObject.html#static-method-isClass",
+    "js/CoreObject.js~CoreObject.isClass",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject.isinstance",
+    "class/js/CoreObject.js~CoreObject.html#static-method-isInstance",
+    "js/CoreObject.js~CoreObject.isInstance",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject.toclass",
+    "class/js/CoreObject.js~CoreObject.html#static-method-toClass",
+    "js/CoreObject.js~CoreObject.toClass",
     "method"
   ],
   [
@@ -528,6 +594,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/preconditions.js~preconditions.shouldbeclass",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeClass",
+    "js/Preconditions.js~Preconditions.shouldBeClass",
+    "method"
+  ],
+  [
     "js/preconditions.js~preconditions.shouldbedefined",
     "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeDefined",
     "js/Preconditions.js~Preconditions.shouldBeDefined",
@@ -561,6 +633,12 @@ window.esdocSearchIndex = [
     "js/preconditions.js~preconditions.shouldbegreaterthan",
     "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeGreaterThan",
     "js/Preconditions.js~Preconditions.shouldBeGreaterThan",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbeinstance",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeInstance",
+    "js/Preconditions.js~Preconditions.shouldBeInstance",
     "method"
   ],
   [
@@ -648,6 +726,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.isclass",
+    "class/js/Utility.js~Utility.html#static-method-isClass",
+    "js/Utility.js~Utility.isClass",
+    "method"
+  ],
+  [
     "js/utility.js~utility.isexisting",
     "class/js/Utility.js~Utility.html#static-method-isExisting",
     "js/Utility.js~Utility.isExisting",
@@ -663,6 +747,12 @@ window.esdocSearchIndex = [
     "js/utility.js~utility.isfunction",
     "class/js/Utility.js~Utility.html#static-method-isFunction",
     "js/Utility.js~Utility.isFunction",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isinstance",
+    "class/js/Utility.js~Utility.html#static-method-isInstance",
+    "js/Utility.js~Utility.isInstance",
     "method"
   ],
   [
@@ -702,6 +792,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.isnumber",
+    "class/js/Utility.js~Utility.html#static-method-isNumber",
+    "js/Utility.js~Utility.isNumber",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isobject",
+    "class/js/Utility.js~Utility.html#static-method-isObject",
+    "js/Utility.js~Utility.isObject",
+    "method"
+  ],
+  [
     "js/utility.js~utility.isstring",
     "class/js/Utility.js~Utility.html#static-method-isString",
     "js/Utility.js~Utility.isString",
@@ -717,6 +819,12 @@ window.esdocSearchIndex = [
     "js/utility.js~utility.take",
     "class/js/Utility.js~Utility.html#static-method-take",
     "js/Utility.js~Utility.take",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.toclass",
+    "class/js/Utility.js~Utility.html#static-method-toClass",
+    "js/Utility.js~Utility.toClass",
     "method"
   ],
   [
@@ -918,15 +1026,333 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/index-compiled.js",
-    "file/js/index-compiled.js.html",
-    "js/index-compiled.js",
-    "file"
-  ],
-  [
     "js/index.js",
     "file/js/index.js.html",
     "js/index.js",
+    "file"
+  ],
+  [
+    "js/money/bitcoin.es6",
+    "file/js/money/Bitcoin.es6.html",
+    "js/money/Bitcoin.es6",
+    "file"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.bitcoin_per_satoshi",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-get-BITCOIN_PER_SATOSHI",
+    "js/money/Bitcoin.es6~Bitcoin.BITCOIN_PER_SATOSHI",
+    "member"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.satoshis_per_bitcoin",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-get-SATOSHIS_PER_BITCOIN",
+    "js/money/Bitcoin.es6~Bitcoin.SATOSHIS_PER_BITCOIN",
+    "member"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.calculatesatoshisfrombitcoin",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-calculateSatoshisFromBitcoin",
+    "js/money/Bitcoin.es6~Bitcoin.calculateSatoshisFromBitcoin",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.converter",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-get-converter",
+    "js/money/Bitcoin.es6~Bitcoin.converter",
+    "member"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.converter",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-set-converter",
+    "js/money/Bitcoin.es6~Bitcoin.converter",
+    "member"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.converterto",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-converterTo",
+    "js/money/Bitcoin.es6~Bitcoin.converterTo",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.frombitcoin",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-fromBitcoin",
+    "js/money/Bitcoin.es6~Bitcoin.fromBitcoin",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.fromsatoshi",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-fromSatoshi",
+    "js/money/Bitcoin.es6~Bitcoin.fromSatoshi",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.isbitcoin",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-isBitcoin",
+    "js/money/Bitcoin.es6~Bitcoin.isBitcoin",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.serialize",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-serialize",
+    "js/money/Bitcoin.es6~Bitcoin.serialize",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.shouldbebitcoin",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-shouldBeBitcoin",
+    "js/money/Bitcoin.es6~Bitcoin.shouldBeBitcoin",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.toclass",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-toClass",
+    "js/money/Bitcoin.es6~Bitcoin.toClass",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.tosatoshis",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-toSatoshis",
+    "js/money/Bitcoin.es6~Bitcoin.toSatoshis",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.es6~bitcoin.tostring",
+    "class/js/money/Bitcoin.es6~Bitcoin.html#static-method-toString",
+    "js/money/Bitcoin.es6~Bitcoin.toString",
+    "method"
+  ],
+  [
+    "js/money/converter.es6",
+    "file/js/money/Converter.es6.html",
+    "js/money/Converter.es6",
+    "file"
+  ],
+  [
+    "js/money/converter.es6~converter#constructor",
+    "class/js/money/Converter.es6~Converter.html#instance-constructor-constructor",
+    "js/money/Converter.es6~Converter#constructor",
+    "method"
+  ],
+  [
+    "js/money/converter.es6~converter#conversions",
+    "class/js/money/Converter.es6~Converter.html#instance-get-conversions",
+    "js/money/Converter.es6~Converter#conversions",
+    "member"
+  ],
+  [
+    "js/money/converter.es6~converter#convert",
+    "class/js/money/Converter.es6~Converter.html#instance-method-convert",
+    "js/money/Converter.es6~Converter#convert",
+    "method"
+  ],
+  [
+    "js/money/converter.es6~converter#getconversion",
+    "class/js/money/Converter.es6~Converter.html#instance-method-getConversion",
+    "js/money/Converter.es6~Converter#getConversion",
+    "method"
+  ],
+  [
+    "js/money/converter.es6~converter#registerconversion",
+    "class/js/money/Converter.es6~Converter.html#instance-method-registerConversion",
+    "js/money/Converter.es6~Converter#registerConversion",
+    "method"
+  ],
+  [
+    "js/money/currency.es6",
+    "file/js/money/Currency.es6.html",
+    "js/money/Currency.es6",
+    "file"
+  ],
+  [
+    "js/money/currency.es6~currency#constructor",
+    "class/js/money/Currency.es6~Currency.html#instance-constructor-constructor",
+    "js/money/Currency.es6~Currency#constructor",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.convertfrom",
+    "class/js/money/Currency.es6~Currency.html#static-method-convertFrom",
+    "js/money/Currency.es6~Currency.convertFrom",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.converter",
+    "class/js/money/Currency.es6~Currency.html#static-get-converter",
+    "js/money/Currency.es6~Currency.converter",
+    "member"
+  ],
+  [
+    "js/money/currency.es6~currency.converter",
+    "class/js/money/Currency.es6~Currency.html#static-set-converter",
+    "js/money/Currency.es6~Currency.converter",
+    "member"
+  ],
+  [
+    "js/money/currency.es6~currency.create",
+    "class/js/money/Currency.es6~Currency.html#static-method-create",
+    "js/money/Currency.es6~Currency.create",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.getchildcurrencytypeorfail",
+    "class/js/money/Currency.es6~Currency.html#static-method-getChildCurrencyTypeOrFail",
+    "js/money/Currency.es6~Currency.getChildCurrencyTypeOrFail",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.getcurrency",
+    "class/js/money/Currency.es6~Currency.html#static-method-getCurrency",
+    "js/money/Currency.es6~Currency.getCurrency",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.iscurrency",
+    "class/js/money/Currency.es6~Currency.html#static-method-isCurrency",
+    "js/money/Currency.es6~Currency.isCurrency",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.optcurrency",
+    "class/js/money/Currency.es6~Currency.html#static-method-optCurrency",
+    "js/money/Currency.es6~Currency.optCurrency",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.shouldbecurrency",
+    "class/js/money/Currency.es6~Currency.html#static-method-shouldBeCurrency",
+    "js/money/Currency.es6~Currency.shouldBeCurrency",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.toclass",
+    "class/js/money/Currency.es6~Currency.html#static-method-toClass",
+    "js/money/Currency.es6~Currency.toClass",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.tomoney",
+    "class/js/money/Currency.es6~Currency.html#static-method-toMoney",
+    "js/money/Currency.es6~Currency.toMoney",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.tostring",
+    "class/js/money/Currency.es6~Currency.html#static-method-toString",
+    "js/money/Currency.es6~Currency.toString",
+    "method"
+  ],
+  [
+    "js/money/currency.es6~currency.tovalueorfail",
+    "class/js/money/Currency.es6~Currency.html#static-method-toValueOrFail",
+    "js/money/Currency.es6~Currency.toValueOrFail",
+    "method"
+  ],
+  [
+    "js/money/money.es6",
+    "file/js/money/Money.es6.html",
+    "js/money/Money.es6",
+    "file"
+  ],
+  [
+    "js/money/money.es6~money#add",
+    "class/js/money/Money.es6~Money.html#instance-method-add",
+    "js/money/Money.es6~Money#add",
+    "method"
+  ],
+  [
+    "js/money/money.es6~money#constructor",
+    "class/js/money/Money.es6~Money.html#instance-constructor-constructor",
+    "js/money/Money.es6~Money#constructor",
+    "method"
+  ],
+  [
+    "js/money/money.es6~money#convertto",
+    "class/js/money/Money.es6~Money.html#instance-method-convertTo",
+    "js/money/Money.es6~Money#convertTo",
+    "method"
+  ],
+  [
+    "js/money/money.es6~money#currency",
+    "class/js/money/Money.es6~Money.html#instance-get-currency",
+    "js/money/Money.es6~Money#currency",
+    "member"
+  ],
+  [
+    "js/money/money.es6~money#tojson",
+    "class/js/money/Money.es6~Money.html#instance-method-toJson",
+    "js/money/Money.es6~Money#toJson",
+    "method"
+  ],
+  [
+    "js/money/money.es6~money#tostring",
+    "class/js/money/Money.es6~Money.html#instance-method-toString",
+    "js/money/Money.es6~Money#toString",
+    "method"
+  ],
+  [
+    "js/money/money.es6~money#value",
+    "class/js/money/Money.es6~Money.html#instance-get-value",
+    "js/money/Money.es6~Money#value",
+    "member"
+  ],
+  [
+    "js/money/money.es6~money.optmoney",
+    "class/js/money/Money.es6~Money.html#static-method-optMoney",
+    "js/money/Money.es6~Money.optMoney",
+    "method"
+  ],
+  [
+    "js/money/satoshi.es6",
+    "file/js/money/Satoshi.es6.html",
+    "js/money/Satoshi.es6",
+    "file"
+  ],
+  [
+    "js/money/satoshi.es6~satoshi#constructor",
+    "class/js/money/Satoshi.es6~Satoshi.html#instance-constructor-constructor",
+    "js/money/Satoshi.es6~Satoshi#constructor",
+    "method"
+  ],
+  [
+    "js/money/satoshi.es6~satoshi.convertto",
+    "class/js/money/Satoshi.es6~Satoshi.html#static-method-convertTo",
+    "js/money/Satoshi.es6~Satoshi.convertTo",
+    "method"
+  ],
+  [
+    "js/money/satoshi.es6~satoshi.converter",
+    "class/js/money/Satoshi.es6~Satoshi.html#static-get-converter",
+    "js/money/Satoshi.es6~Satoshi.converter",
+    "member"
+  ],
+  [
+    "js/money/satoshi.es6~satoshi.converter",
+    "class/js/money/Satoshi.es6~Satoshi.html#static-set-converter",
+    "js/money/Satoshi.es6~Satoshi.converter",
+    "member"
+  ],
+  [
+    "js/money/satoshi.es6~satoshi.frombitcoin",
+    "class/js/money/Satoshi.es6~Satoshi.html#static-method-fromBitcoin",
+    "js/money/Satoshi.es6~Satoshi.fromBitcoin",
+    "method"
+  ],
+  [
+    "js/money/satoshi.es6~satoshi.fromsatoshis",
+    "class/js/money/Satoshi.es6~Satoshi.html#static-method-fromSatoshis",
+    "js/money/Satoshi.es6~Satoshi.fromSatoshis",
+    "method"
+  ],
+  [
+    "js/money/satoshi.es6~satoshi.tostring",
+    "class/js/money/Satoshi.es6~Satoshi.html#static-method-toString",
+    "js/money/Satoshi.es6~Satoshi.toString",
+    "method"
+  ],
+  [
+    "js/money/index.es6",
+    "file/js/money/index.es6.html",
+    "js/money/index.es6",
     "file"
   ],
   [
@@ -960,9 +1386,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#init",
-    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-method-init",
-    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#init",
+    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#constructor",
+    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-constructor-constructor",
+    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#constructor",
     "method"
   ],
   [

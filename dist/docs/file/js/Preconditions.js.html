@@ -42,6 +42,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.es6~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.es6~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.es6~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.es6~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.es6~Satoshi.html">Satoshi</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -59,8 +64,9 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/Preconditions.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Utility from &quot;~/Utility&quot;;
+import Utility from &quot;./Utility&quot;;
 import Lodash from &quot;lodash/index&quot;;
+import CoreObject from &apos;./CoreObject&apos;;
 
 // class PreconditionsError extends AbstractError {
 //
@@ -145,7 +151,7 @@ export default class Preconditions {
      * @returns {*}
      */
     static shouldNotBeFalsey(object, message) {
-        return Preconditions.shouldBe(Utility.isNotFalsey, object, message, &apos;must not be falsey&apos;)
+        return Preconditions.shouldBe(Utility.isNotFalsey, true, object, message || &apos;must not be falsey&apos;)
     }
 
     /**
@@ -155,7 +161,7 @@ export default class Preconditions {
      * @returns {*}
      */
     static shouldBeFalsey(object, message) {
-        return Preconditions.shouldBe(Utility.isFalsey, object, message, &apos;must be falsey&apos;)
+        return Preconditions.shouldBe(Utility.isFalsey, false, object, message || &apos;must be falsey&apos;)
     }
 
     /**
@@ -240,6 +246,53 @@ export default class Preconditions {
 
     /**
      *
+     * @param {Class|Object} object
+     * @param {Class|Object} [clazz]
+     * @param {String} [message]
+     */
+    static shouldBeClass(object, clazz, message) {
+        Preconditions.shouldBeDefined(object, &apos;object must be defined&apos;);
+
+        if (!clazz) {
+            clazz = CoreObject;
+        }
+
+        if (!CoreObject.isClass(clazz)) {
+            Preconditions.fail(CoreObject, clazz, &apos;Class not a CoreObject class&apos;);
+        }
+
+        if (!clazz.isClass(object)) {
+            Preconditions.fail(object, clazz, &apos;Class not a &apos; + clazz + &apos; class&apos;);
+        }
+
+        return object;
+    }
+
+    /**
+     *
+     * @param {Class|Object} object
+     * @param {Class|Object} [clazz]
+     */
+    static shouldBeInstance(object, clazz) {
+        Preconditions.shouldBeDefined(object, &apos;object must be defined&apos;);
+
+        if (!clazz) {
+            clazz = CoreObject;
+        }
+
+        if (!CoreObject.isClass(clazz)) {
+            Preconditions.fail(CoreObject, clazz, &apos;Class not a CoreObject class&apos;);
+        }
+
+        if (!clazz.isInstance(object)) {
+            Preconditions.fail(object, clazz, &apos;Class not an instance of &apos; + clazz);
+        }
+
+        return object;
+    }
+
+    /**
+     *
      * @param {*} number
      * @param {String} [message]
      * @return {Number}
@@ -263,9 +316,7 @@ export default class Preconditions {
 
         let fn = Utility.typeMatcher(&apos;object&apos;);
 
-        // throw new Error(Utility.typeOf(fn));
-
-        return Preconditions.shouldBe(fn, &apos;object&apos;, object, message);
+        return Preconditions.shouldBe(fn, &apos;object&apos;, object, message || &apos;shouldBeObject&apos;);
     }
 
     /**

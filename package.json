@@ -1,6 +1,6 @@
 {
   "name": "coinme-node",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "The common library for Coinme Node apps",
   "main": "dist/js/index.js",
   "scripts": {
@@ -87,7 +87,6 @@
       "es2015"
     ],
     "plugins": [
-      "transform-remove-console",
       "transform-remove-debugger",
       [
         "babel-project-relative-import",

@@ -1,7 +1,7 @@
 {
-  "coverage": "65.07%",
-  "expectCount": 126,
-  "actualCount": 82,
+  "coverage": "64.58%",
+  "expectCount": 192,
+  "actualCount": 124,
   "files": {
     "js/slack/AbstractBuilder.js": {
       "expectCount": 3,
@@ -41,6 +41,14 @@
         21
       ]
     },
+    "js/money/Bitcoin.es6": {
+      "expectCount": 15,
+      "actualCount": 13,
+      "undocumentLines": [
+        226,
+        93
+      ]
+    },
     "js/Coinme.js": {
       "expectCount": 1,
       "actualCount": 0,
@@ -48,10 +56,36 @@
         1
       ]
     },
+    "js/money/Converter.es6": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        35
+      ]
+    },
     "js/CoreObject.js": {
-      "expectCount": 3,
+      "expectCount": 9,
       "actualCount": 3,
-      "undocumentLines": []
+      "undocumentLines": [
+        25,
+        17,
+        21,
+        38,
+        34,
+        30
+      ]
+    },
+    "js/money/Currency.es6": {
+      "expectCount": 15,
+      "actualCount": 9,
+      "undocumentLines": [
+        5,
+        7,
+        15,
+        48,
+        188,
+        21
+      ]
     },
     "js/errors/Errors.js": {
       "expectCount": 1,
@@ -79,6 +113,15 @@
       "undocumentLines": [
         3,
         5
+      ]
+    },
+    "js/money/Money.es6": {
+      "expectCount": 9,
+      "actualCount": 6,
+      "undocumentLines": [
+        5,
+        51,
+        47
       ]
     },
     "js/slack/NotificationBuilder.js": {
@@ -116,8 +159,8 @@
       ]
     },
     "js/Preconditions.js": {
-      "expectCount": 21,
-      "actualCount": 21,
+      "expectCount": 23,
+      "actualCount": 23,
       "undocumentLines": []
     },
     "js/data/UserBuilder.js": {
@@ -127,6 +170,15 @@
         24,
         22,
         52
+      ]
+    },
+    "js/money/Satoshi.es6": {
+      "expectCount": 8,
+      "actualCount": 5,
+      "undocumentLines": [
+        14,
+        61,
+        68
       ]
     },
     "js/data/User.js": {
@@ -143,12 +195,15 @@
       ]
     },
     "js/Utility.js": {
-      "expectCount": 20,
-      "actualCount": 17,
+      "expectCount": 25,
+      "actualCount": 19,
       "undocumentLines": [
-        195,
-        199,
-        14
+        43,
+        252,
+        47,
+        256,
+        39,
+        51
       ]
     }
   }

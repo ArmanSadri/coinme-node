@@ -19437,7 +19437,7 @@ enifed('ember-runtime/system/object_proxy', ['exports', 'ember-runtime/system/ob
   
     ```javascript
     object = Ember.Object.create({
-      name: 'Foo'
+      name: 'Foo'  
     });
   
     proxy = Ember.ObjectProxy.create({

@@ -42,6 +42,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.es6~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.es6~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.es6~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.es6~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.es6~Satoshi.html">Satoshi</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -60,7 +65,9 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
 import Ember from &quot;~/ember&quot;;
-import Preconditions from &apos;~/Preconditions&apos;;
+import Preconditions from &quot;~/Preconditions&quot;;
+import Utility from &quot;~/Utility&quot;;
+import Lodash from &apos;lodash&apos;;
 
 /**
  * This is the base class for all classes in our architecture.
@@ -69,29 +76,62 @@ import Preconditions from &apos;~/Preconditions&apos;;
  * @abstract
  * @class
  */
-class CoreObject extends Ember.CoreObject {
+class CoreObject extends Ember.Object {
 
-    
-    /**
-     *
-     * @param {String} path
-     * @returns {*}
-     */
-    get(path) {
-        Preconditions.shouldBeString(path);
+    get(key) {
+        return Ember.get(this, key);
+    }
 
-        return Ember.get(this, path);
+    set(key, value) {
+        return Ember.set(this, key, value);
+    }
+
+    constructor(options) {
+        super(...arguments);
+        Lodash.merge(this, options);
+    }
+
+    toString() {
+        return &apos;CoreObject&apos;;
+    }
+
+    toClass() {
+        return this.constructor;
+    }
+
+    static toClass() {
+        return CoreObject;
     }
 
     /**
+     * Determines if a class definition is a subclass of CoreObject
      *
-     * @param {String} path
-     * @param {*} value
+     * @param {*} clazz
+     * @returns {boolean}
      */
-    set(path, value) {
-        Preconditions.shouldBeString(path);
+    static isClass(clazz) {
+        if (&apos;function&apos; !== typeof clazz) {
+            return false;
+        }
 
-        return Ember.set(this, path, value);
+        while (clazz) {
+            if (clazz === this) {
+                return true;
+            }
+
+            clazz = Object.getPrototypeOf(clazz);
+        }
+
+        return false;
+    }
+    
+    /**
+     *
+     * @param {object} obj
+     * @returns {boolean}
+     */
+    static isInstance(obj) {
+        return obj instanceof this;
     }
 }
 
