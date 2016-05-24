@@ -3152,7 +3152,7 @@ enifed('ember-metal/chains', ['exports', 'ember-metal/debug', 'ember-metal/prope
     pendingQueue = [];
 
     queue.forEach(function (q) {
-      return q[0].add(q[1]);
+      return q[0].plus(q[1]);
     });
 
     _emberMetalDebug.warn('Watching an undefined global, Ember expects watched globals to be ' + 'setup by the time the run loop is flushed, check for typos', pendingQueue.length === 0, { id: 'ember-metal.chains-flush-pending-chains' });
@@ -3168,7 +3168,7 @@ enifed('ember-metal/chains', ['exports', 'ember-metal/debug', 'ember-metal/prope
     }
 
     var m = _emberMetalMeta.meta(obj);
-    m.writableChainWatchers(makeChainWatcher).add(keyName, node);
+    m.writableChainWatchers(makeChainWatcher).plus(keyName, node);
     _emberMetalWatch_key.watchKey(obj, keyName, m);
   }
 
@@ -6734,7 +6734,7 @@ enifed('ember-metal/map', ['exports', 'ember-metal/core', 'ember-metal/utils', '
       // ensure we don't store -0
       var k = key === -0 ? 0 : key;
 
-      keys.add(k, guid);
+      keys.plus(k, guid);
 
       values[guid] = value;
 
@@ -9114,7 +9114,7 @@ enifed('ember-metal/property_events', ['exports', 'ember-metal/utils', 'ember-me
     var eventName = keyName + ':before';
     var listeners, added;
     if (deferred) {
-      listeners = beforeObserverSet.add(obj, keyName, eventName);
+      listeners = beforeObserverSet.plus(obj, keyName, eventName);
       added = _emberMetalEvents.accumulateListeners(obj, eventName, listeners);
       _emberMetalEvents.sendEvent(obj, eventName, [obj, keyName], added);
     } else {
@@ -9130,7 +9130,7 @@ enifed('ember-metal/property_events', ['exports', 'ember-metal/utils', 'ember-me
     var eventName = keyName + ':change';
     var listeners;
     if (deferred) {
-      listeners = observerSet.add(obj, keyName, eventName);
+      listeners = observerSet.plus(obj, keyName, eventName);
       _emberMetalEvents.accumulateListeners(obj, eventName, listeners);
     } else {
       _emberMetalEvents.sendEvent(obj, eventName, [obj, keyName]);
@@ -11952,7 +11952,7 @@ enifed('ember-metal/watch_path', ['exports', 'ember-metal/meta', 'ember-metal/ch
     if (!counter) {
       // activate watching first time
       m.writeWatching(keyPath, 1);
-      chainsFor(obj, m).add(keyPath);
+      chainsFor(obj, m).plus(keyPath);
     } else {
       m.writeWatching(keyPath, counter + 1);
     }

@@ -6,13 +6,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ember = require("./ember");
+var _Ember = require("./Ember");
 
-var _ember2 = _interopRequireDefault(_ember);
+var _Ember2 = _interopRequireDefault(_Ember);
 
 var _lodash = require("lodash");
 
 var _lodash2 = _interopRequireDefault(_lodash);
+
+var _Preconditions = require("./Preconditions");
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36,12 +40,12 @@ var CoreObject = function (_Ember$Object) {
     _createClass(CoreObject, [{
         key: "get",
         value: function get(key) {
-            return _ember2.default.get(this, key);
+            return _Ember2.default.get(this, key);
         }
     }, {
         key: "set",
         value: function set(key, value) {
-            return _ember2.default.set(this, key, value);
+            return _Ember2.default.set(this, key, value);
         }
     }]);
 
@@ -101,6 +105,24 @@ var CoreObject = function (_Ember$Object) {
         }
 
         /**
+         * Ensures that your object is an instance of this type.
+         *
+         * @param {*} object
+         * @returns {Object}
+         * @throws {PreconditionsError} if the type is incorrect
+         */
+
+    }, {
+        key: "shouldBeInstance",
+        value: function shouldBeInstance(object) {
+            if (!this.isInstance(object)) {
+                _Preconditions2.default.fail(this, object, 'Should be instance');
+            }
+
+            return object;
+        }
+
+        /**
          *
          * @param {object} obj
          * @returns {boolean}
@@ -114,7 +136,7 @@ var CoreObject = function (_Ember$Object) {
     }]);
 
     return CoreObject;
-}(_ember2.default.Object);
+}(_Ember2.default.Object);
 
 exports.default = CoreObject;
 module.exports = exports['default'];

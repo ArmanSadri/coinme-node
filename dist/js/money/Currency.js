@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -6,13 +6,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ = require("./..");
+var _Utility = require('../Utility');
 
-var _Money = require("./Money");
+var _Utility2 = _interopRequireDefault(_Utility);
+
+var _CoreObject2 = require('../CoreObject');
+
+var _CoreObject3 = _interopRequireDefault(_CoreObject2);
+
+var _Preconditions = require('../Preconditions');
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
+var _Money = require('./Money');
 
 var _Money2 = _interopRequireDefault(_Money);
 
-var _Converter = require("./Converter");
+var _Converter = require('./Converter');
 
 var _Converter2 = _interopRequireDefault(_Converter);
 
@@ -23,10 +33,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import {Utility, CoreObject, Preconditions} from '../index';
+
 
 var _converter = new _Converter2.default({
     conversions: {}
 });
+
+/**
+ * @class
+ */
 
 var Currency = function (_CoreObject) {
     _inherits(Currency, _CoreObject);
@@ -42,8 +58,18 @@ var Currency = function (_CoreObject) {
         return _this;
     }
 
-    _createClass(Currency, null, [{
-        key: "equals",
+    /**
+     * @return {Converter}
+     */
+
+
+    _createClass(Currency, [{
+        key: 'converter',
+        get: function get() {
+            return this.toClass().converter;
+        }
+    }], [{
+        key: 'equals',
         value: function equals(currency) {
             currency = Currency.optCurrency(currency);
 
@@ -60,16 +86,21 @@ var Currency = function (_CoreObject) {
         /**
          *
          * @param {Number|Money|String} value
+         * @param {Number|Money|String|function|Converter} [optionalConversion]
          * @returns {Money}
          */
 
     }, {
-        key: "create",
-        value: function create(value) {
-            return _Money2.default.optMoney(Currency.toValueOrFail(value), Currency.optCurrency(value) || this.getChildCurrencyTypeOrFail());
+        key: 'create',
+        value: function create(value, optionalConversion) {
+            var money = _Money2.default.optMoney(Currency.toValueOrFail(value), Currency.optCurrency(value) || this.getChildCurrencyTypeOrFail());
+
+            _Money2.default.shouldBeMoney(money);
+
+            return money.convertTo(this.getChildCurrencyTypeOrFail(), optionalConversion);
         }
     }, {
-        key: "toString",
+        key: 'toString',
         value: function toString() {
             return 'Currency';
         }
@@ -79,20 +110,26 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "convertFrom",
+        key: 'convertFrom',
 
 
         /**
          * @param {Money} money
          * @param {Number|Function|Converter} [optionalConversion]
-         * @returns {Money}
+         * @return {Money}
+         * @throws {PreconditionsError} if money is not of the correct type.
          */
         value: function convertFrom(money, optionalConversion) {
+            _Money2.default.shouldBeMoney(money);
+            _Money2.default.shouldBeInstance(money);
+
             return money.currency.converter.convert(money, this.getChildCurrencyTypeOrFail(), optionalConversion);
         }
     }, {
-        key: "canConvertFrom",
-        value: function canConvertFrom(money, optionalConversion) {}
+        key: 'canConvertFrom',
+        value: function canConvertFrom(money, optionalConversion) {
+            return money.currency.canConvertFrom(money, optionalConversion);
+        }
 
         //
         // /**
@@ -132,13 +169,13 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "getChildCurrencyTypeOrFail",
+        key: 'getChildCurrencyTypeOrFail',
         value: function getChildCurrencyTypeOrFail() {
             var currency = this;
 
             Currency.shouldBeCurrency(currency);
 
-            _.Preconditions.shouldBeTrue(this.isChildCurrency(), 'Cannot be the Currency class directly. Use a subclass, like Bitcoin. You used: ' + this.toClass().toString());
+            _Preconditions2.default.shouldBeTrue(this.isChildCurrency(), 'Cannot be the Currency class directly. Use a subclass, like Bitcoin. You used: ' + this.toClass().toString());
 
             return currency;
         }
@@ -149,7 +186,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "isChildCurrency",
+        key: 'isChildCurrency',
         value: function isChildCurrency() {
             return this.toClass() !== Currency && Currency.isClass(this);
         }
@@ -162,7 +199,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "toMoney",
+        key: 'toMoney',
         value: function toMoney(valueOrMoney, defaultCurrency) {
             var value = Currency.toValueOrFail(valueOrMoney);
             var currency = Currency.optCurrency(valueOrMoney) || Currency.optCurrency(defaultCurrency);
@@ -190,7 +227,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "getCurrency",
+        key: 'getCurrency',
         value: function getCurrency(objectOrCurrency) {
             var instance = Currency.optCurrency(objectOrCurrency);
 
@@ -205,7 +242,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "optCurrency",
+        key: 'optCurrency',
         value: function optCurrency(objectOrCurrency) {
             if (Currency.isCurrency(objectOrCurrency)) {
                 return objectOrCurrency;
@@ -248,9 +285,9 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "shouldBeCurrency",
+        key: 'shouldBeCurrency',
         value: function shouldBeCurrency(clazz, message) {
-            _.Preconditions.shouldBeClass(clazz, Currency, 'Must be currency: ' + message);
+            _Preconditions2.default.shouldBeClass(clazz, Currency, 'Must be currency: ' + message);
 
             return clazz;
         }
@@ -262,7 +299,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "isCurrency",
+        key: 'isCurrency',
         value: function isCurrency(object) {
             if (Currency.isClass(object)) {
                 return true;
@@ -285,29 +322,29 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: "toValueOrFail",
+        key: 'toValueOrFail',
         value: function toValueOrFail(numberOrMoney) {
-            if (_.Utility.isNullOrUndefined(numberOrMoney)) {
+            if (_Utility2.default.isNullOrUndefined(numberOrMoney)) {
                 return 0;
             } else if (_Money2.default.isInstance(numberOrMoney)) {
                 return numberOrMoney.value;
-            } else if (_.Utility.isNumber(numberOrMoney)) {
+            } else if (_Utility2.default.isNumber(numberOrMoney)) {
                 return numberOrMoney;
-            } else if (_.Utility.isString(numberOrMoney)) {
+            } else if (_Utility2.default.isString(numberOrMoney)) {
                 return parseFloat(numberOrMoney);
             } else {
                 console.log(numberOrMoney);
 
-                _.Preconditions.fail('Number|Currency', _.Utility.typeOf(numberOrMoney), 'This method fails with the wrong type.');
+                _Preconditions2.default.fail('Number|Currency', _Utility2.default.typeOf(numberOrMoney), 'This method fails with the wrong type.');
             }
         }
     }, {
-        key: "toClass",
+        key: 'toClass',
         value: function toClass() {
             return this;
         }
     }, {
-        key: "converter",
+        key: 'converter',
         get: function get() {
             return _converter;
         }
@@ -323,7 +360,7 @@ var Currency = function (_CoreObject) {
     }]);
 
     return Currency;
-}(_.CoreObject);
+}(_CoreObject3.default);
 
 exports.default = Currency;
 module.exports = exports['default'];

@@ -27,7 +27,20 @@ import { Currency, Bitcoin, Money, Satoshi, USD, Converter } from "~/money";
 // });
 
 describe('Money', () => {
+    it('shouldBeMoney', () => {
+        let money = Bitcoin.create(1);
+        
+        assert.equal(Money.shouldBeMoney(money), money);
+    });
 
+    it('new Bitcoin() - fails', () => {
+        try {
+            new Bitcoin();
+
+            assert.isTrue(false, 'The Bitcoin constructor should have thrown.');
+        } catch (e) {
+        }
+    });
 
     it('Bitcoin + 1', () => {
 
@@ -49,12 +62,12 @@ describe('Money', () => {
     it('Bitcoin.add', () => {
 
         let bitcoin = Bitcoin.create(1);
-        let bitcoin2 = bitcoin.add(bitcoin);
+        let bitcoin2 = bitcoin.plus(bitcoin);
 
         assert.equal(bitcoin.value, 1);
         assert.equal(bitcoin2.value, 2);
 
-        let bitcoin3 = bitcoin2.add(Satoshi.create(Bitcoin.SATOSHIS_PER_BITCOIN));
+        let bitcoin3 = bitcoin2.plus(Satoshi.create(Bitcoin.SATOSHIS_PER_BITCOIN));
 
         assert.equal(bitcoin3 + 0, 3);
 
@@ -98,10 +111,10 @@ describe('Money', () => {
         assert.equal(satoshi.convertTo(Bitcoin), 1); // Money.valueOf() returns a number, which can be compared.
 
         // The PLUS operator coerces into a number
-        assert.isTrue(bitcoin.add(satoshi).equals(Bitcoin.create(2)));
-        assert.isTrue(bitcoin.add(satoshi).equals(2));
+        assert.isTrue(bitcoin.plus(satoshi).equals(Bitcoin.create(2)));
+        assert.isTrue(bitcoin.plus(satoshi).equals(2));
 
-        assert.equal(bitcoin.add(satoshi) + 0, 2);
+        assert.equal(bitcoin.plus(satoshi) + 0, 2);
 
         assert.equal(satoshi.convertTo(Bitcoin) + 1, 2);
     });
@@ -149,15 +162,15 @@ describe('Money', () => {
         assert.equal(satoshis.convertTo(Bitcoin).value, bitcoin.value);
         assert.equal(satoshis.convertTo(Satoshi).value, satoshis.value);
 
-        assert.equal(bitcoin.add(satoshis).value, 2);
-        assert.equal(bitcoin.add(satoshis).convertTo(Satoshi).value, 200000000);
+        assert.equal(bitcoin.plus(satoshis).value, 2);
+        assert.equal(bitcoin.plus(satoshis).convertTo(Satoshi).value, 200000000);
 
         assert.equal(
             bitcoin
-                .add(bitcoin)
-                .add(1)
-                .add('1')
-                .add(bitcoin)
+                .plus(bitcoin)
+                .plus(1)
+                .plus('1')
+                .plus(bitcoin)
                 .value,
             5);
     });

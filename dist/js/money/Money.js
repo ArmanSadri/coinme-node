@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -6,13 +6,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _lodash = require('lodash');
+var _CoreObject2 = require("../CoreObject");
 
-var _lodash2 = _interopRequireDefault(_lodash);
+var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
-var _ = require('./..');
+var _Utility = require("../Utility");
 
-var _Currency = require('./Currency');
+var _Utility2 = _interopRequireDefault(_Utility);
+
+var _Preconditions = require("../Preconditions");
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
+var _Currency = require("./Currency");
 
 var _Currency2 = _interopRequireDefault(_Currency);
 
@@ -35,10 +41,10 @@ var Money = function (_CoreObject) {
     function Money(options) {
         _classCallCheck(this, Money);
 
-        _.Preconditions.shouldBeDefined(_Currency2.default);
+        _Preconditions2.default.shouldBeDefined(_Currency2.default);
 
-        var value = _.Preconditions.shouldBeNumber(_Currency2.default.toValueOrFail(_.Utility.take(options, 'value')));
-        var currency = _.Preconditions.shouldBeDefined(_Currency2.default.getCurrency(_.Utility.take(options, 'currency')));
+        var value = _Preconditions2.default.shouldBeNumber(_Currency2.default.toValueOrFail(_Utility2.default.take(options, 'value')));
+        var currency = _Preconditions2.default.shouldBeDefined(_Currency2.default.getCurrency(_Utility2.default.take(options, 'currency')));
 
         /**
          * @type {Number}
@@ -47,7 +53,7 @@ var Money = function (_CoreObject) {
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Money).apply(this, arguments));
 
-        _this._value = _.Preconditions.shouldBeNumber(value);
+        _this._value = _Preconditions2.default.shouldBeNumber(value);
 
         /**
          * @type {Class<Currency>}
@@ -64,12 +70,12 @@ var Money = function (_CoreObject) {
 
 
     _createClass(Money, [{
-        key: 'toString',
+        key: "toString",
         value: function toString() {
             return this.currency.toString(this);
         }
     }, {
-        key: 'toJson',
+        key: "toJson",
         value: function toJson() {
             return this.currency.toJson(this);
         }
@@ -82,12 +88,12 @@ var Money = function (_CoreObject) {
          */
 
     }, {
-        key: 'add',
-        value: function add(money) {
+        key: "plus",
+        value: function plus(money) {
             money = Money.optMoney(money, this.currency);
             var convertedValue = this.currency.convertFrom(money);
 
-            return this.mutate(convertedValue + this);
+            return this.withValue(convertedValue + this);
         }
 
         /**
@@ -98,12 +104,12 @@ var Money = function (_CoreObject) {
          */
 
     }, {
-        key: 'subtract',
-        value: function subtract(money) {
+        key: "minus",
+        value: function minus(money) {
             money = Money.optMoney(money, this.currency);
             var convertedValue = this.currency.convertFrom(money).value;
 
-            return this.mutate(convertedValue - this.value);
+            return this.withValue(convertedValue - this.value);
         }
 
         /**
@@ -113,7 +119,7 @@ var Money = function (_CoreObject) {
          */
 
     }, {
-        key: 'equals',
+        key: "equals",
         value: function equals(money, optionalConversion) {
             money = Money.optMoney(money, this.currency);
 
@@ -121,13 +127,13 @@ var Money = function (_CoreObject) {
                 return false;
             }
 
-            var convertedAlien = _.Preconditions.shouldBeNumber(_Currency2.default.toValueOrFail(this.currency.convertFrom(money, optionalConversion)), 'Converted value must be a number.');
-            var value = _.Preconditions.shouldBeNumber(_Currency2.default.toValueOrFail(this), 'Our value must be a number.');
+            var convertedAlien = _Preconditions2.default.shouldBeNumber(_Currency2.default.toValueOrFail(this.currency.convertFrom(money, optionalConversion)), 'Converted value must be a number.');
+            var value = _Preconditions2.default.shouldBeNumber(_Currency2.default.toValueOrFail(this), 'Our value must be a number.');
 
             return convertedAlien === value;
         }
     }, {
-        key: 'valueOf',
+        key: "valueOf",
         value: function valueOf() {
             return this.value;
         }
@@ -140,8 +146,8 @@ var Money = function (_CoreObject) {
          */
 
     }, {
-        key: 'mutate',
-        value: function mutate(value) {
+        key: "withValue",
+        value: function withValue(value) {
             if (!value) {
                 value = 0;
             }
@@ -160,11 +166,44 @@ var Money = function (_CoreObject) {
          */
 
     }, {
-        key: 'convertTo',
+        key: "convertTo",
         value: function convertTo(currencyOrString, optionalConversion) {
             var currency = _Currency2.default.getCurrency(currencyOrString);
 
             return currency.convertFrom(this, optionalConversion);
+        }
+
+        /**
+         *
+         * @param {*} object
+         * @returns {Money}
+         */
+
+    }, {
+        key: "currency",
+        get: function get() {
+            return this._currency;
+        }
+
+        /**
+         * @returns {Number}
+         */
+
+    }, {
+        key: "value",
+        get: function get() {
+            return this._value;
+        }
+    }], [{
+        key: "shouldBeMoney",
+        value: function shouldBeMoney(object) {
+            if (_CoreObject3.default.isClass(object)) {
+                _Preconditions2.default.shouldBeClass(object, Money, 'object should be money');
+            } else {
+                _Preconditions2.default.shouldBeInstance(object, Money, 'object should be money');
+            }
+
+            return object;
         }
 
         /**
@@ -175,22 +214,7 @@ var Money = function (_CoreObject) {
          */
 
     }, {
-        key: 'currency',
-        get: function get() {
-            return this._currency;
-        }
-
-        /**
-         * @returns {Number}
-         */
-
-    }, {
-        key: 'value',
-        get: function get() {
-            return this._value;
-        }
-    }], [{
-        key: 'optMoney',
+        key: "optMoney",
         value: function optMoney(valueOrMoney, defaultCurrency) {
             if (Money.isInstance(valueOrMoney)) {
                 return valueOrMoney;
@@ -204,7 +228,7 @@ var Money = function (_CoreObject) {
     }]);
 
     return Money;
-}(_.CoreObject);
+}(_CoreObject3.default);
 
 exports.default = Money;
 module.exports = exports['default'];

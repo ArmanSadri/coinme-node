@@ -6,7 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ = require("./..");
+var _Preconditions = require("../Preconditions");
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
 var _Currency2 = require("./Currency");
 
@@ -39,7 +41,7 @@ var conversions = {
      * @returns {Number}
      */
     'Bitcoin->Satoshi': function BitcoinSatoshi(valueInBitcoin) {
-        _.Preconditions.shouldBeNumber(valueInBitcoin);
+        _Preconditions2.default.shouldBeNumber(valueInBitcoin);
 
         return valueInBitcoin * Bitcoin.SATOSHIS_PER_BITCOIN;
     },
@@ -50,7 +52,7 @@ var conversions = {
      * @returns {Number}
      */
     'Satoshi->Bitcoin': function SatoshiBitcoin(valueInSatoshi) {
-        _.Preconditions.shouldBeNumber(valueInSatoshi);
+        _Preconditions2.default.shouldBeNumber(valueInSatoshi);
 
         return valueInSatoshi * Bitcoin.BITCOIN_PER_SATOSHI;
     }
@@ -60,6 +62,10 @@ var conversions = {
 _Currency3.default.converter.register(conversions);
 
 /**
+ * Represents the Bitcoin currency in memory.
+ *
+ * This class cannot be instantiated. Everything is static and the constructor throws, so treat it like a singleton.
+ *
  * @class Bitcoin
  */
 
@@ -73,54 +79,46 @@ var Bitcoin = function (_Currency) {
     }
 
     _createClass(Bitcoin, null, [{
-        key: "toString",
-        value: function toString() {
-            return 'Bitcoin';
-        }
+        key: "fromBitcoin",
 
-        /**
-         *
-         * @param {Money} money
-         * @param {Number} [places]
-         * @returns {String}
-         */
 
-    }, {
-        key: "serialize",
-        value: function serialize(money, places) {
-            var value = this.toBitcoin();
-
-            if (isNaN(value)) {
-                return 'NaN';
-            }
-
-            if (!places) {
-                places = 8;
-            }
-
-            var parts = String(value).split('.');
-
-            if (parts.length === 1) {
-                parts.push('0');
-            }
-
-            var needed = places - parts[1].length;
-
-            for (var i = 0; i < needed; i++) {
-                parts[1] += '0';
-            }
-
-            return parts[0] + '.' + parts[1];
-        }
+        // /**
+        //  *
+        //  * @param {Money} money
+        //  * @param {Number} [places]
+        //  * @returns {String}
+        //  */
+        // static serialize(money, places) {
+        //     let value = this.toBitcoin();
+        //
+        //     if (isNaN(value)) {
+        //         return 'NaN';
+        //     }
+        //
+        //     if (!places) {
+        //         places = 8;
+        //     }
+        //
+        //     let parts = String(value).split('.');
+        //
+        //     if (parts.length === 1) {
+        //         parts.push('0');
+        //     }
+        //
+        //     let needed = places - parts[1].length;
+        //
+        //     for (let i = 0; i < needed; i++) {
+        //         parts[1] += '0';
+        //     }
+        //
+        //     return parts[0] + '.' + parts[1];
+        // }
 
         /**
          *
          * @param {Money|String|Number|null|undefined} valueInBitcoin
          * @returns {Money}
          */
-
-    }, {
-        key: "fromBitcoin",
         value: function fromBitcoin(valueInBitcoin) {
             /**
              * @type {Number}
@@ -153,96 +151,109 @@ var Bitcoin = function (_Currency) {
             return _Satoshi2.default.fromSatoshis(valueInSatoshis);
         }
 
-        /**
-         *
-         * @param valueInBitcoin
-         */
-
-    }, {
-        key: "toSatoshis",
-        value: function toSatoshis(valueInBitcoin) {
-            return _Satoshi2.default.fromBitcoin(valueInBitcoin);
-        }
-
-        /**
-         *
-         * @param number
-         * @returns {Number}
-         */
-
-    }, {
-        key: "calculateSatoshisFromBitcoin",
-        value: function calculateSatoshisFromBitcoin(number) {
-            _.Preconditions.shouldBeDefined(_Currency3.default);
-            number = _Currency3.default.toValueOrFail(number);
-
-            if (isNaN(number)) {
-                return NaN;
-            }
-
-            if (number === 0) {
-                return 0;
-            }
-
-            var str = String(number);
-            var sign = str.indexOf('-') === 0 ? '-' : '';
-
-            str = str.replace(/^-/, '');
-
-            if (str.indexOf('e') >= 0) {
-                return parseInt(sign + str.replace('.', '').replace(/e-8/, '').replace(/e-7/, '0'), 10);
-            } else {
-                if (!/\./.test(str)) {
-                    str += '.0';
-                }
-
-                var parts = str.split('.');
-
-                str = parts[0] + '.' + parts[1].slice(0, 8);
-
-                while (!/\.[0-9]{8}/.test(str)) {
-                    str += '0';
-                }
-
-                return parseInt(sign + str.replace('.', '').replace(/^0+/, ''), 10);
-            }
-        }
+        // /**
+        //  *
+        //  * @param number
+        //  * @returns {Number}
+        //  */
+        // static calculateSatoshisFromBitcoin(number) {
+        //     Preconditions.shouldBeDefined(Currency);
+        //     number = Currency.toValueOrFail(number);
+        //
+        //     if (isNaN(number)) {
+        //         return NaN;
+        //     }
+        //
+        //     if (number === 0) {
+        //         return 0;
+        //     }
+        //
+        //     let str = String(number);
+        //     let sign = (str.indexOf('-') === 0) ? '-' : '';
+        //
+        //     str = str.replace(/^-/, '');
+        //
+        //     if (str.indexOf('e') >= 0) {
+        //         return parseInt(sign + str.replace('.', '').replace(/e-8/, '').replace(/e-7/, '0'), 10);
+        //     } else {
+        //         if (!(/\./).test(str)) {
+        //             str += '.0';
+        //         }
+        //
+        //         let parts = str.split('.');
+        //
+        //         str = parts[0] + '.' + parts[1].slice(0, 8);
+        //
+        //         while (!(/\.[0-9]{8}/).test(str)) {
+        //             str += '0';
+        //         }
+        //
+        //         return parseInt(sign + str.replace('.', '').replace(/^0+/, ''), 10);
+        //     }
+        // }
 
         /**
          * @return {Number}
+         * @readonly
          */
 
     }, {
         key: "toClass",
+
+
+        /**
+         * @returns {Class<Bitcoin>}
+         */
         value: function toClass() {
             return Bitcoin;
         }
 
+        /**
+         * @returns {String}
+         */
+
+    }, {
+        key: "toString",
+        value: function toString() {
+            return 'Bitcoin';
+        }
+
         //region Detection
         /**
+         * Detects if you pass in either Money or Currency of type Bitcoin <br>
+         * <br>
+         * Bitcoin -> true <br>
+         * money<Bitcoin> -> true <br>
          *
          * @param {Money|Currency|Class<Currency>} moneyOrCurrency
+         * @return {Boolean}
          */
 
     }, {
         key: "isBitcoin",
         value: function isBitcoin(moneyOrCurrency) {
-            return Bitcoin.isClass(_Currency3.default.getCurrency(moneyOrCurrency));
+            if (!moneyOrCurrency) {
+                return false;
+            }
+
+            var currency = _Currency3.default.optCurrency(moneyOrCurrency);
+
+            return Bitcoin.isClass(currency) || Bitcoin.isInstance(currency);
         }
 
         /**
+         * If {@link Bitcoin#isBitcoin} returns false, will throw.
          *
          * @param {Money|Currency|Class<Currency>} moneyOrCurrency
+         * @return {Class<Currency>}
+         * @throws {PreconditionsError} if not an instance of Money (for Bitcoin) or the Bitcoin class itself.
          */
 
     }, {
         key: "shouldBeBitcoin",
         value: function shouldBeBitcoin(moneyOrCurrency) {
-            var currency = _Currency3.default.getCurrency(moneyOrCurrency);
-
-            if (!Bitcoin.isClass(currency)) {
-                console.log('currency=>', currency);
-                _.Preconditions.fail(Bitcoin, currency);
+            if (!Bitcoin.isBitcoin(moneyOrCurrency)) {
+                _Preconditions2.default.fail(Bitcoin, _Currency3.default.optCurrency(moneyOrCurrency) || moneyOrCurrency);
             }
 
             return moneyOrCurrency;
@@ -257,13 +268,14 @@ var Bitcoin = function (_Currency) {
         }
 
         /**
-         * @return {number}
+         * @return {Number}
+         * @readonly
          */
 
     }, {
         key: "BITCOIN_PER_SATOSHI",
         get: function get() {
-            return 1 / 100000000;
+            return 0.00000001;
         }
     }]);
 

@@ -1,7 +1,8 @@
 'use strict';
 
-import Ember from "~/ember";
+import Ember from "./Ember";
 import Lodash from "lodash";
+import Preconditions from './Preconditions';
 
 /**
  * This is the base class for all classes in our architecture.
@@ -61,6 +62,21 @@ export default class CoreObject extends Ember.Object {
         }
 
         return false;
+    }
+
+    /**
+     * Ensures that your object is an instance of this type.
+     *
+     * @param {*} object
+     * @returns {Object}
+     * @throws {PreconditionsError} if the type is incorrect
+     */
+    static shouldBeInstance(object) {
+        if (!this.isInstance(object)) {
+            Preconditions.fail(this, object, 'Should be instance');
+        }
+
+        return object;
     }
 
     /**

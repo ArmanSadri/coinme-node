@@ -206,22 +206,24 @@ export default class Preconditions {
 
     /**
      *
-     * @param {Class|Object} object
+     * @param {*} object
      * @param {Class|Object} [clazz]
+     * @param {String} [message]
+     * @returns {Object}
      */
-    static shouldBeInstance(object, clazz) {
-        Preconditions.shouldBeDefined(object, 'object must be defined');
+    static shouldBeInstance(object, clazz, message) {
+        Preconditions.shouldBeDefined(object, message || 'object must be defined');
 
         if (!clazz) {
             clazz = CoreObject;
         }
 
         if (!CoreObject.isClass(clazz)) {
-            Preconditions.fail(CoreObject, clazz, 'Class not a CoreObject class');
+            Preconditions.fail(CoreObject, clazz, message || 'Class not a CoreObject class');
         }
 
         if (!clazz.isInstance(object)) {
-            Preconditions.fail(object, clazz, 'Class not an instance of ' + clazz);
+            Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
         }
 
         return object;

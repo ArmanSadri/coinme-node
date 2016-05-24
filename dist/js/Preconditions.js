@@ -263,25 +263,27 @@ var Preconditions = function () {
 
         /**
          *
-         * @param {Class|Object} object
+         * @param {*} object
          * @param {Class|Object} [clazz]
+         * @param {String} [message]
+         * @returns {Object}
          */
 
     }, {
         key: "shouldBeInstance",
-        value: function shouldBeInstance(object, clazz) {
-            Preconditions.shouldBeDefined(object, 'object must be defined');
+        value: function shouldBeInstance(object, clazz, message) {
+            Preconditions.shouldBeDefined(object, message || 'object must be defined');
 
             if (!clazz) {
                 clazz = _CoreObject2.default;
             }
 
             if (!_CoreObject2.default.isClass(clazz)) {
-                Preconditions.fail(_CoreObject2.default, clazz, 'Class not a CoreObject class');
+                Preconditions.fail(_CoreObject2.default, clazz, message || 'Class not a CoreObject class');
             }
 
             if (!clazz.isInstance(object)) {
-                Preconditions.fail(object, clazz, 'Class not an instance of ' + clazz);
+                Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
             }
 
             return object;

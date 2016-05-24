@@ -6,9 +6,25 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ = require("./");
+var _CoreObject2 = require("../CoreObject");
 
-var _2 = require("./..");
+var _CoreObject3 = _interopRequireDefault(_CoreObject2);
+
+var _Money = require("./Money");
+
+var _Money2 = _interopRequireDefault(_Money);
+
+var _Currency = require("./Currency");
+
+var _Currency2 = _interopRequireDefault(_Currency);
+
+var _Preconditions = require("../Preconditions");
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
+var _Utility = require("../Utility");
+
+var _Utility2 = _interopRequireDefault(_Utility);
 
 var _lodash = require("lodash");
 
@@ -27,10 +43,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * The conversion map uses the Currency name for directionality. The internal conversion map is stored like:
  *
- * {
- *   'Bitcoin->Satoshi' : function(value) { return value * satoshi_factor; },
- *   'Satoshi->Bitcoin': function(value) { return value / satoshi_factor; }
- * }
+ * {<br>
+ *   'Bitcoin->Satoshi' : function(value) { return value * satoshi_factor; },<br>
+ *   'Satoshi->Bitcoin': function(value) { return value / satoshi_factor; }<br>
+ * }<br>
  *
  * @class
  */
@@ -46,7 +62,7 @@ var Converter = function (_CoreObject) {
     function Converter(options) {
         _classCallCheck(this, Converter);
 
-        var conversions = _2.Utility.take(options, 'conversions');
+        var conversions = _Utility2.default.take(options, 'conversions');
 
         /**
          * @type {Object}
@@ -58,54 +74,82 @@ var Converter = function (_CoreObject) {
         return _this;
     }
 
+    /**
+     * This is the conversion map. The keys of this object should be 'Currency1->Currency2'
+     *
+     * The value of each key should be a conversion function of 'function(valueInSource) { return valueInDestination; }
+     *
+     * @returns {Object}
+     */
+
+
     _createClass(Converter, [{
         key: "canConvert",
+
+
+        /**
+         * Determines if this Converter instance can convert between the two currencies.
+         *
+         * NOTE: The direction matters.
+         *
+         * @param {Class<Currency>|Currency|String} currency1
+         * @param {Class<Currency>|Currency|String} currency2
+         * @param {Number|String|Function|Converter} [optionalConversion]
+         * @returns {boolean}
+         */
         value: function canConvert(currency1, currency2, optionalConversion) {
-            currency1 = _.Currency.optCurrency(currency1);
-            currency2 = _.Currency.optCurrency(currency2);
+            currency1 = _Currency2.default.optCurrency(currency1);
+            currency2 = _Currency2.default.optCurrency(currency2);
 
             var conversion = this.optConversion(currency1, currency2, optionalConversion);
 
-            return _2.Utility.isFunction(conversion);
+            return _Utility2.default.isFunction(conversion);
         }
 
         /**
+         * Executes the conversion.
          *
-         * @param {Money} money
-         * @param {Class<Currency>|Currency} currency
+         * @param {Money} sourceMoney
+         * @param {Class<Currency>|Currency} destinationCurrency
          * @param {Function} [optionalConversion]
          * @returns {Money}
+         * @throws {PreconditionsError} if the converter fails to convert into a valid number
+         * @throws {PreconditionsError} if the destinationCurrency is not a valid currency
+         * @throws {PreconditionsError} if converter cannot support the conversion
          */
 
     }, {
         key: "convert",
-        value: function convert(money, currency, optionalConversion) {
-            currency = _.Currency.getCurrency(currency);
+        value: function convert(sourceMoney, destinationCurrency, optionalConversion) {
+            destinationCurrency = _Currency2.default.getCurrency(destinationCurrency);
 
-            var fn = this.optConversion(money.currency, currency, optionalConversion);
-            var value = fn.call(this, money.value);
+            var fn = this.optConversion(sourceMoney.currency, destinationCurrency, optionalConversion);
+            var scope = Converter.isInstance(optionalConversion) ? optionalConversion : this;
+            var value = fn.call(scope, sourceMoney.value);
 
-            _2.Preconditions.shouldBeNumber(value, 'Sanity check failure, the value should be a number: ' + value);
+            _Preconditions2.default.shouldBeNumber(value, 'Sanity check failure, the value should be a number: ' + value);
 
-            return new _.Money({
+            return new _Money2.default({
                 value: value,
-                currency: currency
+                currency: destinationCurrency
             });
         }
 
         /**
+         * Detects the conversion function, given the inputs.
          *
          * @param {Class<Currency>|Currency|String} sourceCurrency
          * @param {Class<Currency>|Currency|String} destinationCurrency
-         * @param {Function|Number|String} [optionalConversion]
-         * @returns {*}
+         * @param {Function|Number|String|Converter} [optionalConversion]
+         *
+         * @returns {Function}
          */
 
     }, {
         key: "optConversion",
         value: function optConversion(sourceCurrency, destinationCurrency, optionalConversion) {
-            sourceCurrency = _.Currency.optCurrency(sourceCurrency);
-            destinationCurrency = _.Currency.optCurrency(destinationCurrency);
+            sourceCurrency = _Currency2.default.optCurrency(sourceCurrency);
+            destinationCurrency = _Currency2.default.optCurrency(destinationCurrency);
 
             if (!sourceCurrency || !destinationCurrency) {
                 return null;
@@ -113,19 +157,27 @@ var Converter = function (_CoreObject) {
                 return function (value) {
                     return value;
                 };
-            } else if (_2.Utility.isFunction(optionalConversion)) {
+            } else if (_Utility2.default.isFunction(optionalConversion)) {
                 return optionalConversion;
-            } else if (_2.Utility.isNumber(optionalConversion)) {
+            } else if (_Utility2.default.isNumber(optionalConversion)) {
                 return function (value) {
                     return value * optionalConversion;
                 };
+            } else if (Converter.isInstance(optionalConversion)) {
+                return this._getConversion(optionalConversion, sourceCurrency, destinationCurrency);
             } else {
-                return this._getConversion(sourceCurrency, destinationCurrency);
+                return this._getConversion(this, sourceCurrency, destinationCurrency);
             }
         }
 
         /**
+         * Register a conversion with this converter. This must be a valid object.
          *
+         * Example:
+         *
+         * {<br>
+         *     'USD->Bitcoin': function() ...<br>
+         * }<br>
          *
          * @param {Object} conversions
          * @returns {Converter}
@@ -134,7 +186,7 @@ var Converter = function (_CoreObject) {
     }, {
         key: "register",
         value: function register(conversions) {
-            _2.Preconditions.shouldBeObject(conversions);
+            _Preconditions2.default.shouldBeObject(conversions);
 
             _lodash2.default.assign(this.conversions, conversions);
 
@@ -142,6 +194,7 @@ var Converter = function (_CoreObject) {
         }
 
         /**
+         * @param {Converter} converter
          * @param {Money|Currency|Class<Currency>|String} sourceCurrency
          * @param {Money|Currency|Class<Currency>|String} destinationCurrency
          * @private
@@ -150,14 +203,14 @@ var Converter = function (_CoreObject) {
 
     }, {
         key: "_getConversion",
-        value: function _getConversion(sourceCurrency, destinationCurrency) {
-            sourceCurrency = _.Currency.getCurrency(sourceCurrency);
-            destinationCurrency = _.Currency.getCurrency(destinationCurrency);
+        value: function _getConversion(converter, sourceCurrency, destinationCurrency) {
+            sourceCurrency = _Currency2.default.getCurrency(sourceCurrency);
+            destinationCurrency = _Currency2.default.getCurrency(destinationCurrency);
 
             var converterName = sourceCurrency.toString() + '->' + destinationCurrency.toString();
-            var fn = this.conversions[converterName];
+            var fn = converter.conversions[converterName];
 
-            _2.Preconditions.shouldBeFunction(fn, 'Converter not found: ' + converterName);
+            _Preconditions2.default.shouldBeFunction(fn, 'Converter not found: ' + converterName);
 
             return fn;
         }
@@ -169,7 +222,7 @@ var Converter = function (_CoreObject) {
     }]);
 
     return Converter;
-}(_2.CoreObject);
+}(_CoreObject3.default);
 
 exports.default = Converter;
 module.exports = exports['default'];

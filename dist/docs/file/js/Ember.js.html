@@ -42,11 +42,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.es6~Bitcoin.html">Bitcoin</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.es6~Converter.html">Converter</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.es6~Currency.html">Currency</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.es6~Money.html">Money</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.es6~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -3216,7 +3217,7 @@ enifed(&apos;ember-metal/chains&apos;, [&apos;exports&apos;, &apos;ember-metal/d
     pendingQueue = [];
 
     queue.forEach(function (q) {
-      return q[0].add(q[1]);
+      return q[0].plus(q[1]);
     });
 
     _emberMetalDebug.warn(&apos;Watching an undefined global, Ember expects watched globals to be &apos; + &apos;setup by the time the run loop is flushed, check for typos&apos;, pendingQueue.length === 0, { id: &apos;ember-metal.chains-flush-pending-chains&apos; });
@@ -3232,7 +3233,7 @@ enifed(&apos;ember-metal/chains&apos;, [&apos;exports&apos;, &apos;ember-metal/d
     }
 
     var m = _emberMetalMeta.meta(obj);
-    m.writableChainWatchers(makeChainWatcher).add(keyName, node);
+    m.writableChainWatchers(makeChainWatcher).plus(keyName, node);
     _emberMetalWatch_key.watchKey(obj, keyName, m);
   }
 
@@ -6798,7 +6799,7 @@ enifed(&apos;ember-metal/map&apos;, [&apos;exports&apos;, &apos;ember-metal/core
       // ensure we don&apos;t store -0
       var k = key === -0 ? 0 : key;
 
-      keys.add(k, guid);
+      keys.plus(k, guid);
 
       values[guid] = value;
 
@@ -9178,7 +9179,7 @@ enifed(&apos;ember-metal/property_events&apos;, [&apos;exports&apos;, &apos;embe
     var eventName = keyName + &apos;:before&apos;;
     var listeners, added;
     if (deferred) {
-      listeners = beforeObserverSet.add(obj, keyName, eventName);
+      listeners = beforeObserverSet.plus(obj, keyName, eventName);
       added = _emberMetalEvents.accumulateListeners(obj, eventName, listeners);
       _emberMetalEvents.sendEvent(obj, eventName, [obj, keyName], added);
     } else {
@@ -9194,7 +9195,7 @@ enifed(&apos;ember-metal/property_events&apos;, [&apos;exports&apos;, &apos;embe
     var eventName = keyName + &apos;:change&apos;;
     var listeners;
     if (deferred) {
-      listeners = observerSet.add(obj, keyName, eventName);
+      listeners = observerSet.plus(obj, keyName, eventName);
       _emberMetalEvents.accumulateListeners(obj, eventName, listeners);
     } else {
       _emberMetalEvents.sendEvent(obj, eventName, [obj, keyName]);
@@ -12016,7 +12017,7 @@ enifed(&apos;ember-metal/watch_path&apos;, [&apos;exports&apos;, &apos;ember-met
     if (!counter) {
       // activate watching first time
       m.writeWatching(keyPath, 1);
-      chainsFor(obj, m).add(keyPath);
+      chainsFor(obj, m).plus(keyPath);
     } else {
       m.writeWatching(keyPath, counter + 1);
     }

@@ -42,11 +42,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.es6~Bitcoin.html">Bitcoin</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.es6~Converter.html">Converter</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.es6~Currency.html">Currency</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.es6~Money.html">Money</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.es6~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -64,10 +65,9 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/CoreObject.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Ember from &quot;~/ember&quot;;
-import Preconditions from &quot;~/Preconditions&quot;;
-import Utility from &quot;~/Utility&quot;;
-import Lodash from &apos;lodash&apos;;
+import Ember from &quot;./Ember&quot;;
+import Lodash from &quot;lodash&quot;;
+import Preconditions from &apos;./Preconditions&apos;;
 
 /**
  * This is the base class for all classes in our architecture.
@@ -76,7 +76,7 @@ import Lodash from &apos;lodash&apos;;
  * @abstract
  * @class
  */
-class CoreObject extends Ember.Object {
+export default class CoreObject extends Ember.Object {
 
     get(key) {
         return Ember.get(this, key);
@@ -92,7 +92,7 @@ class CoreObject extends Ember.Object {
     }
 
     toString() {
-        return &apos;CoreObject&apos;;
+        return this.toClass().toString();
     }
 
     toClass() {
@@ -100,7 +100,11 @@ class CoreObject extends Ember.Object {
     }
 
     static toClass() {
-        return CoreObject;
+        return this;
+    }
+
+    static toString() {
+        return &apos;CoreObject&apos;;
     }
 
     /**
@@ -124,7 +128,22 @@ class CoreObject extends Ember.Object {
 
         return false;
     }
-    
+
+    /**
+     * Ensures that your object is an instance of this type.
+     *
+     * @param {*} object
+     * @returns {Object}
+     * @throws {PreconditionsError} if the type is incorrect
+     */
+    static shouldBeInstance(object) {
+        if (!this.isInstance(object)) {
+            Preconditions.fail(this, object, &apos;Should be instance&apos;);
+        }
+
+        return object;
+    }
+
     /**
      *
      * @param {object} obj
@@ -133,9 +152,7 @@ class CoreObject extends Ember.Object {
     static isInstance(obj) {
         return obj instanceof this;
     }
-}
-
-export default CoreObject;</code></pre>
+}</code></pre>
 
 </div>
 

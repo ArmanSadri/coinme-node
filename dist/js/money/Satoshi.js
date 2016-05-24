@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ = require("./..");
-
 var _Currency2 = require("./Currency");
 
 var _Currency3 = _interopRequireDefault(_Currency2);
@@ -29,7 +27,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * @class Bitcoin
+ * @class Satoshi
  */
 
 var Satoshi = function (_Currency) {
@@ -40,11 +38,6 @@ var Satoshi = function (_Currency) {
 
         return _possibleConstructorReturn(this, Object.getPrototypeOf(Satoshi).apply(this, arguments));
     }
-
-    /**
-     * @returns {Converter}
-     */
-
 
     _createClass(Satoshi, null, [{
         key: "fromSatoshis",
@@ -78,6 +71,11 @@ var Satoshi = function (_Currency) {
         }
     }, {
         key: "converter",
+
+
+        /**
+         * @returns {Converter}
+         */
         get: function get() {
             return _Bitcoin2.default.converter;
         }

@@ -6,27 +6,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ = require('./..');
+var _ = require("./..");
 
-var _Currency2 = require('./Currency');
+var _Currency2 = require("./Currency");
 
 var _Currency3 = _interopRequireDefault(_Currency2);
 
-var _Satoshi = require('./Satoshi');
-
-var _Satoshi2 = _interopRequireDefault(_Satoshi);
-
-var _Money = require('./Money');
+var _Money = require("./Money");
 
 var _Money2 = _interopRequireDefault(_Money);
-
-var _lodash = require('lodash');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _Converter = require('./Converter');
-
-var _Converter2 = _interopRequireDefault(_Converter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37,7 +25,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * @class Bitcoin
+ * @class USD
  */
 
 var USD = function (_Currency) {
@@ -50,41 +38,60 @@ var USD = function (_Currency) {
     }
 
     _createClass(USD, null, [{
-        key: 'toString',
+        key: "toString",
+
+
+        /**
+         *
+         * @returns {String}
+         */
         value: function toString() {
             return 'USD';
         }
 
-        //region Detection
         /**
-         *
-         * @param {Money|Currency|Class<Currency>} moneyOrCurrency
+         * @returns {Class<USD>}
          */
 
     }, {
-        key: 'isUSD',
+        key: "toClass",
+        value: function toClass() {
+            return USD;
+        }
+
+        //region Detection
+        /**
+         * Detects if
+         *
+         * @param {Money|Currency|Class<Currency>} moneyOrCurrency
+         * @return {Boolean}
+         */
+
+    }, {
+        key: "isUSD",
         value: function isUSD(moneyOrCurrency) {
-            return USD.isClass(_Currency3.default.getCurrency(moneyOrCurrency));
+            var currency = _Currency3.default.optCurrency(moneyOrCurrency) || moneyOrCurrency;
+
+            return USD.isClass(currency) || USD.isInstance(currency);
         }
 
         /**
+         * Determines if {@link USD#isUSD} returns true
          *
          * @param {Money|Currency|Class<Currency>} moneyOrCurrency
+         * @throws {PreconditionsError} if not the right currency type
          */
 
     }, {
-        key: 'shouldBeUSD',
+        key: "shouldBeUSD",
         value: function shouldBeUSD(moneyOrCurrency) {
-            var currency = _Currency3.default.getCurrency(moneyOrCurrency);
-            var desiredCurrency = USD;
-
-            if (!desiredCurrency.isClass(currency)) {
-                console.log('currency=>', currency);
-                _.Preconditions.fail(desiredCurrency, currency);
+            if (!this.isUSD(moneyOrCurrency)) {
+                _.Preconditions.fail(USD, moneyOrCurrency, 'Must be USD');
             }
 
             return moneyOrCurrency;
         }
+
         //endregion
 
     }]);

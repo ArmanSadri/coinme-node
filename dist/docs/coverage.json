@@ -1,7 +1,7 @@
 {
-  "coverage": "64.58%",
-  "expectCount": 192,
-  "actualCount": 124,
+  "coverage": "67.67%",
+  "expectCount": 198,
+  "actualCount": 134,
   "files": {
     "js/slack/AbstractBuilder.js": {
       "expectCount": 3,
@@ -41,13 +41,10 @@
         21
       ]
     },
-    "js/money/Bitcoin.es6": {
-      "expectCount": 15,
-      "actualCount": 13,
-      "undocumentLines": [
-        226,
-        93
-      ]
+    "js/money/Bitcoin.js": {
+      "expectCount": 9,
+      "actualCount": 9,
+      "undocumentLines": []
     },
     "js/Coinme.js": {
       "expectCount": 1,
@@ -56,35 +53,33 @@
         1
       ]
     },
-    "js/money/Converter.es6": {
-      "expectCount": 6,
-      "actualCount": 5,
-      "undocumentLines": [
-        35
-      ]
+    "js/money/Converter.js": {
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "js/CoreObject.js": {
-      "expectCount": 9,
-      "actualCount": 3,
+      "expectCount": 11,
+      "actualCount": 4,
       "undocumentLines": [
-        25,
-        17,
-        21,
-        38,
-        34,
-        30
+        24,
+        16,
+        20,
+        33,
+        37,
+        41,
+        29
       ]
     },
-    "js/money/Currency.es6": {
-      "expectCount": 15,
-      "actualCount": 9,
+    "js/money/Currency.js": {
+      "expectCount": 17,
+      "actualCount": 12,
       "undocumentLines": [
-        5,
-        7,
-        15,
-        48,
-        188,
-        21
+        96,
+        19,
+        34,
+        284,
+        63
       ]
     },
     "js/errors/Errors.js": {
@@ -115,13 +110,14 @@
         5
       ]
     },
-    "js/money/Money.es6": {
-      "expectCount": 9,
-      "actualCount": 6,
+    "js/money/Money.js": {
+      "expectCount": 13,
+      "actualCount": 9,
       "undocumentLines": [
-        5,
-        51,
-        47
+        6,
+        52,
+        48,
+        100
       ]
     },
     "js/slack/NotificationBuilder.js": {
@@ -172,14 +168,17 @@
         52
       ]
     },
-    "js/money/Satoshi.es6": {
-      "expectCount": 8,
+    "js/money/Satoshi.js": {
+      "expectCount": 6,
       "actualCount": 5,
       "undocumentLines": [
-        14,
-        61,
-        68
+        47
       ]
+    },
+    "js/money/USD.js": {
+      "expectCount": 5,
+      "actualCount": 5,
+      "undocumentLines": []
     },
     "js/data/User.js": {
       "expectCount": 17,
