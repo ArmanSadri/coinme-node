@@ -32,8 +32,7 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
@@ -41,6 +40,14 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -61,12 +68,71 @@
 import Lodash from &quot;lodash&quot;;
 import Preconditions from &quot;~/Preconditions&quot;;
 import Ember from &quot;~/ember&quot;;
+import CoreObject from &apos;~/CoreObject&apos;;
 
 /**
  * @class
  * @singleton
  */
 class Utility {
+
+    /**
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isObject(object) {
+        let type = Utility.typeOf(object);
+
+        return &apos;object&apos; === type || &apos;instance&apos; === type;
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {Class}
+     */
+    static toClass(object) {
+        if (Utility.isClass(object)) {
+            return object;
+        } else if (Utility.isObject(object)) {
+            return object.toClass();
+        }
+
+        Preconditions.fail(&apos;object|class&apos;, Utility.typeOf(object), &apos;Must be correct type&apos;);
+    }
+
+    static isNumber(object) {
+        return &apos;number&apos; === Utility.typeOf(object);
+    }
+
+    static isClass(object) {
+        return Utility.typeOf(object) === &apos;class&apos;;
+    }
+
+    static isInstance(object) {
+        return Utility.typeOf(object) === &apos;instance&apos;;
+    }
+    
+    static take(object, key) {
+        if (!object) {
+            return undefined;
+        }
+
+        let value = Lodash.get(object, key);
+
+        if (-1 != key.indexOf(&apos;.&apos;)) {
+            // It&apos;s an object path.
+            let parentPath = key.substring(0, key.lastIndexOf(&apos;.&apos;));
+            let itemKey = key.substring(key.lastIndexOf(&apos;.&apos;) + 1);
+            let parent = Lodash.get(object, parentPath);
+
+            delete parent[itemKey];
+        } else {
+            delete object[key];
+        }
+
+        return value;
+    }
 
     /**
      * Creates a test method. Uses Utility.typeOf()
@@ -137,7 +203,13 @@ class Utility {
          * @param {*} object
          */
         return (function(object) {
-            return type === Utility.typeOf(object);
+            let existingType = Utility.typeOf(object);
+
+            if (&apos;object&apos; === type || &apos;instance&apos; === type) {
+                return (&apos;object&apos; === existingType) || (&apos;instance&apos; === existingType);
+            }
+
+            return type === existingType;
         });
     }
 
@@ -195,7 +267,21 @@ class Utility {
      * @public
      */
     static typeOf(object) {
-        return Ember.typeOf(object);
+        let type = Ember.typeOf(object);
+
+        if (&apos;function&apos; === type) {
+            // Let&apos;s isClass a bit further.
+
+            if (CoreObject.isClass(object)) {
+                return &apos;class&apos;;
+            }
+        } else if (&apos;object&apos; === type) {
+            if (CoreObject.isInstance(object)) {
+                return &apos;instance&apos;;
+            }
+        }
+
+        return type;
     }
 
     /**

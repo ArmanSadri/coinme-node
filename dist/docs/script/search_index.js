@@ -6,9 +6,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "coinme-node/js/abstracterror.js~abstracterror",
-    "class/js/AbstractError.js~AbstractError.html",
-    "<span>AbstractError</span> <span class=\"search-result-import-path\">coinme-node/js/AbstractError.js</span>",
+    "coinme-node/js/errors/abstracterror.js~abstracterror",
+    "class/js/errors/AbstractError.js~AbstractError.html",
+    "<span>AbstractError</span> <span class=\"search-result-import-path\">coinme-node/js/errors/AbstractError.js</span>",
     "class"
   ],
   [
@@ -24,15 +24,39 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/money/bitcoin.js~bitcoin",
+    "class/js/money/Bitcoin.js~Bitcoin.html",
+    "<span>Bitcoin</span> <span class=\"search-result-import-path\">coinme-node/js/money/Bitcoin.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/coinme.js~coinme",
     "class/js/Coinme.js~Coinme.html",
     "<span>Coinme</span> <span class=\"search-result-import-path\">coinme-node/js/Coinme.js</span>",
     "class"
   ],
   [
+    "coinme-node/js/money/converter.js~converter",
+    "class/js/money/Converter.js~Converter.html",
+    "<span>Converter</span> <span class=\"search-result-import-path\">coinme-node/js/money/Converter.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/coreobject.js~coreobject",
     "class/js/CoreObject.js~CoreObject.html",
     "<span>CoreObject</span> <span class=\"search-result-import-path\">coinme-node/js/CoreObject.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/money/currency.js~currency",
+    "class/js/money/Currency.js~Currency.html",
+    "<span>Currency</span> <span class=\"search-result-import-path\">coinme-node/js/money/Currency.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/errors/errors.js~errors",
+    "class/js/errors/Errors.js~Errors.html",
+    "<span>Errors</span> <span class=\"search-result-import-path\">coinme-node/js/errors/Errors.js</span>",
     "class"
   ],
   [
@@ -51,6 +75,12 @@ window.esdocSearchIndex = [
     "coinme-node/js/slack/inlinenotificationtemplate.js~inlinenotificationtemplate",
     "class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html",
     "<span>InlineNotificationTemplate</span> <span class=\"search-result-import-path\">coinme-node/js/slack/InlineNotificationTemplate.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/money/money.js~money",
+    "class/js/money/Money.js~Money.html",
+    "<span>Money</span> <span class=\"search-result-import-path\">coinme-node/js/money/Money.js</span>",
     "class"
   ],
   [
@@ -82,6 +112,18 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-PreconditionsError",
     "<span>PreconditionsError</span> <span class=\"search-result-import-path\">coinme-node/js/Preconditions.js</span>",
     "function"
+  ],
+  [
+    "coinme-node/js/money/satoshi.js~satoshi",
+    "class/js/money/Satoshi.js~Satoshi.html",
+    "<span>Satoshi</span> <span class=\"search-result-import-path\">coinme-node/js/money/Satoshi.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/money/usd.js~usd",
+    "class/js/money/USD.js~USD.html",
+    "<span>USD</span> <span class=\"search-result-import-path\">coinme-node/js/money/USD.js</span>",
+    "class"
   ],
   [
     "coinme-node/js/data/user.js~user",
@@ -444,36 +486,6 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
-    "js/abstracterror.js",
-    "file/js/AbstractError.js.html",
-    "js/AbstractError.js",
-    "file"
-  ],
-  [
-    "js/abstracterror.js~abstracterror#constructor",
-    "class/js/AbstractError.js~AbstractError.html#instance-constructor-constructor",
-    "js/AbstractError.js~AbstractError#constructor",
-    "method"
-  ],
-  [
-    "js/abstracterror.js~abstracterror#message",
-    "class/js/AbstractError.js~AbstractError.html#instance-member-message",
-    "js/AbstractError.js~AbstractError#message",
-    "member"
-  ],
-  [
-    "js/abstracterror.js~abstracterror#name",
-    "class/js/AbstractError.js~AbstractError.html#instance-member-name",
-    "js/AbstractError.js~AbstractError#name",
-    "member"
-  ],
-  [
-    "js/abstracterror.js~abstracterror#stack",
-    "class/js/AbstractError.js~AbstractError.html#instance-member-stack",
-    "js/AbstractError.js~AbstractError#stack",
-    "member"
-  ],
-  [
     "js/coinme.js",
     "file/js/Coinme.js.html",
     "js/Coinme.js",
@@ -486,6 +498,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/coreobject.js~coreobject#constructor",
+    "class/js/CoreObject.js~CoreObject.html#instance-constructor-constructor",
+    "js/CoreObject.js~CoreObject#constructor",
+    "method"
+  ],
+  [
     "js/coreobject.js~coreobject#get",
     "class/js/CoreObject.js~CoreObject.html#instance-method-get",
     "js/CoreObject.js~CoreObject#get",
@@ -496,6 +514,54 @@ window.esdocSearchIndex = [
     "class/js/CoreObject.js~CoreObject.html#instance-method-set",
     "js/CoreObject.js~CoreObject#set",
     "method"
+  ],
+  [
+    "js/coreobject.js~coreobject#toclass",
+    "class/js/CoreObject.js~CoreObject.html#instance-method-toClass",
+    "js/CoreObject.js~CoreObject#toClass",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject#tostring",
+    "class/js/CoreObject.js~CoreObject.html#instance-method-toString",
+    "js/CoreObject.js~CoreObject#toString",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject.isclass",
+    "class/js/CoreObject.js~CoreObject.html#static-method-isClass",
+    "js/CoreObject.js~CoreObject.isClass",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject.isinstance",
+    "class/js/CoreObject.js~CoreObject.html#static-method-isInstance",
+    "js/CoreObject.js~CoreObject.isInstance",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject.shouldbeinstance",
+    "class/js/CoreObject.js~CoreObject.html#static-method-shouldBeInstance",
+    "js/CoreObject.js~CoreObject.shouldBeInstance",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject.toclass",
+    "class/js/CoreObject.js~CoreObject.html#static-method-toClass",
+    "js/CoreObject.js~CoreObject.toClass",
+    "method"
+  ],
+  [
+    "js/coreobject.js~coreobject.tostring",
+    "class/js/CoreObject.js~CoreObject.html#static-method-toString",
+    "js/CoreObject.js~CoreObject.toString",
+    "method"
+  ],
+  [
+    "js/ember.js",
+    "file/js/Ember.js.html",
+    "js/Ember.js",
+    "file"
   ],
   [
     "js/functions.js",
@@ -546,6 +612,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/preconditions.js~preconditions.shouldbeclass",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeClass",
+    "js/Preconditions.js~Preconditions.shouldBeClass",
+    "method"
+  ],
+  [
     "js/preconditions.js~preconditions.shouldbedefined",
     "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeDefined",
     "js/Preconditions.js~Preconditions.shouldBeDefined",
@@ -579,6 +651,12 @@ window.esdocSearchIndex = [
     "js/preconditions.js~preconditions.shouldbegreaterthan",
     "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeGreaterThan",
     "js/Preconditions.js~Preconditions.shouldBeGreaterThan",
+    "method"
+  ],
+  [
+    "js/preconditions.js~preconditions.shouldbeinstance",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeInstance",
+    "js/Preconditions.js~Preconditions.shouldBeInstance",
     "method"
   ],
   [
@@ -666,6 +744,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.isclass",
+    "class/js/Utility.js~Utility.html#static-method-isClass",
+    "js/Utility.js~Utility.isClass",
+    "method"
+  ],
+  [
     "js/utility.js~utility.isexisting",
     "class/js/Utility.js~Utility.html#static-method-isExisting",
     "js/Utility.js~Utility.isExisting",
@@ -681,6 +765,12 @@ window.esdocSearchIndex = [
     "js/utility.js~utility.isfunction",
     "class/js/Utility.js~Utility.html#static-method-isFunction",
     "js/Utility.js~Utility.isFunction",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isinstance",
+    "class/js/Utility.js~Utility.html#static-method-isInstance",
+    "js/Utility.js~Utility.isInstance",
     "method"
   ],
   [
@@ -720,6 +810,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.isnumber",
+    "class/js/Utility.js~Utility.html#static-method-isNumber",
+    "js/Utility.js~Utility.isNumber",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isobject",
+    "class/js/Utility.js~Utility.html#static-method-isObject",
+    "js/Utility.js~Utility.isObject",
+    "method"
+  ],
+  [
     "js/utility.js~utility.isstring",
     "class/js/Utility.js~Utility.html#static-method-isString",
     "js/Utility.js~Utility.isString",
@@ -729,6 +831,18 @@ window.esdocSearchIndex = [
     "js/utility.js~utility.isundefined",
     "class/js/Utility.js~Utility.html#static-method-isUndefined",
     "js/Utility.js~Utility.isUndefined",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.take",
+    "class/js/Utility.js~Utility.html#static-method-take",
+    "js/Utility.js~Utility.take",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.toclass",
+    "class/js/Utility.js~Utility.html#static-method-toClass",
+    "js/Utility.js~Utility.toClass",
     "method"
   ],
   [
@@ -888,15 +1002,399 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/ember/index.js",
-    "file/js/ember/index.js.html",
-    "js/ember/index.js",
+    "js/errors/abstracterror.js",
+    "file/js/errors/AbstractError.js.html",
+    "js/errors/AbstractError.js",
+    "file"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror#constructor",
+    "class/js/errors/AbstractError.js~AbstractError.html#instance-constructor-constructor",
+    "js/errors/AbstractError.js~AbstractError#constructor",
+    "method"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror#message",
+    "class/js/errors/AbstractError.js~AbstractError.html#instance-member-message",
+    "js/errors/AbstractError.js~AbstractError#message",
+    "member"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror#name",
+    "class/js/errors/AbstractError.js~AbstractError.html#instance-member-name",
+    "js/errors/AbstractError.js~AbstractError#name",
+    "member"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror#stack",
+    "class/js/errors/AbstractError.js~AbstractError.html#instance-member-stack",
+    "js/errors/AbstractError.js~AbstractError#stack",
+    "member"
+  ],
+  [
+    "js/errors/errors.js",
+    "file/js/errors/Errors.js.html",
+    "js/errors/Errors.js",
+    "file"
+  ],
+  [
+    "js/errors/index.js",
+    "file/js/errors/index.js.html",
+    "js/errors/index.js",
     "file"
   ],
   [
     "js/index.js",
     "file/js/index.js.html",
     "js/index.js",
+    "file"
+  ],
+  [
+    "js/money/bitcoin.js",
+    "file/js/money/Bitcoin.js.html",
+    "js/money/Bitcoin.js",
+    "file"
+  ],
+  [
+    "js/money/bitcoin.js~bitcoin.bitcoin_per_satoshi",
+    "class/js/money/Bitcoin.js~Bitcoin.html#static-get-BITCOIN_PER_SATOSHI",
+    "js/money/Bitcoin.js~Bitcoin.BITCOIN_PER_SATOSHI",
+    "member"
+  ],
+  [
+    "js/money/bitcoin.js~bitcoin.satoshis_per_bitcoin",
+    "class/js/money/Bitcoin.js~Bitcoin.html#static-get-SATOSHIS_PER_BITCOIN",
+    "js/money/Bitcoin.js~Bitcoin.SATOSHIS_PER_BITCOIN",
+    "member"
+  ],
+  [
+    "js/money/bitcoin.js~bitcoin.frombitcoin",
+    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-fromBitcoin",
+    "js/money/Bitcoin.js~Bitcoin.fromBitcoin",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.js~bitcoin.fromsatoshi",
+    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-fromSatoshi",
+    "js/money/Bitcoin.js~Bitcoin.fromSatoshi",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.js~bitcoin.isbitcoin",
+    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-isBitcoin",
+    "js/money/Bitcoin.js~Bitcoin.isBitcoin",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.js~bitcoin.shouldbebitcoin",
+    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-shouldBeBitcoin",
+    "js/money/Bitcoin.js~Bitcoin.shouldBeBitcoin",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.js~bitcoin.toclass",
+    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-toClass",
+    "js/money/Bitcoin.js~Bitcoin.toClass",
+    "method"
+  ],
+  [
+    "js/money/bitcoin.js~bitcoin.tostring",
+    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-toString",
+    "js/money/Bitcoin.js~Bitcoin.toString",
+    "method"
+  ],
+  [
+    "js/money/converter.js",
+    "file/js/money/Converter.js.html",
+    "js/money/Converter.js",
+    "file"
+  ],
+  [
+    "js/money/converter.js~converter#canconvert",
+    "class/js/money/Converter.js~Converter.html#instance-method-canConvert",
+    "js/money/Converter.js~Converter#canConvert",
+    "method"
+  ],
+  [
+    "js/money/converter.js~converter#constructor",
+    "class/js/money/Converter.js~Converter.html#instance-constructor-constructor",
+    "js/money/Converter.js~Converter#constructor",
+    "method"
+  ],
+  [
+    "js/money/converter.js~converter#conversions",
+    "class/js/money/Converter.js~Converter.html#instance-get-conversions",
+    "js/money/Converter.js~Converter#conversions",
+    "member"
+  ],
+  [
+    "js/money/converter.js~converter#convert",
+    "class/js/money/Converter.js~Converter.html#instance-method-convert",
+    "js/money/Converter.js~Converter#convert",
+    "method"
+  ],
+  [
+    "js/money/converter.js~converter#optconversion",
+    "class/js/money/Converter.js~Converter.html#instance-method-optConversion",
+    "js/money/Converter.js~Converter#optConversion",
+    "method"
+  ],
+  [
+    "js/money/converter.js~converter#register",
+    "class/js/money/Converter.js~Converter.html#instance-method-register",
+    "js/money/Converter.js~Converter#register",
+    "method"
+  ],
+  [
+    "js/money/currency.js",
+    "file/js/money/Currency.js.html",
+    "js/money/Currency.js",
+    "file"
+  ],
+  [
+    "js/money/currency.js~currency#constructor",
+    "class/js/money/Currency.js~Currency.html#instance-constructor-constructor",
+    "js/money/Currency.js~Currency#constructor",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency#converter",
+    "class/js/money/Currency.js~Currency.html#instance-get-converter",
+    "js/money/Currency.js~Currency#converter",
+    "member"
+  ],
+  [
+    "js/money/currency.js~currency.canconvertfrom",
+    "class/js/money/Currency.js~Currency.html#static-method-canConvertFrom",
+    "js/money/Currency.js~Currency.canConvertFrom",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.convertfrom",
+    "class/js/money/Currency.js~Currency.html#static-method-convertFrom",
+    "js/money/Currency.js~Currency.convertFrom",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.converter",
+    "class/js/money/Currency.js~Currency.html#static-set-converter",
+    "js/money/Currency.js~Currency.converter",
+    "member"
+  ],
+  [
+    "js/money/currency.js~currency.converter",
+    "class/js/money/Currency.js~Currency.html#static-get-converter",
+    "js/money/Currency.js~Currency.converter",
+    "member"
+  ],
+  [
+    "js/money/currency.js~currency.create",
+    "class/js/money/Currency.js~Currency.html#static-method-create",
+    "js/money/Currency.js~Currency.create",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.equals",
+    "class/js/money/Currency.js~Currency.html#static-method-equals",
+    "js/money/Currency.js~Currency.equals",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.getcurrency",
+    "class/js/money/Currency.js~Currency.html#static-method-getCurrency",
+    "js/money/Currency.js~Currency.getCurrency",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.iscurrency",
+    "class/js/money/Currency.js~Currency.html#static-method-isCurrency",
+    "js/money/Currency.js~Currency.isCurrency",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.optcurrency",
+    "class/js/money/Currency.js~Currency.html#static-method-optCurrency",
+    "js/money/Currency.js~Currency.optCurrency",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.shouldbecurrency",
+    "class/js/money/Currency.js~Currency.html#static-method-shouldBeCurrency",
+    "js/money/Currency.js~Currency.shouldBeCurrency",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.toclass",
+    "class/js/money/Currency.js~Currency.html#static-method-toClass",
+    "js/money/Currency.js~Currency.toClass",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.tomoney",
+    "class/js/money/Currency.js~Currency.html#static-method-toMoney",
+    "js/money/Currency.js~Currency.toMoney",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.tostring",
+    "class/js/money/Currency.js~Currency.html#static-method-toString",
+    "js/money/Currency.js~Currency.toString",
+    "method"
+  ],
+  [
+    "js/money/currency.js~currency.tovalueorfail",
+    "class/js/money/Currency.js~Currency.html#static-method-toValueOrFail",
+    "js/money/Currency.js~Currency.toValueOrFail",
+    "method"
+  ],
+  [
+    "js/money/money.js",
+    "file/js/money/Money.js.html",
+    "js/money/Money.js",
+    "file"
+  ],
+  [
+    "js/money/money.js~money#constructor",
+    "class/js/money/Money.js~Money.html#instance-constructor-constructor",
+    "js/money/Money.js~Money#constructor",
+    "method"
+  ],
+  [
+    "js/money/money.js~money#convertto",
+    "class/js/money/Money.js~Money.html#instance-method-convertTo",
+    "js/money/Money.js~Money#convertTo",
+    "method"
+  ],
+  [
+    "js/money/money.js~money#currency",
+    "class/js/money/Money.js~Money.html#instance-get-currency",
+    "js/money/Money.js~Money#currency",
+    "member"
+  ],
+  [
+    "js/money/money.js~money#equals",
+    "class/js/money/Money.js~Money.html#instance-method-equals",
+    "js/money/Money.js~Money#equals",
+    "method"
+  ],
+  [
+    "js/money/money.js~money#minus",
+    "class/js/money/Money.js~Money.html#instance-method-minus",
+    "js/money/Money.js~Money#minus",
+    "method"
+  ],
+  [
+    "js/money/money.js~money#plus",
+    "class/js/money/Money.js~Money.html#instance-method-plus",
+    "js/money/Money.js~Money#plus",
+    "method"
+  ],
+  [
+    "js/money/money.js~money#tojson",
+    "class/js/money/Money.js~Money.html#instance-method-toJson",
+    "js/money/Money.js~Money#toJson",
+    "method"
+  ],
+  [
+    "js/money/money.js~money#tostring",
+    "class/js/money/Money.js~Money.html#instance-method-toString",
+    "js/money/Money.js~Money#toString",
+    "method"
+  ],
+  [
+    "js/money/money.js~money#value",
+    "class/js/money/Money.js~Money.html#instance-get-value",
+    "js/money/Money.js~Money#value",
+    "member"
+  ],
+  [
+    "js/money/money.js~money#valueof",
+    "class/js/money/Money.js~Money.html#instance-method-valueOf",
+    "js/money/Money.js~Money#valueOf",
+    "method"
+  ],
+  [
+    "js/money/money.js~money.optmoney",
+    "class/js/money/Money.js~Money.html#static-method-optMoney",
+    "js/money/Money.js~Money.optMoney",
+    "method"
+  ],
+  [
+    "js/money/money.js~money.shouldbemoney",
+    "class/js/money/Money.js~Money.html#static-method-shouldBeMoney",
+    "js/money/Money.js~Money.shouldBeMoney",
+    "method"
+  ],
+  [
+    "js/money/satoshi.js",
+    "file/js/money/Satoshi.js.html",
+    "js/money/Satoshi.js",
+    "file"
+  ],
+  [
+    "js/money/satoshi.js~satoshi.converter",
+    "class/js/money/Satoshi.js~Satoshi.html#static-get-converter",
+    "js/money/Satoshi.js~Satoshi.converter",
+    "member"
+  ],
+  [
+    "js/money/satoshi.js~satoshi.converter",
+    "class/js/money/Satoshi.js~Satoshi.html#static-set-converter",
+    "js/money/Satoshi.js~Satoshi.converter",
+    "member"
+  ],
+  [
+    "js/money/satoshi.js~satoshi.frombitcoin",
+    "class/js/money/Satoshi.js~Satoshi.html#static-method-fromBitcoin",
+    "js/money/Satoshi.js~Satoshi.fromBitcoin",
+    "method"
+  ],
+  [
+    "js/money/satoshi.js~satoshi.fromsatoshis",
+    "class/js/money/Satoshi.js~Satoshi.html#static-method-fromSatoshis",
+    "js/money/Satoshi.js~Satoshi.fromSatoshis",
+    "method"
+  ],
+  [
+    "js/money/satoshi.js~satoshi.tostring",
+    "class/js/money/Satoshi.js~Satoshi.html#static-method-toString",
+    "js/money/Satoshi.js~Satoshi.toString",
+    "method"
+  ],
+  [
+    "js/money/usd.js",
+    "file/js/money/USD.js.html",
+    "js/money/USD.js",
+    "file"
+  ],
+  [
+    "js/money/usd.js~usd.isusd",
+    "class/js/money/USD.js~USD.html#static-method-isUSD",
+    "js/money/USD.js~USD.isUSD",
+    "method"
+  ],
+  [
+    "js/money/usd.js~usd.shouldbeusd",
+    "class/js/money/USD.js~USD.html#static-method-shouldBeUSD",
+    "js/money/USD.js~USD.shouldBeUSD",
+    "method"
+  ],
+  [
+    "js/money/usd.js~usd.toclass",
+    "class/js/money/USD.js~USD.html#static-method-toClass",
+    "js/money/USD.js~USD.toClass",
+    "method"
+  ],
+  [
+    "js/money/usd.js~usd.tostring",
+    "class/js/money/USD.js~USD.html#static-method-toString",
+    "js/money/USD.js~USD.toString",
+    "method"
+  ],
+  [
+    "js/money/index.js",
+    "file/js/money/index.js.html",
+    "js/money/index.js",
     "file"
   ],
   [
@@ -930,9 +1428,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#init",
-    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-method-init",
-    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#init",
+    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#constructor",
+    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-constructor-constructor",
+    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#constructor",
     "method"
   ],
   [

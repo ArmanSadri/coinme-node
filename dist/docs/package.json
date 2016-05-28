@@ -1,6 +1,6 @@
 {
   "name": "coinme-node",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "The common library for Coinme Node apps",
   "main": "dist/js/index.js",
   "scripts": {
@@ -64,11 +64,12 @@
     "simple-dom": "^0.3.0",
     "source-map-support": "^0.4.0",
     "testem": "^1.5.0",
-    "watch": "^0.17.1"
+    "watch": "^0.17.1",
+    "babel-plugin-source-map-support": "0.0.1",
+    "babel-project-relative-import": "^2.0.0"
   },
   "dependencies": {
     "async": "^1.5.2",
-    "babel-project-relative-import": "^2.0.0",
     "bluebird": "^3.3.4",
     "ember-cli-get-component-path-option": "^1.0.0",
     "ember-cli-normalize-entity-name": "^1.0.0",
@@ -76,6 +77,7 @@
     "ember-cli-string-utils": "^1.0.0",
     "ember-cli-test-info": "^1.0.0",
     "ember-cli-valid-component-name": "^1.0.0",
+    "esdoc-es7-plugin": "0.0.3",
     "lodash": "^4.5.0",
     "preconditions": "1.0.8",
     "request-promise": "^2.0.1",
@@ -86,7 +88,6 @@
       "es2015"
     ],
     "plugins": [
-      "transform-remove-console",
       "transform-remove-debugger",
       [
         "babel-project-relative-import",

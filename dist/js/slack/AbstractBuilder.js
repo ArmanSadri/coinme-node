@@ -70,6 +70,9 @@ var AbstractBuilder = function (_CoreObject) {
             _Preconditions2.default.shouldBeDefined(object, 'Cannot merge null');
             _Preconditions2.default.shouldBeObject(object, 'Should be object');
 
+            console.log(_ember2.default);
+            console.log(_ember2.default.assign);
+
             _ember2.default.assign(this, {
                 payload: object
             });

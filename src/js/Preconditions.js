@@ -1,7 +1,8 @@
 'use strict';
 
-import Utility from "~/Utility";
+import Utility from "./Utility";
 import Lodash from "lodash/index";
+import CoreObject from './CoreObject';
 
 // class PreconditionsError extends AbstractError {
 //
@@ -86,7 +87,7 @@ export default class Preconditions {
      * @returns {*}
      */
     static shouldNotBeFalsey(object, message) {
-        return Preconditions.shouldBe(Utility.isNotFalsey, object, message, 'must not be falsey')
+        return Preconditions.shouldBe(Utility.isNotFalsey, true, object, message || 'must not be falsey')
     }
 
     /**
@@ -96,7 +97,7 @@ export default class Preconditions {
      * @returns {*}
      */
     static shouldBeFalsey(object, message) {
-        return Preconditions.shouldBe(Utility.isFalsey, object, message, 'must be falsey')
+        return Preconditions.shouldBe(Utility.isFalsey, false, object, message || 'must be falsey')
     }
 
     /**
@@ -153,7 +154,7 @@ export default class Preconditions {
      * @return {Number}
      */
     static shouldBeNumber(number, message) {
-        Preconditions.shouldBeType(number, 'number', message);
+        Preconditions.shouldBeType('number', number, message);
         Preconditions.shouldBeFinite(number, message);
 
         return number;
@@ -181,6 +182,55 @@ export default class Preconditions {
 
     /**
      *
+     * @param {Class|Object} object
+     * @param {Class|Object} [clazz]
+     * @param {String} [message]
+     */
+    static shouldBeClass(object, clazz, message) {
+        Preconditions.shouldBeDefined(object, 'object must be defined');
+
+        if (!clazz) {
+            clazz = CoreObject;
+        }
+
+        if (!CoreObject.isClass(clazz)) {
+            Preconditions.fail(CoreObject, clazz, 'Class not a CoreObject class');
+        }
+
+        if (!clazz.isClass(object)) {
+            Preconditions.fail(object, clazz, 'Class not a ' + clazz + ' class');
+        }
+
+        return object;
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {Class|Object} [clazz]
+     * @param {String} [message]
+     * @returns {Object}
+     */
+    static shouldBeInstance(object, clazz, message) {
+        Preconditions.shouldBeDefined(object, message || 'object must be defined');
+
+        if (!clazz) {
+            clazz = CoreObject;
+        }
+
+        if (!CoreObject.isClass(clazz)) {
+            Preconditions.fail(CoreObject, clazz, message || 'Class not a CoreObject class');
+        }
+
+        if (!clazz.isInstance(object)) {
+            Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
+        }
+
+        return object;
+    }
+
+    /**
+     *
      * @param {*} number
      * @param {String} [message]
      * @return {Number}
@@ -204,9 +254,7 @@ export default class Preconditions {
 
         let fn = Utility.typeMatcher('object');
 
-        // throw new Error(Utility.typeOf(fn));
-
-        return Preconditions.shouldBe(fn, 'object', object, message);
+        return Preconditions.shouldBe(fn, 'object', object, message || 'shouldBeObject');
     }
 
     /**

@@ -13,10 +13,12 @@ import Preconditions from "~/Preconditions";
  */
 class AbstractNotificationTemplate extends CoreObject {
 
-    init() {
-        Utility.defaults(this, {
-            name: 'NotificationTemplate'
-        });
+    constructor() {
+        super(...arguments);
+
+        // Utility.defaults(this, {
+        //     name: 'NotificationTemplate'
+        // });
         
         // Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');
     }

@@ -32,8 +32,7 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
@@ -41,6 +40,14 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
@@ -58,8 +65,9 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/CoreObject.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
 
-import Ember from &quot;~/ember&quot;;
-import Preconditions from &apos;~/Preconditions&apos;;
+import Ember from &quot;./Ember&quot;;
+import Lodash from &quot;lodash&quot;;
+import Preconditions from &apos;./Preconditions&apos;;
 
 /**
  * This is the base class for all classes in our architecture.
@@ -68,32 +76,83 @@ import Preconditions from &apos;~/Preconditions&apos;;
  * @abstract
  * @class
  */
-class CoreObject extends Ember.CoreObject {
+export default class CoreObject extends Ember.Object {
+
+    get(key) {
+        return Ember.get(this, key);
+    }
+
+    set(key, value) {
+        return Ember.set(this, key, value);
+    }
+
+    constructor(options) {
+        super(...arguments);
+        Lodash.merge(this, options);
+    }
+
+    toString() {
+        return this.toClass().toString();
+    }
+
+    toClass() {
+        return this.constructor;
+    }
+
+    static toClass() {
+        return this;
+    }
+
+    static toString() {
+        return &apos;CoreObject&apos;;
+    }
 
     /**
+     * Determines if a class definition is a subclass of CoreObject
      *
-     * @param {String} path
-     * @returns {*}
+     * @param {*} clazz
+     * @returns {boolean}
      */
-    get(path) {
-        Preconditions.shouldBeString(path);
+    static isClass(clazz) {
+        if (&apos;function&apos; !== typeof clazz) {
+            return false;
+        }
 
-        return Ember.get(this, path);
+        while (clazz) {
+            if (clazz === this) {
+                return true;
+            }
+
+            clazz = Object.getPrototypeOf(clazz);
+        }
+
+        return false;
+    }
+
+    /**
+     * Ensures that your object is an instance of this type.
+     *
+     * @param {*} object
+     * @returns {Object}
+     * @throws {PreconditionsError} if the type is incorrect
+     */
+    static shouldBeInstance(object) {
+        if (!this.isInstance(object)) {
+            Preconditions.fail(this, object, &apos;Should be instance&apos;);
+        }
+
+        return object;
     }
 
     /**
      *
-     * @param {String} path
-     * @param {*} value
+     * @param {object} obj
+     * @returns {boolean}
      */
-    set(path, value) {
-        Preconditions.shouldBeString(path);
-
-        return Ember.set(this, path, value);
+    static isInstance(obj) {
+        return obj instanceof this;
     }
-}
-
-export default CoreObject;</code></pre>
+}</code></pre>
 
 </div>
 

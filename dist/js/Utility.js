@@ -18,6 +18,10 @@ var _ember = require("./ember");
 
 var _ember2 = _interopRequireDefault(_ember);
 
+var _CoreObject = require("./CoreObject");
+
+var _CoreObject2 = _interopRequireDefault(_CoreObject);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33,8 +37,73 @@ var Utility = function () {
     }
 
     _createClass(Utility, null, [{
-        key: "typeMatcher",
+        key: "isObject",
 
+
+        /**
+         * @param {*} object
+         * @returns {boolean}
+         */
+        value: function isObject(object) {
+            var type = Utility.typeOf(object);
+
+            return 'object' === type || 'instance' === type;
+        }
+
+        /**
+         *
+         * @param {*} object
+         * @returns {Class}
+         */
+
+    }, {
+        key: "toClass",
+        value: function toClass(object) {
+            if (Utility.isClass(object)) {
+                return object;
+            } else if (Utility.isObject(object)) {
+                return object.toClass();
+            }
+
+            _Preconditions2.default.fail('object|class', Utility.typeOf(object), 'Must be correct type');
+        }
+    }, {
+        key: "isNumber",
+        value: function isNumber(object) {
+            return 'number' === Utility.typeOf(object);
+        }
+    }, {
+        key: "isClass",
+        value: function isClass(object) {
+            return Utility.typeOf(object) === 'class';
+        }
+    }, {
+        key: "isInstance",
+        value: function isInstance(object) {
+            return Utility.typeOf(object) === 'instance';
+        }
+    }, {
+        key: "take",
+        value: function take(object, key) {
+            if (!object) {
+                return undefined;
+            }
+
+            var value = _lodash2.default.get(object, key);
+
+            if (-1 != key.indexOf('.')) {
+                // It's an object path.
+                var parentPath = key.substring(0, key.lastIndexOf('.'));
+                var itemKey = key.substring(key.lastIndexOf('.') + 1);
+                var parent = _lodash2.default.get(object, parentPath);
+
+                delete parent[itemKey];
+            } else {
+                delete object[key];
+            }
+
+            return value;
+        }
 
         /**
          * Creates a test method. Uses Utility.typeOf()
@@ -42,6 +111,9 @@ var Utility = function () {
          * @param {String} type
          * @return {function}
          */
+
+    }, {
+        key: "typeMatcher",
         value: function typeMatcher(type) {
             // Ember.typeOf();                       // 'undefined'
             // Ember.typeOf(null);                   // 'null'
@@ -105,7 +177,13 @@ var Utility = function () {
              * @param {*} object
              */
             return function (object) {
-                return type === Utility.typeOf(object);
+                var existingType = Utility.typeOf(object);
+
+                if ('object' === type || 'instance' === type) {
+                    return 'object' === existingType || 'instance' === existingType;
+                }
+
+                return type === existingType;
             };
         }
 
@@ -165,7 +243,21 @@ var Utility = function () {
     }, {
         key: "typeOf",
         value: function typeOf(object) {
-            return _ember2.default.typeOf(object);
+            var type = _ember2.default.typeOf(object);
+
+            if ('function' === type) {
+                // Let's isClass a bit further.
+
+                if (_CoreObject2.default.isClass(object)) {
+                    return 'class';
+                }
+            } else if ('object' === type) {
+                if (_CoreObject2.default.isInstance(object)) {
+                    return 'instance';
+                }
+            }
+
+            return type;
         }
 
         /**

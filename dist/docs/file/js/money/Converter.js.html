@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/money/Converter.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/coinme/coinme-node.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/FieldBuilder.js~FieldBuilder.html">FieldBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html">InlineNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationBuilder.js~NotificationBuilder.html">NotificationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationService.js~NotificationService.html">NotificationService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationTemplate.js~NotificationTemplate.html">NotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html">UserNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notificationService">notificationService</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/money/Converter.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import CoreObject from &quot;../CoreObject&quot;;
+import Money from &quot;./Money&quot;;
+import Currency from &quot;./Currency&quot;;
+import Preconditions from &quot;../Preconditions&quot;;
+import Utility from &quot;../Utility&quot;;
+import Lodash from &quot;lodash&quot;;
+
+/**
+ * Supports different conversion directions.
+ *
+ * The conversion map uses the Currency name for directionality. The internal conversion map is stored like:
+ *
+ * {&lt;br&gt;
+ *   &apos;Bitcoin-&gt;Satoshi&apos; : function(value) { return value * satoshi_factor; },&lt;br&gt;
+ *   &apos;Satoshi-&gt;Bitcoin&apos;: function(value) { return value / satoshi_factor; }&lt;br&gt;
+ * }&lt;br&gt;
+ *
+ * @class
+ */
+export default class Converter extends CoreObject {
+
+    /**
+     * @param {Object} options
+     * @param {Object} options.conversions
+     */
+    constructor(options) {
+        let conversions = Utility.take(options, &apos;conversions&apos;);
+
+        super(...arguments);
+
+        /**
+         * @type {Object}
+         */
+        this._conversions = conversions || {};
+    }
+
+    /**
+     * This is the conversion map. The keys of this object should be &apos;Currency1-&gt;Currency2&apos;
+     *
+     * The value of each key should be a conversion function of &apos;function(valueInSource) { return valueInDestination; }
+     *
+     * @returns {Object}
+     */
+    get conversions() {
+        return this._conversions;
+    }
+
+    /**
+     * Determines if this Converter instance can convert between the two currencies.
+     *
+     * NOTE: The direction matters.
+     *
+     * @param {Class&lt;Currency&gt;|Currency|String} currency1
+     * @param {Class&lt;Currency&gt;|Currency|String} currency2
+     * @param {Number|String|Function|Converter} [optionalConversion]
+     * @returns {boolean}
+     */
+    canConvert(currency1, currency2, optionalConversion) {
+        currency1 = Currency.optCurrency(currency1);
+        currency2 = Currency.optCurrency(currency2);
+
+        let conversion = this.optConversion(currency1, currency2, optionalConversion);
+
+        return Utility.isFunction(conversion);
+    }
+
+    /**
+     * Executes the conversion.
+     *
+     * @param {Money} sourceMoney
+     * @param {Class&lt;Currency&gt;|Currency} destinationCurrency
+     * @param {Function} [optionalConversion]
+     * @returns {Money}
+     * @throws {PreconditionsError} if the converter fails to convert into a valid number
+     * @throws {PreconditionsError} if the destinationCurrency is not a valid currency
+     * @throws {PreconditionsError} if converter cannot support the conversion
+     */
+    convert(sourceMoney, destinationCurrency, optionalConversion) {
+        destinationCurrency = Currency.getCurrency(destinationCurrency);
+
+        let fn = this.optConversion(sourceMoney.currency, destinationCurrency, optionalConversion);
+        let scope = (Converter.isInstance(optionalConversion)) ? optionalConversion : this;
+        let value = fn.call(scope, sourceMoney.value);
+        
+        Preconditions.shouldBeNumber(value, &apos;Sanity check failure, the value should be a number: &apos; + value);
+
+        return new Money({
+            value: value,
+            currency: destinationCurrency
+        });
+    }
+
+    /**
+     * Detects the conversion function, given the inputs.
+     *
+     * @param {Class&lt;Currency&gt;|Currency|String} sourceCurrency
+     * @param {Class&lt;Currency&gt;|Currency|String} destinationCurrency
+     * @param {Function|Number|String|Converter} [optionalConversion]
+     *
+     * @returns {Function}
+     */
+    optConversion(sourceCurrency, destinationCurrency, optionalConversion) {
+        sourceCurrency = Currency.optCurrency(sourceCurrency);
+        destinationCurrency = Currency.optCurrency(destinationCurrency);
+
+        if (!sourceCurrency || !destinationCurrency) {
+            return null;
+        } else if (sourceCurrency.equals(destinationCurrency)) {
+            return function(value) { return value; }
+        } else if (Utility.isFunction(optionalConversion)) {
+            return optionalConversion;
+        } else if (Utility.isNumber(optionalConversion)) {
+            return function(value) { return value * optionalConversion; }
+        } else if (Converter.isInstance(optionalConversion)) {
+            return this._getConversion(optionalConversion, sourceCurrency, destinationCurrency);
+        } else {
+            return this._getConversion(this, sourceCurrency, destinationCurrency);
+        }
+    }
+
+    /**
+     * Register a conversion with this converter. This must be a valid object.
+     *
+     * Example:
+     *
+     * {&lt;br&gt;
+     *     &apos;USD-&gt;Bitcoin&apos;: function() ...&lt;br&gt;
+     * }&lt;br&gt;
+     *
+     * @param {Object} conversions
+     * @returns {Converter}
+     */
+    register(conversions) {
+        Preconditions.shouldBeObject(conversions);
+
+        Lodash.assign(this.conversions, conversions);
+
+        return this;
+    }
+
+    /**
+     * @param {Converter} converter
+     * @param {Money|Currency|Class&lt;Currency&gt;|String} sourceCurrency
+     * @param {Money|Currency|Class&lt;Currency&gt;|String} destinationCurrency
+     * @private
+     * @return {Function}
+     */
+    _getConversion(converter, sourceCurrency, destinationCurrency) {
+        sourceCurrency = Currency.getCurrency(sourceCurrency);
+        destinationCurrency = Currency.getCurrency(destinationCurrency);
+
+        let converterName = sourceCurrency.toString() + &apos;-&gt;&apos; + destinationCurrency.toString();
+        let fn = converter.conversions[converterName];
+
+        Preconditions.shouldBeFunction(fn, &apos;Converter not found: &apos; + converterName);
+
+        return fn;
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

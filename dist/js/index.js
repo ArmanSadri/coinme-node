@@ -3,58 +3,54 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.UserNotificationTemplate = exports.InlineNotificationTemplate = exports.NotificationService = exports.NotificationTemplate = exports.NotificationBuilder = exports.AttachmentBuilder = exports.FieldBuilder = exports.AbstractBuilder = exports.Ember = undefined;
+exports.Utility = exports.Preconditions = exports.Functions = exports.CoreObject = exports.Coinme = exports.Ember = exports.errors = exports.data = exports.slack = undefined;
 
-var _emberRuntime = require('./ember/ember-runtime');
-
-var _emberRuntime2 = _interopRequireDefault(_emberRuntime);
-
-var _Coinme = require('./Coinme');
+var _Coinme = require("./Coinme");
 
 var _Coinme2 = _interopRequireDefault(_Coinme);
 
-var _AbstractBuilder = require('./slack/AbstractBuilder');
+var _Ember = require("./Ember");
 
-var _AbstractBuilder2 = _interopRequireDefault(_AbstractBuilder);
+var _Ember2 = _interopRequireDefault(_Ember);
 
-var _FieldBuilder = require('./slack/FieldBuilder');
+var _CoreObject = require("./CoreObject");
 
-var _FieldBuilder2 = _interopRequireDefault(_FieldBuilder);
+var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
-var _AttachmentBuilder = require('./slack/AttachmentBuilder');
+var _Functions = require("./Functions");
 
-var _AttachmentBuilder2 = _interopRequireDefault(_AttachmentBuilder);
+var _Functions2 = _interopRequireDefault(_Functions);
 
-var _NotificationBuilder = require('./slack/NotificationBuilder');
+var _Preconditions = require("./Preconditions");
 
-var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _NotificationService = require('./slack/NotificationService');
+var _Utility = require("./Utility");
 
-var _NotificationService2 = _interopRequireDefault(_NotificationService);
+var _Utility2 = _interopRequireDefault(_Utility);
 
-var _NotificationTemplate = require('./slack/NotificationTemplate');
+var _index = require("./errors/index");
 
-var _NotificationTemplate2 = _interopRequireDefault(_NotificationTemplate);
+var _index2 = _interopRequireDefault(_index);
 
-var _InlineNotificationTemplate = require('./slack/InlineNotificationTemplate');
+var _index3 = require("./slack/index");
 
-var _InlineNotificationTemplate2 = _interopRequireDefault(_InlineNotificationTemplate);
+var _index4 = _interopRequireDefault(_index3);
 
-var _UserNotificationTemplate = require('./slack/UserNotificationTemplate');
+var _index5 = require("./data/index");
 
-var _UserNotificationTemplate2 = _interopRequireDefault(_UserNotificationTemplate);
+var _index6 = _interopRequireDefault(_index5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.Ember = _emberRuntime2.default;
-exports.AbstractBuilder = _AbstractBuilder2.default;
-exports.FieldBuilder = _FieldBuilder2.default;
-exports.AttachmentBuilder = _AttachmentBuilder2.default;
-exports.NotificationBuilder = _NotificationBuilder2.default;
-exports.NotificationTemplate = _NotificationTemplate2.default;
-exports.NotificationService = _NotificationService2.default;
-exports.InlineNotificationTemplate = _InlineNotificationTemplate2.default;
-exports.UserNotificationTemplate = _UserNotificationTemplate2.default;
+exports.slack = _index4.default;
+exports.data = _index6.default;
+exports.errors = _index2.default;
+exports.Ember = _Ember2.default;
+exports.Coinme = _Coinme2.default;
+exports.CoreObject = _CoreObject2.default;
+exports.Functions = _Functions2.default;
+exports.Preconditions = _Preconditions2.default;
+exports.Utility = _Utility2.default;
 exports.default = _Coinme2.default;
 //# sourceMappingURL=index.js.map
