@@ -1,4 +1,4 @@
-# coinme-slack  [![npm version](https://badge.fury.io/js/coinme-slack.svg)](https://badge.fury.io/js/coinme-slack)
+# coinme-slack  [![npm version](https://badge.fury.io/js/coinme-slack.svg)](https://badge.fury.io/js/coinme-slack) [![Travis Build Status](https://travis-ci.org/coinme/coinme-node.svg?branch=master)](https://travis-ci.org/coinme/coinme-node)
 
 * https://esdoc.org/config.html#full-config
 * https://api.slack.com/incoming-webhooks
