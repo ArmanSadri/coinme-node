@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _lodash = require("lodash");
@@ -82,27 +84,138 @@ var Utility = function () {
         value: function isInstance(object) {
             return Utility.typeOf(object) === 'instance';
         }
+
+        /**
+         * Uses Lodash.get, but then removes the key from the parent object.
+         *
+         * @param {Object} object
+         * @param {String|Object|Array} keyAsStringObjectArray
+         * @returns {*}
+         */
+
     }, {
         key: "take",
-        value: function take(object, key) {
+        value: function take(object, keyAsStringObjectArray) {
             if (!object) {
                 return undefined;
             }
 
-            var value = _lodash2.default.get(object, key);
+            _Preconditions2.default.shouldBeDefined(keyAsStringObjectArray, 'key must be defined');
 
-            if (-1 != key.indexOf('.')) {
-                // It's an object path.
-                var parentPath = key.substring(0, key.lastIndexOf('.'));
-                var itemKey = key.substring(key.lastIndexOf('.') + 1);
-                var parent = _lodash2.default.get(object, parentPath);
+            var scope = this;
 
-                delete parent[itemKey];
+            if (Utility.isString(keyAsStringObjectArray)) {
+                /** @type {String} */
+                var key = keyAsStringObjectArray;
+                var value = _lodash2.default.result(object, key);
+
+                if (-1 != key.indexOf('.')) {
+                    // It's an object path.
+                    var parentPath = key.substring(0, key.lastIndexOf('.'));
+                    var itemKey = key.substring(key.lastIndexOf('.') + 1);
+                    var parent = _lodash2.default.result(object, parentPath);
+
+                    delete parent[itemKey];
+                } else {
+                    delete object[keyAsStringObjectArray];
+                }
+
+                return value;
+            } else if (Utility.isArray(keyAsStringObjectArray) || Utility.isObject(keyAsStringObjectArray)) {
+                var _ret = function () {
+                    var result = {};
+                    var array_mode = Utility.isArray(keyAsStringObjectArray);
+
+                    var defaults = _lodash2.default.defaults(_lodash2.default.result(keyAsStringObjectArray.defaults) || {}, {
+                        required: false,
+                        validator: null
+                    });
+
+                    _lodash2.default.forEach(keyAsStringObjectArray, function ( /** @type {String|Object|Function} */rulesetOrObject, /** @type {String} */keyOrIndex) {
+                        var key = keyOrIndex;
+                        var ruleset = rulesetOrObject;
+
+                        if (array_mode) {
+                            if (Utility.isString(rulesetOrObject)) {
+                                key = rulesetOrObject;
+                                ruleset = _lodash2.default.assign({}, defaults);
+                            } else if (Utility.isObject(rulesetOrObject)) {
+                                key = _lodash2.default.result(rulesetOrObject, 'key');
+                                ruleset = rulesetOrObject;
+                            }
+                        } else {
+                            key = keyOrIndex;
+                            ruleset = rulesetOrObject;
+                        }
+
+                        /** @type {String} */
+                        var type = Utility.typeOf(ruleset);
+
+                        if ('string' === type) {
+                            // The ruleset is a data type
+                            /** @type {String} */
+                            var _requiredType = ruleset;
+
+                            ruleset = {
+                                key: key,
+                                type: _requiredType,
+                                validator: null
+                            };
+                        } else if ('object' === type) {
+                            // this is a ruleset that overrides our ruleset.
+                            ruleset = _lodash2.default.defaults({ key: key }, ruleset);
+                        } else if ('function' === type) {
+                            var fn = ruleset;
+
+                            ruleset = {
+                                key: key,
+                                validator: fn
+                            };
+                        } else {
+                            throw new Error('Cannot determine what to do with: ' + type + ': ' + ruleset);
+                        }
+
+                        ruleset = _lodash2.default.defaults(ruleset, defaults);
+
+                        // If we don't have a validator yet, check to see if we can get one.
+                        if (!ruleset.validator && Utility.isNotBlank(ruleset.type)) {
+                            if ('string' === ruleset.type) {
+                                ruleset.validator = function () {
+                                    return _Preconditions2.default.shouldBeString('');
+                                };
+                            } else if ('number' === requiredType) {
+                                ruleset.validator = _Preconditions2.default.shouldBeNumber;
+                            } else if ('required' === requiredType) {
+                                ruleset.validator = Utility.isExisting;
+                            } else {
+                                throw new Error('I should add more types');
+                            }
+                        }
+
+                        var entry = Utility.take(object, key);
+
+                        if (ruleset.validator) {
+                            if (false === ruleset.validator.call(scope, entry)) {
+                                throw new Error('The validator returned false for: ' + entry);
+                            }
+                        }
+
+                        if (ruleset.required && Utility.isUndefined(entry)) {
+                            throw new Error('Required key not present: ' + ruleset.key);
+                        }
+
+                        result[key] = entry;
+                    });
+
+                    return {
+                        v: result
+                    };
+                }();
+
+                if ((typeof _ret === "undefined" ? "undefined" : _typeof(_ret)) === "object") return _ret.v;
             } else {
-                delete object[key];
+                throw new Error('Not sure how to handle this case: ' + Utility.typeOf(keyAsStringObjectArray));
             }
-
-            return value;
         }
 
         /**
@@ -212,7 +325,7 @@ var Utility = function () {
          *
          * Examples:
          *
-          ```javascript
+         ```javascript
          Ember.typeOf();                       // 'undefined'
          Ember.typeOf(null);                   // 'null'
          Ember.typeOf(undefined);              // 'undefined'
@@ -258,6 +371,18 @@ var Utility = function () {
             }
 
             return type;
+        }
+
+        /**
+         *
+         * @param {*} object
+         * @returns {boolean}
+         */
+
+    }, {
+        key: "isArray",
+        value: function isArray(object) {
+            return 'array' === Utility.typeOf(object);
         }
 
         /**

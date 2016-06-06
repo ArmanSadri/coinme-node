@@ -1,7 +1,7 @@
 {
   "type": "Program",
   "start": 0,
-  "end": 142,
+  "end": 136,
   "loc": {
     "start": {
       "line": 1,
@@ -49,8 +49,8 @@
     },
     {
       "type": "ImportDeclaration",
-      "start": 17,
-      "end": 47,
+      "start": 15,
+      "end": 45,
       "loc": {
         "start": {
           "line": 3,
@@ -64,8 +64,8 @@
       "specifiers": [
         {
           "type": "ImportDefaultSpecifier",
-          "start": 24,
-          "end": 30,
+          "start": 22,
+          "end": 28,
           "loc": {
             "start": {
               "line": 3,
@@ -78,8 +78,8 @@
           },
           "local": {
             "type": "Identifier",
-            "start": 24,
-            "end": 30,
+            "start": 22,
+            "end": 28,
             "loc": {
               "start": {
                 "line": 3,
@@ -97,8 +97,8 @@
       "importKind": "value",
       "source": {
         "type": "Literal",
-        "start": 36,
-        "end": 46,
+        "start": 34,
+        "end": 44,
         "loc": {
           "start": {
             "line": 3,
@@ -116,8 +116,8 @@
     },
     {
       "type": "ImportDeclaration",
-      "start": 49,
-      "end": 93,
+      "start": 46,
+      "end": 90,
       "loc": {
         "start": {
           "line": 4,
@@ -131,8 +131,8 @@
       "specifiers": [
         {
           "type": "ImportDefaultSpecifier",
-          "start": 56,
-          "end": 69,
+          "start": 53,
+          "end": 66,
           "loc": {
             "start": {
               "line": 4,
@@ -145,8 +145,8 @@
           },
           "local": {
             "type": "Identifier",
-            "start": 56,
-            "end": 69,
+            "start": 53,
+            "end": 66,
             "loc": {
               "start": {
                 "line": 4,
@@ -164,8 +164,8 @@
       "importKind": "value",
       "source": {
         "type": "Literal",
-        "start": 75,
-        "end": 92,
+        "start": 72,
+        "end": 89,
         "loc": {
           "start": {
             "line": 4,
@@ -183,8 +183,8 @@
     },
     {
       "type": "ExportNamedDeclaration",
-      "start": 97,
-      "end": 115,
+      "start": 92,
+      "end": 110,
       "loc": {
         "start": {
           "line": 6,
@@ -199,8 +199,8 @@
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "start": 106,
-          "end": 112,
+          "start": 101,
+          "end": 107,
           "loc": {
             "start": {
               "line": 6,
@@ -213,8 +213,8 @@
           },
           "local": {
             "type": "Identifier",
-            "start": 106,
-            "end": 112,
+            "start": 101,
+            "end": 107,
             "loc": {
               "start": {
                 "line": 6,
@@ -229,8 +229,8 @@
           },
           "exported": {
             "type": "Identifier",
-            "start": 106,
-            "end": 112,
+            "start": 101,
+            "end": 107,
             "loc": {
               "start": {
                 "line": 6,
@@ -249,8 +249,8 @@
     },
     {
       "type": "ExportNamedDeclaration",
-      "start": 117,
-      "end": 142,
+      "start": 111,
+      "end": 136,
       "loc": {
         "start": {
           "line": 7,
@@ -265,8 +265,8 @@
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "start": 126,
-          "end": 139,
+          "start": 120,
+          "end": 133,
           "loc": {
             "start": {
               "line": 7,
@@ -279,8 +279,8 @@
           },
           "local": {
             "type": "Identifier",
-            "start": 126,
-            "end": 139,
+            "start": 120,
+            "end": 133,
             "loc": {
               "start": {
                 "line": 7,
@@ -295,8 +295,8 @@
           },
           "exported": {
             "type": "Identifier",
-            "start": 126,
-            "end": 139,
+            "start": 120,
+            "end": 133,
             "loc": {
               "start": {
                 "line": 7,

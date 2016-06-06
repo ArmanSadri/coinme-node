@@ -3,7 +3,7 @@
 import Lodash from "lodash";
 import Preconditions from "~/Preconditions";
 import Ember from "~/ember";
-import CoreObject from '~/CoreObject';
+import CoreObject from "~/CoreObject";
 
 /**
  * @class
@@ -47,26 +47,129 @@ class Utility {
     static isInstance(object) {
         return Utility.typeOf(object) === 'instance';
     }
-    
-    static take(object, key) {
+
+    /**
+     * Uses Lodash.get, but then removes the key from the parent object.
+     *
+     * @param {Object} object
+     * @param {String|Object|Array} keyAsStringObjectArray
+     * @returns {*}
+     */
+    static take(object, keyAsStringObjectArray) {
         if (!object) {
             return undefined;
         }
 
-        let value = Lodash.get(object, key);
+        Preconditions.shouldBeDefined(keyAsStringObjectArray, 'key must be defined');
 
-        if (-1 != key.indexOf('.')) {
-            // It's an object path.
-            let parentPath = key.substring(0, key.lastIndexOf('.'));
-            let itemKey = key.substring(key.lastIndexOf('.') + 1);
-            let parent = Lodash.get(object, parentPath);
+        let scope = this;
 
-            delete parent[itemKey];
+        if (Utility.isString(keyAsStringObjectArray)) {
+            /** @type {String} */
+            let key = keyAsStringObjectArray;
+            let value = Lodash.result(object, key);
+
+            if (-1 != key.indexOf('.')) {
+                // It's an object path.
+                let parentPath = key.substring(0, key.lastIndexOf('.'));
+                let itemKey = key.substring(key.lastIndexOf('.') + 1);
+                let parent = Lodash.result(object, parentPath);
+
+                delete parent[itemKey];
+            } else {
+                delete object[keyAsStringObjectArray];
+            }
+
+            return value;
+        } else if (Utility.isArray(keyAsStringObjectArray) || Utility.isObject(keyAsStringObjectArray)) {
+            let result = {};
+            let array_mode = Utility.isArray(keyAsStringObjectArray);
+
+            let defaults = Lodash.defaults(Lodash.result(keyAsStringObjectArray.defaults) || {}, {
+                required: false,
+                validator: null
+            });
+
+            Lodash.forEach(keyAsStringObjectArray, function(/** @type {String|Object|Function} */rulesetOrObject, /** @type {String} */keyOrIndex) {
+                let key = keyOrIndex;
+                let ruleset = rulesetOrObject;
+
+                if (array_mode) {
+                    if (Utility.isString(rulesetOrObject)) {
+                        key = rulesetOrObject;
+                        ruleset = Lodash.assign({}, defaults);
+                    } else if (Utility.isObject(rulesetOrObject)) {
+                        key = Lodash.result(rulesetOrObject, 'key');
+                        ruleset = rulesetOrObject;
+                    }
+                } else {
+                    key = keyOrIndex;
+                    ruleset = rulesetOrObject;
+                }
+
+                /** @type {String} */
+                let type = Utility.typeOf(ruleset);
+
+                if ('string' === type) {
+                    // The ruleset is a data type
+                    /** @type {String} */
+                    let requiredType = ruleset;
+
+                    ruleset = {
+                        key: key,
+                        type: requiredType,
+                        validator: null
+                    };
+                } else if ('object' === type) {
+                    // this is a ruleset that overrides our ruleset.
+                    ruleset = Lodash.defaults({ key: key }, ruleset);
+                } else if ('function' === type) {
+                    let fn = ruleset;
+                    
+                    ruleset = {
+                        key: key,
+                        validator: fn
+                    };
+                } else {
+                    throw new Error('Cannot determine what to do with: ' + type + ': ' + ruleset);
+                }
+
+                ruleset = Lodash.defaults(ruleset, defaults);
+
+                // If we don't have a validator yet, check to see if we can get one.
+                if (!ruleset.validator && Utility.isNotBlank(ruleset.type)) {
+                    if ('string' === ruleset.type) {
+                        ruleset.validator = function() {
+                            return Preconditions.shouldBeString('');
+                        }
+                    } else if ('number' === requiredType) {
+                        ruleset.validator = Preconditions.shouldBeNumber;
+                    } else if ('required' === requiredType) {
+                        ruleset.validator = Utility.isExisting;
+                    } else {
+                        throw new Error('I should add more types');
+                    }
+                }
+
+                let entry = Utility.take(object, key);
+
+                if (ruleset.validator) {
+                    if (false === ruleset.validator.call(scope, entry)) {
+                        throw new Error('The validator returned false for: ' + entry);
+                    }
+                }
+
+                if (ruleset.required && Utility.isUndefined(entry)) {
+                    throw new Error('Required key not present: ' + ruleset.key);
+                }
+
+                result[key] = entry;
+            });
+
+            return result;
         } else {
-            delete object[key];
+            throw new Error('Not sure how to handle this case: ' + Utility.typeOf(keyAsStringObjectArray));
         }
-
-        return value;
     }
 
     /**
@@ -173,7 +276,7 @@ class Utility {
      *
      * Examples:
      *
-      ```javascript
+     ```javascript
      Ember.typeOf();                       // 'undefined'
      Ember.typeOf(null);                   // 'null'
      Ember.typeOf(undefined);              // 'undefined'
@@ -217,6 +320,15 @@ class Utility {
         }
 
         return type;
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isArray(object) {
+        return 'array' === Utility.typeOf(object);
     }
 
     /**
