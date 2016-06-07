@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">js/slack/FieldBuilder.js | API Document</title>
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/Address.js | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -64,82 +64,41 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">js/slack/FieldBuilder.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">js/Address.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Utility from &apos;./Utility&apos;;
+import CoreObject from &apos;./CoreObject&apos;;
+import URI from &apos;urijs&apos;;
 
-import AbstractBuilder from &apos;~/slack/AbstractBuilder&apos;;
+/**
+ * A class for uniquely identifying something.
+ */
+export default class Address extends CoreObject {
 
-class FieldBuilder extends AbstractBuilder {
-
-    constructor(parent) {
-        super({
-            parent: parent
-        });
-
-        this.parent
-            .fields()
-            .push(this.payload);
-    }
-
-    /**
-     * @param {String} value
-     * @returns {FieldBuilder}
-     */
-    title(value) {
-        return this.setString(&apos;title&apos;, value);
-    }
-
-    /**
-     * @param {String} value
-     * @returns {FieldBuilder}
-     */
-    text(value) {
-        return this.setString(&apos;value&apos;, value);
-    }
-
-    /**
-     *
-     * @returns {FieldBuilder}
-     */
-    small() {
-        return this.set(&apos;short&apos;, true);
-    }
-
-    /**
-     *
-     * @param {String} stringToAdd
-     * @returns {FieldBuilder}
-     */
-    add(stringToAdd) {
-        var sb = this.get(&apos;value&apos;);
-
-        {
-            sb += (`\n${stringToAdd}`);
+    constructor(options) {
+        if (Utility.isString(options)) {
+            let string = options;
+            options = { value: string };
         }
 
-        return this.text(sb);
+        super(options);
+
+        var uri = URI(options.value);
+
+        this._scheme = uri.scheme();
     }
 
-    /**
-     *
-     * @param {String} key
-     * @param {String} value
-     * @returns {FieldBuilder}
-     */
-    addKeyValuePair(key, value) {
-        var sb = this.get(&apos;value&apos;);
+    toString() {
 
-        {
-            sb += (`\n_${key}:_ ${value}`);
-        }
-
-        return this.text(sb);
     }
 
-}
+    valueOf() {
 
-export default FieldBuilder;
-</code></pre>
+    }
+    
+    static toString() {
+
+    }
+}</code></pre>
 
 </div>
 

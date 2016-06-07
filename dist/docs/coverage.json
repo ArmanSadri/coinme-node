@@ -1,7 +1,7 @@
 {
-  "coverage": "67.67%",
-  "expectCount": 198,
-  "actualCount": 134,
+  "coverage": "64.28%",
+  "expectCount": 224,
+  "actualCount": 144,
   "files": {
     "js/slack/AbstractBuilder.js": {
       "expectCount": 3,
@@ -12,13 +12,14 @@
       ]
     },
     "js/errors/AbstractError.js": {
-      "expectCount": 5,
-      "actualCount": 1,
+      "expectCount": 8,
+      "actualCount": 3,
       "undocumentLines": [
-        7,
-        11,
-        10,
-        16
+        1,
+        20,
+        24,
+        23,
+        32
       ]
     },
     "js/slack/AbstractNotificationTemplate.js": {
@@ -26,6 +27,16 @@
       "actualCount": 3,
       "undocumentLines": [
         16
+      ]
+    },
+    "js/Address.js": {
+      "expectCount": 5,
+      "actualCount": 1,
+      "undocumentLines": [
+        10,
+        23,
+        31,
+        27
       ]
     },
     "js/slack/AttachmentBuilder.js": {
@@ -65,10 +76,10 @@
         24,
         16,
         20,
-        33,
         37,
-        41,
-        29
+        33,
+        29,
+        41
       ]
     },
     "js/money/Currency.js": {
@@ -83,10 +94,10 @@
       ]
     },
     "js/errors/Errors.js": {
-      "expectCount": 1,
-      "actualCount": 0,
+      "expectCount": 3,
+      "actualCount": 2,
       "undocumentLines": [
-        1
+        3
       ]
     },
     "js/slack/FieldBuilder.js": {
@@ -159,6 +170,17 @@
       "actualCount": 23,
       "undocumentLines": []
     },
+    "js/errors/PreconditionsError.js": {
+      "expectCount": 6,
+      "actualCount": 1,
+      "undocumentLines": [
+        4,
+        32,
+        40,
+        36,
+        44
+      ]
+    },
     "js/data/UserBuilder.js": {
       "expectCount": 4,
       "actualCount": 1,
@@ -169,10 +191,10 @@
       ]
     },
     "js/money/Satoshi.js": {
-      "expectCount": 6,
-      "actualCount": 5,
+      "expectCount": 7,
+      "actualCount": 6,
       "undocumentLines": [
-        47
+        57
       ]
     },
     "js/money/USD.js": {
@@ -194,15 +216,21 @@
       ]
     },
     "js/Utility.js": {
-      "expectCount": 25,
-      "actualCount": 19,
+      "expectCount": 34,
+      "actualCount": 22,
       "undocumentLines": [
-        43,
-        252,
-        47,
-        256,
-        39,
-        51
+        67,
+        83,
+        44,
+        52,
+        434,
+        48,
+        438,
+        40,
+        75,
+        79,
+        87,
+        71
       ]
     }
   }

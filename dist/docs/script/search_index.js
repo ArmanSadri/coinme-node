@@ -18,6 +18,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/address.js~address",
+    "class/js/Address.js~Address.html",
+    "<span>Address</span> <span class=\"search-result-import-path\">coinme-node/js/Address.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/slack/attachmentbuilder.js~attachmentbuilder",
     "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html",
     "<span>AttachmentBuilder</span> <span class=\"search-result-import-path\">coinme-node/js/slack/AttachmentBuilder.js</span>",
@@ -58,6 +64,12 @@ window.esdocSearchIndex = [
     "class/js/errors/Errors.js~Errors.html",
     "<span>Errors</span> <span class=\"search-result-import-path\">coinme-node/js/errors/Errors.js</span>",
     "class"
+  ],
+  [
+    "coinme-node/js/errors/abstracterror.js~extendablebuiltin",
+    "function/index.html#static-function-ExtendableBuiltin",
+    "<span>ExtendableBuiltin</span> <span class=\"search-result-import-path\">coinme-node/js/errors/AbstractError.js</span>",
+    "function"
   ],
   [
     "coinme-node/js/slack/fieldbuilder.js~fieldbuilder",
@@ -108,10 +120,10 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "coinme-node/js/preconditions.js~preconditionserror",
-    "function/index.html#static-function-PreconditionsError",
-    "<span>PreconditionsError</span> <span class=\"search-result-import-path\">coinme-node/js/Preconditions.js</span>",
-    "function"
+    "coinme-node/js/errors/preconditionserror.js~preconditionserror",
+    "class/js/errors/PreconditionsError.js~PreconditionsError.html",
+    "<span>PreconditionsError</span> <span class=\"search-result-import-path\">coinme-node/js/errors/PreconditionsError.js</span>",
+    "class"
   ],
   [
     "coinme-node/js/money/satoshi.js~satoshi",
@@ -486,6 +498,36 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "js/address.js",
+    "file/js/Address.js.html",
+    "js/Address.js",
+    "file"
+  ],
+  [
+    "js/address.js~address#constructor",
+    "class/js/Address.js~Address.html#instance-constructor-constructor",
+    "js/Address.js~Address#constructor",
+    "method"
+  ],
+  [
+    "js/address.js~address#tostring",
+    "class/js/Address.js~Address.html#instance-method-toString",
+    "js/Address.js~Address#toString",
+    "method"
+  ],
+  [
+    "js/address.js~address#valueof",
+    "class/js/Address.js~Address.html#instance-method-valueOf",
+    "js/Address.js~Address#valueOf",
+    "method"
+  ],
+  [
+    "js/address.js~address.tostring",
+    "class/js/Address.js~Address.html#static-method-toString",
+    "js/Address.js~Address.toString",
+    "method"
+  ],
+  [
     "js/coinme.js",
     "file/js/Coinme.js.html",
     "js/Coinme.js",
@@ -624,6 +666,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/preconditions.js~preconditions.shouldbeerror",
+    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeError",
+    "js/Preconditions.js~Preconditions.shouldBeError",
+    "method"
+  ],
+  [
     "js/preconditions.js~preconditions.shouldbeexisting",
     "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeExisting",
     "js/Preconditions.js~Preconditions.shouldBeExisting",
@@ -732,6 +780,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.emptyfn",
+    "class/js/Utility.js~Utility.html#static-method-emptyFn",
+    "js/Utility.js~Utility.emptyFn",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.identityfn",
+    "class/js/Utility.js~Utility.html#static-method-identityFn",
+    "js/Utility.js~Utility.identityFn",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.isarray",
+    "class/js/Utility.js~Utility.html#static-method-isArray",
+    "js/Utility.js~Utility.isArray",
+    "method"
+  ],
+  [
     "js/utility.js~utility.isblank",
     "class/js/Utility.js~Utility.html#static-method-isBlank",
     "js/Utility.js~Utility.isBlank",
@@ -747,6 +813,12 @@ window.esdocSearchIndex = [
     "js/utility.js~utility.isclass",
     "class/js/Utility.js~Utility.html#static-method-isClass",
     "js/Utility.js~Utility.isClass",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.iserror",
+    "class/js/Utility.js~Utility.html#static-method-isError",
+    "js/Utility.js~Utility.isError",
     "method"
   ],
   [
@@ -834,6 +906,30 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.no",
+    "class/js/Utility.js~Utility.html#static-method-no",
+    "js/Utility.js~Utility.no",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.ok",
+    "class/js/Utility.js~Utility.html#static-method-ok",
+    "js/Utility.js~Utility.ok",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.passthroughfn",
+    "class/js/Utility.js~Utility.html#static-method-passthroughFn",
+    "js/Utility.js~Utility.passthroughFn",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.result",
+    "class/js/Utility.js~Utility.html#static-method-result",
+    "js/Utility.js~Utility.result",
+    "method"
+  ],
+  [
     "js/utility.js~utility.take",
     "class/js/Utility.js~Utility.html#static-method-take",
     "js/Utility.js~Utility.take",
@@ -867,6 +963,12 @@ window.esdocSearchIndex = [
     "js/utility.js~utility.typeof",
     "class/js/Utility.js~Utility.html#static-method-typeOf",
     "js/Utility.js~Utility.typeOf",
+    "method"
+  ],
+  [
+    "js/utility.js~utility.yes",
+    "class/js/Utility.js~Utility.html#static-method-yes",
+    "js/Utility.js~Utility.yes",
     "method"
   ],
   [
@@ -1032,10 +1134,70 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/errors/abstracterror.js~abstracterror.isclass",
+    "class/js/errors/AbstractError.js~AbstractError.html#static-method-isClass",
+    "js/errors/AbstractError.js~AbstractError.isClass",
+    "method"
+  ],
+  [
+    "js/errors/abstracterror.js~abstracterror.isinstance",
+    "class/js/errors/AbstractError.js~AbstractError.html#static-method-isInstance",
+    "js/errors/AbstractError.js~AbstractError.isInstance",
+    "method"
+  ],
+  [
     "js/errors/errors.js",
     "file/js/errors/Errors.js.html",
     "js/errors/Errors.js",
     "file"
+  ],
+  [
+    "js/errors/errors.js~errors.iserrorclass",
+    "class/js/errors/Errors.js~Errors.html#static-method-isErrorClass",
+    "js/errors/Errors.js~Errors.isErrorClass",
+    "method"
+  ],
+  [
+    "js/errors/errors.js~errors.iserrorinstance",
+    "class/js/errors/Errors.js~Errors.html#static-method-isErrorInstance",
+    "js/errors/Errors.js~Errors.isErrorInstance",
+    "method"
+  ],
+  [
+    "js/errors/preconditionserror.js",
+    "file/js/errors/PreconditionsError.js.html",
+    "js/errors/PreconditionsError.js",
+    "file"
+  ],
+  [
+    "js/errors/preconditionserror.js~preconditionserror#actualvalue",
+    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-get-actualValue",
+    "js/errors/PreconditionsError.js~PreconditionsError#actualValue",
+    "member"
+  ],
+  [
+    "js/errors/preconditionserror.js~preconditionserror#cause",
+    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-get-cause",
+    "js/errors/PreconditionsError.js~PreconditionsError#cause",
+    "member"
+  ],
+  [
+    "js/errors/preconditionserror.js~preconditionserror#constructor",
+    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-constructor-constructor",
+    "js/errors/PreconditionsError.js~PreconditionsError#constructor",
+    "method"
+  ],
+  [
+    "js/errors/preconditionserror.js~preconditionserror#expectedvalue",
+    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-get-expectedValue",
+    "js/errors/PreconditionsError.js~PreconditionsError#expectedValue",
+    "member"
+  ],
+  [
+    "js/errors/preconditionserror.js~preconditionserror.tostring",
+    "class/js/errors/PreconditionsError.js~PreconditionsError.html#static-method-toString",
+    "js/errors/PreconditionsError.js~PreconditionsError.toString",
+    "method"
   ],
   [
     "js/errors/index.js",
@@ -1342,6 +1504,12 @@ window.esdocSearchIndex = [
     "class/js/money/Satoshi.js~Satoshi.html#static-set-converter",
     "js/money/Satoshi.js~Satoshi.converter",
     "member"
+  ],
+  [
+    "js/money/satoshi.js~satoshi.create",
+    "class/js/money/Satoshi.js~Satoshi.html#static-method-create",
+    "js/money/Satoshi.js~Satoshi.create",
+    "method"
   ],
   [
     "js/money/satoshi.js~satoshi.frombitcoin",

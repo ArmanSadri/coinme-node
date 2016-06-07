@@ -71,6 +71,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "bluebird": "^3.3.4",
+    "coinbase-node": "^0.2.1",
     "ember-cli-get-component-path-option": "^1.0.0",
     "ember-cli-normalize-entity-name": "^1.0.0",
     "ember-cli-path-utils": "^1.0.0",
@@ -78,9 +79,10 @@
     "ember-cli-test-info": "^1.0.0",
     "ember-cli-valid-component-name": "^1.0.0",
     "esdoc-es7-plugin": "0.0.3",
-    "lodash": "^4.5.0",
+    "lodash": "4.13.1",
     "preconditions": "1.0.8",
     "request-promise": "^2.0.1",
+    "urijs": "^1.18.0",
     "winston": "^2.2.0"
   },
   "babel": {

@@ -1,15 +1,15 @@
 {
   "type": "Program",
   "start": 0,
-  "end": 136,
+  "end": 333,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 7,
-      "column": 25
+      "line": 15,
+      "column": 1
     }
   },
   "sourceType": "module",
@@ -182,63 +182,130 @@
       }
     },
     {
-      "type": "ExportNamedDeclaration",
-      "start": 92,
-      "end": 110,
+      "type": "ImportDeclaration",
+      "start": 91,
+      "end": 145,
       "loc": {
         "start": {
-          "line": 6,
+          "line": 5,
           "column": 0
         },
         "end": {
-          "line": 6,
-          "column": 18
+          "line": 5,
+          "column": 54
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 98,
+          "end": 116,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 25
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 98,
+            "end": 116,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 25
+              }
+            },
+            "name": "PreconditionsError"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 122,
+        "end": 144,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 31
+          },
+          "end": {
+            "line": 5,
+            "column": 53
+          }
+        },
+        "value": "./PreconditionsError",
+        "rawValue": "./PreconditionsError",
+        "raw": "\"./PreconditionsError\""
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 147,
+      "end": 163,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 16
         }
       },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "start": 101,
-          "end": 107,
+          "start": 155,
+          "end": 161,
           "loc": {
             "start": {
-              "line": 6,
-              "column": 9
+              "line": 7,
+              "column": 8
             },
             "end": {
-              "line": 6,
-              "column": 15
+              "line": 7,
+              "column": 14
             }
           },
           "local": {
             "type": "Identifier",
-            "start": 101,
-            "end": 107,
+            "start": 155,
+            "end": 161,
             "loc": {
               "start": {
-                "line": 6,
-                "column": 9
+                "line": 7,
+                "column": 8
               },
               "end": {
-                "line": 6,
-                "column": 15
+                "line": 7,
+                "column": 14
               }
             },
             "name": "Errors"
           },
           "exported": {
             "type": "Identifier",
-            "start": 101,
-            "end": 107,
+            "start": 155,
+            "end": 161,
             "loc": {
               "start": {
-                "line": 6,
-                "column": 9
+                "line": 7,
+                "column": 8
               },
               "end": {
-                "line": 6,
-                "column": 15
+                "line": 7,
+                "column": 14
               }
             },
             "name": "Errors"
@@ -249,62 +316,62 @@
     },
     {
       "type": "ExportNamedDeclaration",
-      "start": 111,
-      "end": 136,
+      "start": 164,
+      "end": 187,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 8,
           "column": 0
         },
         "end": {
-          "line": 7,
-          "column": 25
+          "line": 8,
+          "column": 23
         }
       },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "start": 120,
-          "end": 133,
+          "start": 172,
+          "end": 185,
           "loc": {
             "start": {
-              "line": 7,
-              "column": 9
+              "line": 8,
+              "column": 8
             },
             "end": {
-              "line": 7,
-              "column": 22
+              "line": 8,
+              "column": 21
             }
           },
           "local": {
             "type": "Identifier",
-            "start": 120,
-            "end": 133,
+            "start": 172,
+            "end": 185,
             "loc": {
               "start": {
-                "line": 7,
-                "column": 9
+                "line": 8,
+                "column": 8
               },
               "end": {
-                "line": 7,
-                "column": 22
+                "line": 8,
+                "column": 21
               }
             },
             "name": "AbstractError"
           },
           "exported": {
             "type": "Identifier",
-            "start": 120,
-            "end": 133,
+            "start": 172,
+            "end": 185,
             "loc": {
               "start": {
-                "line": 7,
-                "column": 9
+                "line": 8,
+                "column": 8
               },
               "end": {
-                "line": 7,
-                "column": 22
+                "line": 8,
+                "column": 21
               }
             },
             "name": "AbstractError"
@@ -312,6 +379,259 @@
         }
       ],
       "source": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 188,
+      "end": 216,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 28
+        }
+      },
+      "declaration": null,
+      "specifiers": [
+        {
+          "type": "ExportSpecifier",
+          "start": 196,
+          "end": 214,
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 8
+            },
+            "end": {
+              "line": 9,
+              "column": 26
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 196,
+            "end": 214,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 8
+              },
+              "end": {
+                "line": 9,
+                "column": 26
+              }
+            },
+            "name": "PreconditionsError"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 196,
+            "end": 214,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 8
+              },
+              "end": {
+                "line": 9,
+                "column": 26
+              }
+            },
+            "name": "PreconditionsError"
+          }
+        }
+      ],
+      "source": null
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 218,
+      "end": 333,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 1
+        }
+      },
+      "declaration": {
+        "type": "ObjectExpression",
+        "start": 233,
+        "end": 333,
+        "loc": {
+          "start": {
+            "line": 11,
+            "column": 15
+          },
+          "end": {
+            "line": 15,
+            "column": 1
+          }
+        },
+        "properties": [
+          {
+            "type": "Property",
+            "start": 239,
+            "end": 253,
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 4
+              },
+              "end": {
+                "line": 12,
+                "column": 18
+              }
+            },
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 239,
+              "end": 245,
+              "loc": {
+                "start": {
+                  "line": 12,
+                  "column": 4
+                },
+                "end": {
+                  "line": 12,
+                  "column": 10
+                }
+              },
+              "name": "Errors"
+            },
+            "value": {
+              "type": "Identifier",
+              "start": 247,
+              "end": 253,
+              "loc": {
+                "start": {
+                  "line": 12,
+                  "column": 12
+                },
+                "end": {
+                  "line": 12,
+                  "column": 18
+                }
+              },
+              "name": "Errors"
+            },
+            "kind": "init"
+          },
+          {
+            "type": "Property",
+            "start": 259,
+            "end": 287,
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 4
+              },
+              "end": {
+                "line": 13,
+                "column": 32
+              }
+            },
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 259,
+              "end": 272,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 4
+                },
+                "end": {
+                  "line": 13,
+                  "column": 17
+                }
+              },
+              "name": "AbstractError"
+            },
+            "value": {
+              "type": "Identifier",
+              "start": 274,
+              "end": 287,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 19
+                },
+                "end": {
+                  "line": 13,
+                  "column": 32
+                }
+              },
+              "name": "AbstractError"
+            },
+            "kind": "init"
+          },
+          {
+            "type": "Property",
+            "start": 293,
+            "end": 331,
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 4
+              },
+              "end": {
+                "line": 14,
+                "column": 42
+              }
+            },
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 293,
+              "end": 311,
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 4
+                },
+                "end": {
+                  "line": 14,
+                  "column": 22
+                }
+              },
+              "name": "PreconditionsError"
+            },
+            "value": {
+              "type": "Identifier",
+              "start": 313,
+              "end": 331,
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 24
+                },
+                "end": {
+                  "line": 14,
+                  "column": 42
+                }
+              },
+              "name": "PreconditionsError"
+            },
+            "kind": "init"
+          }
+        ],
+        "leadingComments": [],
+        "trailingComments": []
+      }
     }
   ]
 }

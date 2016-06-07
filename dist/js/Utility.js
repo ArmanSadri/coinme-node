@@ -24,6 +24,8 @@ var _CoreObject = require("./CoreObject");
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
+var _errors = require("./errors");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77,12 +79,59 @@ var Utility = function () {
     }, {
         key: "isClass",
         value: function isClass(object) {
-            return Utility.typeOf(object) === 'class';
+            return 'class' === Utility.typeOf(object);
         }
     }, {
         key: "isInstance",
         value: function isInstance(object) {
-            return Utility.typeOf(object) === 'instance';
+            return 'instance' === Utility.typeOf(object);
+        }
+    }, {
+        key: "isError",
+        value: function isError(object) {
+            return 'error' === Utility.typeOf(object);
+        }
+
+        /**
+         *
+         * @param {*} object
+         * @param {String} path
+         * @param {*} [defaultValue]
+         * @returns {*}
+         */
+
+    }, {
+        key: "result",
+        value: function result(object, path, defaultValue) {
+            return _lodash2.default.get.apply(_lodash2.default, arguments);
+        }
+    }, {
+        key: "emptyFn",
+        value: function emptyFn() {}
+    }, {
+        key: "yes",
+        value: function yes() {
+            return true;
+        }
+    }, {
+        key: "no",
+        value: function no() {
+            return false;
+        }
+    }, {
+        key: "ok",
+        value: function ok() {
+            return this;
+        }
+    }, {
+        key: "identityFn",
+        value: function identityFn() {
+            return this;
+        }
+    }, {
+        key: "passthroughFn",
+        value: function passthroughFn(arg) {
+            return arg;
         }
 
         /**
@@ -90,43 +139,66 @@ var Utility = function () {
          *
          * @param {Object} object
          * @param {String|Object|Array} keyAsStringObjectArray
+         * @param {Function|Class} [optionalTypeDeclaration]
+         *
          * @returns {*}
          */
 
     }, {
         key: "take",
-        value: function take(object, keyAsStringObjectArray) {
+        value: function take(object, keyAsStringObjectArray, optionalTypeDeclaration) {
             if (!object) {
                 return undefined;
             }
 
             _Preconditions2.default.shouldBeDefined(keyAsStringObjectArray, 'key must be defined');
 
-            var scope = this;
+            /**
+             *
+             * @param {Function|undefined} [validatorFn]
+             * @param {*} value
+             * @returns {*}
+             */
+            function executeValidator(validatorFn, value) {
+                if (validatorFn) {
+                    _Preconditions2.default.shouldNotBeFalsey(validatorFn(value), 'Failed validation: ' + value);
+                }
+
+                return value;
+            }
 
             if (Utility.isString(keyAsStringObjectArray)) {
                 /** @type {String} */
                 var key = keyAsStringObjectArray;
-                var value = _lodash2.default.result(object, key);
+                var value = Utility.result(object, key);
+                var validatorFn = Utility.yes;
+
+                if (Utility.isClass(optionalTypeDeclaration)) {
+                    validatorFn = Utility.typeMatcher(optionalTypeDeclaration);
+                } else if (Utility.isFunction(optionalTypeDeclaration)) {
+                    validatorFn = optionalTypeDeclaration;
+                } else if (Utility.isNullOrUndefined(keyAsStringObjectArray)) {
+                    validatorFn = Utility.yes;
+                }
 
                 if (-1 != key.indexOf('.')) {
                     // It's an object path.
                     var parentPath = key.substring(0, key.lastIndexOf('.'));
                     var itemKey = key.substring(key.lastIndexOf('.') + 1);
-                    var parent = _lodash2.default.result(object, parentPath);
+                    var parent = Utility.result(object, parentPath);
 
                     delete parent[itemKey];
                 } else {
                     delete object[keyAsStringObjectArray];
                 }
 
-                return value;
+                return executeValidator(validatorFn, value);
             } else if (Utility.isArray(keyAsStringObjectArray) || Utility.isObject(keyAsStringObjectArray)) {
                 var _ret = function () {
                     var result = {};
                     var array_mode = Utility.isArray(keyAsStringObjectArray);
 
-                    var defaults = _lodash2.default.defaults(_lodash2.default.result(keyAsStringObjectArray.defaults) || {}, {
+                    var defaults = _lodash2.default.defaults(Utility.result(keyAsStringObjectArray, 'defaults') || {}, {
                         required: false,
                         validator: null
                     });
@@ -140,7 +212,7 @@ var Utility = function () {
                                 key = rulesetOrObject;
                                 ruleset = _lodash2.default.assign({}, defaults);
                             } else if (Utility.isObject(rulesetOrObject)) {
-                                key = _lodash2.default.result(rulesetOrObject, 'key');
+                                key = Utility.result(rulesetOrObject, 'key');
                                 ruleset = rulesetOrObject;
                             }
                         } else {
@@ -180,11 +252,9 @@ var Utility = function () {
                         // If we don't have a validator yet, check to see if we can get one.
                         if (!ruleset.validator && Utility.isNotBlank(ruleset.type)) {
                             if ('string' === ruleset.type) {
-                                ruleset.validator = function () {
-                                    return _Preconditions2.default.shouldBeString('');
-                                };
+                                ruleset.validator = Utility.isString;
                             } else if ('number' === requiredType) {
-                                ruleset.validator = _Preconditions2.default.shouldBeNumber;
+                                ruleset.validator = Utility.isNumber;
                             } else if ('required' === requiredType) {
                                 ruleset.validator = Utility.isExisting;
                             } else {
@@ -192,13 +262,11 @@ var Utility = function () {
                             }
                         }
 
-                        var entry = Utility.take(object, key);
-
-                        if (ruleset.validator) {
-                            if (false === ruleset.validator.call(scope, entry)) {
-                                throw new Error('The validator returned false for: ' + entry);
-                            }
+                        if ('defaults' === key) {
+                            return;
                         }
+
+                        var entry = executeValidator(ruleset.validator, Utility.take(object, key));
 
                         if (ruleset.required && Utility.isUndefined(entry)) {
                             throw new Error('Required key not present: ' + ruleset.key);
@@ -221,7 +289,7 @@ var Utility = function () {
         /**
          * Creates a test method. Uses Utility.typeOf()
          *
-         * @param {String} type
+         * @param {String|Class} type
          * @return {function}
          */
 
@@ -269,8 +337,8 @@ var Utility = function () {
             {
                 var typeOfType = Utility.typeOf(type);
 
-                if ('string' !== typeOfType) {
-                    _Preconditions2.default.fail('string', type, "The type passed in was not a string. It was " + typeOfType);
+                if (!('string' === typeOfType || 'class' === typeOfType)) {
+                    _Preconditions2.default.fail('string', type, "The type passed in was not a string|class. It was " + typeOfType);
                 }
             }
 
@@ -281,23 +349,29 @@ var Utility = function () {
                 // This will cause an infinite loop.
                 // Preconditions.shouldNotBeBlank(type, 'type missing');
                 // type = Utility.toLowerCase(type);
-                type = type.toLowerCase();
+                if (Utility.isString(type)) {
+                    type = type.toLowerCase();
 
-                _Preconditions2.default.shouldBeTrue(knownTypes[type], 'unknown type: ' + type);
-            }
+                    _Preconditions2.default.shouldBeTrue(knownTypes[type], 'unknown type: ' + type);
 
-            /**
-             * @param {*} object
-             */
-            return function (object) {
-                var existingType = Utility.typeOf(object);
+                    return function ( /** @type {*} */object) {
+                        var objectType = Utility.typeOf(object);
 
-                if ('object' === type || 'instance' === type) {
-                    return 'object' === existingType || 'instance' === existingType;
+                        if ('object' === type || 'instance' === type) {
+                            return 'object' === objectType || 'instance' === objectType;
+                        }
+
+                        return type === objectType;
+                    };
+                } else if (Utility.isClass(type)) {
+                    /**
+                     * @type {Class<CoreObject>}
+                     */
+                    return function ( /** @type {*} */object) {
+                        return type.isInstance(object);
+                    };
                 }
-
-                return type === existingType;
-            };
+            }
         }
 
         /**
@@ -361,8 +435,10 @@ var Utility = function () {
             if ('function' === type) {
                 // Let's isClass a bit further.
 
-                if (_CoreObject2.default.isClass(object)) {
+                if (_CoreObject2.default.isClass(object) || _errors.Errors.isErrorClass(object)) {
                     return 'class';
+                } else if (_errors.Errors.isErrorInstance(object)) {
+                    return 'error';
                 }
             } else if ('object' === type) {
                 if (_CoreObject2.default.isInstance(object)) {

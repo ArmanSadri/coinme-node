@@ -32,16 +32,18 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
@@ -68,6 +70,7 @@
 import Utility from &quot;./Utility&quot;;
 import Lodash from &quot;lodash/index&quot;;
 import CoreObject from &apos;./CoreObject&apos;;
+import { Errors, PreconditionsError } from &apos;./errors&apos;;
 
 // class PreconditionsError extends AbstractError {
 //
@@ -94,30 +97,30 @@ import CoreObject from &apos;./CoreObject&apos;;
 //     }
 // }
 
-/**
- *
- * @param {*} expectedValue
- * @param {*} actualValue
- * @param {String} [message]
- * @param {Error} [optionalCause]
- * @constructor
- */
-function PreconditionsError(expectedValue, actualValue, message, optionalCause) {
-    var error = Error.call(this, message);
-
-    this.name = &apos;PreconditionsError&apos;;
-    this.stack = error.stack;
-    this.cause = optionalCause;
-
-    this.expectedValue = expectedValue;
-    this.actualValue = actualValue;
-    this.message = `failure (expected: &apos;${this.expectedValue}&apos; [${Utility.typeOf(this.expectedValue)}]) (actual: &apos;${this.actualValue}&apos; [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;
-}
-
-PreconditionsError.prototype = Object.create(Error.prototype);
-PreconditionsError.prototype.constructor = PreconditionsError;
-
-export { PreconditionsError }
+// /**
+//  *
+//  * @param {*} expectedValue
+//  * @param {*} actualValue
+//  * @param {String} [message]
+//  * @param {Error} [optionalCause]
+//  * @constructor
+//  */
+// function PreconditionsError(expectedValue, actualValue, message, optionalCause) {
+//     var error = Error.call(this, message);
+//
+//     this.name = &apos;PreconditionsError&apos;;
+//     this.stack = error.stack;
+//     this.cause = optionalCause;
+//
+//     this.expectedValue = expectedValue;
+//     this.actualValue = actualValue;
+//     this.message = `failure (expected: &apos;${this.expectedValue}&apos; [${Utility.typeOf(this.expectedValue)}]) (actual: &apos;${this.actualValue}&apos; [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;
+// }
+//
+// PreconditionsError.prototype = Object.create(Error.prototype);
+// PreconditionsError.prototype.constructor = PreconditionsError;
+//
+// export { PreconditionsError }
 
 /**
  * @singleton
@@ -132,7 +135,11 @@ export default class Preconditions {
      * @param {String} [message]
      */
     static fail(expectedValue, actualValue, message) {
-        throw new PreconditionsError(expectedValue, actualValue, message || &apos;Preconditions failure&apos;);
+        throw new PreconditionsError({
+            expectedValue: expectedValue,
+            actualValue: actualValue,
+            message: message || &apos;Preconditions failure&apos;
+        });
     }
 
     /**
@@ -272,23 +279,25 @@ export default class Preconditions {
     /**
      *
      * @param {*} object
-     * @param {Class|Object} [clazz]
+     * @param {Class} [clazz]
      * @param {String} [message]
      * @returns {Object}
      */
     static shouldBeInstance(object, clazz, message) {
         Preconditions.shouldBeDefined(object, message || &apos;object must be defined&apos;);
 
-        if (!clazz) {
-            clazz = CoreObject;
+        if (!Utility.isInstance(object)) {
+            Preconditions.fail(CoreObject, clazz, message || &apos;object not an instance&apos;);
         }
 
-        if (!CoreObject.isClass(clazz)) {
-            Preconditions.fail(CoreObject, clazz, message || &apos;Class not a CoreObject class&apos;);
-        }
+        if (clazz) {
+            if (!Utility.isClass(clazz)) {
+                Preconditions.fail(CoreObject, clazz, message || &apos;clazz not a class&apos;);
+            }
 
-        if (!clazz.isInstance(object)) {
-            Preconditions.fail(object, clazz, message || &apos;Class not an instance of &apos; + clazz);
+            if (!clazz.isInstance(object)) {
+                Preconditions.fail(object, clazz, message || &apos;Class not an instance of &apos; + clazz);
+            }
         }
 
         return object;
@@ -334,6 +343,29 @@ export default class Preconditions {
         let fn = Utility.typeMatcher(&apos;string&apos;);
 
         return Preconditions.shouldBe(fn, &apos;object&apos;, string, message);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {Class&lt;Error&gt;} [clazz]
+     * @param {String} [message]
+     * @returns Error
+     */
+    static shouldBeError(object, clazz, message) {
+        Preconditions.shouldBeType(&apos;error&apos;, object, message || &apos;Should be error type&apos;);
+
+        if (clazz) {
+            if (!Errors.isErrorClass(clazz)) {
+                Preconditions.fail(Error, clazz, message || &apos;must be error class&apos;);
+            }
+
+            if (!clazz.isInstance(object)) {
+                Preconditions.fail(clazz, object, message || &apos;must be error instance.&apos;);
+            }
+        }
+
+        return object;
     }
 
     /**
@@ -432,7 +464,7 @@ export default class Preconditions {
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.7)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

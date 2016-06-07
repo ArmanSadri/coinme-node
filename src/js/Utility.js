@@ -4,6 +4,7 @@ import Lodash from "lodash";
 import Preconditions from "~/Preconditions";
 import Ember from "~/ember";
 import CoreObject from "~/CoreObject";
+import {Errors, AbstractError} from "./errors";
 
 /**
  * @class
@@ -41,11 +42,50 @@ class Utility {
     }
 
     static isClass(object) {
-        return Utility.typeOf(object) === 'class';
+        return 'class' === Utility.typeOf(object);
     }
 
     static isInstance(object) {
-        return Utility.typeOf(object) === 'instance';
+        return 'instance' === Utility.typeOf(object);
+    }
+
+    static isError(object) {
+        return 'error' === Utility.typeOf(object);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {String} path
+     * @param {*} [defaultValue]
+     * @returns {*}
+     */
+    static result(object, path, defaultValue) {
+        return Lodash.get.apply(Lodash, arguments);
+    }
+
+    static emptyFn() {
+
+    }
+
+    static yes() {
+        return true;
+    }
+
+    static no() {
+        return false;
+    }
+
+    static ok() {
+        return this;
+    }
+
+    static identityFn() {
+        return this;
+    }
+
+    static passthroughFn(arg) {
+        return arg;
     }
 
     /**
@@ -53,39 +93,62 @@ class Utility {
      *
      * @param {Object} object
      * @param {String|Object|Array} keyAsStringObjectArray
+     * @param {Function|Class} [optionalTypeDeclaration]
+     *
      * @returns {*}
      */
-    static take(object, keyAsStringObjectArray) {
+    static take(object, keyAsStringObjectArray, optionalTypeDeclaration) {
         if (!object) {
             return undefined;
         }
 
         Preconditions.shouldBeDefined(keyAsStringObjectArray, 'key must be defined');
 
-        let scope = this;
+        /**
+         *
+         * @param {Function|undefined} [validatorFn]
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeValidator(validatorFn, value) {
+            if (validatorFn) {
+                Preconditions.shouldNotBeFalsey(validatorFn(value), 'Failed validation: ' + value);
+            }
+
+            return value;
+        }
 
         if (Utility.isString(keyAsStringObjectArray)) {
             /** @type {String} */
             let key = keyAsStringObjectArray;
-            let value = Lodash.result(object, key);
+            let value = Utility.result(object, key);
+            let validatorFn = Utility.yes;
+
+            if (Utility.isClass(optionalTypeDeclaration)) {
+                validatorFn = Utility.typeMatcher(optionalTypeDeclaration)
+            } else if (Utility.isFunction(optionalTypeDeclaration)) {
+                validatorFn = optionalTypeDeclaration;
+            } else if (Utility.isNullOrUndefined(keyAsStringObjectArray)) {
+                validatorFn = Utility.yes;
+            }
 
             if (-1 != key.indexOf('.')) {
                 // It's an object path.
                 let parentPath = key.substring(0, key.lastIndexOf('.'));
                 let itemKey = key.substring(key.lastIndexOf('.') + 1);
-                let parent = Lodash.result(object, parentPath);
+                let parent = Utility.result(object, parentPath);
 
                 delete parent[itemKey];
             } else {
                 delete object[keyAsStringObjectArray];
             }
 
-            return value;
+            return executeValidator(validatorFn, value);
         } else if (Utility.isArray(keyAsStringObjectArray) || Utility.isObject(keyAsStringObjectArray)) {
             let result = {};
             let array_mode = Utility.isArray(keyAsStringObjectArray);
 
-            let defaults = Lodash.defaults(Lodash.result(keyAsStringObjectArray.defaults) || {}, {
+            let defaults = Lodash.defaults(Utility.result(keyAsStringObjectArray, 'defaults') || {}, {
                 required: false,
                 validator: null
             });
@@ -99,7 +162,7 @@ class Utility {
                         key = rulesetOrObject;
                         ruleset = Lodash.assign({}, defaults);
                     } else if (Utility.isObject(rulesetOrObject)) {
-                        key = Lodash.result(rulesetOrObject, 'key');
+                        key = Utility.result(rulesetOrObject, 'key');
                         ruleset = rulesetOrObject;
                     }
                 } else {
@@ -139,11 +202,9 @@ class Utility {
                 // If we don't have a validator yet, check to see if we can get one.
                 if (!ruleset.validator && Utility.isNotBlank(ruleset.type)) {
                     if ('string' === ruleset.type) {
-                        ruleset.validator = function() {
-                            return Preconditions.shouldBeString('');
-                        }
+                        ruleset.validator = Utility.isString;
                     } else if ('number' === requiredType) {
-                        ruleset.validator = Preconditions.shouldBeNumber;
+                        ruleset.validator = Utility.isNumber;
                     } else if ('required' === requiredType) {
                         ruleset.validator = Utility.isExisting;
                     } else {
@@ -151,13 +212,11 @@ class Utility {
                     }
                 }
 
-                let entry = Utility.take(object, key);
-
-                if (ruleset.validator) {
-                    if (false === ruleset.validator.call(scope, entry)) {
-                        throw new Error('The validator returned false for: ' + entry);
-                    }
+                if ('defaults' === key) {
+                    return;
                 }
+                
+                let entry = executeValidator(ruleset.validator, Utility.take(object, key));
 
                 if (ruleset.required && Utility.isUndefined(entry)) {
                     throw new Error('Required key not present: ' + ruleset.key);
@@ -175,7 +234,7 @@ class Utility {
     /**
      * Creates a test method. Uses Utility.typeOf()
      *
-     * @param {String} type
+     * @param {String|Class} type
      * @return {function}
      */
     static typeMatcher(type) {
@@ -220,8 +279,8 @@ class Utility {
         {
             let typeOfType = Utility.typeOf(type);
 
-            if ('string' !== typeOfType) {
-                Preconditions.fail('string', type, `The type passed in was not a string. It was ${typeOfType}`);
+            if (!('string' === typeOfType || 'class' === typeOfType)) {
+                Preconditions.fail('string', type, `The type passed in was not a string|class. It was ${typeOfType}`);
             }
         }
 
@@ -232,23 +291,31 @@ class Utility {
             // This will cause an infinite loop.
             // Preconditions.shouldNotBeBlank(type, 'type missing');
             // type = Utility.toLowerCase(type);
-            type = type.toLowerCase();
+            if (Utility.isString(type)) {
+                type = type.toLowerCase();
 
-            Preconditions.shouldBeTrue(knownTypes[type], 'unknown type: ' + type);
+                Preconditions.shouldBeTrue(knownTypes[type], 'unknown type: ' + type);
+
+                return (function(/** @type {*} */ object) {
+                    let objectType = Utility.typeOf(object);
+
+                    if ('object' === type || 'instance' === type) {
+                        return ('object' === objectType) || ('instance' === objectType);
+                    }
+
+                    return type === objectType;
+                });
+            } else if (Utility.isClass(type)) {
+                /**
+                 * @type {Class<CoreObject>}
+                 */
+                return function(/** @type {*} */object) {
+                    return (type.isInstance(object));
+                };
+            }
         }
 
-        /**
-         * @param {*} object
-         */
-        return (function(object) {
-            let existingType = Utility.typeOf(object);
 
-            if ('object' === type || 'instance' === type) {
-                return ('object' === existingType) || ('instance' === existingType);
-            }
-
-            return type === existingType;
-        });
     }
 
     /**
@@ -310,9 +377,12 @@ class Utility {
         if ('function' === type) {
             // Let's isClass a bit further.
 
-            if (CoreObject.isClass(object)) {
+            if (CoreObject.isClass(object) || Errors.isErrorClass(object)) {
                 return 'class';
+            } else if (Errors.isErrorInstance(object)) {
+                return 'error';
             }
+
         } else if ('object' === type) {
             if (CoreObject.isInstance(object)) {
                 return 'instance';

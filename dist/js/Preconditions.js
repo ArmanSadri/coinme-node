@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.PreconditionsError = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -18,6 +17,8 @@ var _index2 = _interopRequireDefault(_index);
 var _CoreObject = require("./CoreObject");
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
+
+var _errors = require("./errors");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48,30 +49,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //     }
 // }
 
-/**
- *
- * @param {*} expectedValue
- * @param {*} actualValue
- * @param {String} [message]
- * @param {Error} [optionalCause]
- * @constructor
- */
-function PreconditionsError(expectedValue, actualValue, message, optionalCause) {
-    var error = Error.call(this, message);
-
-    this.name = 'PreconditionsError';
-    this.stack = error.stack;
-    this.cause = optionalCause;
-
-    this.expectedValue = expectedValue;
-    this.actualValue = actualValue;
-    this.message = "failure (expected: '" + this.expectedValue + "' [" + _Utility2.default.typeOf(this.expectedValue) + "]) (actual: '" + this.actualValue + "' [" + _Utility2.default.typeOf(this.actualValue) + "]) (message: " + this.message + ")";
-}
-
-PreconditionsError.prototype = Object.create(Error.prototype);
-PreconditionsError.prototype.constructor = PreconditionsError;
-
-exports.PreconditionsError = PreconditionsError;
+// /**
+//  *
+//  * @param {*} expectedValue
+//  * @param {*} actualValue
+//  * @param {String} [message]
+//  * @param {Error} [optionalCause]
+//  * @constructor
+//  */
+// function PreconditionsError(expectedValue, actualValue, message, optionalCause) {
+//     var error = Error.call(this, message);
+//
+//     this.name = 'PreconditionsError';
+//     this.stack = error.stack;
+//     this.cause = optionalCause;
+//
+//     this.expectedValue = expectedValue;
+//     this.actualValue = actualValue;
+//     this.message = `failure (expected: '${this.expectedValue}' [${Utility.typeOf(this.expectedValue)}]) (actual: '${this.actualValue}' [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;
+// }
+//
+// PreconditionsError.prototype = Object.create(Error.prototype);
+// PreconditionsError.prototype.constructor = PreconditionsError;
+//
+// export { PreconditionsError }
 
 /**
  * @singleton
@@ -94,7 +95,11 @@ var Preconditions = function () {
          * @param {String} [message]
          */
         value: function fail(expectedValue, actualValue, message) {
-            throw new PreconditionsError(expectedValue, actualValue, message || 'Preconditions failure');
+            throw new _errors.PreconditionsError({
+                expectedValue: expectedValue,
+                actualValue: actualValue,
+                message: message || 'Preconditions failure'
+            });
         }
 
         /**
@@ -264,7 +269,7 @@ var Preconditions = function () {
         /**
          *
          * @param {*} object
-         * @param {Class|Object} [clazz]
+         * @param {Class} [clazz]
          * @param {String} [message]
          * @returns {Object}
          */
@@ -274,16 +279,18 @@ var Preconditions = function () {
         value: function shouldBeInstance(object, clazz, message) {
             Preconditions.shouldBeDefined(object, message || 'object must be defined');
 
-            if (!clazz) {
-                clazz = _CoreObject2.default;
+            if (!_Utility2.default.isInstance(object)) {
+                Preconditions.fail(_CoreObject2.default, clazz, message || 'object not an instance');
             }
 
-            if (!_CoreObject2.default.isClass(clazz)) {
-                Preconditions.fail(_CoreObject2.default, clazz, message || 'Class not a CoreObject class');
-            }
+            if (clazz) {
+                if (!_Utility2.default.isClass(clazz)) {
+                    Preconditions.fail(_CoreObject2.default, clazz, message || 'clazz not a class');
+                }
 
-            if (!clazz.isInstance(object)) {
-                Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
+                if (!clazz.isInstance(object)) {
+                    Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
+                }
             }
 
             return object;
@@ -338,6 +345,32 @@ var Preconditions = function () {
             var fn = _Utility2.default.typeMatcher('string');
 
             return Preconditions.shouldBe(fn, 'object', string, message);
+        }
+
+        /**
+         *
+         * @param {*} object
+         * @param {Class<Error>} [clazz]
+         * @param {String} [message]
+         * @returns Error
+         */
+
+    }, {
+        key: "shouldBeError",
+        value: function shouldBeError(object, clazz, message) {
+            Preconditions.shouldBeType('error', object, message || 'Should be error type');
+
+            if (clazz) {
+                if (!_errors.Errors.isErrorClass(clazz)) {
+                    Preconditions.fail(Error, clazz, message || 'must be error class');
+                }
+
+                if (!clazz.isInstance(object)) {
+                    Preconditions.fail(clazz, object, message || 'must be error instance.');
+                }
+            }
+
+            return object;
         }
 
         /**
@@ -455,4 +488,5 @@ var Preconditions = function () {
 }();
 
 exports.default = Preconditions;
+module.exports = exports['default'];
 //# sourceMappingURL=Preconditions.js.map

@@ -3,6 +3,7 @@
 import Utility from "./Utility";
 import Lodash from "lodash/index";
 import CoreObject from './CoreObject';
+import { Errors, PreconditionsError } from './errors';
 
 // class PreconditionsError extends AbstractError {
 //
@@ -29,30 +30,30 @@ import CoreObject from './CoreObject';
 //     }
 // }
 
-/**
- *
- * @param {*} expectedValue
- * @param {*} actualValue
- * @param {String} [message]
- * @param {Error} [optionalCause]
- * @constructor
- */
-function PreconditionsError(expectedValue, actualValue, message, optionalCause) {
-    var error = Error.call(this, message);
-
-    this.name = 'PreconditionsError';
-    this.stack = error.stack;
-    this.cause = optionalCause;
-
-    this.expectedValue = expectedValue;
-    this.actualValue = actualValue;
-    this.message = `failure (expected: '${this.expectedValue}' [${Utility.typeOf(this.expectedValue)}]) (actual: '${this.actualValue}' [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;
-}
-
-PreconditionsError.prototype = Object.create(Error.prototype);
-PreconditionsError.prototype.constructor = PreconditionsError;
-
-export { PreconditionsError }
+// /**
+//  *
+//  * @param {*} expectedValue
+//  * @param {*} actualValue
+//  * @param {String} [message]
+//  * @param {Error} [optionalCause]
+//  * @constructor
+//  */
+// function PreconditionsError(expectedValue, actualValue, message, optionalCause) {
+//     var error = Error.call(this, message);
+//
+//     this.name = 'PreconditionsError';
+//     this.stack = error.stack;
+//     this.cause = optionalCause;
+//
+//     this.expectedValue = expectedValue;
+//     this.actualValue = actualValue;
+//     this.message = `failure (expected: '${this.expectedValue}' [${Utility.typeOf(this.expectedValue)}]) (actual: '${this.actualValue}' [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;
+// }
+//
+// PreconditionsError.prototype = Object.create(Error.prototype);
+// PreconditionsError.prototype.constructor = PreconditionsError;
+//
+// export { PreconditionsError }
 
 /**
  * @singleton
@@ -67,7 +68,11 @@ export default class Preconditions {
      * @param {String} [message]
      */
     static fail(expectedValue, actualValue, message) {
-        throw new PreconditionsError(expectedValue, actualValue, message || 'Preconditions failure');
+        throw new PreconditionsError({
+            expectedValue: expectedValue,
+            actualValue: actualValue,
+            message: message || 'Preconditions failure'
+        });
     }
 
     /**
@@ -207,23 +212,25 @@ export default class Preconditions {
     /**
      *
      * @param {*} object
-     * @param {Class|Object} [clazz]
+     * @param {Class} [clazz]
      * @param {String} [message]
      * @returns {Object}
      */
     static shouldBeInstance(object, clazz, message) {
         Preconditions.shouldBeDefined(object, message || 'object must be defined');
 
-        if (!clazz) {
-            clazz = CoreObject;
+        if (!Utility.isInstance(object)) {
+            Preconditions.fail(CoreObject, clazz, message || 'object not an instance');
         }
 
-        if (!CoreObject.isClass(clazz)) {
-            Preconditions.fail(CoreObject, clazz, message || 'Class not a CoreObject class');
-        }
+        if (clazz) {
+            if (!Utility.isClass(clazz)) {
+                Preconditions.fail(CoreObject, clazz, message || 'clazz not a class');
+            }
 
-        if (!clazz.isInstance(object)) {
-            Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
+            if (!clazz.isInstance(object)) {
+                Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
+            }
         }
 
         return object;
@@ -269,6 +276,29 @@ export default class Preconditions {
         let fn = Utility.typeMatcher('string');
 
         return Preconditions.shouldBe(fn, 'object', string, message);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {Class<Error>} [clazz]
+     * @param {String} [message]
+     * @returns Error
+     */
+    static shouldBeError(object, clazz, message) {
+        Preconditions.shouldBeType('error', object, message || 'Should be error type');
+
+        if (clazz) {
+            if (!Errors.isErrorClass(clazz)) {
+                Preconditions.fail(Error, clazz, message || 'must be error class');
+            }
+
+            if (!clazz.isInstance(object)) {
+                Preconditions.fail(clazz, object, message || 'must be error instance.');
+            }
+        }
+
+        return object;
     }
 
     /**

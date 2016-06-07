@@ -34,6 +34,16 @@ export default class Satoshi extends Currency {
 
     /**
      *
+     * @param {Number|Money|String} value
+     * @param {Number|Money|String|function|Converter} [optionalConversion]
+     * @returns {Money}
+     */
+    static create(value, optionalConversion) {
+        return super.create(value, optionalConversion);
+    }
+
+    /**
+     *
      * @param valueInBitcoinOrMoney
      */
     static fromBitcoin(valueInBitcoinOrMoney) {
