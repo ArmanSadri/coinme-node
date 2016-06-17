@@ -20,13 +20,16 @@ class PreconditionsError extends AbstractError {
         let actualValue = options.actualValue;
         let message = options.message;
 
-        let inner_message = `failure (expected: '${expectedValue}' [${Utility.typeOf(expectedValue)}]) (actual: '${actualValue}' [${Utility.typeOf(actualValue)}]) (message: ${message})`;
+        super(`failure (expected: '${expectedValue}' [${Utility.typeOf(expectedValue)}]) (actual: '${actualValue}' [${Utility.typeOf(actualValue)}]) (message: ${message})`);
 
-        super(inner_message);
-
+        this._innerMessage = message;
         this._cause = cause;
         this._expectedValue = expectedValue;
         this._actualValue = actualValue;
+    }
+
+    get innerMessage() {
+        return this._innerMessage;
     }
 
     get actualValue() {

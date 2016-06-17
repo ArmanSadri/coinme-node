@@ -3,6 +3,7 @@
 import Utility from "./Utility";
 import Lodash from "lodash/index";
 import CoreObject from './CoreObject';
+import AbstractError from './errors/AbstractError';
 import { Errors, PreconditionsError } from './errors';
 
 // class PreconditionsError extends AbstractError {
@@ -281,7 +282,7 @@ export default class Preconditions {
     /**
      *
      * @param {*} object
-     * @param {Class<Error>} [clazz]
+     * @param {AbstractError} [clazz]
      * @param {String} [message]
      * @returns Error
      */
