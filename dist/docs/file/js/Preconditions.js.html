@@ -42,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
@@ -70,6 +71,7 @@
 import Utility from &quot;./Utility&quot;;
 import Lodash from &quot;lodash/index&quot;;
 import CoreObject from &apos;./CoreObject&apos;;
+import AbstractError from &apos;./errors/AbstractError&apos;;
 import { Errors, PreconditionsError } from &apos;./errors&apos;;
 
 // class PreconditionsError extends AbstractError {
@@ -204,7 +206,7 @@ export default class Preconditions {
      * @return {String}
      */
     static shouldNotBeBlank(string, message) {
-        Preconditions.shouldBeString(string);
+        Preconditions.shouldBeString(string, message || &apos;not blank&apos;);
 
         return Preconditions.shouldBe(Utility.isNotBlank, &apos;not blank&apos;, string, message || &apos;must not be blank.&apos;);
     }
@@ -348,7 +350,7 @@ export default class Preconditions {
     /**
      *
      * @param {*} object
-     * @param {Class&lt;Error&gt;} [clazz]
+     * @param {AbstractError} [clazz]
      * @param {String} [message]
      * @returns Error
      */

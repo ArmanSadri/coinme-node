@@ -45,10 +45,9 @@ var PreconditionsError = function (_AbstractError) {
         var actualValue = options.actualValue;
         var message = options.message;
 
-        var inner_message = 'failure (expected: \'' + expectedValue + '\' [' + _Utility2.default.typeOf(expectedValue) + ']) (actual: \'' + actualValue + '\' [' + _Utility2.default.typeOf(actualValue) + ']) (message: ' + message + ')';
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PreconditionsError).call(this, 'failure (expected: \'' + expectedValue + '\' [' + _Utility2.default.typeOf(expectedValue) + ']) (actual: \'' + actualValue + '\' [' + _Utility2.default.typeOf(actualValue) + ']) (message: ' + message + ')'));
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PreconditionsError).call(this, inner_message));
-
+        _this._innerMessage = message;
         _this._cause = cause;
         _this._expectedValue = expectedValue;
         _this._actualValue = actualValue;
@@ -56,6 +55,11 @@ var PreconditionsError = function (_AbstractError) {
     }
 
     _createClass(PreconditionsError, [{
+        key: 'innerMessage',
+        get: function get() {
+            return this._innerMessage;
+        }
+    }, {
         key: 'actualValue',
         get: function get() {
             return this._actualValue;

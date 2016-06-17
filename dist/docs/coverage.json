@@ -1,7 +1,7 @@
 {
-  "coverage": "64.28%",
-  "expectCount": 224,
-  "actualCount": 144,
+  "coverage": "68.09%",
+  "expectCount": 257,
+  "actualCount": 175,
   "files": {
     "js/slack/AbstractBuilder.js": {
       "expectCount": 3,
@@ -12,14 +12,14 @@
       ]
     },
     "js/errors/AbstractError.js": {
-      "expectCount": 8,
-      "actualCount": 3,
+      "expectCount": 10,
+      "actualCount": 5,
       "undocumentLines": [
-        1,
-        20,
-        24,
-        23,
-        32
+        3,
+        49,
+        48,
+        47,
+        52
       ]
     },
     "js/slack/AbstractNotificationTemplate.js": {
@@ -30,13 +30,12 @@
       ]
     },
     "js/Address.js": {
-      "expectCount": 5,
-      "actualCount": 1,
+      "expectCount": 12,
+      "actualCount": 9,
       "undocumentLines": [
-        10,
-        23,
-        31,
-        27
+        100,
+        92,
+        96
       ]
     },
     "js/slack/AttachmentBuilder.js": {
@@ -70,16 +69,16 @@
       "undocumentLines": []
     },
     "js/CoreObject.js": {
-      "expectCount": 11,
-      "actualCount": 4,
+      "expectCount": 12,
+      "actualCount": 5,
       "undocumentLines": [
         24,
         16,
         20,
         37,
         33,
-        29,
-        41
+        41,
+        29
       ]
     },
     "js/money/Currency.js": {
@@ -94,10 +93,11 @@
       ]
     },
     "js/errors/Errors.js": {
-      "expectCount": 3,
-      "actualCount": 2,
+      "expectCount": 15,
+      "actualCount": 13,
       "undocumentLines": [
-        3
+        13,
+        109
       ]
     },
     "js/slack/FieldBuilder.js": {
@@ -112,6 +112,15 @@
       "expectCount": 4,
       "actualCount": 4,
       "undocumentLines": []
+    },
+    "js/errors/HttpError.js": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        5,
+        30,
+        41
+      ]
     },
     "js/slack/InlineNotificationTemplate.js": {
       "expectCount": 2,
@@ -171,14 +180,15 @@
       "undocumentLines": []
     },
     "js/errors/PreconditionsError.js": {
-      "expectCount": 6,
+      "expectCount": 7,
       "actualCount": 1,
       "undocumentLines": [
         4,
-        32,
-        40,
-        36,
-        44
+        35,
+        43,
+        39,
+        31,
+        47
       ]
     },
     "js/data/UserBuilder.js": {
@@ -216,16 +226,14 @@
       ]
     },
     "js/Utility.js": {
-      "expectCount": 34,
-      "actualCount": 22,
+      "expectCount": 39,
+      "actualCount": 29,
       "undocumentLines": [
         67,
         83,
         44,
         52,
-        434,
         48,
-        438,
         40,
         75,
         79,

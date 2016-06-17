@@ -42,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
@@ -65,12 +66,14 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/errors/AbstractError.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">function ExtendableBuiltin(cls){
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Utility from &apos;../Utility&apos;;
+
+function ExtendableBuiltin(cls){
 
     function ExtendableBuiltin(){
         cls.apply(this, arguments);
     }
-    
+
     ExtendableBuiltin.prototype = Object.create(cls.prototype);
 
     Object.setPrototypeOf(ExtendableBuiltin, cls);
@@ -79,17 +82,30 @@
 }
 
 /**
- *
  * @class
  */
 class AbstractError extends ExtendableBuiltin(Error) {
 
-    constructor(message) {
+    /**
+     *
+     * @param {String|Object} options
+     */
+    constructor(options) {
+        if (Utility.isString(options)) {
+            let message = options;
+
+            options = { message: message };
+        } else if (Utility.isNullOrUndefined(options)) {
+            options = { message: &apos;Unknown Error&apos; };
+        }
+
+        /**
+         * @type {String}
+         */
+        let message = Utility.take(options, &apos;message&apos;, Utility.isString);
+
         super(message);
-
-        this.name = this.constructor.name;
-        this.message = message;
-
+        
         var error = Error.call(this, message);
         // if (typeof Error.captureStackTrace === &apos;function&apos;) {
         //     Error.captureStackTrace(this, this.constructor);
@@ -97,6 +113,16 @@ class AbstractError extends ExtendableBuiltin(Error) {
         //     this.stack = (new Error(message)).stack;
         // }
         this.stack = error.stack;
+        this.name = this.constructor.name;
+        this.message = message;
+    }
+
+    toJSON() {
+        return {
+            stack: this.stack,
+            name: this.name,
+            message: this.message
+        };
     }
 
     /**
@@ -128,6 +154,14 @@ class AbstractError extends ExtendableBuiltin(Error) {
      */
     static isInstance(obj) {
         return obj instanceof this;
+    }
+
+    /**
+     * @param obj
+     * @returns {boolean}
+     */
+    static isInstanceOrClass(obj) {
+        return this.isInstance(obj) || this.isClass(obj);
     }
 }
 

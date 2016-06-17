@@ -6,6 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _Utility = require('../Utility');
+
+var _Utility2 = _interopRequireDefault(_Utility);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -26,20 +32,34 @@ function ExtendableBuiltin(cls) {
 }
 
 /**
- *
  * @class
  */
 
 var AbstractError = function (_ExtendableBuiltin) {
     _inherits(AbstractError, _ExtendableBuiltin);
 
-    function AbstractError(message) {
+    /**
+     *
+     * @param {String|Object} options
+     */
+
+    function AbstractError(options) {
         _classCallCheck(this, AbstractError);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractError).call(this, message));
+        if (_Utility2.default.isString(options)) {
+            var _message = options;
 
-        _this.name = _this.constructor.name;
-        _this.message = message;
+            options = { message: _message };
+        } else if (_Utility2.default.isNullOrUndefined(options)) {
+            options = { message: 'Unknown Error' };
+        }
+
+        /**
+         * @type {String}
+         */
+        var message = _Utility2.default.take(options, 'message', _Utility2.default.isString);
+
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractError).call(this, message));
 
         var error = Error.call(_this, message);
         // if (typeof Error.captureStackTrace === 'function') {
@@ -48,18 +68,29 @@ var AbstractError = function (_ExtendableBuiltin) {
         //     this.stack = (new Error(message)).stack;
         // }
         _this.stack = error.stack;
+        _this.name = _this.constructor.name;
+        _this.message = message;
         return _this;
     }
 
-    /**
-     * Determines if a class definition is a subclass of CoreObject
-     *
-     * @param {*} clazz
-     * @returns {boolean}
-     */
+    _createClass(AbstractError, [{
+        key: 'toJSON',
+        value: function toJSON() {
+            return {
+                stack: this.stack,
+                name: this.name,
+                message: this.message
+            };
+        }
 
+        /**
+         * Determines if a class definition is a subclass of CoreObject
+         *
+         * @param {*} clazz
+         * @returns {boolean}
+         */
 
-    _createClass(AbstractError, null, [{
+    }], [{
         key: 'isClass',
         value: function isClass(clazz) {
             if ('function' !== typeof clazz) {
@@ -87,6 +118,17 @@ var AbstractError = function (_ExtendableBuiltin) {
         key: 'isInstance',
         value: function isInstance(obj) {
             return obj instanceof this;
+        }
+
+        /**
+         * @param obj
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'isInstanceOrClass',
+        value: function isInstanceOrClass(obj) {
+            return this.isInstance(obj) || this.isClass(obj);
         }
     }]);
 

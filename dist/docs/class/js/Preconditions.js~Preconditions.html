@@ -42,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
@@ -65,13 +66,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Preconditions from &apos;<span><a href="file/js/Preconditions.js.html#lineNumber62">coinme-node/js/Preconditions.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Preconditions from &apos;<span><a href="file/js/Preconditions.js.html#lineNumber63">coinme-node/js/Preconditions.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/Preconditions.js.html#lineNumber62">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/Preconditions.js.html#lineNumber63">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -244,7 +245,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html#static-method-shouldBeError">shouldBeError</a></span></span><span data-ice="signature">(object: <span>*</span>, clazz: <span>Class</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>&gt;, message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html#static-method-shouldBeError">shouldBeError</a></span></span><span data-ice="signature">(object: <span>*</span>, clazz: <span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span>, message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -682,7 +683,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber70">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber71">source</a></span></span>
     </span>
   </h3>
 
@@ -750,7 +751,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber176">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber177">source</a></span></span>
     </span>
   </h3>
 
@@ -834,7 +835,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber353">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber354">source</a></span></span>
     </span>
   </h3>
 
@@ -906,7 +907,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber194">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber195">source</a></span></span>
     </span>
   </h3>
 
@@ -984,7 +985,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber115">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber116">source</a></span></span>
     </span>
   </h3>
 
@@ -1053,11 +1054,11 @@
     
     
     
-    <span data-ice="name">shouldBeError</span><span data-ice="signature">(object: <span>*</span>, clazz: <span>Class</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>&gt;, message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>*</span></span>
+    <span data-ice="name">shouldBeError</span><span data-ice="signature">(object: <span>*</span>, clazz: <span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span>, message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber288">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber289">source</a></span></span>
     </span>
   </h3>
 
@@ -1084,7 +1085,7 @@
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">clazz</td>
-      <td data-ice="type"><span>Class</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>&gt;</td>
+      <td data-ice="type"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"></td>
     </tr>
@@ -1136,7 +1137,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber129">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber130">source</a></span></span>
     </span>
   </h3>
 
@@ -1209,7 +1210,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber104">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber105">source</a></span></span>
     </span>
   </h3>
 
@@ -1281,7 +1282,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber245">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber246">source</a></span></span>
     </span>
   </h3>
 
@@ -1353,7 +1354,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber151">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber152">source</a></span></span>
     </span>
   </h3>
 
@@ -1425,7 +1426,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber369">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber370">source</a></span></span>
     </span>
   </h3>
 
@@ -1503,7 +1504,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber219">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber220">source</a></span></span>
     </span>
   </h3>
 
@@ -1581,7 +1582,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber161">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber162">source</a></span></span>
     </span>
   </h3>
 
@@ -1653,7 +1654,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber259">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber260">source</a></span></span>
     </span>
   </h3>
 
@@ -1725,7 +1726,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber386">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber387">source</a></span></span>
     </span>
   </h3>
 
@@ -1797,7 +1798,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber273">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber274">source</a></span></span>
     </span>
   </h3>
 
@@ -1869,7 +1870,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber321">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber322">source</a></span></span>
     </span>
   </h3>
 
@@ -1941,7 +1942,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber311">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber312">source</a></span></span>
     </span>
   </h3>
 
@@ -2019,7 +2020,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber84">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber85">source</a></span></span>
     </span>
   </h3>
 
@@ -2092,7 +2093,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber139">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber140">source</a></span></span>
     </span>
   </h3>
 
@@ -2164,7 +2165,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber94">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber95">source</a></span></span>
     </span>
   </h3>
 
@@ -2236,7 +2237,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber337">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/Preconditions.js.html#lineNumber338">source</a></span></span>
     </span>
   </h3>
 

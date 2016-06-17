@@ -46,9 +46,7 @@ describe('Errors', () => {
     });
 
     it('Utility.isInstance(new PreconditionsError())', () => {
-        let e = new PreconditionsError({
-            
-        });
+        let e = new PreconditionsError({});
 
         assert.isTrue(Utility.isError(e));
         assert.isTrue(Errors.isErrorInstance(e));
@@ -387,6 +385,81 @@ describe('Utility', function () {
         assert.isFalse(Utility.isFunction(''));
         assert.isFalse(Utility.isFunction(NaN));
     });
+
+    it('take(object, array<String>)', () => {
+        let object = {
+            one: 'one',
+            two: 'two',
+            three: 'three'
+        };
+
+        let objectWithValue1 = Utility.take(object, ['one']);
+
+        Preconditions.shouldBeObject(objectWithValue1);
+        Preconditions.shouldBeString(objectWithValue1.one);
+
+        assert.equal(objectWithValue1.one, 'one', 'Should have returned an object');
+        assert.equal(1, Object.keys(objectWithValue1).length, 'Should have returned only one value');
+    });
+
+    it('take(object, array<Object>)', () => {
+        let object = {
+            one: 'one',
+            two: 'two',
+            three: 'three'
+        };
+
+        let objectWithValue1 = Utility.take(object, [{key: 'one'}]);
+
+        Preconditions.shouldBeObject(objectWithValue1);
+        Preconditions.shouldBeString(objectWithValue1.one);
+
+        assert.equal(objectWithValue1.one, 'one', 'Should have returned an object');
+        assert.equal(1, Object.keys(objectWithValue1).length, 'Should have returned only one value');
+    });
+
+    it('take(object, {{ key: "type" }})', () => {
+        let object = {
+            one: 'one',
+            two: 'two',
+            three: 'three'
+        };
+
+        let objectWithValue1 = Utility.take(object, {one: 'string'});
+
+        Preconditions.shouldBeObject(objectWithValue1);
+        Preconditions.shouldBeString(objectWithValue1.one);
+
+        assert.equal(objectWithValue1.one, 'one', 'Should have returned an object');
+        assert.equal(1, Object.keys(objectWithValue1).length, 'Should have returned only one value');
+    });
+    
+    it('take(object, {{ key: "type" }})', () => {
+        let object = {
+            one: 'one',
+            two: 'two',
+            three: 'three'
+        };
+
+        let objectWithValue1 = Utility.take(object, {
+            one: 'string',
+            two: {
+                adapter: function() {
+                    return 'CHANGED';
+                }
+            }
+        });
+
+        Preconditions.shouldBeObject(objectWithValue1);
+        Preconditions.shouldBeString(objectWithValue1.one);
+        Preconditions.shouldBeString(objectWithValue1.two);
+
+        assert.equal(objectWithValue1.one, 'one', 'Should have returned an object');
+        assert.equal(objectWithValue1.two, 'CHANGED', 'Should have returned an object');
+
+        assert.equal(2, Object.keys(objectWithValue1).length, 'Should have returned only one value');
+    });
+
 
     it('take - with type', () => {
         let bitcoin = Bitcoin.create(1);

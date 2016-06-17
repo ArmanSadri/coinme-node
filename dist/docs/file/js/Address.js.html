@@ -42,6 +42,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
@@ -65,38 +66,168 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/Address.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Utility from &apos;./Utility&apos;;
-import CoreObject from &apos;./CoreObject&apos;;
-import URI from &apos;urijs&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Utility from &quot;./Utility&quot;;
+import CoreObject from &quot;./CoreObject&quot;;
+import URI from &quot;urijs&quot;;
+import altcoin from &quot;altcoin-address&quot;;
+import Preconditions from &quot;~/Preconditions&quot;;
+
+let VALIDATORS = {
+
+    /**
+     * @param {URI|null|String} uri
+     */
+    &apos;general&apos;: function (uri) {
+        if (!uri) {
+            return false;
+        }
+
+        if (Utility.isString(uri)) {
+            let index = uri.indexOf(&quot;:/&quot;);
+
+            if (-1 === index) {
+                return false;
+            }
+
+            let protocol = uri.substring(0, index);
+            let rest = uri.substring(index + 2);
+
+            uri = new URI(protocol + &quot;://&quot; + rest);
+        }
+
+        let scheme = uri.scheme();
+        let host = uri.host();
+
+        return !(Utility.isBlank(scheme) || Utility.isBlank(host));
+    },
+
+    /**
+     * @param {URI} uri
+     * @returns {*}
+     */
+    &apos;bitcoin&apos;: function (uri) {
+        return altcoin.validate(Utility.optString(uri));
+    }
+};
 
 /**
  * A class for uniquely identifying something.
  */
 export default class Address extends CoreObject {
 
+    /**
+     *
+     * @param {URI|String|Object} options
+     * @param {Function} [options.validator]
+     * @param {Boolean} [options.strict] Set to false to skip validation.
+     */
     constructor(options) {
         if (Utility.isString(options)) {
-            let string = options;
-            options = { value: string };
+            options = {value: options};
+        } else if (options instanceof URI) {
+            options = {value: options};
         }
+
+        /**
+         * @type {String|URI}
+         */
+        let value = Utility.take(options, &apos;value&apos;);
+        let validator = Utility.take(options, &apos;validator&apos;);
+        let strict = Utility.take(options, &apos;strict&apos;);
+
+        Preconditions.shouldBeDefined(value, &apos;Cannot construct an empty Address.&apos;);
+
+        Preconditions.shouldBeTrue(
+            Preconditions.shouldBeFunction(
+                VALIDATORS[&apos;general&apos;], &apos;general validator is required&apos;)
+            (value),
+            &apos;general validator failed for: &apos; + value
+        );
 
         super(options);
 
-        var uri = URI(options.value);
+        this._uri = URI(value);
+        this._validator = validator || VALIDATORS[Utility.toLowerCase(this.resource)];
+        this._strict = (false === strict);
 
-        this._scheme = uri.scheme();
+        if (this._strict) {
+            // Require Validation
+            Preconditions.shouldBeFunction(this.validator, &apos;validator not found for \&apos;&apos; + this.toString() + &apos;\&apos;&apos;);
+            Preconditions.shouldBeTrue(this.valid, &apos;not valid&apos;);
+        }
     }
 
+    get strict() {
+        return this._strict;
+    }
+
+    get value() {
+        return this.uri.host();
+    }
+
+    get resource() {
+        return this.uri.scheme();
+    }
+
+    /**
+     * @returns {URI}
+     */
+    get uri() {
+        return this._uri;
+    }
+
+    /**
+     *
+     * @returns {Boolean}
+     */
+    get valid() {
+        if (Utility.isUndefined(this._valid) &amp;&amp; this.validator) {
+            this._valid = this.validator(this.uri);
+        }
+
+        return this._valid;
+    }
+
+    /**
+     * @returns {Function}
+     */
+    get validator() {
+        return this._validator;
+    }
+
+    /**
+     *
+     * @returns {String}
+     */
     toString() {
-
+        return this.valueOf();
     }
 
+    /**
+     * @returns {String}
+     */
     valueOf() {
-
+        return this._uri.toString();
     }
-    
-    static toString() {
 
+    /**
+     * @returns {String}
+     */
+    static toString() {
+        return &apos;Address&apos;;
+    }
+
+    /**
+     * @param {String} scheme
+     * @param {Function} validatorFn
+     */
+    static registerValidator(scheme, validatorFn) {
+        scheme = Preconditions.shouldNotBeBlank(Utility.toLowerCase(Preconditions.shouldBeString(scheme)));
+        validatorFn = Preconditions.shouldBeFunction(validatorFn);
+
+        VALIDATORS[Utility.toLowerCase(scheme)] = validatorFn;
+
+        return validatorFn;
     }
 }</code></pre>
 

@@ -138,7 +138,7 @@ export default class Preconditions {
      * @return {String}
      */
     static shouldNotBeBlank(string, message) {
-        Preconditions.shouldBeString(string);
+        Preconditions.shouldBeString(string, message || 'not blank');
 
         return Preconditions.shouldBe(Utility.isNotBlank, 'not blank', string, message || 'must not be blank.');
     }

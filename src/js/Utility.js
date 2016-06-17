@@ -91,46 +91,167 @@ class Utility {
     /**
      * Uses Lodash.get, but then removes the key from the parent object.
      *
+     * It takes properties off of an object and optionally does validation.
+     *
+     * var value = Utility.take(object, key, type);
+     *
+     * var value = Utility.take(object, {
+     *                           key: String,
+     *                       });
+     *
+     * var {value1, value2} = Utility.take(object, [keyAsString1, keyAsString2]);
+     *
+     * var {value1} = Utility.take(object, [keyAsString1]);
+     *
+     * A ruleset is defined as:
+     *
+     *  {
+     *      // return true to pass. false to fail.
+     *      validator: function(value) { return boolean; } throws Error,
+     *      type: String,
+     *      adapter: function(key, value) { return new_value; },
+     *      required: true|false|undefined
+     *   }
+     *
      * @param {Object} object
      * @param {String|Object|Array} keyAsStringObjectArray
-     * @param {Function|Class} [optionalTypeDeclaration] - If you pass a function in, it must return true
+     * @param {Function|Class|Object} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
+     *
+     * @throws PreconditionsError
      *
      * @returns {*}
      */
-    static take(object, keyAsStringObjectArray, optionalTypeDeclaration) {
+    static take(object, keyAsStringObjectArray, optionalTypeDeclarationOrDefaults) {
         if (!object) {
             return undefined;
         }
 
         Preconditions.shouldBeDefined(keyAsStringObjectArray, 'key must be defined');
 
+        //region utilities
         /**
          *
-         * @param {Function|undefined} [validatorFn]
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
          * @param {String} key
          * @param {*} value
          * @returns {*}
          */
-        function executeValidator(validatorFn, key, value) {
-            if (validatorFn) {
-                Preconditions.shouldNotBeFalsey(validatorFn(value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
+        function executeValidator(ruleset, key, value) {
+            let fn = Lodash.get(ruleset, 'validator');
+            let scope = Lodash.get(ruleset, 'scope') || this;
+
+            if (fn) {
+                Preconditions.shouldBeFunction(fn);
+                Preconditions.shouldNotBeFalsey(fn.call(scope, value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
             }
 
             return value;
         }
 
-        if (Utility.isString(keyAsStringObjectArray)) {
+        /**
+         * If the ruleset requires, will throw.
+         *
+         * @throws PreconditionsError
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeAdapter(ruleset, key, value) {
+            let fn = Lodash.get(ruleset, 'adapter');
+            let scope = Lodash.get(ruleset, 'scope') || this;
+
+            if (fn) {
+                Preconditions.shouldBeFunction(fn, 'Validator must be a function');
+                
+                value = fn.call(scope, value);
+            }
+
+            return value;
+        }
+
+        /**
+         * If the ruleset requires, will throw.
+         *
+         * @throws PreconditionsError
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeRequired(ruleset, key, value) {
+            let required = Lodash.get(ruleset, 'required');
+
+            if (true === required) {
+                if (Utility.isNullOrUndefined(value)) {
+                    Preconditions.shouldBeExisting(value, `${key} is required`);
+                }
+            }
+
+            return value;
+        }
+
+        /**
+         * If the ruleset requires, will throw.
+         *
+         * @throws PreconditionsError
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeType(ruleset, key, value) {
+            let type = Lodash.get(ruleset, 'type');
+
+            if (type) {
+                Preconditions.shouldBeType(type, value, `${key} was wrong type.`);
+            }
+
+            return value;
+        }
+
+        /**
+         * Main entry point for checks.
+         *
+         * @param {{[adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeChecks(ruleset, key, value) {
+            value = executeRequired(ruleset, key, value);
+            value = executeType(ruleset, key, value);
+            value = executeAdapter(ruleset, key, value);
+            value = executeValidator(ruleset, key, value);
+
+            return value;
+        }
+        //endregion
+
+        let mode = Utility.typeOf(keyAsStringObjectArray);
+
+        let global_defaults = {};
+
+        if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
+            global_defaults = Lodash.assign(global_defaults, optionalTypeDeclarationOrDefaults);
+            optionalTypeDeclarationOrDefaults = null;
+        }
+
+        //region String Mode
+        if ('string' === mode) {
             /** @type {String} */
             let key = keyAsStringObjectArray;
             let value = Utility.result(object, key);
             let validatorFn = Utility.yes;
 
-            if (Utility.isClass(optionalTypeDeclaration)) {
-                validatorFn = Utility.typeMatcher(optionalTypeDeclaration)
-            } else if (Utility.isFunction(optionalTypeDeclaration)) {
-                validatorFn = optionalTypeDeclaration;
+            if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
+                validatorFn = Utility.typeMatcher(optionalTypeDeclarationOrDefaults)
+            } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
+                validatorFn = optionalTypeDeclarationOrDefaults;
             } else if (Utility.isNullOrUndefined(keyAsStringObjectArray)) {
                 validatorFn = Utility.yes;
+            } else {
+                // TODO: apply global defaults.
             }
 
             if (-1 != key.indexOf('.')) {
@@ -145,91 +266,113 @@ class Utility {
             }
 
             return executeValidator(validatorFn, key, value);
-        } else if (Utility.isArray(keyAsStringObjectArray) || Utility.isObject(keyAsStringObjectArray)) {
-            let result = {};
-            let array_mode = Utility.isArray(keyAsStringObjectArray);
+        }
+        //endregion
 
-            let defaults = Lodash.defaults(Utility.result(keyAsStringObjectArray, 'defaults') || {}, {
+        //region Array/Object mode
+        if ('array' === mode || 'object' === mode) {
+            let result = {};
+
+            let defaults = Lodash.defaults(Utility.result(keyAsStringObjectArray, 'defaults', {}), global_defaults, {
                 required: false,
                 validator: null
             });
 
-            Lodash.forEach(keyAsStringObjectArray, function(/** @type {String|Object|Function} */rulesetOrObject, /** @type {String} */keyOrIndex) {
-                let key = keyOrIndex;
-                let ruleset = rulesetOrObject;
+            Lodash.forEach(keyAsStringObjectArray,
 
-                if (array_mode) {
-                    if (Utility.isString(rulesetOrObject)) {
-                        key = rulesetOrObject;
-                        ruleset = Lodash.assign({}, defaults);
-                    } else if (Utility.isObject(rulesetOrObject)) {
-                        key = Utility.result(rulesetOrObject, 'key');
-                        ruleset = rulesetOrObject;
-                    }
-                } else {
-                    key = keyOrIndex;
-                    ruleset = rulesetOrObject;
-                }
+                /**
+                 *
+                 * @param {String|Object|Function} rulesetOrObject
+                 * @param {String} [rulesetOrObject.key]
+                 * @param {Number|String} keyOrIndex
+                 */
+                function (rulesetOrObject, keyOrIndex) {
+                    /**
+                     * @type {String}
+                     */
+                    let key;
 
-                /** @type {String} */
-                let type = Utility.typeOf(ruleset);
+                    /**
+                     * @type {Object}
+                     */
+                    let ruleset;
 
-                if ('string' === type) {
-                    // The ruleset is a data type
-                    /** @type {String} */
-                    let requiredType = ruleset;
+                    if ('array' === mode) {
+                        if (Utility.isString(rulesetOrObject)) {
+                            key = rulesetOrObject;
+                            ruleset = Lodash.defaults({}, defaults);
 
-                    ruleset = {
-                        key: key,
-                        type: requiredType,
-                        validator: null
-                    };
-                } else if ('object' === type) {
-                    // this is a ruleset that overrides our ruleset.
-                    ruleset = Lodash.defaults({ key: key }, ruleset);
-                } else if ('function' === type) {
-                    let fn = ruleset;
-                    
-                    ruleset = {
-                        key: key,
-                        validator: fn
-                    };
-                } else {
-                    throw new Error('Cannot determine what to do with: ' + type + ': ' + ruleset);
-                }
+                            if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
+                                ruleset = Lodash.defaults(ruleset, optionalTypeDeclarationOrDefaults);
+                            }
+                        } else if (Utility.isObject(rulesetOrObject)) {
+                            /**
+                             * @type {String}
+                             */
+                            key = Preconditions.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
+                            ruleset = rulesetOrObject;
+                        }
+                    } else if ('object' === mode) {
+                        key = keyOrIndex;
 
-                ruleset = Lodash.defaults(ruleset, defaults);
-
-                // If we don't have a validator yet, check to see if we can get one.
-                if (!ruleset.validator && Utility.isNotBlank(ruleset.type)) {
-                    if ('string' === ruleset.type) {
-                        ruleset.validator = Utility.isString;
-                    } else if ('number' === requiredType) {
-                        ruleset.validator = Utility.isNumber;
-                    } else if ('required' === requiredType) {
-                        ruleset.validator = Utility.isExisting;
+                        if (Utility.isString(rulesetOrObject)) {
+                            ruleset = {
+                                type: rulesetOrObject
+                            };
+                        } else if (Utility.isObject(rulesetOrObject)) {
+                            ruleset = rulesetOrObject;
+                        }
                     } else {
-                        throw new Error('I should add more types');
+                        Preconditions.fail('array|object', mode, 'Unknown mode');
                     }
-                }
 
-                if ('defaults' === key) {
-                    return;
-                }
-                
-                let entry = executeValidator(ruleset.validator, key, Utility.take(object, key));
+                    Preconditions.shouldNotBeBlank(key, 'Key must be defined by here in all situations.');
+                    Preconditions.shouldBeObject(ruleset, 'Must have a valid ruleset: ' + ruleset);
 
-                if (ruleset.required && Utility.isUndefined(entry)) {
-                    throw new Error('Required key not present: ' + ruleset.key);
-                }
+                    // if (Utility.isObject(ruleset)) {
+                    //     // this is a ruleset that overrides our ruleset.
+                    //     ruleset = Lodash.defaults({key: key}, ruleset, defaults);
+                    // } else if (Utility.isFunction(ruleset)) {
+                    //     let fn = ruleset;
+                    //
+                    //     ruleset = {
+                    //         key: key,
+                    //         validator: fn
+                    //     };
+                    // } else {
+                    //     throw new Error('Cannot determine what to do with: ' + typeOfRuleset + ': ' + ruleset);
+                    // }
 
-                result[key] = entry;
-            });
+                    ruleset = Lodash.defaults(ruleset, defaults);
+
+                    let requiredType = ruleset.type;
+
+                    // If we don't have a validator yet, check to see if we can get one.
+                    if (!ruleset.validator && Utility.isNotBlank(requiredType)) {
+                        if ('string' === requiredType) {
+                            ruleset.validator = Utility.isString;
+                        } else if ('number' === requiredType) {
+                            ruleset.validator = Utility.isNumber;
+                        } else if ('required' === requiredType) {
+                            ruleset.validator = Utility.isExisting;
+                        } else {
+                            throw new Error('I should add more types: ' + requiredType);
+                        }
+                    }
+
+                    if ('defaults' === key) {
+                        return;
+                    }
+
+                    result[key] = executeChecks(ruleset, key, Utility.take(object, key));
+                });
 
             return result;
         } else {
             throw new Error('Not sure how to handle this case: ' + Utility.typeOf(keyAsStringObjectArray));
         }
+        //endregion
+
     }
 
     /**
@@ -297,7 +440,7 @@ class Utility {
 
                 Preconditions.shouldBeTrue(knownTypes[type], 'unknown type: ' + type);
 
-                return (function(/** @type {*} */ object) {
+                return (function (/** @type {*} */ object) {
                     let objectType = Utility.typeOf(object);
 
                     if ('object' === type || 'instance' === type) {
@@ -310,7 +453,7 @@ class Utility {
                 /**
                  * @type {Class<CoreObject>}
                  */
-                return function(/** @type {*} */object) {
+                return function (/** @type {*} */object) {
                     return (type.isInstance(object));
                 };
             }
@@ -442,7 +585,7 @@ class Utility {
         if (Utility.isNullOrUndefined(object)) {
             return true;
         }
-        
+
         let type = Utility.typeOf(object);
         let primitives = ['number', 'string'];
 
@@ -458,7 +601,7 @@ class Utility {
     static isPromise(object) {
         return Promise.is(object);
     }
-    
+
     /**
      *
      * @param valueOrFn

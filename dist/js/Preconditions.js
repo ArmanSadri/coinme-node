@@ -18,6 +18,10 @@ var _CoreObject = require("./CoreObject");
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
+var _AbstractError = require("./errors/AbstractError");
+
+var _AbstractError2 = _interopRequireDefault(_AbstractError);
+
 var _errors = require("./errors");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -182,7 +186,7 @@ var Preconditions = function () {
     }, {
         key: "shouldNotBeBlank",
         value: function shouldNotBeBlank(string, message) {
-            Preconditions.shouldBeString(string);
+            Preconditions.shouldBeString(string, message || 'not blank');
 
             return Preconditions.shouldBe(_Utility2.default.isNotBlank, 'not blank', string, message || 'must not be blank.');
         }
@@ -350,7 +354,7 @@ var Preconditions = function () {
         /**
          *
          * @param {*} object
-         * @param {Class<Error>} [clazz]
+         * @param {AbstractError} [clazz]
          * @param {String} [message]
          * @returns Error
          */
