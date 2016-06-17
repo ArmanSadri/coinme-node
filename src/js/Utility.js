@@ -93,7 +93,7 @@ class Utility {
      *
      * @param {Object} object
      * @param {String|Object|Array} keyAsStringObjectArray
-     * @param {Function|Class} [optionalTypeDeclaration]
+     * @param {Function|Class} [optionalTypeDeclaration] - If you pass a function in, it must return true
      *
      * @returns {*}
      */
@@ -107,12 +107,13 @@ class Utility {
         /**
          *
          * @param {Function|undefined} [validatorFn]
+         * @param {String} key
          * @param {*} value
          * @returns {*}
          */
-        function executeValidator(validatorFn, value) {
+        function executeValidator(validatorFn, key, value) {
             if (validatorFn) {
-                Preconditions.shouldNotBeFalsey(validatorFn(value), 'Failed validation: ' + value);
+                Preconditions.shouldNotBeFalsey(validatorFn(value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
             }
 
             return value;
@@ -143,7 +144,7 @@ class Utility {
                 delete object[keyAsStringObjectArray];
             }
 
-            return executeValidator(validatorFn, value);
+            return executeValidator(validatorFn, key, value);
         } else if (Utility.isArray(keyAsStringObjectArray) || Utility.isObject(keyAsStringObjectArray)) {
             let result = {};
             let array_mode = Utility.isArray(keyAsStringObjectArray);
@@ -216,7 +217,7 @@ class Utility {
                     return;
                 }
                 
-                let entry = executeValidator(ruleset.validator, Utility.take(object, key));
+                let entry = executeValidator(ruleset.validator, key, Utility.take(object, key));
 
                 if (ruleset.required && Utility.isUndefined(entry)) {
                     throw new Error('Required key not present: ' + ruleset.key);
@@ -431,10 +432,70 @@ class Utility {
         return 'string' === Utility.typeOf(object);
     }
 
+    /**
+     * Determines if the argument is a Number, String, null, undefined
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isPrimitive(object) {
+        if (Utility.isNullOrUndefined(object)) {
+            return true;
+        }
+        
+        let type = Utility.typeOf(object);
+        let primitives = ['number', 'string'];
+
+        return -1 !== primitives.indexOf(type);
+    }
+
+    /**
+     * Determine if something is a promise
+     *
+     * @param {*} object
+     * @return boolean
+     */
+    static isPromise(object) {
+        return Promise.is(object);
+    }
+    
+    /**
+     *
+     * @param valueOrFn
+     */
+    static isTruthy(valueOrFn) {
+        let value;
+
+        if (Utility.isFunction(valueOrFn)) {
+            value = valueOrFn();
+        } else {
+            value = valueOrFn;
+        }
+
+        return !!value;
+    }
+
+    /**
+     *
+     * @param fn
+     * @returns {boolean}
+     */
     static isFunction(fn) {
         return 'function' === Utility.typeOf(fn);
     }
 
+    /**
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isNotFunction(object) {
+        return 'function' !== Utility.typeOf(object);
+    }
+
+    /**
+     * @param {*} object
+     * @returns {boolean}
+     */
     static isNaN(object) {
         return Lodash.isNaN(object);
     }
@@ -477,6 +538,18 @@ class Utility {
         Preconditions.shouldBeString(string);
 
         return string.toUpperCase();
+    }
+
+    /**
+     *
+     * @param object
+     */
+    static optString(object) {
+        if (!object) {
+            return undefined;
+        } else {
+            return object.toString();
+        }
     }
 
     /**
