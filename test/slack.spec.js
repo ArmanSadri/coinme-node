@@ -42,14 +42,12 @@ describe('Errors', () => {
     });
 
     it('Errors.isErrorInstance(AbstractError)', () => {
-        assert.isTrue(Errors.isErrorInstance(new AbstractError({
-
-        })));
+        assert.isTrue(Errors.isErrorInstance(new AbstractError('Abstract')));
     });
 
     it('Utility.isInstance(new PreconditionsError())', () => {
         let e = new PreconditionsError({
-
+            
         });
 
         assert.isTrue(Utility.isError(e));
@@ -71,7 +69,7 @@ describe('Errors', () => {
 
     it('Preconditions.shouldBeError', () => {
         let e = new PreconditionsError({
-
+            message: 'message'
         });
 
         Preconditions.shouldBeError(e, PreconditionsError, 'bad type: ' + e);
