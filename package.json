@@ -4,19 +4,21 @@
   "description": "The common library for Coinme Node apps",
   "main": "dist/js/index.js",
   "scripts": {
-    "test:debug": "npm run mocha",
     "test": "parallelshell 'npm run mocha' 'npm run watch:jshint'",
+    "test:debug": "npm run mocha",
+    "test:once": "npm run mocha:once",
     "test:cover": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha",
     "test:coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "watch:jshint": "watch 'jshint src/js --reporter=./node_modules/jshint-stylish/index.js' src/js/",
     "mocha": "mocha test --compilers js:babel-core/register --watch",
+    "mocha:once": "mocha test --compilers js:babel-core/register",
     "ci": "npm run test:cover && npm run test:coveralls",
     "relink": "npm unlink && npm link",
     "clean": "rm -rf dist/*",
     "copy:others": "rsync -avm --exclude='*.js' ./src/js/* ./dist/js",
     "babel": "./node_modules/.bin/babel src/js --out-dir dist/js -s",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
-    "build": "npm run clean && npm run copy:others && npm run babel && npm run docs && npm run relink"
+    "build": "npm run clean && npm run copy:others && npm run babel && npm run test:once && npm run docs && npm run relink"
   },
   "repository": {
     "type": "git",
