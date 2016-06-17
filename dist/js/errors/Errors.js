@@ -213,7 +213,6 @@ var Errors = function () {
          * @param {number} statusCode
          * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} [messageOrSpecOrError]
          * @param {Object} [properties]
-         * @param {Object} [properties]
          * @return {Error}
          */
 
