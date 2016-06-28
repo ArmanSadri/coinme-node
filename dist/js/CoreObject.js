@@ -133,6 +133,18 @@ var CoreObject = function (_Ember$Object) {
         value: function isInstance(obj) {
             return obj instanceof this;
         }
+
+        /**
+         *
+         * @param obj
+         * @return {boolean}
+         */
+
+    }, {
+        key: "isInstanceOrClass",
+        value: function isInstanceOrClass(obj) {
+            return this.isInstance(obj) || this.isClass(obj);
+        }
     }]);
 
     return CoreObject;

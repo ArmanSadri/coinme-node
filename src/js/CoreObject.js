@@ -87,4 +87,14 @@ export default class CoreObject extends Ember.Object {
     static isInstance(obj) {
         return obj instanceof this;
     }
+
+    /**
+     *
+     * @param obj
+     * @return {boolean}
+     */
+    static isInstanceOrClass(obj) {
+        return this.isInstance(obj) || this.isClass(obj);
+    }
+
 }

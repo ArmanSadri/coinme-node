@@ -32,16 +32,19 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
@@ -63,23 +66,102 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/errors/AbstractError.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- *
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Utility from &apos;../Utility&apos;;
+
+function ExtendableBuiltin(cls){
+
+    function ExtendableBuiltin(){
+        cls.apply(this, arguments);
+    }
+
+    ExtendableBuiltin.prototype = Object.create(cls.prototype);
+
+    Object.setPrototypeOf(ExtendableBuiltin, cls);
+
+    return ExtendableBuiltin;
+}
+
+/**
  * @class
  */
-class AbstractError extends Error {
+class AbstractError extends ExtendableBuiltin(Error) {
 
-    constructor(message) {
+    /**
+     *
+     * @param {String|Object} options
+     */
+    constructor(options) {
+        if (Utility.isString(options)) {
+            let message = options;
+
+            options = { message: message };
+        } else if (Utility.isNullOrUndefined(options)) {
+            options = { message: &apos;Unknown Error&apos; };
+        }
+
+        /**
+         * @type {String}
+         */
+        let message = Utility.take(options, &apos;message&apos;, Utility.isString);
+
         super(message);
-
+        
+        var error = Error.call(this, message);
+        // if (typeof Error.captureStackTrace === &apos;function&apos;) {
+        //     Error.captureStackTrace(this, this.constructor);
+        // } else {
+        //     this.stack = (new Error(message)).stack;
+        // }
+        this.stack = error.stack;
         this.name = this.constructor.name;
         this.message = message;
+    }
 
-        if (typeof Error.captureStackTrace === &apos;function&apos;) {
-            Error.captureStackTrace(this, this.constructor);
-        } else {
-            this.stack = (new Error(message)).stack;
+    toJSON() {
+        return {
+            stack: this.stack,
+            name: this.name,
+            message: this.message
+        };
+    }
+
+    /**
+     * Determines if a class definition is a subclass of CoreObject
+     *
+     * @param {*} clazz
+     * @returns {boolean}
+     */
+    static isClass(clazz) {
+        if (&apos;function&apos; !== typeof clazz) {
+            return false;
         }
+
+        while (clazz) {
+            if (clazz === this) {
+                return true;
+            }
+
+            clazz = Object.getPrototypeOf(clazz);
+        }
+
+        return false;
+    }
+
+    /**
+     *
+     * @param {*} obj
+     * @returns {boolean}
+     */
+    static isInstance(obj) {
+        return obj instanceof this;
+    }
+
+    /**
+     * @param obj
+     * @returns {boolean}
+     */
+    static isInstanceOrClass(obj) {
+        return this.isInstance(obj) || this.isClass(obj);
     }
 }
 
@@ -88,7 +170,7 @@ export default AbstractError;</code></pre>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.7)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

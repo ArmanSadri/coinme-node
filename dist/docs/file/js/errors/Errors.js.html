@@ -32,16 +32,19 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PreconditionsError">PreconditionsError</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
@@ -63,10 +66,264 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/errors/Errors.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">class Errors {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Utility from &apos;../Utility&apos;;
+import Preconditions from &apos;../Preconditions&apos;;
+import AbstractError from &quot;./AbstractError&quot;;
+import Lodash from &quot;lodash&quot;;
+import createError from &quot;http-errors&quot;;
+import HttpError from &apos;./HttpError&apos;;
 
+let defaults = {
+    message: &apos;Unknown Error&apos;,
+    properties: {}
+};
+
+class Errors {
+
+    /**
+     *
+     * @param {function} errorFactory
+     * @param {*} value
+     * @param {*|Function} predicateFn
+     * @param {Object} [options]
+     * @param {String} [options.message]
+     * @param {Number} [options.statusCode]
+     * @param {Object|undefined} [options.properties]
+     * @returns {*}
+     */
+    static errorIf(errorFactory, value, predicateFn, options) {
+        Preconditions.shouldBeFunction(errorFactory);
+        Preconditions.shouldBeFunction(predicateFn);
+
+        if (!Utility.isNullOrUndefined(options)) {
+            Preconditions.shouldBeObject(options);
+        }
+
+        let result = predicateFn(value);
+
+        if (false === result || Utility.isNullOrUndefined(result)) {
+            return value;
+        } else {
+            result = Lodash.defaultsDeep(result, options || {}, defaults);
+
+            throw errorFactory(result.message, result.properties);
+        }
+    }
+
+    /**
+     *
+     * @param {*} value
+     * @param {*|Function} predicateFn
+     * @param {Object} [options]
+     * @param {String} [options.message]
+     * @param {Number} [options.statusCode]
+     * @param {Object|undefined} [options.properties]
+     * @returns {*}
+     */
+    static notFoundIf(value, predicateFn, options) {
+        this.errorIf(this.notFound, value, predicateFn, options);
+    }
+
+    /**
+     *
+     * @param {*} value
+     * @param {*|Function} predicateFn
+     * @param {Object} [options]
+     * @param {String} [options.message]
+     * @param {Number} [options.statusCode]
+     * @param {Object|undefined} [options.properties]
+     * @returns {*}
+     */
+    static badRequestIf(value, predicateFn, options) {
+        this.errorIf(this.badRequest, value, predicateFn, options);
+    }
+
+    /**
+     * Determines if the given err object is an error class
+     *
+     * @param {*} clazz
+     * @returns {boolean}
+     */
+    static isErrorClass(clazz) {
+        if (AbstractError.isClass(clazz)) {
+            return true;
+        }
+
+        if (&apos;function&apos; !== typeof clazz) {
+            return false;
+        }
+
+        while (clazz) {
+            if (clazz === Error) {
+                return true;
+            }
+
+            clazz = Object.getPrototypeOf(clazz);
+        }
+
+        return false;
+    }
+
+    /**
+     * Determines if the given error is
+     *
+     * @param object
+     * @returns {boolean}
+     */
+    static isErrorInstance(object) {
+        return object instanceof Error || AbstractError.isInstance(object);
+    }
+
+    static isError(instanceOrClass) {
+        return this.isErrorInstance(instanceOrClass) || this.isErrorClass(instanceOrClass);
+    }
+
+    /**
+     * @param {Error|HttpError|*} instanceOrClass
+     * @return boolean
+     */
+    static isHttpError(instanceOrClass) {
+        return HttpError.isInstanceOrClass(instanceOrClass);
+    }
+
+    /**
+     *
+     * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} [messageOrSpecOrError]
+     * @param {Object} [properties]
+     * @return {Error}
+     */
+    static badRequest(messageOrSpecOrError, properties) {
+        return Errors.httpError(400, messageOrSpecOrError, properties);
+    }
+
+    /**
+     * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} messageOrSpecOrError
+     * @param {Object} [properties]
+     * @return {Error}
+     */
+    static notFound(messageOrSpecOrError, properties) {
+        return Errors.httpError(404, messageOrSpecOrError, properties);
+    }
+
+    /**
+     *
+     * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} [messageOrSpecOrError]
+     * @param {Object} [properties]
+     * @returns {Error}
+     */
+    static serverError(messageOrSpecOrError, properties) {
+        return Errors.httpError(500, messageOrSpecOrError, properties);
+    }
+
+    /**
+     *
+     * @param {number} statusCode
+     * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} [messageOrSpecOrError]
+     * @param {Object} [properties]
+     * @return {Error}
+     */
+    static httpError(statusCode, messageOrSpecOrError, properties) {
+        let stack = null;
+        let message = null;
+        let cause = null;
+
+        if (Utility.isNullOrUndefined(messageOrSpecOrError)) {
+            // I guess this is ok..
+        } else if (this.isError(messageOrSpecOrError)) {
+            message = messageOrSpecOrError.message;
+            stack = messageOrSpecOrError.stack;
+        } else if (Utility.isString(messageOrSpecOrError)) {
+            message = messageOrSpecOrError;
+        } else if (Utility.isObject(messageOrSpecOrError)) {
+            statusCode = Lodash.result(messageOrSpecOrError, &apos;statusCode&apos;) || statusCode;
+            message = Lodash.result(messageOrSpecOrError, &apos;message&apos;);
+            cause = Lodash.result(messageOrSpecOrError, &apos;cause&apos;);
+            properties = Lodash.result(messageOrSpecOrError, &apos;properties&apos;);
+        }
+
+        if (statusCode) {
+            Preconditions.shouldBeNumber(statusCode);
+        }
+
+        if (message) {
+            Preconditions.shouldBeString(message);
+        }
+
+        if (properties) {
+            Preconditions.shouldBeObject(properties);
+        }
+
+        let template = createError(statusCode, message, properties);
+
+        let error = new HttpError({
+            cause: cause,
+            properties: template.properties,
+            message: template.message,
+            stack: template.stack,
+            statusCode: template.statusCode
+        });
+
+        // if (stack) {
+        //     error.stack = stack;
+        // }
+
+        if (!error.toJSON) {
+            error.toJSON = function () {
+                return {
+                    statusCode: error.statusCode,
+                    message: error.message,
+                    properties: error.properties
+                };
+            };
+        }
+
+        return error;
+    }
+
+    /**
+     *
+     * @param {String} [message]
+     * @param {Object} [properties]
+     * @returns {Error}
+     */
+    static forbidden(message, properties) {
+        return Errors.httpError(403, message, properties);
+    }
+
+    /**
+     * @param {Error|AbstractError|null|undefined} error
+     * @returns {Object|null}
+     */
+    static optJSON(error) {
+        if (Utility.isNullOrUndefined(error)) {
+            return null;
+        } else if (Utility.isError(error)) {
+            return Errors.toJSON(error);
+        } else if (Utility.isPrimitive(error)) {
+            return {
+                message: &apos;&apos; + error
+            };
+        } else {
+            // &apos;opt&apos; means optional.
+            return null;
+        }
+    }
     
+    /**
+     * @param {AbstractError|Error} error
+     */
+    static toJSON(error) {
+        Preconditions.shouldBeError(error);
 
+        if (!Utility.isFunction(error.toJSON)) {
+            return {
+                name: error.name,
+                message: error.message
+            };
+        } else {
+            return error.toJSON();
+        }
+    }
 }
 
 export default Errors;</code></pre>
@@ -74,7 +331,7 @@ export default Errors;</code></pre>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.6)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.7)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

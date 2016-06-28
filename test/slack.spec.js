@@ -10,9 +10,10 @@ import Ember from "~/ember";
 import Preconditions from "~/Preconditions";
 import Functions from "~/Functions";
 import UserBuilder from "~/data/UserBuilder";
-import "source-map-support/register";
 import CoreObject from "~/CoreObject";
-import { Currency, Bitcoin, Money, Satoshi, USD, Converter } from "~/money";
+import {Errors, AbstractError, PreconditionsError} from "~/errors";
+import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
+import "source-map-support/register";
 
 // import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '~/slack';
 
@@ -26,28 +27,74 @@ import { Currency, Bitcoin, Money, Satoshi, USD, Converter } from "~/money";
 //     username: 'coinme-node/slack.spec.js'
 // });
 
+describe('Errors', () => {
+
+    it('Errors.isErrorClass(Error)', () => {
+        assert.isTrue(Errors.isErrorClass(Error));
+    });
+
+    it('Errors.isErrorClass(AbstractError)', () => {
+        assert.isTrue(Errors.isErrorClass(AbstractError));
+    });
+
+    it('Errors.isErrorInstance(Error)', () => {
+        assert.isTrue(Errors.isErrorInstance(new Error()));
+    });
+
+    it('Errors.isErrorInstance(AbstractError)', () => {
+        assert.isTrue(Errors.isErrorInstance(new AbstractError('Abstract')));
+    });
+
+    it('Utility.isInstance(new PreconditionsError())', () => {
+        let e = new PreconditionsError({});
+
+        assert.isTrue(Utility.isError(e));
+        assert.isTrue(Errors.isErrorInstance(e));
+    });
+
+    it('Preconditions.shouldBeType(error)', () => {
+        Preconditions.shouldBeType('error', new PreconditionsError(), 'Should be error type');
+        Preconditions.shouldBeType('error', new Error(), 'Should be error type');
+    })
+
+    it('PreconditionsError.isInstance(new PreconditionsError())', () => {
+        assert.isTrue(PreconditionsError.isInstance(new PreconditionsError()));
+    });
+
+    it('AbstractError.isInstance(new AbstractError())', () => {
+        assert.isTrue(AbstractError.isInstance(new AbstractError()));
+    });
+
+    it('Preconditions.shouldBeError', () => {
+        let e = new PreconditionsError({
+            message: 'message'
+        });
+
+        Preconditions.shouldBeError(e, PreconditionsError, 'bad type: ' + e);
+    });
+});
+
 describe('Money', () => {
     it('shouldBeMoney', () => {
         let money = Bitcoin.create(1);
-        
+
         assert.equal(Money.shouldBeMoney(money), money);
     });
 
     it('new Bitcoin() - fails', () => {
         try {
-            new Bitcoin();
+            new Money();
 
             assert.isTrue(false, 'The Bitcoin constructor should have thrown.');
         } catch (e) {
+            Preconditions.shouldBeError(e, PreconditionsError, 'bad type: ' + e);
         }
     });
 
     it('Bitcoin + 1', () => {
-
         let bitcoin = Bitcoin.create(2);
 
         assert.equal(bitcoin + 1, 3);
-
     });
 
 
@@ -77,17 +124,19 @@ describe('Money', () => {
         let usd = USD.create(1);
 
         usd.convertTo(Bitcoin, 1);
-        usd.convertTo(Bitcoin, function(valueInUsd) { return valueInUsd; });
+        usd.convertTo(Bitcoin, function (valueInUsd) {
+            return valueInUsd;
+        });
 
         usd.convertTo(Bitcoin, new Converter({
 
             conversionRate: 2,
 
             conversions: {
-                'Bitcoin->USD': function(valueInBitcoin) {
+                'Bitcoin->USD': function (valueInBitcoin) {
                     return valueInBitcoin / this.conversionRate;
                 },
-                'USD->Bitcoin': function(valueInUsd) {
+                'USD->Bitcoin': function (valueInUsd) {
                     return valueInUsd * this.conversionRate;
                 }
             }
@@ -262,91 +311,6 @@ describe('CoreObject', () => {
         assert.isTrue(CoreObject.isClass(Subclass), 'Subclass should be a CoreObject');
         assert.isFalse(CoreObject.isClass(new Subclass()));
         assert.isTrue(CoreObject.isInstance(new Subclass()), 'subclass is instance of CoreObject');
-    });
-
-});
-
-describe('Utility', function () {
-
-    // it('typeOf', () => {
-    //     assert.equal('class', Utility.typeOf(Currency));
-    // });
-
-    it('CoreObject.toClass() (static)', () => {
-        assert.equal(CoreObject.toClass(), CoreObject, 'CoreObject.toClass()');
-    });
-
-    it('(new CoreObject()).toClass() (instance)', () => {
-        assert.equal(CoreObject, Utility.toClass(CoreObject), 'Utility.toClass(CoreObject) === CoreObject');
-        assert.equal(Currency, Utility.toClass(Currency), 'Utility.toClass(Currency) === Currency');
-        assert.equal(Utility.toClass(new CoreObject()), CoreObject, 'Utility.toClass(new CoreObject()) === CoreObject');
-
-        assert.isTrue((new CoreObject()).toClass() === CoreObject, '(new CoreObject()).toClass()');
-    });
-
-    it('Utility.typeOf(class)', () => {
-        assert.equal('class', Utility.typeOf(CoreObject), 'CoreObject is type of class');
-        assert.equal('class', Utility.typeOf(Currency), 'Currency is type of class');
-        assert.equal('class', Utility.typeOf(Bitcoin), 'Bitcoin is type of class');
-        assert.equal('class', Utility.typeOf(Money), 'Money is type of class');
-    });
-
-    it('isClass', () => {
-        assert.equal('class', Utility.typeOf(Money), 'Money is type of class');
-
-        assert.isTrue(Utility.isClass(Currency));
-        assert.isTrue(Currency.isClass(Bitcoin));
-        assert.isFalse(Money.isClass(Bitcoin));
-    });
-
-    it('isInstance', () => {
-
-
-        assert.equal('instance', Utility.typeOf(new CoreObject()));
-    });
-
-    it('function', () => {
-        let fn = () => {
-        };
-
-        assert.isFunction(fn);
-        assert.isTrue(Utility.isFunction(fn));
-        assert.isFalse(Utility.isFunction(null));
-        assert.isFalse(Utility.isFunction(''));
-        assert.isFalse(Utility.isFunction(NaN));
-    });
-
-    it('take - with dots', function () {
-        var object = {one: {two: 3}};
-        var three = Utility.take(object, 'one.two');
-
-        assert.equal(three, 3, 'Should be 3');
-        assert.isTrue(Utility.isUndefined(object.one.two));
-    });
-
-    it('take - without dots', function () {
-        var object = {one: 2};
-        var two = Utility.take(object, 'one');
-
-        assert.equal(two, 2, 'Should be 2');
-        assert.isTrue(Utility.isUndefined(object.one));
-    });
-
-    it('existing', function () {
-        assert.isTrue(Utility.isExisting('string'));
-        assert.isTrue(Utility.isExisting({}));
-    });
-
-    it('string', function () {
-        assert.isFunction(Utility.typeMatcher('string'));
-        assert.isTrue(Utility.typeMatcher('string')('string'));
-        assert.isTrue(Utility.isString('asdfad'));
-    });
-
-    it('shouldBe', function () {
-        Preconditions.shouldBeFalsey(undefined);
-        Preconditions.shouldBeFalsey(false);
-        Preconditions.shouldBeFalsey(null);
     });
 
 });
