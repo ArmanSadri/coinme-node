@@ -14,9 +14,9 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _ember = require('./../ember');
+var _Ember = require('./../Ember');
 
-var _ember2 = _interopRequireDefault(_ember);
+var _Ember2 = _interopRequireDefault(_Ember);
 
 var _Utility = require('./../Utility');
 
@@ -70,10 +70,10 @@ var AbstractBuilder = function (_CoreObject) {
             _Preconditions2.default.shouldBeDefined(object, 'Cannot merge null');
             _Preconditions2.default.shouldBeObject(object, 'Should be object');
 
-            console.log(_ember2.default);
-            console.log(_ember2.default.assign);
+            console.log(_Ember2.default);
+            console.log(_Ember2.default.assign);
 
-            _ember2.default.assign(this, {
+            _Ember2.default.assign(this, {
                 payload: object
             });
 

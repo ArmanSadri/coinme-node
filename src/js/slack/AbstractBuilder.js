@@ -2,7 +2,7 @@
 
 import Logger from 'winston';
 import Lodash from 'lodash';
-import Ember from '~/ember';
+import Ember from '~/Ember';
 import Utility from '~/Utility';
 import Preconditions from '~/Preconditions';
 import CoreObject from '~/CoreObject';

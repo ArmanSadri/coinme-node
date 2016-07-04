@@ -8,7 +8,7 @@ import request from 'request-promise';
 import CoreObject from '~/CoreObject';
 import AbstractBuilder from './AbstractBuilder';
 import AttachmentBuilder from './AttachmentBuilder';
-import Ember from '~/ember';
+import Ember from '~/Ember';
 
 class NotificationBuilder extends AbstractBuilder {
 

@@ -34,9 +34,9 @@ var _AttachmentBuilder = require('./AttachmentBuilder');
 
 var _AttachmentBuilder2 = _interopRequireDefault(_AttachmentBuilder);
 
-var _ember = require('./../ember');
+var _Ember = require('./../Ember');
 
-var _ember2 = _interopRequireDefault(_ember);
+var _Ember2 = _interopRequireDefault(_Ember);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -108,7 +108,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
     }, {
         key: 'attachments',
         value: function attachments() {
-            return _ember2.default.getWithDefault(this, 'attachments', []);
+            return _Ember2.default.getWithDefault(this, 'attachments', []);
         }
     }, {
         key: 'attachment',
