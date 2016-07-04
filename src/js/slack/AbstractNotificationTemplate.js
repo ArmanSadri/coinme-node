@@ -2,10 +2,7 @@
 
 import Logger from "winston";
 import CoreObject from "~/CoreObject";
-import Ember from '~/ember';
-import Utility from "~/Utility";
 import NotificationBuilder from "~/slack/NotificationBuilder";
-import Preconditions from "~/Preconditions";
 
 /**
  *
@@ -19,7 +16,7 @@ class AbstractNotificationTemplate extends CoreObject {
         // Utility.defaults(this, {
         //     name: 'NotificationTemplate'
         // });
-        
+
         // Preconditions.shouldBeString(Ember.get(this, 'name'), 'You must define a name for this template');
     }
 
