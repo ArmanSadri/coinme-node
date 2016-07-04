@@ -1,7 +1,7 @@
 'use strict';
 
 import Preconditions from "~/Preconditions";
-import Ember from "~/ember";
+import Ember from "~/Ember";
 import AbstractBuilder from "~/slack/AbstractBuilder";
 import FieldBuilder from "~/slack/FieldBuilder";
 

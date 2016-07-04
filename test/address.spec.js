@@ -5,16 +5,9 @@
  * @see http://chaijs.com/api/assert/
  */
 import {expect, assert} from "chai";
-import Utility from "~/Utility";
-import Ember from "~/ember";
-import Preconditions from "~/Preconditions";
-import Functions from "~/Functions";
-import URI from 'urijs';
-
-import CoreObject from "~/CoreObject";
+import URI from "urijs";
 import {Errors, AbstractError, PreconditionsError} from "~/errors";
 import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
-
 import Address from "~/Address";
 
 describe('URI', () => {

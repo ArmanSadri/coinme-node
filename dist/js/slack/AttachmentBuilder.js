@@ -12,9 +12,9 @@ var _Preconditions = require("./../Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _ember = require("./../ember");
+var _Ember = require("./../Ember");
 
-var _ember2 = _interopRequireDefault(_ember);
+var _Ember2 = _interopRequireDefault(_Ember);
 
 var _AbstractBuilder2 = require("./AbstractBuilder");
 
@@ -68,7 +68,7 @@ var AttachmentBuilder = function (_AbstractBuilder) {
     }, {
         key: "fields",
         value: function fields() {
-            var fields = _ember2.default.getWithDefault(this, 'fields', []);
+            var fields = _Ember2.default.getWithDefault(this, 'fields', []);
 
             _Preconditions2.default.shouldBeArray(fields, 'fields');
 
