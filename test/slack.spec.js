@@ -6,7 +6,7 @@
  */
 import {expect, assert} from "chai";
 import Utility from "~/Utility";
-import Ember from "~/ember";
+import Ember from "~/Ember";
 import Preconditions from "~/Preconditions";
 import Functions from "~/Functions";
 import UserBuilder from "~/data/UserBuilder";
