@@ -2,7 +2,7 @@
 
 import Lodash from "lodash";
 import Preconditions from "~/Preconditions";
-import Ember from "~/ember";
+import Ember from "~/Ember";
 import CoreObject from "~/CoreObject";
 import {Errors, AbstractError} from "./errors";
 

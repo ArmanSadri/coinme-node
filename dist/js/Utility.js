@@ -16,9 +16,9 @@ var _Preconditions = require("./Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _ember = require("./ember");
+var _Ember = require("./Ember");
 
-var _ember2 = _interopRequireDefault(_ember);
+var _Ember2 = _interopRequireDefault(_Ember);
 
 var _CoreObject = require("./CoreObject");
 
@@ -573,7 +573,7 @@ var Utility = function () {
     }, {
         key: "typeOf",
         value: function typeOf(object) {
-            var type = _ember2.default.typeOf(object);
+            var type = _Ember2.default.typeOf(object);
 
             if ('function' === type) {
                 // Let's isClass a bit further.
@@ -874,7 +874,7 @@ var Utility = function () {
 
             _Preconditions2.default.shouldBeString(string);
 
-            return _ember2.default.isBlank(string);
+            return _Ember2.default.isBlank(string);
         }
 
         /**
@@ -906,9 +906,9 @@ var Utility = function () {
 
             for (var i = 0, l = updates.length; i < l; i++) {
                 var prop = updates[i];
-                var value = _ember2.default.get(_defaults, prop);
+                var value = _Ember2.default.get(_defaults, prop);
 
-                _ember2.default.set(object, prop, value);
+                _Ember2.default.set(object, prop, value);
             }
 
             return object;
