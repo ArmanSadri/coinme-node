@@ -226,16 +226,16 @@ var Errors = function () {
             if (_Utility2.default.isNullOrUndefined(messageOrSpecOrError)) {
                 // I guess this is ok..
             } else if (this.isError(messageOrSpecOrError)) {
-                message = messageOrSpecOrError.message;
-                stack = messageOrSpecOrError.stack;
-            } else if (_Utility2.default.isString(messageOrSpecOrError)) {
-                message = messageOrSpecOrError;
-            } else if (_Utility2.default.isObject(messageOrSpecOrError)) {
-                statusCode = _lodash2.default.result(messageOrSpecOrError, 'statusCode') || statusCode;
-                message = _lodash2.default.result(messageOrSpecOrError, 'message');
-                cause = _lodash2.default.result(messageOrSpecOrError, 'cause');
-                properties = _lodash2.default.result(messageOrSpecOrError, 'properties');
-            }
+                    message = messageOrSpecOrError.message;
+                    stack = messageOrSpecOrError.stack;
+                } else if (_Utility2.default.isString(messageOrSpecOrError)) {
+                    message = messageOrSpecOrError;
+                } else if (_Utility2.default.isObject(messageOrSpecOrError)) {
+                    statusCode = _lodash2.default.result(messageOrSpecOrError, 'statusCode') || statusCode;
+                    message = _lodash2.default.result(messageOrSpecOrError, 'message');
+                    cause = _lodash2.default.result(messageOrSpecOrError, 'cause');
+                    properties = _lodash2.default.result(messageOrSpecOrError, 'properties');
+                }
 
             if (statusCode) {
                 _Preconditions2.default.shouldBeNumber(statusCode);
