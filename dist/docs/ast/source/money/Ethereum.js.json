@@ -1,0 +1,4779 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 2225,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 87,
+      "column": 24
+    }
+  },
+  "sourceType": "module",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "start": 0,
+      "end": 13,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      },
+      "expression": {
+        "type": "Literal",
+        "start": 0,
+        "end": 12,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        },
+        "value": "use strict",
+        "rawValue": "use strict",
+        "raw": "'use strict'"
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 15,
+      "end": 60,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 45
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 22,
+          "end": 35,
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 20
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 22,
+            "end": 35,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 20
+              }
+            },
+            "name": "Preconditions"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 41,
+        "end": 59,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 26
+          },
+          "end": {
+            "line": 3,
+            "column": 44
+          }
+        },
+        "value": "../Preconditions",
+        "rawValue": "../Preconditions",
+        "raw": "\"../Preconditions\""
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 61,
+      "end": 95,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 34
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 68,
+          "end": 76,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 15
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 68,
+            "end": 76,
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 15
+              }
+            },
+            "name": "Currency"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 82,
+        "end": 94,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 21
+          },
+          "end": {
+            "line": 4,
+            "column": 33
+          }
+        },
+        "value": "./Currency",
+        "rawValue": "./Currency",
+        "raw": "\"./Currency\""
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 96,
+      "end": 124,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 28
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 103,
+          "end": 108,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 12
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 103,
+            "end": 108,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 12
+              }
+            },
+            "name": "Money"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 114,
+        "end": 123,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 18
+          },
+          "end": {
+            "line": 5,
+            "column": 27
+          }
+        },
+        "value": "./Money",
+        "rawValue": "./Money",
+        "raw": "\"./Money\""
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * Represents the Ethereum currency in memory.\n *\n * This class cannot be instantiated. Everything is static and the constructor throws, so treat it like a singleton.\n *\n * @class Ethereum\n ",
+          "start": 126,
+          "end": 322,
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 13,
+              "column": 3
+            }
+          },
+          "range": [
+            126,
+            322
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Identifier",
+      "start": 323,
+      "end": 2109,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 0
+        },
+        "end": {
+          "line": 82,
+          "column": 1
+        }
+      },
+      "id": {
+        "type": "Identifier",
+        "start": 329,
+        "end": 337,
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 6
+          },
+          "end": {
+            "line": 14,
+            "column": 14
+          }
+        },
+        "name": "Ethereum",
+        "leadingComments": null
+      },
+      "superClass": {
+        "type": "Identifier",
+        "start": 346,
+        "end": 354,
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 23
+          },
+          "end": {
+            "line": 14,
+            "column": 31
+          }
+        },
+        "name": "Currency"
+      },
+      "body": {
+        "type": "ClassBody",
+        "start": 355,
+        "end": 2109,
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 32
+          },
+          "end": {
+            "line": 82,
+            "column": 1
+          }
+        },
+        "body": [
+          {
+            "type": "MethodDefinition",
+            "start": 476,
+            "end": 944,
+            "loc": {
+              "start": {
+                "line": 21,
+                "column": 4
+              },
+              "end": {
+                "line": 39,
+                "column": 5
+              }
+            },
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 483,
+              "end": 495,
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 11
+                },
+                "end": {
+                  "line": 21,
+                  "column": 23
+                }
+              },
+              "name": "fromEthereum"
+            },
+            "static": true,
+            "kind": "method",
+            "value": {
+              "type": "FunctionExpression",
+              "start": 495,
+              "end": 944,
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 23
+                },
+                "end": {
+                  "line": 39,
+                  "column": 5
+                }
+              },
+              "id": null,
+              "generator": false,
+              "expression": false,
+              "async": false,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "start": 496,
+                  "end": 511,
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 24
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 39
+                    }
+                  },
+                  "name": "valueInEthereum"
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "start": 513,
+                "end": 944,
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 41
+                  },
+                  "end": {
+                    "line": 39,
+                    "column": 5
+                  }
+                },
+                "body": [
+                  {
+                    "type": "VariableDeclaration",
+                    "start": 573,
+                    "end": 625,
+                    "loc": {
+                      "start": {
+                        "line": 25,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 60
+                      }
+                    },
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "start": 577,
+                        "end": 624,
+                        "loc": {
+                          "start": {
+                            "line": 25,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 25,
+                            "column": 59
+                          }
+                        },
+                        "id": {
+                          "type": "Identifier",
+                          "start": 577,
+                          "end": 582,
+                          "loc": {
+                            "start": {
+                              "line": 25,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 25,
+                              "column": 17
+                            }
+                          },
+                          "name": "value",
+                          "leadingComments": null
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "start": 585,
+                          "end": 624,
+                          "loc": {
+                            "start": {
+                              "line": 25,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 25,
+                              "column": 59
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 585,
+                            "end": 607,
+                            "loc": {
+                              "start": {
+                                "line": 25,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 42
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 585,
+                              "end": 593,
+                              "loc": {
+                                "start": {
+                                  "line": 25,
+                                  "column": 20
+                                },
+                                "end": {
+                                  "line": 25,
+                                  "column": 28
+                                }
+                              },
+                              "name": "Currency"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 594,
+                              "end": 607,
+                              "loc": {
+                                "start": {
+                                  "line": 25,
+                                  "column": 29
+                                },
+                                "end": {
+                                  "line": 25,
+                                  "column": 42
+                                }
+                              },
+                              "name": "toValueOrFail"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 608,
+                              "end": 623,
+                              "loc": {
+                                "start": {
+                                  "line": 25,
+                                  "column": 43
+                                },
+                                "end": {
+                                  "line": 25,
+                                  "column": 58
+                                }
+                              },
+                              "name": "valueInEthereum"
+                            }
+                          ]
+                        },
+                        "leadingComments": null
+                      }
+                    ],
+                    "kind": "let",
+                    "leadingComments": [
+                      {
+                        "type": "Block",
+                        "value": "*\n         * @type {Number}\n         ",
+                        "start": 523,
+                        "end": 564,
+                        "loc": {
+                          "start": {
+                            "line": 22,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 11
+                          }
+                        },
+                        "range": [
+                          523,
+                          564
+                        ]
+                      }
+                    ],
+                    "trailingComments": [
+                      {
+                        "type": "Block",
+                        "value": "*\n         * @type {Class.<Currency>|undefined}\n         ",
+                        "start": 634,
+                        "end": 695,
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 28,
+                            "column": 11
+                          }
+                        },
+                        "range": [
+                          634,
+                          695
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "start": 704,
+                    "end": 757,
+                    "loc": {
+                      "start": {
+                        "line": 29,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 29,
+                        "column": 61
+                      }
+                    },
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "start": 708,
+                        "end": 756,
+                        "loc": {
+                          "start": {
+                            "line": 29,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 29,
+                            "column": 60
+                          }
+                        },
+                        "id": {
+                          "type": "Identifier",
+                          "start": 708,
+                          "end": 716,
+                          "loc": {
+                            "start": {
+                              "line": 29,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 29,
+                              "column": 20
+                            }
+                          },
+                          "name": "currency",
+                          "leadingComments": null
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "start": 719,
+                          "end": 756,
+                          "loc": {
+                            "start": {
+                              "line": 29,
+                              "column": 23
+                            },
+                            "end": {
+                              "line": 29,
+                              "column": 60
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 719,
+                            "end": 739,
+                            "loc": {
+                              "start": {
+                                "line": 29,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 29,
+                                "column": 43
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 719,
+                              "end": 727,
+                              "loc": {
+                                "start": {
+                                  "line": 29,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 29,
+                                  "column": 31
+                                }
+                              },
+                              "name": "Currency"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 728,
+                              "end": 739,
+                              "loc": {
+                                "start": {
+                                  "line": 29,
+                                  "column": 32
+                                },
+                                "end": {
+                                  "line": 29,
+                                  "column": 43
+                                }
+                              },
+                              "name": "optCurrency"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 740,
+                              "end": 755,
+                              "loc": {
+                                "start": {
+                                  "line": 29,
+                                  "column": 44
+                                },
+                                "end": {
+                                  "line": 29,
+                                  "column": 59
+                                }
+                              },
+                              "name": "valueInEthereum"
+                            }
+                          ]
+                        },
+                        "leadingComments": null
+                      }
+                    ],
+                    "kind": "let",
+                    "leadingComments": [
+                      {
+                        "type": "Block",
+                        "value": "*\n         * @type {Class.<Currency>|undefined}\n         ",
+                        "start": 634,
+                        "end": 695,
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 8
+                          },
+                          "end": {
+                            "line": 28,
+                            "column": 11
+                          }
+                        },
+                        "range": [
+                          634,
+                          695
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "IfStatement",
+                    "start": 767,
+                    "end": 841,
+                    "loc": {
+                      "start": {
+                        "line": 31,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 9
+                      }
+                    },
+                    "test": {
+                      "type": "Identifier",
+                      "start": 771,
+                      "end": 779,
+                      "loc": {
+                        "start": {
+                          "line": 31,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 31,
+                          "column": 20
+                        }
+                      },
+                      "name": "currency"
+                    },
+                    "consequent": {
+                      "type": "BlockStatement",
+                      "start": 781,
+                      "end": 841,
+                      "loc": {
+                        "start": {
+                          "line": 31,
+                          "column": 22
+                        },
+                        "end": {
+                          "line": 33,
+                          "column": 9
+                        }
+                      },
+                      "body": [
+                        {
+                          "type": "ExpressionStatement",
+                          "start": 795,
+                          "end": 831,
+                          "loc": {
+                            "start": {
+                              "line": 32,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 32,
+                              "column": 48
+                            }
+                          },
+                          "expression": {
+                            "type": "CallExpression",
+                            "start": 795,
+                            "end": 830,
+                            "loc": {
+                              "start": {
+                                "line": 32,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 32,
+                                "column": 47
+                              }
+                            },
+                            "callee": {
+                              "type": "MemberExpression",
+                              "start": 795,
+                              "end": 820,
+                              "loc": {
+                                "start": {
+                                  "line": 32,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 32,
+                                  "column": 37
+                                }
+                              },
+                              "object": {
+                                "type": "Identifier",
+                                "start": 795,
+                                "end": 803,
+                                "loc": {
+                                  "start": {
+                                    "line": 32,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 32,
+                                    "column": 20
+                                  }
+                                },
+                                "name": "Ethereum"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 804,
+                                "end": 820,
+                                "loc": {
+                                  "start": {
+                                    "line": 32,
+                                    "column": 21
+                                  },
+                                  "end": {
+                                    "line": 32,
+                                    "column": 37
+                                  }
+                                },
+                                "name": "shouldBeEthereum"
+                              },
+                              "computed": false
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 821,
+                                "end": 829,
+                                "loc": {
+                                  "start": {
+                                    "line": 32,
+                                    "column": 38
+                                  },
+                                  "end": {
+                                    "line": 32,
+                                    "column": 46
+                                  }
+                                },
+                                "name": "currency"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "alternate": null
+                  },
+                  {
+                    "type": "ReturnStatement",
+                    "start": 851,
+                    "end": 938,
+                    "loc": {
+                      "start": {
+                        "line": 35,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 38,
+                        "column": 11
+                      }
+                    },
+                    "argument": {
+                      "type": "NewExpression",
+                      "start": 858,
+                      "end": 937,
+                      "loc": {
+                        "start": {
+                          "line": 35,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 38,
+                          "column": 10
+                        }
+                      },
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 862,
+                        "end": 867,
+                        "loc": {
+                          "start": {
+                            "line": 35,
+                            "column": 19
+                          },
+                          "end": {
+                            "line": 35,
+                            "column": 24
+                          }
+                        },
+                        "name": "Money"
+                      },
+                      "arguments": [
+                        {
+                          "type": "ObjectExpression",
+                          "start": 868,
+                          "end": 936,
+                          "loc": {
+                            "start": {
+                              "line": 35,
+                              "column": 25
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 9
+                            }
+                          },
+                          "properties": [
+                            {
+                              "type": "Property",
+                              "start": 882,
+                              "end": 894,
+                              "loc": {
+                                "start": {
+                                  "line": 36,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 36,
+                                  "column": 24
+                                }
+                              },
+                              "method": false,
+                              "shorthand": false,
+                              "computed": false,
+                              "key": {
+                                "type": "Identifier",
+                                "start": 882,
+                                "end": 887,
+                                "loc": {
+                                  "start": {
+                                    "line": 36,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 36,
+                                    "column": 17
+                                  }
+                                },
+                                "name": "value"
+                              },
+                              "value": {
+                                "type": "Identifier",
+                                "start": 889,
+                                "end": 894,
+                                "loc": {
+                                  "start": {
+                                    "line": 36,
+                                    "column": 19
+                                  },
+                                  "end": {
+                                    "line": 36,
+                                    "column": 24
+                                  }
+                                },
+                                "name": "value"
+                              },
+                              "kind": "init"
+                            },
+                            {
+                              "type": "Property",
+                              "start": 908,
+                              "end": 926,
+                              "loc": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 37,
+                                  "column": 30
+                                }
+                              },
+                              "method": false,
+                              "shorthand": false,
+                              "computed": false,
+                              "key": {
+                                "type": "Identifier",
+                                "start": 908,
+                                "end": 916,
+                                "loc": {
+                                  "start": {
+                                    "line": 37,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 37,
+                                    "column": 20
+                                  }
+                                },
+                                "name": "currency"
+                              },
+                              "value": {
+                                "type": "Identifier",
+                                "start": 918,
+                                "end": 926,
+                                "loc": {
+                                  "start": {
+                                    "line": 37,
+                                    "column": 22
+                                  },
+                                  "end": {
+                                    "line": 37,
+                                    "column": 30
+                                  }
+                                },
+                                "name": "Ethereum"
+                              },
+                              "kind": "init"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "trailingComments": null
+              },
+              "trailingComments": null
+            },
+            "leadingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     *\n     * @param {Money|String|Number|null|undefined} valueInEthereum\n     * @returns {Money}\n     ",
+                "start": 362,
+                "end": 471,
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 7
+                  }
+                },
+                "range": [
+                  362,
+                  471
+                ]
+              }
+            ],
+            "trailingComments": [
+              {
+                "type": "CommentLine",
+                "value": "region Detection",
+                "start": 950,
+                "end": 968,
+                "loc": {
+                  "start": {
+                    "line": 41,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 41,
+                    "column": 22
+                  }
+                },
+                "range": [
+                  950,
+                  968
+                ]
+              },
+              {
+                "type": "Block",
+                "value": "*\n     * Detects if you pass in either Money or Currency of type Ethereum <br>\n     * <br>\n     * Ethereum -> true <br>\n     * money<Ethereum> -> true <br>\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+                "start": 973,
+                "end": 1233,
+                "loc": {
+                  "start": {
+                    "line": 42,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 50,
+                    "column": 7
+                  }
+                },
+                "range": [
+                  973,
+                  1233
+                ]
+              }
+            ]
+          },
+          {
+            "type": "MethodDefinition",
+            "start": 1238,
+            "end": 1488,
+            "loc": {
+              "start": {
+                "line": 51,
+                "column": 4
+              },
+              "end": {
+                "line": 59,
+                "column": 5
+              }
+            },
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 1245,
+              "end": 1255,
+              "loc": {
+                "start": {
+                  "line": 51,
+                  "column": 11
+                },
+                "end": {
+                  "line": 51,
+                  "column": 21
+                }
+              },
+              "name": "isEthereum"
+            },
+            "static": true,
+            "kind": "method",
+            "value": {
+              "type": "FunctionExpression",
+              "start": 1255,
+              "end": 1488,
+              "loc": {
+                "start": {
+                  "line": 51,
+                  "column": 21
+                },
+                "end": {
+                  "line": 59,
+                  "column": 5
+                }
+              },
+              "id": null,
+              "generator": false,
+              "expression": false,
+              "async": false,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "start": 1256,
+                  "end": 1271,
+                  "loc": {
+                    "start": {
+                      "line": 51,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 51,
+                      "column": 37
+                    }
+                  },
+                  "name": "moneyOrCurrency"
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "start": 1273,
+                "end": 1488,
+                "loc": {
+                  "start": {
+                    "line": 51,
+                    "column": 39
+                  },
+                  "end": {
+                    "line": 59,
+                    "column": 5
+                  }
+                },
+                "body": [
+                  {
+                    "type": "IfStatement",
+                    "start": 1283,
+                    "end": 1342,
+                    "loc": {
+                      "start": {
+                        "line": 52,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 54,
+                        "column": 9
+                      }
+                    },
+                    "test": {
+                      "type": "UnaryExpression",
+                      "start": 1287,
+                      "end": 1303,
+                      "loc": {
+                        "start": {
+                          "line": 52,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 52,
+                          "column": 28
+                        }
+                      },
+                      "operator": "!",
+                      "prefix": true,
+                      "argument": {
+                        "type": "Identifier",
+                        "start": 1288,
+                        "end": 1303,
+                        "loc": {
+                          "start": {
+                            "line": 52,
+                            "column": 13
+                          },
+                          "end": {
+                            "line": 52,
+                            "column": 28
+                          }
+                        },
+                        "name": "moneyOrCurrency"
+                      }
+                    },
+                    "consequent": {
+                      "type": "BlockStatement",
+                      "start": 1305,
+                      "end": 1342,
+                      "loc": {
+                        "start": {
+                          "line": 52,
+                          "column": 30
+                        },
+                        "end": {
+                          "line": 54,
+                          "column": 9
+                        }
+                      },
+                      "body": [
+                        {
+                          "type": "ReturnStatement",
+                          "start": 1319,
+                          "end": 1332,
+                          "loc": {
+                            "start": {
+                              "line": 53,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 53,
+                              "column": 25
+                            }
+                          },
+                          "argument": {
+                            "type": "Literal",
+                            "start": 1326,
+                            "end": 1331,
+                            "loc": {
+                              "start": {
+                                "line": 53,
+                                "column": 19
+                              },
+                              "end": {
+                                "line": 53,
+                                "column": 24
+                              }
+                            },
+                            "value": false,
+                            "rawValue": false,
+                            "raw": "false"
+                          }
+                        }
+                      ]
+                    },
+                    "alternate": null
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "start": 1352,
+                    "end": 1405,
+                    "loc": {
+                      "start": {
+                        "line": 56,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 56,
+                        "column": 61
+                      }
+                    },
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "start": 1356,
+                        "end": 1404,
+                        "loc": {
+                          "start": {
+                            "line": 56,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 56,
+                            "column": 60
+                          }
+                        },
+                        "id": {
+                          "type": "Identifier",
+                          "start": 1356,
+                          "end": 1364,
+                          "loc": {
+                            "start": {
+                              "line": 56,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 56,
+                              "column": 20
+                            }
+                          },
+                          "name": "currency"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "start": 1367,
+                          "end": 1404,
+                          "loc": {
+                            "start": {
+                              "line": 56,
+                              "column": 23
+                            },
+                            "end": {
+                              "line": 56,
+                              "column": 60
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 1367,
+                            "end": 1387,
+                            "loc": {
+                              "start": {
+                                "line": 56,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 56,
+                                "column": 43
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 1367,
+                              "end": 1375,
+                              "loc": {
+                                "start": {
+                                  "line": 56,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 56,
+                                  "column": 31
+                                }
+                              },
+                              "name": "Currency"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 1376,
+                              "end": 1387,
+                              "loc": {
+                                "start": {
+                                  "line": 56,
+                                  "column": 32
+                                },
+                                "end": {
+                                  "line": 56,
+                                  "column": 43
+                                }
+                              },
+                              "name": "optCurrency"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 1388,
+                              "end": 1403,
+                              "loc": {
+                                "start": {
+                                  "line": 56,
+                                  "column": 44
+                                },
+                                "end": {
+                                  "line": 56,
+                                  "column": 59
+                                }
+                              },
+                              "name": "moneyOrCurrency"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "kind": "let"
+                  },
+                  {
+                    "type": "ReturnStatement",
+                    "start": 1415,
+                    "end": 1482,
+                    "loc": {
+                      "start": {
+                        "line": 58,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 58,
+                        "column": 75
+                      }
+                    },
+                    "argument": {
+                      "type": "LogicalExpression",
+                      "start": 1422,
+                      "end": 1481,
+                      "loc": {
+                        "start": {
+                          "line": 58,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 58,
+                          "column": 74
+                        }
+                      },
+                      "left": {
+                        "type": "CallExpression",
+                        "start": 1422,
+                        "end": 1448,
+                        "loc": {
+                          "start": {
+                            "line": 58,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 58,
+                            "column": 41
+                          }
+                        },
+                        "callee": {
+                          "type": "MemberExpression",
+                          "start": 1422,
+                          "end": 1438,
+                          "loc": {
+                            "start": {
+                              "line": 58,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 58,
+                              "column": 31
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 1422,
+                            "end": 1430,
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 23
+                              }
+                            },
+                            "name": "Ethereum"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 1431,
+                            "end": 1438,
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 24
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 31
+                              }
+                            },
+                            "name": "isClass"
+                          },
+                          "computed": false
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "start": 1439,
+                            "end": 1447,
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 32
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 40
+                              }
+                            },
+                            "name": "currency"
+                          }
+                        ]
+                      },
+                      "operator": "||",
+                      "right": {
+                        "type": "CallExpression",
+                        "start": 1452,
+                        "end": 1481,
+                        "loc": {
+                          "start": {
+                            "line": 58,
+                            "column": 45
+                          },
+                          "end": {
+                            "line": 58,
+                            "column": 74
+                          }
+                        },
+                        "callee": {
+                          "type": "MemberExpression",
+                          "start": 1452,
+                          "end": 1471,
+                          "loc": {
+                            "start": {
+                              "line": 58,
+                              "column": 45
+                            },
+                            "end": {
+                              "line": 58,
+                              "column": 64
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 1452,
+                            "end": 1460,
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 45
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 53
+                              }
+                            },
+                            "name": "Ethereum"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 1461,
+                            "end": 1471,
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 54
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 64
+                              }
+                            },
+                            "name": "isInstance"
+                          },
+                          "computed": false
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "start": 1472,
+                            "end": 1480,
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 65
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 73
+                              }
+                            },
+                            "name": "currency"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "trailingComments": null
+              },
+              "trailingComments": null
+            },
+            "leadingComments": [
+              {
+                "type": "CommentLine",
+                "value": "region Detection",
+                "start": 950,
+                "end": 968,
+                "loc": {
+                  "start": {
+                    "line": 41,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 41,
+                    "column": 22
+                  }
+                },
+                "range": [
+                  950,
+                  968
+                ]
+              },
+              {
+                "type": "Block",
+                "value": "*\n     * Detects if you pass in either Money or Currency of type Ethereum <br>\n     * <br>\n     * Ethereum -> true <br>\n     * money<Ethereum> -> true <br>\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+                "start": 973,
+                "end": 1233,
+                "loc": {
+                  "start": {
+                    "line": 42,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 50,
+                    "column": 7
+                  }
+                },
+                "range": [
+                  973,
+                  1233
+                ]
+              }
+            ],
+            "trailingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     * If {@link Ethereum#isEthereum} returns false, will throw.\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Class<Currency>}\n     * @throws {PreconditionsError} if not an instance of Money (for Ethereum) or the Ethereum class itself.\n     ",
+                "start": 1494,
+                "end": 1782,
+                "loc": {
+                  "start": {
+                    "line": 61,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 67,
+                    "column": 7
+                  }
+                },
+                "range": [
+                  1494,
+                  1782
+                ]
+              }
+            ]
+          },
+          {
+            "type": "MethodDefinition",
+            "start": 1787,
+            "end": 2031,
+            "loc": {
+              "start": {
+                "line": 68,
+                "column": 4
+              },
+              "end": {
+                "line": 74,
+                "column": 5
+              }
+            },
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 1794,
+              "end": 1810,
+              "loc": {
+                "start": {
+                  "line": 68,
+                  "column": 11
+                },
+                "end": {
+                  "line": 68,
+                  "column": 27
+                }
+              },
+              "name": "shouldBeEthereum"
+            },
+            "static": true,
+            "kind": "method",
+            "value": {
+              "type": "FunctionExpression",
+              "start": 1810,
+              "end": 2031,
+              "loc": {
+                "start": {
+                  "line": 68,
+                  "column": 27
+                },
+                "end": {
+                  "line": 74,
+                  "column": 5
+                }
+              },
+              "id": null,
+              "generator": false,
+              "expression": false,
+              "async": false,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "start": 1811,
+                  "end": 1826,
+                  "loc": {
+                    "start": {
+                      "line": 68,
+                      "column": 28
+                    },
+                    "end": {
+                      "line": 68,
+                      "column": 43
+                    }
+                  },
+                  "name": "moneyOrCurrency"
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "start": 1828,
+                "end": 2031,
+                "loc": {
+                  "start": {
+                    "line": 68,
+                    "column": 45
+                  },
+                  "end": {
+                    "line": 74,
+                    "column": 5
+                  }
+                },
+                "body": [
+                  {
+                    "type": "IfStatement",
+                    "start": 1838,
+                    "end": 1992,
+                    "loc": {
+                      "start": {
+                        "line": 69,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 71,
+                        "column": 9
+                      }
+                    },
+                    "test": {
+                      "type": "UnaryExpression",
+                      "start": 1842,
+                      "end": 1879,
+                      "loc": {
+                        "start": {
+                          "line": 69,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 69,
+                          "column": 49
+                        }
+                      },
+                      "operator": "!",
+                      "prefix": true,
+                      "argument": {
+                        "type": "CallExpression",
+                        "start": 1843,
+                        "end": 1879,
+                        "loc": {
+                          "start": {
+                            "line": 69,
+                            "column": 13
+                          },
+                          "end": {
+                            "line": 69,
+                            "column": 49
+                          }
+                        },
+                        "callee": {
+                          "type": "MemberExpression",
+                          "start": 1843,
+                          "end": 1862,
+                          "loc": {
+                            "start": {
+                              "line": 69,
+                              "column": 13
+                            },
+                            "end": {
+                              "line": 69,
+                              "column": 32
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 1843,
+                            "end": 1851,
+                            "loc": {
+                              "start": {
+                                "line": 69,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 69,
+                                "column": 21
+                              }
+                            },
+                            "name": "Ethereum"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 1852,
+                            "end": 1862,
+                            "loc": {
+                              "start": {
+                                "line": 69,
+                                "column": 22
+                              },
+                              "end": {
+                                "line": 69,
+                                "column": 32
+                              }
+                            },
+                            "name": "isEthereum"
+                          },
+                          "computed": false
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "start": 1863,
+                            "end": 1878,
+                            "loc": {
+                              "start": {
+                                "line": 69,
+                                "column": 33
+                              },
+                              "end": {
+                                "line": 69,
+                                "column": 48
+                              }
+                            },
+                            "name": "moneyOrCurrency"
+                          }
+                        ]
+                      }
+                    },
+                    "consequent": {
+                      "type": "BlockStatement",
+                      "start": 1881,
+                      "end": 1992,
+                      "loc": {
+                        "start": {
+                          "line": 69,
+                          "column": 51
+                        },
+                        "end": {
+                          "line": 71,
+                          "column": 9
+                        }
+                      },
+                      "body": [
+                        {
+                          "type": "ExpressionStatement",
+                          "start": 1895,
+                          "end": 1982,
+                          "loc": {
+                            "start": {
+                              "line": 70,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 70,
+                              "column": 99
+                            }
+                          },
+                          "expression": {
+                            "type": "CallExpression",
+                            "start": 1895,
+                            "end": 1981,
+                            "loc": {
+                              "start": {
+                                "line": 70,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 70,
+                                "column": 98
+                              }
+                            },
+                            "callee": {
+                              "type": "MemberExpression",
+                              "start": 1895,
+                              "end": 1913,
+                              "loc": {
+                                "start": {
+                                  "line": 70,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 70,
+                                  "column": 30
+                                }
+                              },
+                              "object": {
+                                "type": "Identifier",
+                                "start": 1895,
+                                "end": 1908,
+                                "loc": {
+                                  "start": {
+                                    "line": 70,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 70,
+                                    "column": 25
+                                  }
+                                },
+                                "name": "Preconditions"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 1909,
+                                "end": 1913,
+                                "loc": {
+                                  "start": {
+                                    "line": 70,
+                                    "column": 26
+                                  },
+                                  "end": {
+                                    "line": 70,
+                                    "column": 30
+                                  }
+                                },
+                                "name": "fail"
+                              },
+                              "computed": false
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 1914,
+                                "end": 1922,
+                                "loc": {
+                                  "start": {
+                                    "line": 70,
+                                    "column": 31
+                                  },
+                                  "end": {
+                                    "line": 70,
+                                    "column": 39
+                                  }
+                                },
+                                "name": "Ethereum"
+                              },
+                              {
+                                "type": "LogicalExpression",
+                                "start": 1924,
+                                "end": 1980,
+                                "loc": {
+                                  "start": {
+                                    "line": 70,
+                                    "column": 41
+                                  },
+                                  "end": {
+                                    "line": 70,
+                                    "column": 97
+                                  }
+                                },
+                                "left": {
+                                  "type": "CallExpression",
+                                  "start": 1924,
+                                  "end": 1961,
+                                  "loc": {
+                                    "start": {
+                                      "line": 70,
+                                      "column": 41
+                                    },
+                                    "end": {
+                                      "line": 70,
+                                      "column": 78
+                                    }
+                                  },
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "start": 1924,
+                                    "end": 1944,
+                                    "loc": {
+                                      "start": {
+                                        "line": 70,
+                                        "column": 41
+                                      },
+                                      "end": {
+                                        "line": 70,
+                                        "column": 61
+                                      }
+                                    },
+                                    "object": {
+                                      "type": "Identifier",
+                                      "start": 1924,
+                                      "end": 1932,
+                                      "loc": {
+                                        "start": {
+                                          "line": 70,
+                                          "column": 41
+                                        },
+                                        "end": {
+                                          "line": 70,
+                                          "column": 49
+                                        }
+                                      },
+                                      "name": "Currency"
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "start": 1933,
+                                      "end": 1944,
+                                      "loc": {
+                                        "start": {
+                                          "line": 70,
+                                          "column": 50
+                                        },
+                                        "end": {
+                                          "line": 70,
+                                          "column": 61
+                                        }
+                                      },
+                                      "name": "optCurrency"
+                                    },
+                                    "computed": false
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Identifier",
+                                      "start": 1945,
+                                      "end": 1960,
+                                      "loc": {
+                                        "start": {
+                                          "line": 70,
+                                          "column": 62
+                                        },
+                                        "end": {
+                                          "line": 70,
+                                          "column": 77
+                                        }
+                                      },
+                                      "name": "moneyOrCurrency"
+                                    }
+                                  ]
+                                },
+                                "operator": "||",
+                                "right": {
+                                  "type": "Identifier",
+                                  "start": 1965,
+                                  "end": 1980,
+                                  "loc": {
+                                    "start": {
+                                      "line": 70,
+                                      "column": 82
+                                    },
+                                    "end": {
+                                      "line": 70,
+                                      "column": 97
+                                    }
+                                  },
+                                  "name": "moneyOrCurrency"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "alternate": null
+                  },
+                  {
+                    "type": "ReturnStatement",
+                    "start": 2002,
+                    "end": 2025,
+                    "loc": {
+                      "start": {
+                        "line": 73,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 73,
+                        "column": 31
+                      }
+                    },
+                    "argument": {
+                      "type": "Identifier",
+                      "start": 2009,
+                      "end": 2024,
+                      "loc": {
+                        "start": {
+                          "line": 73,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 73,
+                          "column": 30
+                        }
+                      },
+                      "name": "moneyOrCurrency"
+                    }
+                  }
+                ],
+                "trailingComments": null
+              },
+              "trailingComments": null
+            },
+            "leadingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     * If {@link Ethereum#isEthereum} returns false, will throw.\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Class<Currency>}\n     * @throws {PreconditionsError} if not an instance of Money (for Ethereum) or the Ethereum class itself.\n     ",
+                "start": 1494,
+                "end": 1782,
+                "loc": {
+                  "start": {
+                    "line": 61,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 67,
+                    "column": 7
+                  }
+                },
+                "range": [
+                  1494,
+                  1782
+                ]
+              }
+            ],
+            "trailingComments": [
+              {
+                "type": "CommentLine",
+                "value": "endregion",
+                "start": 2037,
+                "end": 2048,
+                "loc": {
+                  "start": {
+                    "line": 76,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 76,
+                    "column": 15
+                  }
+                },
+                "range": [
+                  2037,
+                  2048
+                ]
+              }
+            ]
+          },
+          {
+            "type": "MethodDefinition",
+            "start": 2054,
+            "end": 2106,
+            "loc": {
+              "start": {
+                "line": 78,
+                "column": 4
+              },
+              "end": {
+                "line": 80,
+                "column": 5
+              }
+            },
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 2061,
+              "end": 2069,
+              "loc": {
+                "start": {
+                  "line": 78,
+                  "column": 11
+                },
+                "end": {
+                  "line": 78,
+                  "column": 19
+                }
+              },
+              "name": "toString"
+            },
+            "static": true,
+            "kind": "method",
+            "value": {
+              "type": "FunctionExpression",
+              "start": 2069,
+              "end": 2106,
+              "loc": {
+                "start": {
+                  "line": 78,
+                  "column": 19
+                },
+                "end": {
+                  "line": 80,
+                  "column": 5
+                }
+              },
+              "id": null,
+              "generator": false,
+              "expression": false,
+              "async": false,
+              "params": [],
+              "body": {
+                "type": "BlockStatement",
+                "start": 2072,
+                "end": 2106,
+                "loc": {
+                  "start": {
+                    "line": 78,
+                    "column": 22
+                  },
+                  "end": {
+                    "line": 80,
+                    "column": 5
+                  }
+                },
+                "body": [
+                  {
+                    "type": "ReturnStatement",
+                    "start": 2082,
+                    "end": 2100,
+                    "loc": {
+                      "start": {
+                        "line": 79,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 79,
+                        "column": 26
+                      }
+                    },
+                    "argument": {
+                      "type": "Literal",
+                      "start": 2089,
+                      "end": 2099,
+                      "loc": {
+                        "start": {
+                          "line": 79,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 79,
+                          "column": 25
+                        }
+                      },
+                      "value": "Ethereum",
+                      "rawValue": "Ethereum",
+                      "raw": "'Ethereum'"
+                    }
+                  }
+                ]
+              }
+            },
+            "leadingComments": [
+              {
+                "type": "CommentLine",
+                "value": "endregion",
+                "start": 2037,
+                "end": 2048,
+                "loc": {
+                  "start": {
+                    "line": 76,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 76,
+                    "column": 15
+                  }
+                },
+                "range": [
+                  2037,
+                  2048
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "leadingComments": [],
+      "name": "_",
+      "trailingComments": []
+    },
+    {
+      "type": "ExpressionStatement",
+      "start": 2111,
+      "end": 2157,
+      "loc": {
+        "start": {
+          "line": 84,
+          "column": 0
+        },
+        "end": {
+          "line": 84,
+          "column": 46
+        }
+      },
+      "expression": {
+        "type": "CallExpression",
+        "start": 2111,
+        "end": 2156,
+        "loc": {
+          "start": {
+            "line": 84,
+            "column": 0
+          },
+          "end": {
+            "line": 84,
+            "column": 45
+          }
+        },
+        "callee": {
+          "type": "MemberExpression",
+          "start": 2111,
+          "end": 2134,
+          "loc": {
+            "start": {
+              "line": 84,
+              "column": 0
+            },
+            "end": {
+              "line": 84,
+              "column": 23
+            }
+          },
+          "object": {
+            "type": "MemberExpression",
+            "start": 2111,
+            "end": 2125,
+            "loc": {
+              "start": {
+                "line": 84,
+                "column": 0
+              },
+              "end": {
+                "line": 84,
+                "column": 14
+              }
+            },
+            "object": {
+              "type": "Identifier",
+              "start": 2111,
+              "end": 2119,
+              "loc": {
+                "start": {
+                  "line": 84,
+                  "column": 0
+                },
+                "end": {
+                  "line": 84,
+                  "column": 8
+                }
+              },
+              "name": "Currency"
+            },
+            "property": {
+              "type": "Identifier",
+              "start": 2120,
+              "end": 2125,
+              "loc": {
+                "start": {
+                  "line": 84,
+                  "column": 9
+                },
+                "end": {
+                  "line": 84,
+                  "column": 14
+                }
+              },
+              "name": "types"
+            },
+            "computed": false
+          },
+          "property": {
+            "type": "Identifier",
+            "start": 2126,
+            "end": 2134,
+            "loc": {
+              "start": {
+                "line": 84,
+                "column": 15
+              },
+              "end": {
+                "line": 84,
+                "column": 23
+              }
+            },
+            "name": "register"
+          },
+          "computed": false
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "start": 2135,
+            "end": 2145,
+            "loc": {
+              "start": {
+                "line": 84,
+                "column": 24
+              },
+              "end": {
+                "line": 84,
+                "column": 34
+              }
+            },
+            "value": "Ethereum",
+            "rawValue": "Ethereum",
+            "raw": "'Ethereum'"
+          },
+          {
+            "type": "Identifier",
+            "start": 2147,
+            "end": 2155,
+            "loc": {
+              "start": {
+                "line": 84,
+                "column": 36
+              },
+              "end": {
+                "line": 84,
+                "column": 44
+              }
+            },
+            "name": "Ethereum"
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "start": 2158,
+      "end": 2199,
+      "loc": {
+        "start": {
+          "line": 85,
+          "column": 0
+        },
+        "end": {
+          "line": 85,
+          "column": 41
+        }
+      },
+      "expression": {
+        "type": "CallExpression",
+        "start": 2158,
+        "end": 2198,
+        "loc": {
+          "start": {
+            "line": 85,
+            "column": 0
+          },
+          "end": {
+            "line": 85,
+            "column": 40
+          }
+        },
+        "callee": {
+          "type": "MemberExpression",
+          "start": 2158,
+          "end": 2181,
+          "loc": {
+            "start": {
+              "line": 85,
+              "column": 0
+            },
+            "end": {
+              "line": 85,
+              "column": 23
+            }
+          },
+          "object": {
+            "type": "MemberExpression",
+            "start": 2158,
+            "end": 2172,
+            "loc": {
+              "start": {
+                "line": 85,
+                "column": 0
+              },
+              "end": {
+                "line": 85,
+                "column": 14
+              }
+            },
+            "object": {
+              "type": "Identifier",
+              "start": 2158,
+              "end": 2166,
+              "loc": {
+                "start": {
+                  "line": 85,
+                  "column": 0
+                },
+                "end": {
+                  "line": 85,
+                  "column": 8
+                }
+              },
+              "name": "Currency"
+            },
+            "property": {
+              "type": "Identifier",
+              "start": 2167,
+              "end": 2172,
+              "loc": {
+                "start": {
+                  "line": 85,
+                  "column": 9
+                },
+                "end": {
+                  "line": 85,
+                  "column": 14
+                }
+              },
+              "name": "types"
+            },
+            "computed": false
+          },
+          "property": {
+            "type": "Identifier",
+            "start": 2173,
+            "end": 2181,
+            "loc": {
+              "start": {
+                "line": 85,
+                "column": 15
+              },
+              "end": {
+                "line": 85,
+                "column": 23
+              }
+            },
+            "name": "register"
+          },
+          "computed": false
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "start": 2182,
+            "end": 2187,
+            "loc": {
+              "start": {
+                "line": 85,
+                "column": 24
+              },
+              "end": {
+                "line": 85,
+                "column": 29
+              }
+            },
+            "value": "ETH",
+            "rawValue": "ETH",
+            "raw": "'ETH'"
+          },
+          {
+            "type": "Identifier",
+            "start": 2189,
+            "end": 2197,
+            "loc": {
+              "start": {
+                "line": 85,
+                "column": 31
+              },
+              "end": {
+                "line": 85,
+                "column": 39
+              }
+            },
+            "name": "Ethereum"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Identifier",
+      "start": 2201,
+      "end": 2225,
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 0
+        },
+        "end": {
+          "line": 87,
+          "column": 24
+        }
+      },
+      "declaration": {
+        "type": "Identifier",
+        "start": 2216,
+        "end": 2224,
+        "loc": {
+          "start": {
+            "line": 87,
+            "column": 15
+          },
+          "end": {
+            "line": 87,
+            "column": 23
+          }
+        },
+        "name": "Ethereum"
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 2201,
+      "end": 2225,
+      "loc": {
+        "start": {
+          "line": 87,
+          "column": 0
+        },
+        "end": {
+          "line": 87,
+          "column": 24
+        }
+      },
+      "declaration": {
+        "type": "ClassDeclaration",
+        "start": 323,
+        "end": 2109,
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 0
+          },
+          "end": {
+            "line": 82,
+            "column": 1
+          }
+        },
+        "id": {
+          "type": "Identifier",
+          "start": 329,
+          "end": 337,
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 6
+            },
+            "end": {
+              "line": 14,
+              "column": 14
+            }
+          },
+          "name": "Ethereum",
+          "leadingComments": null
+        },
+        "superClass": {
+          "type": "Identifier",
+          "start": 346,
+          "end": 354,
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 23
+            },
+            "end": {
+              "line": 14,
+              "column": 31
+            }
+          },
+          "name": "Currency"
+        },
+        "body": {
+          "type": "ClassBody",
+          "start": 355,
+          "end": 2109,
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 32
+            },
+            "end": {
+              "line": 82,
+              "column": 1
+            }
+          },
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "start": 476,
+              "end": 944,
+              "loc": {
+                "start": {
+                  "line": 21,
+                  "column": 4
+                },
+                "end": {
+                  "line": 39,
+                  "column": 5
+                }
+              },
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 483,
+                "end": 495,
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 23
+                  }
+                },
+                "name": "fromEthereum"
+              },
+              "static": true,
+              "kind": "method",
+              "value": {
+                "type": "FunctionExpression",
+                "start": 495,
+                "end": 944,
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 23
+                  },
+                  "end": {
+                    "line": 39,
+                    "column": 5
+                  }
+                },
+                "id": null,
+                "generator": false,
+                "expression": false,
+                "async": false,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "start": 496,
+                    "end": 511,
+                    "loc": {
+                      "start": {
+                        "line": 21,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 39
+                      }
+                    },
+                    "name": "valueInEthereum"
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "start": 513,
+                  "end": 944,
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 41
+                    },
+                    "end": {
+                      "line": 39,
+                      "column": 5
+                    }
+                  },
+                  "body": [
+                    {
+                      "type": "VariableDeclaration",
+                      "start": 573,
+                      "end": 625,
+                      "loc": {
+                        "start": {
+                          "line": 25,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 25,
+                          "column": 60
+                        }
+                      },
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "start": 577,
+                          "end": 624,
+                          "loc": {
+                            "start": {
+                              "line": 25,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 25,
+                              "column": 59
+                            }
+                          },
+                          "id": {
+                            "type": "Identifier",
+                            "start": 577,
+                            "end": 582,
+                            "loc": {
+                              "start": {
+                                "line": 25,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 17
+                              }
+                            },
+                            "name": "value",
+                            "leadingComments": null
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "start": 585,
+                            "end": 624,
+                            "loc": {
+                              "start": {
+                                "line": 25,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 59
+                              }
+                            },
+                            "callee": {
+                              "type": "MemberExpression",
+                              "start": 585,
+                              "end": 607,
+                              "loc": {
+                                "start": {
+                                  "line": 25,
+                                  "column": 20
+                                },
+                                "end": {
+                                  "line": 25,
+                                  "column": 42
+                                }
+                              },
+                              "object": {
+                                "type": "Identifier",
+                                "start": 585,
+                                "end": 593,
+                                "loc": {
+                                  "start": {
+                                    "line": 25,
+                                    "column": 20
+                                  },
+                                  "end": {
+                                    "line": 25,
+                                    "column": 28
+                                  }
+                                },
+                                "name": "Currency"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 594,
+                                "end": 607,
+                                "loc": {
+                                  "start": {
+                                    "line": 25,
+                                    "column": 29
+                                  },
+                                  "end": {
+                                    "line": 25,
+                                    "column": 42
+                                  }
+                                },
+                                "name": "toValueOrFail"
+                              },
+                              "computed": false
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 608,
+                                "end": 623,
+                                "loc": {
+                                  "start": {
+                                    "line": 25,
+                                    "column": 43
+                                  },
+                                  "end": {
+                                    "line": 25,
+                                    "column": 58
+                                  }
+                                },
+                                "name": "valueInEthereum"
+                              }
+                            ]
+                          },
+                          "leadingComments": null
+                        }
+                      ],
+                      "kind": "let",
+                      "leadingComments": [
+                        {
+                          "type": "Block",
+                          "value": "*\n         * @type {Number}\n         ",
+                          "start": 523,
+                          "end": 564,
+                          "loc": {
+                            "start": {
+                              "line": 22,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 24,
+                              "column": 11
+                            }
+                          },
+                          "range": [
+                            523,
+                            564
+                          ]
+                        }
+                      ],
+                      "trailingComments": [
+                        {
+                          "type": "Block",
+                          "value": "*\n         * @type {Class.<Currency>|undefined}\n         ",
+                          "start": 634,
+                          "end": 695,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 28,
+                              "column": 11
+                            }
+                          },
+                          "range": [
+                            634,
+                            695
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "VariableDeclaration",
+                      "start": 704,
+                      "end": 757,
+                      "loc": {
+                        "start": {
+                          "line": 29,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 29,
+                          "column": 61
+                        }
+                      },
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "start": 708,
+                          "end": 756,
+                          "loc": {
+                            "start": {
+                              "line": 29,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 29,
+                              "column": 60
+                            }
+                          },
+                          "id": {
+                            "type": "Identifier",
+                            "start": 708,
+                            "end": 716,
+                            "loc": {
+                              "start": {
+                                "line": 29,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 29,
+                                "column": 20
+                              }
+                            },
+                            "name": "currency",
+                            "leadingComments": null
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "start": 719,
+                            "end": 756,
+                            "loc": {
+                              "start": {
+                                "line": 29,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 29,
+                                "column": 60
+                              }
+                            },
+                            "callee": {
+                              "type": "MemberExpression",
+                              "start": 719,
+                              "end": 739,
+                              "loc": {
+                                "start": {
+                                  "line": 29,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 29,
+                                  "column": 43
+                                }
+                              },
+                              "object": {
+                                "type": "Identifier",
+                                "start": 719,
+                                "end": 727,
+                                "loc": {
+                                  "start": {
+                                    "line": 29,
+                                    "column": 23
+                                  },
+                                  "end": {
+                                    "line": 29,
+                                    "column": 31
+                                  }
+                                },
+                                "name": "Currency"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 728,
+                                "end": 739,
+                                "loc": {
+                                  "start": {
+                                    "line": 29,
+                                    "column": 32
+                                  },
+                                  "end": {
+                                    "line": 29,
+                                    "column": 43
+                                  }
+                                },
+                                "name": "optCurrency"
+                              },
+                              "computed": false
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 740,
+                                "end": 755,
+                                "loc": {
+                                  "start": {
+                                    "line": 29,
+                                    "column": 44
+                                  },
+                                  "end": {
+                                    "line": 29,
+                                    "column": 59
+                                  }
+                                },
+                                "name": "valueInEthereum"
+                              }
+                            ]
+                          },
+                          "leadingComments": null
+                        }
+                      ],
+                      "kind": "let",
+                      "leadingComments": [
+                        {
+                          "type": "Block",
+                          "value": "*\n         * @type {Class.<Currency>|undefined}\n         ",
+                          "start": 634,
+                          "end": 695,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 28,
+                              "column": 11
+                            }
+                          },
+                          "range": [
+                            634,
+                            695
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "IfStatement",
+                      "start": 767,
+                      "end": 841,
+                      "loc": {
+                        "start": {
+                          "line": 31,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 33,
+                          "column": 9
+                        }
+                      },
+                      "test": {
+                        "type": "Identifier",
+                        "start": 771,
+                        "end": 779,
+                        "loc": {
+                          "start": {
+                            "line": 31,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 31,
+                            "column": 20
+                          }
+                        },
+                        "name": "currency"
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "start": 781,
+                        "end": 841,
+                        "loc": {
+                          "start": {
+                            "line": 31,
+                            "column": 22
+                          },
+                          "end": {
+                            "line": 33,
+                            "column": 9
+                          }
+                        },
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "start": 795,
+                            "end": 831,
+                            "loc": {
+                              "start": {
+                                "line": 32,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 32,
+                                "column": 48
+                              }
+                            },
+                            "expression": {
+                              "type": "CallExpression",
+                              "start": 795,
+                              "end": 830,
+                              "loc": {
+                                "start": {
+                                  "line": 32,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 32,
+                                  "column": 47
+                                }
+                              },
+                              "callee": {
+                                "type": "MemberExpression",
+                                "start": 795,
+                                "end": 820,
+                                "loc": {
+                                  "start": {
+                                    "line": 32,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 32,
+                                    "column": 37
+                                  }
+                                },
+                                "object": {
+                                  "type": "Identifier",
+                                  "start": 795,
+                                  "end": 803,
+                                  "loc": {
+                                    "start": {
+                                      "line": 32,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 32,
+                                      "column": 20
+                                    }
+                                  },
+                                  "name": "Ethereum"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "start": 804,
+                                  "end": 820,
+                                  "loc": {
+                                    "start": {
+                                      "line": 32,
+                                      "column": 21
+                                    },
+                                    "end": {
+                                      "line": 32,
+                                      "column": 37
+                                    }
+                                  },
+                                  "name": "shouldBeEthereum"
+                                },
+                                "computed": false
+                              },
+                              "arguments": [
+                                {
+                                  "type": "Identifier",
+                                  "start": 821,
+                                  "end": 829,
+                                  "loc": {
+                                    "start": {
+                                      "line": 32,
+                                      "column": 38
+                                    },
+                                    "end": {
+                                      "line": 32,
+                                      "column": 46
+                                    }
+                                  },
+                                  "name": "currency"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "alternate": null
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "start": 851,
+                      "end": 938,
+                      "loc": {
+                        "start": {
+                          "line": 35,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 38,
+                          "column": 11
+                        }
+                      },
+                      "argument": {
+                        "type": "NewExpression",
+                        "start": 858,
+                        "end": 937,
+                        "loc": {
+                          "start": {
+                            "line": 35,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 38,
+                            "column": 10
+                          }
+                        },
+                        "callee": {
+                          "type": "Identifier",
+                          "start": 862,
+                          "end": 867,
+                          "loc": {
+                            "start": {
+                              "line": 35,
+                              "column": 19
+                            },
+                            "end": {
+                              "line": 35,
+                              "column": 24
+                            }
+                          },
+                          "name": "Money"
+                        },
+                        "arguments": [
+                          {
+                            "type": "ObjectExpression",
+                            "start": 868,
+                            "end": 936,
+                            "loc": {
+                              "start": {
+                                "line": 35,
+                                "column": 25
+                              },
+                              "end": {
+                                "line": 38,
+                                "column": 9
+                              }
+                            },
+                            "properties": [
+                              {
+                                "type": "Property",
+                                "start": 882,
+                                "end": 894,
+                                "loc": {
+                                  "start": {
+                                    "line": 36,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 36,
+                                    "column": 24
+                                  }
+                                },
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "key": {
+                                  "type": "Identifier",
+                                  "start": 882,
+                                  "end": 887,
+                                  "loc": {
+                                    "start": {
+                                      "line": 36,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 36,
+                                      "column": 17
+                                    }
+                                  },
+                                  "name": "value"
+                                },
+                                "value": {
+                                  "type": "Identifier",
+                                  "start": 889,
+                                  "end": 894,
+                                  "loc": {
+                                    "start": {
+                                      "line": 36,
+                                      "column": 19
+                                    },
+                                    "end": {
+                                      "line": 36,
+                                      "column": 24
+                                    }
+                                  },
+                                  "name": "value"
+                                },
+                                "kind": "init"
+                              },
+                              {
+                                "type": "Property",
+                                "start": 908,
+                                "end": 926,
+                                "loc": {
+                                  "start": {
+                                    "line": 37,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 37,
+                                    "column": 30
+                                  }
+                                },
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "key": {
+                                  "type": "Identifier",
+                                  "start": 908,
+                                  "end": 916,
+                                  "loc": {
+                                    "start": {
+                                      "line": 37,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 37,
+                                      "column": 20
+                                    }
+                                  },
+                                  "name": "currency"
+                                },
+                                "value": {
+                                  "type": "Identifier",
+                                  "start": 918,
+                                  "end": 926,
+                                  "loc": {
+                                    "start": {
+                                      "line": 37,
+                                      "column": 22
+                                    },
+                                    "end": {
+                                      "line": 37,
+                                      "column": 30
+                                    }
+                                  },
+                                  "name": "Ethereum"
+                                },
+                                "kind": "init"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "trailingComments": null
+                },
+                "trailingComments": null
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     *\n     * @param {Money|String|Number|null|undefined} valueInEthereum\n     * @returns {Money}\n     ",
+                  "start": 362,
+                  "end": 471,
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 20,
+                      "column": 7
+                    }
+                  },
+                  "range": [
+                    362,
+                    471
+                  ]
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": "region Detection",
+                  "start": 950,
+                  "end": 968,
+                  "loc": {
+                    "start": {
+                      "line": 41,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 41,
+                      "column": 22
+                    }
+                  },
+                  "range": [
+                    950,
+                    968
+                  ]
+                },
+                {
+                  "type": "Block",
+                  "value": "*\n     * Detects if you pass in either Money or Currency of type Ethereum <br>\n     * <br>\n     * Ethereum -> true <br>\n     * money<Ethereum> -> true <br>\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+                  "start": 973,
+                  "end": 1233,
+                  "loc": {
+                    "start": {
+                      "line": 42,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 50,
+                      "column": 7
+                    }
+                  },
+                  "range": [
+                    973,
+                    1233
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "MethodDefinition",
+              "start": 1238,
+              "end": 1488,
+              "loc": {
+                "start": {
+                  "line": 51,
+                  "column": 4
+                },
+                "end": {
+                  "line": 59,
+                  "column": 5
+                }
+              },
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 1245,
+                "end": 1255,
+                "loc": {
+                  "start": {
+                    "line": 51,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 51,
+                    "column": 21
+                  }
+                },
+                "name": "isEthereum"
+              },
+              "static": true,
+              "kind": "method",
+              "value": {
+                "type": "FunctionExpression",
+                "start": 1255,
+                "end": 1488,
+                "loc": {
+                  "start": {
+                    "line": 51,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 59,
+                    "column": 5
+                  }
+                },
+                "id": null,
+                "generator": false,
+                "expression": false,
+                "async": false,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "start": 1256,
+                    "end": 1271,
+                    "loc": {
+                      "start": {
+                        "line": 51,
+                        "column": 22
+                      },
+                      "end": {
+                        "line": 51,
+                        "column": 37
+                      }
+                    },
+                    "name": "moneyOrCurrency"
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "start": 1273,
+                  "end": 1488,
+                  "loc": {
+                    "start": {
+                      "line": 51,
+                      "column": 39
+                    },
+                    "end": {
+                      "line": 59,
+                      "column": 5
+                    }
+                  },
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "start": 1283,
+                      "end": 1342,
+                      "loc": {
+                        "start": {
+                          "line": 52,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 54,
+                          "column": 9
+                        }
+                      },
+                      "test": {
+                        "type": "UnaryExpression",
+                        "start": 1287,
+                        "end": 1303,
+                        "loc": {
+                          "start": {
+                            "line": 52,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 52,
+                            "column": 28
+                          }
+                        },
+                        "operator": "!",
+                        "prefix": true,
+                        "argument": {
+                          "type": "Identifier",
+                          "start": 1288,
+                          "end": 1303,
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 13
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 28
+                            }
+                          },
+                          "name": "moneyOrCurrency"
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "start": 1305,
+                        "end": 1342,
+                        "loc": {
+                          "start": {
+                            "line": 52,
+                            "column": 30
+                          },
+                          "end": {
+                            "line": 54,
+                            "column": 9
+                          }
+                        },
+                        "body": [
+                          {
+                            "type": "ReturnStatement",
+                            "start": 1319,
+                            "end": 1332,
+                            "loc": {
+                              "start": {
+                                "line": 53,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 53,
+                                "column": 25
+                              }
+                            },
+                            "argument": {
+                              "type": "Literal",
+                              "start": 1326,
+                              "end": 1331,
+                              "loc": {
+                                "start": {
+                                  "line": 53,
+                                  "column": 19
+                                },
+                                "end": {
+                                  "line": 53,
+                                  "column": 24
+                                }
+                              },
+                              "value": false,
+                              "rawValue": false,
+                              "raw": "false"
+                            }
+                          }
+                        ]
+                      },
+                      "alternate": null
+                    },
+                    {
+                      "type": "VariableDeclaration",
+                      "start": 1352,
+                      "end": 1405,
+                      "loc": {
+                        "start": {
+                          "line": 56,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 56,
+                          "column": 61
+                        }
+                      },
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "start": 1356,
+                          "end": 1404,
+                          "loc": {
+                            "start": {
+                              "line": 56,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 56,
+                              "column": 60
+                            }
+                          },
+                          "id": {
+                            "type": "Identifier",
+                            "start": 1356,
+                            "end": 1364,
+                            "loc": {
+                              "start": {
+                                "line": 56,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 56,
+                                "column": 20
+                              }
+                            },
+                            "name": "currency"
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "start": 1367,
+                            "end": 1404,
+                            "loc": {
+                              "start": {
+                                "line": 56,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 56,
+                                "column": 60
+                              }
+                            },
+                            "callee": {
+                              "type": "MemberExpression",
+                              "start": 1367,
+                              "end": 1387,
+                              "loc": {
+                                "start": {
+                                  "line": 56,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 56,
+                                  "column": 43
+                                }
+                              },
+                              "object": {
+                                "type": "Identifier",
+                                "start": 1367,
+                                "end": 1375,
+                                "loc": {
+                                  "start": {
+                                    "line": 56,
+                                    "column": 23
+                                  },
+                                  "end": {
+                                    "line": 56,
+                                    "column": 31
+                                  }
+                                },
+                                "name": "Currency"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 1376,
+                                "end": 1387,
+                                "loc": {
+                                  "start": {
+                                    "line": 56,
+                                    "column": 32
+                                  },
+                                  "end": {
+                                    "line": 56,
+                                    "column": 43
+                                  }
+                                },
+                                "name": "optCurrency"
+                              },
+                              "computed": false
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 1388,
+                                "end": 1403,
+                                "loc": {
+                                  "start": {
+                                    "line": 56,
+                                    "column": 44
+                                  },
+                                  "end": {
+                                    "line": 56,
+                                    "column": 59
+                                  }
+                                },
+                                "name": "moneyOrCurrency"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "kind": "let"
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "start": 1415,
+                      "end": 1482,
+                      "loc": {
+                        "start": {
+                          "line": 58,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 58,
+                          "column": 75
+                        }
+                      },
+                      "argument": {
+                        "type": "LogicalExpression",
+                        "start": 1422,
+                        "end": 1481,
+                        "loc": {
+                          "start": {
+                            "line": 58,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 58,
+                            "column": 74
+                          }
+                        },
+                        "left": {
+                          "type": "CallExpression",
+                          "start": 1422,
+                          "end": 1448,
+                          "loc": {
+                            "start": {
+                              "line": 58,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 58,
+                              "column": 41
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 1422,
+                            "end": 1438,
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 31
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 1422,
+                              "end": 1430,
+                              "loc": {
+                                "start": {
+                                  "line": 58,
+                                  "column": 15
+                                },
+                                "end": {
+                                  "line": 58,
+                                  "column": 23
+                                }
+                              },
+                              "name": "Ethereum"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 1431,
+                              "end": 1438,
+                              "loc": {
+                                "start": {
+                                  "line": 58,
+                                  "column": 24
+                                },
+                                "end": {
+                                  "line": 58,
+                                  "column": 31
+                                }
+                              },
+                              "name": "isClass"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 1439,
+                              "end": 1447,
+                              "loc": {
+                                "start": {
+                                  "line": 58,
+                                  "column": 32
+                                },
+                                "end": {
+                                  "line": 58,
+                                  "column": 40
+                                }
+                              },
+                              "name": "currency"
+                            }
+                          ]
+                        },
+                        "operator": "||",
+                        "right": {
+                          "type": "CallExpression",
+                          "start": 1452,
+                          "end": 1481,
+                          "loc": {
+                            "start": {
+                              "line": 58,
+                              "column": 45
+                            },
+                            "end": {
+                              "line": 58,
+                              "column": 74
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 1452,
+                            "end": 1471,
+                            "loc": {
+                              "start": {
+                                "line": 58,
+                                "column": 45
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 64
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 1452,
+                              "end": 1460,
+                              "loc": {
+                                "start": {
+                                  "line": 58,
+                                  "column": 45
+                                },
+                                "end": {
+                                  "line": 58,
+                                  "column": 53
+                                }
+                              },
+                              "name": "Ethereum"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 1461,
+                              "end": 1471,
+                              "loc": {
+                                "start": {
+                                  "line": 58,
+                                  "column": 54
+                                },
+                                "end": {
+                                  "line": 58,
+                                  "column": 64
+                                }
+                              },
+                              "name": "isInstance"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 1472,
+                              "end": 1480,
+                              "loc": {
+                                "start": {
+                                  "line": 58,
+                                  "column": 65
+                                },
+                                "end": {
+                                  "line": 58,
+                                  "column": 73
+                                }
+                              },
+                              "name": "currency"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "trailingComments": null
+                },
+                "trailingComments": null
+              },
+              "leadingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": "region Detection",
+                  "start": 950,
+                  "end": 968,
+                  "loc": {
+                    "start": {
+                      "line": 41,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 41,
+                      "column": 22
+                    }
+                  },
+                  "range": [
+                    950,
+                    968
+                  ]
+                },
+                {
+                  "type": "Block",
+                  "value": "*\n     * Detects if you pass in either Money or Currency of type Ethereum <br>\n     * <br>\n     * Ethereum -> true <br>\n     * money<Ethereum> -> true <br>\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+                  "start": 973,
+                  "end": 1233,
+                  "loc": {
+                    "start": {
+                      "line": 42,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 50,
+                      "column": 7
+                    }
+                  },
+                  "range": [
+                    973,
+                    1233
+                  ]
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * If {@link Ethereum#isEthereum} returns false, will throw.\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Class<Currency>}\n     * @throws {PreconditionsError} if not an instance of Money (for Ethereum) or the Ethereum class itself.\n     ",
+                  "start": 1494,
+                  "end": 1782,
+                  "loc": {
+                    "start": {
+                      "line": 61,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 67,
+                      "column": 7
+                    }
+                  },
+                  "range": [
+                    1494,
+                    1782
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "MethodDefinition",
+              "start": 1787,
+              "end": 2031,
+              "loc": {
+                "start": {
+                  "line": 68,
+                  "column": 4
+                },
+                "end": {
+                  "line": 74,
+                  "column": 5
+                }
+              },
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 1794,
+                "end": 1810,
+                "loc": {
+                  "start": {
+                    "line": 68,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 68,
+                    "column": 27
+                  }
+                },
+                "name": "shouldBeEthereum"
+              },
+              "static": true,
+              "kind": "method",
+              "value": {
+                "type": "FunctionExpression",
+                "start": 1810,
+                "end": 2031,
+                "loc": {
+                  "start": {
+                    "line": 68,
+                    "column": 27
+                  },
+                  "end": {
+                    "line": 74,
+                    "column": 5
+                  }
+                },
+                "id": null,
+                "generator": false,
+                "expression": false,
+                "async": false,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "start": 1811,
+                    "end": 1826,
+                    "loc": {
+                      "start": {
+                        "line": 68,
+                        "column": 28
+                      },
+                      "end": {
+                        "line": 68,
+                        "column": 43
+                      }
+                    },
+                    "name": "moneyOrCurrency"
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "start": 1828,
+                  "end": 2031,
+                  "loc": {
+                    "start": {
+                      "line": 68,
+                      "column": 45
+                    },
+                    "end": {
+                      "line": 74,
+                      "column": 5
+                    }
+                  },
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "start": 1838,
+                      "end": 1992,
+                      "loc": {
+                        "start": {
+                          "line": 69,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 71,
+                          "column": 9
+                        }
+                      },
+                      "test": {
+                        "type": "UnaryExpression",
+                        "start": 1842,
+                        "end": 1879,
+                        "loc": {
+                          "start": {
+                            "line": 69,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 69,
+                            "column": 49
+                          }
+                        },
+                        "operator": "!",
+                        "prefix": true,
+                        "argument": {
+                          "type": "CallExpression",
+                          "start": 1843,
+                          "end": 1879,
+                          "loc": {
+                            "start": {
+                              "line": 69,
+                              "column": 13
+                            },
+                            "end": {
+                              "line": 69,
+                              "column": 49
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 1843,
+                            "end": 1862,
+                            "loc": {
+                              "start": {
+                                "line": 69,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 69,
+                                "column": 32
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 1843,
+                              "end": 1851,
+                              "loc": {
+                                "start": {
+                                  "line": 69,
+                                  "column": 13
+                                },
+                                "end": {
+                                  "line": 69,
+                                  "column": 21
+                                }
+                              },
+                              "name": "Ethereum"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 1852,
+                              "end": 1862,
+                              "loc": {
+                                "start": {
+                                  "line": 69,
+                                  "column": 22
+                                },
+                                "end": {
+                                  "line": 69,
+                                  "column": 32
+                                }
+                              },
+                              "name": "isEthereum"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 1863,
+                              "end": 1878,
+                              "loc": {
+                                "start": {
+                                  "line": 69,
+                                  "column": 33
+                                },
+                                "end": {
+                                  "line": 69,
+                                  "column": 48
+                                }
+                              },
+                              "name": "moneyOrCurrency"
+                            }
+                          ]
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "start": 1881,
+                        "end": 1992,
+                        "loc": {
+                          "start": {
+                            "line": 69,
+                            "column": 51
+                          },
+                          "end": {
+                            "line": 71,
+                            "column": 9
+                          }
+                        },
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "start": 1895,
+                            "end": 1982,
+                            "loc": {
+                              "start": {
+                                "line": 70,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 70,
+                                "column": 99
+                              }
+                            },
+                            "expression": {
+                              "type": "CallExpression",
+                              "start": 1895,
+                              "end": 1981,
+                              "loc": {
+                                "start": {
+                                  "line": 70,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 70,
+                                  "column": 98
+                                }
+                              },
+                              "callee": {
+                                "type": "MemberExpression",
+                                "start": 1895,
+                                "end": 1913,
+                                "loc": {
+                                  "start": {
+                                    "line": 70,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 70,
+                                    "column": 30
+                                  }
+                                },
+                                "object": {
+                                  "type": "Identifier",
+                                  "start": 1895,
+                                  "end": 1908,
+                                  "loc": {
+                                    "start": {
+                                      "line": 70,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 70,
+                                      "column": 25
+                                    }
+                                  },
+                                  "name": "Preconditions"
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "start": 1909,
+                                  "end": 1913,
+                                  "loc": {
+                                    "start": {
+                                      "line": 70,
+                                      "column": 26
+                                    },
+                                    "end": {
+                                      "line": 70,
+                                      "column": 30
+                                    }
+                                  },
+                                  "name": "fail"
+                                },
+                                "computed": false
+                              },
+                              "arguments": [
+                                {
+                                  "type": "Identifier",
+                                  "start": 1914,
+                                  "end": 1922,
+                                  "loc": {
+                                    "start": {
+                                      "line": 70,
+                                      "column": 31
+                                    },
+                                    "end": {
+                                      "line": 70,
+                                      "column": 39
+                                    }
+                                  },
+                                  "name": "Ethereum"
+                                },
+                                {
+                                  "type": "LogicalExpression",
+                                  "start": 1924,
+                                  "end": 1980,
+                                  "loc": {
+                                    "start": {
+                                      "line": 70,
+                                      "column": 41
+                                    },
+                                    "end": {
+                                      "line": 70,
+                                      "column": 97
+                                    }
+                                  },
+                                  "left": {
+                                    "type": "CallExpression",
+                                    "start": 1924,
+                                    "end": 1961,
+                                    "loc": {
+                                      "start": {
+                                        "line": 70,
+                                        "column": 41
+                                      },
+                                      "end": {
+                                        "line": 70,
+                                        "column": 78
+                                      }
+                                    },
+                                    "callee": {
+                                      "type": "MemberExpression",
+                                      "start": 1924,
+                                      "end": 1944,
+                                      "loc": {
+                                        "start": {
+                                          "line": 70,
+                                          "column": 41
+                                        },
+                                        "end": {
+                                          "line": 70,
+                                          "column": 61
+                                        }
+                                      },
+                                      "object": {
+                                        "type": "Identifier",
+                                        "start": 1924,
+                                        "end": 1932,
+                                        "loc": {
+                                          "start": {
+                                            "line": 70,
+                                            "column": 41
+                                          },
+                                          "end": {
+                                            "line": 70,
+                                            "column": 49
+                                          }
+                                        },
+                                        "name": "Currency"
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "start": 1933,
+                                        "end": 1944,
+                                        "loc": {
+                                          "start": {
+                                            "line": 70,
+                                            "column": 50
+                                          },
+                                          "end": {
+                                            "line": 70,
+                                            "column": 61
+                                          }
+                                        },
+                                        "name": "optCurrency"
+                                      },
+                                      "computed": false
+                                    },
+                                    "arguments": [
+                                      {
+                                        "type": "Identifier",
+                                        "start": 1945,
+                                        "end": 1960,
+                                        "loc": {
+                                          "start": {
+                                            "line": 70,
+                                            "column": 62
+                                          },
+                                          "end": {
+                                            "line": 70,
+                                            "column": 77
+                                          }
+                                        },
+                                        "name": "moneyOrCurrency"
+                                      }
+                                    ]
+                                  },
+                                  "operator": "||",
+                                  "right": {
+                                    "type": "Identifier",
+                                    "start": 1965,
+                                    "end": 1980,
+                                    "loc": {
+                                      "start": {
+                                        "line": 70,
+                                        "column": 82
+                                      },
+                                      "end": {
+                                        "line": 70,
+                                        "column": 97
+                                      }
+                                    },
+                                    "name": "moneyOrCurrency"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "alternate": null
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "start": 2002,
+                      "end": 2025,
+                      "loc": {
+                        "start": {
+                          "line": 73,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 73,
+                          "column": 31
+                        }
+                      },
+                      "argument": {
+                        "type": "Identifier",
+                        "start": 2009,
+                        "end": 2024,
+                        "loc": {
+                          "start": {
+                            "line": 73,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 73,
+                            "column": 30
+                          }
+                        },
+                        "name": "moneyOrCurrency"
+                      }
+                    }
+                  ],
+                  "trailingComments": null
+                },
+                "trailingComments": null
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * If {@link Ethereum#isEthereum} returns false, will throw.\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Class<Currency>}\n     * @throws {PreconditionsError} if not an instance of Money (for Ethereum) or the Ethereum class itself.\n     ",
+                  "start": 1494,
+                  "end": 1782,
+                  "loc": {
+                    "start": {
+                      "line": 61,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 67,
+                      "column": 7
+                    }
+                  },
+                  "range": [
+                    1494,
+                    1782
+                  ]
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": "endregion",
+                  "start": 2037,
+                  "end": 2048,
+                  "loc": {
+                    "start": {
+                      "line": 76,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 76,
+                      "column": 15
+                    }
+                  },
+                  "range": [
+                    2037,
+                    2048
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "MethodDefinition",
+              "start": 2054,
+              "end": 2106,
+              "loc": {
+                "start": {
+                  "line": 78,
+                  "column": 4
+                },
+                "end": {
+                  "line": 80,
+                  "column": 5
+                }
+              },
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 2061,
+                "end": 2069,
+                "loc": {
+                  "start": {
+                    "line": 78,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 78,
+                    "column": 19
+                  }
+                },
+                "name": "toString"
+              },
+              "static": true,
+              "kind": "method",
+              "value": {
+                "type": "FunctionExpression",
+                "start": 2069,
+                "end": 2106,
+                "loc": {
+                  "start": {
+                    "line": 78,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 80,
+                    "column": 5
+                  }
+                },
+                "id": null,
+                "generator": false,
+                "expression": false,
+                "async": false,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "start": 2072,
+                  "end": 2106,
+                  "loc": {
+                    "start": {
+                      "line": 78,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 80,
+                      "column": 5
+                    }
+                  },
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "start": 2082,
+                      "end": 2100,
+                      "loc": {
+                        "start": {
+                          "line": 79,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 79,
+                          "column": 26
+                        }
+                      },
+                      "argument": {
+                        "type": "Literal",
+                        "start": 2089,
+                        "end": 2099,
+                        "loc": {
+                          "start": {
+                            "line": 79,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 79,
+                            "column": 25
+                          }
+                        },
+                        "value": "Ethereum",
+                        "rawValue": "Ethereum",
+                        "raw": "'Ethereum'"
+                      }
+                    }
+                  ]
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": "endregion",
+                  "start": 2037,
+                  "end": 2048,
+                  "loc": {
+                    "start": {
+                      "line": 76,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 76,
+                      "column": 15
+                    }
+                  },
+                  "range": [
+                    2037,
+                    2048
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * Represents the Ethereum currency in memory.\n *\n * This class cannot be instantiated. Everything is static and the constructor throws, so treat it like a singleton.\n *\n * @class Ethereum\n ",
+            "start": 126,
+            "end": 322,
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 13,
+                "column": 3
+              }
+            },
+            "range": [
+              126,
+              322
+            ]
+          }
+        ],
+        "__esdoc__pseudo_export": false,
+        "trailingComments": []
+      },
+      "leadingComments": null
+    }
+  ]
+}
