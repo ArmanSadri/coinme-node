@@ -104,7 +104,11 @@ var Address = function (_CoreObject) {
 
         _Preconditions2.default.shouldBeDefined(value, 'Cannot construct an empty Address.');
 
-        _Preconditions2.default.shouldBeTrue(_Preconditions2.default.shouldBeFunction(VALIDATORS['general'], 'general validator is required')(value), 'general validator failed for: ' + value);
+        var generalValidator = _Preconditions2.default.shouldBeFunction(VALIDATORS['general'], 'general validator is required');
+
+        {
+            _Preconditions2.default.shouldBeTrue(generalValidator(value), 'general validator failed for: ' + value);
+        }
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Address).call(this, options));
 

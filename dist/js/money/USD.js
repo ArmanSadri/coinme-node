@@ -99,6 +99,8 @@ var USD = function (_Currency) {
     return USD;
 }(_Currency3.default);
 
+// Currency.types.register('USD', USD);
+
 exports.default = USD;
 module.exports = exports['default'];
 //# sourceMappingURL=USD.js.map

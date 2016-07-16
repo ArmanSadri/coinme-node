@@ -2,39 +2,51 @@
 
 import Preconditions from "../Preconditions";
 import Currency from "./Currency";
-import Satoshi from "./Satoshi";
 import Money from "./Money";
+import Big from "big.js/big";
+
+//
+// /**
+//  * @private
+//  * @type {Converter}
+//  */
+// let conversions = {
+//
+//     /**
+//      *
+//      * @param {Number} valueInBitcoin
+//      * @returns {Number}
+//      */
+//     'Bitcoin->Satoshi': function (valueInBitcoin) {
+//         Preconditions.shouldBeNumber(valueInBitcoin);
+//
+//         return valueInBitcoin * Bitcoin.SATOSHIS_PER_BITCOIN
+//     },
+//
+//     /**
+//      *
+//      * @param {Number} valueInSatoshi
+//      * @returns {Number}
+//      */
+//     'Satoshi->Bitcoin': function (valueInSatoshi) {
+//         Preconditions.shouldBeNumber(valueInSatoshi);
+//
+//         return valueInSatoshi * Bitcoin.BITCOIN_PER_SATOSHI;
+//     }
+// };
+//
+// // Register our known conversions.
+// Currency.converter.register(conversions);
 
 /**
- * @private
- * @type {Converter}
+ * @type {Big|BigJsLibrary.BigJS}
  */
-let conversions = {
-    /**
-     *
-     * @param {Number} valueInBitcoin
-     * @returns {Number}
-     */
-    'Bitcoin->Satoshi': function (valueInBitcoin) {
-        Preconditions.shouldBeNumber(valueInBitcoin);
+let STATIC_BITCOIN_PER_SATOSHI = new Big(0.00000001);
 
-        return valueInBitcoin * Bitcoin.SATOSHIS_PER_BITCOIN
-    },
-
-    /**
-     *
-     * @param {Number} valueInSatoshi
-     * @returns {Number}
-     */
-    'Satoshi->Bitcoin': function (valueInSatoshi) {
-        Preconditions.shouldBeNumber(valueInSatoshi);
-
-        return valueInSatoshi * Bitcoin.BITCOIN_PER_SATOSHI;
-    }
-};
-
-// Register our known conversions.
-Currency.converter.register(conversions);
+/**
+ * @type {Big|BigJsLibrary.BigJS}
+ */
+let STATIC_SATOSHI_PER_BITCOIN = new Big(100000000);
 
 /**
  * Represents the Bitcoin currency in memory.
@@ -43,48 +55,16 @@ Currency.converter.register(conversions);
  *
  * @class Bitcoin
  */
-export default class Bitcoin extends Currency {
-
-    // /**
-    //  *
-    //  * @param {Money} money
-    //  * @param {Number} [places]
-    //  * @returns {String}
-    //  */
-    // static serialize(money, places) {
-    //     let value = this.toBitcoin();
-    //
-    //     if (isNaN(value)) {
-    //         return 'NaN';
-    //     }
-    //
-    //     if (!places) {
-    //         places = 8;
-    //     }
-    //
-    //     let parts = String(value).split('.');
-    //
-    //     if (parts.length === 1) {
-    //         parts.push('0');
-    //     }
-    //
-    //     let needed = places - parts[1].length;
-    //
-    //     for (let i = 0; i < needed; i++) {
-    //         parts[1] += '0';
-    //     }
-    //
-    //     return parts[0] + '.' + parts[1];
-    // }
+class Bitcoin extends Currency {
 
     /**
      *
-     * @param {Money|String|Number|null|undefined} valueInBitcoin
+     * @param {Money|String|Number|null|undefined|Big|BigJsLibrary.BigJS} valueInBitcoin
      * @returns {Money}
      */
     static fromBitcoin(valueInBitcoin) {
         /**
-         * @type {Number}
+         * @type {Big|BigJsLibrary.BigJS}
          */
         let value = Currency.toValueOrFail(valueInBitcoin);
         /**
@@ -108,64 +88,23 @@ export default class Bitcoin extends Currency {
      * @returns {Money}
      */
     static fromSatoshi(valueInSatoshis) {
-        return Satoshi.fromSatoshis(valueInSatoshis);
+        return Bitcoin.fromBitcoin(Currency.toValueOrFail(valueInSatoshis).div(Bitcoin.SATOSHIS_PER_BITCOIN));
     }
 
-    // /**
-    //  *
-    //  * @param number
-    //  * @returns {Number}
-    //  */
-    // static calculateSatoshisFromBitcoin(number) {
-    //     Preconditions.shouldBeDefined(Currency);
-    //     number = Currency.toValueOrFail(number);
-    //
-    //     if (isNaN(number)) {
-    //         return NaN;
-    //     }
-    //
-    //     if (number === 0) {
-    //         return 0;
-    //     }
-    //
-    //     let str = String(number);
-    //     let sign = (str.indexOf('-') === 0) ? '-' : '';
-    //
-    //     str = str.replace(/^-/, '');
-    //
-    //     if (str.indexOf('e') >= 0) {
-    //         return parseInt(sign + str.replace('.', '').replace(/e-8/, '').replace(/e-7/, '0'), 10);
-    //     } else {
-    //         if (!(/\./).test(str)) {
-    //             str += '.0';
-    //         }
-    //
-    //         let parts = str.split('.');
-    //
-    //         str = parts[0] + '.' + parts[1].slice(0, 8);
-    //
-    //         while (!(/\.[0-9]{8}/).test(str)) {
-    //             str += '0';
-    //         }
-    //
-    //         return parseInt(sign + str.replace('.', '').replace(/^0+/, ''), 10);
-    //     }
-    // }
-
     /**
-     * @return {Number}
+     * @return {BigJsLibrary.BigJS}
      * @readonly
      */
     static get SATOSHIS_PER_BITCOIN() {
-        return 100000000;
+        return STATIC_SATOSHI_PER_BITCOIN;
     }
 
     /**
-     * @return {Number}
+     * @return {BigJsLibrary.BigJS}
      * @readonly
      */
     static get BITCOIN_PER_SATOSHI() {
-        return 0.00000001;
+        return STATIC_BITCOIN_PER_SATOSHI;
     }
 
     /**
@@ -181,7 +120,6 @@ export default class Bitcoin extends Currency {
     static toString() {
         return 'Bitcoin';
     }
-
 
     //region Detection
     /**
@@ -221,3 +159,80 @@ export default class Bitcoin extends Currency {
     //endregion
 
 }
+
+// /**
+//  *
+//  * @param {Money} money
+//  * @param {Number} [places]
+//  * @returns {String}
+//  */
+// static serialize(money, places) {
+//     let value = this.toBitcoin();
+//
+//     if (isNaN(value)) {
+//         return 'NaN';
+//     }
+//
+//     if (!places) {
+//         places = 8;
+//     }
+//
+//     let parts = String(value).split('.');
+//
+//     if (parts.length === 1) {
+//         parts.push('0');
+//     }
+//
+//     let needed = places - parts[1].length;
+//
+//     for (let i = 0; i < needed; i++) {
+//         parts[1] += '0';
+//     }
+//
+//     return parts[0] + '.' + parts[1];
+// }
+// /**
+//  *
+//  * @param number
+//  * @returns {Number}
+//  */
+// static calculateSatoshisFromBitcoin(number) {
+//     Preconditions.shouldBeDefined(Currency);
+//     number = Currency.toValueOrFail(number);
+//
+//     if (isNaN(number)) {
+//         return NaN;
+//     }
+//
+//     if (number === 0) {
+//         return 0;
+//     }
+//
+//     let str = String(number);
+//     let sign = (str.indexOf('-') === 0) ? '-' : '';
+//
+//     str = str.replace(/^-/, '');
+//
+//     if (str.indexOf('e') >= 0) {
+//         return parseInt(sign + str.replace('.', '').replace(/e-8/, '').replace(/e-7/, '0'), 10);
+//     } else {
+//         if (!(/\./).test(str)) {
+//             str += '.0';
+//         }
+//
+//         let parts = str.split('.');
+//
+//         str = parts[0] + '.' + parts[1].slice(0, 8);
+//
+//         while (!(/\.[0-9]{8}/).test(str)) {
+//             str += '0';
+//         }
+//
+//         return parseInt(sign + str.replace('.', '').replace(/^0+/, ''), 10);
+//     }
+// }
+
+// Currency.types.register('Bitcoin', Bitcoin);
+// Currency.types.register('btc', Bitcoin);
+
+export default Bitcoin;

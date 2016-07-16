@@ -29,13 +29,15 @@ describe('URI', () => {
 
 describe('Address', () => {
 
+    it('Works', () => {
+        new Address('bitcoin:/1FfmbHfnpaZjKFvyi1okTjJJusN455paPH');
+    });
+
     it('Fail with incomplete address (with valid scheme)', () => {
         try {
             new Address('bitcoin');
         } catch (e) {
             assert.isTrue(PreconditionsError.isInstance(e));
-
-            console.log(e);
         }
     });
 

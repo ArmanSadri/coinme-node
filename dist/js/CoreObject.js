@@ -76,7 +76,7 @@ var CoreObject = function (_Ember$Object) {
     }, {
         key: "toString",
         value: function toString() {
-            return 'CoreObject';
+            return this.constructor.name;
         }
 
         /**

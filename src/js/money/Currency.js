@@ -1,15 +1,38 @@
-import Utility from '../Utility';
-import CoreObject from '../CoreObject';
-import Preconditions from '../Preconditions';
-// import {Utility, CoreObject, Preconditions} from '../index';
+'use strict';
+
+import Utility from "../Utility";
+import CoreObject from "../CoreObject";
+import Preconditions from "../Preconditions";
 import Money from "./Money";
-import Converter from "./Converter";
+import Big from "big.js/big";
+// import {Utility, CoreObject, Preconditions} from '../index';
+// import Converter from "./Converter";
 
-let _converter = new Converter({
-    conversions: {
-
-    }
-});
+// let _converter = new Converter({
+//     conversions: {
+//
+//     }
+// });
+//
+// let _types = {
+//
+//     /**
+//      *
+//      * @param {String|Class} stringOrClass
+//      * @param {Class} [clazz]
+//      */
+//     register: function(stringOrClass, clazz) {
+//         let name = (stringOrClass.toString().toLowerCase());
+//
+//         if (!clazz && Currency.isClass(stringOrClass)) {
+//             clazz = stringOrClass;
+//         }
+//
+//         this[name] = clazz;
+//
+//         return this;
+//     }
+// };
 
 /**
  * @class
@@ -18,18 +41,25 @@ export default class Currency extends CoreObject {
 
     constructor() {
         super();
-        
+
         // if (this.constructor === Currency) {
-            throw new TypeError('Cannot construct Currency instances directly');
+        throw new TypeError('Cannot construct Currency instances directly');
         // }
     }
 
     /**
-     * @return {Converter}
+     * @returns {String}
      */
-    get converter() {
-        return this.toClass().converter;
+    toString() {
+        return this.toClass().toString();
     }
+
+    // /**
+    //  * @return {Converter}
+    //  */
+    // get converter() {
+    //     return this.toClass().converter;
+    // }
 
     static equals(currency) {
         currency = Currency.optCurrency(currency);
@@ -47,55 +77,65 @@ export default class Currency extends CoreObject {
     /**
      *
      * @param {Number|Money|String} value
-     * @param {Number|Money|String|function|Converter} [optionalConversion]
      * @returns {Money}
      */
-    static create(value, optionalConversion) {
+    static create(value) {
         let money = Money.optMoney(
-            Currency.toValueOrFail(value), 
+            Currency.toValueOrFail(value),
             Currency.optCurrency(value) || this.getChildCurrencyTypeOrFail());
-        
+
         Money.shouldBeMoney(money);
-        
-        return money.convertTo(this.getChildCurrencyTypeOrFail(), optionalConversion);
+
+        return money;
+        // return money.convertTo(this.getChildCurrencyTypeOrFail(), optionalConversion);
     }
 
+    /**
+     * @returns {String}
+     */
     static toString() {
-        return 'Currency';
+        return this.constructor.name;
     }
 
-    /**
-     * @returns {Converter}
-     */
-    static get converter() {
-        return _converter;
-    }
+    // /**
+    //  * @returns {Converter}
+    //  */
+    // static get converter() {
+    //     return _converter;
+    // }
 
-    /**
-     *
-     * @param {Converter} value
-     */
-    static set converter(value) {
-        _converter = value;
-    }
+    // /**
+    //  * @returns {{register: function(name:string, type:Currency)}}
+    //  */
+    // static get types() {
+    //     return _types;
+    // }
 
-    /**
-     * @param {Money} money
-     * @param {Number|Function|Converter} [optionalConversion]
-     * @return {Money}
-     * @throws {PreconditionsError} if money is not of the correct type.
-     */
-    static convertFrom(money, optionalConversion) {
-        Money.shouldBeMoney(money);
-        Money.shouldBeInstance(money);
-        
-        return money.currency.converter.convert(money, this.getChildCurrencyTypeOrFail(), optionalConversion);
-    }
+    // /**
+    //  *
+    //  * @param {Converter} value
+    //  */
+    // static set converter(value) {
+    //     _converter = value;
+    // }
 
+    // /**
+    //  * @param {Money} money
+    //  * @param {Number|Function|Converter} [optionalConversion]
+    //  * @return {Money}
+    //  * @throws {PreconditionsError} if money is not of the correct type.
+    //  */
+    // static convertFrom(money, optionalConversion) {
+    //     Money.shouldBeMoney(money);
+    //     Money.shouldBeInstance(money);
+    //
+    //     return money.currency.converter.convert(money, this.getChildCurrencyTypeOrFail(), optionalConversion);
+    // }
 
-    static canConvertFrom(money, optionalConversion) {
-        return money.currency.canConvertFrom(money, optionalConversion);
-    }
+    //
+    // static canConvertFrom(money, optionalConversion) {
+    //     return money.currency.canConvertFrom(money, optionalConversion);
+    // }
 
     //
     // /**
@@ -185,7 +225,7 @@ export default class Currency extends CoreObject {
     static getCurrency(objectOrCurrency) {
         let instance = Currency.optCurrency(objectOrCurrency);
 
-        Currency.shouldBeCurrency(instance);
+        Currency.shouldBeCurrency(instance, 'Currency not found: ' + objectOrCurrency);
 
         return instance;
     }
@@ -198,37 +238,20 @@ export default class Currency extends CoreObject {
         if (Currency.isCurrency(objectOrCurrency)) {
             return objectOrCurrency;
         } else if (Currency.isInstance(objectOrCurrency)) {
-            console.log('object', objectOrCurrency);
             return objectOrCurrency.toClass();
         } else if (Money.isInstance(objectOrCurrency)) {
             return objectOrCurrency.currency;
+        } else if (Utility.isString(objectOrCurrency)) {
+            let string = objectOrCurrency.toLowerCase();
+
+            return this.types[string];
         }
 
         return undefined;
     }
 
-    // static toString(numberOrStringOrMoney, currencyInstanceOrClass) {
-    //     Preconditions.shouldBeDefined(Money, 'money should be defined!');
-    //
-    //     let currency;
-    //     let value;
-    //
-    //     if (numberOrStringOrMoney instanceof Money) {
-    //         currency = numberOrStringOrMoney.currency;
-    //         value = numberOrStringOrMoney.value;
-    //     } else {
-    //         currency = Currency.getCurrency(currencyInstanceOrClass);
-    //         value = Currency.toValueOrFail(numberOrStringOrMoney);
-    //     }
-    //
-    //     Preconditions.shouldBeDefined(currency);
-    //     Currency.shouldBeCurrency(currency);
-    //
-    //     return currency.toString(value);
-    // }
-
     /**
-     * 
+     *
      * @param {*} clazz
      * @param {String} [message]
      *
@@ -261,22 +284,22 @@ export default class Currency extends CoreObject {
      * If the type is correct, will unwrap to the value.
      * If the type is not correct, will throw an exception.
      *
-     * @type {Money|Number|String|undefined|null}
-     * @return {Number}
+     * @type {Money|Number|String|undefined|null|Big|BigJsLibrary.BigJS}
+     * @return {Big|BigJsLibrary.BigJS}
      * @throws err if not correct type.
      */
     static toValueOrFail(numberOrMoney) {
         if (Utility.isNullOrUndefined(numberOrMoney)) {
-            return 0;
+            return new Big(0);
         } else if (Money.isInstance(numberOrMoney)) {
             return numberOrMoney.value;
         } else if (Utility.isNumber(numberOrMoney)) {
-            return numberOrMoney;
+            return new Big(numberOrMoney);
         } else if (Utility.isString(numberOrMoney)) {
-            return parseFloat(numberOrMoney);
+            return new Big(numberOrMoney);
+        } else if (numberOrMoney instanceof Big) {
+            return numberOrMoney;
         } else {
-            console.log(numberOrMoney);
-
             Preconditions.fail('Number|Currency', Utility.typeOf(numberOrMoney), 'This method fails with the wrong type.');
         }
     }
@@ -284,5 +307,4 @@ export default class Currency extends CoreObject {
     static toClass() {
         return this;
     }
-
 }

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Utility = exports.Preconditions = exports.Functions = exports.CoreObject = exports.Coinme = exports.Ember = exports.errors = exports.data = exports.slack = undefined;
+exports.Address = exports.Utility = exports.Preconditions = exports.Functions = exports.CoreObject = exports.Coinme = exports.Ember = exports.errors = exports.data = exports.slack = undefined;
 
 var _Coinme = require("./Coinme");
 
@@ -29,6 +29,10 @@ var _Utility = require("./Utility");
 
 var _Utility2 = _interopRequireDefault(_Utility);
 
+var _Address = require("./Address");
+
+var _Address2 = _interopRequireDefault(_Address);
+
 var _index = require("./errors/index");
 
 var _index2 = _interopRequireDefault(_index);
@@ -52,5 +56,6 @@ exports.CoreObject = _CoreObject2.default;
 exports.Functions = _Functions2.default;
 exports.Preconditions = _Preconditions2.default;
 exports.Utility = _Utility2.default;
+exports.Address = _Address2.default;
 exports.default = _Coinme2.default;
 //# sourceMappingURL=index.js.map

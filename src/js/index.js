@@ -6,6 +6,7 @@ import CoreObject from "./CoreObject";
 import Functions from "./Functions";
 import Preconditions from "./Preconditions";
 import Utility from "./Utility";
+import Address from "./Address";
 
 import errors from "./errors/index";
 import slack from "./slack/index";
@@ -21,5 +22,6 @@ export {CoreObject};
 export {Functions};
 export {Preconditions};
 export {Utility};
+export {Address};
 
 export default Coinme;

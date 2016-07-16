@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
 var _Currency2 = require("./Currency");
 
 var _Currency3 = _interopRequireDefault(_Currency2);
@@ -42,65 +40,52 @@ var Satoshi = function (_Currency) {
     }
 
     _createClass(Satoshi, null, [{
-        key: "fromSatoshis",
+        key: "create",
 
 
         /**
-         *
-         * @param {Number|String} valueInSatoshis
+         * @param {Number|String|Big|BigJsLibrary.BigJS} valueInSatoshis
          * @return {Money}
          */
+        value: function create(valueInSatoshis) {
+            /**
+             * @type {Big}
+             */
+            var value = _Currency3.default.toValueOrFail(valueInSatoshis);
+
+            return new _Money2.default({
+                value: value,
+                currency: this
+            });
+        }
+
+        /**
+         * @param {Money|Number|String|Big|BigJsLibrary.BigJS} valueInSatoshis
+         * @return {Money}
+         */
+
+    }, {
+        key: "fromSatoshis",
         value: function fromSatoshis(valueInSatoshis) {
             return Satoshi.create(valueInSatoshis);
         }
 
         /**
-         *
-         * @param {Number|Money|String} value
-         * @param {Number|Money|String|function|Converter} [optionalConversion]
-         * @returns {Money}
-         */
-
-    }, {
-        key: "create",
-        value: function create(value, optionalConversion) {
-            return _get(Object.getPrototypeOf(Satoshi), "create", this).call(this, value, optionalConversion);
-        }
-
-        /**
-         *
-         * @param valueInBitcoinOrMoney
+         * @param {Number|String|Money|Big|BigJsLibrary.BigJS} valueInBitcoinOrMoney
+         * @return {Money}
          */
 
     }, {
         key: "fromBitcoin",
         value: function fromBitcoin(valueInBitcoinOrMoney) {
-            var bitcoin = _Bitcoin2.default.fromBitcoin(valueInBitcoinOrMoney);
+            var bitcoin = _Currency3.default.toValueOrFail(valueInBitcoinOrMoney);
 
-            return Satoshi.converter.convert(bitcoin, Satoshi);
+            return Satoshi.fromSatoshis(bitcoin.times(_Bitcoin2.default.SATOSHIS_PER_BITCOIN));
         }
     }, {
         key: "toString",
         value: function toString() {
             return 'Satoshi';
-        }
-    }, {
-        key: "converter",
-
-
-        /**
-         * @returns {Converter}
-         */
-        get: function get() {
-            return _Bitcoin2.default.converter;
-        }
-
-        /**
-         * @param {Converter} value
-         */
-        ,
-        set: function set(value) {
-            _Bitcoin2.default.converter = value;
         }
     }]);
 

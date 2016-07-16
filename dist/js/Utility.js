@@ -30,6 +30,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
+
 /**
  * @class
  * @singleton
@@ -361,6 +363,12 @@ var Utility = function () {
                                  */
                                 key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
                                 ruleset = rulesetOrObject;
+                            } else if (Utility.isFunction(rulesetOrObject)) {
+                                ruleset = {
+                                    validator: rulesetOrObject
+                                };
+                            } else {
+                                throw new Error('Dont know what to do: ' + rulesetOrObject);
                             }
                         } else if ('object' === mode) {
                             key = keyOrIndex;
@@ -371,6 +379,12 @@ var Utility = function () {
                                 };
                             } else if (Utility.isObject(rulesetOrObject)) {
                                 ruleset = rulesetOrObject;
+                            } else if (Utility.isFunction(rulesetOrObject)) {
+                                ruleset = {
+                                    validator: rulesetOrObject
+                                };
+                            } else {
+                                throw new Error('Dont know what to do: ' + rulesetOrObject);
                             }
                         } else {
                             _Preconditions2.default.fail('array|object', mode, 'Unknown mode');
@@ -590,6 +604,26 @@ var Utility = function () {
             }
 
             return type;
+        }
+
+        /**
+         *
+         * @param {String} string
+         * @returns {boolean}
+         */
+
+    }, {
+        key: "isEmail",
+        value: function isEmail(string) {
+            _Preconditions2.default.shouldBeString(string, 'Should be string');
+
+            var type = Utility.typeOf(string);
+
+            if (type !== 'string' || !string) {
+                return false;
+            }
+
+            return EMAIL_PATTERN.test(string);
         }
 
         /**
@@ -887,6 +921,64 @@ var Utility = function () {
         key: "isNotBlank",
         value: function isNotBlank(string) {
             return !Utility.isBlank(string);
+        }
+
+        /**
+         * @param {...arguments}
+         * @returns {Number}
+         */
+
+    }, {
+        key: "defaultNumber",
+        value: function defaultNumber() {
+            var result = 0;
+
+            _.each(arguments, function (object) {
+                if (Utility.isNumber(object)) {
+                    result = object;
+                }
+            });
+
+            return result;
+        }
+
+        /**
+         *
+         * @param {*} value
+         * @returns {Number}
+         */
+
+    }, {
+        key: "toNumberOrFail",
+        value: function toNumberOrFail(value) {
+            if (Utility.isNullOrUndefined(value)) {
+                return 0;
+            } else if (Utility.isNumber(value)) {
+                return value;
+            } else if (Utility.isString(value)) {
+                return Number.parseFloat(value);
+            }
+
+            throw new TypeError("unknown type: " + Utility.typeOf(value));
+        }
+
+        /**
+         * @param {...arguments}
+         * @returns {*|Object}
+         */
+
+    }, {
+        key: "defaultObject",
+        value: function defaultObject() {
+            var result = null;
+
+            _.each(arguments, function (object) {
+                if (Utility.isObject(object)) {
+                    result = object;
+                }
+            });
+
+            return result;
         }
 
         /**

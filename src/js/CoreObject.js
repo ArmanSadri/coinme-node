@@ -39,7 +39,7 @@ export default class CoreObject extends Ember.Object {
     }
 
     static toString() {
-        return 'CoreObject';
+        return this.constructor.name;
     }
 
     /**

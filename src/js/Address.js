@@ -69,12 +69,11 @@ export default class Address extends CoreObject {
 
         Preconditions.shouldBeDefined(value, 'Cannot construct an empty Address.');
 
-        Preconditions.shouldBeTrue(
-            Preconditions.shouldBeFunction(
-                VALIDATORS['general'], 'general validator is required')
-            (value),
-            'general validator failed for: ' + value
-        );
+        let generalValidator = Preconditions.shouldBeFunction(VALIDATORS['general'], 'general validator is required');
+
+        {
+            Preconditions.shouldBeTrue(generalValidator(value), 'general validator failed for: ' + value);
+        }
 
         super(options);
 

@@ -10,22 +10,23 @@ import Bitcoin from "./Bitcoin";
 export default class Satoshi extends Currency {
 
     /**
-     * @returns {Converter}
+     * @param {Number|String|Big|BigJsLibrary.BigJS} valueInSatoshis
+     * @return {Money}
      */
-    static get converter() {
-        return Bitcoin.converter;
+    static create(valueInSatoshis) {
+        /**
+         * @type {Big}
+         */
+        let value = Currency.toValueOrFail(valueInSatoshis);
+
+        return new Money({
+            value: value,
+            currency: this
+        });
     }
 
     /**
-     * @param {Converter} value
-     */
-    static set converter(value) {
-        Bitcoin.converter = value;
-    }
-
-    /**
-     *
-     * @param {Number|String} valueInSatoshis
+     * @param {Money|Number|String|Big|BigJsLibrary.BigJS} valueInSatoshis
      * @return {Money}
      */
     static fromSatoshis(valueInSatoshis) {
@@ -33,25 +34,13 @@ export default class Satoshi extends Currency {
     }
 
     /**
-     *
-     * @param {Number|Money|String} value
-     * @param {Number|Money|String|function|Converter} [optionalConversion]
-     * @returns {Money}
-     */
-    static create(value, optionalConversion) {
-        return super.create(value, optionalConversion);
-    }
-
-    /**
-     *
-     * @param valueInBitcoinOrMoney
+     * @param {Number|String|Money|Big|BigJsLibrary.BigJS} valueInBitcoinOrMoney
+     * @return {Money}
      */
     static fromBitcoin(valueInBitcoinOrMoney) {
-        let bitcoin = Bitcoin.fromBitcoin(valueInBitcoinOrMoney);
+        let bitcoin = Currency.toValueOrFail(valueInBitcoinOrMoney);
 
-        return Satoshi
-            .converter
-            .convert(bitcoin, Satoshi);
+        return Satoshi.fromSatoshis(bitcoin.times(Bitcoin.SATOSHIS_PER_BITCOIN));
     }
 
     static toString() {

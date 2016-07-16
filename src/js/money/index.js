@@ -5,13 +5,15 @@ import Bitcoin from './Bitcoin';
 import Currency from './Currency';
 import Satoshi from './Satoshi';
 import USD from './USD';
-import Converter from './Converter';
+import Ethereum from './Ethereum';
+// import Converter from './Converter';
 
 export { Money };
 export { Currency };
 export { Bitcoin };
+export { Ethereum };
 export { Satoshi };
-export { Converter };
+// export { Converter };
 export { USD };
 
 export default Money;
