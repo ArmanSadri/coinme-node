@@ -6,25 +6,25 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Utility = require('../Utility');
+var _Utility = require("../Utility");
 
 var _Utility2 = _interopRequireDefault(_Utility);
 
-var _CoreObject2 = require('../CoreObject');
+var _CoreObject2 = require("../CoreObject");
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
-var _Preconditions = require('../Preconditions');
+var _Preconditions = require("../Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _Money = require('./Money');
+var _Money = require("./Money");
 
 var _Money2 = _interopRequireDefault(_Money);
 
-var _Converter = require('./Converter');
+var _big = require("big.js/big");
 
-var _Converter2 = _interopRequireDefault(_Converter);
+var _big2 = _interopRequireDefault(_big);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33,12 +33,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 // import {Utility, CoreObject, Preconditions} from '../index';
+// import Converter from "./Converter";
 
-
-var _converter = new _Converter2.default({
-    conversions: {}
-});
+// let _converter = new Converter({
+//     conversions: {
+//
+//     }
+// });
+//
+// let _types = {
+//
+//     /**
+//      *
+//      * @param {String|Class} stringOrClass
+//      * @param {Class} [clazz]
+//      */
+//     register: function(stringOrClass, clazz) {
+//         let name = (stringOrClass.toString().toLowerCase());
+//
+//         if (!clazz && Currency.isClass(stringOrClass)) {
+//             clazz = stringOrClass;
+//         }
+//
+//         this[name] = clazz;
+//
+//         return this;
+//     }
+// };
 
 /**
  * @class
@@ -59,17 +82,25 @@ var Currency = function (_CoreObject) {
     }
 
     /**
-     * @return {Converter}
+     * @returns {String}
      */
 
 
     _createClass(Currency, [{
-        key: 'converter',
-        get: function get() {
-            return this.toClass().converter;
+        key: "toString",
+        value: function toString() {
+            return this.toClass().toString();
         }
+
+        // /**
+        //  * @return {Converter}
+        //  */
+        // get converter() {
+        //     return this.toClass().converter;
+        // }
+
     }], [{
-        key: 'equals',
+        key: "equals",
         value: function equals(currency) {
             currency = Currency.optCurrency(currency);
 
@@ -86,50 +117,69 @@ var Currency = function (_CoreObject) {
         /**
          *
          * @param {Number|Money|String} value
-         * @param {Number|Money|String|function|Converter} [optionalConversion]
          * @returns {Money}
          */
 
     }, {
-        key: 'create',
-        value: function create(value, optionalConversion) {
+        key: "create",
+        value: function create(value) {
             var money = _Money2.default.optMoney(Currency.toValueOrFail(value), Currency.optCurrency(value) || this.getChildCurrencyTypeOrFail());
 
             _Money2.default.shouldBeMoney(money);
 
-            return money.convertTo(this.getChildCurrencyTypeOrFail(), optionalConversion);
+            return money;
+            // return money.convertTo(this.getChildCurrencyTypeOrFail(), optionalConversion);
         }
+
+        /**
+         * @returns {String}
+         */
+
     }, {
-        key: 'toString',
+        key: "toString",
         value: function toString() {
-            return 'Currency';
+            return this.constructor.name;
         }
 
-        /**
-         * @returns {Converter}
-         */
+        // /**
+        //  * @returns {Converter}
+        //  */
+        // static get converter() {
+        //     return _converter;
+        // }
 
-    }, {
-        key: 'convertFrom',
+        // /**
+        //  * @returns {{register: function(name:string, type:Currency)}}
+        //  */
+        // static get types() {
+        //     return _types;
+        // }
 
+        // /**
+        //  *
+        //  * @param {Converter} value
+        //  */
+        // static set converter(value) {
+        //     _converter = value;
+        // }
 
-        /**
-         * @param {Money} money
-         * @param {Number|Function|Converter} [optionalConversion]
-         * @return {Money}
-         * @throws {PreconditionsError} if money is not of the correct type.
-         */
-        value: function convertFrom(money, optionalConversion) {
-            _Money2.default.shouldBeMoney(money);
-            _Money2.default.shouldBeInstance(money);
+        // /**
+        //  * @param {Money} money
+        //  * @param {Number|Function|Converter} [optionalConversion]
+        //  * @return {Money}
+        //  * @throws {PreconditionsError} if money is not of the correct type.
+        //  */
+        // static convertFrom(money, optionalConversion) {
+        //     Money.shouldBeMoney(money);
+        //     Money.shouldBeInstance(money);
+        //
+        //     return money.currency.converter.convert(money, this.getChildCurrencyTypeOrFail(), optionalConversion);
+        // }
 
-            return money.currency.converter.convert(money, this.getChildCurrencyTypeOrFail(), optionalConversion);
-        }
-    }, {
-        key: 'canConvertFrom',
-        value: function canConvertFrom(money, optionalConversion) {
-            return money.currency.canConvertFrom(money, optionalConversion);
-        }
+        //
+        // static canConvertFrom(money, optionalConversion) {
+        //     return money.currency.canConvertFrom(money, optionalConversion);
+        // }
 
         //
         // /**
@@ -169,7 +219,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: 'getChildCurrencyTypeOrFail',
+        key: "getChildCurrencyTypeOrFail",
         value: function getChildCurrencyTypeOrFail() {
             var currency = this;
 
@@ -186,7 +236,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: 'isChildCurrency',
+        key: "isChildCurrency",
         value: function isChildCurrency() {
             return this.toClass() !== Currency && Currency.isClass(this);
         }
@@ -199,7 +249,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: 'toMoney',
+        key: "toMoney",
         value: function toMoney(valueOrMoney, defaultCurrency) {
             var value = Currency.toValueOrFail(valueOrMoney);
             var currency = Currency.optCurrency(valueOrMoney) || Currency.optCurrency(defaultCurrency);
@@ -227,11 +277,11 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: 'getCurrency',
+        key: "getCurrency",
         value: function getCurrency(objectOrCurrency) {
             var instance = Currency.optCurrency(objectOrCurrency);
 
-            Currency.shouldBeCurrency(instance);
+            Currency.shouldBeCurrency(instance, 'Currency not found: ' + objectOrCurrency);
 
             return instance;
         }
@@ -242,42 +292,25 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: 'optCurrency',
+        key: "optCurrency",
         value: function optCurrency(objectOrCurrency) {
             if (Currency.isCurrency(objectOrCurrency)) {
                 return objectOrCurrency;
             } else if (Currency.isInstance(objectOrCurrency)) {
-                console.log('object', objectOrCurrency);
                 return objectOrCurrency.toClass();
             } else if (_Money2.default.isInstance(objectOrCurrency)) {
                 return objectOrCurrency.currency;
+            } else if (_Utility2.default.isString(objectOrCurrency)) {
+                var string = objectOrCurrency.toLowerCase();
+
+                return this.types[string];
             }
 
             return undefined;
         }
 
-        // static toString(numberOrStringOrMoney, currencyInstanceOrClass) {
-        //     Preconditions.shouldBeDefined(Money, 'money should be defined!');
-        //
-        //     let currency;
-        //     let value;
-        //
-        //     if (numberOrStringOrMoney instanceof Money) {
-        //         currency = numberOrStringOrMoney.currency;
-        //         value = numberOrStringOrMoney.value;
-        //     } else {
-        //         currency = Currency.getCurrency(currencyInstanceOrClass);
-        //         value = Currency.toValueOrFail(numberOrStringOrMoney);
-        //     }
-        //
-        //     Preconditions.shouldBeDefined(currency);
-        //     Currency.shouldBeCurrency(currency);
-        //
-        //     return currency.toString(value);
-        // }
-
         /**
-         * 
+         *
          * @param {*} clazz
          * @param {String} [message]
          *
@@ -285,7 +318,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: 'shouldBeCurrency',
+        key: "shouldBeCurrency",
         value: function shouldBeCurrency(clazz, message) {
             _Preconditions2.default.shouldBeClass(clazz, Currency, 'Must be currency: ' + message);
 
@@ -299,7 +332,7 @@ var Currency = function (_CoreObject) {
          */
 
     }, {
-        key: 'isCurrency',
+        key: "isCurrency",
         value: function isCurrency(object) {
             if (Currency.isClass(object)) {
                 return true;
@@ -316,46 +349,32 @@ var Currency = function (_CoreObject) {
          * If the type is correct, will unwrap to the value.
          * If the type is not correct, will throw an exception.
          *
-         * @type {Money|Number|String|undefined|null}
-         * @return {Number}
+         * @type {Money|Number|String|undefined|null|Big|BigJsLibrary.BigJS}
+         * @return {Big|BigJsLibrary.BigJS}
          * @throws err if not correct type.
          */
 
     }, {
-        key: 'toValueOrFail',
+        key: "toValueOrFail",
         value: function toValueOrFail(numberOrMoney) {
             if (_Utility2.default.isNullOrUndefined(numberOrMoney)) {
-                return 0;
+                return new _big2.default(0);
             } else if (_Money2.default.isInstance(numberOrMoney)) {
                 return numberOrMoney.value;
             } else if (_Utility2.default.isNumber(numberOrMoney)) {
-                return numberOrMoney;
+                return new _big2.default(numberOrMoney);
             } else if (_Utility2.default.isString(numberOrMoney)) {
-                return parseFloat(numberOrMoney);
+                return new _big2.default(numberOrMoney);
+            } else if (numberOrMoney instanceof _big2.default) {
+                return numberOrMoney;
             } else {
-                console.log(numberOrMoney);
-
                 _Preconditions2.default.fail('Number|Currency', _Utility2.default.typeOf(numberOrMoney), 'This method fails with the wrong type.');
             }
         }
     }, {
-        key: 'toClass',
+        key: "toClass",
         value: function toClass() {
             return this;
-        }
-    }, {
-        key: 'converter',
-        get: function get() {
-            return _converter;
-        }
-
-        /**
-         *
-         * @param {Converter} value
-         */
-        ,
-        set: function set(value) {
-            _converter = value;
         }
     }]);
 

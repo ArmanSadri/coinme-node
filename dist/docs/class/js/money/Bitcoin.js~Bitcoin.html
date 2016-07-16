@@ -48,6 +48,7 @@
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Ethereum.js~Ethereum.html">Ethereum</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
@@ -66,13 +67,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Bitcoin from &apos;<span><a href="file/js/money/Bitcoin.js.html#lineNumber46">coinme-node/js/money/Bitcoin.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Bitcoin from &apos;<span><a href="file/js/money/Bitcoin.js.html#lineNumber48">coinme-node/js/money/Bitcoin.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/money/Bitcoin.js.html#lineNumber46">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/money/Bitcoin.js.html#lineNumber48">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -470,7 +471,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html#static-method-toString">toString</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+           <span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html#static-method-toString">toString</a></span></span><span data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -628,6 +629,31 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
       <div>
         <p>
            <span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html#static-set-converter">converter</a></span></span><span data-ice="signature">(value: <span><a href="class/js/money/Converter.js~Converter.html">Converter</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      <span class="kind" data-ice="kind">get</span>
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html#static-get-types">types</a></span></span><span data-ice="signature">: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span><span>(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, type: <span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span>)</span></span>: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -902,7 +928,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html#static-method-toString">toString</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+           <span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html#static-method-toString">toString</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
         </p>
       </div>
       <div>
@@ -967,6 +993,31 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
       
     </td>
   </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html#instance-method-toString">toString</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
 </tbody>
 </table>
 </div>
@@ -984,7 +1035,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber167">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber169">source</a></span></span>
     </span>
   </h3>
 
@@ -1034,7 +1085,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber159">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber161">source</a></span></span>
     </span>
   </h3>
 
@@ -1087,7 +1138,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber85">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber87">source</a></span></span>
     </span>
   </h3>
 
@@ -1153,7 +1204,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber110">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
@@ -1219,7 +1270,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber196">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber198">source</a></span></span>
     </span>
   </h3>
 
@@ -1289,7 +1340,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber213">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber215">source</a></span></span>
     </span>
   </h3>
 
@@ -1368,7 +1419,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber174">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber176">source</a></span></span>
     </span>
   </h3>
 
@@ -1418,7 +1469,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber181">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/money/Bitcoin.js.html#lineNumber183">source</a></span></span>
     </span>
   </h3>
 
@@ -1427,7 +1478,7 @@ money&lt;Bitcoin&gt; -&gt; true <br></p>
   
   
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/js/money/Currency.js~Currency.html#static-method-toString">Currency#toString</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/js/money/Currency.js~Currency.html#instance-method-toString">Currency#toString</a></span></div>
 
   <div data-ice="properties">
 </div>

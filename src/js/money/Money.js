@@ -2,26 +2,28 @@ import CoreObject from "../CoreObject";
 import Utility from "../Utility";
 import Preconditions from "../Preconditions";
 import Currency from "./Currency";
+import Big from 'big.js/big';
 
 export default class Money extends CoreObject {
 
     /**
      * @param {Object} options
-     * @param {Number} options.value
+     * @param {BigJsLibrary.BigJS} options.value
      */
     constructor(options) {
         Preconditions.shouldBeDefined(Currency);
 
-        let value = Preconditions.shouldBeNumber(Currency.toValueOrFail(Utility.take(options, 'value')));
+        let value = Currency.toValueOrFail(Utility.take(options, 'value'));
         let currency = Preconditions.shouldBeDefined(Currency.getCurrency(Utility.take(options, 'currency')));
 
         super(...arguments);
 
         /**
-         * @type {Number}
+         * @type {BigJsLibrary.BigJS}
          * @private
          */
-        this._value = Preconditions.shouldBeNumber(value);
+        Preconditions.shouldBe(function() { return (value instanceof Big); }, Utility.typeOf(Big), Utility.typeOf(value), 'should be Big');
+        this._value = value;
 
         /**
          * @type {Class<Currency>}
@@ -39,18 +41,35 @@ export default class Money extends CoreObject {
     }
 
     /**
-     * @returns {Number}
+     * @returns {BigJsLibrary.BigJS}
      */
     get value() {
         return this._value;
     }
 
+    /**
+     * @returns {string}
+     */
     toString() {
-        return this.currency.toString(this);
+        return `${this.value} ${this.currency}`;
     }
 
+    /**
+     *
+     * @returns {{value, currency}|{value: BigJsLibrary.BigJS, currency: Class.<Currency>}}
+     */
     toJson() {
-        return this.currency.toJson(this);
+        return {
+            value: this.value,
+            currency: this.currency.toString()
+        };
+    }
+
+    /**
+     * @returns {{value, currency}|{value: BigJsLibrary.BigJS, currency: Class.<Currency>}}
+     */
+    toJSON() {
+        return this.toJson();
     }
 
     /**
@@ -60,10 +79,12 @@ export default class Money extends CoreObject {
      * @return {Money}
      */
     plus(money) {
-        money = Money.optMoney(money, this.currency);
-        let convertedValue = this.currency.convertFrom(money);
+        let big1 = this._toValue(money);
+        let big2 = this._toValue(this);
 
-        return this.withValue(convertedValue + this);
+        let big3 = big1.plus(big2);
+
+        return this.withValue(big3);
     }
 
     /**
@@ -73,28 +94,41 @@ export default class Money extends CoreObject {
      * @return {Money}
      */
     minus(money) {
-        money = Money.optMoney(money, this.currency);
-        let convertedValue = this.currency.convertFrom(money).value;
-
-        return this.withValue(convertedValue - this.value);
+        return this.withValue(this._toValue(money) - this.value);
     }
 
     /**
      * @param {Money|String|Number} money
-     * @param {Number|Function} [optionalConversion]
      * @returns {boolean}
      */
-    equals(money, optionalConversion) {
-        money = Money.optMoney(money, this.currency);
-
+    equals(money) {
         if (!money) {
             return false;
         }
 
-        let convertedAlien = Preconditions.shouldBeNumber(Currency.toValueOrFail(this.currency.convertFrom(money, optionalConversion)), 'Converted value must be a number.');
-        let value = Preconditions.shouldBeNumber(Currency.toValueOrFail(this), 'Our value must be a number.');
+        /**
+         * @type {BigJsLibrary.BigJS}
+         */
+        let value1 = this._toValue(money);
 
-        return convertedAlien === value;
+        /**
+         * @type {BigJsLibrary.BigJS}
+         */
+        let value2 = this._toValue(this);
+
+        return value1.eq(value2);
+    }
+
+    /**
+     *
+     * @param {Money|Currency} currencyOrMoney
+     * @returns {boolean}
+     */
+    isSameCurrency(currencyOrMoney) {
+        let c1 = Preconditions.shouldBeExisting(Currency.getCurrency(currencyOrMoney));
+        let c2 = Preconditions.shouldBeExisting(Currency.getCurrency(this));
+
+        return c1.equals(c2) && c2.equals(c1);
     }
 
     valueOf() {
@@ -120,14 +154,24 @@ export default class Money extends CoreObject {
 
     /**
      *
-     * @param {Currency|Class<Currency>|String} currencyOrString
-     * @param {Number|Function|Converter} [optionalConversion]
-     * @returns {Money}
+     * @param {Money} money
+     * @return {BigJsLibrary.BigJS}
+     * @private
      */
-    convertTo(currencyOrString, optionalConversion) {
-        let currency = Currency.getCurrency(currencyOrString);
+    _toValue(money) {
+        money = Money.shouldBeMoney(Money.optMoney(money, this.currency));
 
-        return currency.convertFrom(this, optionalConversion);
+        let that = this;
+        Preconditions.shouldBe(function() { return that.isSameCurrency(money); }, this.currency, Currency.optCurrency(money), 'Must be the same currency.');
+
+        return Currency.toValueOrFail(money);
+    }
+
+    /**
+     * @returns {string}
+     */
+    static toString() {
+        return 'Money';
     }
 
     /**
@@ -147,7 +191,7 @@ export default class Money extends CoreObject {
 
     /**
      *
-     * @param {Number|String|Money} valueOrMoney
+     * @param {Big|Number|String|Money} valueOrMoney
      * @param {Class<Currency>} [defaultCurrency]
      * @returns {Money|undefined}
      */
@@ -157,7 +201,7 @@ export default class Money extends CoreObject {
         }
 
         return new Money({
-            value: valueOrMoney,
+            value: Currency.toValueOrFail(valueOrMoney),
             currency: defaultCurrency
         });
     }

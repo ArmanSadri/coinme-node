@@ -1,7 +1,7 @@
 {
-  "coverage": "68.09%",
-  "expectCount": 257,
-  "actualCount": 175,
+  "coverage": "68.91%",
+  "expectCount": 267,
+  "actualCount": 184,
   "files": {
     "js/slack/AbstractBuilder.js": {
       "expectCount": 3,
@@ -77,19 +77,18 @@
         20,
         37,
         33,
-        41,
-        29
+        29,
+        41
       ]
     },
     "js/money/Currency.js": {
-      "expectCount": 17,
-      "actualCount": 12,
+      "expectCount": 19,
+      "actualCount": 15,
       "undocumentLines": [
-        96,
-        19,
-        34,
-        284,
-        63
+        133,
+        39,
+        54,
+        304
       ]
     },
     "js/errors/Errors.js": {
@@ -98,6 +97,13 @@
       "undocumentLines": [
         13,
         109
+      ]
+    },
+    "js/money/Ethereum.js": {
+      "expectCount": 5,
+      "actualCount": 4,
+      "undocumentLines": [
+        78
       ]
     },
     "js/slack/FieldBuilder.js": {
@@ -131,13 +137,14 @@
       ]
     },
     "js/money/Money.js": {
-      "expectCount": 13,
-      "actualCount": 9,
+      "expectCount": 15,
+      "actualCount": 10,
       "undocumentLines": [
         6,
+        67,
         52,
         48,
-        100
+        115
       ]
     },
     "js/slack/NotificationBuilder.js": {
@@ -226,19 +233,19 @@
       ]
     },
     "js/Utility.js": {
-      "expectCount": 39,
-      "actualCount": 29,
+      "expectCount": 40,
+      "actualCount": 30,
       "undocumentLines": [
-        67,
-        83,
-        44,
-        52,
-        48,
-        40,
-        75,
-        79,
-        87,
-        71
+        69,
+        85,
+        46,
+        54,
+        50,
+        42,
+        77,
+        81,
+        89,
+        73
       ]
     }
   }

@@ -66,6 +66,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/money/ethereum.js~ethereum",
+    "class/js/money/Ethereum.js~Ethereum.html",
+    "<span>Ethereum</span> <span class=\"search-result-import-path\">coinme-node/js/money/Ethereum.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/errors/abstracterror.js~extendablebuiltin",
     "function/index.html#static-function-ExtendableBuiltin",
     "<span>ExtendableBuiltin</span> <span class=\"search-result-import-path\">coinme-node/js/errors/AbstractError.js</span>",
@@ -870,6 +876,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/utility.js~utility.isemail",
+    "class/js/Utility.js~Utility.html#static-method-isEmail",
+    "js/Utility.js~Utility.isEmail",
+    "method"
+  ],
+  [
     "js/utility.js~utility.iserror",
     "class/js/Utility.js~Utility.html#static-method-isError",
     "js/Utility.js~Utility.isError",
@@ -1530,6 +1542,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "js/money/currency.js~currency#tostring",
+    "class/js/money/Currency.js~Currency.html#instance-method-toString",
+    "js/money/Currency.js~Currency#toString",
+    "method"
+  ],
+  [
     "js/money/currency.js~currency.canconvertfrom",
     "class/js/money/Currency.js~Currency.html#static-method-canConvertFrom",
     "js/money/Currency.js~Currency.canConvertFrom",
@@ -1614,6 +1632,42 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/money/currency.js~currency.types",
+    "class/js/money/Currency.js~Currency.html#static-get-types",
+    "js/money/Currency.js~Currency.types",
+    "member"
+  ],
+  [
+    "js/money/ethereum.js",
+    "file/js/money/Ethereum.js.html",
+    "js/money/Ethereum.js",
+    "file"
+  ],
+  [
+    "js/money/ethereum.js~ethereum.fromethereum",
+    "class/js/money/Ethereum.js~Ethereum.html#static-method-fromEthereum",
+    "js/money/Ethereum.js~Ethereum.fromEthereum",
+    "method"
+  ],
+  [
+    "js/money/ethereum.js~ethereum.isethereum",
+    "class/js/money/Ethereum.js~Ethereum.html#static-method-isEthereum",
+    "js/money/Ethereum.js~Ethereum.isEthereum",
+    "method"
+  ],
+  [
+    "js/money/ethereum.js~ethereum.shouldbeethereum",
+    "class/js/money/Ethereum.js~Ethereum.html#static-method-shouldBeEthereum",
+    "js/money/Ethereum.js~Ethereum.shouldBeEthereum",
+    "method"
+  ],
+  [
+    "js/money/ethereum.js~ethereum.tostring",
+    "class/js/money/Ethereum.js~Ethereum.html#static-method-toString",
+    "js/money/Ethereum.js~Ethereum.toString",
+    "method"
+  ],
+  [
     "js/money/money.js",
     "file/js/money/Money.js.html",
     "js/money/Money.js",
@@ -1657,6 +1711,12 @@ window.esdocSearchIndex = [
   ],
   [
     "js/money/money.js~money#tojson",
+    "class/js/money/Money.js~Money.html#instance-method-toJSON",
+    "js/money/Money.js~Money#toJSON",
+    "method"
+  ],
+  [
+    "js/money/money.js~money#tojson",
     "class/js/money/Money.js~Money.html#instance-method-toJson",
     "js/money/Money.js~Money#toJson",
     "method"
@@ -1692,6 +1752,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/money/money.js~money.tostring",
+    "class/js/money/Money.js~Money.html#static-method-toString",
+    "js/money/Money.js~Money.toString",
+    "method"
+  ],
+  [
     "js/money/satoshi.js",
     "file/js/money/Satoshi.js.html",
     "js/money/Satoshi.js",
@@ -1699,13 +1765,13 @@ window.esdocSearchIndex = [
   ],
   [
     "js/money/satoshi.js~satoshi.converter",
-    "class/js/money/Satoshi.js~Satoshi.html#static-set-converter",
+    "class/js/money/Satoshi.js~Satoshi.html#static-get-converter",
     "js/money/Satoshi.js~Satoshi.converter",
     "member"
   ],
   [
     "js/money/satoshi.js~satoshi.converter",
-    "class/js/money/Satoshi.js~Satoshi.html#static-get-converter",
+    "class/js/money/Satoshi.js~Satoshi.html#static-set-converter",
     "js/money/Satoshi.js~Satoshi.converter",
     "member"
   ],

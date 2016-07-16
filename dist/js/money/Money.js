@@ -22,6 +22,10 @@ var _Currency = require("./Currency");
 
 var _Currency2 = _interopRequireDefault(_Currency);
 
+var _big = require("big.js/big");
+
+var _big2 = _interopRequireDefault(_big);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35,7 +39,7 @@ var Money = function (_CoreObject) {
 
     /**
      * @param {Object} options
-     * @param {Number} options.value
+     * @param {BigJsLibrary.BigJS} options.value
      */
 
     function Money(options) {
@@ -43,17 +47,20 @@ var Money = function (_CoreObject) {
 
         _Preconditions2.default.shouldBeDefined(_Currency2.default);
 
-        var value = _Preconditions2.default.shouldBeNumber(_Currency2.default.toValueOrFail(_Utility2.default.take(options, 'value')));
+        var value = _Currency2.default.toValueOrFail(_Utility2.default.take(options, 'value'));
         var currency = _Preconditions2.default.shouldBeDefined(_Currency2.default.getCurrency(_Utility2.default.take(options, 'currency')));
 
         /**
-         * @type {Number}
+         * @type {BigJsLibrary.BigJS}
          * @private
          */
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Money).apply(this, arguments));
 
-        _this._value = _Preconditions2.default.shouldBeNumber(value);
+        _Preconditions2.default.shouldBe(function () {
+            return value instanceof _big2.default;
+        }, _Utility2.default.typeOf(_big2.default), _Utility2.default.typeOf(value), 'should be Big');
+        _this._value = value;
 
         /**
          * @type {Class<Currency>}
@@ -71,13 +78,37 @@ var Money = function (_CoreObject) {
 
     _createClass(Money, [{
         key: "toString",
+
+
+        /**
+         * @returns {string}
+         */
         value: function toString() {
-            return this.currency.toString(this);
+            return this.value + " " + this.currency;
         }
+
+        /**
+         *
+         * @returns {{value, currency}|{value: BigJsLibrary.BigJS, currency: Class.<Currency>}}
+         */
+
     }, {
         key: "toJson",
         value: function toJson() {
-            return this.currency.toJson(this);
+            return {
+                value: this.value,
+                currency: this.currency.toString()
+            };
+        }
+
+        /**
+         * @returns {{value, currency}|{value: BigJsLibrary.BigJS, currency: Class.<Currency>}}
+         */
+
+    }, {
+        key: "toJSON",
+        value: function toJSON() {
+            return this.toJson();
         }
 
         /**
@@ -90,10 +121,12 @@ var Money = function (_CoreObject) {
     }, {
         key: "plus",
         value: function plus(money) {
-            money = Money.optMoney(money, this.currency);
-            var convertedValue = this.currency.convertFrom(money);
+            var big1 = this._toValue(money);
+            var big2 = this._toValue(this);
 
-            return this.withValue(convertedValue + this);
+            var big3 = big1.plus(big2);
+
+            return this.withValue(big3);
         }
 
         /**
@@ -106,31 +139,47 @@ var Money = function (_CoreObject) {
     }, {
         key: "minus",
         value: function minus(money) {
-            money = Money.optMoney(money, this.currency);
-            var convertedValue = this.currency.convertFrom(money).value;
-
-            return this.withValue(convertedValue - this.value);
+            return this.withValue(this._toValue(money) - this.value);
         }
 
         /**
          * @param {Money|String|Number} money
-         * @param {Number|Function} [optionalConversion]
          * @returns {boolean}
          */
 
     }, {
         key: "equals",
-        value: function equals(money, optionalConversion) {
-            money = Money.optMoney(money, this.currency);
-
+        value: function equals(money) {
             if (!money) {
                 return false;
             }
 
-            var convertedAlien = _Preconditions2.default.shouldBeNumber(_Currency2.default.toValueOrFail(this.currency.convertFrom(money, optionalConversion)), 'Converted value must be a number.');
-            var value = _Preconditions2.default.shouldBeNumber(_Currency2.default.toValueOrFail(this), 'Our value must be a number.');
+            /**
+             * @type {BigJsLibrary.BigJS}
+             */
+            var value1 = this._toValue(money);
 
-            return convertedAlien === value;
+            /**
+             * @type {BigJsLibrary.BigJS}
+             */
+            var value2 = this._toValue(this);
+
+            return value1.eq(value2);
+        }
+
+        /**
+         *
+         * @param {Money|Currency} currencyOrMoney
+         * @returns {boolean}
+         */
+
+    }, {
+        key: "isSameCurrency",
+        value: function isSameCurrency(currencyOrMoney) {
+            var c1 = _Preconditions2.default.shouldBeExisting(_Currency2.default.getCurrency(currencyOrMoney));
+            var c2 = _Preconditions2.default.shouldBeExisting(_Currency2.default.getCurrency(this));
+
+            return c1.equals(c2) && c2.equals(c1);
         }
     }, {
         key: "valueOf",
@@ -160,23 +209,26 @@ var Money = function (_CoreObject) {
 
         /**
          *
-         * @param {Currency|Class<Currency>|String} currencyOrString
-         * @param {Number|Function|Converter} [optionalConversion]
-         * @returns {Money}
+         * @param {Money} money
+         * @return {BigJsLibrary.BigJS}
+         * @private
          */
 
     }, {
-        key: "convertTo",
-        value: function convertTo(currencyOrString, optionalConversion) {
-            var currency = _Currency2.default.getCurrency(currencyOrString);
+        key: "_toValue",
+        value: function _toValue(money) {
+            money = Money.shouldBeMoney(Money.optMoney(money, this.currency));
 
-            return currency.convertFrom(this, optionalConversion);
+            var that = this;
+            _Preconditions2.default.shouldBe(function () {
+                return that.isSameCurrency(money);
+            }, this.currency, _Currency2.default.optCurrency(money), 'Must be the same currency.');
+
+            return _Currency2.default.toValueOrFail(money);
         }
 
         /**
-         *
-         * @param {*} object
-         * @returns {Money}
+         * @returns {string}
          */
 
     }, {
@@ -186,7 +238,7 @@ var Money = function (_CoreObject) {
         }
 
         /**
-         * @returns {Number}
+         * @returns {BigJsLibrary.BigJS}
          */
 
     }, {
@@ -195,6 +247,18 @@ var Money = function (_CoreObject) {
             return this._value;
         }
     }], [{
+        key: "toString",
+        value: function toString() {
+            return 'Money';
+        }
+
+        /**
+         *
+         * @param {*} object
+         * @returns {Money}
+         */
+
+    }, {
         key: "shouldBeMoney",
         value: function shouldBeMoney(object) {
             if (_CoreObject3.default.isClass(object)) {
@@ -208,7 +272,7 @@ var Money = function (_CoreObject) {
 
         /**
          *
-         * @param {Number|String|Money} valueOrMoney
+         * @param {Big|Number|String|Money} valueOrMoney
          * @param {Class<Currency>} [defaultCurrency]
          * @returns {Money|undefined}
          */
@@ -221,7 +285,7 @@ var Money = function (_CoreObject) {
             }
 
             return new Money({
-                value: valueOrMoney,
+                value: _Currency2.default.toValueOrFail(valueOrMoney),
                 currency: defaultCurrency
             });
         }

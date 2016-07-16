@@ -6,6 +6,8 @@ import Ember from "~/Ember";
 import CoreObject from "~/CoreObject";
 import {Errors, AbstractError} from "./errors";
 
+let EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
+
 /**
  * @class
  * @singleton
@@ -311,6 +313,12 @@ class Utility {
                              */
                             key = Preconditions.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
                             ruleset = rulesetOrObject;
+                        } else if (Utility.isFunction(rulesetOrObject)) {
+                            ruleset = {
+                                validator: rulesetOrObject
+                            };
+                        } else {
+                            throw new Error('Dont know what to do: ' + rulesetOrObject);
                         }
                     } else if ('object' === mode) {
                         key = keyOrIndex;
@@ -321,7 +329,14 @@ class Utility {
                             };
                         } else if (Utility.isObject(rulesetOrObject)) {
                             ruleset = rulesetOrObject;
+                        } else if (Utility.isFunction(rulesetOrObject)) {
+                            ruleset = {
+                                validator: rulesetOrObject
+                            };
+                        } else {
+                            throw new Error('Dont know what to do: ' + rulesetOrObject);
                         }
+
                     } else {
                         Preconditions.fail('array|object', mode, 'Unknown mode');
                     }
@@ -534,6 +549,23 @@ class Utility {
         }
 
         return type;
+    }
+
+    /**
+     *
+     * @param {String} string
+     * @returns {boolean}
+     */
+    static isEmail(string) {
+        Preconditions.shouldBeString(string, 'Should be string');
+
+        var type = Utility.typeOf(string);
+
+        if (type !== 'string' || !string) {
+            return false;
+        }
+
+        return EMAIL_PATTERN.test(string);
     }
 
     /**
@@ -768,6 +800,55 @@ class Utility {
      */
     static isNotBlank(string) {
         return !Utility.isBlank(string);
+    }
+
+    /**
+     * @param {...arguments}
+     * @returns {Number}
+     */
+    static defaultNumber() {
+        let result = 0;
+
+        _.each(arguments, function(object) {
+            if (Utility.isNumber(object)) {
+                result = object;
+            }
+        });
+
+        return result;
+    }
+
+    /**
+     *
+     * @param {*} value
+     * @returns {Number}
+     */
+    static toNumberOrFail(value) {
+        if (Utility.isNullOrUndefined(value)) {
+            return 0;
+        } else if (Utility.isNumber(value)) {
+            return value;
+        } else if (Utility.isString(value)) {
+            return Number.parseFloat(value);
+        }
+
+        throw new TypeError("unknown type: " + Utility.typeOf(value));
+    }
+
+    /**
+     * @param {...arguments}
+     * @returns {*|Object}
+     */
+    static defaultObject() {
+        let result = null;
+
+        _.each(arguments, function(object) {
+            if (Utility.isObject(object)) {
+                result = object;
+            }
+        });
+
+        return result;
     }
 
     /**

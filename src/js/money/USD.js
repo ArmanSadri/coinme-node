@@ -7,7 +7,7 @@ import Money from "./Money";
 /**
  * @class USD
  */
-export default class USD extends Currency {
+class USD extends Currency {
 
     /**
      *
@@ -54,3 +54,7 @@ export default class USD extends Currency {
     //endregion
 
 }
+
+// Currency.types.register('USD', USD);
+
+export default USD;
