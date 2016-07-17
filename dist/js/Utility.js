@@ -459,18 +459,18 @@ var Utility = function () {
                                 //     ruleset = Lodash.defaults(ruleset, optionalTypeDeclarationOrDefaults);
                                 // }
                             } else if (Utility.isObject(rulesetOrObject)) {
-                                    /**
-                                     * @type {String}
-                                     */
-                                    key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
-                                    ruleset = rulesetOrObject;
-                                } else if (Utility.isFunction(rulesetOrObject)) {
-                                    ruleset = {
-                                        validator: rulesetOrObject
-                                    };
-                                } else {
-                                    throw new Error('Dont know what to do: ' + rulesetOrObject);
-                                }
+                                /**
+                                 * @type {String}
+                                 */
+                                key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
+                                ruleset = rulesetOrObject;
+                            } else if (Utility.isFunction(rulesetOrObject)) {
+                                ruleset = {
+                                    validator: rulesetOrObject
+                                };
+                            } else {
+                                throw new Error('Dont know what to do: ' + rulesetOrObject);
+                            }
                         } else if ('object' === mode) {
                             key = keyOrIndex;
 
