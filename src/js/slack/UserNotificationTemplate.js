@@ -14,8 +14,6 @@ class UserNotificationTemplate extends NotificationTemplate {
         let lastName = user.lastName;
         let address = user.address;
 
-        Logger.warn('fuck');
-
         builder
             .username('UserNotificationTemplate')
             .text('text for Builder')
@@ -28,8 +26,6 @@ class UserNotificationTemplate extends NotificationTemplate {
             .addKeyValuePair('name', `${firstName} ${lastName}`)
             .addKeyValuePair('address', `${address}`)
         ;
-
-        Logger.warn('fucky', builder.toJson());
     }
 }
 

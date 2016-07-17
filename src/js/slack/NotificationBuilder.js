@@ -123,7 +123,7 @@ class NotificationBuilder extends AbstractBuilder {
                     json: true
                 };
 
-                Logger.warn(`[SLACK:${scope.name}] webhook `, JSON.stringify(payload));
+                Logger.debug(`[SLACK:${scope.name}] webhook `, JSON.stringify(payload));
 
                 return Promise.resolve(request(requestOptions))
                     .then(function(value) {

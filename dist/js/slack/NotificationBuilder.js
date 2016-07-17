@@ -191,7 +191,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
                     json: true
                 };
 
-                _winston2.default.warn('[SLACK:' + scope.name + '] webhook ', JSON.stringify(payload));
+                _winston2.default.debug('[SLACK:' + scope.name + '] webhook ', JSON.stringify(payload));
 
                 return _bluebird2.default.resolve((0, _requestPromise2.default)(requestOptions)).then(function (value) {
                     _winston2.default.debug('[SLACK:' + scope.name + '] webhook succeeded.', arguments);

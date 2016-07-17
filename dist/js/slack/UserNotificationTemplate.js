@@ -46,11 +46,7 @@ var UserNotificationTemplate = function (_NotificationTemplate) {
             var lastName = user.lastName;
             var address = user.address;
 
-            _winston2.default.warn('fuck');
-
             builder.username('UserNotificationTemplate').text('text for Builder').attachment().title('User - ' + id).text('User').field().text('text').addKeyValuePair('id', 'asdf').addKeyValuePair('name', firstName + ' ' + lastName).addKeyValuePair('address', '' + address);
-
-            _winston2.default.warn('fucky', builder.toJson());
         }
     }]);
 

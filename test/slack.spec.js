@@ -107,10 +107,10 @@ describe('CoinmeSlack', function () {
                 url: 'https://www.coinmewallet.com/admin/users/' + 324
             })
             .then(() => {
-                console.log('done', arguments);
+                // console.log('done', arguments);
             })
             .catch(function (err) {
-                console.error(err);
+                // console.error(err);
             })
             .finally(() => {
                 done();
