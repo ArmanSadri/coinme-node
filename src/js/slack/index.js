@@ -1,13 +1,13 @@
 'use strict';
 
-import AbstractBuilder from "~/slack/AbstractBuilder";
-import FieldBuilder from "~/slack/FieldBuilder";
-import AttachmentBuilder from "~/slack/AttachmentBuilder";
-import NotificationBuilder from "~/slack/NotificationBuilder";
-import NotificationService from "~/slack/NotificationService";
-import NotificationTemplate from "~/slack/NotificationTemplate";
-import InlineNotificationTemplate from "~/slack/InlineNotificationTemplate";
-import UserNotificationTemplate from "~/slack/UserNotificationTemplate";
+import AbstractBuilder from "./AbstractBuilder";
+import FieldBuilder from "./FieldBuilder";
+import AttachmentBuilder from "./AttachmentBuilder";
+import NotificationBuilder from "./NotificationBuilder";
+import NotificationService from "./NotificationService";
+import NotificationTemplate from "./NotificationTemplate";
+import InlineNotificationTemplate from "./InlineNotificationTemplate";
+import UserNotificationTemplate from "./UserNotificationTemplate";
 
 export {AbstractBuilder};
 export {FieldBuilder};

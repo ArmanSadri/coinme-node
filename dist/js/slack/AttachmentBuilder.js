@@ -6,23 +6,25 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _Preconditions = require("./../Preconditions");
+var _Preconditions = require("../Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _Ember = require("./../Ember");
-
-var _Ember2 = _interopRequireDefault(_Ember);
-
-var _AbstractBuilder2 = require("./AbstractBuilder");
+var _AbstractBuilder2 = require("../slack/AbstractBuilder");
 
 var _AbstractBuilder3 = _interopRequireDefault(_AbstractBuilder2);
 
-var _FieldBuilder = require("./FieldBuilder");
+var _FieldBuilder = require("../slack/FieldBuilder");
 
 var _FieldBuilder2 = _interopRequireDefault(_FieldBuilder);
+
+var _Utility = require("../Utility");
+
+var _Utility2 = _interopRequireDefault(_Utility);
+
+var _NotificationBuilder = require("./NotificationBuilder");
+
+var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,56 +37,126 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var AttachmentBuilder = function (_AbstractBuilder) {
     _inherits(AttachmentBuilder, _AbstractBuilder);
 
-    function AttachmentBuilder() {
+    /**
+     *
+     * @param {{parent: NotificationBuilder}} options
+     */
+
+    function AttachmentBuilder(options) {
         _classCallCheck(this, AttachmentBuilder);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(AttachmentBuilder).apply(this, arguments));
+        _Preconditions2.default.shouldBeObject(options, 'AttachmentBuilder constructor requires configuration.');
+
+        /**
+         * @type {NotificationBuilder}
+         */
+        var parent = _Utility2.default.take(options, 'parent', {
+            type: _NotificationBuilder2.default,
+            required: true
+        });
+
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AttachmentBuilder).call(this, options));
+
+        _this._parent = parent;
+
+        var payload = _Utility2.default.defaults(_this.payload, {
+            mrkdwn_in: ['pretext', 'text', 'fields'],
+            color: 'good'
+        });
+
+        parent.attachments().push(payload);
+        return _this;
     }
 
+    /**
+     *
+     * @returns {AttachmentBuilder}
+     */
+
+
     _createClass(AttachmentBuilder, [{
-        key: "init",
-        value: function init() {
-            _get(Object.getPrototypeOf(AttachmentBuilder.prototype), "init", this).apply(this, arguments);
-
-            this.get('parent').attachments().push(this.get('payload'));
-
-            this.set('mrkdwn_in', ['pretext', 'text', 'fields']);
-            this.set('color', 'good');
-        }
-    }, {
         key: "title",
+
+
+        /**
+         *
+         * @param {String} value
+         * @returns {AttachmentBuilder}
+         */
         value: function title(value) {
             _Preconditions2.default.shouldBeString(value);
 
-            return this.set('title', value);
+            return this.mergeIntoPayload({
+                title: value
+            });
         }
-    }, {
-        key: "text",
-        value: function text(value) {
-            _Preconditions2.default.shouldBeString(value);
 
-            return this.set('text', value);
-        }
-    }, {
-        key: "fields",
-        value: function fields() {
-            var fields = _Ember2.default.getWithDefault(this, 'fields', []);
+        /**
+         *
+         * @param color
+         * @returns {AttachmentBuilder}
+         */
 
-            _Preconditions2.default.shouldBeArray(fields, 'fields');
-
-            return fields;
-        }
     }, {
         key: "color",
         value: function color(_color) {
             _Preconditions2.default.shouldBeString(_color);
 
-            return this.set('color', _color);
+            return this.mergeIntoPayload({
+                color: _color
+            });
         }
+
+        /**
+         *
+         * @param {String} value
+         * @returns {AttachmentBuilder}
+         */
+
+    }, {
+        key: "text",
+        value: function text(value) {
+            _Preconditions2.default.shouldBeString(value);
+
+            return this.mergeIntoPayload({
+                text: value
+            });
+        }
+
+        /**
+         * @returns {FieldBuilder}
+         */
+
     }, {
         key: "field",
         value: function field() {
-            return new _FieldBuilder2.default(this).small();
+            return new _FieldBuilder2.default({
+                parent: this
+            }).small();
+        }
+
+        /**
+         *
+         * @returns {[]}
+         */
+
+    }, {
+        key: "fields",
+        value: function fields() {
+            var fields = this.get('payload.fields');
+
+            if (!fields) {
+                fields = [];
+
+                this.set('payload.fields', fields);
+            }
+
+            return fields;
+        }
+    }, {
+        key: "parent",
+        get: function get() {
+            return this._parent;
         }
     }]);
 

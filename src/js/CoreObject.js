@@ -13,31 +13,59 @@ import Preconditions from './Preconditions';
  */
 export default class CoreObject extends Ember.Object {
 
+    constructor(options) {
+        super(...arguments);
+
+        Lodash.merge(this, options);
+    }
+
+    /**
+     *
+     * @param {string} key
+     * @returns {*|Object}
+     */
     get(key) {
         return Ember.get(this, key);
     }
 
+    /**
+     *
+     * @param {string} key
+     * @param {*} value
+     * @returns {CoreObject|*}
+     */
     set(key, value) {
-        return Ember.set(this, key, value);
+        Ember.set(this, key, value);
+
+        return this;
     }
 
-    constructor(options) {
-        super(...arguments);
-        Lodash.merge(this, options);
-    }
-
+    /**
+     * @returns {string}
+     */
     toString() {
         return this.toClass().toString();
     }
 
+    /**
+     *
+     * @returns {Class<CoreObject>}
+     */
     toClass() {
         return this.constructor;
     }
 
+    /**
+     *
+     * @returns {Class<CoreObject>}
+     */
     static toClass() {
         return this;
     }
 
+    /**
+     * @returns {String}
+     */
     static toString() {
         return this.constructor.name;
     }

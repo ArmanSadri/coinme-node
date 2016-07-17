@@ -34,7 +34,8 @@ class AbstractError extends ExtendableBuiltin(Error) {
         /**
          * @type {String}
          */
-        let message = Utility.take(options, 'message', Utility.isString);
+        let message = Utility.take(options, 'message');
+        // let message = Utility.take(options, 'message', Utility.isString);
 
         super(message);
         

@@ -22,7 +22,7 @@ class NotificationTemplate extends AbstractNotificationTemplate {
     /**
      *
      * @param {NotificationBuilder} builder
-     * @param {Object} data
+     * @param {*|Object} data
      * @return {NotificationBuilder}
      */
     applyTemplate(builder, data) {

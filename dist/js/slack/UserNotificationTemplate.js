@@ -10,6 +10,10 @@ var _NotificationTemplate2 = require('./NotificationTemplate');
 
 var _NotificationTemplate3 = _interopRequireDefault(_NotificationTemplate2);
 
+var _winston = require('winston');
+
+var _winston2 = _interopRequireDefault(_winston);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29,13 +33,20 @@ var UserNotificationTemplate = function (_NotificationTemplate) {
 
     _createClass(UserNotificationTemplate, [{
         key: 'applyTemplate',
+
+
+        /**
+         *
+         * @param {NotificationBuilder} builder
+         * @param {User} user
+         */
         value: function applyTemplate(builder, user) {
             var id = user.id;
             var firstName = user.firstName;
             var lastName = user.lastName;
             var address = user.address;
 
-            builder.attachment().title('User - ' + id).field().addKeyValuePair('id', 'asdf').addKeyValuePair('name', firstName + ' ' + lastName).addKeyValuePair('address', '' + address);
+            builder.username('UserNotificationTemplate').text('text for Builder').attachment().title('User - ' + id).text('User').field().text('text').addKeyValuePair('id', 'asdf').addKeyValuePair('name', firstName + ' ' + lastName).addKeyValuePair('address', '' + address);
         }
     }]);
 

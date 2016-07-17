@@ -6,9 +6,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _AbstractBuilder2 = require('./AbstractBuilder');
+var _AbstractBuilder2 = require("../slack/AbstractBuilder");
 
 var _AbstractBuilder3 = _interopRequireDefault(_AbstractBuilder2);
+
+var _AttachmentBuilder = require("../slack/AttachmentBuilder");
+
+var _AttachmentBuilder2 = _interopRequireDefault(_AttachmentBuilder);
+
+var _Preconditions = require("../Preconditions");
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
+var _Utility = require("../Utility");
+
+var _Utility2 = _interopRequireDefault(_Utility);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,27 +33,51 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var FieldBuilder = function (_AbstractBuilder) {
     _inherits(FieldBuilder, _AbstractBuilder);
 
-    function FieldBuilder(parent) {
+    /**
+     *
+     * @param {{parent: AttachmentBuilder}} options
+     */
+
+    function FieldBuilder(options) {
         _classCallCheck(this, FieldBuilder);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FieldBuilder).call(this, {
-            parent: parent
-        }));
+        _Preconditions2.default.shouldBeObject(options, 'FieldBuilder constructor requires configuration.');
+
+        /**
+         * @type {AttachmentBuilder}
+         */
+        var parent = _Utility2.default.take(options, 'parent', {
+            type: _AttachmentBuilder2.default,
+            required: true
+        });
+
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FieldBuilder).call(this, options));
+
+        _this._parent = parent;
 
         _this.parent.fields().push(_this.payload);
         return _this;
     }
 
     /**
-     * @param {String} value
-     * @returns {FieldBuilder}
+     * @returns {AttachmentBuilder}
      */
 
 
     _createClass(FieldBuilder, [{
-        key: 'title',
+        key: "title",
+
+
+        /**
+         * @param {String} value
+         * @returns {FieldBuilder}
+         */
         value: function title(value) {
-            return this.setString('title', value);
+            _Preconditions2.default.shouldBeString(value);
+
+            return this.mergeIntoPayload({
+                title: value
+            });
         }
 
         /**
@@ -50,9 +86,11 @@ var FieldBuilder = function (_AbstractBuilder) {
          */
 
     }, {
-        key: 'text',
+        key: "text",
         value: function text(value) {
-            return this.setString('value', value);
+            return this.mergeIntoPayload({
+                value: value
+            });
         }
 
         /**
@@ -61,9 +99,11 @@ var FieldBuilder = function (_AbstractBuilder) {
          */
 
     }, {
-        key: 'small',
+        key: "small",
         value: function small() {
-            return this.set('short', true);
+            return this.mergeIntoPayload({
+                short: true
+            });
         }
 
         /**
@@ -73,12 +113,12 @@ var FieldBuilder = function (_AbstractBuilder) {
          */
 
     }, {
-        key: 'add',
+        key: "add",
         value: function add(stringToAdd) {
-            var sb = this.get('value');
+            var sb = this.get('payload.value') || '';
 
             {
-                sb += '\n' + stringToAdd;
+                sb += "\n" + stringToAdd;
             }
 
             return this.text(sb);
@@ -92,15 +132,20 @@ var FieldBuilder = function (_AbstractBuilder) {
          */
 
     }, {
-        key: 'addKeyValuePair',
+        key: "addKeyValuePair",
         value: function addKeyValuePair(key, value) {
-            var sb = this.get('value');
+            var sb = this.get('payload.value') || '';
 
             {
-                sb += '\n_' + key + ':_ ' + value;
+                sb += "\n_" + key + ":_ " + value;
             }
 
             return this.text(sb);
+        }
+    }, {
+        key: "parent",
+        get: function get() {
+            return this._parent;
         }
     }]);
 

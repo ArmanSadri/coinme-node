@@ -57,7 +57,8 @@ var AbstractError = function (_ExtendableBuiltin) {
         /**
          * @type {String}
          */
-        var message = _Utility2.default.take(options, 'message', _Utility2.default.isString);
+        var message = _Utility2.default.take(options, 'message');
+        // let message = Utility.take(options, 'message', Utility.isString);
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractError).call(this, message));
 

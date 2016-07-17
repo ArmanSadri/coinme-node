@@ -2,9 +2,9 @@
 
 import Utility from "./Utility";
 import Lodash from "lodash/index";
-import CoreObject from './CoreObject';
-import AbstractError from './errors/AbstractError';
-import { Errors, PreconditionsError } from './errors';
+import CoreObject from "./CoreObject";
+import AbstractError from "./errors/AbstractError";
+import {Errors, PreconditionsError} from "./errors";
 
 // class PreconditionsError extends AbstractError {
 //
@@ -83,7 +83,7 @@ export default class Preconditions {
      * return {*} object
      */
     static shouldBeUndefined(object, message) {
-        return Preconditions.shouldBe(Utility.isUndefined, object, 'undefined', message || 'must be undefined');
+        return Preconditions.shouldBe(Utility.isUndefined, undefined, object, message || 'must be undefined');
     }
 
     /**
@@ -187,27 +187,54 @@ export default class Preconditions {
     }
 
     /**
+     * Execute a function. The function should fail with a preconditions error.
      *
-     * @param {Class|Object} object
-     * @param {Class|Object} [clazz]
+     * @param {function} fn
+     * @param {*} [scope]
+     */
+    static shouldFailWithPreconditionsError(fn, scope) {
+        try {
+            fn.call(scope || this);
+
+            throw new Error('Did not crash');
+        } catch (e) {
+            Preconditions.shouldBePreconditionsError(e);
+        }
+    }
+
+    /**
+     *
+     *
+     * @param {Class|Object} actualClass
+     * @param {Class|String} [requiredClassOrMessage]
      * @param {String} [message]
      */
-    static shouldBeClass(object, clazz, message) {
-        Preconditions.shouldBeDefined(object, 'object must be defined');
+    static shouldBeClass(actualClass, requiredClassOrMessage, message) {
+        Preconditions.shouldBeDefined(actualClass, 'object must be defined');
 
-        if (!clazz) {
-            clazz = CoreObject;
+        let requiredClass;
+        
+        if (Utility.isString(requiredClassOrMessage)) {
+            Preconditions.shouldBeUndefined(message);
+            message = requiredClassOrMessage;
+            requiredClassOrMessage = null;
+        } else {
+            requiredClass = requiredClassOrMessage;
         }
 
-        if (!CoreObject.isClass(clazz)) {
-            Preconditions.fail(CoreObject, clazz, 'Class not a CoreObject class');
+        if (!requiredClass) {
+            requiredClass = CoreObject;
         }
 
-        if (!clazz.isClass(object)) {
-            Preconditions.fail(object, clazz, 'Class not a ' + clazz + ' class');
+        if (!CoreObject.isClass(requiredClass)) {
+            Preconditions.fail(CoreObject, requiredClass, 'Class not a CoreObject class');
         }
 
-        return object;
+        if (!requiredClass.isClass(actualClass)) {
+            Preconditions.fail(actualClass, requiredClass, 'Class not a ' + requiredClass + ' class');
+        }
+
+        return actualClass;
     }
 
     /**
@@ -232,6 +259,38 @@ export default class Preconditions {
             if (!clazz.isInstance(object)) {
                 Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
             }
+        }
+
+        return object;
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {Class<CoreObject>|String} [classOrString]
+     * @param {String} [message]
+     * @returns {Object}
+     */
+    static shouldNotBeInstance(object, classOrString, message) {
+        if (!object) {
+            return object;
+        }
+
+        let clazz;
+
+        if (Utility.isString(classOrString)) {
+            Preconditions.shouldBeUndefined(message);
+            message = classOrString;
+        }
+
+        if (!clazz) {
+            clazz = CoreObject.toClass();
+        }
+
+        clazz = Preconditions.shouldBeClass(clazz);
+
+        if (clazz.isInstance(object)) {
+            Preconditions.fail(object, clazz, message || 'Class is an instance of ' + clazz);
         }
 
         return object;
@@ -363,6 +422,21 @@ export default class Preconditions {
 
     /**
      *
+     * @param {Array} array
+     * @param {String} [message]
+     */
+    static shouldBeArray(array, message) {
+        Preconditions.shouldBeDefined(array);
+
+        if (!Utility.isArray(array)) {
+            Preconditions.fail('array', array, message || 'was not array');
+        }
+
+        return array;
+    }
+
+    /**
+     *
      * @param {*} number1
      * @param {*} number2
      * @param {String} [message]
@@ -392,5 +466,19 @@ export default class Preconditions {
         }
 
         return number;
+    }
+
+    /**
+     * @param {*|PreconditionsError} e
+     * @param {String} [message]
+     *
+     * @return {PreconditionsError}
+     */
+    static shouldBePreconditionsError(e, message) {
+        if (!PreconditionsError.isInstance(e)) {
+            Preconditions.fail(PreconditionsError, e, message || 'Should be a preconditions error. Was: ' + e);
+        }
+
+        return e;
     }
 }

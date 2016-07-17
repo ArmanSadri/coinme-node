@@ -14,9 +14,9 @@ var _winston = require('winston');
 
 var _winston2 = _interopRequireDefault(_winston);
 
-var _preconditions = require('preconditions');
+var _Preconditions = require('./../Preconditions');
 
-var _preconditions2 = _interopRequireDefault(_preconditions);
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
 var _requestPromise = require('request-promise');
 
@@ -65,9 +65,9 @@ var NotificationBuilder = function (_AbstractBuilder) {
          * @returns {NotificationBuilder}
          */
         value: function channel(value) {
-            _preconditions2.default.shouldBeString(value);
+            _Preconditions2.default.shouldBeString(value);
 
-            return this.set('channel', value);
+            return this.set('payload.channel', value);
         }
 
         /**
@@ -80,9 +80,9 @@ var NotificationBuilder = function (_AbstractBuilder) {
     }, {
         key: 'text',
         value: function text(_text) {
-            _preconditions2.default.shouldBeString(value);
+            _Preconditions2.default.shouldBeString(_text);
 
-            return this.set('text', _text);
+            return this.set('payload.text', _text);
         }
 
         /**
@@ -94,32 +94,62 @@ var NotificationBuilder = function (_AbstractBuilder) {
     }, {
         key: 'icon',
         value: function icon(_icon) {
-            _preconditions2.default.shouldBeString(value);
+            _Preconditions2.default.shouldBeString(_icon);
 
-            return this.set('icon_emoji', _icon);
+            return this.set('payload.icon_emoji', _icon);
         }
     }, {
         key: 'username',
         value: function username(_username) {
-            _preconditions2.default.shouldBeString(_username);
+            _Preconditions2.default.shouldBeString(_username);
 
-            return this.set('username', _username);
+            return this.set('payload.username', _username);
         }
+
+        /**
+         * @returns {Array}
+         */
+
     }, {
         key: 'attachments',
         value: function attachments() {
-            return _Ember2.default.getWithDefault(this, 'attachments', []);
+            var attachments = this.get('payload.attachments');
+
+            if (!attachments) {
+                attachments = [];
+
+                this.set('payload.attachments', attachments);
+            }
+
+            return attachments;
         }
+
+        /**
+         * @returns {AttachmentBuilder}
+         */
+
     }, {
         key: 'attachment',
         value: function attachment() {
-            return new _AttachmentBuilder2.default(this);
+            return new _AttachmentBuilder2.default({
+                parent: this
+            });
         }
+
+        /**
+         * @returns {Object}
+         */
+
     }, {
         key: 'toPayload',
         value: function toPayload() {
             return this.get('payload');
         }
+
+        /**
+         * @returns {String}
+         */
+
     }, {
         key: 'toJson',
         value: function toJson() {
@@ -139,7 +169,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
             var url = this.url;
             var payload = this.toPayload();
 
-            _preconditions2.default.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
+            _Preconditions2.default.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
 
             return _bluebird2.default.resolve().then(function () {
                 //
@@ -161,7 +191,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
                     json: true
                 };
 
-                _winston2.default.debug('[SLACK:' + scope.name + '] webhook ', requestOptions);
+                _winston2.default.debug('[SLACK:' + scope.name + '] webhook ', JSON.stringify(payload));
 
                 return _bluebird2.default.resolve((0, _requestPromise2.default)(requestOptions)).then(function (value) {
                     _winston2.default.debug('[SLACK:' + scope.name + '] webhook succeeded.', arguments);

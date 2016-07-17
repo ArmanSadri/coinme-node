@@ -3,6 +3,7 @@
 import Logger from "winston";
 import CoreObject from "~/CoreObject";
 import NotificationBuilder from "~/slack/NotificationBuilder";
+import Promise from 'bluebird';
 
 /**
  *
@@ -28,11 +29,11 @@ class AbstractNotificationTemplate extends CoreObject {
      */
     render(builder, data) {
         // Apply the template. Might be a promise though.
-        var result = this.applyTemplate(builder, data);
+        let result = this.applyTemplate(builder, data);
 
         result = result || builder;
 
-        return result;
+        return Promise.resolve(result);
     }
 
     /**

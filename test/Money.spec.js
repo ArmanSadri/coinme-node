@@ -89,10 +89,6 @@ describe('Money', () => {
         let satoshi = Satoshi.create(Bitcoin.SATOSHIS_PER_BITCOIN);
         let bitcoin2 = Bitcoin.fromSatoshi(satoshi);
 
-        console.log(bitcoin1.value.toFixed(), 'should be 1');
-        console.log(satoshi.value.toFixed(), 'should be ' + Bitcoin.SATOSHIS_PER_BITCOIN.toFixed());
-        console.log(bitcoin2.value.toFixed());
-
         assert.isTrue(bitcoin1.equals(bitcoin1), 'eq0'); // equals does an internal convert
         assert.isTrue(bitcoin1.equals(bitcoin2), 'eq1'); // equals does an internal convert
         assert.isTrue(bitcoin2.equals(bitcoin1), 'eq2');

@@ -2,37 +2,36 @@
 
 import Logger from 'winston';
 import Lodash from 'lodash';
-import Ember from '~/Ember';
-import Utility from '~/Utility';
-import Preconditions from '~/Preconditions';
-import CoreObject from '~/CoreObject';
+import Ember from '../Ember';
+import Utility from '../Utility';
+import Preconditions from '../Preconditions';
+import CoreObject from '../CoreObject';
 
 // winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
 class AbstractBuilder extends CoreObject {
 
-    init() {
+    constructor() {
+        super(...arguments);
+
         Utility.defaults(this, {
-            name: 'AbstractBuilder',
-            payload: {}
+            name: this.toClass().toString(),
+            payload: {
+
+            }
         });
     }
 
     /**
      * @public
      * @param object
-     * @return {AbstractBuilder}
+     * @return {*|AbstractBuilder}
      */
     mergeIntoPayload(object) {
         Preconditions.shouldBeDefined(object, 'Cannot merge null');
         Preconditions.shouldBeObject(object, 'Should be object');
 
-        console.log(Ember);
-        console.log(Ember.assign);
-
-        Ember.assign(this, {
-            payload: object
-        });
+        Lodash.assign(this.payload, object);
 
         return this;
     }

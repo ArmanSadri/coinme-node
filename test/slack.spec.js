@@ -5,349 +5,255 @@
  * @see http://chaijs.com/api/assert/
  */
 import {expect, assert} from "chai";
-import Utility from "~/Utility";
+import Promise from "bluebird";
 import Ember from "~/Ember";
-import Preconditions from "~/Preconditions";
-import Functions from "~/Functions";
-import UserBuilder from "~/data/UserBuilder";
-import CoreObject from "~/CoreObject";
+import Preconditions from "../src/js/Preconditions";
+import Utility from "../src/js/Utility";
 import {Errors, AbstractError, PreconditionsError} from "~/errors";
 import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
 import "source-map-support/register";
+import {
+    NotificationService,
+    FieldBuilder,
+    AttachmentBuilder,
+    NotificationBuilder,
+    InlineNotificationTemplate,
+    UserNotificationTemplate
+} from "../src/js/slack";
 
-// import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '~/slack';
+NotificationService.url = 'https://hooks.slack.com/services/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';
 
-//sadf
-// Preconditions.shouldBe(function() { return true; }, 'expected', 'actual', 'message');
+NotificationService.mergeIntoPayload({
+    channel: '#events-test',
+    username: 'coinme-node/slack.spec.js'
+});
 
-// NotificationService.url = 'https://hooks.slack.com/services/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';
+describe('CoinmeSlack', function () {
 
-// NotificationService.mergeIntoPayload({
-//     channel: '#events-test',
-//     username: 'coinme-node/slack.spec.js'
-// });
+    it('Builders', () => {
 
-describe('Errors', () => {
+        let builder = new NotificationBuilder();
 
-    it('Errors.isErrorClass(Error)', () => {
-        assert.isTrue(Errors.isErrorClass(Error));
+        assert.isTrue(Utility.isUndefined(builder.toPayload().attachments));
+
+        builder.attachments();
+
+        assert.isTrue(Utility.isArray(builder.toPayload().attachments));
+
+        let attachment = builder.attachment();
+
+        assert.isTrue( attachment.payload === builder.payload.attachments[0], 'These objects should be the same instance');
+        assert.isTrue(Utility.isUndefined(builder.toPayload().attachments[0].text), 'Should not have text yet: ' + JSON.stringify(builder.toPayload().attachments[0]));
+
+        attachment.text("red");
+
+        assert.isTrue(Utility.isString(builder.toPayload().attachments[0].text), JSON.stringify(builder.toPayload().attachments[0]) + ' vs ' + JSON.stringify(attachment.payload));
+
     });
 
-    it('Errors.isErrorClass(AbstractError)', () => {
-        assert.isTrue(Errors.isErrorClass(AbstractError));
-    });
+    it('FieldBuilder.constructor -- should crash if no parent', (done)=> {
 
-    it('Errors.isErrorInstance(Error)', () => {
-        assert.isTrue(Errors.isErrorInstance(new Error()));
-    });
-
-    it('Errors.isErrorInstance(AbstractError)', () => {
-        assert.isTrue(Errors.isErrorInstance(new AbstractError('Abstract')));
-    });
-
-    it('Utility.isInstance(new PreconditionsError())', () => {
-        let e = new PreconditionsError({});
-
-        assert.isTrue(Utility.isError(e));
-        assert.isTrue(Errors.isErrorInstance(e));
-    });
-
-    it('Preconditions.shouldBeType(error)', () => {
-        Preconditions.shouldBeType('error', new PreconditionsError(), 'Should be error type');
-        Preconditions.shouldBeType('error', new Error(), 'Should be error type');
-    })
-
-    it('PreconditionsError.isInstance(new PreconditionsError())', () => {
-        assert.isTrue(PreconditionsError.isInstance(new PreconditionsError()));
-    });
-
-    it('AbstractError.isInstance(new AbstractError())', () => {
-        assert.isTrue(AbstractError.isInstance(new AbstractError()));
-    });
-
-    it('Preconditions.shouldBeError', () => {
-        let e = new PreconditionsError({
-            message: 'message'
+        Preconditions.shouldFailWithPreconditionsError(() => {
+            new FieldBuilder();
         });
 
-        Preconditions.shouldBeError(e, PreconditionsError, 'bad type: ' + e);
-    });
-});
-
-describe('CoreObject', () => {
-
-    it('isClass - self', () => {
-        assert.isTrue(CoreObject.isClass(CoreObject));
-        assert.isFalse(CoreObject.isClass(function () {
-        }));
-        assert.isFalse(CoreObject.isClass(new CoreObject()));
-        assert.isFalse(CoreObject.isClass(new CoreObject({})));
-
-        assert.isTrue(CoreObject.isClass((new CoreObject({})).toClass()));
-    });
-
-    it('isInstance - self', () => {
-        assert.isFalse(CoreObject.isInstance(CoreObject));
-        assert.isTrue(CoreObject.isInstance(new CoreObject()));
-        assert.isFalse(CoreObject.isInstance({}));
-    });
-
-    it('isClass - subclass', () => {
-        class Subclass extends CoreObject {
-
-        }
-
-        assert.isTrue(CoreObject.isClass(Subclass), 'Subclass should be a CoreObject');
-        assert.isFalse(CoreObject.isClass(new Subclass()));
-        assert.isTrue(CoreObject.isInstance(new Subclass()), 'subclass is instance of CoreObject');
-    });
-
-});
-
-describe('User', () => {
-
-    it('UserBuilder', () => {
-        let SPEC_VERSION_8 = {
-            'DBA': 'expirationDate',
-            'DAC': 'firstName',
-            'DCS': 'lastName',
-            'DAD': 'middleName',
-            'DBB': 'birthDate',
-            'DCB': 'gender',
-            'DAG': 'addressLine1',
-            'DAH': 'addressLine2',
-            'DAI': 'addressCity',
-            'DAJ': 'addressState',
-            'DAK': 'addressZipcode',
-            'DAQ': 'username',
-            'DCG': 'addressCountry',
-            'DCL': 'race'
-        };
-
-        let user = UserBuilder.fromVersion8({
-            'DBA': 'expirationDate',
-            'DAC': 'firstName',
-            'DCS': 'lastName',
-            'DAD': 'middleName',
-            'DBB': 'birthDate',
-            'DCB': 'gender',
-            'DAG': 'addressLine1',
-            'DAH': 'addressLine2',
-            'DAI': 'addressCity',
-            'DAJ': 'addressState',
-            'DAK': 'addressZipcode',
-            'DAQ': 'username',
-            'DCG': 'addressCountry',
-            'DCL': 'race'
+        Preconditions.shouldFailWithPreconditionsError(() => {
+            new FieldBuilder(null);
         });
 
-        assert.equal(user.expirationDate, 'expirationDate');
-        assert.equal(user.username, 'username');
-        assert.equal(user.firstName, 'firstName');
-        assert.equal(user.lastName, 'lastName');
-        assert.equal(user.middleName, 'middleName');
-        assert.equal(user.birthDate, 'birthDate');
-        assert.equal(user.addressLine1, 'addressLine1');
-        assert.equal(user.addressLine2, 'addressLine2');
-        assert.equal(user.addressCity, 'addressCity');
-        assert.equal(user.addressState, 'addressState');
-        assert.equal(user.addressZipcode, 'addressZipcode');
-        assert.equal(user.addressCountry, 'addressCountry');
-        assert.equal(user.gender, 'gender');
-        assert.equal(user.race, 'race');
-    });
+        Preconditions.shouldFailWithPreconditionsError(() => {
+            new FieldBuilder({});
+        });
 
-});
+        Preconditions.shouldFailWithPreconditionsError(() => {
+            new FieldBuilder({
+                parent: null
+            });
+        });
 
-describe('Ember', () => {
+        Preconditions.shouldFailWithPreconditionsError(() => {
+            new FieldBuilder({
+                parent: 'wrong-type'
+            });
+        });
 
-    it('computed properties', () => {
+        Preconditions.shouldFailWithPreconditionsError(() => {
+            new FieldBuilder({
+                parent: new Object()
+            });
+        });
 
-        var Record = CoreObject.extend({
-            thong: Ember.computed('thingy', function () {
-                return this.get('thingy') + 'thong';
+        new FieldBuilder({
+            parent: new AttachmentBuilder({
+                parent: new NotificationBuilder({
+
+                })
             })
         });
 
-        var record = new Record({
-            thingy: false,
-            believesInHumanity: false
+        done();
+    });
+
+    //
+    it('Service', (done) => {
+        NotificationService.register('USER_SIGNED_UP', new UserNotificationTemplate());
+
+        NotificationService
+            .notify('USER_SIGNED_UP', {
+                id: 324,
+                firstName: 'Michael',
+                lastName: 'Smyers',
+                address: 'asdfasdfasdfasdfasdf',
+                url: 'https://www.coinmewallet.com/admin/users/' + 324
+            })
+            .then(() => {
+                // console.log('done', arguments);
+            })
+            .catch(function (err) {
+                // console.error(err);
+            })
+            .finally(() => {
+                done();
+            });
+    });
+
+    it('Promise', (done) => {
+        Promise.resolve().then(()=> {
+        }).catch(()=> {
+        }).finally(done);
+    });
+
+    it('Utility can set and get', () => {
+        var object = {};
+
+        Preconditions.shouldBeUndefined(Ember.get(object, 'fieldName'));
+
+        Ember.set(object, 'fieldName', true);
+
+        Preconditions.shouldBeBoolean(Ember.get(object, 'fieldName'));
+        Preconditions.shouldNotBeFalsey(Ember.get(object, 'fieldName'));
+    });
+
+    it('Utility can set and get array', () => {
+        var object = {};
+
+        Preconditions.shouldBeUndefined(Ember.get(object, 'fieldName'));
+
+        Ember.set(object, 'fieldName', []);
+
+        Preconditions.shouldBeArray(Ember.get(object, 'fieldName'));
+    });
+
+    it('getWithDefaultValue', () => {
+        var object = {};
+
+        var r = Ember.get(object, 'fields');
+
+        Preconditions.shouldBeUndefined(r);
+
+        var fields = Ember.getWithDefault(object, 'fields', []);
+
+        Preconditions.shouldBeArray(fields);
+        Preconditions.shouldNotBeFalsey(fields);
+    });
+
+    it('User Did Something', function () {
+        NotificationService.register('EVENT_NAME', {
+            payload: {
+                username: 'InlineTemplate'
+            },
+
+            /**
+             *
+             * @param {NotificationBuilder} builder
+             * @param {Object} data
+             * @returns {*}
+             */
+            applyToNotificationBuilder(builder, data) {
+                builder
+                    .username('New User Monitor (unit test)')
+                    .text(`A new user signed up! ${data.firstName} ${data.lastName} with an address of '${data.address}'`);
+
+                let attachment = builder.attachment();
+
+                {
+                    attachment.title('');
+                }
+
+            }
         });
 
-        assert.equal(record.get('believesInHumanity'), false);
-        assert.equal(record.get('thingy'), false);
-        assert.equal(record.get('thong'), 'falsethong');
-
-        record.set('thingy', true);
-
-        assert.equal(record.get('thingy'), true);
-        assert.equal(record.get('thong'), 'truethong');
-    });
-});
-
-describe('Functions', () => {
-
-    it('Should return scope', () => {
-        var scope = 5;
-
-        assert.equal(Functions.identity.apply(scope), scope);
+        NotificationService.notify('EVENT_NAME', {
+            text: 'text'
+        });
     });
 
-});
+    it('Can register templates', function () {
+        NotificationService.register('EVENT_NAME', new InlineNotificationTemplate({
+            name: 'InlineTemplate',
 
-// describe('CoinmeSlack', function() {
-//
-//     let { Object } = Utility;
-//
-//     it('Utility tests', () => {
-//
-//     });
-//
-//     //
-//     it('Service', () => {
-//         NotificationService.register('USER_SIGNED_UP', new UserNotificationTemplate());
-//
-//         NotificationService.notify('USER_SIGNED_UP', {
-//             id: 324,
-//             firstName: 'Michael',
-//             lastName: 'Smyers',
-//             address: 'asdfasdfasdfasdfasdf',
-//             url: 'https://www.coinmewallet.com/admin/users/' + 324
-//         });
-//     });
-//
-//     it('Utility can set and get', () => {
-//         var object = {};
-//
-//         Preconditions.shouldBeUndefined(Object.get(object, 'fieldName'));
-//
-//         Object.set(object, 'fieldName', true);
-//
-//         Preconditions.shouldBeBoolean(Object.get(object, 'fieldName'));
-//         Preconditions.shouldNotBeFalsey(Object.get(object, 'fieldName'));
-//     });
-//
-//     it('Utility can set and get array', () => {
-//         var object = {};
-//
-//         Preconditions.shouldBeUndefined(Object.get(object, 'fieldName'));
-//
-//         Object.set(object, 'fieldName', []);
-//
-//         Preconditions.shouldBeArray(Object.get(object, 'fieldName'));
-//     });
-//
-//     it('getWithDefaultValue', () => {
-//         var object = {};
-//
-//         Preconditions.shouldBeUndefined(Object.get(object, 'fields'));
-//
-//         var fields = Ember.getWithDefault(object, 'fields', []);
-//
-//         Preconditions.shouldBeArray(fields);
-//         Preconditions.shouldNotBeFalsey(fields);
-//     });
-// });
-//
-// describe('CoinmeSlack', function() {
-//
-//     it('User Did Something', function() {
-//         //NotificationService.register('EVENT_NAME', {
-//         //    payload: {
-//         //        username: 'InlineTemplate'
-//         //    },
-//         //
-//         //    /**
-//         //     *
-//         //     * @param {NotificationBuilder} builder
-//         //     * @param {Object} data
-//         //     * @returns {*}
-//         //     */
-//         //    applyToNotificationBuilder(builder, data) {
-//         //        builder
-//         //            .username('New User Monitor (unit test)')
-//         //            .text(`A new user signed up! ${data.firstName} ${data.lastName} with an address of '${data.address}'`);
-//         //
-//         //        let attachment = builder.attachment();
-//         //
-//         //        {
-//         //            attachment.title('');
-//         //        }
-//         //
-//         //    }
-//         //});
-//
-//         //NotificationService.notify('EVENT_NAME', {
-//         //    text: 'text'
-//         //});
-//     });
-//
-//     it('Can register templates', function() {
-//         NotificationService.register('EVENT_NAME', new InlineNotificationTemplate({
-//             name: 'InlineTemplate',
-//
-//             payload: {
-//                 username: 'InlineTemplate'
-//             }
-//         }));
-//
-//         NotificationService.notify('EVENT_NAME', {
-//             text: 'text'
-//         });
-//     });
-//
-//     it('Can be instantiated', () => {
-//         var builder = new NotificationBuilder({
-//             url: 'https://hooks.slack.com/services/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',
-//
-//             payload: {
-//                 'username': 'Say my name again, mother fucker',
-//                 'text': 'this is text',
-//                 'attachments': [{
-//                     'fallback': 'ReferenceError - UI is not defined: https://honeybadger.io/path/to/event/',
-//                     'text': '<https://honeybadger.io/path/to/event/|ReferenceError> - UI is not defined',
-//                     'fields': [{
-//                         'title': 'Project',
-//                         'value': 'Awesome Project',
-//                         'short': true
-//                     }, {
-//                         'title': 'Environment',
-//                         'value': 'production',
-//                         'short': true
-//                     }],
-//                     'color': '#F35A00'
-//                 }]
-//             }
-//         });
-//
-//         builder.mergeIntoPayload({
-//             merged: true
-//         });
-//
-//         if (!builder.payload.merged) {
-//             throw new Error('Must exist');
-//         }
-//
-//         builder.text('asdfasdf');
-//
-//         let attachment = builder.attachment();
-//
-//         {
-//             let field = attachment.field();
-//
-//             {
-//                 field.title('');
-//             }
-//         }
-//
-//         builder
-//             .attachment()
-//             .text('this is text for a new attachment')
-//             .field()
-//             .title('this is the title');
-//
-//         //expect(builder)
-//         //    .to
-//         //    .exist();
-//     });
-// });
+            payload: {
+                username: 'InlineTemplate'
+            }
+        }));
+
+        NotificationService.notify('EVENT_NAME', {
+            text: 'text'
+        });
+    });
+
+    it('Can be instantiated', () => {
+        var builder = new NotificationBuilder({
+            url: 'https://hooks.slack.com/services/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',
+
+            payload: {
+                'username': 'Say my name again, mother fucker',
+                'text': 'this is text',
+                'attachments': [{
+                    'fallback': 'ReferenceError - UI is not defined: https://honeybadger.io/path/to/event/',
+                    'text': '<https://honeybadger.io/path/to/event/|ReferenceError> - UI is not defined',
+                    'fields': [{
+                        'title': 'Project',
+                        'value': 'Awesome Project',
+                        'short': true
+                    }, {
+                        'title': 'Environment',
+                        'value': 'production',
+                        'short': true
+                    }],
+                    'color': '#F35A00'
+                }]
+            }
+        });
+
+        builder.mergeIntoPayload({
+            merged: true
+        });
+
+        if (!builder.payload.merged) {
+            throw new Error('Must exist');
+        }
+
+        builder.text('asdfasdf');
+
+        let attachment = builder.attachment();
+
+        {
+            let field = attachment.field();
+
+            {
+                field.title('');
+            }
+        }
+
+        builder
+            .attachment()
+            .text('this is text for a new attachment')
+            .field()
+            .title('this is the title');
+
+        //expect(builder)
+        //    .to
+        //    .exist();
+    });
+});
