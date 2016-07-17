@@ -852,6 +852,7 @@ class Utility {
     }
 
     /**
+     * Applies all of the defaults onto the first object.
      *
      * @param {Object} object
      * @param {Object} defaults

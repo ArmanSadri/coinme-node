@@ -70,7 +70,14 @@ class NotificationService extends CoreObject {
         return builder;
     }
 
+    /**
+     *
+     * @param {String} notificationType
+     * @returns {NotificationTemplate}
+     */
     notificationTemplate(notificationType) {
+        Preconditions.shouldBeString('param:notificationType');
+
         let notificationTemplateName = this.mappings[notificationType];
         var notificationTemplate = this.templates[notificationTemplateName];
 

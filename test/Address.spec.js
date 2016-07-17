@@ -19,8 +19,6 @@ describe('URI', () => {
          */
         let uri = URI('bitcoin:asdf-asdf');
 
-        console.log(JSON.stringify(uri));
-
         assert.equal(uri.scheme(), 'bitcoin');
         assert.equal(uri.path(), 'asdf-asdf', 'path');
 
@@ -45,9 +43,6 @@ describe('Address', () => {
         try {
             new Address('asdfasdf:/host');
         } catch (/** @type {PreconditionsError} */e) {
-            console.log('error instance=', e);
-            console.log('error instance=', e.constructor);
-            console.log('error instance=', e.constructor.name);
 
             assert.isTrue(PreconditionsError.isInstance(e));
             assert.equal(e.innerMessage, 'validator not found for \'asdfasdf\'');

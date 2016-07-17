@@ -62,7 +62,7 @@ var AbstractNotificationTemplate = function (_CoreObject) {
 
             result = result || builder;
 
-            return result;
+            return Promise.resolve(result);
         }
 
         /**

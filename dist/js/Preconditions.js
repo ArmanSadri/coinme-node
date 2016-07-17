@@ -116,7 +116,7 @@ var Preconditions = function () {
     }, {
         key: "shouldBeUndefined",
         value: function shouldBeUndefined(object, message) {
-            return Preconditions.shouldBe(_Utility2.default.isUndefined, object, 'undefined', message || 'must be undefined');
+            return Preconditions.shouldBe(_Utility2.default.isUndefined, undefined, object, message || 'must be undefined');
         }
 
         /**
@@ -446,6 +446,24 @@ var Preconditions = function () {
             }
 
             return boolean;
+        }
+
+        /**
+         *
+         * @param {Array} array
+         * @param {String} [message]
+         */
+
+    }, {
+        key: "shouldBeArray",
+        value: function shouldBeArray(array, message) {
+            Preconditions.shouldBeDefined(array);
+
+            if (!_Utility2.default.isArray(array)) {
+                Preconditions.fail('array', array, message || 'was not array');
+            }
+
+            return array;
         }
 
         /**

@@ -1,6 +1,7 @@
 'use strict';
 
 import AbstractBuilder from '~/slack/AbstractBuilder';
+import Preconditions from "../Preconditions";
 
 class FieldBuilder extends AbstractBuilder {
 
@@ -19,7 +20,9 @@ class FieldBuilder extends AbstractBuilder {
      * @returns {FieldBuilder}
      */
     title(value) {
-        return this.setString('title', value);
+        Preconditions.shouldBeString(value);
+
+        return this.set('title', value);
     }
 
     /**
@@ -27,7 +30,7 @@ class FieldBuilder extends AbstractBuilder {
      * @returns {FieldBuilder}
      */
     text(value) {
-        return this.setString('value', value);
+        return this.set('value', value);
     }
 
     /**

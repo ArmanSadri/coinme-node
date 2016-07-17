@@ -14,9 +14,9 @@ var _winston = require('winston');
 
 var _winston2 = _interopRequireDefault(_winston);
 
-var _preconditions = require('preconditions');
+var _Preconditions = require('./../Preconditions');
 
-var _preconditions2 = _interopRequireDefault(_preconditions);
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
 var _requestPromise = require('request-promise');
 
@@ -49,23 +49,26 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var NotificationBuilder = function (_AbstractBuilder) {
     _inherits(NotificationBuilder, _AbstractBuilder);
 
-    function NotificationBuilder() {
+    function NotificationBuilder(options) {
         _classCallCheck(this, NotificationBuilder);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).apply(this, arguments));
+
+        _this._attachments = [];
+        return _this;
     }
+
+    /**
+     *
+     * @param {String} value
+     * @returns {NotificationBuilder}
+     */
+
 
     _createClass(NotificationBuilder, [{
         key: 'channel',
-
-
-        /**
-         *
-         * @param {String} value
-         * @returns {NotificationBuilder}
-         */
         value: function channel(value) {
-            _preconditions2.default.shouldBeString(value);
+            _Preconditions2.default.shouldBeString(value);
 
             return this.set('channel', value);
         }
@@ -80,7 +83,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
     }, {
         key: 'text',
         value: function text(_text) {
-            _preconditions2.default.shouldBeString(value);
+            _Preconditions2.default.shouldBeString(_text);
 
             return this.set('text', _text);
         }
@@ -94,26 +97,33 @@ var NotificationBuilder = function (_AbstractBuilder) {
     }, {
         key: 'icon',
         value: function icon(_icon) {
-            _preconditions2.default.shouldBeString(value);
+            _Preconditions2.default.shouldBeString(_icon);
 
             return this.set('icon_emoji', _icon);
         }
     }, {
         key: 'username',
         value: function username(_username) {
-            _preconditions2.default.shouldBeString(_username);
+            _Preconditions2.default.shouldBeString(_username);
 
             return this.set('username', _username);
         }
     }, {
         key: 'attachments',
         value: function attachments() {
-            return _Ember2.default.getWithDefault(this, 'attachments', []);
+            return this._attachments;
         }
+
+        /**
+         * @returns {AttachmentBuilder}
+         */
+
     }, {
         key: 'attachment',
         value: function attachment() {
-            return new _AttachmentBuilder2.default(this);
+            return new _AttachmentBuilder2.default({
+                parent: this
+            });
         }
     }, {
         key: 'toPayload',
@@ -139,7 +149,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
             var url = this.url;
             var payload = this.toPayload();
 
-            _preconditions2.default.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
+            _Preconditions2.default.shouldBeString(scope.url, 'NotificationBuilder.execute(): url must be a string');
 
             return _bluebird2.default.resolve().then(function () {
                 //

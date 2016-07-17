@@ -37,18 +37,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var CoreObject = function (_Ember$Object) {
     _inherits(CoreObject, _Ember$Object);
 
-    _createClass(CoreObject, [{
-        key: "get",
-        value: function get(key) {
-            return _Ember2.default.get(this, key);
-        }
-    }, {
-        key: "set",
-        value: function set(key, value) {
-            return _Ember2.default.set(this, key, value);
-        }
-    }]);
-
     function CoreObject(options) {
         _classCallCheck(this, CoreObject);
 
@@ -58,21 +46,70 @@ var CoreObject = function (_Ember$Object) {
         return _this;
     }
 
+    /**
+     *
+     * @param {string} key
+     * @returns {*|Object}
+     */
+
+
     _createClass(CoreObject, [{
+        key: "get",
+        value: function get(key) {
+            return _Ember2.default.get(this, key);
+        }
+
+        /**
+         *
+         * @param {string} key
+         * @param {*} value
+         * @returns {CoreObject|*}
+         */
+
+    }, {
+        key: "set",
+        value: function set(key, value) {
+            _Ember2.default.set(this, key, value);
+
+            return this;
+        }
+
+        /**
+         * @returns {string}
+         */
+
+    }, {
         key: "toString",
         value: function toString() {
             return this.toClass().toString();
         }
+
+        /**
+         *
+         * @returns {Class<CoreObject>}
+         */
+
     }, {
         key: "toClass",
         value: function toClass() {
             return this.constructor;
         }
+
+        /**
+         *
+         * @returns {Class<CoreObject>}
+         */
+
     }], [{
         key: "toClass",
         value: function toClass() {
             return this;
         }
+
+        /**
+         * @returns {String}
+         */
+
     }, {
         key: "toString",
         value: function toString() {

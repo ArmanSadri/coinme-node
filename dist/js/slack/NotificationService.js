@@ -112,9 +112,18 @@ var NotificationService = function (_CoreObject) {
 
             return builder;
         }
+
+        /**
+         *
+         * @param {String} notificationType
+         * @returns {NotificationTemplate}
+         */
+
     }, {
         key: 'notificationTemplate',
         value: function notificationTemplate(notificationType) {
+            _Preconditions2.default.shouldBeString('param:notificationType');
+
             var notificationTemplateName = this.mappings[notificationType];
             var notificationTemplate = this.templates[notificationTemplateName];
 

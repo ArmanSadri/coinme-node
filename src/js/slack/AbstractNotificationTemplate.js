@@ -32,7 +32,7 @@ class AbstractNotificationTemplate extends CoreObject {
 
         result = result || builder;
 
-        return result;
+        return Promise.resolve(result);
     }
 
     /**

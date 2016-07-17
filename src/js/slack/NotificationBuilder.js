@@ -2,7 +2,7 @@
 
 import Promise from 'bluebird';
 import Logger from 'winston';
-import Preconditions from 'preconditions';
+import Preconditions from './../Preconditions';
 import request from 'request-promise';
 
 import CoreObject from '~/CoreObject';
@@ -11,6 +11,12 @@ import AttachmentBuilder from './AttachmentBuilder';
 import Ember from '~/Ember';
 
 class NotificationBuilder extends AbstractBuilder {
+
+    constructor(options) {
+        super(...arguments);
+
+        this._attachments = [];
+    }
 
     /**
      *
@@ -30,7 +36,7 @@ class NotificationBuilder extends AbstractBuilder {
      * @returns {NotificationBuilder}
      */
     text(text) {
-        Preconditions.shouldBeString(value);
+        Preconditions.shouldBeString(text);
 
         return this.set('text', text);
     }
@@ -41,7 +47,7 @@ class NotificationBuilder extends AbstractBuilder {
      * @returns {icon}
      */
     icon(icon) {
-        Preconditions.shouldBeString(value);
+        Preconditions.shouldBeString(icon);
 
         return this.set('icon_emoji', icon);
     }
@@ -53,11 +59,16 @@ class NotificationBuilder extends AbstractBuilder {
     }
 
     attachments() {
-        return Ember.getWithDefault(this, 'attachments', []);
+        return this._attachments;
     }
 
+    /**
+     * @returns {AttachmentBuilder}
+     */
     attachment() {
-        return new AttachmentBuilder(this);
+        return new AttachmentBuilder({
+            parent: this
+        });
     }
 
     toPayload() {

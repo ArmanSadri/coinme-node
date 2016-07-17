@@ -10,6 +10,10 @@ var _AbstractBuilder2 = require('./AbstractBuilder');
 
 var _AbstractBuilder3 = _interopRequireDefault(_AbstractBuilder2);
 
+var _Preconditions = require('../Preconditions');
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -41,7 +45,9 @@ var FieldBuilder = function (_AbstractBuilder) {
     _createClass(FieldBuilder, [{
         key: 'title',
         value: function title(value) {
-            return this.setString('title', value);
+            _Preconditions2.default.shouldBeString(value);
+
+            return this.set('title', value);
         }
 
         /**
@@ -52,7 +58,7 @@ var FieldBuilder = function (_AbstractBuilder) {
     }, {
         key: 'text',
         value: function text(value) {
-            return this.setString('value', value);
+            return this.set('value', value);
         }
 
         /**

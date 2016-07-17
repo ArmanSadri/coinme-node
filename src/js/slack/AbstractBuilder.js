@@ -2,19 +2,23 @@
 
 import Logger from 'winston';
 import Lodash from 'lodash';
-import Ember from '~/Ember';
-import Utility from '~/Utility';
-import Preconditions from '~/Preconditions';
-import CoreObject from '~/CoreObject';
+import Ember from '../Ember';
+import Utility from '../Utility';
+import Preconditions from '../Preconditions';
+import CoreObject from '../CoreObject';
 
 // winston : https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
 
 class AbstractBuilder extends CoreObject {
 
-    init() {
+    constructor() {
+        super(...arguments);
+
         Utility.defaults(this, {
             name: 'AbstractBuilder',
-            payload: {}
+            payload: {
+
+            }
         });
     }
 
@@ -30,7 +34,7 @@ class AbstractBuilder extends CoreObject {
         console.log(Ember);
         console.log(Ember.assign);
 
-        Ember.assign(this, {
+        Lodash.assign(this, {
             payload: object
         });
 

@@ -83,7 +83,7 @@ export default class Preconditions {
      * return {*} object
      */
     static shouldBeUndefined(object, message) {
-        return Preconditions.shouldBe(Utility.isUndefined, object, 'undefined', message || 'must be undefined');
+        return Preconditions.shouldBe(Utility.isUndefined, undefined, object, message || 'must be undefined');
     }
 
     /**
@@ -359,6 +359,21 @@ export default class Preconditions {
         }
 
         return boolean;
+    }
+
+    /**
+     *
+     * @param {Array} array
+     * @param {String} [message]
+     */
+    static shouldBeArray(array, message) {
+        Preconditions.shouldBeDefined(array);
+
+        if (!Utility.isArray(array)) {
+            Preconditions.fail('array', array, message || 'was not array');
+        }
+
+        return array;
     }
 
     /**

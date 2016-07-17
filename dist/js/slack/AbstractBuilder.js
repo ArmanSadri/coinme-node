@@ -14,19 +14,19 @@ var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _Ember = require('./../Ember');
+var _Ember = require('../Ember');
 
 var _Ember2 = _interopRequireDefault(_Ember);
 
-var _Utility = require('./../Utility');
+var _Utility = require('../Utility');
 
 var _Utility2 = _interopRequireDefault(_Utility);
 
-var _Preconditions = require('./../Preconditions');
+var _Preconditions = require('../Preconditions');
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
-var _CoreObject2 = require('./../CoreObject');
+var _CoreObject2 = require('../CoreObject');
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
@@ -46,25 +46,23 @@ var AbstractBuilder = function (_CoreObject) {
     function AbstractBuilder() {
         _classCallCheck(this, AbstractBuilder);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractBuilder).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractBuilder).apply(this, arguments));
+
+        _Utility2.default.defaults(_this, {
+            name: 'AbstractBuilder',
+            payload: {}
+        });
+        return _this;
     }
 
+    /**
+     * @public
+     * @param object
+     * @return {AbstractBuilder}
+     */
+
+
     _createClass(AbstractBuilder, [{
-        key: 'init',
-        value: function init() {
-            _Utility2.default.defaults(this, {
-                name: 'AbstractBuilder',
-                payload: {}
-            });
-        }
-
-        /**
-         * @public
-         * @param object
-         * @return {AbstractBuilder}
-         */
-
-    }, {
         key: 'mergeIntoPayload',
         value: function mergeIntoPayload(object) {
             _Preconditions2.default.shouldBeDefined(object, 'Cannot merge null');
@@ -73,7 +71,7 @@ var AbstractBuilder = function (_CoreObject) {
             console.log(_Ember2.default);
             console.log(_Ember2.default.assign);
 
-            _Ember2.default.assign(this, {
+            _lodash2.default.assign(this, {
                 payload: object
             });
 
