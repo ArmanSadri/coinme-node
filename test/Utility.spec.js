@@ -158,15 +158,24 @@ describe('Utility', function () {
         assert.equal(2, Object.keys(objectWithValue1).length, 'Should have returned only one value');
     });
 
+    it('take - with function', () => {
+        let expected = new CoreObject();
+        let object = {key: expected};
+
+        let value = Utility.take(object, 'key', Utility.yes);
+
+        assert.equal(expected, value);
+        assert.isTrue(expected === value);
+    });
 
     it('take - with type', () => {
-        let bitcoin = Bitcoin.create(1);
-        let object = {key: bitcoin};
+        let expected = new CoreObject();
+        let object = {key: expected};
 
-        var value = Utility.take(object, 'key', Money);
+        let value = Utility.take(object, 'key', CoreObject);
 
-        assert.equal(bitcoin, value);
-        assert.isTrue(bitcoin === value);
+        assert.equal(expected, value);
+        assert.isTrue(expected === value);
     });
 
     it('take - with dots', function () {
@@ -182,7 +191,7 @@ describe('Utility', function () {
         var two = Utility.take(object, 'one');
 
         assert.equal(two, 2, 'Should be 2');
-        assert.isTrue(Utility.isUndefined(object.one));
+        assert.isTrue(Utility.isUndefined(object.one), '\'one\' should be undefined');
     });
 
     it('existing', function () {

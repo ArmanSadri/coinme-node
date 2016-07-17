@@ -244,30 +244,60 @@ var Preconditions = function () {
         }
 
         /**
+         * Execute a function. The function should fail with a preconditions error.
          *
-         * @param {Class|Object} object
-         * @param {Class|Object} [clazz]
+         * @param {function} fn
+         * @param {*} [scope]
+         */
+
+    }, {
+        key: "shouldFailWithPreconditionsError",
+        value: function shouldFailWithPreconditionsError(fn, scope) {
+            try {
+                fn.call(scope || this);
+
+                throw new Error('Did not crash');
+            } catch (e) {
+                Preconditions.shouldBePreconditionsError(e);
+            }
+        }
+
+        /**
+         *
+         *
+         * @param {Class|Object} actualClass
+         * @param {Class|String} [requiredClassOrMessage]
          * @param {String} [message]
          */
 
     }, {
         key: "shouldBeClass",
-        value: function shouldBeClass(object, clazz, message) {
-            Preconditions.shouldBeDefined(object, 'object must be defined');
+        value: function shouldBeClass(actualClass, requiredClassOrMessage, message) {
+            Preconditions.shouldBeDefined(actualClass, 'object must be defined');
 
-            if (!clazz) {
-                clazz = _CoreObject2.default;
+            var requiredClass = void 0;
+
+            if (_Utility2.default.isString(requiredClassOrMessage)) {
+                Preconditions.shouldBeUndefined(message);
+                message = requiredClassOrMessage;
+                requiredClassOrMessage = null;
+            } else {
+                requiredClass = requiredClassOrMessage;
             }
 
-            if (!_CoreObject2.default.isClass(clazz)) {
-                Preconditions.fail(_CoreObject2.default, clazz, 'Class not a CoreObject class');
+            if (!requiredClass) {
+                requiredClass = _CoreObject2.default;
             }
 
-            if (!clazz.isClass(object)) {
-                Preconditions.fail(object, clazz, 'Class not a ' + clazz + ' class');
+            if (!_CoreObject2.default.isClass(requiredClass)) {
+                Preconditions.fail(_CoreObject2.default, requiredClass, 'Class not a CoreObject class');
             }
 
-            return object;
+            if (!requiredClass.isClass(actualClass)) {
+                Preconditions.fail(actualClass, requiredClass, 'Class not a ' + requiredClass + ' class');
+            }
+
+            return actualClass;
         }
 
         /**
@@ -295,6 +325,41 @@ var Preconditions = function () {
                 if (!clazz.isInstance(object)) {
                     Preconditions.fail(object, clazz, message || 'Class not an instance of ' + clazz);
                 }
+            }
+
+            return object;
+        }
+
+        /**
+         *
+         * @param {*} object
+         * @param {Class<CoreObject>|String} [classOrString]
+         * @param {String} [message]
+         * @returns {Object}
+         */
+
+    }, {
+        key: "shouldNotBeInstance",
+        value: function shouldNotBeInstance(object, classOrString, message) {
+            if (!object) {
+                return object;
+            }
+
+            var clazz = void 0;
+
+            if (_Utility2.default.isString(classOrString)) {
+                Preconditions.shouldBeUndefined(message);
+                message = classOrString;
+            }
+
+            if (!clazz) {
+                clazz = _CoreObject2.default.toClass();
+            }
+
+            clazz = Preconditions.shouldBeClass(clazz);
+
+            if (clazz.isInstance(object)) {
+                Preconditions.fail(object, clazz, message || 'Class is an instance of ' + clazz);
             }
 
             return object;
@@ -503,6 +568,23 @@ var Preconditions = function () {
             }
 
             return number;
+        }
+
+        /**
+         * @param {*|PreconditionsError} e
+         * @param {String} [message]
+         *
+         * @return {PreconditionsError}
+         */
+
+    }, {
+        key: "shouldBePreconditionsError",
+        value: function shouldBePreconditionsError(e, message) {
+            if (!_errors.PreconditionsError.isInstance(e)) {
+                Preconditions.fail(_errors.PreconditionsError, e, message || 'Should be a preconditions error. Was: ' + e);
+            }
+
+            return e;
         }
     }]);
 

@@ -49,28 +49,25 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var NotificationBuilder = function (_AbstractBuilder) {
     _inherits(NotificationBuilder, _AbstractBuilder);
 
-    function NotificationBuilder(options) {
+    function NotificationBuilder() {
         _classCallCheck(this, NotificationBuilder);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).apply(this, arguments));
-
-        _this._attachments = [];
-        return _this;
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).apply(this, arguments));
     }
-
-    /**
-     *
-     * @param {String} value
-     * @returns {NotificationBuilder}
-     */
-
 
     _createClass(NotificationBuilder, [{
         key: 'channel',
+
+
+        /**
+         *
+         * @param {String} value
+         * @returns {NotificationBuilder}
+         */
         value: function channel(value) {
             _Preconditions2.default.shouldBeString(value);
 
-            return this.set('channel', value);
+            return this.set('payload.channel', value);
         }
 
         /**
@@ -85,7 +82,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
         value: function text(_text) {
             _Preconditions2.default.shouldBeString(_text);
 
-            return this.set('text', _text);
+            return this.set('payload.text', _text);
         }
 
         /**
@@ -99,19 +96,32 @@ var NotificationBuilder = function (_AbstractBuilder) {
         value: function icon(_icon) {
             _Preconditions2.default.shouldBeString(_icon);
 
-            return this.set('icon_emoji', _icon);
+            return this.set('payload.icon_emoji', _icon);
         }
     }, {
         key: 'username',
         value: function username(_username) {
             _Preconditions2.default.shouldBeString(_username);
 
-            return this.set('username', _username);
+            return this.set('payload.username', _username);
         }
+
+        /**
+         * @returns {Array}
+         */
+
     }, {
         key: 'attachments',
         value: function attachments() {
-            return this._attachments;
+            var attachments = this.get('payload.attachments');
+
+            if (!attachments) {
+                attachments = [];
+
+                this.set('payload.attachments', attachments);
+            }
+
+            return attachments;
         }
 
         /**
@@ -125,11 +135,21 @@ var NotificationBuilder = function (_AbstractBuilder) {
                 parent: this
             });
         }
+
+        /**
+         * @returns {Object}
+         */
+
     }, {
         key: 'toPayload',
         value: function toPayload() {
             return this.get('payload');
         }
+
+        /**
+         * @returns {String}
+         */
+
     }, {
         key: 'toJson',
         value: function toJson() {
@@ -171,7 +191,7 @@ var NotificationBuilder = function (_AbstractBuilder) {
                     json: true
                 };
 
-                _winston2.default.debug('[SLACK:' + scope.name + '] webhook ', requestOptions);
+                _winston2.default.warn('[SLACK:' + scope.name + '] webhook ', JSON.stringify(payload));
 
                 return _bluebird2.default.resolve((0, _requestPromise2.default)(requestOptions)).then(function (value) {
                     _winston2.default.debug('[SLACK:' + scope.name + '] webhook succeeded.', arguments);

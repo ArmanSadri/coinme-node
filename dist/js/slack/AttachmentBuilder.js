@@ -18,6 +18,14 @@ var _FieldBuilder = require("../slack/FieldBuilder");
 
 var _FieldBuilder2 = _interopRequireDefault(_FieldBuilder);
 
+var _Utility = require("../Utility");
+
+var _Utility2 = _interopRequireDefault(_Utility);
+
+var _NotificationBuilder = require("./NotificationBuilder");
+
+var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30,38 +38,57 @@ var AttachmentBuilder = function (_AbstractBuilder) {
     _inherits(AttachmentBuilder, _AbstractBuilder);
 
     /**
-     * @param {*} options
+     *
+     * @param {{parent: NotificationBuilder}} options
      */
 
     function AttachmentBuilder(options) {
         _classCallCheck(this, AttachmentBuilder);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AttachmentBuilder).apply(this, arguments));
+        _Preconditions2.default.shouldBeObject(options, 'AttachmentBuilder constructor requires configuration.');
 
-        _this._fields = [];
+        /**
+         * @type {NotificationBuilder}
+         */
+        var parent = _Utility2.default.take(options, 'parent', {
+            type: _NotificationBuilder2.default,
+            required: true
+        });
 
-        _this.get('parent').attachments().push(_this.get('payload'));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AttachmentBuilder).call(this, options));
 
-        _this.set('mrkdwn_in', ['pretext', 'text', 'fields']);
-        _this.set('color', 'good');
+        _this._parent = parent;
+
+        var payload = _Utility2.default.defaults(_this.payload, {
+            mrkdwn_in: ['pretext', 'text', 'fields'],
+            color: 'good'
+        });
+
+        parent.attachments().push(payload);
         return _this;
     }
 
     /**
      *
-     * @param {String} value
      * @returns {AttachmentBuilder}
      */
 
 
     _createClass(AttachmentBuilder, [{
         key: "title",
+
+
+        /**
+         *
+         * @param {String} value
+         * @returns {AttachmentBuilder}
+         */
         value: function title(value) {
             _Preconditions2.default.shouldBeString(value);
 
-            this.set('title', value);
-
-            return this;
+            return this.mergeIntoPayload({
+                title: value
+            });
         }
 
         /**
@@ -75,9 +102,9 @@ var AttachmentBuilder = function (_AbstractBuilder) {
         value: function color(_color) {
             _Preconditions2.default.shouldBeString(_color);
 
-            this.set('color', _color);
-
-            return this;
+            return this.mergeIntoPayload({
+                color: _color
+            });
         }
 
         /**
@@ -91,9 +118,9 @@ var AttachmentBuilder = function (_AbstractBuilder) {
         value: function text(value) {
             _Preconditions2.default.shouldBeString(value);
 
-            this.set('text', value);
-
-            return this;
+            return this.mergeIntoPayload({
+                text: value
+            });
         }
 
         /**
@@ -103,7 +130,9 @@ var AttachmentBuilder = function (_AbstractBuilder) {
     }, {
         key: "field",
         value: function field() {
-            return new _FieldBuilder2.default(this).small();
+            return new _FieldBuilder2.default({
+                parent: this
+            }).small();
         }
 
         /**
@@ -114,7 +143,20 @@ var AttachmentBuilder = function (_AbstractBuilder) {
     }, {
         key: "fields",
         value: function fields() {
-            return this._fields;
+            var fields = this.get('payload.fields');
+
+            if (!fields) {
+                fields = [];
+
+                this.set('payload.fields', fields);
+            }
+
+            return fields;
+        }
+    }, {
+        key: "parent",
+        get: function get() {
+            return this._parent;
         }
     }]);
 

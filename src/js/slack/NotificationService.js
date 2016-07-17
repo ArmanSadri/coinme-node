@@ -6,6 +6,7 @@ import Preconditions from '~/Preconditions';
 import NotificationTemplate from './NotificationTemplate';
 import NotificationBuilder from './NotificationBuilder';
 import CoreObject from '~/CoreObject';
+import Promise from 'bluebird';
 
 class NotificationService extends CoreObject {
 
@@ -98,29 +99,23 @@ class NotificationService extends CoreObject {
         data = data || {};
 
         let url = this.url;
-        let scope = this;
 
         let notificationTemplate = this.notificationTemplate(type);
-        let builder = this.builder();
-        let promise = notificationTemplate.render(builder, data);
+        let promise = notificationTemplate.render(this.builder(), data);
 
         return promise
             .then((builder) => {
-                // Let's sanity the builder before executing.
-
                 Preconditions.shouldBeDefined(builder, 'No builder for ' + type);
 
                 if (!builder.url) {
                     builder.url = url;
                 }
 
-                let payload = builder.payload;
-
                 Preconditions.shouldBeString(builder.url, 'NotificationService.notify(): builder.url was undefined');
                 // Attachments without top level text are valid.
                 //Preconditions.shouldBeString(payload.text, 'builder did not complete \'text\' property. ' + JSON.stringify(payload));
 
-                return builder.execute();
+                return Promise.resolve(builder.execute());
             });
     }
 }

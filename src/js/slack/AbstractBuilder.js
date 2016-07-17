@@ -15,7 +15,7 @@ class AbstractBuilder extends CoreObject {
         super(...arguments);
 
         Utility.defaults(this, {
-            name: 'AbstractBuilder',
+            name: this.toClass().toString(),
             payload: {
 
             }
@@ -25,18 +25,13 @@ class AbstractBuilder extends CoreObject {
     /**
      * @public
      * @param object
-     * @return {AbstractBuilder}
+     * @return {*|AbstractBuilder}
      */
     mergeIntoPayload(object) {
         Preconditions.shouldBeDefined(object, 'Cannot merge null');
         Preconditions.shouldBeObject(object, 'Should be object');
 
-        console.log(Ember);
-        console.log(Ember.assign);
-
-        Lodash.assign(this, {
-            payload: object
-        });
+        Lodash.assign(this.payload, object);
 
         return this;
     }

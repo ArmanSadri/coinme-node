@@ -42,7 +42,47 @@ var Utility = function () {
         _classCallCheck(this, Utility);
     }
 
-    _createClass(Utility, null, [{
+    _createClass(Utility, [{
+        key: "set",
+
+
+        /**
+         *
+         * @param {Object} target
+         * @param {String|{}} propertyNameOrObject
+         * @param {*} [propertyValueOrUndefined]
+         * @returns {Object}
+         */
+        value: function set(target, propertyNameOrObject, propertyValueOrUndefined) {
+            _Preconditions2.default.shouldBeObject(target);
+
+            if (Utility.isString(propertyNameOrObject)) {
+                var propertyName = propertyNameOrObject;
+                var propertyValue = propertyValueOrUndefined;
+
+                _Preconditions2.default.shouldBeString(propertyName);
+                _Preconditions2.default.shouldNotBeBlank(propertyName);
+                _Preconditions2.default.shouldBeDefined(propertyValue);
+
+                return _Ember2.default.set(target, propertyName, propertyValue);
+            } else if (Utility.isObject(propertyNameOrObject)) {
+                _Preconditions2.default.shouldBeUndefined(propertyValueOrUndefined);
+
+                _lodash2.default.each(propertyNameOrObject, function (value, key) {
+                    Utility.set(target, key, value);
+                });
+            }
+        }
+
+        /**
+         * Applies all of the defaults onto the first object.
+         *
+         * @param {Object} object
+         * @param {Object} defaults
+         * @returns {Object} The original object.
+         */
+
+    }], [{
         key: "isObject",
 
 
@@ -110,6 +150,20 @@ var Utility = function () {
     }, {
         key: "emptyFn",
         value: function emptyFn() {}
+
+        /**
+         * @param {CoreObject|Class<CoreObject>} instance - Must be an instance of CoreObject (or subclass)
+         */
+
+    }, {
+        key: "toClassOrFail",
+        value: function toClassOrFail(instance) {
+            if (Utility.isInstance(instance)) {} else if (Utility.isClass(instance)) {} else {
+                _Preconditions2.default.fail(_CoreObject2.default, instance, 'Was not an instance or class. Cannot continue');
+            }
+
+            return instance.toClass();
+        }
     }, {
         key: "yes",
         value: function yes() {
@@ -163,7 +217,7 @@ var Utility = function () {
          *
          * @param {Object} object
          * @param {String|Object|Array} keyAsStringObjectArray
-         * @param {Function|Class|Object} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
+         * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
          *
          * @throws PreconditionsError
          *
@@ -192,7 +246,7 @@ var Utility = function () {
                 var scope = _lodash2.default.get(ruleset, 'scope') || this;
 
                 if (fn) {
-                    _Preconditions2.default.shouldBeFunction(fn);
+                    _Preconditions2.default.shouldBeFunction(fn, 'validator must be type of function');
                     _Preconditions2.default.shouldNotBeFalsey(fn.call(scope, value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
                 }
 
@@ -235,7 +289,7 @@ var Utility = function () {
 
                 if (true === required) {
                     if (Utility.isNullOrUndefined(value)) {
-                        _Preconditions2.default.shouldBeExisting(value, key + " is required");
+                        _Preconditions2.default.shouldBeExisting(value, "Utility.take(). 'key=" + key + "' is required");
                     }
                 }
 
@@ -270,6 +324,8 @@ var Utility = function () {
              * @returns {*}
              */
             function executeChecks(ruleset, key, value) {
+                // console.log(`executeChecks with ruleset: ${JSON.stringify(ruleset)} and (key:${key}) (value:${value})`);
+
                 value = executeRequired(ruleset, key, value);
                 value = executeType(ruleset, key, value);
                 value = executeAdapter(ruleset, key, value);
@@ -279,31 +335,79 @@ var Utility = function () {
             }
             //endregion
 
-            var mode = Utility.typeOf(keyAsStringObjectArray);
-
+            //region ruleset - defaults
             var global_defaults = {};
 
+            _Preconditions2.default.shouldNotBeInstance(optionalTypeDeclarationOrDefaults, 'the 3rd parameter cannot be an instance of a CoreObject field.');
+
             if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
-                global_defaults = _lodash2.default.assign(global_defaults, optionalTypeDeclarationOrDefaults);
+                if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
+                    global_defaults = { type: optionalTypeDeclarationOrDefaults };
+                } else {
+                    global_defaults = _lodash2.default.assign(global_defaults, optionalTypeDeclarationOrDefaults);
+                }
+
+                optionalTypeDeclarationOrDefaults = null;
+            } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
+                global_defaults = { validator: optionalTypeDeclarationOrDefaults };
+
                 optionalTypeDeclarationOrDefaults = null;
             }
+
+            /**
+             *
+             * @param {Object} [defaults]
+             * @returns {{required:Boolean, validator:Function, type:String|Object, adapter:Function}}
+             */
+            function toRuleset(defaults) {
+                var ruleset = {};
+
+                ruleset = _lodash2.default.defaults(ruleset, defaults || {}, global_defaults, {
+                    required: false,
+                    validator: null
+                });
+
+                return ruleset;
+            }
+            //endregion
+
+            var mode = Utility.typeOf(keyAsStringObjectArray);
 
             //region String Mode
             if ('string' === mode) {
                 /** @type {String} */
                 var key = keyAsStringObjectArray;
-                var value = Utility.result(object, key);
-                var validatorFn = Utility.yes;
+                keyAsStringObjectArray = null;
 
-                if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
-                    validatorFn = Utility.typeMatcher(optionalTypeDeclarationOrDefaults);
-                } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
-                    validatorFn = optionalTypeDeclarationOrDefaults;
-                } else if (Utility.isNullOrUndefined(keyAsStringObjectArray)) {
-                    validatorFn = Utility.yes;
-                } else {
-                    // TODO: apply global defaults.
-                }
+                /** @type {*} */
+                var value = Utility.result(object, key);
+
+                /**
+                 * @type {{validator?:function, required?:boolean, type?: string|object}}
+                 */
+                var ruleset = toRuleset();
+
+                // if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
+                //     ruleset = {
+                //         validator: Utility.typeMatcher(optionalTypeDeclarationOrDefaults),
+                //         required: false
+                //     };
+                // } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
+                //     ruleset = {
+                //         validator: optionalTypeDeclarationOrDefaults,
+                //         required: false
+                //     };
+                // } else if (Utility.isNullOrUndefined(optionalTypeDeclarationOrDefaults)) {
+                //     ruleset = {
+                //         validator: Utility.yes,
+                //         required: false
+                //     };
+                // } else if (Utility.isObject(optionalTypeDeclarationOrDefaults) && !Utility.isInstance(optionalTypeDeclarationOrDefaults)) {
+                //     // TODO: apply global defaults.
+                //     ruleset = optionalTypeDeclarationOrDefaults;
+                // } else {
+                //     throw new TypeError('Not sure how to interpret the rules.')
+                // }
 
                 if (-1 != key.indexOf('.')) {
                     // It's an object path.
@@ -313,10 +417,10 @@ var Utility = function () {
 
                     delete parent[itemKey];
                 } else {
-                    delete object[keyAsStringObjectArray];
+                    delete object[key];
                 }
 
-                return executeValidator(validatorFn, key, value);
+                return executeChecks(ruleset, key, value);
             }
             //endregion
 
@@ -325,10 +429,7 @@ var Utility = function () {
                 var _ret = function () {
                     var result = {};
 
-                    var defaults = _lodash2.default.defaults(Utility.result(keyAsStringObjectArray, 'defaults', {}), global_defaults, {
-                        required: false,
-                        validator: null
-                    });
+                    var defaults = toRuleset(Utility.result(keyAsStringObjectArray, 'defaults', {}));
 
                     _lodash2.default.forEach(keyAsStringObjectArray,
 
@@ -354,22 +455,22 @@ var Utility = function () {
                                 key = rulesetOrObject;
                                 ruleset = _lodash2.default.defaults({}, defaults);
 
-                                if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
-                                    ruleset = _lodash2.default.defaults(ruleset, optionalTypeDeclarationOrDefaults);
-                                }
+                                // if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
+                                //     ruleset = Lodash.defaults(ruleset, optionalTypeDeclarationOrDefaults);
+                                // }
                             } else if (Utility.isObject(rulesetOrObject)) {
-                                /**
-                                 * @type {String}
-                                 */
-                                key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
-                                ruleset = rulesetOrObject;
-                            } else if (Utility.isFunction(rulesetOrObject)) {
-                                ruleset = {
-                                    validator: rulesetOrObject
-                                };
-                            } else {
-                                throw new Error('Dont know what to do: ' + rulesetOrObject);
-                            }
+                                    /**
+                                     * @type {String}
+                                     */
+                                    key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
+                                    ruleset = rulesetOrObject;
+                                } else if (Utility.isFunction(rulesetOrObject)) {
+                                    ruleset = {
+                                        validator: rulesetOrObject
+                                    };
+                                } else {
+                                    throw new Error('Dont know what to do: ' + rulesetOrObject);
+                                }
                         } else if ('object' === mode) {
                             key = keyOrIndex;
 
@@ -980,20 +1081,11 @@ var Utility = function () {
 
             return result;
         }
-
-        /**
-         * Applies all of the defaults onto the first object.
-         *
-         * @param {Object} object
-         * @param {Object} defaults
-         * @returns {Object} The original object.
-         */
-
     }, {
         key: "defaults",
         value: function defaults(object, _defaults) {
-            _Preconditions2.default.shouldBeObject(object);
-            _Preconditions2.default.shouldBeObject(_defaults);
+            _Preconditions2.default.shouldBeObject(object, 'target object must be object.');
+            _Preconditions2.default.shouldBeObject(_defaults, 'defaults object must be object.');
 
             var updates = Object.keys(_defaults);
 

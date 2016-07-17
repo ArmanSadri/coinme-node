@@ -12,12 +12,6 @@ import Ember from '~/Ember';
 
 class NotificationBuilder extends AbstractBuilder {
 
-    constructor(options) {
-        super(...arguments);
-
-        this._attachments = [];
-    }
-
     /**
      *
      * @param {String} value
@@ -26,7 +20,7 @@ class NotificationBuilder extends AbstractBuilder {
     channel(value) {
         Preconditions.shouldBeString(value);
 
-        return this.set('channel', value);
+        return this.set('payload.channel', value);
     }
 
     /**
@@ -38,7 +32,7 @@ class NotificationBuilder extends AbstractBuilder {
     text(text) {
         Preconditions.shouldBeString(text);
 
-        return this.set('text', text);
+        return this.set('payload.text', text);
     }
 
     /**
@@ -49,17 +43,28 @@ class NotificationBuilder extends AbstractBuilder {
     icon(icon) {
         Preconditions.shouldBeString(icon);
 
-        return this.set('icon_emoji', icon);
+        return this.set('payload.icon_emoji', icon);
     }
 
     username(username) {
         Preconditions.shouldBeString(username);
 
-        return this.set('username', username);
+        return this.set('payload.username', username);
     }
 
+    /**
+     * @returns {Array}
+     */
     attachments() {
-        return this._attachments;
+        let attachments = this.get('payload.attachments');
+
+        if (!attachments) {
+            attachments = [];
+            
+            this.set('payload.attachments', attachments);
+        }
+
+        return attachments;
     }
 
     /**
@@ -71,10 +76,16 @@ class NotificationBuilder extends AbstractBuilder {
         });
     }
 
+    /**
+     * @returns {Object}
+     */
     toPayload() {
         return this.get('payload');
     }
 
+    /**
+     * @returns {String}
+     */
     toJson() {
         return JSON.stringify(this.toPayload());
     }
@@ -105,7 +116,6 @@ class NotificationBuilder extends AbstractBuilder {
                 //    json: true // Automatically stringifies the body to JSON
                 // };
 
-
                 let requestOptions = {
                     uri: url,
                     method: 'POST',
@@ -113,7 +123,7 @@ class NotificationBuilder extends AbstractBuilder {
                     json: true
                 };
 
-                Logger.debug(`[SLACK:${scope.name}] webhook `, requestOptions);
+                Logger.warn(`[SLACK:${scope.name}] webhook `, JSON.stringify(payload));
 
                 return Promise.resolve(request(requestOptions))
                     .then(function(value) {

@@ -31,6 +31,10 @@ var _CoreObject2 = require('./../CoreObject');
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
+var _bluebird = require('bluebird');
+
+var _bluebird2 = _interopRequireDefault(_bluebird);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -147,28 +151,22 @@ var NotificationService = function (_CoreObject) {
             data = data || {};
 
             var url = this.url;
-            var scope = this;
 
             var notificationTemplate = this.notificationTemplate(type);
-            var builder = this.builder();
-            var promise = notificationTemplate.render(builder, data);
+            var promise = notificationTemplate.render(this.builder(), data);
 
             return promise.then(function (builder) {
-                // Let's sanity the builder before executing.
-
                 _Preconditions2.default.shouldBeDefined(builder, 'No builder for ' + type);
 
                 if (!builder.url) {
                     builder.url = url;
                 }
 
-                var payload = builder.payload;
-
                 _Preconditions2.default.shouldBeString(builder.url, 'NotificationService.notify(): builder.url was undefined');
                 // Attachments without top level text are valid.
                 //Preconditions.shouldBeString(payload.text, 'builder did not complete \'text\' property. ' + JSON.stringify(payload));
 
-                return builder.execute();
+                return _bluebird2.default.resolve(builder.execute());
             });
         }
     }]);

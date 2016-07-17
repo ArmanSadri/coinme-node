@@ -49,7 +49,7 @@ var AbstractBuilder = function (_CoreObject) {
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractBuilder).apply(this, arguments));
 
         _Utility2.default.defaults(_this, {
-            name: 'AbstractBuilder',
+            name: _this.toClass().toString(),
             payload: {}
         });
         return _this;
@@ -58,7 +58,7 @@ var AbstractBuilder = function (_CoreObject) {
     /**
      * @public
      * @param object
-     * @return {AbstractBuilder}
+     * @return {*|AbstractBuilder}
      */
 
 
@@ -68,12 +68,7 @@ var AbstractBuilder = function (_CoreObject) {
             _Preconditions2.default.shouldBeDefined(object, 'Cannot merge null');
             _Preconditions2.default.shouldBeObject(object, 'Should be object');
 
-            console.log(_Ember2.default);
-            console.log(_Ember2.default.assign);
-
-            _lodash2.default.assign(this, {
-                payload: object
-            });
+            _lodash2.default.assign(this.payload, object);
 
             return this;
         }

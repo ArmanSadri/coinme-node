@@ -3,23 +3,46 @@
 import Preconditions from "../Preconditions";
 import AbstractBuilder from "../slack/AbstractBuilder";
 import FieldBuilder from "../slack/FieldBuilder";
+import Utility from "../Utility";
+import NotificationBuilder from "./NotificationBuilder";
 
 class AttachmentBuilder extends AbstractBuilder {
 
     /**
-     * @param {*} options
+     *
+     * @param {{parent: NotificationBuilder}} options
      */
     constructor(options) {
-        super(...arguments);
+        Preconditions.shouldBeObject(options, 'AttachmentBuilder constructor requires configuration.');
 
-        this._fields = [];
+        /**
+         * @type {NotificationBuilder}
+         */
+        let parent = Utility.take(options, 'parent', {
+            type: NotificationBuilder,
+            required: true
+        });
 
-        this.get('parent')
+        super(options);
+
+        this._parent = parent;
+
+        let payload = Utility.defaults(this.payload, {
+            mrkdwn_in: ['pretext', 'text', 'fields'],
+            color: 'good'
+        });
+
+        parent
             .attachments()
-            .push(this.get('payload'));
+            .push(payload);
+    }
 
-        this.set('mrkdwn_in', ['pretext', 'text', 'fields']);
-        this.set('color', 'good');
+    /**
+     *
+     * @returns {AttachmentBuilder}
+     */
+    get parent() {
+        return this._parent;
     }
 
     /**
@@ -30,9 +53,9 @@ class AttachmentBuilder extends AbstractBuilder {
     title(value) {
         Preconditions.shouldBeString(value);
 
-        this.set('title', value);
-
-        return this;
+        return this.mergeIntoPayload({
+            title: value
+        });
     }
 
     /**
@@ -43,9 +66,9 @@ class AttachmentBuilder extends AbstractBuilder {
     color(color) {
         Preconditions.shouldBeString(color);
 
-        this.set('color', color);
-
-        return this;
+        return this.mergeIntoPayload({
+            color: color
+        });
     }
 
     /**
@@ -56,16 +79,18 @@ class AttachmentBuilder extends AbstractBuilder {
     text(value) {
         Preconditions.shouldBeString(value);
 
-        this.set('text', value);
-
-        return this;
+        return this.mergeIntoPayload({
+            text: value
+        });
     }
 
     /**
      * @returns {FieldBuilder}
      */
     field() {
-        return new FieldBuilder(this)
+        return new FieldBuilder({
+            parent: this
+        })
             .small();
     }
 
@@ -74,7 +99,15 @@ class AttachmentBuilder extends AbstractBuilder {
      * @returns {[]}
      */
     fields() {
-        return this._fields;
+        let fields = this.get('payload.fields');
+
+        if (!fields) {
+            fields = [];
+
+            this.set('payload.fields', fields);
+        }
+
+        return fields;
     }
 }
 

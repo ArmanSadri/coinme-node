@@ -53,7 +53,7 @@ var NotificationTemplate = function (_AbstractNotification) {
     /**
      *
      * @param {NotificationBuilder} builder
-     * @param {Object} data
+     * @param {*|Object} data
      * @return {NotificationBuilder}
      */
 

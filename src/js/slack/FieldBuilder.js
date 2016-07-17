@@ -1,18 +1,41 @@
 'use strict';
 
-import AbstractBuilder from '~/slack/AbstractBuilder';
+import AbstractBuilder from "../slack/AbstractBuilder";
+import AttachmentBuilder from "../slack/AttachmentBuilder";
 import Preconditions from "../Preconditions";
+import Utility from "../Utility";
 
 class FieldBuilder extends AbstractBuilder {
 
-    constructor(parent) {
-        super({
-            parent: parent
+    /**
+     *
+     * @param {{parent: AttachmentBuilder}} options
+     */
+    constructor(options) {
+        Preconditions.shouldBeObject(options, 'FieldBuilder constructor requires configuration.');
+
+        /**
+         * @type {AttachmentBuilder}
+         */
+        let parent = Utility.take(options, 'parent', {
+            type: AttachmentBuilder,
+            required: true
         });
+
+        super(options);
+
+        this._parent = parent;
 
         this.parent
             .fields()
             .push(this.payload);
+    }
+
+    /**
+     * @returns {AttachmentBuilder}
+     */
+    get parent() {
+        return this._parent;
     }
 
     /**
@@ -22,7 +45,9 @@ class FieldBuilder extends AbstractBuilder {
     title(value) {
         Preconditions.shouldBeString(value);
 
-        return this.set('title', value);
+        return this.mergeIntoPayload({
+            title: value
+        });
     }
 
     /**
@@ -30,7 +55,9 @@ class FieldBuilder extends AbstractBuilder {
      * @returns {FieldBuilder}
      */
     text(value) {
-        return this.set('value', value);
+        return this.mergeIntoPayload({
+            value: value
+        });
     }
 
     /**
@@ -38,7 +65,9 @@ class FieldBuilder extends AbstractBuilder {
      * @returns {FieldBuilder}
      */
     small() {
-        return this.set('short', true);
+        return this.mergeIntoPayload({
+            short: true
+        });
     }
 
     /**
@@ -47,7 +76,7 @@ class FieldBuilder extends AbstractBuilder {
      * @returns {FieldBuilder}
      */
     add(stringToAdd) {
-        var sb = this.get('value');
+        var sb = this.get('payload.value') || '';
 
         {
             sb += (`\n${stringToAdd}`);
@@ -63,7 +92,7 @@ class FieldBuilder extends AbstractBuilder {
      * @returns {FieldBuilder}
      */
     addKeyValuePair(key, value) {
-        var sb = this.get('value');
+        var sb = this.get('payload.value') || '';
 
         {
             sb += (`\n_${key}:_ ${value}`);
@@ -71,7 +100,6 @@ class FieldBuilder extends AbstractBuilder {
 
         return this.text(sb);
     }
-
 }
 
 export default FieldBuilder;
