@@ -5,6 +5,7 @@ import Preconditions from "~/Preconditions";
 import Ember from "~/Ember";
 import CoreObject from "~/CoreObject";
 import {Errors, AbstractError} from "./errors";
+import Big from "big.js/big";
 
 let EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
 
@@ -66,10 +67,6 @@ class Utility {
         return Lodash.get.apply(Lodash, arguments);
     }
 
-    static emptyFn() {
-
-    }
-
     /**
      * @param {CoreObject|Class<CoreObject>} instance - Must be an instance of CoreObject (or subclass)
      */
@@ -84,27 +81,20 @@ class Utility {
 
         return instance.toClass();
     }
+    
+    /**
+     * 
+     * @param boolean
+     * @returns {*}
+     */
+    static ifBoolean(boolean) {
+        if (Utility.isBoolean(boolean)) {
+            return boolean;
+        }
 
-    static yes() {
-        return true;
+        return undefined;
     }
-
-    static no() {
-        return false;
-    }
-
-    static ok() {
-        return this;
-    }
-
-    static identityFn() {
-        return this;
-    }
-
-    static passthroughFn(arg) {
-        return arg;
-    }
-
+    
     /**
      * Uses Lodash.get, but then removes the key from the parent object.
      *
@@ -132,15 +122,15 @@ class Utility {
      *
      * @param {Object} object
      * @param {String|Object|Array} keyAsStringObjectArray
-     * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
-     *
+     * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
+     * @param {Boolean} [requiredByDefault] Default value for required.
      * @throws PreconditionsError
      *
      * @returns {*}
      */
-    static take(object, keyAsStringObjectArray, optionalTypeDeclarationOrDefaults) {
+    static take(object, keyAsStringObjectArray, optionalTypeDeclarationOrDefaults, requiredByDefault) {
         if (!object) {
-            return undefined;
+            object = {};
         }
 
         Preconditions.shouldBeDefined(keyAsStringObjectArray, 'key must be defined');
@@ -191,7 +181,7 @@ class Utility {
          * If the ruleset requires, will throw.
          *
          * @throws PreconditionsError
-         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function, [defaultValue]:*}}  ruleset
          * @param {String} key
          * @param {*} value
          * @returns {*}
@@ -199,11 +189,19 @@ class Utility {
         function executeRequired(ruleset, key, value) {
             let required = Lodash.get(ruleset, 'required');
 
+            if (Utility.isDefined(ruleset.defaultValue)) {
+                if (!value) {
+                    value = ruleset.defaultValue;
+                }
+            }
+
             if (true === required) {
                 if (Utility.isNullOrUndefined(value)) {
                     Preconditions.shouldBeExisting(value, `Utility.take(). 'key=${key}' is required`);
                 }
             }
+
+
 
             return value;
         }
@@ -218,6 +216,10 @@ class Utility {
          * @returns {*}
          */
         function executeType(ruleset, key, value) {
+            if (!ruleset.required && Utility.isUndefined(value)) {
+                return;
+            }
+
             let type = Lodash.get(ruleset, 'type');
 
             if (type) {
@@ -254,17 +256,40 @@ class Utility {
 
         if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
             if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
-                global_defaults = { type: optionalTypeDeclarationOrDefaults };
+                global_defaults = { 
+                    type: optionalTypeDeclarationOrDefaults 
+                };
             } else {
                 global_defaults = Lodash.assign(global_defaults, optionalTypeDeclarationOrDefaults);
             }
 
             optionalTypeDeclarationOrDefaults = null;
         } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
-            global_defaults = { validator: optionalTypeDeclarationOrDefaults };
+            global_defaults = { 
+                validator: optionalTypeDeclarationOrDefaults 
+            };
 
             optionalTypeDeclarationOrDefaults = null;
+        } else if (Utility.isBoolean(optionalTypeDeclarationOrDefaults)) {
+            global_defaults = {
+                required: optionalTypeDeclarationOrDefaults
+            };
+
+            optionalTypeDeclarationOrDefaults = null;
+
+            Preconditions.shouldBeUndefined(requiredByDefault, 'You provided two booleans. That\'s strange.');
         }
+
+        if (Utility.isBoolean(requiredByDefault)) {
+            // global_defaults.required =
+            global_defaults = Utility.defaults(global_defaults, {
+                required: requiredByDefault
+            });
+        }
+
+        // if (Utility.isDefined(global_defaults.defaultValue)) {
+        //     throw new Error('has default value global');
+        // }
 
         /**
          *
@@ -658,6 +683,15 @@ class Utility {
     }
 
     /**
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isDefined(object) {
+        return !this.isUndefined(object);
+    }
+
+    /**
      * Shorthand: Utility.typeOf() === string
      *
      * This is for functional programming.
@@ -744,6 +778,54 @@ class Utility {
      */
     static isNull(anything) {
         return 'null' === Utility.typeOf(anything);
+    }
+
+    /**
+     *
+     * @param {CoreObject|Class} object
+     * @returns {Class|*|Class.<CoreObject>}
+     */
+    static getClass(object) {
+        if (Utility.isClass(object)) {
+            return object;
+        }
+
+        Preconditions.shouldBeInstance(object);
+
+        return object.toClass();
+    }
+
+    /**
+     * @param {String|Number|Big|null|NaN|undefined} numberOrStringOrBig
+     * @returns {Big}
+     */
+    static toBigNumber(numberOrStringOrBig) {
+        if (Utility.isNullOrUndefined(numberOrStringOrBig)) {
+            numberOrStringOrBig = 0;
+        }
+
+        if (numberOrStringOrBig instanceof Big) {
+            return numberOrStringOrBig;
+        } else if (Utility.isString(numberOrStringOrBig) || Utility.isNumber(numberOrStringOrBig)) {
+            return new Big(numberOrStringOrBig);
+        }
+
+        Preconditions.fail('Number|String|Big', numberOrStringOrBig, 'Unsupported type');
+    }
+
+    /**
+     *
+     * @param {Class|CoreObject|null|undefined} object
+     * @returns {Class|undefined}
+     */
+    static optClass(object) {
+        if (Utility.isInstance(object)) {
+            return Utility.getClass(object);
+        } else if (Utility.isClass(object)) {
+            return object;
+        }
+
+        return undefined;
     }
 
     /**

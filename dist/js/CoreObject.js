@@ -161,7 +161,7 @@ var CoreObject = function (_Ember$Object) {
 
         /**
          *
-         * @param {object} obj
+         * @param {*|CoreObject} obj
          * @returns {boolean}
          */
 
@@ -169,6 +169,23 @@ var CoreObject = function (_Ember$Object) {
         key: "isInstance",
         value: function isInstance(obj) {
             return obj instanceof this;
+        }
+
+        /**
+         *
+         * @param {*|CoreObject} obj
+         * @param {String} [message]
+         * @returns {*|CoreObject}
+         */
+
+    }, {
+        key: "shouldBeInstance",
+        value: function shouldBeInstance(obj, message) {
+            if (!this.isInstance(obj)) {
+                _Preconditions2.default.fail(this.toClass(), CoreObject.optClass(obj), message || 'Was not the correct class');
+            }
+
+            return obj;
         }
 
         /**

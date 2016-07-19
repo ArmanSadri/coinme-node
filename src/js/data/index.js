@@ -5,3 +5,8 @@ import UserBuilder from "~/data/UserBuilder";
 
 export {User};
 export {UserBuilder};
+
+export default {
+    User,
+    UserBuilder
+}

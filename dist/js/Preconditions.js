@@ -157,7 +157,7 @@ var Preconditions = function () {
         key: "shouldBeDefined",
         value: function shouldBeDefined(object, message) {
             if (_Utility2.default.isUndefined(object)) {
-                Preconditions.fail('defined', 'undefined', message || 'must be defined.');
+                Preconditions.fail('defined', undefined, message || 'must be defined.');
             }
 
             return object;

@@ -115,7 +115,7 @@ export default class Preconditions {
      */
     static shouldBeDefined(object, message) {
         if (Utility.isUndefined(object)) {
-            Preconditions.fail('defined', 'undefined', message || 'must be defined.');
+            Preconditions.fail('defined', undefined, message || 'must be defined.');
         }
 
         return object;

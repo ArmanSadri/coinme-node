@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.UserBuilder = exports.User = undefined;
 
@@ -17,4 +17,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.User = _User2.default;
 exports.UserBuilder = _UserBuilder2.default;
+exports.default = {
+    User: _User2.default,
+    UserBuilder: _UserBuilder2.default
+};
 //# sourceMappingURL=index.js.map

@@ -164,30 +164,21 @@ var Utility = function () {
 
             return instance.toClass();
         }
+
+        /**
+         * 
+         * @param boolean
+         * @returns {*}
+         */
+
     }, {
-        key: "yes",
-        value: function yes() {
-            return true;
-        }
-    }, {
-        key: "no",
-        value: function no() {
-            return false;
-        }
-    }, {
-        key: "ok",
-        value: function ok() {
-            return this;
-        }
-    }, {
-        key: "identityFn",
-        value: function identityFn() {
-            return this;
-        }
-    }, {
-        key: "passthroughFn",
-        value: function passthroughFn(arg) {
-            return arg;
+        key: "ifBoolean",
+        value: function ifBoolean(boolean) {
+            if (Utility.isBoolean(boolean)) {
+                return boolean;
+            }
+
+            return undefined;
         }
 
         /**
@@ -218,7 +209,7 @@ var Utility = function () {
          * @param {Object} object
          * @param {String|Object|Array} keyAsStringObjectArray
          * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
-         *
+         * @param {Boolean} [requiredByDefault] Default value for required.
          * @throws PreconditionsError
          *
          * @returns {*}
@@ -226,7 +217,7 @@ var Utility = function () {
 
     }, {
         key: "take",
-        value: function take(object, keyAsStringObjectArray, optionalTypeDeclarationOrDefaults) {
+        value: function take(object, keyAsStringObjectArray, optionalTypeDeclarationOrDefaults, requiredByDefault) {
             if (!object) {
                 return undefined;
             }
@@ -342,16 +333,35 @@ var Utility = function () {
 
             if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
                 if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
-                    global_defaults = { type: optionalTypeDeclarationOrDefaults };
+                    global_defaults = {
+                        type: optionalTypeDeclarationOrDefaults
+                    };
                 } else {
                     global_defaults = _lodash2.default.assign(global_defaults, optionalTypeDeclarationOrDefaults);
                 }
 
                 optionalTypeDeclarationOrDefaults = null;
             } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
-                global_defaults = { validator: optionalTypeDeclarationOrDefaults };
+                global_defaults = {
+                    validator: optionalTypeDeclarationOrDefaults
+                };
 
                 optionalTypeDeclarationOrDefaults = null;
+            } else if (Utility.isBoolean(optionalTypeDeclarationOrDefaults)) {
+                global_defaults = {
+                    required: optionalTypeDeclarationOrDefaults
+                };
+
+                optionalTypeDeclarationOrDefaults = null;
+
+                _Preconditions2.default.shouldBeUndefined(requiredByDefault, 'You provided two booleans. That\'s strange.');
+            }
+
+            if (Utility.isBoolean(requiredByDefault)) {
+                // global_defaults.required =
+                global_defaults = Utility.defaults(global_defaults, {
+                    required: requiredByDefault
+                });
             }
 
             /**
@@ -874,6 +884,36 @@ var Utility = function () {
         key: "isNull",
         value: function isNull(anything) {
             return 'null' === Utility.typeOf(anything);
+        }
+
+        /**
+         *
+         * @param {CoreObject} object
+         * @returns {Class|*|Class.<CoreObject>}
+         */
+
+    }, {
+        key: "getClass",
+        value: function getClass(object) {
+            _Preconditions2.default.shouldBeInstance(object);
+
+            return object.toClass();
+        }
+
+        /**
+         *
+         * @param {CoreObject|null|undefined} object
+         * @returns {Class|undefined}
+         */
+
+    }, {
+        key: "optClass",
+        value: function optClass(object) {
+            if (Utility.isInstance(object)) {
+                return Utility.getClass(object);
+            }
+
+            return undefined;
         }
 
         /**

@@ -3,7 +3,10 @@
 import Utility from "./Utility";
 import TimeUnit from "./TimeUnit";
 import CoreObject from './CoreObject';
+import Logger from "winston";
+import Preconditions from "./Preconditions";
 
+const MILLISECONDS = TimeUnit.MILLISECONDS;
 const MICROSECONDS = TimeUnit.MICROSECONDS;
 const NANOSECONDS = TimeUnit.NANOSECONDS;
 
@@ -25,6 +28,8 @@ class Ticker {
     /**
      * Returns the number of nanoseconds elapsed since this ticker's fixed
      * point of reference.
+     *
+     * @return {Number} nanoseconds
      */
     read() {
         let time = process.hrtime();
@@ -50,19 +55,28 @@ class Stopwatch extends CoreObject {
 
     /**
      *
-     * @param {Object} options
+     * @param {Object} [options]
      * @param {Ticker} [options.ticker]
      * @param {boolean} [options.start]
      */
     constructor(options) {
-        super();
+        super(...arguments);
+
+        // options = options || {};
 
         this._ticker = Utility.take(options, 'ticker') || SYSTEM_TICKER;
-        this._isRunning = Utility.take(options, 'start');
-        this._elapsedNanos;
-        this._startTick;
 
-        if (this.isRunning) {
+        let shouldStart = Utility.take(options, 'start', {
+            defaultValue: true
+        });
+
+        /**
+         * @type {Number} nanoseconds
+         * @private
+         */
+        this._startTick = this.ticker.read();
+
+        if (shouldStart) {
             this.start();
         }
     }
@@ -87,8 +101,12 @@ class Stopwatch extends CoreObject {
      * and {@link #stop()} has not been called since the last call to {@code
      * start()}.
      */
-    get isRunning() {
-        return this._isRunning;
+    get running() {
+        return this._running;
+    }
+
+    get finalized() {
+        return this._finalized;
     }
 
     /**
@@ -97,9 +115,12 @@ class Stopwatch extends CoreObject {
      * @return {Stopwatch}
      */
     start() {
-        Utility.shouldBeFalsey(this.isRunning, "This stopwatch is already running.");
+        Preconditions.shouldBeFalsey(this.running, "This stopwatch is already running.");
+        Preconditions.shouldBeFalsey(this.finalized, "This stopwatch cannot be started, stopped, or reset.");
 
-        this._isRunning = true;
+        this.reset();
+
+        this._running = true;
         this._startTick = this.ticker.read();
 
         return this;
@@ -109,14 +130,22 @@ class Stopwatch extends CoreObject {
      * Stops the stopwatch. Future reads will return the fixed duration that had
      * elapsed up to this point.
      *
+     * @param {Object} [options]
+     * @param {Boolean} [options.finalize]
      * @return {Stopwatch} instance
      * @throws IllegalStateException if the stopwatch is already stopped.
      */
-    stop() {
-        Utility.shouldBeTrue(this.isRunning, "This stopwatch is already stopped.");
+    stop(options) {
+        Preconditions.shouldBeFalsey(this.finalized, "This stopwatch cannot be started, stopped, or reset.");
+        Preconditions.shouldBeTrue(this.running, "This stopwatch is already stopped.");
 
-        this._isRunning = false;
+        this._running = false;
         this._elapsedNanos += this.ticker.read() - this._startTick;
+        this._finalized = Utility.take(options, 'finalized', {
+            type: 'boolean',
+            defaultValue: false,
+            required: false
+        });
 
         return this;
     }
@@ -128,8 +157,15 @@ class Stopwatch extends CoreObject {
      * @return {Stopwatch} instance
      */
     reset() {
+        Preconditions.shouldBeFalsey(this.finalized, "This stopwatch cannot be started, stopped, or reset.");
+
+        if (this.running) {
+            this.stop();
+        }
+
         this._elapsedNanos = 0;
-        this._isRunning = false;
+        this._startTick = null;
+        this._running = false;
 
         return this;
     }
@@ -138,7 +174,11 @@ class Stopwatch extends CoreObject {
      * @returns {Number}
      */
     elapsedNanos() {
-        return this.isRunning ? this.ticker.read() - this._startTick + this.elapsedNanos : this.elapsedNanos;
+        return this.running ? this.ticker.read() - this._startTick + this._elapsedNanos : this._elapsedNanos;
+    }
+
+    elapsedMillis() {
+        return this.elapsed(MILLISECONDS);
     }
 
     /**
@@ -161,10 +201,10 @@ class Stopwatch extends CoreObject {
      */
     elapsed(timeUnit) {
         if (!timeUnit) {
-            timeUnit = NANOSECONDS;
+            timeUnit = MILLISECONDS;
         }
 
-        return timeUnit.convert(this.elapsedNanos(), TimeUnit.NANOSECONDS);
+        return timeUnit.convert(this.elapsedNanos(), timeUnit);
     }
 
     /**
@@ -212,6 +252,7 @@ class Stopwatch extends CoreObject {
 
         return TimeUnit.NANOSECONDS;
     }
+
 }
 
 export {Ticker};

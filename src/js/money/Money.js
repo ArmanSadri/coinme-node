@@ -30,6 +30,7 @@ export default class Money extends CoreObject {
          * @private
          */
         this._currency = Currency.shouldBeCurrency(currency);
+
     }
 
     /**
@@ -180,10 +181,12 @@ export default class Money extends CoreObject {
      * @returns {Money}
      */
     static shouldBeMoney(object) {
+        Preconditions.shouldBeDefined(object);
+
         if (CoreObject.isClass(object)) {
-            Preconditions.shouldBeClass(object, Money, 'object should be money');
+            Preconditions.shouldBeClass(object, Money, 'object should be money: ' + object);
         } else {
-            Preconditions.shouldBeInstance(object, Money, 'object should be money');
+            Preconditions.shouldBeInstance(object, Money, 'object should be money: ' + object);
         }
 
         return object;
@@ -204,5 +207,31 @@ export default class Money extends CoreObject {
             value: Currency.toValueOrFail(valueOrMoney),
             currency: defaultCurrency
         });
+    }
+
+    /**
+     *
+     * @param {Money} money
+     * @param {Class<Currency>|Currency|Money|String} [destinationCurrency]
+     * @return {Boolean}
+     */
+    static isInstance(money, destinationCurrency) {
+        if (!super.isInstance(money)) {
+            return false;
+        }
+
+        if (destinationCurrency) {
+            /**
+             * @type {Class.<Currency>}
+             */
+            let currency = Currency.getCurrency(destinationCurrency);
+
+            /**
+             * @type {Currency}
+             */
+            return currency.equals(money.currency);
+        } else {
+            return true;
+        }
     }
 }

@@ -92,28 +92,45 @@ export default class CoreObject extends Ember.Object {
         return false;
     }
 
-    /**
-     * Ensures that your object is an instance of this type.
-     *
-     * @param {*} object
-     * @returns {Object}
-     * @throws {PreconditionsError} if the type is incorrect
-     */
-    static shouldBeInstance(object) {
-        if (!this.isInstance(object)) {
-            Preconditions.fail(this, object, 'Should be instance');
-        }
-
-        return object;
+    static equals(foreignClass) {
+        return this.isClass(foreignClass);
     }
 
     /**
      *
-     * @param {object} obj
+     * @param {CoreObject|Class|*} instanceOrClass
+     * @param {String} [message]
+     * @returns {*}
+     */
+    static shouldBeClassOrInstance(instanceOrClass, message) {
+        if (!this.isInstance(instanceOrClass) && !this.isClass(instanceOrClass)) {
+            Preconditions.fail(this.toClass(), CoreObject.optClass(instanceOrClass), message || 'Was not the correct class or instance')
+        }
+
+        return instanceOrClass;
+    }
+
+    /**
+     *
+     * @param {*|CoreObject} obj
      * @returns {boolean}
      */
     static isInstance(obj) {
         return obj instanceof this;
+    }
+
+    /**
+     *
+     * @param {*|CoreObject} obj
+     * @param {String} [message]
+     * @returns {*|CoreObject}
+     */
+    static shouldBeInstance(obj, message) {
+        if (!this.isInstance(obj)) {
+            Preconditions.fail(this.toClass(), CoreObject.optClass(obj), message || 'Was not the correct class')
+        }
+
+        return obj;
     }
 
     /**

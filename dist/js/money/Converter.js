@@ -127,8 +127,6 @@ var Converter = function (_CoreObject) {
             var scope = Converter.isInstance(optionalConversion) ? optionalConversion : this;
             var value = fn.call(scope, sourceMoney.value);
 
-            _Preconditions2.default.shouldBeNumber(value, 'Sanity check failure, the value should be a number: ' + value);
-
             return new _Money2.default({
                 value: value,
                 currency: destinationCurrency

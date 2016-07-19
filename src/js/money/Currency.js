@@ -84,6 +84,7 @@ export default class Currency extends CoreObject {
             Currency.toValueOrFail(value),
             Currency.optCurrency(value) || this.getChildCurrencyTypeOrFail());
 
+        Preconditions.shouldBeDefined(money, 'Money.optMoney has failed us.');
         Money.shouldBeMoney(money);
 
         return money;

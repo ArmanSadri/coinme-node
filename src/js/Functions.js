@@ -23,6 +23,10 @@ export default class Functions {
         return true;
     }
 
+    static emptyFn() {
+
+    }
+
     /**
      * Always returns false
      *
@@ -30,6 +34,18 @@ export default class Functions {
      */
     static no() {
         return false;
+    }
+
+    static ok() {
+        return this;
+    }
+
+    static identityFn() {
+        return this;
+    }
+
+    static passthroughFn(arg) {
+        return arg;
     }
 
 }

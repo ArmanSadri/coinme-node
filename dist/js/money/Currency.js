@@ -125,6 +125,7 @@ var Currency = function (_CoreObject) {
         value: function create(value) {
             var money = _Money2.default.optMoney(Currency.toValueOrFail(value), Currency.optCurrency(value) || this.getChildCurrencyTypeOrFail());
 
+            _Preconditions2.default.shouldBeDefined(money, 'Money.optMoney has failed us.');
             _Money2.default.shouldBeMoney(money);
 
             return money;

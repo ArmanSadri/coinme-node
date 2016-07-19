@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _CoreObject2 = require("../CoreObject");
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
@@ -67,6 +69,7 @@ var Money = function (_CoreObject) {
          * @private
          */
         _this._currency = _Currency2.default.shouldBeCurrency(currency);
+
         return _this;
     }
 
@@ -261,10 +264,12 @@ var Money = function (_CoreObject) {
     }, {
         key: "shouldBeMoney",
         value: function shouldBeMoney(object) {
+            _Preconditions2.default.shouldBeDefined(object);
+
             if (_CoreObject3.default.isClass(object)) {
-                _Preconditions2.default.shouldBeClass(object, Money, 'object should be money');
+                _Preconditions2.default.shouldBeClass(object, Money, 'object should be money: ' + object);
             } else {
-                _Preconditions2.default.shouldBeInstance(object, Money, 'object should be money');
+                _Preconditions2.default.shouldBeInstance(object, Money, 'object should be money: ' + object);
             }
 
             return object;
@@ -288,6 +293,35 @@ var Money = function (_CoreObject) {
                 value: _Currency2.default.toValueOrFail(valueOrMoney),
                 currency: defaultCurrency
             });
+        }
+
+        /**
+         *
+         * @param {Money} money
+         * @param {Class<Currency>|Currency|Money|String} [destinationCurrency]
+         * @return {Boolean}
+         */
+
+    }, {
+        key: "isInstance",
+        value: function isInstance(money, destinationCurrency) {
+            if (!_get(Object.getPrototypeOf(Money), "isInstance", this).call(this, money)) {
+                return false;
+            }
+
+            if (destinationCurrency) {
+                /**
+                 * @type {Class.<Currency>}
+                 */
+                var currency = _Currency2.default.getCurrency(destinationCurrency);
+
+                /**
+                 * @type {Currency}
+                 */
+                return currency.equals(money.currency);
+            } else {
+                return true;
+            }
         }
     }]);
 

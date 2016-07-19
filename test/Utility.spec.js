@@ -84,6 +84,21 @@ describe('Utility', function () {
         assert.isFalse(Utility.isFunction(NaN));
     });
 
+    it('take - with defaultValue', () => {
+        let object = {
+            one: 'one',
+            two: 'two',
+            three: 'three'
+        };
+
+        let objectWithValue1 = Utility.take(object, 'four', {
+            defaultValue: 'four'
+        });
+
+        assert.equal(Object.keys(object).length, 3);
+        assert.equal(objectWithValue1, 'four', 'Should have returned an object');
+    });
+
     it('take(object, array<String>)', () => {
         let object = {
             one: 'one',

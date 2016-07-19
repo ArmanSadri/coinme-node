@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.UserNotificationTemplate = exports.InlineNotificationTemplate = exports.NotificationService = exports.NotificationTemplate = exports.NotificationBuilder = exports.AttachmentBuilder = exports.FieldBuilder = exports.AbstractBuilder = undefined;
 
@@ -47,5 +47,14 @@ exports.NotificationTemplate = _NotificationTemplate2.default;
 exports.NotificationService = _NotificationService2.default;
 exports.InlineNotificationTemplate = _InlineNotificationTemplate2.default;
 exports.UserNotificationTemplate = _UserNotificationTemplate2.default;
-exports.default = _NotificationService2.default;
+exports.default = {
+    AbstractBuilder: _AbstractBuilder2.default,
+    FieldBuilder: _FieldBuilder2.default,
+    AttachmentBuilder: _AttachmentBuilder2.default,
+    NotificationBuilder: _NotificationBuilder2.default,
+    NotificationTemplate: _NotificationTemplate2.default,
+    NotificationService: _NotificationService2.default,
+    InlineNotificationTemplate: _InlineNotificationTemplate2.default,
+    UserNotificationTemplate: _UserNotificationTemplate2.default
+};
 //# sourceMappingURL=index.js.map
