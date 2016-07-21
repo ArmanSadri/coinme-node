@@ -257,19 +257,45 @@ var Money = function (_CoreObject) {
 
         /**
          *
-         * @param {*} object
+         * @param {Money} money
+         * @return {Class<Currency>}
+         */
+
+    }, {
+        key: "toCurrency",
+        value: function toCurrency(money) {
+            Money.shouldBeInstance(money);
+
+            return money.currency;
+        }
+
+        /**
+         *
+         * @param {Class<Money>|Money|Class<Currency>|Currency} object
+         * @param {Class<Currency>|Currency} [currency] Optional. If provided, required.
          * @returns {Money}
          */
 
     }, {
         key: "shouldBeMoney",
-        value: function shouldBeMoney(object) {
+        value: function shouldBeMoney(object, currency) {
             _Preconditions2.default.shouldBeDefined(object);
 
             if (_CoreObject3.default.isClass(object)) {
                 _Preconditions2.default.shouldBeClass(object, Money, 'object should be money: ' + object);
+
+                if (_Utility2.default.isDefined(currency)) {
+                    throw new Error("Money cannot convert to Currency");
+                }
             } else {
                 _Preconditions2.default.shouldBeInstance(object, Money, 'object should be money: ' + object);
+
+                if (currency) {
+                    Money.getCurrency(object);
+
+                    _Currency2.default.shouldBeClass(currency);
+                    _Preconditions2.default.shouldBeClass(object.currency, currency);
+                }
             }
 
             return object;
@@ -329,5 +355,4 @@ var Money = function (_CoreObject) {
 }(_CoreObject3.default);
 
 exports.default = Money;
-module.exports = exports['default'];
 //# sourceMappingURL=Money.js.map

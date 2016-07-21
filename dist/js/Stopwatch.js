@@ -19,6 +19,14 @@ var _CoreObject2 = require("./CoreObject");
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
+var _winston = require("winston");
+
+var _winston2 = _interopRequireDefault(_winston);
+
+var _Preconditions = require("./Preconditions");
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -27,6 +35,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var MILLISECONDS = _TimeUnit2.default.MILLISECONDS;
 var MICROSECONDS = _TimeUnit2.default.MICROSECONDS;
 var NANOSECONDS = _TimeUnit2.default.NANOSECONDS;
 
@@ -49,6 +58,8 @@ var Ticker = function () {
     /**
      * Returns the number of nanoseconds elapsed since this ticker's fixed
      * point of reference.
+     *
+     * @return {Number} nanoseconds
      */
 
 
@@ -85,7 +96,7 @@ var Stopwatch = function (_CoreObject) {
 
     /**
      *
-     * @param {Object} options
+     * @param {Object} [options]
      * @param {Ticker} [options.ticker]
      * @param {boolean} [options.start]
      */
@@ -93,14 +104,23 @@ var Stopwatch = function (_CoreObject) {
     function Stopwatch(options) {
         _classCallCheck(this, Stopwatch);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Stopwatch).call(this));
+        // options = options || {};
+
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Stopwatch).apply(this, arguments));
 
         _this._ticker = _Utility2.default.take(options, 'ticker') || SYSTEM_TICKER;
-        _this._isRunning = _Utility2.default.take(options, 'start');
-        _this._elapsedNanos;
-        _this._startTick;
 
-        if (_this.isRunning) {
+        var shouldStart = _Utility2.default.take(options, 'start', {
+            defaultValue: true
+        });
+
+        /**
+         * @type {Number} nanoseconds
+         * @private
+         */
+        _this._startTick = _this.ticker.read();
+
+        if (shouldStart) {
             _this.start();
         }
         return _this;
@@ -122,9 +142,12 @@ var Stopwatch = function (_CoreObject) {
          * @return {Stopwatch}
          */
         value: function start() {
-            _Utility2.default.shouldBeFalsey(this.isRunning, "This stopwatch is already running.");
+            _Preconditions2.default.shouldBeFalsey(this.running, "This stopwatch is already running.");
+            _Preconditions2.default.shouldBeFalsey(this.finalized, "This stopwatch cannot be started, stopped, or reset.");
 
-            this._isRunning = true;
+            this.reset();
+
+            this._running = true;
             this._startTick = this.ticker.read();
 
             return this;
@@ -134,17 +157,25 @@ var Stopwatch = function (_CoreObject) {
          * Stops the stopwatch. Future reads will return the fixed duration that had
          * elapsed up to this point.
          *
+         * @param {Object} [options]
+         * @param {Boolean} [options.finalize]
          * @return {Stopwatch} instance
          * @throws IllegalStateException if the stopwatch is already stopped.
          */
 
     }, {
         key: "stop",
-        value: function stop() {
-            _Utility2.default.shouldBeTrue(this.isRunning, "This stopwatch is already stopped.");
+        value: function stop(options) {
+            _Preconditions2.default.shouldBeFalsey(this.finalized, "This stopwatch cannot be started, stopped, or reset.");
+            _Preconditions2.default.shouldBeTrue(this.running, "This stopwatch is already stopped.");
 
-            this._isRunning = false;
+            this._running = false;
             this._elapsedNanos += this.ticker.read() - this._startTick;
+            this._finalized = _Utility2.default.take(options, 'finalized', {
+                type: 'boolean',
+                defaultValue: false,
+                required: false
+            });
 
             return this;
         }
@@ -159,8 +190,15 @@ var Stopwatch = function (_CoreObject) {
     }, {
         key: "reset",
         value: function reset() {
+            _Preconditions2.default.shouldBeFalsey(this.finalized, "This stopwatch cannot be started, stopped, or reset.");
+
+            if (this.running) {
+                this.stop();
+            }
+
             this._elapsedNanos = 0;
-            this._isRunning = false;
+            this._startTick = null;
+            this._running = false;
 
             return this;
         }
@@ -172,7 +210,12 @@ var Stopwatch = function (_CoreObject) {
     }, {
         key: "elapsedNanos",
         value: function elapsedNanos() {
-            return this.isRunning ? this.ticker.read() - this._startTick + this.elapsedNanos : this.elapsedNanos;
+            return this.running ? this.ticker.read() - this._startTick + this._elapsedNanos : this._elapsedNanos;
+        }
+    }, {
+        key: "elapsedMillis",
+        value: function elapsedMillis() {
+            return this.elapsed(MILLISECONDS);
         }
 
         /**
@@ -201,10 +244,10 @@ var Stopwatch = function (_CoreObject) {
         key: "elapsed",
         value: function elapsed(timeUnit) {
             if (!timeUnit) {
-                timeUnit = NANOSECONDS;
+                timeUnit = MILLISECONDS;
             }
 
-            return timeUnit.convert(this.elapsedNanos(), _TimeUnit2.default.NANOSECONDS);
+            return timeUnit.convert(this.elapsedNanos(), timeUnit);
         }
 
         /**
@@ -252,9 +295,14 @@ var Stopwatch = function (_CoreObject) {
          */
 
     }, {
-        key: "isRunning",
+        key: "running",
         get: function get() {
-            return this._isRunning;
+            return this._running;
+        }
+    }, {
+        key: "finalized",
+        get: function get() {
+            return this._finalized;
         }
     }], [{
         key: "chooseUnit",

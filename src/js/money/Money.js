@@ -177,16 +177,39 @@ export default class Money extends CoreObject {
 
     /**
      *
-     * @param {*} object
+     * @param {Money} money
+     * @return {Class<Currency>}
+     */
+    static toCurrency(money) {
+        Money.shouldBeInstance(money);
+
+        return money.currency;
+    }
+
+    /**
+     *
+     * @param {Class<Money>|Money|Class<Currency>|Currency} object
+     * @param {Class<Currency>|Currency} [currency] Optional. If provided, required.
      * @returns {Money}
      */
-    static shouldBeMoney(object) {
+    static shouldBeMoney(object, currency) {
         Preconditions.shouldBeDefined(object);
 
         if (CoreObject.isClass(object)) {
             Preconditions.shouldBeClass(object, Money, 'object should be money: ' + object);
+
+            if (Utility.isDefined(currency)) {
+                throw new Error(`Money cannot convert to Currency`);
+            }
         } else {
             Preconditions.shouldBeInstance(object, Money, 'object should be money: ' + object);
+
+            if (currency) {
+                Money.getCurrency(object);
+
+                Currency.shouldBeClass(currency);
+                Preconditions.shouldBeClass(object.currency, currency);
+            }
         }
 
         return object;

@@ -1,157 +1,142 @@
 'use strict';
 
 import CoreObject from "../CoreObject";
+import NotImplementedError from "../errors/NotImplementedError";
 import Preconditions from "../Preconditions";
-import Utility from "../Utility";
-import Lodash from "lodash";
-import Functions from "../Functions";
-import Conversion from "./Conversion";
-import Stopwatch from "../Stopwatch";
+import Adapter from "./Adapter";
+import Utility from '../Utility';
 
-/**
- * Supports different conversion directions.
- *
- * This is not tied to money. It supports simple converting.
- * 
- * {<br>
- *   'Bitcoin->Satoshi' : function(value) { return value * satoshi_factor; },<br>
- *   'Satoshi->Bitcoin': function(value) { return value / satoshi_factor; }<br>
- * }<br>
- *
- * @class
- */
-export default class Converter extends CoreObject {
+class ConverterAdapter extends Adapter {
 
     /**
+     *
      * @param {Object} options
-     * @param {Object} options.conversions
+     * @param {Converter} options.converter
+     * @param {Class|Class<CoreObject>|*} options.outputClass
      */
     constructor(options) {
-        let conversions = Utility.take(options, 'conversions');
+        let converter = Utility.take(options, 'converter', true);
+        let outputClass = Utility.take(options, 'outputClass', true);
+        let inputClass = Utility.take(options, 'inputClass', false);
 
         super(...arguments);
 
         /**
-         * @type {Object}
+         * @type {Converter}
+         * @private
          */
-        this._conversions = conversions || {};
+        this._converter = converter;
+        this._outputClass = outputClass;
+        this._inputClass = inputClass;
+    }
+
+    //region Properties
+
+    /**
+     *
+     * @return {Class<CoreObject>|Class}
+     */
+    get outputClass() {
+        return this._outputClass;
     }
 
     /**
-     * This is the conversion map. The keys of this object should be 'Currency1->Currency2'
      *
-     * The value of each key should be a conversion function of 'function(valueInSource) { return valueInDestination; }
-     *
-     * @returns {Object}
+     * @return {Class<CoreObject>|Class}
      */
-    get conversions() {
-        return this._conversions;
+    get inputClass() {
+        return this._inputClass;
     }
+
+    /**
+     * @return {Converter}
+     */
+    get converter() {
+        return this._converter;
+    }
+    //endregion
+
+    /**
+     *
+     * @param {CoreObject|Class<CoreObject>} instanceOrClass
+     * @return {boolean}
+     */
+    supports(instanceOrClass) {
+        return this.converter.supports(instanceOrClass, this.outputClass);
+    }
+
+    /**
+     *
+     * @param {CoreObject|*} instance
+     * @return {CoreObject|*}
+     */
+    adapt(instance) {
+        if (this.inputClass) {
+            Preconditions.shouldBeClass(Utility.getClass(instance), this.inputClass);
+        }
+
+        return this.converter.convert(instance, this.outputClass);
+    }
+
+}
+
+class Converter extends CoreObject {
 
     /**
      * Determines if this Converter instance can convert between the two currencies.
      *
      * NOTE: The direction matters.
      *
-     * @param {Class<CoreObject>|*} inputClass
-     * @param {Class<CoreObject>|*} outputClass
-     * @param {Number|String|Function|Converter} [converter]
+     * @param {CoreObject|Class<CoreObject>|*} instanceOrClass
+     * @param {Class<CoreObject>|*} clazz
      * @returns {boolean}
      */
-    canConvert(inputClass, outputClass, converter) {
-        converter = this.getConversion(inputClass, outputClass, converter);
-
-        return Utility.isFunction(converter);
+    supports(instanceOrClass, clazz) {
+        throw new NotImplementedError();
     }
 
-    /**
-     * Executes the conversion.
-     *
-     * @param {*} input
-     * @param {Class<CoreObject>|Class|*} outputClass
-     * @param {Number|String|Function|Converter} [converter]
-     * @returns {Promise<Conversion<*>>}
-     *
-     * @throws {PreconditionsError} if the converter fails to convert into a valid number
-     * @throws {PreconditionsError} if the destinationCurrency is not a valid currency
-     * @throws {PreconditionsError} if converter cannot support the conversion
-     */
-    convert(input, outputClass, converter) {
-        let inputClass = this.getInputClass(input);
-        let fn = this.getConversion(inputClass, outputClass, converter);
-        let scope = (Converter.isInstance(converter)) ? converter : this;
-        let output = fn.call(scope, input);
-        let stopwatch = new Stopwatch();
-
-        return Promise.resolve()
-            .then(() => {
-                /**
-                 * @type {Number}
-                 */
-                stopwatch.stop({ finalized: true });
-
-                return new Conversion({
-                    input: input,
-                    output: output,
-                    stopwatch: stopwatch,
-                    requestor: null, // TODO: Not sure what to do here.
-                    converter: this
-                });
-            });
-    }
-
-    /**
-     * Detects the conversion function, given the inputs.
-     *
-     * @param {Class<CoreObject>|Class|*} inputClass
-     * @param {Class<CoreObject>|Class|*} outputClass
-     * @param {Function|Number|String|Converter} [converter]
-     *
-     * @returns {Function|undefined}
-     */
-    getConversion(inputClass, outputClass, converter) {
-        if (Utility.isFunction(converter)) {
-            return converter;
-        } else if (Converter.isInstance(converter)) {
-            return this._getConversion(converter, inputClass, outputClass);
-        }
-
-        if (!inputClass || !outputClass) {
-            return undefined;
-        } else if (inputClass.equals(outputClass)) {
-            return Functions.passthroughFn;
-        } else {
-            return this._getConversion(this, inputClass, outputClass);
+    shouldSupport(instance, clazz) {
+        if (!this.supports(instance, clazz)) {
+            Preconditions.fail(true, false, `does not support ${instance}->${clazz}`);
         }
     }
 
     /**
-     * @param {Converter} converter
-     * @param {Class<CoreObject>|Class|CoreObject|*} inputClass
-     * @param {Class<CoreObject>|Class|CoreObject|*} outputClass
-     * @private
+     * @param {CoreObject|*} instance
+     * @param {Class<CoreObject>|Class|*} clazz
+     * @return {CoreObject|*}
+     */
+    convert(instance, clazz) {
+        throw new NotImplementedError();
+    }
+
+    /**
+     *
+     * @param {Class<CoreObject>} options
+     * @param {Class<CoreObject>} [options.inputClass]
+     * @param {Class<CoreObject>} [options.outputClass]
+     * @return {Adapter}
+     */
+    toAdapter(options) {
+        return new ConverterAdapter({
+            converter: this,
+            inputClass: options.inputClass,
+            outputClass: options.outputClass
+        });
+    }
+
+    /**
+     *
+     * @param {Class|Class<CoreObject>} options
+     * @param {Class|Class<CoreObject>} [options.inputClass]
+     * @param {Class|Class<CoreObject>} [options.outputClass]
      * @return {Function}
      */
-    _getConversion(converter, inputClass, outputClass) {
-        Converter.shouldBeInstance(converter, 'Converter parameter must be a converter instance');
-
-        inputClass = Preconditions.shouldBeClass(inputClass, 'inputClass must be a class'); // just in case
-        outputClass = Preconditions.shouldBeClass(outputClass, 'outputClass must be a class'); // just in case
-
-        let converterName = inputClass.toString() + '->' + outputClass.toString();
-        let fn = converter.conversions[converterName];
-
-        Preconditions.shouldBeFunction(fn, 'Converter not found: ' + converterName);
-
-        return fn;
+    toFunction(options) {
+        return this.toAdapter(options).toFunction();
     }
 
-    /**
-     *
-     * @param {*} input
-     * @return {Class}
-     */
-    getInputClass(input) {
-        return input.toClass();
-    }
 }
+
+export {Converter};
+export default Converter;

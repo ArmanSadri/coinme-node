@@ -103,5 +103,4 @@ var User = function (_CoreObject) {
 }(_CoreObject3.default);
 
 exports.default = User;
-module.exports = exports['default'];
 //# sourceMappingURL=User.js.map

@@ -101,5 +101,4 @@ var UserBuilder = function (_CoreObject) {
 }(_CoreObject3.default);
 
 exports.default = UserBuilder;
-module.exports = exports['default'];
 //# sourceMappingURL=UserBuilder.js.map

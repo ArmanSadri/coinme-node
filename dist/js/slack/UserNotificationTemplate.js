@@ -54,5 +54,4 @@ var UserNotificationTemplate = function (_NotificationTemplate) {
 }(_NotificationTemplate3.default);
 
 exports.default = UserNotificationTemplate;
-module.exports = exports['default'];
 //# sourceMappingURL=UserNotificationTemplate.js.map

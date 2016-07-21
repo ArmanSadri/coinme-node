@@ -383,5 +383,4 @@ var Currency = function (_CoreObject) {
 }(_CoreObject3.default);
 
 exports.default = Currency;
-module.exports = exports['default'];
 //# sourceMappingURL=Currency.js.map

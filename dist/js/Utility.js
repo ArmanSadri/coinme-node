@@ -26,6 +26,10 @@ var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
 var _errors = require("./errors");
 
+var _big = require("big.js/big");
+
+var _big2 = _interopRequireDefault(_big);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -147,9 +151,6 @@ var Utility = function () {
         value: function result(object, path, defaultValue) {
             return _lodash2.default.get.apply(_lodash2.default, arguments);
         }
-    }, {
-        key: "emptyFn",
-        value: function emptyFn() {}
 
         /**
          * @param {CoreObject|Class<CoreObject>} instance - Must be an instance of CoreObject (or subclass)
@@ -208,7 +209,7 @@ var Utility = function () {
          *
          * @param {Object} object
          * @param {String|Object|Array} keyAsStringObjectArray
-         * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
+         * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
          * @param {Boolean} [requiredByDefault] Default value for required.
          * @throws PreconditionsError
          *
@@ -219,7 +220,7 @@ var Utility = function () {
         key: "take",
         value: function take(object, keyAsStringObjectArray, optionalTypeDeclarationOrDefaults, requiredByDefault) {
             if (!object) {
-                return undefined;
+                object = {};
             }
 
             _Preconditions2.default.shouldBeDefined(keyAsStringObjectArray, 'key must be defined');
@@ -270,13 +271,19 @@ var Utility = function () {
              * If the ruleset requires, will throw.
              *
              * @throws PreconditionsError
-             * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+             * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function, [defaultValue]:*}}  ruleset
              * @param {String} key
              * @param {*} value
              * @returns {*}
              */
             function executeRequired(ruleset, key, value) {
                 var required = _lodash2.default.get(ruleset, 'required');
+
+                if (Utility.isDefined(ruleset.defaultValue)) {
+                    if (!value) {
+                        value = ruleset.defaultValue;
+                    }
+                }
 
                 if (true === required) {
                     if (Utility.isNullOrUndefined(value)) {
@@ -297,6 +304,10 @@ var Utility = function () {
              * @returns {*}
              */
             function executeType(ruleset, key, value) {
+                if (!ruleset.required && Utility.isUndefined(value)) {
+                    return;
+                }
+
                 var type = _lodash2.default.get(ruleset, 'type');
 
                 if (type) {
@@ -363,6 +374,10 @@ var Utility = function () {
                     required: requiredByDefault
                 });
             }
+
+            // if (Utility.isDefined(global_defaults.defaultValue)) {
+            //     throw new Error('has default value global');
+            // }
 
             /**
              *
@@ -469,18 +484,18 @@ var Utility = function () {
                                 //     ruleset = Lodash.defaults(ruleset, optionalTypeDeclarationOrDefaults);
                                 // }
                             } else if (Utility.isObject(rulesetOrObject)) {
-                                /**
-                                 * @type {String}
-                                 */
-                                key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
-                                ruleset = rulesetOrObject;
-                            } else if (Utility.isFunction(rulesetOrObject)) {
-                                ruleset = {
-                                    validator: rulesetOrObject
-                                };
-                            } else {
-                                throw new Error('Dont know what to do: ' + rulesetOrObject);
-                            }
+                                    /**
+                                     * @type {String}
+                                     */
+                                    key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
+                                    ruleset = rulesetOrObject;
+                                } else if (Utility.isFunction(rulesetOrObject)) {
+                                    ruleset = {
+                                        validator: rulesetOrObject
+                                    };
+                                } else {
+                                    throw new Error('Dont know what to do: ' + rulesetOrObject);
+                                }
                         } else if ('object' === mode) {
                             key = keyOrIndex;
 
@@ -774,6 +789,18 @@ var Utility = function () {
         }
 
         /**
+         *
+         * @param {*} object
+         * @returns {boolean}
+         */
+
+    }, {
+        key: "isDefined",
+        value: function isDefined(object) {
+            return !this.isUndefined(object);
+        }
+
+        /**
          * Shorthand: Utility.typeOf() === string
          *
          * This is for functional programming.
@@ -888,21 +915,46 @@ var Utility = function () {
 
         /**
          *
-         * @param {CoreObject} object
+         * @param {CoreObject|Class} object
          * @returns {Class|*|Class.<CoreObject>}
          */
 
     }, {
         key: "getClass",
         value: function getClass(object) {
+            if (Utility.isClass(object)) {
+                return object;
+            }
+
             _Preconditions2.default.shouldBeInstance(object);
 
             return object.toClass();
         }
 
         /**
+         * @param {String|Number|Big|null|NaN|undefined} numberOrStringOrBig
+         * @returns {Big}
+         */
+
+    }, {
+        key: "toBigNumber",
+        value: function toBigNumber(numberOrStringOrBig) {
+            if (Utility.isNullOrUndefined(numberOrStringOrBig)) {
+                numberOrStringOrBig = 0;
+            }
+
+            if (numberOrStringOrBig instanceof _big2.default) {
+                return numberOrStringOrBig;
+            } else if (Utility.isString(numberOrStringOrBig) || Utility.isNumber(numberOrStringOrBig)) {
+                return new _big2.default(numberOrStringOrBig);
+            }
+
+            _Preconditions2.default.fail('Number|String|Big', numberOrStringOrBig, 'Unsupported type');
+        }
+
+        /**
          *
-         * @param {CoreObject|null|undefined} object
+         * @param {Class|CoreObject|null|undefined} object
          * @returns {Class|undefined}
          */
 
@@ -911,6 +963,8 @@ var Utility = function () {
         value: function optClass(object) {
             if (Utility.isInstance(object)) {
                 return Utility.getClass(object);
+            } else if (Utility.isClass(object)) {
+                return object;
             }
 
             return undefined;
@@ -1065,7 +1119,6 @@ var Utility = function () {
         }
 
         /**
-         * @param {...arguments}
          * @returns {Number}
          */
 
@@ -1104,7 +1157,6 @@ var Utility = function () {
         }
 
         /**
-         * @param {...arguments}
          * @returns {*|Object}
          */
 
@@ -1144,5 +1196,4 @@ var Utility = function () {
 }();
 
 exports.default = Utility;
-module.exports = exports['default'];
 //# sourceMappingURL=Utility.js.map

@@ -947,7 +947,6 @@ class Utility {
     }
 
     /**
-     * @param {...arguments}
      * @returns {Number}
      */
     static defaultNumber() {
@@ -980,7 +979,6 @@ class Utility {
     }
 
     /**
-     * @param {...arguments}
      * @returns {*|Object}
      */
     static defaultObject() {

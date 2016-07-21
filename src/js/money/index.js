@@ -15,13 +15,3 @@ export {Bitcoin};
 export {Ethereum};
 export {Satoshi};
 export {USD};
-
-export {
-    Money,
-    Currency,
-    Bitcoin,
-    Ethereum,
-    Satoshi,
-    Exchange,
-    USD
-};

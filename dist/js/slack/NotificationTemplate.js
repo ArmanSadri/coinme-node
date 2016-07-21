@@ -87,5 +87,4 @@ var NotificationTemplate = function (_AbstractNotification) {
 }(_AbstractNotificationTemplate2.default);
 
 exports.default = NotificationTemplate;
-module.exports = exports['default'];
 //# sourceMappingURL=NotificationTemplate.js.map

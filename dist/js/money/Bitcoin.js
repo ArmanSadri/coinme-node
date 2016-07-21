@@ -297,5 +297,4 @@ var Bitcoin = function (_Currency) {
 // Currency.types.register('btc', Bitcoin);
 
 exports.default = Bitcoin;
-module.exports = exports['default'];
 //# sourceMappingURL=Bitcoin.js.map

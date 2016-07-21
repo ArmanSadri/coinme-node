@@ -14,16 +14,43 @@ import Conversion from "../src/js/data/Conversion";
 import Converter from "../src/js/data/Converter";
 
 import {Currency, Bitcoin, Money, Satoshi } from "../src/js/money";
+import DelegatedConverter from "../src/js/data/DelegatedConverter";
+import Adapter from "../src/js/data/Adapter";
 
 describe('Converter', function () {
 
-    it('convert', (done) => {
+    /**
+     * @return {Converter}
+     */
+    function createConverter() {
+        return new DelegatedConverter({
 
-        let converter = new Converter({
-            getInputClass: function(money) { return money.currency.toClass(); },
-            conversions: {
+            adapter: new Adapter({
+
                 /**
                  *
+                 * @param instanceOrClass
+                 * @return {boolean}
+                 */
+                supports(instanceOrClass) {
+                    return Money.isInstanceOrClass(instanceOrClass) || Currency.isInstanceOrClass(instanceOrClass);
+                },
+
+                /**
+                 *
+                 * @param {Money} input
+                 * @return {*|Class.<Currency>|Ethereum|Bitcoin}
+                 */
+                adapt(input) {
+                    this.shouldSupport(input);
+
+                    return Currency.getCurrency(input);
+                }
+            }),
+
+            conversions: {
+
+                /**
                  * @param {Money} money
                  * @returns {Money}
                  */
@@ -36,28 +63,51 @@ describe('Converter', function () {
                 }
             }
         });
+    }
+
+    it('convert', (done) => {
+        /**
+         * @type {Converter}
+         */
+        let converter = createConverter();
+
+        function test(bitcoin, satoshi) {
+            assert.isTrue(Money.isInstance(satoshi), 'Satoshi should be an instance of Satoshi: ' + satoshi);
+            assert.isFalse(Bitcoin.isInstance(satoshi), 'Satoshi should not be an instance of Bitcoin');
+
+            assert.equal(satoshi.value.toFixed(), Bitcoin.SATOSHIS_PER_BITCOIN.toFixed());
+            assert.equal(bitcoin.value.toFixed(), '1');
+            assert.equal(Bitcoin.SATOSHIS_PER_BITCOIN.toFixed(), '100000000');
+        }
 
         let bitcoin = Bitcoin.create(1);
+        let satoshi = converter.convert(bitcoin, Satoshi);
 
-        converter
-            .convert(bitcoin, Satoshi)
-            .then((/** @type {Conversion} */conversion) => {
+        test(bitcoin, satoshi);
 
-                Conversion.shouldBeInstance(conversion);
+        let adapter = converter.toAdapter({
+            inputClass: Money,
+            outputClass: Satoshi
+        });
 
-                let satoshi = conversion.output;
-                // satoshi.currency;
-                // satoshi.value;
+        let satoshi2 = adapter.adapt(bitcoin);
 
-                assert.isTrue(Money.isInstance(satoshi), 'Satoshi should be an instance of Satoshi: ' + satoshi);
-                assert.isFalse(Bitcoin.isInstance(satoshi), 'Satoshi should not be an instance of Bitcoin');
+        test(bitcoin, satoshi2);
 
-                assert.equal(satoshi.value.toFixed(), Bitcoin.SATOSHIS_PER_BITCOIN.toFixed());
-                assert.equal(bitcoin.value.toFixed(), '1');
-                assert.equal(Bitcoin.SATOSHIS_PER_BITCOIN.toFixed(), '100000000');
-                assert.isTrue(conversion.stopwatch.finalized);
-            })
-            .then(done)
-            .catch(done);
+        let fn2 = adapter.toFunction();
+
+        let satoshi3 = fn2(bitcoin, satoshi);
+
+        test(bitcoin, satoshi3);
+
+        let fn3 = converter.toFunction({
+            inputClass: Money,
+            outputClass: Satoshi
+        });
+
+        let satoshi4 = fn3(bitcoin);
+        test(bitcoin, satoshi4);
+
+        return done();
     });
 });

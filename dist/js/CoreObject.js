@@ -18,6 +18,10 @@ var _Preconditions = require("./Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
+var _Utility = require("./Utility");
+
+var _Utility2 = _interopRequireDefault(_Utility);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -140,23 +144,27 @@ var CoreObject = function (_Ember$Object) {
 
             return false;
         }
+    }, {
+        key: "equals",
+        value: function equals(foreignClass) {
+            return this.isClass(foreignClass);
+        }
 
         /**
-         * Ensures that your object is an instance of this type.
          *
-         * @param {*} object
-         * @returns {Object}
-         * @throws {PreconditionsError} if the type is incorrect
+         * @param {CoreObject|Class|*} instanceOrClass
+         * @param {String} [message]
+         * @returns {*}
          */
 
     }, {
-        key: "shouldBeInstance",
-        value: function shouldBeInstance(object) {
-            if (!this.isInstance(object)) {
-                _Preconditions2.default.fail(this, object, 'Should be instance');
+        key: "shouldBeClassOrInstance",
+        value: function shouldBeClassOrInstance(instanceOrClass, message) {
+            if (!this.isInstance(instanceOrClass) && !this.isClass(instanceOrClass)) {
+                _Preconditions2.default.fail(this.toClass(), CoreObject.optClass(instanceOrClass), message || 'Was not the correct class or instance');
             }
 
-            return object;
+            return instanceOrClass;
         }
 
         /**
@@ -182,7 +190,7 @@ var CoreObject = function (_Ember$Object) {
         key: "shouldBeInstance",
         value: function shouldBeInstance(obj, message) {
             if (!this.isInstance(obj)) {
-                _Preconditions2.default.fail(this.toClass(), CoreObject.optClass(obj), message || 'Was not the correct class');
+                _Preconditions2.default.fail(this.toClass(), _Utility2.default.optClass(obj), message || 'Was not the correct class');
             }
 
             return obj;
@@ -205,5 +213,4 @@ var CoreObject = function (_Ember$Object) {
 }(_Ember2.default.Object);
 
 exports.default = CoreObject;
-module.exports = exports['default'];
 //# sourceMappingURL=CoreObject.js.map

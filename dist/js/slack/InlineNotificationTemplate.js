@@ -38,5 +38,4 @@ var InlineNotificationTemplate = function (_NotificationTemplate) {
 }(_NotificationTemplate3.default);
 
 exports.default = InlineNotificationTemplate;
-module.exports = exports['default'];
 //# sourceMappingURL=InlineNotificationTemplate.js.map

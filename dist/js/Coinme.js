@@ -11,5 +11,4 @@ var Coinme = function Coinme() {
 };
 
 exports.default = Coinme;
-module.exports = exports['default'];
 //# sourceMappingURL=Coinme.js.map

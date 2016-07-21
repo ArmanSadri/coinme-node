@@ -397,5 +397,4 @@ var SmoothRateLimiter = function (_RateLimiter) {
 }(RateLimiter);
 
 exports.default = RateLimiter;
-module.exports = exports['default'];
 //# sourceMappingURL=RateLimiter.js.map

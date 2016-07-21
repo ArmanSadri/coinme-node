@@ -41,6 +41,9 @@ var Functions = function () {
         value: function yes() {
             return true;
         }
+    }, {
+        key: 'emptyFn',
+        value: function emptyFn() {}
 
         /**
          * Always returns false
@@ -74,5 +77,4 @@ var Functions = function () {
 }();
 
 exports.default = Functions;
-module.exports = exports['default'];
 //# sourceMappingURL=Functions.js.map

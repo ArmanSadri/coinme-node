@@ -96,5 +96,4 @@ var PreconditionsError = function (_AbstractError) {
 // PreconditionsError.prototype.constructor = PreconditionsError;
 
 exports.default = PreconditionsError;
-module.exports = exports['default'];
 //# sourceMappingURL=PreconditionsError.js.map

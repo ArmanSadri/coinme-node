@@ -227,5 +227,4 @@ var Address = function (_CoreObject) {
 }(_CoreObject3.default);
 
 exports.default = Address;
-module.exports = exports['default'];
 //# sourceMappingURL=Address.js.map

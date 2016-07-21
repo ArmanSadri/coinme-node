@@ -9,10 +9,3 @@ export {Errors};
 export {HttpError};
 export {AbstractError};
 export {PreconditionsError};
-
-export default {
-    Errors: Errors,
-    AbstractError: AbstractError,
-    HttpError: HttpError,
-    PreconditionsError: PreconditionsError
-}

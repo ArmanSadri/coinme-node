@@ -91,5 +91,4 @@ var AbstractNotificationTemplate = function (_CoreObject) {
 }(_CoreObject3.default);
 
 exports.default = AbstractNotificationTemplate;
-module.exports = exports['default'];
 //# sourceMappingURL=AbstractNotificationTemplate.js.map

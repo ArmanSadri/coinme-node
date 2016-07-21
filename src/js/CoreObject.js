@@ -3,6 +3,7 @@
 import Ember from "./Ember";
 import Lodash from "lodash";
 import Preconditions from './Preconditions';
+import Utility from './Utility';
 
 /**
  * This is the base class for all classes in our architecture.
@@ -127,7 +128,7 @@ export default class CoreObject extends Ember.Object {
      */
     static shouldBeInstance(obj, message) {
         if (!this.isInstance(obj)) {
-            Preconditions.fail(this.toClass(), CoreObject.optClass(obj), message || 'Was not the correct class')
+            Preconditions.fail(this.toClass(), Utility.optClass(obj), message || 'Was not the correct class')
         }
 
         return obj;

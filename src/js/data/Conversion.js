@@ -13,24 +13,13 @@ class Conversion extends CoreObject {
      * @param {Number} options.duration
      * @param {Stopwatch} options.stopwatch
      * @param {Converter} options.converter
-     * @param {*|undefined} [options.requestor]
      */
     constructor(options) {
         let input = Utility.take(options, 'input', true);
         let output = Utility.take(options, 'output', true);
 
-        /**
-         * @type {Stopwatch}
-         */
         let stopwatch = Utility.take(options, 'stopwatch', Stopwatch, true);
-        /**
-         *
-         * @type {Converter}
-         */
         let converter = Utility.take(options, 'converter', Converter, true);
-        /**
-         * @type {*}
-         */
         let requestor = Utility.take(options, 'requestor');
 
         super(...arguments);
@@ -38,22 +27,20 @@ class Conversion extends CoreObject {
         this._input = input;
         this._output = output;
 
-        /**
-         * @type {Stopwatch}
-         * @private
-         */
         this._stopwatch = stopwatch;
         this._converter = converter;
         this._requestor = requestor;
     }
 
+    /**
+     *
+     * @return {Stopwatch}
+     */
     get stopwatch() {
         return this._stopwatch;
     }
 
     /**
-     * @property
-     * @readonly
      * @returns {*|undefined}
      */
     get requestor() {
@@ -61,8 +48,6 @@ class Conversion extends CoreObject {
     }
 
     /**
-     * @property
-     * @readonly
      * @returns {*}
      */
     get input() {
@@ -70,8 +55,6 @@ class Conversion extends CoreObject {
     }
 
     /**
-     * @property
-     * @readonly
      * @returns {*}
      */
     get output() {
@@ -79,8 +62,6 @@ class Conversion extends CoreObject {
     }
 
     /**
-     * @property
-     * @readonly
      * @returns {Converter}
      */
     get converter() {

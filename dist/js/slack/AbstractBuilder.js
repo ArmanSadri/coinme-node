@@ -78,5 +78,4 @@ var AbstractBuilder = function (_CoreObject) {
 }(_CoreObject3.default);
 
 exports.default = AbstractBuilder;
-module.exports = exports['default'];
 //# sourceMappingURL=AbstractBuilder.js.map
