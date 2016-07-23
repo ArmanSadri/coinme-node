@@ -5,6 +5,7 @@ import TimeUnit from "./TimeUnit";
 import CoreObject from './CoreObject';
 import Logger from "winston";
 import Preconditions from "./Preconditions";
+import Ticker from './Ticker';
 
 const MILLISECONDS = TimeUnit.MILLISECONDS;
 const MICROSECONDS = TimeUnit.MICROSECONDS;
@@ -14,42 +15,7 @@ const NANOSECONDS = TimeUnit.NANOSECONDS;
  *
  * @type {Ticker}
  */
-var SYSTEM_TICKER = null;
-
-class Ticker {
-
-    /**
-     * Constructor for use by subclasses.
-     */
-    constructor(options) {
-
-    }
-
-    /**
-     * Returns the number of nanoseconds elapsed since this ticker's fixed
-     * point of reference.
-     *
-     * @return {Number} nanoseconds
-     */
-    read() {
-        let time = process.hrtime();
-        let timeInSeconds = time[0];
-        let timeInNanos = time[1];
-
-        return TimeUnit.SECONDS.toNanos(timeInSeconds) + timeInNanos;
-    }
-
-    /**
-     * A ticker that reads the current time using {@link System#nanoTime}.
-     *
-     * @return {Ticker}
-     */
-    static systemTicker() {
-        return SYSTEM_TICKER;
-    }
-}
-
-SYSTEM_TICKER = new Ticker();
+let SYSTEM_TICKER = Ticker.systemTicker();
 
 class Stopwatch extends CoreObject {
 

@@ -116,7 +116,7 @@ class Utility {
      *      // return true to pass. false to fail.
      *      validator: function(value) { return boolean; } throws Error,
      *      type: String,
-     *      adapter: function(key, value) { return new_value; },
+     *      adapter: function(value) { return new_value; },
      *      required: true|false|undefined
      *   }
      *
@@ -973,6 +973,9 @@ class Utility {
             return value;
         } else if (Utility.isString(value)) {
             return Number.parseFloat(value);
+        } else if (value instanceof Big) {
+            // is this a risk?
+            return Number.parseFloat(value.toFixed());
         }
 
         throw new TypeError("unknown type: " + Utility.typeOf(value));

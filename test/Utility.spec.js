@@ -12,7 +12,6 @@ import {Errors, AbstractError, PreconditionsError} from "~/errors";
 import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
 import "source-map-support/register";
 
-
 describe('Utility', function () {
 
     it('typeOf', () => {
