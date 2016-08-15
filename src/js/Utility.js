@@ -4,8 +4,28 @@ import Lodash from "lodash";
 import Preconditions from "~/Preconditions";
 import Ember from "~/Ember";
 import CoreObject from "~/CoreObject";
-import {Errors, AbstractError} from "./errors";
+import {Errors} from "./errors";
 import Big from "big.js/big";
+import {
+    Instant,
+    LocalDate,
+    ZonedDateTime,
+    LocalDateTime,
+    DateTimeFormatter,
+    ZoneOffset,
+    nativeJs,
+    convert,
+    TemporalQueries,
+    LocalTime
+} from "js-joda";
+
+let TEMPORALS = {
+    'Instant': Instant,
+    'LocalTime': LocalTime,
+    'LocalDate': LocalDate,
+    'LocalDateTime': LocalDateTime,
+    'ZonedDateTime': ZonedDateTime
+};
 
 let EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
 
@@ -14,6 +34,86 @@ let EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
  * @singleton
  */
 class Utility {
+
+    static isTemporal(value) {
+        // Direct Subclass:
+        //     ChronoLocalDate, ChronoLocalDateTime, ChronoZonedDateTime, DateTimeBuilder, DayOfWeek, Instant, LocalTime, Month, MonthDay, src/format/DateTimeParseContext.js~Parsed, Year, YearMonth
+        // Indirect Subclass:
+        //     LocalDate, LocalDateTime, ZonedDateTime
+
+        // console.log(value);
+        // console.log(value.toString());
+        // console.log(value.prototype);
+        // console.log(value.__proto__);
+        // console.log(value.constructor);
+        return !!TEMPORALS[value.constructor.name];
+    }
+
+    /**
+     *
+     * @param {*} one
+     * @param {*} two
+     * @return {boolean}
+     */
+    static isSameType(one, two) {
+        let type1 = Utility.typeOf(one);
+        let type2 = Utility.typeOf(two);
+
+        return type1 === type2;
+    }
+
+    /**
+     *
+     * @param {String|null|undefined} string
+     * @return {String|undefined}
+     */
+    static optLowerCase(string) {
+        if (Utility.isNullOrUndefined(string)) {
+            return undefined;
+        }
+
+        return (Utility.optString(string) || '').toLowerCase();
+    }
+
+    /**
+     *
+     * @param {String} string1
+     * @param {String} string2
+     * @return {Boolean}
+     */
+    static isStringEqualIgnoreCase(string1, string2) {
+        if (Utility.isNotExisting(string1) || Utility.isNotExisting(string2)) {
+            return Utility.isSameType(string1, string2);
+        }
+
+        return Utility.isStringEqual(
+            Utility.optLowerCase(string1),
+            Utility.optLowerCase(string2));
+    }
+
+    /**
+     * (null, null) -> true
+     *
+     * @param {String|*} string1
+     * @param {String|*} string2
+     * @return {boolean}
+     */
+    static isStringEqual(string1, string2) {
+        if (Utility.isNotExisting(string1) || Utility.isNotExisting(string2)) {
+            return Utility.isSameType(string1, string2);
+        }
+
+        string1 = Utility.optString(string1);
+        string2 = Utility.optString(string2);
+
+        if (!Utility.isSameType(string1, string2)) {
+            return false;
+        } else if (!Utility.isExisting(string1)) {
+            return false;
+        }
+
+        return string1 === string2;
+    }
 
     /**
      * @param {*} object
@@ -81,9 +181,9 @@ class Utility {
 
         return instance.toClass();
     }
-    
+
     /**
-     * 
+     *
      * @param boolean
      * @returns {*}
      */
@@ -94,7 +194,7 @@ class Utility {
 
         return undefined;
     }
-    
+
     /**
      * Uses Lodash.get, but then removes the key from the parent object.
      *
@@ -170,7 +270,7 @@ class Utility {
 
             if (fn) {
                 Preconditions.shouldBeFunction(fn, 'Validator must be a function');
-                
+
                 value = fn.call(scope, value);
             }
 
@@ -200,7 +300,6 @@ class Utility {
                     Preconditions.shouldBeExisting(value, `Utility.take(). 'key=${key}' is required`);
                 }
             }
-
 
 
             return value;
@@ -240,13 +339,14 @@ class Utility {
         function executeChecks(ruleset, key, value) {
             // console.log(`executeChecks with ruleset: ${JSON.stringify(ruleset)} and (key:${key}) (value:${value})`);
 
+            value = executeAdapter(ruleset, key, value);
             value = executeRequired(ruleset, key, value);
             value = executeType(ruleset, key, value);
-            value = executeAdapter(ruleset, key, value);
             value = executeValidator(ruleset, key, value);
 
             return value;
         }
+
         //endregion
 
         //region ruleset - defaults
@@ -256,8 +356,8 @@ class Utility {
 
         if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
             if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
-                global_defaults = { 
-                    type: optionalTypeDeclarationOrDefaults 
+                global_defaults = {
+                    type: optionalTypeDeclarationOrDefaults
                 };
             } else {
                 global_defaults = Lodash.assign(global_defaults, optionalTypeDeclarationOrDefaults);
@@ -265,8 +365,8 @@ class Utility {
 
             optionalTypeDeclarationOrDefaults = null;
         } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
-            global_defaults = { 
-                validator: optionalTypeDeclarationOrDefaults 
+            global_defaults = {
+                validator: optionalTypeDeclarationOrDefaults
             };
 
             optionalTypeDeclarationOrDefaults = null;
@@ -306,6 +406,7 @@ class Utility {
 
             return ruleset;
         }
+
         //endregion
 
         let mode = Utility.typeOf(keyAsStringObjectArray);
@@ -628,14 +729,23 @@ class Utility {
             } else if (Errors.isErrorInstance(object)) {
                 return 'error';
             }
-
         } else if ('object' === type) {
             if (CoreObject.isInstance(object)) {
                 return 'instance';
+            } else if (Utility.isTemporal(object)) {
+                return 'temporal';
             }
         }
 
         return type;
+    }
+
+    /**
+     * @param {Date|*} value
+     * @return {Boolean}
+     */
+    static isDate(value) {
+        return 'date' === Utility.typeOf(value);
     }
 
     /**
@@ -864,10 +974,40 @@ class Utility {
      * @param object
      */
     static optString(object) {
-        if (!object) {
+        if (!Utility.isExisting(object)) {
             return undefined;
         } else {
-            return object.toString();
+            if (Utility.isFunction(object.toString)) {
+                return object.toString();
+            } else {
+                return '' + object;
+            }
+        }
+    }
+
+    /**
+     * optJson(undefined) -> undefined
+     * optJson(null) -> undefined
+     * optJson(NaN) -> undefined
+     * optJson(primitive) -> primitive
+     * optJson(object) -> object.toJSON
+     * optJson(object) -> object.toJson
+     * optJson(object) -> object
+     *
+     * @param object
+     * @return {*}
+     */
+    static optJson(object) {
+        if (!Utility.isExisting(object)) {
+            return undefined;
+        } else if (Utility.isPrimitive(object)) {
+            return object;
+        } else if (Utility.isFunction(object.toJson)) {
+            return object.toJson();
+        } else if (Utility.isFunction(object.toJSON)) {
+            return object.toJSON();
+        } else {
+            return object;
         }
     }
 
@@ -923,18 +1063,40 @@ class Utility {
     }
 
     /**
+     * A value is blank if it is empty or a whitespace string.
      *
-     * @param {String} string
+     * ```javascript
+     * Ember.isBlank();                // true
+     * Ember.isBlank(null);            // true
+     * Ember.isBlank(undefined);       // true
+     * Ember.isBlank('');              // true
+     * Ember.isBlank([]);              // true
+     * Ember.isBlank('\n\t');          // true
+     * Ember.isBlank('  ');            // true
+     * Ember.isBlank({});              // false
+     * Ember.isBlank('\n\t Hello');    // false
+     * Ember.isBlank('Hello world');   // false
+     * Ember.isBlank([1,2,3]);         // false
+     * ```
+     * @param {String|Array|Number} stringOrArrayOrNumber
+     * @param {String|Array|Number} [stringOrArrayOrNumber.length]
      * @return {boolean}
      */
-    static isBlank(string) {
-        if (Utility.isNullOrUndefined(string)) {
+    static isBlank(stringOrArrayOrNumber) {
+        if (Utility.isNotExisting(stringOrArrayOrNumber)) {
             return true;
         }
 
-        Preconditions.shouldBeString(string);
+        let type = Utility.typeOf(stringOrArrayOrNumber);
+        if ('number' === type) {
+            return (0 == stringOrArrayOrNumber);
+        }
 
-        return Ember.isBlank(string);
+        if (!('array' === type || 'string' === type || 'number' === type)) {
+            Preconditions.fail('type|array', type);
+        }
+
+        return Ember.isBlank(stringOrArrayOrNumber);
     }
 
     /**
@@ -952,13 +1114,25 @@ class Utility {
     static defaultNumber() {
         let result = 0;
 
-        _.each(arguments, function(object) {
+        Lodash.each(arguments, function (object) {
             if (Utility.isNumber(object)) {
                 result = object;
             }
         });
 
         return result;
+    }
+
+    /**
+     *
+     * @param {String|Number} value
+     * @return {boolean}
+     */
+    static isNumeric(value) {
+        if (typeof value === 'number') return true;
+        var str = (value || '').toString();
+        if (!str) return false;
+        return !isNaN(str);
     }
 
     /**
@@ -982,12 +1156,259 @@ class Utility {
     }
 
     /**
+     * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined|ZonedDateTime} numberOrStringOrBig
+     * @param {String|DateTimeFormatter} [optionalParserOrFormat]
+     *
+     * @return {Instant|undefined}
+     */
+    static optInstant(numberOrStringOrBig, optionalParserOrFormat) {
+        /**
+         * @type {ZonedDateTime}
+         */
+        let date = Utility.optDateTime(numberOrStringOrBig, optionalParserOrFormat);
+
+        if (!date) {
+            return undefined;
+        }
+
+        return date.toInstant();
+    }
+
+    /**
+     * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} numberOrStringOrBig
+     * @param {String|DateTimeFormatter} [optionalParserOrFormat]
+     *
+     * @return {Date|undefined}
+     */
+    static optDate(numberOrStringOrBig, optionalParserOrFormat) {
+        let date = Utility.optDateTime(numberOrStringOrBig, optionalParserOrFormat);
+
+        if (!date) {
+            return undefined;
+        }
+
+        return convert(date);
+    }
+
+    /**
+     *
+     * @param {String|ZoneOffset|undefined} value
+     * @return {ZoneOffset}
+     */
+    static toTimeZoneOffset(value) {
+        if (Utility.isNotExisting(value)) {
+            return ZoneOffset.UTC;
+        } else if (Utility.isString(value)) {
+            return ZoneOffset.of(value);
+        } else if (value instanceof ZoneOffset) {
+            return value;
+        }
+
+        Errors.throwNotSure(value);
+    }
+
+    /**
+     * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} numberOrStringOrBig
+     * @param {String|DateTimeFormatter|ZoneOffset} [optionalDateFormatStringOrDateFormatter]
+     *
+     * @return {ZonedDateTime|undefined}
+     */
+    static optDateTime(numberOrStringOrBig, optionalDateFormatStringOrDateFormatter) {
+        if (!numberOrStringOrBig) {
+            return Utility
+                .now()
+                .withZoneSameInstant(Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter));
+        }
+
+        if (Utility.isDate(numberOrStringOrBig)) {
+            return LocalDateTime
+                .from(nativeJs(numberOrStringOrBig))
+                .atZone(Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter));
+        }
+
+        if (Utility.isString(numberOrStringOrBig)) {
+            return ZonedDateTime
+                .parse(numberOrStringOrBig, Utility.toDateTimeFormatter(optionalDateFormatStringOrDateFormatter));
+        }
+
+        if (Utility.isTemporal(numberOrStringOrBig)) {
+            /** @type {ZoneOffset} */
+            let zone = numberOrStringOrBig.query(TemporalQueries.zone());
+
+            if (!zone) {
+                zone = Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter);
+            }
+
+            if (numberOrStringOrBig instanceof ZonedDateTime) {
+                return numberOrStringOrBig;
+            } else if (numberOrStringOrBig instanceof Instant) {
+                return ZonedDateTime.ofInstant(numberOrStringOrBig, zone);
+            }
+
+            /** @type {LocalTime} */
+            let localTime = numberOrStringOrBig.query(TemporalQueries.localTime());
+            /** @type {LocalDate} */
+            let localDate = numberOrStringOrBig.query(TemporalQueries.localDate());
+
+            if (!localTime) {
+                localTime = LocalTime.now(zone).toLocalTime();
+            }
+
+            if (!localDate) {
+                localDate = LocalDate.now(zone);
+            }
+
+            return localTime
+                .atDate(localDate)
+                .atZone(zone);
+        }
+    }
+
+
+    /**
+     *
+     * This is copied from https://js-joda.github.io/js-joda/esdoc/class/src/format/DateTimeFormatter.js~DateTimeFormatter.html
+     *
+     *  |Symbol  |Meaning                     |Presentation      |Examples
+     *  |--------|----------------------------|------------------|----------------------------------------------------
+     *  | G      | era                        | number/text      | 1; 01; AD; Anno Domini
+     *  | y      | year                       | year             | 2004; 04
+     *  | D      | day-of-year                | number           | 189
+     *  | M      | month-of-year              | number/text      | 7; 07; Jul; July; J
+     *  | d      | day-of-month               | number           | 10
+     *  |        |                            |                  |
+     *  | Q      | quarter-of-year            | number/text      | 3; 03; Q3
+     *  | Y      | week-based-year            | year             | 1996; 96
+     *  | w      | week-of-year               | number           | 27
+     *  | W      | week-of-month              | number           | 27
+     *  | e      | localized day-of-week      | number           | 2; Tue; Tuesday; T
+     *  | E      | day-of-week                | number/text      | 2; Tue; Tuesday; T
+     *  | F      | week-of-month              | number           | 3
+     *  |        |                            |                  |
+     *  | a      | am-pm-of-day               | text             | PM
+     *  | h      | clock-hour-of-am-pm (1-12) | number           | 12
+     *  | K      | hour-of-am-pm (0-11)       | number           | 0
+     *  | k      | clock-hour-of-am-pm (1-24) | number           | 0
+     *  |        |                            |                  |
+     *  | H      | hour-of-day (0-23)         | number           | 0
+     *  | m      | minute-of-hour             | number           | 30
+     *  | s      | second-of-minute           | number           | 55
+     *  | S      | fraction-of-second         | fraction         | 978
+     *  | A      | milli-of-day               | number           | 1234
+     *  | n      | nano-of-second             | number           | 987654321
+     *  | N      | nano-of-day                | number           | 1234000000
+     *  |        |                            |                  |
+     *  | V      | time-zone ID               | zone-id          | America/Los_Angeles; Z; -08:30
+     *  | z      | time-zone name             | zone-name        | Pacific Standard Time; PST
+     *  | X      | zone-offset 'Z' for zero   | offset-X         | Z; -08; -0830; -08:30; -083015; -08:30:15;
+     *  | x      | zone-offset                | offset-x         | +0000; -08; -0830; -08:30; -083015; -08:30:15;
+     *  | Z      | zone-offset                | offset-Z         | +0000; -0800; -08:00;
+     *  |        |                            |                  |
+     *  | p      | pad next                   | pad modifier     | 1
+     *  |        |                            |                  |
+     *  | '      | escape for text            | delimiter        |
+     *  | ''     | single quote               | literal          | '
+     *  | [      | optional section start     |                  |
+     *  | ]      | optional section end       |                  |
+     *  | {}     | reserved for future use    |                  |
+     *
+     * @param {String|DateTimeFormatter|null} [stringOrFormatter]
+     * @throws {TypeError} if not sure what to do.
+     * @return {DateTimeFormatter}
+     */
+    static toDateTimeFormatter(stringOrFormatter) {
+        if (Utility.isNotExisting(stringOrFormatter)) {
+            return DateTimeFormatter.ISO_ZONED_DATE_TIME;
+        } else if (Utility.isString(stringOrFormatter)) {
+            Preconditions.shouldNotBeBlank(stringOrFormatter);
+
+            return DateTimeFormatter.ofPattern(stringOrFormatter);
+        }
+
+        Errors.throwNotSure(stringOrFormatter);
+    }
+
+    /**
+     * Proxies to Utility.now() if you pass no arguments.
+     *
+     * This is copied from https://js-joda.github.io/js-joda/esdoc/class/src/format/DateTimeFormatter.js~DateTimeFormatter.html
+     *
+     *  |Symbol  |Meaning                     |Presentation      |Examples
+     *  |--------|----------------------------|------------------|----------------------------------------------------
+     *  | G      | era                        | number/text      | 1; 01; AD; Anno Domini
+     *  | y      | year                       | year             | 2004; 04
+     *  | D      | day-of-year                | number           | 189
+     *  | M      | month-of-year              | number/text      | 7; 07; Jul; July; J
+     *  | d      | day-of-month               | number           | 10
+     *  |        |                            |                  |
+     *  | Q      | quarter-of-year            | number/text      | 3; 03; Q3
+     *  | Y      | week-based-year            | year             | 1996; 96
+     *  | w      | week-of-year               | number           | 27
+     *  | W      | week-of-month              | number           | 27
+     *  | e      | localized day-of-week      | number           | 2; Tue; Tuesday; T
+     *  | E      | day-of-week                | number/text      | 2; Tue; Tuesday; T
+     *  | F      | week-of-month              | number           | 3
+     *  |        |                            |                  |
+     *  | a      | am-pm-of-day               | text             | PM
+     *  | h      | clock-hour-of-am-pm (1-12) | number           | 12
+     *  | K      | hour-of-am-pm (0-11)       | number           | 0
+     *  | k      | clock-hour-of-am-pm (1-24) | number           | 0
+     *  |        |                            |                  |
+     *  | H      | hour-of-day (0-23)         | number           | 0
+     *  | m      | minute-of-hour             | number           | 30
+     *  | s      | second-of-minute           | number           | 55
+     *  | S      | fraction-of-second         | fraction         | 978
+     *  | A      | milli-of-day               | number           | 1234
+     *  | n      | nano-of-second             | number           | 987654321
+     *  | N      | nano-of-day                | number           | 1234000000
+     *  |        |                            |                  |
+     *  | V      | time-zone ID               | zone-id          | America/Los_Angeles; Z; -08:30
+     *  | z      | time-zone name             | zone-name        | Pacific Standard Time; PST
+     *  | X      | zone-offset 'Z' for zero   | offset-X         | Z; -08; -0830; -08:30; -083015; -08:30:15;
+     *  | x      | zone-offset                | offset-x         | +0000; -08; -0830; -08:30; -083015; -08:30:15;
+     *  | Z      | zone-offset                | offset-Z         | +0000; -0800; -08:00;
+     *  |        |                            |                  |
+     *  | p      | pad next                   | pad modifier     | 1
+     *  |        |                            |                  |
+     *  | '      | escape for text            | delimiter        |
+     *  | ''     | single quote               | literal          | '
+     *  | [      | optional section start     |                  |
+     *  | ]      | optional section end       |                  |
+     *  | {}     | reserved for future use    |                  |
+     *
+     * @param {Temporal|LocalDateTime|ZonedDateTime|Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} [value]
+     * @param {String|DateTimeFormatter} [optionalDateFormatStringOrDateFormatter]
+     * @return {ZonedDateTime}
+     */
+    static toDateTime(value, optionalDateFormatStringOrDateFormatter) {
+        if (Utility.isBlank(arguments.length)) {
+            return Utility.now();
+        }
+
+        let dateTime = Utility.optDateTime(value, optionalDateFormatStringOrDateFormatter);
+
+        if (dateTime) {
+            return dateTime;
+        }
+
+        Errors.throwNotSure(value);
+    }
+
+    /**
+     *
+     * @return {ZonedDateTime}
+     */
+    static now() {
+        return ZonedDateTime.now();
+    }
+
+    /**
      * @returns {*|Object}
      */
     static defaultObject() {
         let result = null;
 
-        _.each(arguments, function(object) {
+        Lodash.each(arguments, function (object) {
             if (Utility.isObject(object)) {
                 result = object;
             }
@@ -1018,7 +1439,7 @@ class Utility {
         } else if (Utility.isObject(propertyNameOrObject)) {
             Preconditions.shouldBeUndefined(propertyValueOrUndefined);
 
-            Lodash.each(propertyNameOrObject, function(value, key) {
+            Lodash.each(propertyNameOrObject, function (value, key) {
                 Utility.set(target, key, value);
             });
         }
@@ -1045,6 +1466,25 @@ class Utility {
         }
 
         return object;
+    }
+
+    /**
+     *
+     * @param {Class} clazz
+     * @return {String|undefined}
+     */
+    static optClassName(clazz) {
+        if (!clazz) {
+            return undefined;
+        }
+
+        if (Utility.isClass(clazz)) {
+            return clazz.toString() || clazz.constructor.name;
+        } else if (Utility.isInstance(clazz)) {
+            return Utility.optClassName(clazz.toClass());
+        }
+
+        Errors.throwNotSure(clazz);
     }
 }
 

@@ -30,7 +30,6 @@ export default class Money extends CoreObject {
          * @private
          */
         this._currency = Currency.shouldBeCurrency(currency);
-
     }
 
     /**
@@ -60,10 +59,10 @@ export default class Money extends CoreObject {
      * @returns {{value, currency}|{value: BigJsLibrary.BigJS, currency: Class.<Currency>}}
      */
     toJson() {
-        return {
-            value: this.value,
+        return super.toJson({
+            value: Utility.optString(this.value),
             currency: this.currency.toString()
-        };
+        });
     }
 
     /**
@@ -230,6 +229,10 @@ export default class Money extends CoreObject {
             value: Currency.toValueOrFail(valueOrMoney),
             currency: defaultCurrency
         });
+    }
+
+    static optValue(money) {
+        return Currency.optValue(money);
     }
 
     /**

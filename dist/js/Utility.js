@@ -30,9 +30,19 @@ var _big = require("big.js/big");
 
 var _big2 = _interopRequireDefault(_big);
 
+var _jsJoda = require("js-joda");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var TEMPORALS = {
+    'Instant': _jsJoda.Instant,
+    'LocalTime': _jsJoda.LocalTime,
+    'LocalDate': _jsJoda.LocalDate,
+    'LocalDateTime': _jsJoda.LocalDateTime,
+    'ZonedDateTime': _jsJoda.ZonedDateTime
+};
 
 var EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
 
@@ -87,13 +97,104 @@ var Utility = function () {
          */
 
     }], [{
-        key: "isObject",
+        key: "isTemporal",
+        value: function isTemporal(value) {
+            // Direct Subclass:
+            //     ChronoLocalDate, ChronoLocalDateTime, ChronoZonedDateTime, DateTimeBuilder, DayOfWeek, Instant, LocalTime, Month, MonthDay, src/format/DateTimeParseContext.js~Parsed, Year, YearMonth
+            // Indirect Subclass:
+            //     LocalDate, LocalDateTime, ZonedDateTime
 
+            // console.log(value);
+            // console.log(value.toString());
+            // console.log(value.prototype);
+            // console.log(value.__proto__);
+            // console.log(value.constructor);
+            return !!TEMPORALS[value.constructor.name];
+        }
+
+        /**
+         *
+         * @param {*} one
+         * @param {*} two
+         * @return {boolean}
+         */
+
+    }, {
+        key: "isSameType",
+        value: function isSameType(one, two) {
+            var type1 = Utility.typeOf(one);
+            var type2 = Utility.typeOf(two);
+
+            return type1 === type2;
+        }
+
+        /**
+         *
+         * @param {String|null|undefined} string
+         * @return {String|undefined}
+         */
+
+    }, {
+        key: "optLowerCase",
+        value: function optLowerCase(string) {
+            if (Utility.isNullOrUndefined(string)) {
+                return undefined;
+            }
+
+            return (Utility.optString(string) || '').toLowerCase();
+        }
+
+        /**
+         *
+         * @param {String} string1
+         * @param {String} string2
+         * @return {Boolean}
+         */
+
+    }, {
+        key: "isStringEqualIgnoreCase",
+        value: function isStringEqualIgnoreCase(string1, string2) {
+            if (Utility.isNotExisting(string1) || Utility.isNotExisting(string2)) {
+                return Utility.isSameType(string1, string2);
+            }
+
+            return Utility.isStringEqual(Utility.optLowerCase(string1), Utility.optLowerCase(string2));
+        }
+
+        /**
+         * (null, null) -> true
+         *
+         * @param {String|*} string1
+         * @param {String|*} string2
+         * @return {boolean}
+         */
+
+    }, {
+        key: "isStringEqual",
+        value: function isStringEqual(string1, string2) {
+            if (Utility.isNotExisting(string1) || Utility.isNotExisting(string2)) {
+                return Utility.isSameType(string1, string2);
+            }
+
+            string1 = Utility.optString(string1);
+            string2 = Utility.optString(string2);
+
+            if (!Utility.isSameType(string1, string2)) {
+                return false;
+            } else if (!Utility.isExisting(string1)) {
+                return false;
+            }
+
+            return string1 === string2;
+        }
 
         /**
          * @param {*} object
          * @returns {boolean}
          */
+
+    }, {
+        key: "isObject",
         value: function isObject(object) {
             var type = Utility.typeOf(object);
 
@@ -167,7 +268,7 @@ var Utility = function () {
         }
 
         /**
-         * 
+         *
          * @param boolean
          * @returns {*}
          */
@@ -203,7 +304,7 @@ var Utility = function () {
          *      // return true to pass. false to fail.
          *      validator: function(value) { return boolean; } throws Error,
          *      type: String,
-         *      adapter: function(key, value) { return new_value; },
+         *      adapter: function(value) { return new_value; },
          *      required: true|false|undefined
          *   }
          *
@@ -328,13 +429,14 @@ var Utility = function () {
             function executeChecks(ruleset, key, value) {
                 // console.log(`executeChecks with ruleset: ${JSON.stringify(ruleset)} and (key:${key}) (value:${value})`);
 
+                value = executeAdapter(ruleset, key, value);
                 value = executeRequired(ruleset, key, value);
                 value = executeType(ruleset, key, value);
-                value = executeAdapter(ruleset, key, value);
                 value = executeValidator(ruleset, key, value);
 
                 return value;
             }
+
             //endregion
 
             //region ruleset - defaults
@@ -394,6 +496,7 @@ var Utility = function () {
 
                 return ruleset;
             }
+
             //endregion
 
             var mode = Utility.typeOf(keyAsStringObjectArray);
@@ -726,10 +829,23 @@ var Utility = function () {
             } else if ('object' === type) {
                 if (_CoreObject2.default.isInstance(object)) {
                     return 'instance';
+                } else if (Utility.isTemporal(object)) {
+                    return 'temporal';
                 }
             }
 
             return type;
+        }
+
+        /**
+         * @param {Date|*} value
+         * @return {Boolean}
+         */
+
+    }, {
+        key: "isDate",
+        value: function isDate(value) {
+            return 'date' === Utility.typeOf(value);
         }
 
         /**
@@ -1015,10 +1131,43 @@ var Utility = function () {
     }, {
         key: "optString",
         value: function optString(object) {
-            if (!object) {
+            if (!Utility.isExisting(object)) {
                 return undefined;
             } else {
-                return object.toString();
+                if (Utility.isFunction(object.toString)) {
+                    return object.toString();
+                } else {
+                    return '' + object;
+                }
+            }
+        }
+
+        /**
+         * optJson(undefined) -> undefined
+         * optJson(null) -> undefined
+         * optJson(NaN) -> undefined
+         * optJson(primitive) -> primitive
+         * optJson(object) -> object.toJSON
+         * optJson(object) -> object.toJson
+         * optJson(object) -> object
+         *
+         * @param object
+         * @return {*}
+         */
+
+    }, {
+        key: "optJson",
+        value: function optJson(object) {
+            if (!Utility.isExisting(object)) {
+                return undefined;
+            } else if (Utility.isPrimitive(object)) {
+                return object;
+            } else if (Utility.isFunction(object.toJson)) {
+                return object.toJson();
+            } else if (Utility.isFunction(object.toJSON)) {
+                return object.toJSON();
+            } else {
+                return object;
             }
         }
 
@@ -1089,8 +1238,23 @@ var Utility = function () {
         }
 
         /**
+         * A value is blank if it is empty or a whitespace string.
          *
-         * @param {String} string
+         * ```javascript
+         * Ember.isBlank();                // true
+         * Ember.isBlank(null);            // true
+         * Ember.isBlank(undefined);       // true
+         * Ember.isBlank('');              // true
+         * Ember.isBlank([]);              // true
+         * Ember.isBlank('\n\t');          // true
+         * Ember.isBlank('  ');            // true
+         * Ember.isBlank({});              // false
+         * Ember.isBlank('\n\t Hello');    // false
+         * Ember.isBlank('Hello world');   // false
+         * Ember.isBlank([1,2,3]);         // false
+         * ```
+         * @param {String|Array} string
+         * @param {String|Array} [string.length]
          * @return {boolean}
          */
 
@@ -1138,6 +1302,21 @@ var Utility = function () {
 
         /**
          *
+         * @param {String|Number} value
+         * @return {boolean}
+         */
+
+    }, {
+        key: "isNumeric",
+        value: function isNumeric(value) {
+            if (typeof value === 'number') return true;
+            var str = (value || '').toString();
+            if (!str) return false;
+            return !isNaN(str);
+        }
+
+        /**
+         *
          * @param {*} value
          * @returns {Number}
          */
@@ -1151,9 +1330,267 @@ var Utility = function () {
                 return value;
             } else if (Utility.isString(value)) {
                 return Number.parseFloat(value);
+            } else if (value instanceof _big2.default) {
+                // is this a risk?
+                return Number.parseFloat(value.toFixed());
             }
 
             throw new TypeError("unknown type: " + Utility.typeOf(value));
+        }
+
+        /**
+         * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined|ZonedDateTime} numberOrStringOrBig
+         * @param {String|DateTimeFormatter} [optionalParserOrFormat]
+         *
+         * @return {Instant|undefined}
+         */
+
+    }, {
+        key: "optInstant",
+        value: function optInstant(numberOrStringOrBig, optionalParserOrFormat) {
+            /**
+             * @type {ZonedDateTime}
+             */
+            var date = Utility.optDateTime(numberOrStringOrBig, optionalParserOrFormat);
+
+            if (!date) {
+                return undefined;
+            }
+
+            return date.toInstant();
+        }
+
+        /**
+         * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} numberOrStringOrBig
+         * @param {String|DateTimeFormatter} [optionalParserOrFormat]
+         *
+         * @return {Date|undefined}
+         */
+
+    }, {
+        key: "optDate",
+        value: function optDate(numberOrStringOrBig, optionalParserOrFormat) {
+            var date = Utility.optDateTime(numberOrStringOrBig, optionalParserOrFormat);
+
+            if (!date) {
+                return undefined;
+            }
+
+            return (0, _jsJoda.convert)(date);
+        }
+
+        /**
+         *
+         * @param {String|ZoneOffset|undefined} value
+         * @return {ZoneOffset}
+         */
+
+    }, {
+        key: "toTimeZoneOffset",
+        value: function toTimeZoneOffset(value) {
+            if (Utility.isNotExisting(value)) {
+                return _jsJoda.ZoneOffset.UTC;
+            } else if (Utility.isString(value)) {
+                return _jsJoda.ZoneOffset.of(value);
+            } else if (value instanceof _jsJoda.ZoneOffset) {
+                return value;
+            }
+
+            _errors.Errors.throwNotSure(value);
+        }
+
+        /**
+         * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} numberOrStringOrBig
+         * @param {String|DateTimeFormatter|ZoneOffset} [optionalDateFormatStringOrDateFormatter]
+         *
+         * @return {ZonedDateTime|undefined}
+         */
+
+    }, {
+        key: "optDateTime",
+        value: function optDateTime(numberOrStringOrBig, optionalDateFormatStringOrDateFormatter) {
+            if (!numberOrStringOrBig) {
+                return Utility.now().withZoneSameInstant(Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter));
+            }
+
+            if (Utility.isDate(numberOrStringOrBig)) {
+                return _jsJoda.LocalDateTime.from((0, _jsJoda.nativeJs)(numberOrStringOrBig)).atZone(Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter));
+            }
+
+            if (Utility.isString(numberOrStringOrBig)) {
+                return _jsJoda.ZonedDateTime.parse(numberOrStringOrBig, Utility.toDateTimeFormatter(optionalDateFormatStringOrDateFormatter));
+            }
+
+            if (Utility.isTemporal(numberOrStringOrBig)) {
+                /** @type {ZoneOffset} */
+                var zone = numberOrStringOrBig.query(_jsJoda.TemporalQueries.zone());
+
+                if (!zone) {
+                    zone = Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter);
+                }
+
+                if (numberOrStringOrBig instanceof _jsJoda.ZonedDateTime) {
+                    return numberOrStringOrBig;
+                } else if (numberOrStringOrBig instanceof _jsJoda.Instant) {
+                    return _jsJoda.ZonedDateTime.ofInstant(numberOrStringOrBig, zone);
+                }
+
+                /** @type {LocalTime} */
+                var localTime = numberOrStringOrBig.query(_jsJoda.TemporalQueries.localTime());
+                /** @type {LocalDate} */
+                var localDate = numberOrStringOrBig.query(_jsJoda.TemporalQueries.localDate());
+
+                if (!localTime) {
+                    localTime = _jsJoda.LocalTime.now(zone).toLocalTime();
+                }
+
+                if (!localDate) {
+                    localDate = _jsJoda.LocalDate.now(zone);
+                }
+
+                return localTime.atDate(localDate).atZone(zone);
+            }
+        }
+
+        /**
+         *
+         * This is copied from https://js-joda.github.io/js-joda/esdoc/class/src/format/DateTimeFormatter.js~DateTimeFormatter.html
+         *
+         *  |Symbol  |Meaning                     |Presentation      |Examples
+         *  |--------|----------------------------|------------------|----------------------------------------------------
+         *  | G      | era                        | number/text      | 1; 01; AD; Anno Domini
+         *  | y      | year                       | year             | 2004; 04
+         *  | D      | day-of-year                | number           | 189
+         *  | M      | month-of-year              | number/text      | 7; 07; Jul; July; J
+         *  | d      | day-of-month               | number           | 10
+         *  |        |                            |                  |
+         *  | Q      | quarter-of-year            | number/text      | 3; 03; Q3
+         *  | Y      | week-based-year            | year             | 1996; 96
+         *  | w      | week-of-year               | number           | 27
+         *  | W      | week-of-month              | number           | 27
+         *  | e      | localized day-of-week      | number           | 2; Tue; Tuesday; T
+         *  | E      | day-of-week                | number/text      | 2; Tue; Tuesday; T
+         *  | F      | week-of-month              | number           | 3
+         *  |        |                            |                  |
+         *  | a      | am-pm-of-day               | text             | PM
+         *  | h      | clock-hour-of-am-pm (1-12) | number           | 12
+         *  | K      | hour-of-am-pm (0-11)       | number           | 0
+         *  | k      | clock-hour-of-am-pm (1-24) | number           | 0
+         *  |        |                            |                  |
+         *  | H      | hour-of-day (0-23)         | number           | 0
+         *  | m      | minute-of-hour             | number           | 30
+         *  | s      | second-of-minute           | number           | 55
+         *  | S      | fraction-of-second         | fraction         | 978
+         *  | A      | milli-of-day               | number           | 1234
+         *  | n      | nano-of-second             | number           | 987654321
+         *  | N      | nano-of-day                | number           | 1234000000
+         *  |        |                            |                  |
+         *  | V      | time-zone ID               | zone-id          | America/Los_Angeles; Z; -08:30
+         *  | z      | time-zone name             | zone-name        | Pacific Standard Time; PST
+         *  | X      | zone-offset 'Z' for zero   | offset-X         | Z; -08; -0830; -08:30; -083015; -08:30:15;
+         *  | x      | zone-offset                | offset-x         | +0000; -08; -0830; -08:30; -083015; -08:30:15;
+         *  | Z      | zone-offset                | offset-Z         | +0000; -0800; -08:00;
+         *  |        |                            |                  |
+         *  | p      | pad next                   | pad modifier     | 1
+         *  |        |                            |                  |
+         *  | '      | escape for text            | delimiter        |
+         *  | ''     | single quote               | literal          | '
+         *  | [      | optional section start     |                  |
+         *  | ]      | optional section end       |                  |
+         *  | {}     | reserved for future use    |                  |
+         *
+         * @param {String|DateTimeFormatter|null} [stringOrFormatter]
+         * @throws {TypeError} if not sure what to do.
+         * @return {DateTimeFormatter}
+         */
+
+    }, {
+        key: "toDateTimeFormatter",
+        value: function toDateTimeFormatter(stringOrFormatter) {
+            if (Utility.isNotExisting(stringOrFormatter)) {
+                return _jsJoda.DateTimeFormatter.ISO_ZONED_DATE_TIME;
+            } else if (Utility.isString(stringOrFormatter)) {
+                _Preconditions2.default.shouldNotBeBlank(stringOrFormatter);
+
+                return _jsJoda.DateTimeFormatter.ofPattern(stringOrFormatter);
+            }
+
+            _errors.Errors.throwNotSure(stringOrFormatter);
+        }
+
+        /**
+         *
+         * This is copied from https://js-joda.github.io/js-joda/esdoc/class/src/format/DateTimeFormatter.js~DateTimeFormatter.html
+         *
+         *  |Symbol  |Meaning                     |Presentation      |Examples
+         *  |--------|----------------------------|------------------|----------------------------------------------------
+         *  | G      | era                        | number/text      | 1; 01; AD; Anno Domini
+         *  | y      | year                       | year             | 2004; 04
+         *  | D      | day-of-year                | number           | 189
+         *  | M      | month-of-year              | number/text      | 7; 07; Jul; July; J
+         *  | d      | day-of-month               | number           | 10
+         *  |        |                            |                  |
+         *  | Q      | quarter-of-year            | number/text      | 3; 03; Q3
+         *  | Y      | week-based-year            | year             | 1996; 96
+         *  | w      | week-of-year               | number           | 27
+         *  | W      | week-of-month              | number           | 27
+         *  | e      | localized day-of-week      | number           | 2; Tue; Tuesday; T
+         *  | E      | day-of-week                | number/text      | 2; Tue; Tuesday; T
+         *  | F      | week-of-month              | number           | 3
+         *  |        |                            |                  |
+         *  | a      | am-pm-of-day               | text             | PM
+         *  | h      | clock-hour-of-am-pm (1-12) | number           | 12
+         *  | K      | hour-of-am-pm (0-11)       | number           | 0
+         *  | k      | clock-hour-of-am-pm (1-24) | number           | 0
+         *  |        |                            |                  |
+         *  | H      | hour-of-day (0-23)         | number           | 0
+         *  | m      | minute-of-hour             | number           | 30
+         *  | s      | second-of-minute           | number           | 55
+         *  | S      | fraction-of-second         | fraction         | 978
+         *  | A      | milli-of-day               | number           | 1234
+         *  | n      | nano-of-second             | number           | 987654321
+         *  | N      | nano-of-day                | number           | 1234000000
+         *  |        |                            |                  |
+         *  | V      | time-zone ID               | zone-id          | America/Los_Angeles; Z; -08:30
+         *  | z      | time-zone name             | zone-name        | Pacific Standard Time; PST
+         *  | X      | zone-offset 'Z' for zero   | offset-X         | Z; -08; -0830; -08:30; -083015; -08:30:15;
+         *  | x      | zone-offset                | offset-x         | +0000; -08; -0830; -08:30; -083015; -08:30:15;
+         *  | Z      | zone-offset                | offset-Z         | +0000; -0800; -08:00;
+         *  |        |                            |                  |
+         *  | p      | pad next                   | pad modifier     | 1
+         *  |        |                            |                  |
+         *  | '      | escape for text            | delimiter        |
+         *  | ''     | single quote               | literal          | '
+         *  | [      | optional section start     |                  |
+         *  | ]      | optional section end       |                  |
+         *  | {}     | reserved for future use    |                  |
+         *
+         * @param {Temporal|LocalDateTime|ZonedDateTime|Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} [value]
+         * @param {String|DateTimeFormatter} [optionalDateFormatStringOrDateFormatter]
+         * @return {ZonedDateTime}
+         */
+
+    }, {
+        key: "toDateTime",
+        value: function toDateTime(value, optionalDateFormatStringOrDateFormatter) {
+            var dateTime = Utility.optDateTime(value, optionalDateFormatStringOrDateFormatter);
+
+            if (dateTime) {
+                return dateTime;
+            }
+
+            _errors.Errors.throwNotSure(value);
+        }
+
+        /**
+         *
+         * @return {ZonedDateTime}
+         */
+
+    }, {
+        key: "now",
+        value: function now() {
+            return _jsJoda.ZonedDateTime.now();
         }
 
         /**
@@ -1189,6 +1626,28 @@ var Utility = function () {
             }
 
             return object;
+        }
+
+        /**
+         *
+         * @param {Class} clazz
+         * @return {String|undefined}
+         */
+
+    }, {
+        key: "optClassName",
+        value: function optClassName(clazz) {
+            if (!clazz) {
+                return undefined;
+            }
+
+            if (Utility.isClass(clazz)) {
+                return clazz.toString() || clazz.constructor.name;
+            } else if (Utility.isInstance(clazz)) {
+                return Utility.optClassName(clazz.toClass());
+            }
+
+            _errors.Errors.throwNotSure(clazz);
         }
     }]);
 

@@ -29,8 +29,16 @@ var InlineNotificationTemplate = function (_NotificationTemplate) {
 
     _createClass(InlineNotificationTemplate, [{
         key: 'applyTemplate',
+
+
+        /**
+         *
+         * @param {NotificationBuilder} builder
+         * @param {*|Object} data
+         * @return {NotificationBuilder}
+         */
         value: function applyTemplate(builder, data) {
-            builder.mergeIntoPayload(data);
+            return builder.mergeIntoPayload(data);
         }
     }]);
 

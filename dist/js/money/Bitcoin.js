@@ -144,7 +144,7 @@ var Bitcoin = function (_Currency) {
      * @returns {Class<Bitcoin>}
      */
     value: function toClass() {
-      return Bitcoin;
+      return this;
     }
 
     /**

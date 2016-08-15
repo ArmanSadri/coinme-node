@@ -44,10 +44,14 @@ var CoreObject = function (_Ember$Object) {
     function CoreObject(options) {
         _classCallCheck(this, CoreObject);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).apply(this, arguments));
+        if (_Utility2.default.isNotExisting(options) || _Utility2.default.isObject(options)) {
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).apply(this, arguments));
 
-        _lodash2.default.merge(_this, options);
-        return _this;
+            _lodash2.default.merge(_this, options);
+        } else {
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).call(this, {}));
+        }
+        return _possibleConstructorReturn(_this);
     }
 
     /**
@@ -97,6 +101,13 @@ var CoreObject = function (_Ember$Object) {
         key: "toClass",
         value: function toClass() {
             return this.constructor;
+        }
+    }, {
+        key: "toJson",
+        value: function toJson(options) {
+            return _lodash2.default.assign({
+                _class: this.constructor.name
+            }, options || {});
         }
 
         /**

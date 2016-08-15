@@ -24,6 +24,8 @@ var _AbstractError2 = _interopRequireDefault(_AbstractError);
 
 var _errors = require("./errors");
 
+var _jsJoda = require("js-joda");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -273,7 +275,7 @@ var Preconditions = function () {
     }, {
         key: "shouldBeClass",
         value: function shouldBeClass(actualClass, requiredClassOrMessage, message) {
-            Preconditions.shouldBeDefined(actualClass, 'object must be defined');
+            Preconditions.shouldBeDefined(actualClass, message || 'object must be defined');
 
             var requiredClass = void 0;
 
@@ -290,14 +292,47 @@ var Preconditions = function () {
             }
 
             if (!_CoreObject2.default.isClass(requiredClass)) {
-                Preconditions.fail(_CoreObject2.default, requiredClass, 'Class not a CoreObject class');
+                Preconditions.fail(_CoreObject2.default, requiredClass, message || 'Class not a CoreObject class');
             }
 
             if (!requiredClass.isClass(actualClass)) {
-                Preconditions.fail(actualClass, requiredClass, 'Class not a ' + requiredClass + ' class');
+                Preconditions.fail(requiredClass, actualClass, message || "Class was of the wrong type.");
             }
 
             return actualClass;
+        }
+
+        /**
+         *
+         * @param value
+         * @param message
+         * @return {*}
+         */
+
+    }, {
+        key: "shouldBeDateTime",
+        value: function shouldBeDateTime(value, message) {
+            Preconditions.shouldBeType('temporal', value, message);
+            Preconditions.shouldBe(function () {
+                return value instanceof _jsJoda.ZonedDateTime;
+            }, _jsJoda.ZonedDateTime, value, message || 'Must be ZonedDateTime');
+
+            return value;
+        }
+
+        /**
+         *
+         * @param {Temporal|ZonedDateTime|Instant} value
+         * @param {String} [message]
+         * @return {*}
+         */
+
+    }, {
+        key: "shouldBeTemporal",
+        value: function shouldBeTemporal(value, message) {
+            Preconditions.shouldBeType('temporal', value, message || 'must be temporal');
+
+            return value;
         }
 
         /**

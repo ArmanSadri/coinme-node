@@ -56,7 +56,7 @@ var USD = function (_Currency) {
     }, {
         key: "toClass",
         value: function toClass() {
-            return USD;
+            return this;
         }
 
         //region Detection

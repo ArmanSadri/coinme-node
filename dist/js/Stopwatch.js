@@ -27,13 +27,17 @@ var _Preconditions = require("./Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
+var _Ticker = require("./Ticker");
+
+var _Ticker2 = _interopRequireDefault(_Ticker);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var MILLISECONDS = _TimeUnit2.default.MILLISECONDS;
 var MICROSECONDS = _TimeUnit2.default.MICROSECONDS;
@@ -43,53 +47,7 @@ var NANOSECONDS = _TimeUnit2.default.NANOSECONDS;
  *
  * @type {Ticker}
  */
-var SYSTEM_TICKER = null;
-
-var Ticker = function () {
-
-    /**
-     * Constructor for use by subclasses.
-     */
-
-    function Ticker(options) {
-        _classCallCheck(this, Ticker);
-    }
-
-    /**
-     * Returns the number of nanoseconds elapsed since this ticker's fixed
-     * point of reference.
-     *
-     * @return {Number} nanoseconds
-     */
-
-
-    _createClass(Ticker, [{
-        key: "read",
-        value: function read() {
-            var time = process.hrtime();
-            var timeInSeconds = time[0];
-            var timeInNanos = time[1];
-
-            return _TimeUnit2.default.SECONDS.toNanos(timeInSeconds) + timeInNanos;
-        }
-
-        /**
-         * A ticker that reads the current time using {@link System#nanoTime}.
-         *
-         * @return {Ticker}
-         */
-
-    }], [{
-        key: "systemTicker",
-        value: function systemTicker() {
-            return SYSTEM_TICKER;
-        }
-    }]);
-
-    return Ticker;
-}();
-
-SYSTEM_TICKER = new Ticker();
+var SYSTEM_TICKER = _Ticker2.default.systemTicker();
 
 var Stopwatch = function (_CoreObject) {
     _inherits(Stopwatch, _CoreObject);
@@ -338,7 +296,7 @@ var Stopwatch = function (_CoreObject) {
     return Stopwatch;
 }(_CoreObject3.default);
 
-exports.Ticker = Ticker;
+exports.Ticker = _Ticker2.default;
 exports.Stopwatch = Stopwatch;
 exports.default = Stopwatch;
 //# sourceMappingURL=Stopwatch.js.map

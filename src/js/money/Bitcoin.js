@@ -111,7 +111,7 @@ class Bitcoin extends Currency {
      * @returns {Class<Bitcoin>}
      */
     static toClass() {
-        return Bitcoin;
+        return this;
     }
 
     /**

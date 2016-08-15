@@ -2,8 +2,8 @@
 
 import Ember from "./Ember";
 import Lodash from "lodash";
-import Preconditions from './Preconditions';
-import Utility from './Utility';
+import Preconditions from "./Preconditions";
+import Utility from "./Utility";
 
 /**
  * This is the base class for all classes in our architecture.
@@ -15,9 +15,13 @@ import Utility from './Utility';
 export default class CoreObject extends Ember.Object {
 
     constructor(options) {
-        super(...arguments);
+        if (Utility.isNotExisting(options) || Utility.isObject(options)) {
+            super(...arguments);
 
-        Lodash.merge(this, options);
+            Lodash.merge(this, options);
+        } else {
+            super({});
+        }
     }
 
     /**
@@ -54,6 +58,12 @@ export default class CoreObject extends Ember.Object {
      */
     toClass() {
         return this.constructor;
+    }
+
+    toJson(options) {
+        return Lodash.assign({
+            _class: this.constructor.name
+        }, options || {});
     }
 
     /**

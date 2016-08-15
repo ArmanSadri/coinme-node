@@ -69,7 +69,6 @@ var Money = function (_CoreObject) {
          * @private
          */
         _this._currency = _Currency2.default.shouldBeCurrency(currency);
-
         return _this;
     }
 
@@ -98,10 +97,10 @@ var Money = function (_CoreObject) {
     }, {
         key: "toJson",
         value: function toJson() {
-            return {
-                value: this.value,
+            return _get(Object.getPrototypeOf(Money.prototype), "toJson", this).call(this, {
+                value: _Utility2.default.optString(this.value),
                 currency: this.currency.toString()
-            };
+            });
         }
 
         /**
@@ -319,6 +318,11 @@ var Money = function (_CoreObject) {
                 value: _Currency2.default.toValueOrFail(valueOrMoney),
                 currency: defaultCurrency
             });
+        }
+    }, {
+        key: "optValue",
+        value: function optValue(money) {
+            return _Currency2.default.optValue(money);
         }
 
         /**

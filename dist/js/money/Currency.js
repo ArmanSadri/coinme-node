@@ -139,7 +139,7 @@ var Currency = function (_CoreObject) {
     }, {
         key: "toString",
         value: function toString() {
-            return this.constructor.name;
+            return 'Currency';
         }
 
         // /**
@@ -245,29 +245,34 @@ var Currency = function (_CoreObject) {
         /**
          *
          * @param {Money|String|Number} valueOrMoney
-         * @param {Currency} [defaultCurrency]
+         * @param {Class<Currency>|Currency} [defaultCurrency]
          * @returns {Money}
          */
 
     }, {
         key: "toMoney",
         value: function toMoney(valueOrMoney, defaultCurrency) {
+            if (valueOrMoney instanceof _Money2.default) {
+                return valueOrMoney;
+            }
+
             var value = Currency.toValueOrFail(valueOrMoney);
             var currency = Currency.optCurrency(valueOrMoney) || Currency.optCurrency(defaultCurrency);
 
             if (!currency) {
-                currency = this;
+                currency = this.getChildCurrencyTypeOrFail();
             }
 
             Currency.shouldBeCurrency(currency);
 
-            if (Object.getPrototypeOf(currency) === Currency) {
-                throw new Error('Cannot have myself as a currency. Must use a subclass, like Bitcoin');
+            if (currency === Currency) {
+                // if (Object.getPrototypeOf(currency) === Currency) {
+                throw new Error("Cannot have myself as a currency. Must use a subclass, like Bitcoin or USD. This is usually because I do Currency.toMoney() instead of Bitcoin.toMoney()");
             }
 
             return new _Money2.default({
                 value: value,
-                currency: this
+                currency: currency
             });
         }
 
@@ -302,9 +307,13 @@ var Currency = function (_CoreObject) {
             } else if (_Money2.default.isInstance(objectOrCurrency)) {
                 return objectOrCurrency.currency;
             } else if (_Utility2.default.isString(objectOrCurrency)) {
-                var string = objectOrCurrency.toLowerCase();
+                // let string = objectOrCurrency.toLowerCase();
 
-                return this.types[string];
+                if (_Utility2.default.isNumeric(objectOrCurrency)) {
+                    return undefined;
+                }
+
+                throw new Error("Not sure what to do with " + objectOrCurrency);
             }
 
             return undefined;
@@ -358,6 +367,26 @@ var Currency = function (_CoreObject) {
     }, {
         key: "toValueOrFail",
         value: function toValueOrFail(numberOrMoney) {
+            var value = this.optValue(numberOrMoney);
+
+            if (value) {
+                return value;
+            } else {
+                _Preconditions2.default.fail('Number|Currency', _Utility2.default.typeOf(numberOrMoney), "This method fails with the wrong type. You provided " + numberOrMoney + " (type: " + _Utility2.default.typeOf(numberOrMoney) + ")");
+            }
+        }
+
+        /**
+         * Will return undefined if it cannot figure out what to do.
+         * Defaults to Zero.
+         *
+         * @param numberOrMoney
+         * @return {Big|BigJsLibrary.BigJS|undefined}
+         */
+
+    }, {
+        key: "optValue",
+        value: function optValue(numberOrMoney) {
             if (_Utility2.default.isNullOrUndefined(numberOrMoney)) {
                 return new _big2.default(0);
             } else if (_Money2.default.isInstance(numberOrMoney)) {
@@ -369,13 +398,8 @@ var Currency = function (_CoreObject) {
             } else if (numberOrMoney instanceof _big2.default) {
                 return numberOrMoney;
             } else {
-                _Preconditions2.default.fail('Number|Currency', _Utility2.default.typeOf(numberOrMoney), 'This method fails with the wrong type.');
+                return undefined;
             }
-        }
-    }, {
-        key: "toClass",
-        value: function toClass() {
-            return this;
         }
     }]);
 

@@ -5,6 +5,7 @@ import Lodash from "lodash/index";
 import CoreObject from "./CoreObject";
 import AbstractError from "./errors/AbstractError";
 import {Errors, PreconditionsError} from "./errors";
+import {ZonedDateTime} from 'js-joda';
 
 // class PreconditionsError extends AbstractError {
 //
@@ -210,7 +211,7 @@ export default class Preconditions {
      * @param {String} [message]
      */
     static shouldBeClass(actualClass, requiredClassOrMessage, message) {
-        Preconditions.shouldBeDefined(actualClass, 'object must be defined');
+        Preconditions.shouldBeDefined(actualClass, message || 'object must be defined');
 
         let requiredClass;
         
@@ -227,14 +228,39 @@ export default class Preconditions {
         }
 
         if (!CoreObject.isClass(requiredClass)) {
-            Preconditions.fail(CoreObject, requiredClass, 'Class not a CoreObject class');
+            Preconditions.fail(CoreObject, requiredClass, message || 'Class not a CoreObject class');
         }
 
         if (!requiredClass.isClass(actualClass)) {
-            Preconditions.fail(actualClass, requiredClass, 'Class not a ' + requiredClass + ' class');
+            Preconditions.fail(requiredClass, actualClass, message || `Class was of the wrong type.`);
         }
 
         return actualClass;
+    }
+
+    /**
+     *
+     * @param value
+     * @param message
+     * @return {*}
+     */
+    static shouldBeDateTime(value, message) {
+        Preconditions.shouldBeType('temporal', value, message);
+        Preconditions.shouldBe(() => { return value instanceof ZonedDateTime; }, ZonedDateTime, value, message || 'Must be ZonedDateTime');
+
+        return value;
+    }
+
+    /**
+     *
+     * @param {Temporal|ZonedDateTime|Instant} value
+     * @param {String} [message]
+     * @return {*}
+     */
+    static shouldBeTemporal(value, message) {
+        Preconditions.shouldBeType('temporal', value, message || 'must be temporal');
+
+        return value;
     }
 
     /**

@@ -322,7 +322,6 @@ var SmoothRateLimiter = function (_RateLimiter) {
          * @private
          */
         _this2._nextFreeTicketMicros = 0; // could be either in the past or future
-
         return _this2;
     }
 

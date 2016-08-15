@@ -488,6 +488,17 @@ class TimeUnit extends CoreObject {
         this.spec = spec;
     }
 
+    /**
+     * @returns {string}
+     */
+    toString() {
+        return this.spec.shortName;
+    }
+
+    valueOf() {
+        return this.toString();
+    }
+
     //region public methods
     /**
      *
@@ -503,13 +514,6 @@ class TimeUnit extends CoreObject {
      */
     get longName() {
         return this.spec.longName;
-    }
-
-    /**
-     * @returns {string}
-     */
-    toString() {
-        return this.spec.shortName;
     }
 
     /**
@@ -631,6 +635,7 @@ class TimeUnit extends CoreObject {
         return timeUnit.toString() === this.toString();
     }
     //endregion
+
 }
 //endregion
 

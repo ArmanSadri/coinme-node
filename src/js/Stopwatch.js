@@ -6,6 +6,7 @@ import CoreObject from './CoreObject';
 import Logger from "winston";
 import Preconditions from "./Preconditions";
 import Ticker from './Ticker';
+import NanoTimer from 'nanotimer';
 
 const MILLISECONDS = TimeUnit.MILLISECONDS;
 const MICROSECONDS = TimeUnit.MICROSECONDS;
@@ -26,15 +27,17 @@ class Stopwatch extends CoreObject {
      * @param {boolean} [options.start]
      */
     constructor(options) {
+        let shouldStart = Utility.take(options, 'start', {
+            defaultValue: true
+        });
+
+        let ticker = Utility.take(options, 'ticker') || SYSTEM_TICKER;
+
         super(...arguments);
 
         // options = options || {};
 
-        this._ticker = Utility.take(options, 'ticker') || SYSTEM_TICKER;
-
-        let shouldStart = Utility.take(options, 'start', {
-            defaultValue: true
-        });
+        this._ticker = ticker;
 
         /**
          * @type {Number} nanoseconds

@@ -37,6 +37,10 @@ class Adapter extends CoreObject {
         return instanceOrClass;
     }
 
+    /**
+     *
+     * @return {Function}
+     */
     toFunction() {
         let self = this;
 

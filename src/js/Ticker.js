@@ -1,6 +1,8 @@
 'use strict';
 
 import TimeUnit from "./TimeUnit";
+import Promise from 'bluebird';
+import NanoTimer from 'nanotimer';
 
 /**
  *
@@ -14,7 +16,15 @@ class Ticker {
      * Constructor for use by subclasses.
      */
     constructor(options) {
+        this._timer = new NanoTimer();
+    }
 
+    /**
+     *
+     * @return {NanoTimer}
+     */
+    get timer() {
+        return this._timer;
     }
 
     /**
@@ -29,6 +39,29 @@ class Ticker {
         let timeInNanos = time[1];
 
         return TimeUnit.SECONDS.toNanos(timeInSeconds) + timeInNanos;
+    }
+
+    /**
+     * Returns a promise that will finish in the given time.
+     *
+     * @param {Number} value
+     * @param {TimeUnit} timeUnit
+     * @return {Promise}
+     */
+    wait(value, timeUnit) {
+        let scope = this;
+
+        console.log('wait!', value, timeUnit);
+        return new Promise((resolve, reject) => {
+            let numberOfNanos = TimeUnit.NANOSECONDS.convert(value, timeUnit);
+
+            //.setTimeout(task, args, timeout, [callback])
+            scope.timer.setTimeout(function() {
+                console.log('waited!', value, timeUnit);
+
+                resolve();
+            }, null, numberOfNanos + 'n');
+        });
     }
 
     /**
