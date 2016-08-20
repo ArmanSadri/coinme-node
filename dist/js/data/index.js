@@ -1,9 +1,9 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-exports.DelegatedConverter = exports.Converter = exports.Adapter = exports.Conversion = exports.UserBuilder = exports.User = undefined;
+exports.DelegatedConverter = exports.Converter = exports.Conversion = exports.Adapter = exports.UserBuilder = exports.User = undefined;
 
 var _User = require("./User");
 
@@ -33,8 +33,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.User = _User2.default;
 exports.UserBuilder = _UserBuilder2.default;
-exports.Conversion = _Conversion2.default;
 exports.Adapter = _Adapter2.default;
+exports.Conversion = _Conversion2.default;
 exports.Converter = _Converter2.default;
 exports.DelegatedConverter = _DelegatedConverter2.default;
+exports.default = {
+    User: _User2.default,
+    UserBuilder: _UserBuilder2.default,
+    Adapter: _Adapter2.default,
+    Conversion: _Conversion2.default,
+    Converter: _Converter2.default,
+    DelegatedConverter: _DelegatedConverter2.default
+};
 //# sourceMappingURL=index.js.map

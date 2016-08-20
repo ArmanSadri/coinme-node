@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.NotImplementedError = exports.PreconditionsError = exports.AbstractError = exports.HttpError = exports.Errors = undefined;
 
@@ -32,4 +32,11 @@ exports.HttpError = _HttpError2.default;
 exports.AbstractError = _AbstractError2.default;
 exports.PreconditionsError = _PreconditionsError2.default;
 exports.NotImplementedError = _NotImplementedError2.default;
+exports.default = {
+    Errors: _Errors2.default,
+    HttpError: _HttpError2.default,
+    AbstractError: _AbstractError2.default,
+    PreconditionsError: _PreconditionsError2.default,
+    NotImplementedError: _NotImplementedError2.default
+};
 //# sourceMappingURL=index.js.map

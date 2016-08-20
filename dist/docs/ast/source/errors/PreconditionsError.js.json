@@ -2527,28 +2527,67 @@
       "leadingComments": []
     },
     {
-      "type": "Identifier",
-      "declaration": {
-        "type": "Identifier",
-        "name": "PreconditionsError",
-        "range": [
-          1561,
-          1579
-        ],
-        "loc": {
-          "start": {
-            "line": 63,
-            "column": 15
+      "type": "ExportNamedDeclaration",
+      "declaration": null,
+      "specifiers": [
+        {
+          "type": "ExportSpecifier",
+          "exported": {
+            "type": "Identifier",
+            "name": "PreconditionsError",
+            "range": [
+              1554,
+              1572
+            ],
+            "loc": {
+              "start": {
+                "line": 63,
+                "column": 8
+              },
+              "end": {
+                "line": 63,
+                "column": 26
+              }
+            }
           },
-          "end": {
-            "line": 63,
-            "column": 33
+          "local": {
+            "type": "Identifier",
+            "name": "PreconditionsError",
+            "range": [
+              1554,
+              1572
+            ],
+            "loc": {
+              "start": {
+                "line": 63,
+                "column": 8
+              },
+              "end": {
+                "line": 63,
+                "column": 26
+              }
+            }
+          },
+          "range": [
+            1554,
+            1572
+          ],
+          "loc": {
+            "start": {
+              "line": 63,
+              "column": 8
+            },
+            "end": {
+              "line": 63,
+              "column": 26
+            }
           }
         }
-      },
+      ],
+      "source": null,
       "range": [
         1546,
-        1580
+        1574
       ],
       "loc": {
         "start": {
@@ -2557,11 +2596,228 @@
         },
         "end": {
           "line": 63,
+          "column": 28
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Line",
+          "value": " /**",
+          "range": [
+            1294,
+            1300
+          ],
+          "loc": {
+            "start": {
+              "line": 52,
+              "column": 0
+            },
+            "end": {
+              "line": 52,
+              "column": 6
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": "  *",
+          "range": [
+            1301,
+            1306
+          ],
+          "loc": {
+            "start": {
+              "line": 53,
+              "column": 0
+            },
+            "end": {
+              "line": 53,
+              "column": 5
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": "",
+          "range": [
+            1307,
+            1309
+          ],
+          "loc": {
+            "start": {
+              "line": 54,
+              "column": 0
+            },
+            "end": {
+              "line": 54,
+              "column": 2
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": "  */",
+          "range": [
+            1310,
+            1316
+          ],
+          "loc": {
+            "start": {
+              "line": 55,
+              "column": 0
+            },
+            "end": {
+              "line": 55,
+              "column": 6
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " function PreconditionsError(expectedValue, actualValue, message, optionalCause) {",
+          "range": [
+            1317,
+            1401
+          ],
+          "loc": {
+            "start": {
+              "line": 56,
+              "column": 0
+            },
+            "end": {
+              "line": 56,
+              "column": 84
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": "",
+          "range": [
+            1402,
+            1404
+          ],
+          "loc": {
+            "start": {
+              "line": 57,
+              "column": 0
+            },
+            "end": {
+              "line": 57,
+              "column": 2
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " }",
+          "range": [
+            1405,
+            1409
+          ],
+          "loc": {
+            "start": {
+              "line": 58,
+              "column": 0
+            },
+            "end": {
+              "line": 58,
+              "column": 4
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": "",
+          "range": [
+            1410,
+            1412
+          ],
+          "loc": {
+            "start": {
+              "line": 59,
+              "column": 0
+            },
+            "end": {
+              "line": 59,
+              "column": 2
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " PreconditionsError.prototype = Object.create(Error.prototype);",
+          "range": [
+            1413,
+            1478
+          ],
+          "loc": {
+            "start": {
+              "line": 60,
+              "column": 0
+            },
+            "end": {
+              "line": 60,
+              "column": 65
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " PreconditionsError.prototype.constructor = PreconditionsError;",
+          "range": [
+            1479,
+            1544
+          ],
+          "loc": {
+            "start": {
+              "line": 61,
+              "column": 0
+            },
+            "end": {
+              "line": 61,
+              "column": 65
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "PreconditionsError",
+        "range": [
+          1590,
+          1608
+        ],
+        "loc": {
+          "start": {
+            "line": 64,
+            "column": 15
+          },
+          "end": {
+            "line": 64,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        1575,
+        1609
+      ],
+      "loc": {
+        "start": {
+          "line": 64,
+          "column": 0
+        },
+        "end": {
+          "line": 64,
           "column": 34
         }
       },
-      "leadingComments": [],
       "name": "_",
+      "leadingComments": [],
       "trailingComments": []
     },
     {
@@ -5127,16 +5383,16 @@
         "leadingComments": []
       },
       "range": [
-        1546,
-        1580
+        1575,
+        1609
       ],
       "loc": {
         "start": {
-          "line": 63,
+          "line": 64,
           "column": 0
         },
         "end": {
-          "line": 63,
+          "line": 64,
           "column": 34
         }
       },
@@ -5146,7 +5402,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1580
+    1609
   ],
   "loc": {
     "start": {
@@ -5154,7 +5410,7 @@
       "column": 0
     },
     "end": {
-      "line": 63,
+      "line": 64,
       "column": 34
     }
   },

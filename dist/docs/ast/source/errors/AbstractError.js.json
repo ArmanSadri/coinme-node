@@ -5762,28 +5762,67 @@
       "trailingComments": []
     },
     {
-      "type": "Identifier",
-      "declaration": {
-        "type": "Identifier",
-        "name": "AbstractError",
-        "range": [
-          2827,
-          2840
-        ],
-        "loc": {
-          "start": {
-            "line": 134,
-            "column": 15
+      "type": "ExportNamedDeclaration",
+      "declaration": null,
+      "specifiers": [
+        {
+          "type": "ExportSpecifier",
+          "exported": {
+            "type": "Identifier",
+            "name": "AbstractError",
+            "range": [
+              2820,
+              2833
+            ],
+            "loc": {
+              "start": {
+                "line": 134,
+                "column": 8
+              },
+              "end": {
+                "line": 134,
+                "column": 21
+              }
+            }
           },
-          "end": {
-            "line": 134,
-            "column": 28
+          "local": {
+            "type": "Identifier",
+            "name": "AbstractError",
+            "range": [
+              2820,
+              2833
+            ],
+            "loc": {
+              "start": {
+                "line": 134,
+                "column": 8
+              },
+              "end": {
+                "line": 134,
+                "column": 21
+              }
+            }
+          },
+          "range": [
+            2820,
+            2833
+          ],
+          "loc": {
+            "start": {
+              "line": 134,
+              "column": 8
+            },
+            "end": {
+              "line": 134,
+              "column": 21
+            }
           }
         }
-      },
+      ],
+      "source": null,
       "range": [
         2812,
-        2841
+        2835
       ],
       "loc": {
         "start": {
@@ -5792,6 +5831,41 @@
         },
         "end": {
           "line": 134,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "AbstractError",
+        "range": [
+          2851,
+          2864
+        ],
+        "loc": {
+          "start": {
+            "line": 135,
+            "column": 15
+          },
+          "end": {
+            "line": 135,
+            "column": 28
+          }
+        }
+      },
+      "range": [
+        2836,
+        2865
+      ],
+      "loc": {
+        "start": {
+          "line": 135,
+          "column": 0
+        },
+        "end": {
+          "line": 135,
           "column": 29
         }
       },
@@ -9906,16 +9980,16 @@
         "trailingComments": []
       },
       "range": [
-        2812,
-        2841
+        2836,
+        2865
       ],
       "loc": {
         "start": {
-          "line": 134,
+          "line": 135,
           "column": 0
         },
         "end": {
-          "line": 134,
+          "line": 135,
           "column": 29
         }
       },
@@ -9925,7 +9999,7 @@
   "sourceType": "module",
   "range": [
     0,
-    2841
+    2865
   ],
   "loc": {
     "start": {
@@ -9933,7 +10007,7 @@
       "column": 0
     },
     "end": {
-      "line": 134,
+      "line": 135,
       "column": 29
     }
   },

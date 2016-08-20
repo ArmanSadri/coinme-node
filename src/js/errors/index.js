@@ -11,3 +11,11 @@ export {HttpError};
 export {AbstractError};
 export {PreconditionsError};
 export {NotImplementedError};
+
+export default {
+    Errors: Errors,
+    HttpError: HttpError,
+    AbstractError: AbstractError,
+    PreconditionsError: PreconditionsError,
+    NotImplementedError: NotImplementedError
+}
