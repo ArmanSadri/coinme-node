@@ -131,4 +131,5 @@ class AbstractError extends ExtendableBuiltin(Error) {
     }
 }
 
+export {AbstractError};
 export default AbstractError;

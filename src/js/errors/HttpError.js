@@ -49,4 +49,5 @@ class HttpError extends AbstractError {
 
 }
 
+export {HttpError};
 export default HttpError;

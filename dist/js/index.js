@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Address = exports.Utility = exports.Preconditions = exports.Functions = exports.CoreObject = exports.Coinme = exports.Ember = exports.errors = exports.data = exports.slack = undefined;
 
@@ -57,5 +57,17 @@ exports.Functions = _Functions2.default;
 exports.Preconditions = _Preconditions2.default;
 exports.Utility = _Utility2.default;
 exports.Address = _Address2.default;
-exports.default = _Coinme2.default;
+exports.default = {
+    slack: _index4.default,
+    data: _index6.default,
+    errors: _index2.default,
+
+    Ember: _Ember2.default,
+    Coinme: _Coinme2.default,
+    CoreObject: _CoreObject2.default,
+    Functions: _Functions2.default,
+    Preconditions: _Preconditions2.default,
+    Utility: _Utility2.default,
+    Address: _Address2.default
+};
 //# sourceMappingURL=index.js.map

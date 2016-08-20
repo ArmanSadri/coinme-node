@@ -30,6 +30,5 @@ class NotImplementedError extends AbstractError {
 }
 
 export {NotImplementedError};
-
 export default NotImplementedError;
 

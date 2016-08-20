@@ -46,8 +46,8 @@
             "type": "Identifier",
             "name": "Adapter",
             "range": [
-              24,
-              31
+              22,
+              29
             ],
             "loc": {
               "start": {
@@ -61,8 +61,8 @@
             }
           },
           "range": [
-            24,
-            31
+            22,
+            29
           ],
           "loc": {
             "start": {
@@ -81,8 +81,8 @@
         "value": "../data",
         "raw": "'../data'",
         "range": [
-          37,
-          46
+          35,
+          44
         ],
         "loc": {
           "start": {
@@ -96,8 +96,8 @@
         }
       },
       "range": [
-        17,
-        47
+        15,
+        45
       ],
       "loc": {
         "start": {
@@ -119,8 +119,8 @@
             "type": "Identifier",
             "name": "Money",
             "range": [
-              56,
-              61
+              53,
+              58
             ],
             "loc": {
               "start": {
@@ -134,8 +134,8 @@
             }
           },
           "range": [
-            56,
-            61
+            53,
+            58
           ],
           "loc": {
             "start": {
@@ -154,8 +154,8 @@
         "value": "./Money",
         "raw": "'./Money'",
         "range": [
-          67,
-          76
+          64,
+          73
         ],
         "loc": {
           "start": {
@@ -169,8 +169,8 @@
         }
       },
       "range": [
-        49,
-        77
+        46,
+        74
       ],
       "loc": {
         "start": {
@@ -192,8 +192,8 @@
             "type": "Identifier",
             "name": "Currency",
             "range": [
-              86,
-              94
+              82,
+              90
             ],
             "loc": {
               "start": {
@@ -207,8 +207,8 @@
             }
           },
           "range": [
-            86,
-            94
+            82,
+            90
           ],
           "loc": {
             "start": {
@@ -227,8 +227,8 @@
         "value": "./Currency",
         "raw": "'./Currency'",
         "range": [
-          100,
-          112
+          96,
+          108
         ],
         "loc": {
           "start": {
@@ -242,8 +242,8 @@
         }
       },
       "range": [
-        79,
-        113
+        75,
+        109
       ],
       "loc": {
         "start": {
@@ -262,8 +262,8 @@
         "type": "Identifier",
         "name": "CurrencyAdapter",
         "range": [
-          123,
-          138
+          117,
+          132
         ],
         "loc": {
           "start": {
@@ -280,8 +280,8 @@
         "type": "Identifier",
         "name": "Adapter",
         "range": [
-          147,
-          154
+          141,
+          148
         ],
         "loc": {
           "start": {
@@ -303,8 +303,8 @@
               "type": "Identifier",
               "name": "supports",
               "range": [
-                285,
-                293
+                273,
+                281
               ],
               "loc": {
                 "start": {
@@ -325,8 +325,8 @@
                   "type": "Identifier",
                   "name": "instanceOrClass",
                   "range": [
-                    294,
-                    309
+                    282,
+                    297
                   ],
                   "loc": {
                     "start": {
@@ -352,8 +352,8 @@
                           "type": "Identifier",
                           "name": "money",
                           "range": [
-                            326,
-                            331
+                            313,
+                            318
                           ],
                           "loc": {
                             "start": {
@@ -375,8 +375,8 @@
                               "type": "Identifier",
                               "name": "Money",
                               "range": [
-                                334,
-                                339
+                                321,
+                                326
                               ],
                               "loc": {
                                 "start": {
@@ -393,8 +393,8 @@
                               "type": "Identifier",
                               "name": "isInstance",
                               "range": [
-                                340,
-                                350
+                                327,
+                                337
                               ],
                               "loc": {
                                 "start": {
@@ -408,8 +408,8 @@
                               }
                             },
                             "range": [
-                              334,
-                              350
+                              321,
+                              337
                             ],
                             "loc": {
                               "start": {
@@ -427,8 +427,8 @@
                               "type": "Identifier",
                               "name": "instanceOrClass",
                               "range": [
-                                351,
-                                366
+                                338,
+                                353
                               ],
                               "loc": {
                                 "start": {
@@ -443,8 +443,8 @@
                             }
                           ],
                           "range": [
-                            334,
-                            367
+                            321,
+                            354
                           ],
                           "loc": {
                             "start": {
@@ -458,8 +458,8 @@
                           }
                         },
                         "range": [
-                          326,
-                          367
+                          313,
+                          354
                         ],
                         "loc": {
                           "start": {
@@ -475,8 +475,8 @@
                     ],
                     "kind": "let",
                     "range": [
-                      322,
-                      368
+                      309,
+                      355
                     ],
                     "loc": {
                       "start": {
@@ -498,8 +498,8 @@
                           "type": "Identifier",
                           "name": "currency",
                           "range": [
-                            382,
-                            390
+                            368,
+                            376
                           ],
                           "loc": {
                             "start": {
@@ -521,8 +521,8 @@
                               "type": "Identifier",
                               "name": "Currency",
                               "range": [
-                                393,
-                                401
+                                379,
+                                387
                               ],
                               "loc": {
                                 "start": {
@@ -539,8 +539,8 @@
                               "type": "Identifier",
                               "name": "isInstanceOrClass",
                               "range": [
-                                402,
-                                419
+                                388,
+                                405
                               ],
                               "loc": {
                                 "start": {
@@ -554,8 +554,8 @@
                               }
                             },
                             "range": [
-                              393,
-                              419
+                              379,
+                              405
                             ],
                             "loc": {
                               "start": {
@@ -573,8 +573,8 @@
                               "type": "Identifier",
                               "name": "instanceOrClass",
                               "range": [
-                                420,
-                                435
+                                406,
+                                421
                               ],
                               "loc": {
                                 "start": {
@@ -589,8 +589,8 @@
                             }
                           ],
                           "range": [
-                            393,
-                            436
+                            379,
+                            422
                           ],
                           "loc": {
                             "start": {
@@ -604,8 +604,8 @@
                           }
                         },
                         "range": [
-                          382,
-                          436
+                          368,
+                          422
                         ],
                         "loc": {
                           "start": {
@@ -621,8 +621,8 @@
                     ],
                     "kind": "let",
                     "range": [
-                      378,
-                      437
+                      364,
+                      423
                     ],
                     "loc": {
                       "start": {
@@ -644,8 +644,8 @@
                         "type": "Identifier",
                         "name": "money",
                         "range": [
-                          456,
-                          461
+                          440,
+                          445
                         ],
                         "loc": {
                           "start": {
@@ -662,8 +662,8 @@
                         "type": "Identifier",
                         "name": "currency",
                         "range": [
-                          465,
-                          473
+                          449,
+                          457
                         ],
                         "loc": {
                           "start": {
@@ -677,8 +677,8 @@
                         }
                       },
                       "range": [
-                        456,
-                        473
+                        440,
+                        457
                       ],
                       "loc": {
                         "start": {
@@ -692,8 +692,8 @@
                       }
                     },
                     "range": [
-                      449,
-                      474
+                      433,
+                      458
                     ],
                     "loc": {
                       "start": {
@@ -708,8 +708,8 @@
                   }
                 ],
                 "range": [
-                  311,
-                  481
+                  299,
+                  464
                 ],
                 "loc": {
                   "start": {
@@ -725,8 +725,8 @@
               "generator": false,
               "expression": false,
               "range": [
-                293,
-                481
+                281,
+                464
               ],
               "loc": {
                 "start": {
@@ -742,8 +742,8 @@
             "kind": "method",
             "computed": false,
             "range": [
-              285,
-              481
+              273,
+              464
             ],
             "loc": {
               "start": {
@@ -758,10 +758,10 @@
             "leadingComments": [
               {
                 "type": "Block",
-                "value": "*\r\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\r\n     * @return {Boolean}\r\n     ",
+                "value": "*\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\n     * @return {Boolean}\n     ",
                 "range": [
-                  164,
-                  279
+                  156,
+                  268
                 ],
                 "loc": {
                   "start": {
@@ -778,10 +778,10 @@
             "trailingComments": [
               {
                 "type": "Block",
-                "value": "*\r\n     *\r\n     * @param {Money|Currency} instance\r\n     * @return {Currency}\r\n     ",
+                "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
                 "range": [
-                  489,
-                  577
+                  470,
+                  554
                 ],
                 "loc": {
                   "start": {
@@ -803,8 +803,8 @@
               "type": "Identifier",
               "name": "adapt",
               "range": [
-                583,
-                588
+                559,
+                564
               ],
               "loc": {
                 "start": {
@@ -825,8 +825,8 @@
                   "type": "Identifier",
                   "name": "instance",
                   "range": [
-                    589,
-                    597
+                    565,
+                    573
                   ],
                   "loc": {
                     "start": {
@@ -854,8 +854,8 @@
                           "type": "Identifier",
                           "name": "Currency",
                           "range": [
-                            617,
-                            625
+                            592,
+                            600
                           ],
                           "loc": {
                             "start": {
@@ -872,8 +872,8 @@
                           "type": "Identifier",
                           "name": "optCurrency",
                           "range": [
-                            626,
-                            637
+                            601,
+                            612
                           ],
                           "loc": {
                             "start": {
@@ -887,8 +887,8 @@
                           }
                         },
                         "range": [
-                          617,
-                          637
+                          592,
+                          612
                         ],
                         "loc": {
                           "start": {
@@ -906,8 +906,8 @@
                           "type": "Identifier",
                           "name": "instance",
                           "range": [
-                            638,
-                            646
+                            613,
+                            621
                           ],
                           "loc": {
                             "start": {
@@ -922,8 +922,8 @@
                         }
                       ],
                       "range": [
-                        617,
-                        647
+                        592,
+                        622
                       ],
                       "loc": {
                         "start": {
@@ -937,8 +937,8 @@
                       }
                     },
                     "range": [
-                      610,
-                      648
+                      585,
+                      623
                     ],
                     "loc": {
                       "start": {
@@ -953,8 +953,8 @@
                   }
                 ],
                 "range": [
-                  599,
-                  655
+                  575,
+                  629
                 ],
                 "loc": {
                   "start": {
@@ -970,8 +970,8 @@
               "generator": false,
               "expression": false,
               "range": [
-                588,
-                655
+                564,
+                629
               ],
               "loc": {
                 "start": {
@@ -987,8 +987,8 @@
             "kind": "method",
             "computed": false,
             "range": [
-              583,
-              655
+              559,
+              629
             ],
             "loc": {
               "start": {
@@ -1003,10 +1003,10 @@
             "leadingComments": [
               {
                 "type": "Block",
-                "value": "*\r\n     *\r\n     * @param {Money|Currency} instance\r\n     * @return {Currency}\r\n     ",
+                "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
                 "range": [
-                  489,
-                  577
+                  470,
+                  554
                 ],
                 "loc": {
                   "start": {
@@ -1024,8 +1024,8 @@
           }
         ],
         "range": [
-          155,
-          658
+          149,
+          631
         ],
         "loc": {
           "start": {
@@ -1039,8 +1039,8 @@
         }
       },
       "range": [
-        117,
-        658
+        111,
+        631
       ],
       "loc": {
         "start": {
@@ -1066,8 +1066,8 @@
             "type": "Identifier",
             "name": "CurrencyAdapter",
             "range": [
-              670,
-              685
+              641,
+              656
             ],
             "loc": {
               "start": {
@@ -1084,8 +1084,8 @@
             "type": "Identifier",
             "name": "CurrencyAdapter",
             "range": [
-              670,
-              685
+              641,
+              656
             ],
             "loc": {
               "start": {
@@ -1099,8 +1099,8 @@
             }
           },
           "range": [
-            670,
-            685
+            641,
+            656
           ],
           "loc": {
             "start": {
@@ -1116,8 +1116,8 @@
       ],
       "source": null,
       "range": [
-        662,
-        687
+        633,
+        658
       ],
       "loc": {
         "start": {
@@ -1136,8 +1136,8 @@
         "type": "Identifier",
         "name": "CurrencyAdapter",
         "range": [
-          704,
-          719
+          674,
+          689
         ],
         "loc": {
           "start": {
@@ -1151,8 +1151,8 @@
         }
       },
       "range": [
-        689,
-        720
+        659,
+        690
       ],
       "loc": {
         "start": {
@@ -1176,8 +1176,8 @@
           "type": "Identifier",
           "name": "CurrencyAdapter",
           "range": [
-            123,
-            138
+            117,
+            132
           ],
           "loc": {
             "start": {
@@ -1194,8 +1194,8 @@
           "type": "Identifier",
           "name": "Adapter",
           "range": [
-            147,
-            154
+            141,
+            148
           ],
           "loc": {
             "start": {
@@ -1217,8 +1217,8 @@
                 "type": "Identifier",
                 "name": "supports",
                 "range": [
-                  285,
-                  293
+                  273,
+                  281
                 ],
                 "loc": {
                   "start": {
@@ -1239,8 +1239,8 @@
                     "type": "Identifier",
                     "name": "instanceOrClass",
                     "range": [
-                      294,
-                      309
+                      282,
+                      297
                     ],
                     "loc": {
                       "start": {
@@ -1266,8 +1266,8 @@
                             "type": "Identifier",
                             "name": "money",
                             "range": [
-                              326,
-                              331
+                              313,
+                              318
                             ],
                             "loc": {
                               "start": {
@@ -1289,8 +1289,8 @@
                                 "type": "Identifier",
                                 "name": "Money",
                                 "range": [
-                                  334,
-                                  339
+                                  321,
+                                  326
                                 ],
                                 "loc": {
                                   "start": {
@@ -1307,8 +1307,8 @@
                                 "type": "Identifier",
                                 "name": "isInstance",
                                 "range": [
-                                  340,
-                                  350
+                                  327,
+                                  337
                                 ],
                                 "loc": {
                                   "start": {
@@ -1322,8 +1322,8 @@
                                 }
                               },
                               "range": [
-                                334,
-                                350
+                                321,
+                                337
                               ],
                               "loc": {
                                 "start": {
@@ -1341,8 +1341,8 @@
                                 "type": "Identifier",
                                 "name": "instanceOrClass",
                                 "range": [
-                                  351,
-                                  366
+                                  338,
+                                  353
                                 ],
                                 "loc": {
                                   "start": {
@@ -1357,8 +1357,8 @@
                               }
                             ],
                             "range": [
-                              334,
-                              367
+                              321,
+                              354
                             ],
                             "loc": {
                               "start": {
@@ -1372,8 +1372,8 @@
                             }
                           },
                           "range": [
-                            326,
-                            367
+                            313,
+                            354
                           ],
                           "loc": {
                             "start": {
@@ -1389,8 +1389,8 @@
                       ],
                       "kind": "let",
                       "range": [
-                        322,
-                        368
+                        309,
+                        355
                       ],
                       "loc": {
                         "start": {
@@ -1412,8 +1412,8 @@
                             "type": "Identifier",
                             "name": "currency",
                             "range": [
-                              382,
-                              390
+                              368,
+                              376
                             ],
                             "loc": {
                               "start": {
@@ -1435,8 +1435,8 @@
                                 "type": "Identifier",
                                 "name": "Currency",
                                 "range": [
-                                  393,
-                                  401
+                                  379,
+                                  387
                                 ],
                                 "loc": {
                                   "start": {
@@ -1453,8 +1453,8 @@
                                 "type": "Identifier",
                                 "name": "isInstanceOrClass",
                                 "range": [
-                                  402,
-                                  419
+                                  388,
+                                  405
                                 ],
                                 "loc": {
                                   "start": {
@@ -1468,8 +1468,8 @@
                                 }
                               },
                               "range": [
-                                393,
-                                419
+                                379,
+                                405
                               ],
                               "loc": {
                                 "start": {
@@ -1487,8 +1487,8 @@
                                 "type": "Identifier",
                                 "name": "instanceOrClass",
                                 "range": [
-                                  420,
-                                  435
+                                  406,
+                                  421
                                 ],
                                 "loc": {
                                   "start": {
@@ -1503,8 +1503,8 @@
                               }
                             ],
                             "range": [
-                              393,
-                              436
+                              379,
+                              422
                             ],
                             "loc": {
                               "start": {
@@ -1518,8 +1518,8 @@
                             }
                           },
                           "range": [
-                            382,
-                            436
+                            368,
+                            422
                           ],
                           "loc": {
                             "start": {
@@ -1535,8 +1535,8 @@
                       ],
                       "kind": "let",
                       "range": [
-                        378,
-                        437
+                        364,
+                        423
                       ],
                       "loc": {
                         "start": {
@@ -1558,8 +1558,8 @@
                           "type": "Identifier",
                           "name": "money",
                           "range": [
-                            456,
-                            461
+                            440,
+                            445
                           ],
                           "loc": {
                             "start": {
@@ -1576,8 +1576,8 @@
                           "type": "Identifier",
                           "name": "currency",
                           "range": [
-                            465,
-                            473
+                            449,
+                            457
                           ],
                           "loc": {
                             "start": {
@@ -1591,8 +1591,8 @@
                           }
                         },
                         "range": [
-                          456,
-                          473
+                          440,
+                          457
                         ],
                         "loc": {
                           "start": {
@@ -1606,8 +1606,8 @@
                         }
                       },
                       "range": [
-                        449,
-                        474
+                        433,
+                        458
                       ],
                       "loc": {
                         "start": {
@@ -1622,8 +1622,8 @@
                     }
                   ],
                   "range": [
-                    311,
-                    481
+                    299,
+                    464
                   ],
                   "loc": {
                     "start": {
@@ -1639,8 +1639,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  293,
-                  481
+                  281,
+                  464
                 ],
                 "loc": {
                   "start": {
@@ -1656,8 +1656,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                285,
-                481
+                273,
+                464
               ],
               "loc": {
                 "start": {
@@ -1672,10 +1672,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\r\n     * @return {Boolean}\r\n     ",
+                  "value": "*\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\n     * @return {Boolean}\n     ",
                   "range": [
-                    164,
-                    279
+                    156,
+                    268
                   ],
                   "loc": {
                     "start": {
@@ -1692,10 +1692,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     *\r\n     * @param {Money|Currency} instance\r\n     * @return {Currency}\r\n     ",
+                  "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
                   "range": [
-                    489,
-                    577
+                    470,
+                    554
                   ],
                   "loc": {
                     "start": {
@@ -1717,8 +1717,8 @@
                 "type": "Identifier",
                 "name": "adapt",
                 "range": [
-                  583,
-                  588
+                  559,
+                  564
                 ],
                 "loc": {
                   "start": {
@@ -1739,8 +1739,8 @@
                     "type": "Identifier",
                     "name": "instance",
                     "range": [
-                      589,
-                      597
+                      565,
+                      573
                     ],
                     "loc": {
                       "start": {
@@ -1768,8 +1768,8 @@
                             "type": "Identifier",
                             "name": "Currency",
                             "range": [
-                              617,
-                              625
+                              592,
+                              600
                             ],
                             "loc": {
                               "start": {
@@ -1786,8 +1786,8 @@
                             "type": "Identifier",
                             "name": "optCurrency",
                             "range": [
-                              626,
-                              637
+                              601,
+                              612
                             ],
                             "loc": {
                               "start": {
@@ -1801,8 +1801,8 @@
                             }
                           },
                           "range": [
-                            617,
-                            637
+                            592,
+                            612
                           ],
                           "loc": {
                             "start": {
@@ -1820,8 +1820,8 @@
                             "type": "Identifier",
                             "name": "instance",
                             "range": [
-                              638,
-                              646
+                              613,
+                              621
                             ],
                             "loc": {
                               "start": {
@@ -1836,8 +1836,8 @@
                           }
                         ],
                         "range": [
-                          617,
-                          647
+                          592,
+                          622
                         ],
                         "loc": {
                           "start": {
@@ -1851,8 +1851,8 @@
                         }
                       },
                       "range": [
-                        610,
-                        648
+                        585,
+                        623
                       ],
                       "loc": {
                         "start": {
@@ -1867,8 +1867,8 @@
                     }
                   ],
                   "range": [
-                    599,
-                    655
+                    575,
+                    629
                   ],
                   "loc": {
                     "start": {
@@ -1884,8 +1884,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  588,
-                  655
+                  564,
+                  629
                 ],
                 "loc": {
                   "start": {
@@ -1901,8 +1901,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                583,
-                655
+                559,
+                629
               ],
               "loc": {
                 "start": {
@@ -1917,10 +1917,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\r\n     *\r\n     * @param {Money|Currency} instance\r\n     * @return {Currency}\r\n     ",
+                  "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
                   "range": [
-                    489,
-                    577
+                    470,
+                    554
                   ],
                   "loc": {
                     "start": {
@@ -1938,8 +1938,8 @@
             }
           ],
           "range": [
-            155,
-            658
+            149,
+            631
           ],
           "loc": {
             "start": {
@@ -1953,8 +1953,8 @@
           }
         },
         "range": [
-          117,
-          658
+          111,
+          631
         ],
         "loc": {
           "start": {
@@ -1971,8 +1971,8 @@
         "trailingComments": []
       },
       "range": [
-        689,
-        720
+        659,
+        690
       ],
       "loc": {
         "start": {
@@ -1990,7 +1990,7 @@
   "sourceType": "module",
   "range": [
     0,
-    720
+    690
   ],
   "loc": {
     "start": {
@@ -2005,10 +2005,10 @@
   "comments": [
     {
       "type": "Block",
-      "value": "*\r\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\r\n     * @return {Boolean}\r\n     ",
+      "value": "*\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\n     * @return {Boolean}\n     ",
       "range": [
-        164,
-        279
+        156,
+        268
       ],
       "loc": {
         "start": {
@@ -2023,10 +2023,10 @@
     },
     {
       "type": "Block",
-      "value": "*\r\n     *\r\n     * @param {Money|Currency} instance\r\n     * @return {Currency}\r\n     ",
+      "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
       "range": [
-        489,
-        577
+        470,
+        554
       ],
       "loc": {
         "start": {

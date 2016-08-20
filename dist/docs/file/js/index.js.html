@@ -85,7 +85,6 @@ import Functions from &quot;./Functions&quot;;
 import Preconditions from &quot;./Preconditions&quot;;
 import Utility from &quot;./Utility&quot;;
 import Address from &quot;./Address&quot;;
-
 import errors from &quot;./errors/index&quot;;
 import slack from &quot;./slack/index&quot;;
 import data from &quot;./data/index&quot;;
@@ -102,7 +101,19 @@ export {Preconditions};
 export {Utility};
 export {Address};
 
-export default Coinme;</code></pre>
+export default {
+    slack,
+    data,
+    errors,
+
+    Ember,
+    Coinme,
+    CoreObject,
+    Functions,
+    Preconditions,
+    Utility,
+    Address
+};</code></pre>
 
 </div>
 

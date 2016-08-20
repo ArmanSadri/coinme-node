@@ -17,3 +17,14 @@ export {NotificationTemplate};
 export {NotificationService};
 export {InlineNotificationTemplate};
 export {UserNotificationTemplate};
+
+export default {
+    AbstractBuilder,
+    FieldBuilder,
+    AttachmentBuilder,
+    NotificationBuilder,
+    NotificationTemplate,
+    NotificationService,
+    InlineNotificationTemplate,
+    UserNotificationTemplate
+};

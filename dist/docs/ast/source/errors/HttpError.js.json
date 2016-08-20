@@ -2579,28 +2579,67 @@
       "trailingComments": []
     },
     {
-      "type": "Identifier",
-      "declaration": {
-        "type": "Identifier",
-        "name": "HttpError",
-        "range": [
-          1127,
-          1136
-        ],
-        "loc": {
-          "start": {
-            "line": 52,
-            "column": 15
+      "type": "ExportNamedDeclaration",
+      "declaration": null,
+      "specifiers": [
+        {
+          "type": "ExportSpecifier",
+          "exported": {
+            "type": "Identifier",
+            "name": "HttpError",
+            "range": [
+              1120,
+              1129
+            ],
+            "loc": {
+              "start": {
+                "line": 52,
+                "column": 8
+              },
+              "end": {
+                "line": 52,
+                "column": 17
+              }
+            }
           },
-          "end": {
-            "line": 52,
-            "column": 24
+          "local": {
+            "type": "Identifier",
+            "name": "HttpError",
+            "range": [
+              1120,
+              1129
+            ],
+            "loc": {
+              "start": {
+                "line": 52,
+                "column": 8
+              },
+              "end": {
+                "line": 52,
+                "column": 17
+              }
+            }
+          },
+          "range": [
+            1120,
+            1129
+          ],
+          "loc": {
+            "start": {
+              "line": 52,
+              "column": 8
+            },
+            "end": {
+              "line": 52,
+              "column": 17
+            }
           }
         }
-      },
+      ],
+      "source": null,
       "range": [
         1112,
-        1137
+        1131
       ],
       "loc": {
         "start": {
@@ -2609,6 +2648,41 @@
         },
         "end": {
           "line": 52,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "HttpError",
+        "range": [
+          1147,
+          1156
+        ],
+        "loc": {
+          "start": {
+            "line": 53,
+            "column": 15
+          },
+          "end": {
+            "line": 53,
+            "column": 24
+          }
+        }
+      },
+      "range": [
+        1132,
+        1157
+      ],
+      "loc": {
+        "start": {
+          "line": 53,
+          "column": 0
+        },
+        "end": {
+          "line": 53,
           "column": 25
         }
       },
@@ -4977,16 +5051,16 @@
         "trailingComments": []
       },
       "range": [
-        1112,
-        1137
+        1132,
+        1157
       ],
       "loc": {
         "start": {
-          "line": 52,
+          "line": 53,
           "column": 0
         },
         "end": {
-          "line": 52,
+          "line": 53,
           "column": 25
         }
       },
@@ -4996,7 +5070,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1137
+    1157
   ],
   "loc": {
     "start": {
@@ -5004,7 +5078,7 @@
       "column": 0
     },
     "end": {
-      "line": 52,
+      "line": 53,
       "column": 25
     }
   },
