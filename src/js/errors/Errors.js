@@ -256,6 +256,34 @@ class Errors {
             return error.toJSON();
         }
     }
+
+    /**
+     *
+     * @param {Class} clazz
+     */
+    static throwMustBeAbstract(clazz) {
+        let name = Utility.optClassName(clazz);
+
+        throw new TypeError(`${name} is abstract and cannot be created`);
+    }
+
+    /**
+     * @throws Error
+     */
+    static throwNotImplemented() {
+        throw new Error('This method is not implemented');
+    }
+
+    /**
+     * Throw a TypeError that says you have no idea what the fuck is going on.
+     *
+     * @param {*} thingy
+     * @throws TypeError
+     */
+    static throwNotSure(thingy) {
+        throw new TypeError(`Not sure what to do with ${thingy}`);
+    }
 }
 
+export {Errors};
 export default Errors;

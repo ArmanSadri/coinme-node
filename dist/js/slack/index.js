@@ -47,5 +47,4 @@ exports.NotificationTemplate = _NotificationTemplate2.default;
 exports.NotificationService = _NotificationService2.default;
 exports.InlineNotificationTemplate = _InlineNotificationTemplate2.default;
 exports.UserNotificationTemplate = _UserNotificationTemplate2.default;
-exports.default = _NotificationService2.default;
 //# sourceMappingURL=index.js.map

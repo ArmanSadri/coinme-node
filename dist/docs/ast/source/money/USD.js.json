@@ -1,0 +1,3438 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "Literal",
+        "value": "use strict",
+        "raw": "'use strict'",
+        "range": [
+          0,
+          12
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        }
+      },
+      "range": [
+        0,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Utility",
+            "range": [
+              23,
+              30
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 8
+              },
+              "end": {
+                "line": 3,
+                "column": 15
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Utility",
+            "range": [
+              23,
+              30
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 8
+              },
+              "end": {
+                "line": 3,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            23,
+            30
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 8
+            },
+            "end": {
+              "line": 3,
+              "column": 15
+            }
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Preconditions",
+            "range": [
+              32,
+              45
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 17
+              },
+              "end": {
+                "line": 3,
+                "column": 30
+              }
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "name": "Preconditions",
+            "range": [
+              32,
+              45
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 17
+              },
+              "end": {
+                "line": 3,
+                "column": 30
+              }
+            }
+          },
+          "range": [
+            32,
+            45
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 17
+            },
+            "end": {
+              "line": 3,
+              "column": 30
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "~/",
+        "raw": "\"~/\"",
+        "range": [
+          52,
+          56
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 37
+          },
+          "end": {
+            "line": 3,
+            "column": 41
+          }
+        }
+      },
+      "range": [
+        15,
+        57
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Currency",
+            "range": [
+              65,
+              73
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 15
+              }
+            }
+          },
+          "range": [
+            65,
+            73
+          ],
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./Currency",
+        "raw": "\"./Currency\"",
+        "range": [
+          79,
+          91
+        ],
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 21
+          },
+          "end": {
+            "line": 4,
+            "column": 33
+          }
+        }
+      },
+      "range": [
+        58,
+        92
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "Money",
+            "range": [
+              100,
+              105
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 12
+              }
+            }
+          },
+          "range": [
+            100,
+            105
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 12
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./Money",
+        "raw": "\"./Money\"",
+        "range": [
+          111,
+          120
+        ],
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 18
+          },
+          "end": {
+            "line": 5,
+            "column": 27
+          }
+        }
+      },
+      "range": [
+        93,
+        121
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 28
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * @class USD\n ",
+          "range": [
+            123,
+            144
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 9,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Identifier",
+      "id": {
+        "type": "Identifier",
+        "name": "USD",
+        "range": [
+          151,
+          154
+        ],
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 6
+          },
+          "end": {
+            "line": 10,
+            "column": 9
+          }
+        }
+      },
+      "superClass": {
+        "type": "Identifier",
+        "name": "Currency",
+        "range": [
+          163,
+          171
+        ],
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 18
+          },
+          "end": {
+            "line": 10,
+            "column": 26
+          }
+        }
+      },
+      "body": {
+        "type": "ClassBody",
+        "body": [
+          {
+            "type": "MethodDefinition",
+            "key": {
+              "type": "Identifier",
+              "name": "toString",
+              "range": [
+                234,
+                242
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 11
+                },
+                "end": {
+                  "line": 16,
+                  "column": 19
+                }
+              }
+            },
+            "value": {
+              "type": "FunctionExpression",
+              "id": null,
+              "params": [],
+              "body": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "ReturnStatement",
+                    "argument": {
+                      "type": "Literal",
+                      "value": "USD",
+                      "raw": "'USD'",
+                      "range": [
+                        262,
+                        267
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 20
+                        }
+                      }
+                    },
+                    "range": [
+                      255,
+                      268
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 17,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 21
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  245,
+                  274
+                ],
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 22
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 5
+                  }
+                }
+              },
+              "generator": false,
+              "expression": false,
+              "range": [
+                242,
+                274
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 19
+                },
+                "end": {
+                  "line": 18,
+                  "column": 5
+                }
+              }
+            },
+            "kind": "method",
+            "computed": false,
+            "range": [
+              227,
+              274
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 4
+              },
+              "end": {
+                "line": 18,
+                "column": 5
+              }
+            },
+            "leadingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     *\n     * @returns {String}\n     ",
+                "range": [
+                  179,
+                  222
+                ],
+                "loc": {
+                  "start": {
+                    "line": 12,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 7
+                  }
+                }
+              }
+            ],
+            "trailingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     * @returns {Class<USD>}\n     ",
+                "range": [
+                  280,
+                  320
+                ],
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 7
+                  }
+                }
+              }
+            ],
+            "static": true
+          },
+          {
+            "type": "MethodDefinition",
+            "key": {
+              "type": "Identifier",
+              "name": "toClass",
+              "range": [
+                332,
+                339
+              ],
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 11
+                },
+                "end": {
+                  "line": 23,
+                  "column": 18
+                }
+              }
+            },
+            "value": {
+              "type": "FunctionExpression",
+              "id": null,
+              "params": [],
+              "body": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "ReturnStatement",
+                    "argument": {
+                      "type": "ThisExpression",
+                      "range": [
+                        359,
+                        363
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 24,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 24,
+                          "column": 19
+                        }
+                      }
+                    },
+                    "range": [
+                      352,
+                      364
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 24,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 24,
+                        "column": 20
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  342,
+                  370
+                ],
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 21
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 5
+                  }
+                }
+              },
+              "generator": false,
+              "expression": false,
+              "range": [
+                339,
+                370
+              ],
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 18
+                },
+                "end": {
+                  "line": 25,
+                  "column": 5
+                }
+              }
+            },
+            "kind": "method",
+            "computed": false,
+            "range": [
+              325,
+              370
+            ],
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 4
+              },
+              "end": {
+                "line": 25,
+                "column": 5
+              }
+            },
+            "leadingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     * @returns {Class<USD>}\n     ",
+                "range": [
+                  280,
+                  320
+                ],
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 7
+                  }
+                }
+              }
+            ],
+            "trailingComments": [
+              {
+                "type": "Line",
+                "value": "region Detection",
+                "range": [
+                  376,
+                  394
+                ],
+                "loc": {
+                  "start": {
+                    "line": 27,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 22
+                  }
+                }
+              },
+              {
+                "type": "Block",
+                "value": "*\n     * Detects if\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+                "range": [
+                  399,
+                  523
+                ],
+                "loc": {
+                  "start": {
+                    "line": 28,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 33,
+                    "column": 7
+                  }
+                }
+              }
+            ],
+            "static": true
+          },
+          {
+            "type": "MethodDefinition",
+            "key": {
+              "type": "Identifier",
+              "name": "isUSD",
+              "range": [
+                535,
+                540
+              ],
+              "loc": {
+                "start": {
+                  "line": 34,
+                  "column": 11
+                },
+                "end": {
+                  "line": 34,
+                  "column": 16
+                }
+              }
+            },
+            "value": {
+              "type": "FunctionExpression",
+              "id": null,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "moneyOrCurrency",
+                  "range": [
+                    541,
+                    556
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 34,
+                      "column": 17
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 32
+                    }
+                  }
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "VariableDeclaration",
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "id": {
+                          "type": "Identifier",
+                          "name": "currency",
+                          "range": [
+                            572,
+                            580
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 35,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 35,
+                              "column": 20
+                            }
+                          }
+                        },
+                        "init": {
+                          "type": "LogicalExpression",
+                          "operator": "||",
+                          "left": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "Currency",
+                                "range": [
+                                  583,
+                                  591
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 35,
+                                    "column": 23
+                                  },
+                                  "end": {
+                                    "line": 35,
+                                    "column": 31
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "optCurrency",
+                                "range": [
+                                  592,
+                                  603
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 35,
+                                    "column": 32
+                                  },
+                                  "end": {
+                                    "line": 35,
+                                    "column": 43
+                                  }
+                                }
+                              },
+                              "range": [
+                                583,
+                                603
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 35,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 35,
+                                  "column": 43
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "moneyOrCurrency",
+                                "range": [
+                                  604,
+                                  619
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 35,
+                                    "column": 44
+                                  },
+                                  "end": {
+                                    "line": 35,
+                                    "column": 59
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              583,
+                              620
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 35,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 35,
+                                "column": 60
+                              }
+                            }
+                          },
+                          "right": {
+                            "type": "Identifier",
+                            "name": "moneyOrCurrency",
+                            "range": [
+                              624,
+                              639
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 35,
+                                "column": 64
+                              },
+                              "end": {
+                                "line": 35,
+                                "column": 79
+                              }
+                            }
+                          },
+                          "range": [
+                            583,
+                            639
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 35,
+                              "column": 23
+                            },
+                            "end": {
+                              "line": 35,
+                              "column": 79
+                            }
+                          }
+                        },
+                        "range": [
+                          572,
+                          639
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 35,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 35,
+                            "column": 79
+                          }
+                        }
+                      }
+                    ],
+                    "kind": "let",
+                    "range": [
+                      568,
+                      640
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 35,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 80
+                      }
+                    }
+                  },
+                  {
+                    "type": "ReturnStatement",
+                    "argument": {
+                      "type": "LogicalExpression",
+                      "operator": "||",
+                      "left": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "USD",
+                            "range": [
+                              657,
+                              660
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 18
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "isClass",
+                            "range": [
+                              661,
+                              668
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 19
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 26
+                              }
+                            }
+                          },
+                          "range": [
+                            657,
+                            668
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 37,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 37,
+                              "column": 26
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "currency",
+                            "range": [
+                              669,
+                              677
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 27
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 35
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          657,
+                          678
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 37,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 37,
+                            "column": 36
+                          }
+                        }
+                      },
+                      "right": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "Identifier",
+                            "name": "USD",
+                            "range": [
+                              682,
+                              685
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 40
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 43
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "isInstance",
+                            "range": [
+                              686,
+                              696
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 44
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 54
+                              }
+                            }
+                          },
+                          "range": [
+                            682,
+                            696
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 37,
+                              "column": 40
+                            },
+                            "end": {
+                              "line": 37,
+                              "column": 54
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "currency",
+                            "range": [
+                              697,
+                              705
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 55
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 63
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          682,
+                          706
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 37,
+                            "column": 40
+                          },
+                          "end": {
+                            "line": 37,
+                            "column": 64
+                          }
+                        }
+                      },
+                      "range": [
+                        657,
+                        706
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 37,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 37,
+                          "column": 64
+                        }
+                      }
+                    },
+                    "range": [
+                      650,
+                      707
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 37,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 65
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  558,
+                  713
+                ],
+                "loc": {
+                  "start": {
+                    "line": 34,
+                    "column": 34
+                  },
+                  "end": {
+                    "line": 38,
+                    "column": 5
+                  }
+                }
+              },
+              "generator": false,
+              "expression": false,
+              "range": [
+                540,
+                713
+              ],
+              "loc": {
+                "start": {
+                  "line": 34,
+                  "column": 16
+                },
+                "end": {
+                  "line": 38,
+                  "column": 5
+                }
+              }
+            },
+            "kind": "method",
+            "computed": false,
+            "range": [
+              528,
+              713
+            ],
+            "loc": {
+              "start": {
+                "line": 34,
+                "column": 4
+              },
+              "end": {
+                "line": 38,
+                "column": 5
+              }
+            },
+            "leadingComments": [
+              {
+                "type": "Line",
+                "value": "region Detection",
+                "range": [
+                  376,
+                  394
+                ],
+                "loc": {
+                  "start": {
+                    "line": 27,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 22
+                  }
+                }
+              },
+              {
+                "type": "Block",
+                "value": "*\n     * Detects if\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+                "range": [
+                  399,
+                  523
+                ],
+                "loc": {
+                  "start": {
+                    "line": 28,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 33,
+                    "column": 7
+                  }
+                }
+              }
+            ],
+            "trailingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     * Determines if {@link USD#isUSD} returns true\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @throws {PreconditionsError} if not the right currency type\n     ",
+                "range": [
+                  719,
+                  919
+                ],
+                "loc": {
+                  "start": {
+                    "line": 40,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 45,
+                    "column": 7
+                  }
+                }
+              }
+            ],
+            "static": true
+          },
+          {
+            "type": "MethodDefinition",
+            "key": {
+              "type": "Identifier",
+              "name": "shouldBeUSD",
+              "range": [
+                931,
+                942
+              ],
+              "loc": {
+                "start": {
+                  "line": 46,
+                  "column": 11
+                },
+                "end": {
+                  "line": 46,
+                  "column": 22
+                }
+              }
+            },
+            "value": {
+              "type": "FunctionExpression",
+              "id": null,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "moneyOrCurrency",
+                  "range": [
+                    943,
+                    958
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 46,
+                      "column": 23
+                    },
+                    "end": {
+                      "line": 46,
+                      "column": 38
+                    }
+                  }
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "IfStatement",
+                    "test": {
+                      "type": "UnaryExpression",
+                      "operator": "!",
+                      "argument": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "MemberExpression",
+                          "computed": false,
+                          "object": {
+                            "type": "ThisExpression",
+                            "range": [
+                              975,
+                              979
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 47,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 47,
+                                "column": 17
+                              }
+                            }
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "isUSD",
+                            "range": [
+                              980,
+                              985
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 47,
+                                "column": 18
+                              },
+                              "end": {
+                                "line": 47,
+                                "column": 23
+                              }
+                            }
+                          },
+                          "range": [
+                            975,
+                            985
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 47,
+                              "column": 13
+                            },
+                            "end": {
+                              "line": 47,
+                              "column": 23
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "moneyOrCurrency",
+                            "range": [
+                              986,
+                              1001
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 47,
+                                "column": 24
+                              },
+                              "end": {
+                                "line": 47,
+                                "column": 39
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          975,
+                          1002
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 47,
+                            "column": 13
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 40
+                          }
+                        }
+                      },
+                      "prefix": true,
+                      "range": [
+                        974,
+                        1002
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 47,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 47,
+                          "column": 40
+                        }
+                      }
+                    },
+                    "consequent": {
+                      "type": "BlockStatement",
+                      "body": [
+                        {
+                          "type": "ExpressionStatement",
+                          "expression": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "MemberExpression",
+                              "computed": false,
+                              "object": {
+                                "type": "Identifier",
+                                "name": "Preconditions",
+                                "range": [
+                                  1018,
+                                  1031
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 48,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 48,
+                                    "column": 25
+                                  }
+                                }
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "fail",
+                                "range": [
+                                  1032,
+                                  1036
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 48,
+                                    "column": 26
+                                  },
+                                  "end": {
+                                    "line": 48,
+                                    "column": 30
+                                  }
+                                }
+                              },
+                              "range": [
+                                1018,
+                                1036
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 48,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 48,
+                                  "column": 30
+                                }
+                              }
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "name": "USD",
+                                "range": [
+                                  1037,
+                                  1040
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 48,
+                                    "column": 31
+                                  },
+                                  "end": {
+                                    "line": 48,
+                                    "column": 34
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Identifier",
+                                "name": "moneyOrCurrency",
+                                "range": [
+                                  1042,
+                                  1057
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 48,
+                                    "column": 36
+                                  },
+                                  "end": {
+                                    "line": 48,
+                                    "column": 51
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Literal",
+                                "value": "Must be USD",
+                                "raw": "'Must be USD'",
+                                "range": [
+                                  1059,
+                                  1072
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 48,
+                                    "column": 53
+                                  },
+                                  "end": {
+                                    "line": 48,
+                                    "column": 66
+                                  }
+                                }
+                              }
+                            ],
+                            "range": [
+                              1018,
+                              1073
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 48,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 48,
+                                "column": 67
+                              }
+                            }
+                          },
+                          "range": [
+                            1018,
+                            1074
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 48,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 48,
+                              "column": 68
+                            }
+                          }
+                        }
+                      ],
+                      "range": [
+                        1004,
+                        1084
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 47,
+                          "column": 42
+                        },
+                        "end": {
+                          "line": 49,
+                          "column": 9
+                        }
+                      }
+                    },
+                    "alternate": null,
+                    "range": [
+                      970,
+                      1084
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 47,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 49,
+                        "column": 9
+                      }
+                    }
+                  },
+                  {
+                    "type": "ReturnStatement",
+                    "argument": {
+                      "type": "Identifier",
+                      "name": "moneyOrCurrency",
+                      "range": [
+                        1101,
+                        1116
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 51,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 51,
+                          "column": 30
+                        }
+                      }
+                    },
+                    "range": [
+                      1094,
+                      1117
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 51,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 51,
+                        "column": 31
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  960,
+                  1123
+                ],
+                "loc": {
+                  "start": {
+                    "line": 46,
+                    "column": 40
+                  },
+                  "end": {
+                    "line": 52,
+                    "column": 5
+                  }
+                }
+              },
+              "generator": false,
+              "expression": false,
+              "range": [
+                942,
+                1123
+              ],
+              "loc": {
+                "start": {
+                  "line": 46,
+                  "column": 22
+                },
+                "end": {
+                  "line": 52,
+                  "column": 5
+                }
+              }
+            },
+            "kind": "method",
+            "computed": false,
+            "range": [
+              924,
+              1123
+            ],
+            "loc": {
+              "start": {
+                "line": 46,
+                "column": 4
+              },
+              "end": {
+                "line": 52,
+                "column": 5
+              }
+            },
+            "leadingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     * Determines if {@link USD#isUSD} returns true\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @throws {PreconditionsError} if not the right currency type\n     ",
+                "range": [
+                  719,
+                  919
+                ],
+                "loc": {
+                  "start": {
+                    "line": 40,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 45,
+                    "column": 7
+                  }
+                }
+              }
+            ],
+            "trailingComments": [
+              {
+                "type": "Line",
+                "value": "endregion",
+                "range": [
+                  1129,
+                  1140
+                ],
+                "loc": {
+                  "start": {
+                    "line": 54,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 54,
+                    "column": 15
+                  }
+                }
+              }
+            ],
+            "static": true
+          }
+        ],
+        "range": [
+          172,
+          1143
+        ],
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 27
+          },
+          "end": {
+            "line": 56,
+            "column": 1
+          }
+        }
+      },
+      "range": [
+        145,
+        1143
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 56,
+          "column": 1
+        }
+      },
+      "leadingComments": [],
+      "trailingComments": [],
+      "name": "_"
+    },
+    {
+      "type": "Identifier",
+      "declaration": {
+        "type": "Identifier",
+        "name": "USD",
+        "range": [
+          1201,
+          1204
+        ],
+        "loc": {
+          "start": {
+            "line": 60,
+            "column": 15
+          },
+          "end": {
+            "line": 60,
+            "column": 18
+          }
+        }
+      },
+      "range": [
+        1186,
+        1205
+      ],
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 0
+        },
+        "end": {
+          "line": 60,
+          "column": 19
+        }
+      },
+      "leadingComments": [],
+      "name": "_",
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "USD",
+          "range": [
+            151,
+            154
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 6
+            },
+            "end": {
+              "line": 10,
+              "column": 9
+            }
+          }
+        },
+        "superClass": {
+          "type": "Identifier",
+          "name": "Currency",
+          "range": [
+            163,
+            171
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 18
+            },
+            "end": {
+              "line": 10,
+              "column": 26
+            }
+          }
+        },
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "toString",
+                "range": [
+                  234,
+                  242
+                ],
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 19
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Literal",
+                        "value": "USD",
+                        "raw": "'USD'",
+                        "range": [
+                          262,
+                          267
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 20
+                          }
+                        }
+                      },
+                      "range": [
+                        255,
+                        268
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 21
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    245,
+                    274
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 16,
+                      "column": 22
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  242,
+                  274
+                ],
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                227,
+                274
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 4
+                },
+                "end": {
+                  "line": 18,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     *\n     * @returns {String}\n     ",
+                  "range": [
+                    179,
+                    222
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 12,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * @returns {Class<USD>}\n     ",
+                  "range": [
+                    280,
+                    320
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "toClass",
+                "range": [
+                  332,
+                  339
+                ],
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 18
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+                          359,
+                          363
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 24,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 19
+                          }
+                        }
+                      },
+                      "range": [
+                        352,
+                        364
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 24,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 24,
+                          "column": 20
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    342,
+                    370
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 23,
+                      "column": 21
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  339,
+                  370
+                ],
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                325,
+                370
+              ],
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * @returns {Class<USD>}\n     ",
+                  "range": [
+                    280,
+                    320
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Line",
+                  "value": "region Detection",
+                  "range": [
+                    376,
+                    394
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 22
+                    }
+                  }
+                },
+                {
+                  "type": "Block",
+                  "value": "*\n     * Detects if\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+                  "range": [
+                    399,
+                    523
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 28,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 33,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "isUSD",
+                "range": [
+                  535,
+                  540
+                ],
+                "loc": {
+                  "start": {
+                    "line": 34,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 34,
+                    "column": 16
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "moneyOrCurrency",
+                    "range": [
+                      541,
+                      556
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 34,
+                        "column": 17
+                      },
+                      "end": {
+                        "line": 34,
+                        "column": 32
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "VariableDeclaration",
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "id": {
+                            "type": "Identifier",
+                            "name": "currency",
+                            "range": [
+                              572,
+                              580
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 35,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 35,
+                                "column": 20
+                              }
+                            }
+                          },
+                          "init": {
+                            "type": "LogicalExpression",
+                            "operator": "||",
+                            "left": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "Currency",
+                                  "range": [
+                                    583,
+                                    591
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 35,
+                                      "column": 23
+                                    },
+                                    "end": {
+                                      "line": 35,
+                                      "column": 31
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "optCurrency",
+                                  "range": [
+                                    592,
+                                    603
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 35,
+                                      "column": 32
+                                    },
+                                    "end": {
+                                      "line": 35,
+                                      "column": 43
+                                    }
+                                  }
+                                },
+                                "range": [
+                                  583,
+                                  603
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 35,
+                                    "column": 23
+                                  },
+                                  "end": {
+                                    "line": 35,
+                                    "column": 43
+                                  }
+                                }
+                              },
+                              "arguments": [
+                                {
+                                  "type": "Identifier",
+                                  "name": "moneyOrCurrency",
+                                  "range": [
+                                    604,
+                                    619
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 35,
+                                      "column": 44
+                                    },
+                                    "end": {
+                                      "line": 35,
+                                      "column": 59
+                                    }
+                                  }
+                                }
+                              ],
+                              "range": [
+                                583,
+                                620
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 35,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 35,
+                                  "column": 60
+                                }
+                              }
+                            },
+                            "right": {
+                              "type": "Identifier",
+                              "name": "moneyOrCurrency",
+                              "range": [
+                                624,
+                                639
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 35,
+                                  "column": 64
+                                },
+                                "end": {
+                                  "line": 35,
+                                  "column": 79
+                                }
+                              }
+                            },
+                            "range": [
+                              583,
+                              639
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 35,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 35,
+                                "column": 79
+                              }
+                            }
+                          },
+                          "range": [
+                            572,
+                            639
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 35,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 35,
+                              "column": 79
+                            }
+                          }
+                        }
+                      ],
+                      "kind": "let",
+                      "range": [
+                        568,
+                        640
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 35,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 35,
+                          "column": 80
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "LogicalExpression",
+                        "operator": "||",
+                        "left": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "USD",
+                              "range": [
+                                657,
+                                660
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 15
+                                },
+                                "end": {
+                                  "line": 37,
+                                  "column": 18
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "isClass",
+                              "range": [
+                                661,
+                                668
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 19
+                                },
+                                "end": {
+                                  "line": 37,
+                                  "column": 26
+                                }
+                              }
+                            },
+                            "range": [
+                              657,
+                              668
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 26
+                              }
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "name": "currency",
+                              "range": [
+                                669,
+                                677
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 27
+                                },
+                                "end": {
+                                  "line": 37,
+                                  "column": 35
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+                            657,
+                            678
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 37,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 37,
+                              "column": 36
+                            }
+                          }
+                        },
+                        "right": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "Identifier",
+                              "name": "USD",
+                              "range": [
+                                682,
+                                685
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 40
+                                },
+                                "end": {
+                                  "line": 37,
+                                  "column": 43
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "isInstance",
+                              "range": [
+                                686,
+                                696
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 44
+                                },
+                                "end": {
+                                  "line": 37,
+                                  "column": 54
+                                }
+                              }
+                            },
+                            "range": [
+                              682,
+                              696
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 40
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 54
+                              }
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "name": "currency",
+                              "range": [
+                                697,
+                                705
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 55
+                                },
+                                "end": {
+                                  "line": 37,
+                                  "column": 63
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+                            682,
+                            706
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 37,
+                              "column": 40
+                            },
+                            "end": {
+                              "line": 37,
+                              "column": 64
+                            }
+                          }
+                        },
+                        "range": [
+                          657,
+                          706
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 37,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 37,
+                            "column": 64
+                          }
+                        }
+                      },
+                      "range": [
+                        650,
+                        707
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 37,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 37,
+                          "column": 65
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    558,
+                    713
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 34,
+                      "column": 34
+                    },
+                    "end": {
+                      "line": 38,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  540,
+                  713
+                ],
+                "loc": {
+                  "start": {
+                    "line": 34,
+                    "column": 16
+                  },
+                  "end": {
+                    "line": 38,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                528,
+                713
+              ],
+              "loc": {
+                "start": {
+                  "line": 34,
+                  "column": 4
+                },
+                "end": {
+                  "line": 38,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Line",
+                  "value": "region Detection",
+                  "range": [
+                    376,
+                    394
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 22
+                    }
+                  }
+                },
+                {
+                  "type": "Block",
+                  "value": "*\n     * Detects if\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+                  "range": [
+                    399,
+                    523
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 28,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 33,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Determines if {@link USD#isUSD} returns true\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @throws {PreconditionsError} if not the right currency type\n     ",
+                  "range": [
+                    719,
+                    919
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 40,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 45,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "static": true
+            },
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "shouldBeUSD",
+                "range": [
+                  931,
+                  942
+                ],
+                "loc": {
+                  "start": {
+                    "line": 46,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 46,
+                    "column": 22
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "moneyOrCurrency",
+                    "range": [
+                      943,
+                      958
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 46,
+                        "column": 23
+                      },
+                      "end": {
+                        "line": 46,
+                        "column": 38
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "UnaryExpression",
+                        "operator": "!",
+                        "argument": {
+                          "type": "CallExpression",
+                          "callee": {
+                            "type": "MemberExpression",
+                            "computed": false,
+                            "object": {
+                              "type": "ThisExpression",
+                              "range": [
+                                975,
+                                979
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 47,
+                                  "column": 13
+                                },
+                                "end": {
+                                  "line": 47,
+                                  "column": 17
+                                }
+                              }
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "isUSD",
+                              "range": [
+                                980,
+                                985
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 47,
+                                  "column": 18
+                                },
+                                "end": {
+                                  "line": 47,
+                                  "column": 23
+                                }
+                              }
+                            },
+                            "range": [
+                              975,
+                              985
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 47,
+                                "column": 13
+                              },
+                              "end": {
+                                "line": 47,
+                                "column": 23
+                              }
+                            }
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "name": "moneyOrCurrency",
+                              "range": [
+                                986,
+                                1001
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 47,
+                                  "column": 24
+                                },
+                                "end": {
+                                  "line": 47,
+                                  "column": 39
+                                }
+                              }
+                            }
+                          ],
+                          "range": [
+                            975,
+                            1002
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 47,
+                              "column": 13
+                            },
+                            "end": {
+                              "line": 47,
+                              "column": 40
+                            }
+                          }
+                        },
+                        "prefix": true,
+                        "range": [
+                          974,
+                          1002
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 47,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 40
+                          }
+                        }
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "computed": false,
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "Preconditions",
+                                  "range": [
+                                    1018,
+                                    1031
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 48,
+                                      "column": 12
+                                    },
+                                    "end": {
+                                      "line": 48,
+                                      "column": 25
+                                    }
+                                  }
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "fail",
+                                  "range": [
+                                    1032,
+                                    1036
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 48,
+                                      "column": 26
+                                    },
+                                    "end": {
+                                      "line": 48,
+                                      "column": 30
+                                    }
+                                  }
+                                },
+                                "range": [
+                                  1018,
+                                  1036
+                                ],
+                                "loc": {
+                                  "start": {
+                                    "line": 48,
+                                    "column": 12
+                                  },
+                                  "end": {
+                                    "line": 48,
+                                    "column": 30
+                                  }
+                                }
+                              },
+                              "arguments": [
+                                {
+                                  "type": "Identifier",
+                                  "name": "USD",
+                                  "range": [
+                                    1037,
+                                    1040
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 48,
+                                      "column": 31
+                                    },
+                                    "end": {
+                                      "line": 48,
+                                      "column": 34
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "Identifier",
+                                  "name": "moneyOrCurrency",
+                                  "range": [
+                                    1042,
+                                    1057
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 48,
+                                      "column": 36
+                                    },
+                                    "end": {
+                                      "line": 48,
+                                      "column": 51
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "Literal",
+                                  "value": "Must be USD",
+                                  "raw": "'Must be USD'",
+                                  "range": [
+                                    1059,
+                                    1072
+                                  ],
+                                  "loc": {
+                                    "start": {
+                                      "line": 48,
+                                      "column": 53
+                                    },
+                                    "end": {
+                                      "line": 48,
+                                      "column": 66
+                                    }
+                                  }
+                                }
+                              ],
+                              "range": [
+                                1018,
+                                1073
+                              ],
+                              "loc": {
+                                "start": {
+                                  "line": 48,
+                                  "column": 12
+                                },
+                                "end": {
+                                  "line": 48,
+                                  "column": 67
+                                }
+                              }
+                            },
+                            "range": [
+                              1018,
+                              1074
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 48,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 48,
+                                "column": 68
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          1004,
+                          1084
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 47,
+                            "column": 42
+                          },
+                          "end": {
+                            "line": 49,
+                            "column": 9
+                          }
+                        }
+                      },
+                      "alternate": null,
+                      "range": [
+                        970,
+                        1084
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 47,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 49,
+                          "column": 9
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Identifier",
+                        "name": "moneyOrCurrency",
+                        "range": [
+                          1101,
+                          1116
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 51,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 51,
+                            "column": 30
+                          }
+                        }
+                      },
+                      "range": [
+                        1094,
+                        1117
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 51,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 51,
+                          "column": 31
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    960,
+                    1123
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 46,
+                      "column": 40
+                    },
+                    "end": {
+                      "line": 52,
+                      "column": 5
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  942,
+                  1123
+                ],
+                "loc": {
+                  "start": {
+                    "line": 46,
+                    "column": 22
+                  },
+                  "end": {
+                    "line": 52,
+                    "column": 5
+                  }
+                }
+              },
+              "kind": "method",
+              "computed": false,
+              "range": [
+                924,
+                1123
+              ],
+              "loc": {
+                "start": {
+                  "line": 46,
+                  "column": 4
+                },
+                "end": {
+                  "line": 52,
+                  "column": 5
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * Determines if {@link USD#isUSD} returns true\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @throws {PreconditionsError} if not the right currency type\n     ",
+                  "range": [
+                    719,
+                    919
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 40,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 45,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Line",
+                  "value": "endregion",
+                  "range": [
+                    1129,
+                    1140
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 54,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 54,
+                      "column": 15
+                    }
+                  }
+                }
+              ],
+              "static": true
+            }
+          ],
+          "range": [
+            172,
+            1143
+          ],
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 27
+            },
+            "end": {
+              "line": 56,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          145,
+          1143
+        ],
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 0
+          },
+          "end": {
+            "line": 56,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * @class USD\n ",
+            "range": [
+              123,
+              144
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 9,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Line",
+            "value": " Currency.types.register('USD', USD);",
+            "range": [
+              1145,
+              1184
+            ],
+            "loc": {
+              "start": {
+                "line": 58,
+                "column": 0
+              },
+              "end": {
+                "line": 58,
+                "column": 39
+              }
+            }
+          }
+        ],
+        "__esdoc__pseudo_export": false
+      },
+      "range": [
+        1186,
+        1205
+      ],
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 0
+        },
+        "end": {
+          "line": 60,
+          "column": 19
+        }
+      },
+      "leadingComments": null
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    1205
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 60,
+      "column": 19
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * @class USD\n ",
+      "range": [
+        123,
+        144
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     *\n     * @returns {String}\n     ",
+      "range": [
+        179,
+        222
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 4
+        },
+        "end": {
+          "line": 15,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * @returns {Class<USD>}\n     ",
+      "range": [
+        280,
+        320
+      ],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 4
+        },
+        "end": {
+          "line": 22,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": "region Detection",
+      "range": [
+        376,
+        394
+      ],
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 4
+        },
+        "end": {
+          "line": 27,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * Detects if\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @return {Boolean}\n     ",
+      "range": [
+        399,
+        523
+      ],
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 4
+        },
+        "end": {
+          "line": 33,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n     * Determines if {@link USD#isUSD} returns true\n     *\n     * @param {Money|Currency|Class<Currency>} moneyOrCurrency\n     * @throws {PreconditionsError} if not the right currency type\n     ",
+      "range": [
+        719,
+        919
+      ],
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 4
+        },
+        "end": {
+          "line": 45,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": "endregion",
+      "range": [
+        1129,
+        1140
+      ],
+      "loc": {
+        "start": {
+          "line": 54,
+          "column": 4
+        },
+        "end": {
+          "line": 54,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " Currency.types.register('USD', USD);",
+      "range": [
+        1145,
+        1184
+      ],
+      "loc": {
+        "start": {
+          "line": 58,
+          "column": 0
+        },
+        "end": {
+          "line": 58,
+          "column": 39
+        }
+      }
+    }
+  ]
+}

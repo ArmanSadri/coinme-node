@@ -93,5 +93,4 @@ var Satoshi = function (_Currency) {
 }(_Currency3.default);
 
 exports.default = Satoshi;
-module.exports = exports['default'];
 //# sourceMappingURL=Satoshi.js.map

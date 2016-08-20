@@ -3,53 +3,48 @@ import CoreObject from "./CoreObject";
 import URI from "urijs";
 import altcoin from "altcoin-address";
 import Preconditions from "~/Preconditions";
+import {NotImplementedError} from "./errors";
 
 let VALIDATORS = {
 
     /**
-     * @param {URI|null|String} uri
+     * @param {Address} address
      */
-    'general': function (uri) {
-        if (!uri) {
-            return false;
-        }
+    'general': function (address) {
+        Preconditions.shouldBeInstance(address, Address);
 
-        if (Utility.isString(uri)) {
-            let index = uri.indexOf(":/");
+        let resource = address.resource;
+        let value = address.value;
 
-            if (-1 === index) {
-                return false;
-            }
+        console.log(resource, value);
 
-            let protocol = uri.substring(0, index);
-            let rest = uri.substring(index + 2);
-
-            uri = new URI(protocol + "://" + rest);
-        }
-
-        let scheme = uri.scheme();
-        let host = uri.host();
-
-        return !(Utility.isBlank(scheme) || Utility.isBlank(host));
+        return !(Utility.isBlank(address.resource) || Utility.isBlank(address.value));
     },
 
     /**
-     * @param {URI} uri
-     * @returns {*}
+     * @param {Address} address
+     * @returns {boolean}
      */
-    'bitcoin': function (uri) {
-        return altcoin.validate(Utility.optString(uri));
+    'bitcoin': function (address) {
+        Preconditions.shouldBeInstance(address, Address);
+
+        if (address.resource !== 'bitcoin') {
+            return false;
+        }
+
+        return altcoin.validate(address.value, 'bitcoin');
     }
 };
 
 /**
  * A class for uniquely identifying something.
  */
-export default class Address extends CoreObject {
+class Address extends CoreObject {
 
     /**
      *
      * @param {URI|String|Object} options
+     * @param {String} [options.value]
      * @param {Function} [options.validator]
      * @param {Boolean} [options.strict] Set to false to skip validation.
      */
@@ -58,6 +53,17 @@ export default class Address extends CoreObject {
             options = {value: options};
         } else if (options instanceof URI) {
             options = {value: options};
+        } else if (options instanceof Address) {
+            /**
+             * @type {Address}
+             */
+            let address = options;
+
+            options = {
+                value: address.value,
+                validator: address.validator,
+                strict: address.strict
+            }
         }
 
         /**
@@ -69,33 +75,46 @@ export default class Address extends CoreObject {
 
         Preconditions.shouldBeDefined(value, 'Cannot construct an empty Address.');
 
-        let generalValidator = Preconditions.shouldBeFunction(VALIDATORS['general'], 'general validator is required');
-
-        {
-            Preconditions.shouldBeTrue(generalValidator(value), 'general validator failed for: ' + value);
-        }
-
         super(options);
 
-        this._uri = URI(value);
+        this._uri = Address.toUri(value);
         this._validator = validator || VALIDATORS[Utility.toLowerCase(this.resource)];
         this._strict = (false === strict);
 
-        if (this._strict) {
+        {
+            let generalValidator = Preconditions.shouldBeFunction(VALIDATORS['general'], 'general validator is required');
+
+            Preconditions.shouldBeTrue(generalValidator(this), 'general validator failed for: ' + value);
+        }
+
+        if (this.strict) {
             // Require Validation
             Preconditions.shouldBeFunction(this.validator, 'validator not found for \'' + this.toString() + '\'');
             Preconditions.shouldBeTrue(this.valid, 'not valid');
         }
     }
 
+    /**
+     * @return {boolean}
+     */
     get strict() {
         return this._strict;
     }
 
+    /**
+     * [resource]:/[value]
+     *
+     * @return {String}
+     */
     get value() {
         return this.uri.host();
     }
 
+    /**
+     * [resource]:/[value]
+     *
+     * @return {String}
+     */
     get resource() {
         return this.uri.scheme();
     }
@@ -112,8 +131,12 @@ export default class Address extends CoreObject {
      * @returns {Boolean}
      */
     get valid() {
-        if (Utility.isUndefined(this._valid) && this.validator) {
-            this._valid = this.validator(this.uri);
+        if (Utility.isUndefined(this._valid)) {
+            if (this.validator) {
+                this._valid = this.validator(this);
+            } else {
+                this._valid = true; // because it passed general.
+            }
         }
 
         return this._valid;
@@ -141,6 +164,12 @@ export default class Address extends CoreObject {
         return this._uri.toString();
     }
 
+    toJson() {
+        return super.toJson({
+            value: Utility.optString(this)
+        })
+    }
+
     /**
      * @returns {String}
      */
@@ -160,4 +189,86 @@ export default class Address extends CoreObject {
 
         return validatorFn;
     }
+
+    /**
+     *
+     * @param {String|Address|URI} stringOrAddressOrUri
+     * @return {Address|null}
+     */
+    static toAddress(stringOrAddressOrUri) {
+        if (Utility.isString(stringOrAddressOrUri) || (stringOrAddressOrUri instanceof URI)) {
+            return new Address(stringOrAddressOrUri);
+        } else if (Address.isInstance(stringOrAddressOrUri)) {
+            return stringOrAddressOrUri;
+        } else {
+            throw new NotImplementedError(`Cannot handle ${stringOrAddressOrUri}`);
+        }
+    }
+
+    /**
+     *
+     * @param {String|Address|URI} stringOrAddressOrUri
+     * @param {String} [defaultScheme]
+     * @return {Address}
+     */
+    static toAddressWithDefaultScheme(stringOrAddressOrUri, defaultScheme) {
+        if (Utility.isString(stringOrAddressOrUri)) {
+            return new Address(Address.toUriWithDefaultScheme(stringOrAddressOrUri, defaultScheme));
+        } else {
+            return Address.toAddress(stringOrAddressOrUri);
+        }
+    }
+
+    /**
+     *
+     * @param {String|Address|URI} stringOrAddressOrUri
+     * @param {String} [defaultScheme]
+     * @return {URI}
+     */
+    static toUriWithDefaultScheme(stringOrAddressOrUri, defaultScheme) {
+        if (Utility.isNullOrUndefined(stringOrAddressOrUri)) {
+            return null;
+        } else if (stringOrAddressOrUri instanceof URI) {
+            return stringOrAddressOrUri;
+        } else if (Utility.isString(stringOrAddressOrUri)) {
+            if (~stringOrAddressOrUri.indexOf('://')) {
+                let u = new URI(stringOrAddressOrUri);
+
+                return new URI(u.scheme() + "://" + u.host());
+            }
+
+            let index = stringOrAddressOrUri.indexOf(":/");
+
+            if (-1 === index) {
+                if (!Utility.isBlank(defaultScheme)) {
+                    stringOrAddressOrUri = defaultScheme + ':/' + stringOrAddressOrUri;
+
+                    index = defaultScheme.length;
+                } else {
+                    return new URI(stringOrAddressOrUri);
+                }
+            }
+
+            let protocol = stringOrAddressOrUri.substring(0, index);
+            let rest = stringOrAddressOrUri.substring(index + 2);
+
+            console.log('test', stringOrAddressOrUri, protocol, rest);
+
+            return new URI(protocol + "://" + rest);
+        } else {
+            throw new NotImplementedError('Do not know how to handle: ' + stringOrAddressOrUri);
+        }
+    }
+
+    /**
+     *
+     * @param {String|URI|null|undefined} uri
+     * @return {URI}
+     */
+    static toUri(uri) {
+        return Address.toUriWithDefaultScheme(uri);
+    }
 }
+
+export {Address};
+export default Address;

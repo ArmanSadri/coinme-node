@@ -121,7 +121,6 @@ class NotificationService extends CoreObject {
 }
 
 export { NotificationService };
-
 export default new NotificationService({
 
 });

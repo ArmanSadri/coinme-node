@@ -12,9 +12,9 @@ import errors from "./errors/index";
 import slack from "./slack/index";
 import data from "./data/index";
 
-export { slack }
-export { data }
-export { errors }
+export {slack}
+export {data}
+export {errors}
 
 export {Ember};
 export {Coinme};

@@ -164,5 +164,4 @@ var AttachmentBuilder = function (_AbstractBuilder) {
 }(_AbstractBuilder3.default);
 
 exports.default = AttachmentBuilder;
-module.exports = exports['default'];
 //# sourceMappingURL=AttachmentBuilder.js.map

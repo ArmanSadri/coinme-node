@@ -21,7 +21,7 @@ class USD extends Currency {
      * @returns {Class<USD>}
      */
     static toClass() {
-        return USD;
+        return this;
     }
 
     //region Detection

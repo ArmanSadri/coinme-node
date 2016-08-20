@@ -130,5 +130,4 @@ var Ethereum = function (_Currency) {
 // Currency.types.register('ETH', Ethereum);
 
 exports.default = Ethereum;
-module.exports = exports['default'];
 //# sourceMappingURL=Ethereum.js.map

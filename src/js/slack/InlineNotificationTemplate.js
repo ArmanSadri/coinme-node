@@ -1,9 +1,15 @@
-import NotificationTemplate from '~/slack/NotificationTemplate';
+import NotificationTemplate from './NotificationTemplate';
 
 class InlineNotificationTemplate extends NotificationTemplate {
 
+    /**
+     *
+     * @param {NotificationBuilder} builder
+     * @param {*|Object} data
+     * @return {NotificationBuilder}
+     */
     applyTemplate(builder, data) {
-        builder.mergeIntoPayload(data);
+        return builder.mergeIntoPayload(data);
     }
 
 }

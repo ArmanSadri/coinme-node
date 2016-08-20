@@ -14,6 +14,29 @@ function ExtendableBuiltin(cls){
 }
 
 /**
+ * @private
+ * @param object
+ * @return {*}
+ */
+function optJson(object) {
+    if (!object) {
+        return undefined;
+    }
+
+    if (!Utility.isObject(object)) {
+        return undefined;
+    }
+
+    if (Utility.isFunction(object.toJSON)) {
+        return object.toJSON();
+    } else if (Utility.isFunction(object.toJson)) {
+        return object.toJson();
+    }
+
+    return undefined;
+}
+
+/**
  * @class
  */
 class AbstractError extends ExtendableBuiltin(Error) {
@@ -35,6 +58,10 @@ class AbstractError extends ExtendableBuiltin(Error) {
          * @type {String}
          */
         let message = Utility.take(options, 'message');
+        /**
+         * @type {AbstractError}
+         */
+        let cause = Utility.take(options, 'cause');
         // let message = Utility.take(options, 'message', Utility.isString);
 
         super(message);
@@ -48,12 +75,18 @@ class AbstractError extends ExtendableBuiltin(Error) {
         this.stack = error.stack;
         this.name = this.constructor.name;
         this.message = message;
+        this._cause = cause;
+    }
+
+    get cause() {
+        return this._cause;
     }
 
     toJSON() {
         return {
             stack: this.stack,
             name: this.name,
+            cause: optJson(this.cause),
             message: this.message
         };
     }

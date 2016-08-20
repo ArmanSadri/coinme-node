@@ -90,5 +90,4 @@ var HttpError = function (_AbstractError) {
 }(_AbstractError3.default);
 
 exports.default = HttpError;
-module.exports = exports['default'];
 //# sourceMappingURL=HttpError.js.map

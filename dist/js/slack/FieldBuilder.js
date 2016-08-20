@@ -153,5 +153,4 @@ var FieldBuilder = function (_AbstractBuilder) {
 }(_AbstractBuilder3.default);
 
 exports.default = FieldBuilder;
-module.exports = exports['default'];
 //# sourceMappingURL=FieldBuilder.js.map

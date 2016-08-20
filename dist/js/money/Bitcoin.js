@@ -144,7 +144,7 @@ var Bitcoin = function (_Currency) {
      * @returns {Class<Bitcoin>}
      */
     value: function toClass() {
-      return Bitcoin;
+      return this;
     }
 
     /**
@@ -297,5 +297,4 @@ var Bitcoin = function (_Currency) {
 // Currency.types.register('btc', Bitcoin);
 
 exports.default = Bitcoin;
-module.exports = exports['default'];
 //# sourceMappingURL=Bitcoin.js.map

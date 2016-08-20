@@ -3,11 +3,12 @@ import TimeUnit from "./TimeUnit";
 import Utility from "./Utility";
 import CoreObject from "./CoreObject";
 import Stopwatch from "./Stopwatch";
-
-const MICROSECONDS = TimeUnit.MICROSECONDS;
-const SECONDS = TimeUnit.SECONDS;
+import Errors from "./errors/Errors";
+import Logger from 'winston';
 
 class RateLimiter extends CoreObject {
+
+    _permitsPerSecond;
 
     constructor(options) {
         super(options);
@@ -18,25 +19,16 @@ class RateLimiter extends CoreObject {
          */
         this._stopwatch = new Stopwatch({ start: true });
 
-        /**
-         * @type {String}
-         * @private
-         */
-        this._failAction = Utility.take(options, 'failAction', {
-                type: 'string',
-                required: false,
-                defaultValue: 'wait'
-            });
+        // /**
+        //  * @type {String}
+        //  * @private
+        //  */
+        // this._failAction = Utility.take(options, 'failAction', {
+        //         type: 'string',
+        //         required: false,
+        //         defaultValue: 'wait'
+        //     });
     }
-
-    //region property: {String} failAction
-    /**
-     * @returns {String}
-     */
-    get failAction() {
-        return this._failAction;
-    }
-    //endregion
 
     //region property: {Stopwatch} stopwatch
     /**
@@ -45,9 +37,20 @@ class RateLimiter extends CoreObject {
     get stopwatch() {
         return this._stopwatch;
     }
+
     //endregion
 
-    //region property: {String} rate
+    //region property: {Ticker} ticker
+    /**
+     *
+     * @return {Ticker}
+     */
+    get ticker() {
+        return this.stopwatch.ticker;
+    }
+    //endregion
+
+    //region property: {Number} permitsPerSecond
 
     /**
      * Updates the stable rate of this {@code RateLimiter}, that is, the
@@ -68,35 +71,39 @@ class RateLimiter extends CoreObject {
      * @param {Number} permitsPerSecond the new stable rate of this {@code RateLimiter}
      * @throws IllegalArgumentException if {@code permitsPerSecond} is negative or zero
      */
-    set rate(permitsPerSecond) {
+    set permitsPerSecond(permitsPerSecond) {
+        Preconditions.shouldBeExisting(permitsPerSecond);
         Preconditions.shouldBeTrue(permitsPerSecond > 0.0 && !Utility.isNaN(permitsPerSecond), "rate must be positive");
 
-        this._rate = permitsPerSecond;
+        this._permitsPerSecond = Preconditions.shouldBePositiveNumber(permitsPerSecond, 'Rate must be positive');
+
+        this.doSetRate(permitsPerSecond, this.stopwatch.elapsedMicros());
     }
 
     /**
      *
      * @returns {Number}
      */
-    get rate() {
-        return this._rate;
+    get permitsPerSecond() {
+        return this._permitsPerSecond;
     }
+
     //endregion
 
     /**
-     * Acquires a single permit from this {@code RateLimiter}, blocking until the
-     * request can be granted. Tells the amount of time slept, if any.
+     * Acquires a single permit from this {@code RateLimiter}. Returns a Promise that will resolve or reject.
+     * The default maximum time to wait is 30 seconds.
      *
      * <p>This method is equivalent to {@code acquire(1)}.
      *
-     * @param {Number} [permits]
-     * @return {Number} time spent sleeping to enforce rate, in seconds; 0.0 if not rate-limited
+     * @param {Number} [permits] defaults to 1
+     * @param {Number} [timeout] defaults to 30
+     * @param {TimeUnit} [timeUnit] defaults to seconds
+     * @return {Promise} time spent sleeping to enforce rate, in seconds; 0.0 if not rate-limited
      * @since 16.0 (present in 13.0 with {@code void} return type})
      */
-    acquire(permits) {
-        return new Promise((resolve, reject) => {
-            return self.tryAcquire(permits);
-        });
+    acquire(permits, timeout, timeUnit) {
+        return this.tryAcquire(permits, timeout, timeUnit);
     }
 
     /**
@@ -122,8 +129,12 @@ class RateLimiter extends CoreObject {
      */
     reserveAndGetWaitLength(permits, nowMicros) {
         let momentAvailable = this.reserveEarliestAvailable(permits, nowMicros);
+        let waitLength = Math.max(momentAvailable - nowMicros, 0);
 
-        return max(momentAvailable - nowMicros, 0);
+        console.log(`${this}.reserveAndGetWaitLength(${permits}, ${nowMicros}) ==> ${waitLength}`);
+        // Logger.debug(`${this}.reserveAndGetWaitLength(${permits}, ${nowMicros}) ==> ${waitLength}`);
+
+        return waitLength;
     }
 
     /**
@@ -145,28 +156,30 @@ class RateLimiter extends CoreObject {
      * @param {Number} [permits] the number of permits to acquire
      * @param {Number} [timeout] the maximum time to wait for the permits. Negative values are treated as zero.
      * @param {TimeUnit} [unit] the time unit of the timeout argument
-     * @return {boolean} if the permits were acquired
+     * @return {Promise} if the permits were acquired
      * @throws IllegalArgumentException if the requested number of permits is negative or zero
      */
     tryAcquire(permits, timeout, unit) {
+        Preconditions.shouldBeNumber(this.permitsPerSecond, 'Rate must be defined.');
+
         permits = RateLimiter.checkPermits(permits);
-        timeout = Utility.defaultNumber(timeout, 0);
-        unit = Utility.defaultObject(unit, MICROSECONDS);
+        timeout = Utility.defaultNumber(timeout, 30);
+        unit = Utility.defaultObject(unit, TimeUnit.SECONDS);
 
         let timeoutMicros = Math.max(unit.toMicros(timeout), 0);
 
         let microsToWait;
         let nowMicros = this.stopwatch.elapsedMicros();
+        let goalMicros = this.queryEarliestAvailable(nowMicros);
 
         if (!this.canAcquire(nowMicros, timeoutMicros)) {
-            return false;
+            return Promise.reject(new Error(`RateLimit exceeded: (rate:${this.permitsPerSecond}/sec) (timeoutMicros:${timeoutMicros}) (goalMicros: ${goalMicros}) (differenceMicros:${goalMicros - nowMicros})`));
         } else {
             microsToWait = this.reserveAndGetWaitLength(permits, nowMicros);
         }
 
-        this.stopwatch.sleepMicrosUninterruptibly(microsToWait);
-
-        return true;
+        Preconditions.shouldBeExisting(this.ticker, 'ticker');
+        return this.ticker.wait(microsToWait, TimeUnit.MICROSECONDS);
     }
 
     //region abstract
@@ -178,7 +191,7 @@ class RateLimiter extends CoreObject {
      *     arbitrary past or present time
      */
     queryEarliestAvailable(nowMicros) {
-        throw new Error('Not implemented');
+        Errors.throwNotImplemented();
     }
 
     /**
@@ -191,8 +204,9 @@ class RateLimiter extends CoreObject {
      *     arbitrary past or present time
      */
     reserveEarliestAvailable(permits, nowMicros) {
-        throw new Error('Not implemented');
+        Errors.throwNotImplemented();
     }
+
     //endregion
 
     //region statics
@@ -202,14 +216,16 @@ class RateLimiter extends CoreObject {
      * @returns {Number}
      */
     static checkPermits(permits) {
-        if (Utility.isNullOrUndefined(permits)) {
+        if (Utility.isNotExisting(permits)) {
             return 1;
         }
 
-        Utility.shouldBeTrue(permits > 0, `Requested permits (${permits}) must be positive`);
+        Preconditions.shouldBeNumber(permits, `Requested permits (${permits}) must be positive`);
+        Preconditions.shouldBeTrue(permits > 0, `Requested permits (${permits}) must be positive`);
 
         return permits;
     }
+
     //endregion
 }
 
@@ -234,8 +250,7 @@ class SmoothRateLimiter extends RateLimiter {
          * The interval between two unit requests, at our stable rate. E.g., a stable rate of 5 permits
          * per second has a stable interval of 200ms.
          */
-        this._stableIntervalMicros;
-
+        this._stableIntervalMicros = 0;
 
         /**
          * The time when the next request (no matter its size) will be granted. After granting a
@@ -245,16 +260,31 @@ class SmoothRateLimiter extends RateLimiter {
          * @private
          */
         this._nextFreeTicketMicros = 0; // could be either in the past or future
-
     }
 
-    // doSetRate(permitsPerSecond, nowMicros) {
-    //     this.resync(nowMicros);
-    //     this._stableIntervalMicros = SECONDS.toMicros(1) / permitsPerSecond;
-    // }
+    /**
+     * @protected
+     * @param permitsPerSecond
+     * @param nowMicros
+     */
+    doSetRate(permitsPerSecond, nowMicros) {
+        this.resync(nowMicros);
+        let stableIntervalMicros = TimeUnit.SECONDS.toMicros(1) / permitsPerSecond;
+        this._stableIntervalMicros = stableIntervalMicros;
+        this.doSetRate2(permitsPerSecond, stableIntervalMicros);
+    }
+
+    /**
+     * @protected
+     * @param permitsPerSecond
+     * @param stableIntervalMicros
+     */
+    doSetRate2(permitsPerSecond, stableIntervalMicros) {
+        Errors.throwNotImplemented();
+    }
 
     queryEarliestAvailable(nowMicros) {
-        return this.nextFreeTicketMicros;
+        return Preconditions.shouldBeNumber(this._nextFreeTicketMicros);
     }
 
     reserveEarliestAvailable(requiredPermits, nowMicros) {
@@ -262,13 +292,13 @@ class SmoothRateLimiter extends RateLimiter {
         let nextFreeTicketMicros = this._nextFreeTicketMicros;
 
         let returnValue = nextFreeTicketMicros;
-        let storedPermitsToSpend = min(requiredPermits, this.storedPermits);
+        let storedPermitsToSpend = Math.min(requiredPermits, this._storedPermits);
         let freshPermits = requiredPermits - storedPermitsToSpend;
 
-        let waitMicros = storedPermitsToWaitTime(this.storedPermits, storedPermitsToSpend) + (freshPermits * stableIntervalMicros);
+        let waitMicros = this.storedPermitsToWaitTime(this._storedPermits, storedPermitsToSpend) + (freshPermits * this._stableIntervalMicros);
 
-        this.nextFreeTicketMicros = nextFreeTicketMicros + waitMicros;
-        this.storedPermits -= storedPermitsToSpend;
+        this._nextFreeTicketMicros = nextFreeTicketMicros + waitMicros;
+        this._storedPermits -= storedPermitsToSpend;
 
         return returnValue;
     }
@@ -282,7 +312,7 @@ class SmoothRateLimiter extends RateLimiter {
      * <p>This always holds: {@code 0 <= permitsToTake <= storedPermits}
      */
     storedPermitsToWaitTime(storedPermits, permitsToTake) {
-
+        Errors.throwNotImplemented();
     }
 
     /**
@@ -299,14 +329,153 @@ class SmoothRateLimiter extends RateLimiter {
         let nextFreeTicketMicros = this._nextFreeTicketMicros;
 
         if (nowMicros > nextFreeTicketMicros) {
-            this.storedPermits = min(this._maxPermits, this._storedPermits + (nowMicros - nextFreeTicketMicros) / this.stableIntervalMicros);
+            this._storedPermits = Math.min(this._maxPermits, this._storedPermits + (nowMicros - nextFreeTicketMicros) / this._stableIntervalMicros);
 
             nextFreeTicketMicros = this._nextFreeTicketMicros = nowMicros;
         }
 
         return nextFreeTicketMicros;
     }
-
 }
 
-export default RateLimiter;
+/**
+ * This implements a "bursty" RateLimiter, where storedPermits are translated to
+ * zero throttling. The maximum number of permits that can be saved (when the RateLimiter is
+ * unused) is defined in terms of time, in this sense: if a RateLimiter is 2qps, and this
+ * time is specified as 10 seconds, we can save up to 2 * 10 = 20 permits.
+ */
+class SmoothBurstyRateLimiter extends SmoothRateLimiter {
+
+    /** The work (permits) of how many seconds can be saved up if this RateLimiter is unused? */
+    maxBurstSeconds;
+
+    /**
+     * @param {Object} options
+     * @param {Number} options.maxBurstSeconds
+     * @param {Stopwatch} [options.stopwatch]
+     */
+    constructor(options) {
+        let maxBurstSeconds = Utility.take(options, 'maxBurstSeconds', 'number', true);
+
+        // SleepingStopwatch stopwatch, double maxBurstSeconds
+        super(...arguments);
+
+        this.maxBurstSeconds = maxBurstSeconds;
+    }
+
+    /**
+     *
+     * @param {Number} permitsPerSecond
+     * @param {Number} stableIntervalMicros
+     */
+    doSetRate2(permitsPerSecond, stableIntervalMicros) {
+        let oldMaxPermits = Utility.defaultNumber(this._maxPermits);
+        let maxBurstSeconds = Utility.defaultNumber(this.maxBurstSeconds);
+
+        this._maxPermits = maxBurstSeconds * permitsPerSecond;
+
+        // if (oldMaxPermits == Double.POSITIVE_INFINITY) {
+        //     // if we don't special-case this, we would get storedPermits == NaN, below
+        //     this.storedPermits = maxPermits;
+        // } else {
+        this._storedPermits = (oldMaxPermits == 0.0)
+            ? 0.0 // initial state
+            : this._storedPermits * this._maxPermits / oldMaxPermits;
+        // }
+
+        Preconditions.shouldBeNumber(this._storedPermits, 'storedPermits');
+        Preconditions.shouldBeNumber(this._maxPermits, '_maxPermits');
+    }
+
+    /**
+     *
+     * @param {Number} storedPermits
+     * @param {Number} permitsToTake
+     * @return {number}
+     */
+    storedPermitsToWaitTime(storedPermits, permitsToTake) {
+        return 0;
+    }
+}
+
+class SmoothWarmingUpRateLimiter extends SmoothRateLimiter {
+
+    warmupPeriodMicros;
+
+    /**
+     * The slope of the line from the stable interval (when permits == 0), to the cold interval
+     * (when permits == maxPermits)
+     */
+    slope;
+    halfPermits;
+
+    constructor(options) {
+        //    SleepingStopwatch stopwatch, long warmupPeriod, TimeUnit timeUnit
+        let timeUnit = Utility.take(options, 'timeUnit', TimeUnit, true);
+        let warmupPeriod = Utility.take(options, 'warmupPeriod', 'number', true);
+
+        super(...arguments);
+
+        this.warmupPeriodMicros = timeUnit.toMicros(warmupPeriod);
+    }
+
+    /**
+     * @private
+     * @param permitsPerSecond
+     * @param stableIntervalMicros
+     */
+    doSetRate2(permitsPerSecond, stableIntervalMicros) {
+        let oldMaxPermits = this._maxPermits;
+        this._maxPermits = this.warmupPeriodMicros / stableIntervalMicros;
+        this.halfPermits = this._maxPermits / 2.0;
+
+        // Stable interval is x, cold is 3x, so on average it's 2x. Double the time -> halve the rate
+        let coldIntervalMicros = stableIntervalMicros * 3.0;
+        this.slope = (coldIntervalMicros - stableIntervalMicros) / this.halfPermits;
+
+        // if (oldMaxPermits == Number.POSITIVE_INFINITY) {
+        //     // if we don't special-case this, we would get storedPermits == NaN, below
+        //     this._storedPermits = 0.0;
+        // } else {
+            this._storedPermits = (oldMaxPermits == 0.0)
+                ? this._maxPermits // initial state is cold
+                : this._storedPermits * this._maxPermits / oldMaxPermits;
+        // }
+    }
+
+    /**
+     * @private
+     * @param storedPermits
+     * @param permitsToTake
+     * @return {number}
+     */
+    storedPermitsToWaitTime(storedPermits, permitsToTake) {
+        let availablePermitsAboveHalf = storedPermits - this.halfPermits;
+        let micros = 0;
+        // measuring the integral on the right part of the function (the climbing line)
+        if (availablePermitsAboveHalf > 0.0) {
+            let permitsAboveHalfToTake = Math.min(availablePermitsAboveHalf, permitsToTake);
+            micros = (permitsAboveHalfToTake * (this.permitsToTime(availablePermitsAboveHalf)
+                + this.permitsToTime(availablePermitsAboveHalf - permitsAboveHalfToTake)) / 2.0);
+            permitsToTake -= permitsAboveHalfToTake;
+        }
+        // measuring the integral on the left part of the function (the horizontal line)
+        micros += (this._stableIntervalMicros * permitsToTake);
+        return micros;
+    }
+
+    /**
+     * @private
+     * @param permits
+     * @return {*}
+     */
+    permitsToTime(permits) {
+        return this._stableIntervalMicros + permits * this.slope;
+    }
+}
+
+export {RateLimiter};
+export {SmoothRateLimiter};
+export {SmoothBurstyRateLimiter};
+export {SmoothWarmingUpRateLimiter};
+export default SmoothRateLimiter;

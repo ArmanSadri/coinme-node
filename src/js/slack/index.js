@@ -17,5 +17,3 @@ export {NotificationTemplate};
 export {NotificationService};
 export {InlineNotificationTemplate};
 export {UserNotificationTemplate};
-
-export default NotificationService;

@@ -84,6 +84,7 @@ export default class Currency extends CoreObject {
             Currency.toValueOrFail(value),
             Currency.optCurrency(value) || this.getChildCurrencyTypeOrFail());
 
+        Preconditions.shouldBeDefined(money, 'Money.optMoney has failed us.');
         Money.shouldBeMoney(money);
 
         return money;
@@ -94,7 +95,7 @@ export default class Currency extends CoreObject {
      * @returns {String}
      */
     static toString() {
-        return this.constructor.name;
+        return 'Currency';
     }
 
     // /**
@@ -194,26 +195,31 @@ export default class Currency extends CoreObject {
     /**
      *
      * @param {Money|String|Number} valueOrMoney
-     * @param {Currency} [defaultCurrency]
+     * @param {Class<Currency>|Currency} [defaultCurrency]
      * @returns {Money}
      */
     static toMoney(valueOrMoney, defaultCurrency) {
+        if (valueOrMoney instanceof Money) {
+            return valueOrMoney;
+        }
+
         let value = Currency.toValueOrFail(valueOrMoney);
         let currency = Currency.optCurrency(valueOrMoney) || Currency.optCurrency(defaultCurrency);
 
         if (!currency) {
-            currency = this;
+            currency = this.getChildCurrencyTypeOrFail();
         }
 
         Currency.shouldBeCurrency(currency);
 
-        if (Object.getPrototypeOf(currency) === Currency) {
-            throw new Error('Cannot have myself as a currency. Must use a subclass, like Bitcoin');
+        if (currency === Currency) {
+        // if (Object.getPrototypeOf(currency) === Currency) {
+            throw new Error(`Cannot have myself as a currency. Must use a subclass, like Bitcoin or USD. This is usually because I do Currency.toMoney() instead of Bitcoin.toMoney()`);
         }
 
         return new Money({
             value: value,
-            currency: this
+            currency: currency
         });
     }
 
@@ -242,9 +248,13 @@ export default class Currency extends CoreObject {
         } else if (Money.isInstance(objectOrCurrency)) {
             return objectOrCurrency.currency;
         } else if (Utility.isString(objectOrCurrency)) {
-            let string = objectOrCurrency.toLowerCase();
+            // let string = objectOrCurrency.toLowerCase();
 
-            return this.types[string];
+            if (Utility.isNumeric(objectOrCurrency)) {
+                return undefined;
+            }
+
+            throw new Error(`Not sure what to do with ${objectOrCurrency}`);
         }
 
         return undefined;
@@ -289,6 +299,23 @@ export default class Currency extends CoreObject {
      * @throws err if not correct type.
      */
     static toValueOrFail(numberOrMoney) {
+        let value = this.optValue(numberOrMoney);
+
+        if (value) {
+            return value;
+        } else {
+            Preconditions.fail('Number|Currency', Utility.typeOf(numberOrMoney), `This method fails with the wrong type. You provided ${numberOrMoney} (type: ${Utility.typeOf(numberOrMoney)})`);
+        }
+    }
+
+    /**
+     * Will return undefined if it cannot figure out what to do.
+     * Defaults to Zero.
+     *
+     * @param numberOrMoney
+     * @return {Big|BigJsLibrary.BigJS|undefined}
+     */
+    static optValue(numberOrMoney) {
         if (Utility.isNullOrUndefined(numberOrMoney)) {
             return new Big(0);
         } else if (Money.isInstance(numberOrMoney)) {
@@ -300,11 +327,7 @@ export default class Currency extends CoreObject {
         } else if (numberOrMoney instanceof Big) {
             return numberOrMoney;
         } else {
-            Preconditions.fail('Number|Currency', Utility.typeOf(numberOrMoney), 'This method fails with the wrong type.');
+            return undefined;
         }
-    }
-
-    static toClass() {
-        return this;
     }
 }

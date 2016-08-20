@@ -59,10 +59,10 @@ export default class Money extends CoreObject {
      * @returns {{value, currency}|{value: BigJsLibrary.BigJS, currency: Class.<Currency>}}
      */
     toJson() {
-        return {
-            value: this.value,
+        return super.toJson({
+            value: Utility.optString(this.value),
             currency: this.currency.toString()
-        };
+        });
     }
 
     /**
@@ -176,14 +176,39 @@ export default class Money extends CoreObject {
 
     /**
      *
-     * @param {*} object
+     * @param {Money} money
+     * @return {Class<Currency>}
+     */
+    static toCurrency(money) {
+        Money.shouldBeInstance(money);
+
+        return money.currency;
+    }
+
+    /**
+     *
+     * @param {Class<Money>|Money|Class<Currency>|Currency} object
+     * @param {Class<Currency>|Currency} [currency] Optional. If provided, required.
      * @returns {Money}
      */
-    static shouldBeMoney(object) {
+    static shouldBeMoney(object, currency) {
+        Preconditions.shouldBeDefined(object);
+
         if (CoreObject.isClass(object)) {
-            Preconditions.shouldBeClass(object, Money, 'object should be money');
+            Preconditions.shouldBeClass(object, Money, 'object should be money: ' + object);
+
+            if (Utility.isDefined(currency)) {
+                throw new Error(`Money cannot convert to Currency`);
+            }
         } else {
-            Preconditions.shouldBeInstance(object, Money, 'object should be money');
+            Preconditions.shouldBeInstance(object, Money, 'object should be money: ' + object);
+
+            if (currency) {
+                Money.getCurrency(object);
+
+                Currency.shouldBeClass(currency);
+                Preconditions.shouldBeClass(object.currency, currency);
+            }
         }
 
         return object;
@@ -204,5 +229,35 @@ export default class Money extends CoreObject {
             value: Currency.toValueOrFail(valueOrMoney),
             currency: defaultCurrency
         });
+    }
+
+    static optValue(money) {
+        return Currency.optValue(money);
+    }
+
+    /**
+     *
+     * @param {Money} money
+     * @param {Class<Currency>|Currency|Money|String} [destinationCurrency]
+     * @return {Boolean}
+     */
+    static isInstance(money, destinationCurrency) {
+        if (!super.isInstance(money)) {
+            return false;
+        }
+
+        if (destinationCurrency) {
+            /**
+             * @type {Class.<Currency>}
+             */
+            let currency = Currency.getCurrency(destinationCurrency);
+
+            /**
+             * @type {Currency}
+             */
+            return currency.equals(money.currency);
+        } else {
+            return true;
+        }
     }
 }

@@ -32,6 +32,29 @@ function ExtendableBuiltin(cls) {
 }
 
 /**
+ * @private
+ * @param object
+ * @return {*}
+ */
+function optJson(object) {
+    if (!object) {
+        return undefined;
+    }
+
+    if (!_Utility2.default.isObject(object)) {
+        return undefined;
+    }
+
+    if (_Utility2.default.isFunction(object.toJSON)) {
+        return object.toJSON();
+    } else if (_Utility2.default.isFunction(object.toJson)) {
+        return object.toJson();
+    }
+
+    return undefined;
+}
+
+/**
  * @class
  */
 
@@ -58,6 +81,10 @@ var AbstractError = function (_ExtendableBuiltin) {
          * @type {String}
          */
         var message = _Utility2.default.take(options, 'message');
+        /**
+         * @type {AbstractError}
+         */
+        var cause = _Utility2.default.take(options, 'cause');
         // let message = Utility.take(options, 'message', Utility.isString);
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractError).call(this, message));
@@ -71,6 +98,7 @@ var AbstractError = function (_ExtendableBuiltin) {
         _this.stack = error.stack;
         _this.name = _this.constructor.name;
         _this.message = message;
+        _this._cause = cause;
         return _this;
     }
 
@@ -80,6 +108,7 @@ var AbstractError = function (_ExtendableBuiltin) {
             return {
                 stack: this.stack,
                 name: this.name,
+                cause: optJson(this.cause),
                 message: this.message
             };
         }
@@ -91,6 +120,11 @@ var AbstractError = function (_ExtendableBuiltin) {
          * @returns {boolean}
          */
 
+    }, {
+        key: 'cause',
+        get: function get() {
+            return this._cause;
+        }
     }], [{
         key: 'isClass',
         value: function isClass(clazz) {
@@ -137,5 +171,4 @@ var AbstractError = function (_ExtendableBuiltin) {
 }(ExtendableBuiltin(Error));
 
 exports.default = AbstractError;
-module.exports = exports['default'];
 //# sourceMappingURL=AbstractError.js.map

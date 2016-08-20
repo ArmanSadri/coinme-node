@@ -241,5 +241,4 @@ var NotificationBuilder = function (_AbstractBuilder) {
 }(_AbstractBuilder3.default);
 
 exports.default = NotificationBuilder;
-module.exports = exports['default'];
 //# sourceMappingURL=NotificationBuilder.js.map

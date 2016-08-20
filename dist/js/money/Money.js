@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _CoreObject2 = require("../CoreObject");
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
@@ -95,10 +97,10 @@ var Money = function (_CoreObject) {
     }, {
         key: "toJson",
         value: function toJson() {
-            return {
-                value: this.value,
+            return _get(Object.getPrototypeOf(Money.prototype), "toJson", this).call(this, {
+                value: _Utility2.default.optString(this.value),
                 currency: this.currency.toString()
-            };
+            });
         }
 
         /**
@@ -254,17 +256,45 @@ var Money = function (_CoreObject) {
 
         /**
          *
-         * @param {*} object
+         * @param {Money} money
+         * @return {Class<Currency>}
+         */
+
+    }, {
+        key: "toCurrency",
+        value: function toCurrency(money) {
+            Money.shouldBeInstance(money);
+
+            return money.currency;
+        }
+
+        /**
+         *
+         * @param {Class<Money>|Money|Class<Currency>|Currency} object
+         * @param {Class<Currency>|Currency} [currency] Optional. If provided, required.
          * @returns {Money}
          */
 
     }, {
         key: "shouldBeMoney",
-        value: function shouldBeMoney(object) {
+        value: function shouldBeMoney(object, currency) {
+            _Preconditions2.default.shouldBeDefined(object);
+
             if (_CoreObject3.default.isClass(object)) {
-                _Preconditions2.default.shouldBeClass(object, Money, 'object should be money');
+                _Preconditions2.default.shouldBeClass(object, Money, 'object should be money: ' + object);
+
+                if (_Utility2.default.isDefined(currency)) {
+                    throw new Error("Money cannot convert to Currency");
+                }
             } else {
-                _Preconditions2.default.shouldBeInstance(object, Money, 'object should be money');
+                _Preconditions2.default.shouldBeInstance(object, Money, 'object should be money: ' + object);
+
+                if (currency) {
+                    Money.getCurrency(object);
+
+                    _Currency2.default.shouldBeClass(currency);
+                    _Preconditions2.default.shouldBeClass(object.currency, currency);
+                }
             }
 
             return object;
@@ -289,11 +319,44 @@ var Money = function (_CoreObject) {
                 currency: defaultCurrency
             });
         }
+    }, {
+        key: "optValue",
+        value: function optValue(money) {
+            return _Currency2.default.optValue(money);
+        }
+
+        /**
+         *
+         * @param {Money} money
+         * @param {Class<Currency>|Currency|Money|String} [destinationCurrency]
+         * @return {Boolean}
+         */
+
+    }, {
+        key: "isInstance",
+        value: function isInstance(money, destinationCurrency) {
+            if (!_get(Object.getPrototypeOf(Money), "isInstance", this).call(this, money)) {
+                return false;
+            }
+
+            if (destinationCurrency) {
+                /**
+                 * @type {Class.<Currency>}
+                 */
+                var currency = _Currency2.default.getCurrency(destinationCurrency);
+
+                /**
+                 * @type {Currency}
+                 */
+                return currency.equals(money.currency);
+            } else {
+                return true;
+            }
+        }
     }]);
 
     return Money;
 }(_CoreObject3.default);
 
 exports.default = Money;
-module.exports = exports['default'];
 //# sourceMappingURL=Money.js.map

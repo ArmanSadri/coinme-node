@@ -18,6 +18,10 @@ var _Preconditions = require("./Preconditions");
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
+var _Utility = require("./Utility");
+
+var _Utility2 = _interopRequireDefault(_Utility);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40,10 +44,14 @@ var CoreObject = function (_Ember$Object) {
     function CoreObject(options) {
         _classCallCheck(this, CoreObject);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).apply(this, arguments));
+        if (_Utility2.default.isNotExisting(options) || _Utility2.default.isObject(options)) {
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).apply(this, arguments));
 
-        _lodash2.default.merge(_this, options);
-        return _this;
+            _lodash2.default.merge(_this, options);
+        } else {
+            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).call(this, {}));
+        }
+        return _possibleConstructorReturn(_this);
     }
 
     /**
@@ -94,6 +102,13 @@ var CoreObject = function (_Ember$Object) {
         value: function toClass() {
             return this.constructor;
         }
+    }, {
+        key: "toJson",
+        value: function toJson(options) {
+            return _lodash2.default.assign({
+                _class: this.constructor.name
+            }, options || {});
+        }
 
         /**
          *
@@ -140,28 +155,32 @@ var CoreObject = function (_Ember$Object) {
 
             return false;
         }
-
-        /**
-         * Ensures that your object is an instance of this type.
-         *
-         * @param {*} object
-         * @returns {Object}
-         * @throws {PreconditionsError} if the type is incorrect
-         */
-
     }, {
-        key: "shouldBeInstance",
-        value: function shouldBeInstance(object) {
-            if (!this.isInstance(object)) {
-                _Preconditions2.default.fail(this, object, 'Should be instance');
-            }
-
-            return object;
+        key: "equals",
+        value: function equals(foreignClass) {
+            return this.isClass(foreignClass);
         }
 
         /**
          *
-         * @param {object} obj
+         * @param {CoreObject|Class|*} instanceOrClass
+         * @param {String} [message]
+         * @returns {*}
+         */
+
+    }, {
+        key: "shouldBeClassOrInstance",
+        value: function shouldBeClassOrInstance(instanceOrClass, message) {
+            if (!this.isInstance(instanceOrClass) && !this.isClass(instanceOrClass)) {
+                _Preconditions2.default.fail(this.toClass(), CoreObject.optClass(instanceOrClass), message || 'Was not the correct class or instance');
+            }
+
+            return instanceOrClass;
+        }
+
+        /**
+         *
+         * @param {*|CoreObject} obj
          * @returns {boolean}
          */
 
@@ -169,6 +188,23 @@ var CoreObject = function (_Ember$Object) {
         key: "isInstance",
         value: function isInstance(obj) {
             return obj instanceof this;
+        }
+
+        /**
+         *
+         * @param {*|CoreObject} obj
+         * @param {String} [message]
+         * @returns {*|CoreObject}
+         */
+
+    }, {
+        key: "shouldBeInstance",
+        value: function shouldBeInstance(obj, message) {
+            if (!this.isInstance(obj)) {
+                _Preconditions2.default.fail(this.toClass(), _Utility2.default.optClass(obj), message || 'Was not the correct class');
+            }
+
+            return obj;
         }
 
         /**
@@ -188,5 +224,4 @@ var CoreObject = function (_Ember$Object) {
 }(_Ember2.default.Object);
 
 exports.default = CoreObject;
-module.exports = exports['default'];
 //# sourceMappingURL=CoreObject.js.map

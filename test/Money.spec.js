@@ -5,7 +5,7 @@
  * @see http://chaijs.com/api/assert/
  */
 import {expect, assert} from "chai";
-import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
+import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "../src/js/money";
 import {Errors, AbstractError, PreconditionsError} from "~/errors";
 import Preconditions from "~/Preconditions";
 import Big from 'big.js';
