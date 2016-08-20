@@ -1253,21 +1253,28 @@ var Utility = function () {
          * Ember.isBlank('Hello world');   // false
          * Ember.isBlank([1,2,3]);         // false
          * ```
-         * @param {String|Array} string
-         * @param {String|Array} [string.length]
+         * @param {String|Array|Number} stringOrArrayOrNumber
+         * @param {String|Array|Number} [stringOrArrayOrNumber.length]
          * @return {boolean}
          */
 
     }, {
         key: "isBlank",
-        value: function isBlank(string) {
-            if (Utility.isNullOrUndefined(string)) {
+        value: function isBlank(stringOrArrayOrNumber) {
+            if (Utility.isNotExisting(stringOrArrayOrNumber)) {
                 return true;
             }
 
-            _Preconditions2.default.shouldBeString(string);
+            var type = Utility.typeOf(stringOrArrayOrNumber);
+            if ('number' === type) {
+                return 0 == stringOrArrayOrNumber;
+            }
 
-            return _Ember2.default.isBlank(string);
+            if (!('array' === type || 'string' === type || 'number' === type)) {
+                _Preconditions2.default.fail('type|array', type);
+            }
+
+            return _Ember2.default.isBlank(stringOrArrayOrNumber);
         }
 
         /**
@@ -1291,7 +1298,7 @@ var Utility = function () {
         value: function defaultNumber() {
             var result = 0;
 
-            _.each(arguments, function (object) {
+            _lodash2.default.each(arguments, function (object) {
                 if (Utility.isNumber(object)) {
                     result = object;
                 }
@@ -1519,6 +1526,7 @@ var Utility = function () {
         }
 
         /**
+         * Proxies to Utility.now() if you pass no arguments.
          *
          * This is copied from https://js-joda.github.io/js-joda/esdoc/class/src/format/DateTimeFormatter.js~DateTimeFormatter.html
          *
@@ -1573,6 +1581,10 @@ var Utility = function () {
     }, {
         key: "toDateTime",
         value: function toDateTime(value, optionalDateFormatStringOrDateFormatter) {
+            if (Utility.isBlank(arguments.length)) {
+                return Utility.now();
+            }
+
             var dateTime = Utility.optDateTime(value, optionalDateFormatStringOrDateFormatter);
 
             if (dateTime) {
@@ -1602,7 +1614,7 @@ var Utility = function () {
         value: function defaultObject() {
             var result = null;
 
-            _.each(arguments, function (object) {
+            _lodash2.default.each(arguments, function (object) {
                 if (Utility.isObject(object)) {
                     result = object;
                 }

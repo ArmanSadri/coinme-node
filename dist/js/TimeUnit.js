@@ -476,10 +476,8 @@ var TimeUnit = function (_CoreObject) {
         return _this;
     }
 
-    //region public methods
     /**
-     *
-     * @returns {String}
+     * @returns {string}
      */
 
 
@@ -506,21 +504,28 @@ var TimeUnit = function (_CoreObject) {
 
     _createClass(TimeUnit, [{
         key: "toString",
-
-
-        /**
-         * @returns {string}
-         */
         value: function toString() {
             return this.spec.shortName;
         }
+    }, {
+        key: "valueOf",
+        value: function valueOf() {
+            return this.toString();
+        }
 
+        //region public methods
         /**
-         * @return {ChronoUnit}
+         *
+         * @returns {String}
          */
 
     }, {
         key: "toChronoUnit",
+
+
+        /**
+         * @return {ChronoUnit}
+         */
         value: function toChronoUnit() {
             return this.spec.unit;
         }

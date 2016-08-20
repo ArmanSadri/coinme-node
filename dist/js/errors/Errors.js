@@ -345,6 +345,16 @@ var Errors = function () {
         }
 
         /**
+         * @throws Error
+         */
+
+    }, {
+        key: 'throwNotImplemented',
+        value: function throwNotImplemented() {
+            throw new Error('This method is not implemented');
+        }
+
+        /**
          * Throw a TypeError that says you have no idea what the fuck is going on.
          *
          * @param {*} thingy

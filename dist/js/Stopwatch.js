@@ -31,6 +31,10 @@ var _Ticker = require("./Ticker");
 
 var _Ticker2 = _interopRequireDefault(_Ticker);
 
+var _nanotimer = require("nanotimer");
+
+var _nanotimer2 = _interopRequireDefault(_nanotimer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62,15 +66,17 @@ var Stopwatch = function (_CoreObject) {
     function Stopwatch(options) {
         _classCallCheck(this, Stopwatch);
 
+        var shouldStart = _Utility2.default.take(options, 'start', {
+            defaultValue: true
+        });
+
+        var ticker = _Utility2.default.take(options, 'ticker') || SYSTEM_TICKER;
+
         // options = options || {};
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Stopwatch).apply(this, arguments));
 
-        _this._ticker = _Utility2.default.take(options, 'ticker') || SYSTEM_TICKER;
-
-        var shouldStart = _Utility2.default.take(options, 'start', {
-            defaultValue: true
-        });
+        _this._ticker = ticker;
 
         /**
          * @type {Number} nanoseconds
