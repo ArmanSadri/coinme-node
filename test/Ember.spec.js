@@ -5,10 +5,10 @@
  * @see http://chaijs.com/api/assert/
  */
 import {expect, assert} from "chai";
-import Ember from "~/Ember";
-import CoreObject from "~/CoreObject";
-import {Errors, AbstractError, PreconditionsError} from "~/errors";
-import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
+import Ember from "../src/js/Ember";
+import CoreObject from "../src/js/CoreObject";
+import {Errors, AbstractError, PreconditionsError} from "../src/js/errors";
+import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "../src/js/money";
 import "source-map-support/register";
 
 describe('Ember', () => {

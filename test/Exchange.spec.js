@@ -7,7 +7,7 @@
 // import {expect, assert} from "chai";
 // import "source-map-support/register";
 // import Promise from "bluebird";
-// import Ember from "~/Ember";
+// import Ember from "../src/js/Ember";
 // import Preconditions from "../src/js/Preconditions";
 // import Utility from "../src/js/Utility";
 // import Conversion from "../src/js/data/Conversion";

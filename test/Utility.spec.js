@@ -6,11 +6,11 @@
  */
 import "source-map-support/register";
 import {expect, assert} from "chai";
-import Utility from "~/Utility";
-import Preconditions from "~/Preconditions";
-import CoreObject from "~/CoreObject";
-import {Errors, AbstractError, PreconditionsError} from "~/errors";
-import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
+import Utility from "../src/js/Utility";
+import Preconditions from "../src/js/Preconditions";
+import CoreObject from "../src/js/CoreObject";
+import {Errors, AbstractError, PreconditionsError} from "../src/js/errors";
+import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "../src/js/money";
 import {Instant, ZonedDateTime, ZoneOffset, LocalDateTime, LocalTime, TemporalQueries} from "js-joda";
 
 describe('Utility', function () {

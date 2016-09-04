@@ -1,7 +1,9 @@
 'use strict';
 
 import Lodash from "lodash";
+/** @type {Preconditions} */
 import Preconditions from "~/Preconditions";
+/** @type {Ember} **/
 import Ember from "~/Ember";
 import CoreObject from "~/CoreObject";
 import {Errors} from "./errors";
@@ -222,7 +224,7 @@ class Utility {
      *
      * @param {Object} object
      * @param {String|Object|Array} keyAsStringObjectArray
-     * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
+     * @param {String|Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
      * @param {Boolean} [requiredByDefault] Default value for required.
      * @throws PreconditionsError
      *
@@ -268,10 +270,16 @@ class Utility {
             let fn = Lodash.get(ruleset, 'adapter');
             let scope = Lodash.get(ruleset, 'scope') || this;
 
+            // console.log(`adapter: (key:${key}) (fn:${fn})`);
+
             if (fn) {
                 Preconditions.shouldBeFunction(fn, 'Validator must be a function');
 
+                let source = value;
+
                 value = fn.call(scope, value);
+
+                // console.log(`adapted (value:${source}) (type:${Utility.typeOf(source)}) to (value:${value}) (type: ${Utility.typeOf(value)}`);
             }
 
             return value;
@@ -378,6 +386,10 @@ class Utility {
             optionalTypeDeclarationOrDefaults = null;
 
             Preconditions.shouldBeUndefined(requiredByDefault, 'You provided two booleans. That\'s strange.');
+        } else if (Utility.isString(optionalTypeDeclarationOrDefaults)) {
+            global_defaults = {
+                type: optionalTypeDeclarationOrDefaults
+            };
         }
 
         if (Utility.isBoolean(requiredByDefault)) {
@@ -1466,6 +1478,40 @@ class Utility {
         }
 
         return object;
+    }
+
+    /**
+     *
+     * @param {Object} object
+     * @param {String|Array} stringOrArray
+     * @param {String|Object} [defaults]
+     */
+    static get(object, stringOrArray, defaults) {
+        defaults = defaults || {};
+
+        let mode = Utility.isString(stringOrArray) ? 'single' : (Utility.isArray(stringOrArray) ? 'multiple' : 'error');
+
+        Preconditions.shouldBeTrue(mode != 'error', `I do not know what to do with ${stringOrArray}`);
+        Preconditions.shouldBeObject(object, 'target object must be object.');
+
+        if ('single' === mode) {
+            //noinspection UnnecessaryLocalVariableJS
+            let path = stringOrArray;
+
+            return Ember.getWithDefault(object, path, defaults);
+        } else if ('multiple' === mode) {
+            //noinspection UnnecessaryLocalVariableJS
+            let array = stringOrArray;
+            let result = Ember.getProperties(array);
+
+            if (Utility.isDefined(defaults)) {
+                return Utility.defaults(result, defaults);
+            } else {
+                return result;
+            }
+        }
+
+        throw new Error(`Not sure what to do here`);
     }
 
     /**

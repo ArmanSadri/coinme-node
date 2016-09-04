@@ -1,1997 +1,7 @@
 {
   "type": "Program",
-  "body": [
-    {
-      "type": "ExpressionStatement",
-      "expression": {
-        "type": "Literal",
-        "value": "use strict",
-        "raw": "'use strict'",
-        "range": [
-          0,
-          12
-        ],
-        "loc": {
-          "start": {
-            "line": 1,
-            "column": 0
-          },
-          "end": {
-            "line": 1,
-            "column": 12
-          }
-        }
-      },
-      "range": [
-        0,
-        13
-      ],
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 13
-        }
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "Adapter",
-            "range": [
-              22,
-              29
-            ],
-            "loc": {
-              "start": {
-                "line": 3,
-                "column": 7
-              },
-              "end": {
-                "line": 3,
-                "column": 14
-              }
-            }
-          },
-          "range": [
-            22,
-            29
-          ],
-          "loc": {
-            "start": {
-              "line": 3,
-              "column": 7
-            },
-            "end": {
-              "line": 3,
-              "column": 14
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "../data",
-        "raw": "'../data'",
-        "range": [
-          35,
-          44
-        ],
-        "loc": {
-          "start": {
-            "line": 3,
-            "column": 20
-          },
-          "end": {
-            "line": 3,
-            "column": 29
-          }
-        }
-      },
-      "range": [
-        15,
-        45
-      ],
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 0
-        },
-        "end": {
-          "line": 3,
-          "column": 30
-        }
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "Money",
-            "range": [
-              53,
-              58
-            ],
-            "loc": {
-              "start": {
-                "line": 4,
-                "column": 7
-              },
-              "end": {
-                "line": 4,
-                "column": 12
-              }
-            }
-          },
-          "range": [
-            53,
-            58
-          ],
-          "loc": {
-            "start": {
-              "line": 4,
-              "column": 7
-            },
-            "end": {
-              "line": 4,
-              "column": 12
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "./Money",
-        "raw": "'./Money'",
-        "range": [
-          64,
-          73
-        ],
-        "loc": {
-          "start": {
-            "line": 4,
-            "column": 18
-          },
-          "end": {
-            "line": 4,
-            "column": 27
-          }
-        }
-      },
-      "range": [
-        46,
-        74
-      ],
-      "loc": {
-        "start": {
-          "line": 4,
-          "column": 0
-        },
-        "end": {
-          "line": 4,
-          "column": 28
-        }
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "Currency",
-            "range": [
-              82,
-              90
-            ],
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 7
-              },
-              "end": {
-                "line": 5,
-                "column": 15
-              }
-            }
-          },
-          "range": [
-            82,
-            90
-          ],
-          "loc": {
-            "start": {
-              "line": 5,
-              "column": 7
-            },
-            "end": {
-              "line": 5,
-              "column": 15
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "./Currency",
-        "raw": "'./Currency'",
-        "range": [
-          96,
-          108
-        ],
-        "loc": {
-          "start": {
-            "line": 5,
-            "column": 21
-          },
-          "end": {
-            "line": 5,
-            "column": 33
-          }
-        }
-      },
-      "range": [
-        75,
-        109
-      ],
-      "loc": {
-        "start": {
-          "line": 5,
-          "column": 0
-        },
-        "end": {
-          "line": 5,
-          "column": 34
-        }
-      }
-    },
-    {
-      "type": "Identifier",
-      "id": {
-        "type": "Identifier",
-        "name": "CurrencyAdapter",
-        "range": [
-          117,
-          132
-        ],
-        "loc": {
-          "start": {
-            "line": 7,
-            "column": 6
-          },
-          "end": {
-            "line": 7,
-            "column": 21
-          }
-        }
-      },
-      "superClass": {
-        "type": "Identifier",
-        "name": "Adapter",
-        "range": [
-          141,
-          148
-        ],
-        "loc": {
-          "start": {
-            "line": 7,
-            "column": 30
-          },
-          "end": {
-            "line": 7,
-            "column": 37
-          }
-        }
-      },
-      "body": {
-        "type": "ClassBody",
-        "body": [
-          {
-            "type": "MethodDefinition",
-            "key": {
-              "type": "Identifier",
-              "name": "supports",
-              "range": [
-                273,
-                281
-              ],
-              "loc": {
-                "start": {
-                  "line": 13,
-                  "column": 4
-                },
-                "end": {
-                  "line": 13,
-                  "column": 12
-                }
-              }
-            },
-            "value": {
-              "type": "FunctionExpression",
-              "id": null,
-              "params": [
-                {
-                  "type": "Identifier",
-                  "name": "instanceOrClass",
-                  "range": [
-                    282,
-                    297
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 13,
-                      "column": 13
-                    },
-                    "end": {
-                      "line": 13,
-                      "column": 28
-                    }
-                  }
-                }
-              ],
-              "body": {
-                "type": "BlockStatement",
-                "body": [
-                  {
-                    "type": "VariableDeclaration",
-                    "declarations": [
-                      {
-                        "type": "VariableDeclarator",
-                        "id": {
-                          "type": "Identifier",
-                          "name": "money",
-                          "range": [
-                            313,
-                            318
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 14,
-                              "column": 12
-                            },
-                            "end": {
-                              "line": 14,
-                              "column": 17
-                            }
-                          }
-                        },
-                        "init": {
-                          "type": "CallExpression",
-                          "callee": {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "Identifier",
-                              "name": "Money",
-                              "range": [
-                                321,
-                                326
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 14,
-                                  "column": 20
-                                },
-                                "end": {
-                                  "line": 14,
-                                  "column": 25
-                                }
-                              }
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "isInstance",
-                              "range": [
-                                327,
-                                337
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 14,
-                                  "column": 26
-                                },
-                                "end": {
-                                  "line": 14,
-                                  "column": 36
-                                }
-                              }
-                            },
-                            "range": [
-                              321,
-                              337
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 14,
-                                "column": 20
-                              },
-                              "end": {
-                                "line": 14,
-                                "column": 36
-                              }
-                            }
-                          },
-                          "arguments": [
-                            {
-                              "type": "Identifier",
-                              "name": "instanceOrClass",
-                              "range": [
-                                338,
-                                353
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 14,
-                                  "column": 37
-                                },
-                                "end": {
-                                  "line": 14,
-                                  "column": 52
-                                }
-                              }
-                            }
-                          ],
-                          "range": [
-                            321,
-                            354
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 14,
-                              "column": 20
-                            },
-                            "end": {
-                              "line": 14,
-                              "column": 53
-                            }
-                          }
-                        },
-                        "range": [
-                          313,
-                          354
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 14,
-                            "column": 12
-                          },
-                          "end": {
-                            "line": 14,
-                            "column": 53
-                          }
-                        }
-                      }
-                    ],
-                    "kind": "let",
-                    "range": [
-                      309,
-                      355
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 14,
-                        "column": 8
-                      },
-                      "end": {
-                        "line": 14,
-                        "column": 54
-                      }
-                    }
-                  },
-                  {
-                    "type": "VariableDeclaration",
-                    "declarations": [
-                      {
-                        "type": "VariableDeclarator",
-                        "id": {
-                          "type": "Identifier",
-                          "name": "currency",
-                          "range": [
-                            368,
-                            376
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 15,
-                              "column": 12
-                            },
-                            "end": {
-                              "line": 15,
-                              "column": 20
-                            }
-                          }
-                        },
-                        "init": {
-                          "type": "CallExpression",
-                          "callee": {
-                            "type": "MemberExpression",
-                            "computed": false,
-                            "object": {
-                              "type": "Identifier",
-                              "name": "Currency",
-                              "range": [
-                                379,
-                                387
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 15,
-                                  "column": 23
-                                },
-                                "end": {
-                                  "line": 15,
-                                  "column": 31
-                                }
-                              }
-                            },
-                            "property": {
-                              "type": "Identifier",
-                              "name": "isInstanceOrClass",
-                              "range": [
-                                388,
-                                405
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 15,
-                                  "column": 32
-                                },
-                                "end": {
-                                  "line": 15,
-                                  "column": 49
-                                }
-                              }
-                            },
-                            "range": [
-                              379,
-                              405
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 15,
-                                "column": 23
-                              },
-                              "end": {
-                                "line": 15,
-                                "column": 49
-                              }
-                            }
-                          },
-                          "arguments": [
-                            {
-                              "type": "Identifier",
-                              "name": "instanceOrClass",
-                              "range": [
-                                406,
-                                421
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 15,
-                                  "column": 50
-                                },
-                                "end": {
-                                  "line": 15,
-                                  "column": 65
-                                }
-                              }
-                            }
-                          ],
-                          "range": [
-                            379,
-                            422
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 15,
-                              "column": 23
-                            },
-                            "end": {
-                              "line": 15,
-                              "column": 66
-                            }
-                          }
-                        },
-                        "range": [
-                          368,
-                          422
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 15,
-                            "column": 12
-                          },
-                          "end": {
-                            "line": 15,
-                            "column": 66
-                          }
-                        }
-                      }
-                    ],
-                    "kind": "let",
-                    "range": [
-                      364,
-                      423
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 15,
-                        "column": 8
-                      },
-                      "end": {
-                        "line": 15,
-                        "column": 67
-                      }
-                    }
-                  },
-                  {
-                    "type": "ReturnStatement",
-                    "argument": {
-                      "type": "LogicalExpression",
-                      "operator": "||",
-                      "left": {
-                        "type": "Identifier",
-                        "name": "money",
-                        "range": [
-                          440,
-                          445
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 17,
-                            "column": 15
-                          },
-                          "end": {
-                            "line": 17,
-                            "column": 20
-                          }
-                        }
-                      },
-                      "right": {
-                        "type": "Identifier",
-                        "name": "currency",
-                        "range": [
-                          449,
-                          457
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 17,
-                            "column": 24
-                          },
-                          "end": {
-                            "line": 17,
-                            "column": 32
-                          }
-                        }
-                      },
-                      "range": [
-                        440,
-                        457
-                      ],
-                      "loc": {
-                        "start": {
-                          "line": 17,
-                          "column": 15
-                        },
-                        "end": {
-                          "line": 17,
-                          "column": 32
-                        }
-                      }
-                    },
-                    "range": [
-                      433,
-                      458
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 17,
-                        "column": 8
-                      },
-                      "end": {
-                        "line": 17,
-                        "column": 33
-                      }
-                    }
-                  }
-                ],
-                "range": [
-                  299,
-                  464
-                ],
-                "loc": {
-                  "start": {
-                    "line": 13,
-                    "column": 30
-                  },
-                  "end": {
-                    "line": 18,
-                    "column": 5
-                  }
-                }
-              },
-              "generator": false,
-              "expression": false,
-              "range": [
-                281,
-                464
-              ],
-              "loc": {
-                "start": {
-                  "line": 13,
-                  "column": 12
-                },
-                "end": {
-                  "line": 18,
-                  "column": 5
-                }
-              }
-            },
-            "kind": "method",
-            "computed": false,
-            "range": [
-              273,
-              464
-            ],
-            "loc": {
-              "start": {
-                "line": 13,
-                "column": 4
-              },
-              "end": {
-                "line": 18,
-                "column": 5
-              }
-            },
-            "leadingComments": [
-              {
-                "type": "Block",
-                "value": "*\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\n     * @return {Boolean}\n     ",
-                "range": [
-                  156,
-                  268
-                ],
-                "loc": {
-                  "start": {
-                    "line": 9,
-                    "column": 4
-                  },
-                  "end": {
-                    "line": 12,
-                    "column": 7
-                  }
-                }
-              }
-            ],
-            "trailingComments": [
-              {
-                "type": "Block",
-                "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
-                "range": [
-                  470,
-                  554
-                ],
-                "loc": {
-                  "start": {
-                    "line": 20,
-                    "column": 4
-                  },
-                  "end": {
-                    "line": 24,
-                    "column": 7
-                  }
-                }
-              }
-            ],
-            "static": false
-          },
-          {
-            "type": "MethodDefinition",
-            "key": {
-              "type": "Identifier",
-              "name": "adapt",
-              "range": [
-                559,
-                564
-              ],
-              "loc": {
-                "start": {
-                  "line": 25,
-                  "column": 4
-                },
-                "end": {
-                  "line": 25,
-                  "column": 9
-                }
-              }
-            },
-            "value": {
-              "type": "FunctionExpression",
-              "id": null,
-              "params": [
-                {
-                  "type": "Identifier",
-                  "name": "instance",
-                  "range": [
-                    565,
-                    573
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 25,
-                      "column": 10
-                    },
-                    "end": {
-                      "line": 25,
-                      "column": 18
-                    }
-                  }
-                }
-              ],
-              "body": {
-                "type": "BlockStatement",
-                "body": [
-                  {
-                    "type": "ReturnStatement",
-                    "argument": {
-                      "type": "CallExpression",
-                      "callee": {
-                        "type": "MemberExpression",
-                        "computed": false,
-                        "object": {
-                          "type": "Identifier",
-                          "name": "Currency",
-                          "range": [
-                            592,
-                            600
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 26,
-                              "column": 15
-                            },
-                            "end": {
-                              "line": 26,
-                              "column": 23
-                            }
-                          }
-                        },
-                        "property": {
-                          "type": "Identifier",
-                          "name": "optCurrency",
-                          "range": [
-                            601,
-                            612
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 26,
-                              "column": 24
-                            },
-                            "end": {
-                              "line": 26,
-                              "column": 35
-                            }
-                          }
-                        },
-                        "range": [
-                          592,
-                          612
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 26,
-                            "column": 15
-                          },
-                          "end": {
-                            "line": 26,
-                            "column": 35
-                          }
-                        }
-                      },
-                      "arguments": [
-                        {
-                          "type": "Identifier",
-                          "name": "instance",
-                          "range": [
-                            613,
-                            621
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 26,
-                              "column": 36
-                            },
-                            "end": {
-                              "line": 26,
-                              "column": 44
-                            }
-                          }
-                        }
-                      ],
-                      "range": [
-                        592,
-                        622
-                      ],
-                      "loc": {
-                        "start": {
-                          "line": 26,
-                          "column": 15
-                        },
-                        "end": {
-                          "line": 26,
-                          "column": 45
-                        }
-                      }
-                    },
-                    "range": [
-                      585,
-                      623
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 26,
-                        "column": 8
-                      },
-                      "end": {
-                        "line": 26,
-                        "column": 46
-                      }
-                    }
-                  }
-                ],
-                "range": [
-                  575,
-                  629
-                ],
-                "loc": {
-                  "start": {
-                    "line": 25,
-                    "column": 20
-                  },
-                  "end": {
-                    "line": 27,
-                    "column": 5
-                  }
-                }
-              },
-              "generator": false,
-              "expression": false,
-              "range": [
-                564,
-                629
-              ],
-              "loc": {
-                "start": {
-                  "line": 25,
-                  "column": 9
-                },
-                "end": {
-                  "line": 27,
-                  "column": 5
-                }
-              }
-            },
-            "kind": "method",
-            "computed": false,
-            "range": [
-              559,
-              629
-            ],
-            "loc": {
-              "start": {
-                "line": 25,
-                "column": 4
-              },
-              "end": {
-                "line": 27,
-                "column": 5
-              }
-            },
-            "leadingComments": [
-              {
-                "type": "Block",
-                "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
-                "range": [
-                  470,
-                  554
-                ],
-                "loc": {
-                  "start": {
-                    "line": 20,
-                    "column": 4
-                  },
-                  "end": {
-                    "line": 24,
-                    "column": 7
-                  }
-                }
-              }
-            ],
-            "static": false
-          }
-        ],
-        "range": [
-          149,
-          631
-        ],
-        "loc": {
-          "start": {
-            "line": 7,
-            "column": 38
-          },
-          "end": {
-            "line": 28,
-            "column": 1
-          }
-        }
-      },
-      "range": [
-        111,
-        631
-      ],
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 0
-        },
-        "end": {
-          "line": 28,
-          "column": 1
-        }
-      },
-      "name": "_",
-      "leadingComments": [],
-      "trailingComments": []
-    },
-    {
-      "type": "ExportNamedDeclaration",
-      "declaration": null,
-      "specifiers": [
-        {
-          "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "CurrencyAdapter",
-            "range": [
-              641,
-              656
-            ],
-            "loc": {
-              "start": {
-                "line": 30,
-                "column": 8
-              },
-              "end": {
-                "line": 30,
-                "column": 23
-              }
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "name": "CurrencyAdapter",
-            "range": [
-              641,
-              656
-            ],
-            "loc": {
-              "start": {
-                "line": 30,
-                "column": 8
-              },
-              "end": {
-                "line": 30,
-                "column": 23
-              }
-            }
-          },
-          "range": [
-            641,
-            656
-          ],
-          "loc": {
-            "start": {
-              "line": 30,
-              "column": 8
-            },
-            "end": {
-              "line": 30,
-              "column": 23
-            }
-          }
-        }
-      ],
-      "source": null,
-      "range": [
-        633,
-        658
-      ],
-      "loc": {
-        "start": {
-          "line": 30,
-          "column": 0
-        },
-        "end": {
-          "line": 30,
-          "column": 25
-        }
-      }
-    },
-    {
-      "type": "Identifier",
-      "declaration": {
-        "type": "Identifier",
-        "name": "CurrencyAdapter",
-        "range": [
-          674,
-          689
-        ],
-        "loc": {
-          "start": {
-            "line": 31,
-            "column": 15
-          },
-          "end": {
-            "line": 31,
-            "column": 30
-          }
-        }
-      },
-      "range": [
-        659,
-        690
-      ],
-      "loc": {
-        "start": {
-          "line": 31,
-          "column": 0
-        },
-        "end": {
-          "line": 31,
-          "column": 31
-        }
-      },
-      "name": "_",
-      "leadingComments": [],
-      "trailingComments": []
-    },
-    {
-      "type": "ExportDefaultDeclaration",
-      "declaration": {
-        "type": "ClassDeclaration",
-        "id": {
-          "type": "Identifier",
-          "name": "CurrencyAdapter",
-          "range": [
-            117,
-            132
-          ],
-          "loc": {
-            "start": {
-              "line": 7,
-              "column": 6
-            },
-            "end": {
-              "line": 7,
-              "column": 21
-            }
-          }
-        },
-        "superClass": {
-          "type": "Identifier",
-          "name": "Adapter",
-          "range": [
-            141,
-            148
-          ],
-          "loc": {
-            "start": {
-              "line": 7,
-              "column": 30
-            },
-            "end": {
-              "line": 7,
-              "column": 37
-            }
-          }
-        },
-        "body": {
-          "type": "ClassBody",
-          "body": [
-            {
-              "type": "MethodDefinition",
-              "key": {
-                "type": "Identifier",
-                "name": "supports",
-                "range": [
-                  273,
-                  281
-                ],
-                "loc": {
-                  "start": {
-                    "line": 13,
-                    "column": 4
-                  },
-                  "end": {
-                    "line": 13,
-                    "column": 12
-                  }
-                }
-              },
-              "value": {
-                "type": "FunctionExpression",
-                "id": null,
-                "params": [
-                  {
-                    "type": "Identifier",
-                    "name": "instanceOrClass",
-                    "range": [
-                      282,
-                      297
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 13,
-                        "column": 13
-                      },
-                      "end": {
-                        "line": 13,
-                        "column": 28
-                      }
-                    }
-                  }
-                ],
-                "body": {
-                  "type": "BlockStatement",
-                  "body": [
-                    {
-                      "type": "VariableDeclaration",
-                      "declarations": [
-                        {
-                          "type": "VariableDeclarator",
-                          "id": {
-                            "type": "Identifier",
-                            "name": "money",
-                            "range": [
-                              313,
-                              318
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 14,
-                                "column": 12
-                              },
-                              "end": {
-                                "line": 14,
-                                "column": 17
-                              }
-                            }
-                          },
-                          "init": {
-                            "type": "CallExpression",
-                            "callee": {
-                              "type": "MemberExpression",
-                              "computed": false,
-                              "object": {
-                                "type": "Identifier",
-                                "name": "Money",
-                                "range": [
-                                  321,
-                                  326
-                                ],
-                                "loc": {
-                                  "start": {
-                                    "line": 14,
-                                    "column": 20
-                                  },
-                                  "end": {
-                                    "line": 14,
-                                    "column": 25
-                                  }
-                                }
-                              },
-                              "property": {
-                                "type": "Identifier",
-                                "name": "isInstance",
-                                "range": [
-                                  327,
-                                  337
-                                ],
-                                "loc": {
-                                  "start": {
-                                    "line": 14,
-                                    "column": 26
-                                  },
-                                  "end": {
-                                    "line": 14,
-                                    "column": 36
-                                  }
-                                }
-                              },
-                              "range": [
-                                321,
-                                337
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 14,
-                                  "column": 20
-                                },
-                                "end": {
-                                  "line": 14,
-                                  "column": 36
-                                }
-                              }
-                            },
-                            "arguments": [
-                              {
-                                "type": "Identifier",
-                                "name": "instanceOrClass",
-                                "range": [
-                                  338,
-                                  353
-                                ],
-                                "loc": {
-                                  "start": {
-                                    "line": 14,
-                                    "column": 37
-                                  },
-                                  "end": {
-                                    "line": 14,
-                                    "column": 52
-                                  }
-                                }
-                              }
-                            ],
-                            "range": [
-                              321,
-                              354
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 14,
-                                "column": 20
-                              },
-                              "end": {
-                                "line": 14,
-                                "column": 53
-                              }
-                            }
-                          },
-                          "range": [
-                            313,
-                            354
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 14,
-                              "column": 12
-                            },
-                            "end": {
-                              "line": 14,
-                              "column": 53
-                            }
-                          }
-                        }
-                      ],
-                      "kind": "let",
-                      "range": [
-                        309,
-                        355
-                      ],
-                      "loc": {
-                        "start": {
-                          "line": 14,
-                          "column": 8
-                        },
-                        "end": {
-                          "line": 14,
-                          "column": 54
-                        }
-                      }
-                    },
-                    {
-                      "type": "VariableDeclaration",
-                      "declarations": [
-                        {
-                          "type": "VariableDeclarator",
-                          "id": {
-                            "type": "Identifier",
-                            "name": "currency",
-                            "range": [
-                              368,
-                              376
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 15,
-                                "column": 12
-                              },
-                              "end": {
-                                "line": 15,
-                                "column": 20
-                              }
-                            }
-                          },
-                          "init": {
-                            "type": "CallExpression",
-                            "callee": {
-                              "type": "MemberExpression",
-                              "computed": false,
-                              "object": {
-                                "type": "Identifier",
-                                "name": "Currency",
-                                "range": [
-                                  379,
-                                  387
-                                ],
-                                "loc": {
-                                  "start": {
-                                    "line": 15,
-                                    "column": 23
-                                  },
-                                  "end": {
-                                    "line": 15,
-                                    "column": 31
-                                  }
-                                }
-                              },
-                              "property": {
-                                "type": "Identifier",
-                                "name": "isInstanceOrClass",
-                                "range": [
-                                  388,
-                                  405
-                                ],
-                                "loc": {
-                                  "start": {
-                                    "line": 15,
-                                    "column": 32
-                                  },
-                                  "end": {
-                                    "line": 15,
-                                    "column": 49
-                                  }
-                                }
-                              },
-                              "range": [
-                                379,
-                                405
-                              ],
-                              "loc": {
-                                "start": {
-                                  "line": 15,
-                                  "column": 23
-                                },
-                                "end": {
-                                  "line": 15,
-                                  "column": 49
-                                }
-                              }
-                            },
-                            "arguments": [
-                              {
-                                "type": "Identifier",
-                                "name": "instanceOrClass",
-                                "range": [
-                                  406,
-                                  421
-                                ],
-                                "loc": {
-                                  "start": {
-                                    "line": 15,
-                                    "column": 50
-                                  },
-                                  "end": {
-                                    "line": 15,
-                                    "column": 65
-                                  }
-                                }
-                              }
-                            ],
-                            "range": [
-                              379,
-                              422
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 15,
-                                "column": 23
-                              },
-                              "end": {
-                                "line": 15,
-                                "column": 66
-                              }
-                            }
-                          },
-                          "range": [
-                            368,
-                            422
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 15,
-                              "column": 12
-                            },
-                            "end": {
-                              "line": 15,
-                              "column": 66
-                            }
-                          }
-                        }
-                      ],
-                      "kind": "let",
-                      "range": [
-                        364,
-                        423
-                      ],
-                      "loc": {
-                        "start": {
-                          "line": 15,
-                          "column": 8
-                        },
-                        "end": {
-                          "line": 15,
-                          "column": 67
-                        }
-                      }
-                    },
-                    {
-                      "type": "ReturnStatement",
-                      "argument": {
-                        "type": "LogicalExpression",
-                        "operator": "||",
-                        "left": {
-                          "type": "Identifier",
-                          "name": "money",
-                          "range": [
-                            440,
-                            445
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 17,
-                              "column": 15
-                            },
-                            "end": {
-                              "line": 17,
-                              "column": 20
-                            }
-                          }
-                        },
-                        "right": {
-                          "type": "Identifier",
-                          "name": "currency",
-                          "range": [
-                            449,
-                            457
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 17,
-                              "column": 24
-                            },
-                            "end": {
-                              "line": 17,
-                              "column": 32
-                            }
-                          }
-                        },
-                        "range": [
-                          440,
-                          457
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 17,
-                            "column": 15
-                          },
-                          "end": {
-                            "line": 17,
-                            "column": 32
-                          }
-                        }
-                      },
-                      "range": [
-                        433,
-                        458
-                      ],
-                      "loc": {
-                        "start": {
-                          "line": 17,
-                          "column": 8
-                        },
-                        "end": {
-                          "line": 17,
-                          "column": 33
-                        }
-                      }
-                    }
-                  ],
-                  "range": [
-                    299,
-                    464
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 13,
-                      "column": 30
-                    },
-                    "end": {
-                      "line": 18,
-                      "column": 5
-                    }
-                  }
-                },
-                "generator": false,
-                "expression": false,
-                "range": [
-                  281,
-                  464
-                ],
-                "loc": {
-                  "start": {
-                    "line": 13,
-                    "column": 12
-                  },
-                  "end": {
-                    "line": 18,
-                    "column": 5
-                  }
-                }
-              },
-              "kind": "method",
-              "computed": false,
-              "range": [
-                273,
-                464
-              ],
-              "loc": {
-                "start": {
-                  "line": 13,
-                  "column": 4
-                },
-                "end": {
-                  "line": 18,
-                  "column": 5
-                }
-              },
-              "leadingComments": [
-                {
-                  "type": "Block",
-                  "value": "*\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\n     * @return {Boolean}\n     ",
-                  "range": [
-                    156,
-                    268
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 9,
-                      "column": 4
-                    },
-                    "end": {
-                      "line": 12,
-                      "column": 7
-                    }
-                  }
-                }
-              ],
-              "trailingComments": [
-                {
-                  "type": "Block",
-                  "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
-                  "range": [
-                    470,
-                    554
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 20,
-                      "column": 4
-                    },
-                    "end": {
-                      "line": 24,
-                      "column": 7
-                    }
-                  }
-                }
-              ],
-              "static": false
-            },
-            {
-              "type": "MethodDefinition",
-              "key": {
-                "type": "Identifier",
-                "name": "adapt",
-                "range": [
-                  559,
-                  564
-                ],
-                "loc": {
-                  "start": {
-                    "line": 25,
-                    "column": 4
-                  },
-                  "end": {
-                    "line": 25,
-                    "column": 9
-                  }
-                }
-              },
-              "value": {
-                "type": "FunctionExpression",
-                "id": null,
-                "params": [
-                  {
-                    "type": "Identifier",
-                    "name": "instance",
-                    "range": [
-                      565,
-                      573
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 25,
-                        "column": 10
-                      },
-                      "end": {
-                        "line": 25,
-                        "column": 18
-                      }
-                    }
-                  }
-                ],
-                "body": {
-                  "type": "BlockStatement",
-                  "body": [
-                    {
-                      "type": "ReturnStatement",
-                      "argument": {
-                        "type": "CallExpression",
-                        "callee": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "Currency",
-                            "range": [
-                              592,
-                              600
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 26,
-                                "column": 15
-                              },
-                              "end": {
-                                "line": 26,
-                                "column": 23
-                              }
-                            }
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "optCurrency",
-                            "range": [
-                              601,
-                              612
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 26,
-                                "column": 24
-                              },
-                              "end": {
-                                "line": 26,
-                                "column": 35
-                              }
-                            }
-                          },
-                          "range": [
-                            592,
-                            612
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 26,
-                              "column": 15
-                            },
-                            "end": {
-                              "line": 26,
-                              "column": 35
-                            }
-                          }
-                        },
-                        "arguments": [
-                          {
-                            "type": "Identifier",
-                            "name": "instance",
-                            "range": [
-                              613,
-                              621
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 26,
-                                "column": 36
-                              },
-                              "end": {
-                                "line": 26,
-                                "column": 44
-                              }
-                            }
-                          }
-                        ],
-                        "range": [
-                          592,
-                          622
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 26,
-                            "column": 15
-                          },
-                          "end": {
-                            "line": 26,
-                            "column": 45
-                          }
-                        }
-                      },
-                      "range": [
-                        585,
-                        623
-                      ],
-                      "loc": {
-                        "start": {
-                          "line": 26,
-                          "column": 8
-                        },
-                        "end": {
-                          "line": 26,
-                          "column": 46
-                        }
-                      }
-                    }
-                  ],
-                  "range": [
-                    575,
-                    629
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 25,
-                      "column": 20
-                    },
-                    "end": {
-                      "line": 27,
-                      "column": 5
-                    }
-                  }
-                },
-                "generator": false,
-                "expression": false,
-                "range": [
-                  564,
-                  629
-                ],
-                "loc": {
-                  "start": {
-                    "line": 25,
-                    "column": 9
-                  },
-                  "end": {
-                    "line": 27,
-                    "column": 5
-                  }
-                }
-              },
-              "kind": "method",
-              "computed": false,
-              "range": [
-                559,
-                629
-              ],
-              "loc": {
-                "start": {
-                  "line": 25,
-                  "column": 4
-                },
-                "end": {
-                  "line": 27,
-                  "column": 5
-                }
-              },
-              "leadingComments": [
-                {
-                  "type": "Block",
-                  "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
-                  "range": [
-                    470,
-                    554
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 20,
-                      "column": 4
-                    },
-                    "end": {
-                      "line": 24,
-                      "column": 7
-                    }
-                  }
-                }
-              ],
-              "static": false
-            }
-          ],
-          "range": [
-            149,
-            631
-          ],
-          "loc": {
-            "start": {
-              "line": 7,
-              "column": 38
-            },
-            "end": {
-              "line": 28,
-              "column": 1
-            }
-          }
-        },
-        "range": [
-          111,
-          631
-        ],
-        "loc": {
-          "start": {
-            "line": 7,
-            "column": 0
-          },
-          "end": {
-            "line": 28,
-            "column": 1
-          }
-        },
-        "__esdoc__pseudo_export": false,
-        "leadingComments": [],
-        "trailingComments": []
-      },
-      "range": [
-        659,
-        690
-      ],
-      "loc": {
-        "start": {
-          "line": 31,
-          "column": 0
-        },
-        "end": {
-          "line": 31,
-          "column": 31
-        }
-      },
-      "leadingComments": null
-    }
-  ],
-  "sourceType": "module",
-  "range": [
-    0,
-    690
-  ],
+  "start": 0,
+  "end": 690,
   "loc": {
     "start": {
       "line": 1,
@@ -2002,42 +12,1821 @@
       "column": 31
     }
   },
-  "comments": [
+  "sourceType": "module",
+  "body": [
     {
-      "type": "Block",
-      "value": "*\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\n     * @return {Boolean}\n     ",
-      "range": [
-        156,
-        268
-      ],
+      "type": "ExpressionStatement",
+      "start": 0,
+      "end": 13,
       "loc": {
         "start": {
-          "line": 9,
-          "column": 4
+          "line": 1,
+          "column": 0
         },
         "end": {
-          "line": 12,
-          "column": 7
+          "line": 1,
+          "column": 13
         }
+      },
+      "expression": {
+        "type": "Literal",
+        "start": 0,
+        "end": 12,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        },
+        "value": "use strict",
+        "rawValue": "use strict",
+        "raw": "'use strict'"
       }
     },
     {
-      "type": "Block",
-      "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
-      "range": [
-        470,
-        554
-      ],
+      "type": "ImportDeclaration",
+      "start": 15,
+      "end": 45,
       "loc": {
         "start": {
-          "line": 20,
-          "column": 4
+          "line": 3,
+          "column": 0
         },
         "end": {
-          "line": 24,
-          "column": 7
+          "line": 3,
+          "column": 30
         }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 22,
+          "end": 29,
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 14
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 22,
+            "end": 29,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 14
+              }
+            },
+            "name": "Adapter"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 35,
+        "end": 44,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 20
+          },
+          "end": {
+            "line": 3,
+            "column": 29
+          }
+        },
+        "value": "../data",
+        "rawValue": "../data",
+        "raw": "'../data'"
       }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 46,
+      "end": 74,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 28
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 53,
+          "end": 58,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 12
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 53,
+            "end": 58,
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 12
+              }
+            },
+            "name": "Money"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 64,
+        "end": 73,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 18
+          },
+          "end": {
+            "line": 4,
+            "column": 27
+          }
+        },
+        "value": "./Money",
+        "rawValue": "./Money",
+        "raw": "'./Money'"
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 75,
+      "end": 109,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 34
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 82,
+          "end": 90,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 15
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 82,
+            "end": 90,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 15
+              }
+            },
+            "name": "Currency"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 96,
+        "end": 108,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 21
+          },
+          "end": {
+            "line": 5,
+            "column": 33
+          }
+        },
+        "value": "./Currency",
+        "rawValue": "./Currency",
+        "raw": "'./Currency'"
+      }
+    },
+    {
+      "type": "Identifier",
+      "start": 111,
+      "end": 631,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 28,
+          "column": 1
+        }
+      },
+      "id": {
+        "type": "Identifier",
+        "start": 117,
+        "end": 132,
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 6
+          },
+          "end": {
+            "line": 7,
+            "column": 21
+          }
+        },
+        "name": "CurrencyAdapter"
+      },
+      "superClass": {
+        "type": "Identifier",
+        "start": 141,
+        "end": 148,
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 30
+          },
+          "end": {
+            "line": 7,
+            "column": 37
+          }
+        },
+        "name": "Adapter"
+      },
+      "body": {
+        "type": "ClassBody",
+        "start": 149,
+        "end": 631,
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 38
+          },
+          "end": {
+            "line": 28,
+            "column": 1
+          }
+        },
+        "body": [
+          {
+            "type": "MethodDefinition",
+            "start": 273,
+            "end": 464,
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 4
+              },
+              "end": {
+                "line": 18,
+                "column": 5
+              }
+            },
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 273,
+              "end": 281,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 4
+                },
+                "end": {
+                  "line": 13,
+                  "column": 12
+                }
+              },
+              "name": "supports",
+              "leadingComments": null
+            },
+            "static": false,
+            "kind": "method",
+            "value": {
+              "type": "FunctionExpression",
+              "start": 281,
+              "end": 464,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 12
+                },
+                "end": {
+                  "line": 18,
+                  "column": 5
+                }
+              },
+              "id": null,
+              "generator": false,
+              "expression": false,
+              "async": false,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "start": 282,
+                  "end": 297,
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 13
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 28
+                    }
+                  },
+                  "name": "instanceOrClass"
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "start": 299,
+                "end": 464,
+                "loc": {
+                  "start": {
+                    "line": 13,
+                    "column": 30
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 5
+                  }
+                },
+                "body": [
+                  {
+                    "type": "VariableDeclaration",
+                    "start": 309,
+                    "end": 355,
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 54
+                      }
+                    },
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "start": 313,
+                        "end": 354,
+                        "loc": {
+                          "start": {
+                            "line": 14,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 53
+                          }
+                        },
+                        "id": {
+                          "type": "Identifier",
+                          "start": 313,
+                          "end": 318,
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 17
+                            }
+                          },
+                          "name": "money"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "start": 321,
+                          "end": 354,
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 53
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 321,
+                            "end": 337,
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 36
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 321,
+                              "end": 326,
+                              "loc": {
+                                "start": {
+                                  "line": 14,
+                                  "column": 20
+                                },
+                                "end": {
+                                  "line": 14,
+                                  "column": 25
+                                }
+                              },
+                              "name": "Money"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 327,
+                              "end": 337,
+                              "loc": {
+                                "start": {
+                                  "line": 14,
+                                  "column": 26
+                                },
+                                "end": {
+                                  "line": 14,
+                                  "column": 36
+                                }
+                              },
+                              "name": "isInstance"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 338,
+                              "end": 353,
+                              "loc": {
+                                "start": {
+                                  "line": 14,
+                                  "column": 37
+                                },
+                                "end": {
+                                  "line": 14,
+                                  "column": 52
+                                }
+                              },
+                              "name": "instanceOrClass"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "kind": "let"
+                  },
+                  {
+                    "type": "VariableDeclaration",
+                    "start": 364,
+                    "end": 423,
+                    "loc": {
+                      "start": {
+                        "line": 15,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 67
+                      }
+                    },
+                    "declarations": [
+                      {
+                        "type": "VariableDeclarator",
+                        "start": 368,
+                        "end": 422,
+                        "loc": {
+                          "start": {
+                            "line": 15,
+                            "column": 12
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 66
+                          }
+                        },
+                        "id": {
+                          "type": "Identifier",
+                          "start": 368,
+                          "end": 376,
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 20
+                            }
+                          },
+                          "name": "currency"
+                        },
+                        "init": {
+                          "type": "CallExpression",
+                          "start": 379,
+                          "end": 422,
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 23
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 66
+                            }
+                          },
+                          "callee": {
+                            "type": "MemberExpression",
+                            "start": 379,
+                            "end": 405,
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 49
+                              }
+                            },
+                            "object": {
+                              "type": "Identifier",
+                              "start": 379,
+                              "end": 387,
+                              "loc": {
+                                "start": {
+                                  "line": 15,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 15,
+                                  "column": 31
+                                }
+                              },
+                              "name": "Currency"
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "start": 388,
+                              "end": 405,
+                              "loc": {
+                                "start": {
+                                  "line": 15,
+                                  "column": 32
+                                },
+                                "end": {
+                                  "line": 15,
+                                  "column": 49
+                                }
+                              },
+                              "name": "isInstanceOrClass"
+                            },
+                            "computed": false
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 406,
+                              "end": 421,
+                              "loc": {
+                                "start": {
+                                  "line": 15,
+                                  "column": 50
+                                },
+                                "end": {
+                                  "line": 15,
+                                  "column": 65
+                                }
+                              },
+                              "name": "instanceOrClass"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "kind": "let"
+                  },
+                  {
+                    "type": "ReturnStatement",
+                    "start": 433,
+                    "end": 458,
+                    "loc": {
+                      "start": {
+                        "line": 17,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 33
+                      }
+                    },
+                    "argument": {
+                      "type": "LogicalExpression",
+                      "start": 440,
+                      "end": 457,
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 32
+                        }
+                      },
+                      "left": {
+                        "type": "Identifier",
+                        "start": 440,
+                        "end": 445,
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 20
+                          }
+                        },
+                        "name": "money"
+                      },
+                      "operator": "||",
+                      "right": {
+                        "type": "Identifier",
+                        "start": 449,
+                        "end": 457,
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 24
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 32
+                          }
+                        },
+                        "name": "currency"
+                      }
+                    }
+                  }
+                ],
+                "trailingComments": null
+              },
+              "trailingComments": null
+            },
+            "leadingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\n     * @return {Boolean}\n     ",
+                "start": 156,
+                "end": 268,
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 7
+                  }
+                },
+                "range": [
+                  156,
+                  268
+                ]
+              }
+            ],
+            "trailingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
+                "start": 470,
+                "end": 554,
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 7
+                  }
+                },
+                "range": [
+                  470,
+                  554
+                ]
+              }
+            ]
+          },
+          {
+            "type": "MethodDefinition",
+            "start": 559,
+            "end": 629,
+            "loc": {
+              "start": {
+                "line": 25,
+                "column": 4
+              },
+              "end": {
+                "line": 27,
+                "column": 5
+              }
+            },
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 559,
+              "end": 564,
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 9
+                }
+              },
+              "name": "adapt",
+              "leadingComments": null
+            },
+            "static": false,
+            "kind": "method",
+            "value": {
+              "type": "FunctionExpression",
+              "start": 564,
+              "end": 629,
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 9
+                },
+                "end": {
+                  "line": 27,
+                  "column": 5
+                }
+              },
+              "id": null,
+              "generator": false,
+              "expression": false,
+              "async": false,
+              "params": [
+                {
+                  "type": "Identifier",
+                  "start": 565,
+                  "end": 573,
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 18
+                    }
+                  },
+                  "name": "instance"
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "start": 575,
+                "end": 629,
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 5
+                  }
+                },
+                "body": [
+                  {
+                    "type": "ReturnStatement",
+                    "start": 585,
+                    "end": 623,
+                    "loc": {
+                      "start": {
+                        "line": 26,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 46
+                      }
+                    },
+                    "argument": {
+                      "type": "CallExpression",
+                      "start": 592,
+                      "end": 622,
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 15
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 45
+                        }
+                      },
+                      "callee": {
+                        "type": "MemberExpression",
+                        "start": 592,
+                        "end": 612,
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 35
+                          }
+                        },
+                        "object": {
+                          "type": "Identifier",
+                          "start": 592,
+                          "end": 600,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 23
+                            }
+                          },
+                          "name": "Currency"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "start": 601,
+                          "end": 612,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 24
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 35
+                            }
+                          },
+                          "name": "optCurrency"
+                        },
+                        "computed": false
+                      },
+                      "arguments": [
+                        {
+                          "type": "Identifier",
+                          "start": 613,
+                          "end": 621,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 36
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 44
+                            }
+                          },
+                          "name": "instance"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "leadingComments": [
+              {
+                "type": "Block",
+                "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
+                "start": 470,
+                "end": 554,
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 7
+                  }
+                },
+                "range": [
+                  470,
+                  554
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 633,
+      "end": 658,
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 0
+        },
+        "end": {
+          "line": 30,
+          "column": 25
+        }
+      },
+      "declaration": null,
+      "specifiers": [
+        {
+          "type": "ExportSpecifier",
+          "start": 641,
+          "end": 656,
+          "loc": {
+            "start": {
+              "line": 30,
+              "column": 8
+            },
+            "end": {
+              "line": 30,
+              "column": 23
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 641,
+            "end": 656,
+            "loc": {
+              "start": {
+                "line": 30,
+                "column": 8
+              },
+              "end": {
+                "line": 30,
+                "column": 23
+              }
+            },
+            "name": "CurrencyAdapter"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 641,
+            "end": 656,
+            "loc": {
+              "start": {
+                "line": 30,
+                "column": 8
+              },
+              "end": {
+                "line": 30,
+                "column": 23
+              }
+            },
+            "name": "CurrencyAdapter"
+          }
+        }
+      ],
+      "source": null
+    },
+    {
+      "type": "Identifier",
+      "start": 659,
+      "end": 690,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 0
+        },
+        "end": {
+          "line": 31,
+          "column": 31
+        }
+      },
+      "declaration": {
+        "type": "Identifier",
+        "start": 674,
+        "end": 689,
+        "loc": {
+          "start": {
+            "line": 31,
+            "column": 15
+          },
+          "end": {
+            "line": 31,
+            "column": 30
+          }
+        },
+        "name": "CurrencyAdapter"
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 659,
+      "end": 690,
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 0
+        },
+        "end": {
+          "line": 31,
+          "column": 31
+        }
+      },
+      "declaration": {
+        "type": "ClassDeclaration",
+        "start": 111,
+        "end": 631,
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 0
+          },
+          "end": {
+            "line": 28,
+            "column": 1
+          }
+        },
+        "id": {
+          "type": "Identifier",
+          "start": 117,
+          "end": 132,
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 6
+            },
+            "end": {
+              "line": 7,
+              "column": 21
+            }
+          },
+          "name": "CurrencyAdapter"
+        },
+        "superClass": {
+          "type": "Identifier",
+          "start": 141,
+          "end": 148,
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 30
+            },
+            "end": {
+              "line": 7,
+              "column": 37
+            }
+          },
+          "name": "Adapter"
+        },
+        "body": {
+          "type": "ClassBody",
+          "start": 149,
+          "end": 631,
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 38
+            },
+            "end": {
+              "line": 28,
+              "column": 1
+            }
+          },
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "start": 273,
+              "end": 464,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 4
+                },
+                "end": {
+                  "line": 18,
+                  "column": 5
+                }
+              },
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 273,
+                "end": 281,
+                "loc": {
+                  "start": {
+                    "line": 13,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 12
+                  }
+                },
+                "name": "supports",
+                "leadingComments": null
+              },
+              "static": false,
+              "kind": "method",
+              "value": {
+                "type": "FunctionExpression",
+                "start": 281,
+                "end": 464,
+                "loc": {
+                  "start": {
+                    "line": 13,
+                    "column": 12
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 5
+                  }
+                },
+                "id": null,
+                "generator": false,
+                "expression": false,
+                "async": false,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "start": 282,
+                    "end": 297,
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 28
+                      }
+                    },
+                    "name": "instanceOrClass"
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "start": 299,
+                  "end": 464,
+                  "loc": {
+                    "start": {
+                      "line": 13,
+                      "column": 30
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 5
+                    }
+                  },
+                  "body": [
+                    {
+                      "type": "VariableDeclaration",
+                      "start": 309,
+                      "end": 355,
+                      "loc": {
+                        "start": {
+                          "line": 14,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 14,
+                          "column": 54
+                        }
+                      },
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "start": 313,
+                          "end": 354,
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 53
+                            }
+                          },
+                          "id": {
+                            "type": "Identifier",
+                            "start": 313,
+                            "end": 318,
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 17
+                              }
+                            },
+                            "name": "money"
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "start": 321,
+                            "end": 354,
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 20
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 53
+                              }
+                            },
+                            "callee": {
+                              "type": "MemberExpression",
+                              "start": 321,
+                              "end": 337,
+                              "loc": {
+                                "start": {
+                                  "line": 14,
+                                  "column": 20
+                                },
+                                "end": {
+                                  "line": 14,
+                                  "column": 36
+                                }
+                              },
+                              "object": {
+                                "type": "Identifier",
+                                "start": 321,
+                                "end": 326,
+                                "loc": {
+                                  "start": {
+                                    "line": 14,
+                                    "column": 20
+                                  },
+                                  "end": {
+                                    "line": 14,
+                                    "column": 25
+                                  }
+                                },
+                                "name": "Money"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 327,
+                                "end": 337,
+                                "loc": {
+                                  "start": {
+                                    "line": 14,
+                                    "column": 26
+                                  },
+                                  "end": {
+                                    "line": 14,
+                                    "column": 36
+                                  }
+                                },
+                                "name": "isInstance"
+                              },
+                              "computed": false
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 338,
+                                "end": 353,
+                                "loc": {
+                                  "start": {
+                                    "line": 14,
+                                    "column": 37
+                                  },
+                                  "end": {
+                                    "line": 14,
+                                    "column": 52
+                                  }
+                                },
+                                "name": "instanceOrClass"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "kind": "let"
+                    },
+                    {
+                      "type": "VariableDeclaration",
+                      "start": 364,
+                      "end": 423,
+                      "loc": {
+                        "start": {
+                          "line": 15,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 15,
+                          "column": 67
+                        }
+                      },
+                      "declarations": [
+                        {
+                          "type": "VariableDeclarator",
+                          "start": 368,
+                          "end": 422,
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 12
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 66
+                            }
+                          },
+                          "id": {
+                            "type": "Identifier",
+                            "start": 368,
+                            "end": 376,
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 12
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 20
+                              }
+                            },
+                            "name": "currency"
+                          },
+                          "init": {
+                            "type": "CallExpression",
+                            "start": 379,
+                            "end": 422,
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 23
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 66
+                              }
+                            },
+                            "callee": {
+                              "type": "MemberExpression",
+                              "start": 379,
+                              "end": 405,
+                              "loc": {
+                                "start": {
+                                  "line": 15,
+                                  "column": 23
+                                },
+                                "end": {
+                                  "line": 15,
+                                  "column": 49
+                                }
+                              },
+                              "object": {
+                                "type": "Identifier",
+                                "start": 379,
+                                "end": 387,
+                                "loc": {
+                                  "start": {
+                                    "line": 15,
+                                    "column": 23
+                                  },
+                                  "end": {
+                                    "line": 15,
+                                    "column": 31
+                                  }
+                                },
+                                "name": "Currency"
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "start": 388,
+                                "end": 405,
+                                "loc": {
+                                  "start": {
+                                    "line": 15,
+                                    "column": 32
+                                  },
+                                  "end": {
+                                    "line": 15,
+                                    "column": 49
+                                  }
+                                },
+                                "name": "isInstanceOrClass"
+                              },
+                              "computed": false
+                            },
+                            "arguments": [
+                              {
+                                "type": "Identifier",
+                                "start": 406,
+                                "end": 421,
+                                "loc": {
+                                  "start": {
+                                    "line": 15,
+                                    "column": 50
+                                  },
+                                  "end": {
+                                    "line": 15,
+                                    "column": 65
+                                  }
+                                },
+                                "name": "instanceOrClass"
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "kind": "let"
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "start": 433,
+                      "end": 458,
+                      "loc": {
+                        "start": {
+                          "line": 17,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 33
+                        }
+                      },
+                      "argument": {
+                        "type": "LogicalExpression",
+                        "start": 440,
+                        "end": 457,
+                        "loc": {
+                          "start": {
+                            "line": 17,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 32
+                          }
+                        },
+                        "left": {
+                          "type": "Identifier",
+                          "start": 440,
+                          "end": 445,
+                          "loc": {
+                            "start": {
+                              "line": 17,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 17,
+                              "column": 20
+                            }
+                          },
+                          "name": "money"
+                        },
+                        "operator": "||",
+                        "right": {
+                          "type": "Identifier",
+                          "start": 449,
+                          "end": 457,
+                          "loc": {
+                            "start": {
+                              "line": 17,
+                              "column": 24
+                            },
+                            "end": {
+                              "line": 17,
+                              "column": 32
+                            }
+                          },
+                          "name": "currency"
+                        }
+                      }
+                    }
+                  ],
+                  "trailingComments": null
+                },
+                "trailingComments": null
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     * @param {Money|Class<Money>|Currency|Class<Currency>} instanceOrClass\n     * @return {Boolean}\n     ",
+                  "start": 156,
+                  "end": 268,
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 7
+                    }
+                  },
+                  "range": [
+                    156,
+                    268
+                  ]
+                }
+              ],
+              "trailingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
+                  "start": 470,
+                  "end": 554,
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 7
+                    }
+                  },
+                  "range": [
+                    470,
+                    554
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "MethodDefinition",
+              "start": 559,
+              "end": 629,
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 4
+                },
+                "end": {
+                  "line": 27,
+                  "column": 5
+                }
+              },
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 559,
+                "end": 564,
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 9
+                  }
+                },
+                "name": "adapt",
+                "leadingComments": null
+              },
+              "static": false,
+              "kind": "method",
+              "value": {
+                "type": "FunctionExpression",
+                "start": 564,
+                "end": 629,
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 5
+                  }
+                },
+                "id": null,
+                "generator": false,
+                "expression": false,
+                "async": false,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "start": 565,
+                    "end": 573,
+                    "loc": {
+                      "start": {
+                        "line": 25,
+                        "column": 10
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 18
+                      }
+                    },
+                    "name": "instance"
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "start": 575,
+                  "end": 629,
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 5
+                    }
+                  },
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "start": 585,
+                      "end": 623,
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 8
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 46
+                        }
+                      },
+                      "argument": {
+                        "type": "CallExpression",
+                        "start": 592,
+                        "end": 622,
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 15
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 45
+                          }
+                        },
+                        "callee": {
+                          "type": "MemberExpression",
+                          "start": 592,
+                          "end": 612,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 15
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 35
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 592,
+                            "end": 600,
+                            "loc": {
+                              "start": {
+                                "line": 26,
+                                "column": 15
+                              },
+                              "end": {
+                                "line": 26,
+                                "column": 23
+                              }
+                            },
+                            "name": "Currency"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 601,
+                            "end": 612,
+                            "loc": {
+                              "start": {
+                                "line": 26,
+                                "column": 24
+                              },
+                              "end": {
+                                "line": 26,
+                                "column": 35
+                              }
+                            },
+                            "name": "optCurrency"
+                          },
+                          "computed": false
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "start": 613,
+                            "end": 621,
+                            "loc": {
+                              "start": {
+                                "line": 26,
+                                "column": 36
+                              },
+                              "end": {
+                                "line": 26,
+                                "column": 44
+                              }
+                            },
+                            "name": "instance"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              "leadingComments": [
+                {
+                  "type": "Block",
+                  "value": "*\n     *\n     * @param {Money|Currency} instance\n     * @return {Currency}\n     ",
+                  "start": 470,
+                  "end": 554,
+                  "loc": {
+                    "start": {
+                      "line": 20,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 7
+                    }
+                  },
+                  "range": [
+                    470,
+                    554
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "__esdoc__pseudo_export": false,
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "leadingComments": null
     }
   ]
 }

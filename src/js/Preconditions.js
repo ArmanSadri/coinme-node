@@ -291,6 +291,25 @@ export default class Preconditions {
     }
 
     /**
+     * Less strict version of "shouldBeInstance"
+     *
+     * @param {*} object
+     * @param {*} clazz
+     * @param {String} [message]
+     * @return {*}
+     */
+    static shouldBeInstanceOf(object, clazz, message) {
+        Preconditions.shouldBeDefined(object, message);
+        Preconditions.shouldBeDefined(clazz, message);
+
+        if (object instanceof clazz) {
+            return object;
+        }
+
+        Preconditions.fail(true, false, message);
+    }
+
+    /**
      *
      * @param {*} object
      * @param {Class<CoreObject>|String} [classOrString]
@@ -362,6 +381,33 @@ export default class Preconditions {
         let fn = Utility.typeMatcher('string');
 
         return Preconditions.shouldBe(fn, 'object', string, message);
+    }
+
+    /**
+     *
+     * @param {String} string
+     * @param {RegExp} regexp
+     * @param {String} [message]
+     */
+    static shouldMatchRegexp(string, regexp, message) {
+        Preconditions.shouldBeString(string, message);
+        Preconditions.shouldBeRegExp(regexp, message);
+
+        if (!string.match(regexp)) {
+            Preconditions.fail(true, false, message);
+        }
+
+        return string;
+    }
+
+    /**
+     *
+     * @param {RegExp} regexp
+     * @param {String} [message]
+     * @return {RegExp}
+     */
+    static shouldBeRegExp(regexp, message) {
+        return Preconditions.shouldBeType('regexp', regexp, message);
     }
 
     /**

@@ -13,11 +13,6 @@ let VALIDATORS = {
     'general': function (address) {
         Preconditions.shouldBeInstance(address, Address);
 
-        let resource = address.resource;
-        let value = address.value;
-
-        console.log(resource, value);
-
         return !(Utility.isBlank(address.resource) || Utility.isBlank(address.value));
     },
 

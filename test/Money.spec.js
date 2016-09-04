@@ -6,8 +6,8 @@
  */
 import {expect, assert} from "chai";
 import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "../src/js/money";
-import {Errors, AbstractError, PreconditionsError} from "~/errors";
-import Preconditions from "~/Preconditions";
+import {Errors, AbstractError, PreconditionsError} from "../src/js/errors";
+import Preconditions from "../src/js/Preconditions";
 import Big from 'big.js';
 
 describe('Money', () => {

@@ -17,6 +17,7 @@ class Identity extends CoreObject {
 
     _attributes;
 
+    //region constructor
     /**
      *
      * @param {String|URI|{address:Address, attributes?:Object}} options
@@ -37,7 +38,9 @@ class Identity extends CoreObject {
         this._address = Address.shouldBeInstance(address, 'address is required');
         this._attributes = attributes; // this is optional
     }
+    //endregion
 
+    //region properties
     /**
      *
      * @return {Address}
@@ -54,6 +57,7 @@ class Identity extends CoreObject {
     get attributes() {
         return this._attributes;
     }
+    //endregion
 
     toString() {
         /** @type {URI} */

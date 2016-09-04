@@ -6,7 +6,7 @@
  */
 import {expect, assert} from "chai";
 import TimeUnit from "../src/js/TimeUnit";
-import {Errors, AbstractError, PreconditionsError} from "~/errors";
+import {Errors, AbstractError, PreconditionsError} from "../src/js/errors";
 import {Stopwatch} from "../src/js/Stopwatch";
 import {SmoothBurstyRateLimiter, SmoothWarmingUpRateLimiter} from "../src/js/RateLimiter";
 

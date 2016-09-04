@@ -9,8 +9,8 @@ import chai from 'chai';
 const assert = chai.assert;
 const expect = chai.expect;
 import {Utility, Preconditions} from '../src/js/index';
-import {Errors, AbstractError, PreconditionsError, HttpError} from "~/errors";
-import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
+import {Errors, AbstractError, PreconditionsError, HttpError} from "../src/js/errors";
+import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "../src/js/money";
 import {it, describe} from "mocha";
 
 describe('Errors', () => {

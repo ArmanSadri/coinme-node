@@ -6,9 +6,9 @@
  */
 import {expect, assert} from "chai";
 import URI from "urijs";
-import {Errors, AbstractError, PreconditionsError} from "~/errors";
-import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
-import Address from "~/Address";
+import {Errors, AbstractError, PreconditionsError} from "../src/js/errors";
+import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "../src/js/money";
+import Address from "../src/js/Address";
 import uuid from 'node-uuid';
 
 describe('URI', () => {

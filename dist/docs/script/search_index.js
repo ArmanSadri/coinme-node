@@ -48,6 +48,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/net/coinmewalletclient.js~coinmewalletclient",
+    "class/js/net/CoinmeWalletClient.js~CoinmeWalletClient.html",
+    "<span>CoinmeWalletClient</span> <span class=\"search-result-import-path\">coinme-node/js/net/CoinmeWalletClient.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/net/coinmewalletclient.js~coinmewalletclientconfiguration",
+    "class/js/net/CoinmeWalletClient.js~CoinmeWalletClientConfiguration.html",
+    "<span>CoinmeWalletClientConfiguration</span> <span class=\"search-result-import-path\">coinme-node/js/net/CoinmeWalletClient.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/data/conversion.js~conversion",
     "class/js/data/Conversion.js~Conversion.html",
     "<span>Conversion</span> <span class=\"search-result-import-path\">coinme-node/js/data/Conversion.js</span>",
@@ -66,6 +78,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/data/delegatedconverter.js~coreobjectadapter",
+    "class/js/data/DelegatedConverter.js~CoreObjectAdapter.html",
+    "<span>CoreObjectAdapter</span> <span class=\"search-result-import-path\">coinme-node/js/data/DelegatedConverter.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/money/currency.js~currency",
     "class/js/money/Currency.js~Currency.html",
     "<span>Currency</span> <span class=\"search-result-import-path\">coinme-node/js/money/Currency.js</span>",
@@ -81,6 +99,18 @@ window.esdocSearchIndex = [
     "coinme-node/js/data/delegatedconverter.js~delegatedconverter",
     "class/js/data/DelegatedConverter.js~DelegatedConverter.html",
     "<span>DelegatedConverter</span> <span class=\"search-result-import-path\">coinme-node/js/data/DelegatedConverter.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/receipt.js~endpointtype",
+    "class/js/data/Receipt.js~EndpointType.html",
+    "<span>EndpointType</span> <span class=\"search-result-import-path\">coinme-node/js/data/Receipt.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/receipt.js~endpointtypes",
+    "class/js/data/Receipt.js~EndpointTypes.html",
+    "<span>EndpointTypes</span> <span class=\"search-result-import-path\">coinme-node/js/data/Receipt.js</span>",
     "class"
   ],
   [
@@ -120,9 +150,21 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/data/identity.js~identity",
+    "class/js/data/Identity.js~Identity.html",
+    "<span>Identity</span> <span class=\"search-result-import-path\">coinme-node/js/data/Identity.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/slack/inlinenotificationtemplate.js~inlinenotificationtemplate",
     "class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html",
     "<span>InlineNotificationTemplate</span> <span class=\"search-result-import-path\">coinme-node/js/slack/InlineNotificationTemplate.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/receipt.js~kioskendpointtype",
+    "class/js/data/Receipt.js~KioskEndpointType.html",
+    "<span>KioskEndpointType</span> <span class=\"search-result-import-path\">coinme-node/js/data/Receipt.js</span>",
     "class"
   ],
   [
@@ -174,6 +216,30 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/ratelimiter.js~ratelimiter",
+    "class/js/RateLimiter.js~RateLimiter.html",
+    "<span>RateLimiter</span> <span class=\"search-result-import-path\">coinme-node/js/RateLimiter.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/receipt.js~receipt",
+    "class/js/data/Receipt.js~Receipt.html",
+    "<span>Receipt</span> <span class=\"search-result-import-path\">coinme-node/js/data/Receipt.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/receipt.js~receiptbuilder",
+    "class/js/data/Receipt.js~ReceiptBuilder.html",
+    "<span>ReceiptBuilder</span> <span class=\"search-result-import-path\">coinme-node/js/data/Receipt.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/receipt.js~receiptendpoint",
+    "class/js/data/Receipt.js~ReceiptEndpoint.html",
+    "<span>ReceiptEndpoint</span> <span class=\"search-result-import-path\">coinme-node/js/data/Receipt.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/money/satoshi.js~satoshi",
     "class/js/money/Satoshi.js~Satoshi.html",
     "<span>Satoshi</span> <span class=\"search-result-import-path\">coinme-node/js/money/Satoshi.js</span>",
@@ -186,6 +252,24 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/ratelimiter.js~smoothburstyratelimiter",
+    "class/js/RateLimiter.js~SmoothBurstyRateLimiter.html",
+    "<span>SmoothBurstyRateLimiter</span> <span class=\"search-result-import-path\">coinme-node/js/RateLimiter.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/ratelimiter.js~smoothratelimiter",
+    "class/js/RateLimiter.js~SmoothRateLimiter.html",
+    "<span>SmoothRateLimiter</span> <span class=\"search-result-import-path\">coinme-node/js/RateLimiter.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/ratelimiter.js~smoothwarmingupratelimiter",
+    "class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html",
+    "<span>SmoothWarmingUpRateLimiter</span> <span class=\"search-result-import-path\">coinme-node/js/RateLimiter.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/stopwatch.js~stopwatch",
     "class/js/Stopwatch.js~Stopwatch.html",
     "<span>Stopwatch</span> <span class=\"search-result-import-path\">coinme-node/js/Stopwatch.js</span>",
@@ -195,6 +279,12 @@ window.esdocSearchIndex = [
     "coinme-node/js/ticker.js~ticker",
     "class/js/Ticker.js~Ticker.html",
     "<span>Ticker</span> <span class=\"search-result-import-path\">coinme-node/js/Ticker.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/timeunit.js~timeunit",
+    "class/js/TimeUnit.js~TimeUnit.html",
+    "<span>TimeUnit</span> <span class=\"search-result-import-path\">coinme-node/js/TimeUnit.js</span>",
     "class"
   ],
   [
@@ -216,6 +306,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/data/userdescriptor.js~userdescriptor",
+    "class/js/data/UserDescriptor.js~UserDescriptor.html",
+    "<span>UserDescriptor</span> <span class=\"search-result-import-path\">coinme-node/js/data/UserDescriptor.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/slack/usernotificationtemplate.js~usernotificationtemplate",
     "class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html",
     "<span>UserNotificationTemplate</span> <span class=\"search-result-import-path\">coinme-node/js/slack/UserNotificationTemplate.js</span>",
@@ -228,442 +324,22 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/data/receipt.js~walletendpointtype",
+    "class/js/data/Receipt.js~WalletEndpointType.html",
+    "<span>WalletEndpointType</span> <span class=\"search-result-import-path\">coinme-node/js/data/Receipt.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/slack/notificationservice.js~notificationservice",
     "variable/index.html#static-variable-notificationService",
     "<span>notificationService</span> <span class=\"search-result-import-path\">coinme-node/js/slack/NotificationService.js</span>",
     "variable"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~arraybuffer",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~boolean",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Boolean",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~dataview",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~DataView",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~date",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Date",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~error",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Error",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~evalerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~EvalError",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~float32array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~float64array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~function",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Function",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~generator",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Generator",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~generatorfunction",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~infinity",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Infinity",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~int16array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~int32array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~int8array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~internalerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~InternalError",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~json",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~JSON",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~map",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Map",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~nan",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~NaN",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~number",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Number",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~object",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Object",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~promise",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Promise",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~proxy",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Proxy",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~rangeerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~RangeError",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~referenceerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~reflect",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Reflect",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~regexp",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~RegExp",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~set",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Set",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~string",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~String",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~symbol",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Symbol",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~syntaxerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~typeerror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~TypeError",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~urierror",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~URIError",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~uint16array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~uint32array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~uint8array",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~uint8clampedarray",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~weakmap",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~weakset",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~boolean",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~boolean",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~function",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~function",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~null",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~null",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~number",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~number",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~object",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~object",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~string",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~string",
-    "external"
-  ],
-  [
-    "builtinexternal/ecmascriptexternal.js~undefined",
-    "external/index.html",
-    "BuiltinExternal/ECMAScriptExternal.js~undefined",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~audiocontext",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~AudioContext",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~canvasrenderingcontext2d",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~documentfragment",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~element",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~Element",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~event",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~Event",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~node",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~Node",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~nodelist",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~NodeList",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~xmlhttprequest",
-    "external/index.html",
-    "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
-    "external"
-  ],
-  [
     "js/address.js",
     "file/js/Address.js.html",
     "js/Address.js",
     "file"
-  ],
-  [
-    "js/address.js~address#constructor",
-    "class/js/Address.js~Address.html#instance-constructor-constructor",
-    "js/Address.js~Address#constructor",
-    "method"
-  ],
-  [
-    "js/address.js~address#resource",
-    "class/js/Address.js~Address.html#instance-get-resource",
-    "js/Address.js~Address#resource",
-    "member"
-  ],
-  [
-    "js/address.js~address#strict",
-    "class/js/Address.js~Address.html#instance-get-strict",
-    "js/Address.js~Address#strict",
-    "member"
-  ],
-  [
-    "js/address.js~address#tojson",
-    "class/js/Address.js~Address.html#instance-method-toJson",
-    "js/Address.js~Address#toJson",
-    "method"
-  ],
-  [
-    "js/address.js~address#tostring",
-    "class/js/Address.js~Address.html#instance-method-toString",
-    "js/Address.js~Address#toString",
-    "method"
-  ],
-  [
-    "js/address.js~address#uri",
-    "class/js/Address.js~Address.html#instance-get-uri",
-    "js/Address.js~Address#uri",
-    "member"
-  ],
-  [
-    "js/address.js~address#valid",
-    "class/js/Address.js~Address.html#instance-get-valid",
-    "js/Address.js~Address#valid",
-    "member"
-  ],
-  [
-    "js/address.js~address#validator",
-    "class/js/Address.js~Address.html#instance-get-validator",
-    "js/Address.js~Address#validator",
-    "member"
-  ],
-  [
-    "js/address.js~address#value",
-    "class/js/Address.js~Address.html#instance-get-value",
-    "js/Address.js~Address#value",
-    "member"
-  ],
-  [
-    "js/address.js~address#valueof",
-    "class/js/Address.js~Address.html#instance-method-valueOf",
-    "js/Address.js~Address#valueOf",
-    "method"
-  ],
-  [
-    "js/address.js~address.registervalidator",
-    "class/js/Address.js~Address.html#static-method-registerValidator",
-    "js/Address.js~Address.registerValidator",
-    "method"
-  ],
-  [
-    "js/address.js~address.toaddress",
-    "class/js/Address.js~Address.html#static-method-toAddress",
-    "js/Address.js~Address.toAddress",
-    "method"
-  ],
-  [
-    "js/address.js~address.toaddresswithdefaultscheme",
-    "class/js/Address.js~Address.html#static-method-toAddressWithDefaultScheme",
-    "js/Address.js~Address.toAddressWithDefaultScheme",
-    "method"
-  ],
-  [
-    "js/address.js~address.tostring",
-    "class/js/Address.js~Address.html#static-method-toString",
-    "js/Address.js~Address.toString",
-    "method"
-  ],
-  [
-    "js/address.js~address.touri",
-    "class/js/Address.js~Address.html#static-method-toUri",
-    "js/Address.js~Address.toUri",
-    "method"
-  ],
-  [
-    "js/address.js~address.touriwithdefaultscheme",
-    "class/js/Address.js~Address.html#static-method-toUriWithDefaultScheme",
-    "js/Address.js~Address.toUriWithDefaultScheme",
-    "method"
   ],
   [
     "js/coinme.js",
@@ -678,90 +354,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/coreobject.js~coreobject#constructor",
-    "class/js/CoreObject.js~CoreObject.html#instance-constructor-constructor",
-    "js/CoreObject.js~CoreObject#constructor",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject#get",
-    "class/js/CoreObject.js~CoreObject.html#instance-method-get",
-    "js/CoreObject.js~CoreObject#get",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject#set",
-    "class/js/CoreObject.js~CoreObject.html#instance-method-set",
-    "js/CoreObject.js~CoreObject#set",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject#toclass",
-    "class/js/CoreObject.js~CoreObject.html#instance-method-toClass",
-    "js/CoreObject.js~CoreObject#toClass",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject#tojson",
-    "class/js/CoreObject.js~CoreObject.html#instance-method-toJson",
-    "js/CoreObject.js~CoreObject#toJson",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject#tostring",
-    "class/js/CoreObject.js~CoreObject.html#instance-method-toString",
-    "js/CoreObject.js~CoreObject#toString",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject.equals",
-    "class/js/CoreObject.js~CoreObject.html#static-method-equals",
-    "js/CoreObject.js~CoreObject.equals",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject.isclass",
-    "class/js/CoreObject.js~CoreObject.html#static-method-isClass",
-    "js/CoreObject.js~CoreObject.isClass",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject.isinstance",
-    "class/js/CoreObject.js~CoreObject.html#static-method-isInstance",
-    "js/CoreObject.js~CoreObject.isInstance",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject.isinstanceorclass",
-    "class/js/CoreObject.js~CoreObject.html#static-method-isInstanceOrClass",
-    "js/CoreObject.js~CoreObject.isInstanceOrClass",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject.shouldbeclassorinstance",
-    "class/js/CoreObject.js~CoreObject.html#static-method-shouldBeClassOrInstance",
-    "js/CoreObject.js~CoreObject.shouldBeClassOrInstance",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject.shouldbeinstance",
-    "class/js/CoreObject.js~CoreObject.html#static-method-shouldBeInstance",
-    "js/CoreObject.js~CoreObject.shouldBeInstance",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject.toclass",
-    "class/js/CoreObject.js~CoreObject.html#static-method-toClass",
-    "js/CoreObject.js~CoreObject.toClass",
-    "method"
-  ],
-  [
-    "js/coreobject.js~coreobject.tostring",
-    "class/js/CoreObject.js~CoreObject.html#static-method-toString",
-    "js/CoreObject.js~CoreObject.toString",
-    "method"
-  ],
-  [
     "js/ember.js",
     "file/js/Ember.js.html",
     "js/Ember.js",
@@ -774,220 +366,40 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/functions.js~functions.emptyfn",
-    "class/js/Functions.js~Functions.html#static-method-emptyFn",
-    "js/Functions.js~Functions.emptyFn",
-    "method"
-  ],
-  [
-    "js/functions.js~functions.identity",
-    "class/js/Functions.js~Functions.html#static-method-identity",
-    "js/Functions.js~Functions.identity",
-    "method"
-  ],
-  [
-    "js/functions.js~functions.identityfn",
-    "class/js/Functions.js~Functions.html#static-method-identityFn",
-    "js/Functions.js~Functions.identityFn",
-    "method"
-  ],
-  [
-    "js/functions.js~functions.no",
-    "class/js/Functions.js~Functions.html#static-method-no",
-    "js/Functions.js~Functions.no",
-    "method"
-  ],
-  [
-    "js/functions.js~functions.ok",
-    "class/js/Functions.js~Functions.html#static-method-ok",
-    "js/Functions.js~Functions.ok",
-    "method"
-  ],
-  [
-    "js/functions.js~functions.passthroughfn",
-    "class/js/Functions.js~Functions.html#static-method-passthroughFn",
-    "js/Functions.js~Functions.passthroughFn",
-    "method"
-  ],
-  [
-    "js/functions.js~functions.yes",
-    "class/js/Functions.js~Functions.html#static-method-yes",
-    "js/Functions.js~Functions.yes",
-    "method"
-  ],
-  [
     "js/preconditions.js",
     "file/js/Preconditions.js.html",
     "js/Preconditions.js",
     "file"
   ],
   [
-    "js/preconditions.js~preconditions.fail",
-    "class/js/Preconditions.js~Preconditions.html#static-method-fail",
-    "js/Preconditions.js~Preconditions.fail",
-    "method"
+    "js/ratelimiter.js",
+    "file/js/RateLimiter.js.html",
+    "js/RateLimiter.js",
+    "file"
   ],
   [
-    "js/preconditions.js~preconditions.shouldbe",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBe",
-    "js/Preconditions.js~Preconditions.shouldBe",
-    "method"
+    "js/ratelimiter.js~smoothburstyratelimiter#maxburstseconds",
+    "class/js/RateLimiter.js~SmoothBurstyRateLimiter.html#instance-member-maxBurstSeconds",
+    "js/RateLimiter.js~SmoothBurstyRateLimiter#maxBurstSeconds",
+    "member"
   ],
   [
-    "js/preconditions.js~preconditions.shouldbearray",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeArray",
-    "js/Preconditions.js~Preconditions.shouldBeArray",
-    "method"
+    "js/ratelimiter.js~smoothwarmingupratelimiter#halfpermits",
+    "class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html#instance-member-halfPermits",
+    "js/RateLimiter.js~SmoothWarmingUpRateLimiter#halfPermits",
+    "member"
   ],
   [
-    "js/preconditions.js~preconditions.shouldbeboolean",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeBoolean",
-    "js/Preconditions.js~Preconditions.shouldBeBoolean",
-    "method"
+    "js/ratelimiter.js~smoothwarmingupratelimiter#slope",
+    "class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html#instance-member-slope",
+    "js/RateLimiter.js~SmoothWarmingUpRateLimiter#slope",
+    "member"
   ],
   [
-    "js/preconditions.js~preconditions.shouldbeclass",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeClass",
-    "js/Preconditions.js~Preconditions.shouldBeClass",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbedatetime",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeDateTime",
-    "js/Preconditions.js~Preconditions.shouldBeDateTime",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbedefined",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeDefined",
-    "js/Preconditions.js~Preconditions.shouldBeDefined",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbeerror",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeError",
-    "js/Preconditions.js~Preconditions.shouldBeError",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbeexisting",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeExisting",
-    "js/Preconditions.js~Preconditions.shouldBeExisting",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbefalsey",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeFalsey",
-    "js/Preconditions.js~Preconditions.shouldBeFalsey",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbefinite",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeFinite",
-    "js/Preconditions.js~Preconditions.shouldBeFinite",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbefunction",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeFunction",
-    "js/Preconditions.js~Preconditions.shouldBeFunction",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbegreaterthan",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeGreaterThan",
-    "js/Preconditions.js~Preconditions.shouldBeGreaterThan",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbeinstance",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeInstance",
-    "js/Preconditions.js~Preconditions.shouldBeInstance",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbenumber",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeNumber",
-    "js/Preconditions.js~Preconditions.shouldBeNumber",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbeobject",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeObject",
-    "js/Preconditions.js~Preconditions.shouldBeObject",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbepositivenumber",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBePositiveNumber",
-    "js/Preconditions.js~Preconditions.shouldBePositiveNumber",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbepreconditionserror",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBePreconditionsError",
-    "js/Preconditions.js~Preconditions.shouldBePreconditionsError",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbestring",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeString",
-    "js/Preconditions.js~Preconditions.shouldBeString",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbetemporal",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeTemporal",
-    "js/Preconditions.js~Preconditions.shouldBeTemporal",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbetrue",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeTrue",
-    "js/Preconditions.js~Preconditions.shouldBeTrue",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbetype",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeType",
-    "js/Preconditions.js~Preconditions.shouldBeType",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldbeundefined",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldBeUndefined",
-    "js/Preconditions.js~Preconditions.shouldBeUndefined",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldfailwithpreconditionserror",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldFailWithPreconditionsError",
-    "js/Preconditions.js~Preconditions.shouldFailWithPreconditionsError",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldnotbeblank",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldNotBeBlank",
-    "js/Preconditions.js~Preconditions.shouldNotBeBlank",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldnotbefalsey",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldNotBeFalsey",
-    "js/Preconditions.js~Preconditions.shouldNotBeFalsey",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldnotbeinstance",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldNotBeInstance",
-    "js/Preconditions.js~Preconditions.shouldNotBeInstance",
-    "method"
-  ],
-  [
-    "js/preconditions.js~preconditions.shouldnotbenegativenumber",
-    "class/js/Preconditions.js~Preconditions.html#static-method-shouldNotBeNegativeNumber",
-    "js/Preconditions.js~Preconditions.shouldNotBeNegativeNumber",
-    "method"
+    "js/ratelimiter.js~smoothwarmingupratelimiter#warmupperiodmicros",
+    "class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html#instance-member-warmupPeriodMicros",
+    "js/RateLimiter.js~SmoothWarmingUpRateLimiter#warmupPeriodMicros",
+    "member"
   ],
   [
     "js/stopwatch.js",
@@ -996,118 +408,22 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/stopwatch.js~stopwatch#constructor",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-constructor-constructor",
-    "js/Stopwatch.js~Stopwatch#constructor",
-    "method"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#elapsed",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-method-elapsed",
-    "js/Stopwatch.js~Stopwatch#elapsed",
-    "method"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#elapsedmicros",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-method-elapsedMicros",
-    "js/Stopwatch.js~Stopwatch#elapsedMicros",
-    "method"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#elapsedmillis",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-method-elapsedMillis",
-    "js/Stopwatch.js~Stopwatch#elapsedMillis",
-    "method"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#elapsednanos",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-method-elapsedNanos",
-    "js/Stopwatch.js~Stopwatch#elapsedNanos",
-    "method"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#finalized",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-get-finalized",
-    "js/Stopwatch.js~Stopwatch#finalized",
-    "member"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#reset",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-method-reset",
-    "js/Stopwatch.js~Stopwatch#reset",
-    "method"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#running",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-get-running",
-    "js/Stopwatch.js~Stopwatch#running",
-    "member"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#start",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-method-start",
-    "js/Stopwatch.js~Stopwatch#start",
-    "method"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#starttick",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-get-startTick",
-    "js/Stopwatch.js~Stopwatch#startTick",
-    "member"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#stop",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-method-stop",
-    "js/Stopwatch.js~Stopwatch#stop",
-    "method"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#ticker",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-get-ticker",
-    "js/Stopwatch.js~Stopwatch#ticker",
-    "member"
-  ],
-  [
-    "js/stopwatch.js~stopwatch#tostring",
-    "class/js/Stopwatch.js~Stopwatch.html#instance-method-toString",
-    "js/Stopwatch.js~Stopwatch#toString",
-    "method"
-  ],
-  [
     "js/ticker.js",
     "file/js/Ticker.js.html",
     "js/Ticker.js",
     "file"
   ],
   [
-    "js/ticker.js~ticker#constructor",
-    "class/js/Ticker.js~Ticker.html#instance-constructor-constructor",
-    "js/Ticker.js~Ticker#constructor",
-    "method"
+    "js/timeunit.js",
+    "file/js/TimeUnit.js.html",
+    "js/TimeUnit.js",
+    "file"
   ],
   [
-    "js/ticker.js~ticker#read",
-    "class/js/Ticker.js~Ticker.html#instance-method-read",
-    "js/Ticker.js~Ticker#read",
-    "method"
-  ],
-  [
-    "js/ticker.js~ticker#timer",
-    "class/js/Ticker.js~Ticker.html#instance-get-timer",
-    "js/Ticker.js~Ticker#timer",
+    "js/timeunit.js~timeunit#spec",
+    "class/js/TimeUnit.js~TimeUnit.html#instance-member-spec",
+    "js/TimeUnit.js~TimeUnit#spec",
     "member"
-  ],
-  [
-    "js/ticker.js~ticker#wait",
-    "class/js/Ticker.js~Ticker.html#instance-method-wait",
-    "js/Ticker.js~Ticker#wait",
-    "method"
-  ],
-  [
-    "js/ticker.js~ticker.systemticker",
-    "class/js/Ticker.js~Ticker.html#static-method-systemTicker",
-    "js/Ticker.js~Ticker.systemTicker",
-    "method"
   ],
   [
     "js/utility.js",
@@ -1116,388 +432,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/utility.js~utility#set",
-    "class/js/Utility.js~Utility.html#instance-method-set",
-    "js/Utility.js~Utility#set",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.defaultnumber",
-    "class/js/Utility.js~Utility.html#static-method-defaultNumber",
-    "js/Utility.js~Utility.defaultNumber",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.defaultobject",
-    "class/js/Utility.js~Utility.html#static-method-defaultObject",
-    "js/Utility.js~Utility.defaultObject",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.defaults",
-    "class/js/Utility.js~Utility.html#static-method-defaults",
-    "js/Utility.js~Utility.defaults",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.getclass",
-    "class/js/Utility.js~Utility.html#static-method-getClass",
-    "js/Utility.js~Utility.getClass",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.ifboolean",
-    "class/js/Utility.js~Utility.html#static-method-ifBoolean",
-    "js/Utility.js~Utility.ifBoolean",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isarray",
-    "class/js/Utility.js~Utility.html#static-method-isArray",
-    "js/Utility.js~Utility.isArray",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isblank",
-    "class/js/Utility.js~Utility.html#static-method-isBlank",
-    "js/Utility.js~Utility.isBlank",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isboolean",
-    "class/js/Utility.js~Utility.html#static-method-isBoolean",
-    "js/Utility.js~Utility.isBoolean",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isclass",
-    "class/js/Utility.js~Utility.html#static-method-isClass",
-    "js/Utility.js~Utility.isClass",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isdate",
-    "class/js/Utility.js~Utility.html#static-method-isDate",
-    "js/Utility.js~Utility.isDate",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isdefined",
-    "class/js/Utility.js~Utility.html#static-method-isDefined",
-    "js/Utility.js~Utility.isDefined",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isemail",
-    "class/js/Utility.js~Utility.html#static-method-isEmail",
-    "js/Utility.js~Utility.isEmail",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.iserror",
-    "class/js/Utility.js~Utility.html#static-method-isError",
-    "js/Utility.js~Utility.isError",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isexisting",
-    "class/js/Utility.js~Utility.html#static-method-isExisting",
-    "js/Utility.js~Utility.isExisting",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isfalsey",
-    "class/js/Utility.js~Utility.html#static-method-isFalsey",
-    "js/Utility.js~Utility.isFalsey",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isfunction",
-    "class/js/Utility.js~Utility.html#static-method-isFunction",
-    "js/Utility.js~Utility.isFunction",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isinstance",
-    "class/js/Utility.js~Utility.html#static-method-isInstance",
-    "js/Utility.js~Utility.isInstance",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnan",
-    "class/js/Utility.js~Utility.html#static-method-isNaN",
-    "js/Utility.js~Utility.isNaN",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnotblank",
-    "class/js/Utility.js~Utility.html#static-method-isNotBlank",
-    "js/Utility.js~Utility.isNotBlank",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnotexisting",
-    "class/js/Utility.js~Utility.html#static-method-isNotExisting",
-    "js/Utility.js~Utility.isNotExisting",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnotfalsey",
-    "class/js/Utility.js~Utility.html#static-method-isNotFalsey",
-    "js/Utility.js~Utility.isNotFalsey",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnotfunction",
-    "class/js/Utility.js~Utility.html#static-method-isNotFunction",
-    "js/Utility.js~Utility.isNotFunction",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnull",
-    "class/js/Utility.js~Utility.html#static-method-isNull",
-    "js/Utility.js~Utility.isNull",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnullorundefined",
-    "class/js/Utility.js~Utility.html#static-method-isNullOrUndefined",
-    "js/Utility.js~Utility.isNullOrUndefined",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnumber",
-    "class/js/Utility.js~Utility.html#static-method-isNumber",
-    "js/Utility.js~Utility.isNumber",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isnumeric",
-    "class/js/Utility.js~Utility.html#static-method-isNumeric",
-    "js/Utility.js~Utility.isNumeric",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isobject",
-    "class/js/Utility.js~Utility.html#static-method-isObject",
-    "js/Utility.js~Utility.isObject",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isprimitive",
-    "class/js/Utility.js~Utility.html#static-method-isPrimitive",
-    "js/Utility.js~Utility.isPrimitive",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.ispromise",
-    "class/js/Utility.js~Utility.html#static-method-isPromise",
-    "js/Utility.js~Utility.isPromise",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.issametype",
-    "class/js/Utility.js~Utility.html#static-method-isSameType",
-    "js/Utility.js~Utility.isSameType",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isstring",
-    "class/js/Utility.js~Utility.html#static-method-isString",
-    "js/Utility.js~Utility.isString",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isstringequal",
-    "class/js/Utility.js~Utility.html#static-method-isStringEqual",
-    "js/Utility.js~Utility.isStringEqual",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isstringequalignorecase",
-    "class/js/Utility.js~Utility.html#static-method-isStringEqualIgnoreCase",
-    "js/Utility.js~Utility.isStringEqualIgnoreCase",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.istemporal",
-    "class/js/Utility.js~Utility.html#static-method-isTemporal",
-    "js/Utility.js~Utility.isTemporal",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.istruthy",
-    "class/js/Utility.js~Utility.html#static-method-isTruthy",
-    "js/Utility.js~Utility.isTruthy",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.isundefined",
-    "class/js/Utility.js~Utility.html#static-method-isUndefined",
-    "js/Utility.js~Utility.isUndefined",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.now",
-    "class/js/Utility.js~Utility.html#static-method-now",
-    "js/Utility.js~Utility.now",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.optclass",
-    "class/js/Utility.js~Utility.html#static-method-optClass",
-    "js/Utility.js~Utility.optClass",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.optclassname",
-    "class/js/Utility.js~Utility.html#static-method-optClassName",
-    "js/Utility.js~Utility.optClassName",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.optdate",
-    "class/js/Utility.js~Utility.html#static-method-optDate",
-    "js/Utility.js~Utility.optDate",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.optdatetime",
-    "class/js/Utility.js~Utility.html#static-method-optDateTime",
-    "js/Utility.js~Utility.optDateTime",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.optinstant",
-    "class/js/Utility.js~Utility.html#static-method-optInstant",
-    "js/Utility.js~Utility.optInstant",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.optjson",
-    "class/js/Utility.js~Utility.html#static-method-optJson",
-    "js/Utility.js~Utility.optJson",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.optlowercase",
-    "class/js/Utility.js~Utility.html#static-method-optLowerCase",
-    "js/Utility.js~Utility.optLowerCase",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.optstring",
-    "class/js/Utility.js~Utility.html#static-method-optString",
-    "js/Utility.js~Utility.optString",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.result",
-    "class/js/Utility.js~Utility.html#static-method-result",
-    "js/Utility.js~Utility.result",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.take",
-    "class/js/Utility.js~Utility.html#static-method-take",
-    "js/Utility.js~Utility.take",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.tobignumber",
-    "class/js/Utility.js~Utility.html#static-method-toBigNumber",
-    "js/Utility.js~Utility.toBigNumber",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.toclass",
-    "class/js/Utility.js~Utility.html#static-method-toClass",
-    "js/Utility.js~Utility.toClass",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.toclassorfail",
-    "class/js/Utility.js~Utility.html#static-method-toClassOrFail",
-    "js/Utility.js~Utility.toClassOrFail",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.todatetime",
-    "class/js/Utility.js~Utility.html#static-method-toDateTime",
-    "js/Utility.js~Utility.toDateTime",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.todatetimeformatter",
-    "class/js/Utility.js~Utility.html#static-method-toDateTimeFormatter",
-    "js/Utility.js~Utility.toDateTimeFormatter",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.tolowercase",
-    "class/js/Utility.js~Utility.html#static-method-toLowerCase",
-    "js/Utility.js~Utility.toLowerCase",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.tonumberorfail",
-    "class/js/Utility.js~Utility.html#static-method-toNumberOrFail",
-    "js/Utility.js~Utility.toNumberOrFail",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.totimezoneoffset",
-    "class/js/Utility.js~Utility.html#static-method-toTimeZoneOffset",
-    "js/Utility.js~Utility.toTimeZoneOffset",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.touppercase",
-    "class/js/Utility.js~Utility.html#static-method-toUpperCase",
-    "js/Utility.js~Utility.toUpperCase",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.typematcher",
-    "class/js/Utility.js~Utility.html#static-method-typeMatcher",
-    "js/Utility.js~Utility.typeMatcher",
-    "method"
-  ],
-  [
-    "js/utility.js~utility.typeof",
-    "class/js/Utility.js~Utility.html#static-method-typeOf",
-    "js/Utility.js~Utility.typeOf",
-    "method"
-  ],
-  [
     "js/data/adapter.js",
     "file/js/data/Adapter.js.html",
     "js/data/Adapter.js",
     "file"
-  ],
-  [
-    "js/data/adapter.js~adapter#adapt",
-    "class/js/data/Adapter.js~Adapter.html#instance-method-adapt",
-    "js/data/Adapter.js~Adapter#adapt",
-    "method"
-  ],
-  [
-    "js/data/adapter.js~adapter#shouldsupport",
-    "class/js/data/Adapter.js~Adapter.html#instance-method-shouldSupport",
-    "js/data/Adapter.js~Adapter#shouldSupport",
-    "method"
-  ],
-  [
-    "js/data/adapter.js~adapter#supports",
-    "class/js/data/Adapter.js~Adapter.html#instance-method-supports",
-    "js/data/Adapter.js~Adapter#supports",
-    "method"
-  ],
-  [
-    "js/data/adapter.js~adapter#tofunction",
-    "class/js/data/Adapter.js~Adapter.html#instance-method-toFunction",
-    "js/data/Adapter.js~Adapter#toFunction",
-    "method"
   ],
   [
     "js/data/conversion.js",
@@ -1506,94 +444,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/data/conversion.js~conversion#constructor",
-    "class/js/data/Conversion.js~Conversion.html#instance-constructor-constructor",
-    "js/data/Conversion.js~Conversion#constructor",
-    "method"
-  ],
-  [
-    "js/data/conversion.js~conversion#converter",
-    "class/js/data/Conversion.js~Conversion.html#instance-get-converter",
-    "js/data/Conversion.js~Conversion#converter",
-    "member"
-  ],
-  [
-    "js/data/conversion.js~conversion#input",
-    "class/js/data/Conversion.js~Conversion.html#instance-get-input",
-    "js/data/Conversion.js~Conversion#input",
-    "member"
-  ],
-  [
-    "js/data/conversion.js~conversion#output",
-    "class/js/data/Conversion.js~Conversion.html#instance-get-output",
-    "js/data/Conversion.js~Conversion#output",
-    "member"
-  ],
-  [
-    "js/data/conversion.js~conversion#requestor",
-    "class/js/data/Conversion.js~Conversion.html#instance-get-requestor",
-    "js/data/Conversion.js~Conversion#requestor",
-    "member"
-  ],
-  [
-    "js/data/conversion.js~conversion#stopwatch",
-    "class/js/data/Conversion.js~Conversion.html#instance-get-stopwatch",
-    "js/data/Conversion.js~Conversion#stopwatch",
-    "member"
-  ],
-  [
-    "js/data/conversion.js~conversion#tostring",
-    "class/js/data/Conversion.js~Conversion.html#instance-method-toString",
-    "js/data/Conversion.js~Conversion#toString",
-    "method"
-  ],
-  [
-    "js/data/conversion.js~conversion#valueof",
-    "class/js/data/Conversion.js~Conversion.html#instance-method-valueOf",
-    "js/data/Conversion.js~Conversion#valueOf",
-    "method"
-  ],
-  [
-    "js/data/conversion.js~conversion.tostring",
-    "class/js/data/Conversion.js~Conversion.html#static-method-toString",
-    "js/data/Conversion.js~Conversion.toString",
-    "method"
-  ],
-  [
     "js/data/converter.js",
     "file/js/data/Converter.js.html",
     "js/data/Converter.js",
     "file"
-  ],
-  [
-    "js/data/converter.js~converter#convert",
-    "class/js/data/Converter.js~Converter.html#instance-method-convert",
-    "js/data/Converter.js~Converter#convert",
-    "method"
-  ],
-  [
-    "js/data/converter.js~converter#shouldsupport",
-    "class/js/data/Converter.js~Converter.html#instance-method-shouldSupport",
-    "js/data/Converter.js~Converter#shouldSupport",
-    "method"
-  ],
-  [
-    "js/data/converter.js~converter#supports",
-    "class/js/data/Converter.js~Converter.html#instance-method-supports",
-    "js/data/Converter.js~Converter#supports",
-    "method"
-  ],
-  [
-    "js/data/converter.js~converter#toadapter",
-    "class/js/data/Converter.js~Converter.html#instance-method-toAdapter",
-    "js/data/Converter.js~Converter#toAdapter",
-    "method"
-  ],
-  [
-    "js/data/converter.js~converter#tofunction",
-    "class/js/data/Converter.js~Converter.html#instance-method-toFunction",
-    "js/data/Converter.js~Converter#toFunction",
-    "method"
   ],
   [
     "js/data/delegatedconverter.js",
@@ -1602,46 +456,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/data/delegatedconverter.js~delegatedconverter#adapter",
-    "class/js/data/DelegatedConverter.js~DelegatedConverter.html#instance-get-adapter",
-    "js/data/DelegatedConverter.js~DelegatedConverter#adapter",
-    "member"
-  ],
-  [
-    "js/data/delegatedconverter.js~delegatedconverter#constructor",
-    "class/js/data/DelegatedConverter.js~DelegatedConverter.html#instance-constructor-constructor",
-    "js/data/DelegatedConverter.js~DelegatedConverter#constructor",
-    "method"
-  ],
-  [
-    "js/data/delegatedconverter.js~delegatedconverter#convert",
-    "class/js/data/DelegatedConverter.js~DelegatedConverter.html#instance-method-convert",
-    "js/data/DelegatedConverter.js~DelegatedConverter#convert",
-    "method"
-  ],
-  [
-    "js/data/delegatedconverter.js~delegatedconverter#getconversion",
-    "class/js/data/DelegatedConverter.js~DelegatedConverter.html#instance-method-getConversion",
-    "js/data/DelegatedConverter.js~DelegatedConverter#getConversion",
-    "method"
-  ],
-  [
-    "js/data/delegatedconverter.js~delegatedconverter#optconversion",
-    "class/js/data/DelegatedConverter.js~DelegatedConverter.html#instance-method-optConversion",
-    "js/data/DelegatedConverter.js~DelegatedConverter#optConversion",
-    "method"
-  ],
-  [
-    "js/data/delegatedconverter.js~delegatedconverter#optconversionname",
-    "class/js/data/DelegatedConverter.js~DelegatedConverter.html#instance-method-optConversionName",
-    "js/data/DelegatedConverter.js~DelegatedConverter#optConversionName",
-    "method"
-  ],
-  [
-    "js/data/delegatedconverter.js~delegatedconverter#supports",
-    "class/js/data/DelegatedConverter.js~DelegatedConverter.html#instance-method-supports",
-    "js/data/DelegatedConverter.js~DelegatedConverter#supports",
-    "method"
+    "js/data/identity.js",
+    "file/js/data/Identity.js.html",
+    "js/data/Identity.js",
+    "file"
   ],
   [
     "js/data/licenses.js",
@@ -1650,34 +468,16 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/data/receipt.js",
+    "file/js/data/Receipt.js.html",
+    "js/data/Receipt.js",
+    "file"
+  ],
+  [
     "js/data/signtool.js",
     "file/js/data/SignTool.js.html",
     "js/data/SignTool.js",
     "file"
-  ],
-  [
-    "js/data/signtool.js~signtool#constructor",
-    "class/js/data/SignTool.js~SignTool.html#instance-constructor-constructor",
-    "js/data/SignTool.js~SignTool#constructor",
-    "method"
-  ],
-  [
-    "js/data/signtool.js~signtool#containsheaders",
-    "class/js/data/SignTool.js~SignTool.html#instance-method-containsHeaders",
-    "js/data/SignTool.js~SignTool#containsHeaders",
-    "method"
-  ],
-  [
-    "js/data/signtool.js~signtool#read",
-    "class/js/data/SignTool.js~SignTool.html#instance-method-read",
-    "js/data/SignTool.js~SignTool#read",
-    "method"
-  ],
-  [
-    "js/data/signtool.js~signtool#write",
-    "class/js/data/SignTool.js~SignTool.html#instance-method-write",
-    "js/data/SignTool.js~SignTool#write",
-    "method"
   ],
   [
     "js/data/user.js",
@@ -1726,12 +526,6 @@ window.esdocSearchIndex = [
     "class/js/data/User.js~User.html#instance-member-birthDate",
     "js/data/User.js~User#birthDate",
     "member"
-  ],
-  [
-    "js/data/user.js~user#constructor",
-    "class/js/data/User.js~User.html#instance-constructor-constructor",
-    "js/data/User.js~User#constructor",
-    "method"
   ],
   [
     "js/data/user.js~user#expirationdate",
@@ -1788,22 +582,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/data/userbuilder.js~userbuilder.spec_version_8",
-    "class/js/data/UserBuilder.js~UserBuilder.html#static-get-SPEC_VERSION_8",
-    "js/data/UserBuilder.js~UserBuilder.SPEC_VERSION_8",
-    "member"
-  ],
-  [
-    "js/data/userbuilder.js~userbuilder.fromspec",
-    "class/js/data/UserBuilder.js~UserBuilder.html#static-method-fromSpec",
-    "js/data/UserBuilder.js~UserBuilder.fromSpec",
-    "method"
-  ],
-  [
-    "js/data/userbuilder.js~userbuilder.fromversion8",
-    "class/js/data/UserBuilder.js~UserBuilder.html#static-method-fromVersion8",
-    "js/data/UserBuilder.js~UserBuilder.fromVersion8",
-    "method"
+    "js/data/userdescriptor.js",
+    "file/js/data/UserDescriptor.js.html",
+    "js/data/UserDescriptor.js",
+    "file"
   ],
   [
     "js/data/index.js",
@@ -1816,18 +598,6 @@ window.esdocSearchIndex = [
     "file/js/errors/AbstractError.js.html",
     "js/errors/AbstractError.js",
     "file"
-  ],
-  [
-    "js/errors/abstracterror.js~abstracterror#cause",
-    "class/js/errors/AbstractError.js~AbstractError.html#instance-get-cause",
-    "js/errors/AbstractError.js~AbstractError#cause",
-    "member"
-  ],
-  [
-    "js/errors/abstracterror.js~abstracterror#constructor",
-    "class/js/errors/AbstractError.js~AbstractError.html#instance-constructor-constructor",
-    "js/errors/AbstractError.js~AbstractError#constructor",
-    "method"
   ],
   [
     "js/errors/abstracterror.js~abstracterror#message",
@@ -1848,136 +618,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "js/errors/abstracterror.js~abstracterror#tojson",
-    "class/js/errors/AbstractError.js~AbstractError.html#instance-method-toJSON",
-    "js/errors/AbstractError.js~AbstractError#toJSON",
-    "method"
-  ],
-  [
-    "js/errors/abstracterror.js~abstracterror.isclass",
-    "class/js/errors/AbstractError.js~AbstractError.html#static-method-isClass",
-    "js/errors/AbstractError.js~AbstractError.isClass",
-    "method"
-  ],
-  [
-    "js/errors/abstracterror.js~abstracterror.isinstance",
-    "class/js/errors/AbstractError.js~AbstractError.html#static-method-isInstance",
-    "js/errors/AbstractError.js~AbstractError.isInstance",
-    "method"
-  ],
-  [
-    "js/errors/abstracterror.js~abstracterror.isinstanceorclass",
-    "class/js/errors/AbstractError.js~AbstractError.html#static-method-isInstanceOrClass",
-    "js/errors/AbstractError.js~AbstractError.isInstanceOrClass",
-    "method"
-  ],
-  [
     "js/errors/errors.js",
     "file/js/errors/Errors.js.html",
     "js/errors/Errors.js",
     "file"
-  ],
-  [
-    "js/errors/errors.js~errors.badrequest",
-    "class/js/errors/Errors.js~Errors.html#static-method-badRequest",
-    "js/errors/Errors.js~Errors.badRequest",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.badrequestif",
-    "class/js/errors/Errors.js~Errors.html#static-method-badRequestIf",
-    "js/errors/Errors.js~Errors.badRequestIf",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.errorif",
-    "class/js/errors/Errors.js~Errors.html#static-method-errorIf",
-    "js/errors/Errors.js~Errors.errorIf",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.forbidden",
-    "class/js/errors/Errors.js~Errors.html#static-method-forbidden",
-    "js/errors/Errors.js~Errors.forbidden",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.httperror",
-    "class/js/errors/Errors.js~Errors.html#static-method-httpError",
-    "js/errors/Errors.js~Errors.httpError",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.iserror",
-    "class/js/errors/Errors.js~Errors.html#static-method-isError",
-    "js/errors/Errors.js~Errors.isError",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.iserrorclass",
-    "class/js/errors/Errors.js~Errors.html#static-method-isErrorClass",
-    "js/errors/Errors.js~Errors.isErrorClass",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.iserrorinstance",
-    "class/js/errors/Errors.js~Errors.html#static-method-isErrorInstance",
-    "js/errors/Errors.js~Errors.isErrorInstance",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.ishttperror",
-    "class/js/errors/Errors.js~Errors.html#static-method-isHttpError",
-    "js/errors/Errors.js~Errors.isHttpError",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.notfound",
-    "class/js/errors/Errors.js~Errors.html#static-method-notFound",
-    "js/errors/Errors.js~Errors.notFound",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.notfoundif",
-    "class/js/errors/Errors.js~Errors.html#static-method-notFoundIf",
-    "js/errors/Errors.js~Errors.notFoundIf",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.optjson",
-    "class/js/errors/Errors.js~Errors.html#static-method-optJSON",
-    "js/errors/Errors.js~Errors.optJSON",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.servererror",
-    "class/js/errors/Errors.js~Errors.html#static-method-serverError",
-    "js/errors/Errors.js~Errors.serverError",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.throwmustbeabstract",
-    "class/js/errors/Errors.js~Errors.html#static-method-throwMustBeAbstract",
-    "js/errors/Errors.js~Errors.throwMustBeAbstract",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.thrownotimplemented",
-    "class/js/errors/Errors.js~Errors.html#static-method-throwNotImplemented",
-    "js/errors/Errors.js~Errors.throwNotImplemented",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.thrownotsure",
-    "class/js/errors/Errors.js~Errors.html#static-method-throwNotSure",
-    "js/errors/Errors.js~Errors.throwNotSure",
-    "method"
-  ],
-  [
-    "js/errors/errors.js~errors.tojson",
-    "class/js/errors/Errors.js~Errors.html#static-method-toJSON",
-    "js/errors/Errors.js~Errors.toJSON",
-    "method"
   ],
   [
     "js/errors/httperror.js",
@@ -1986,88 +630,16 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/errors/httperror.js~httperror#constructor",
-    "class/js/errors/HttpError.js~HttpError.html#instance-constructor-constructor",
-    "js/errors/HttpError.js~HttpError#constructor",
-    "method"
-  ],
-  [
-    "js/errors/httperror.js~httperror#properties",
-    "class/js/errors/HttpError.js~HttpError.html#instance-get-properties",
-    "js/errors/HttpError.js~HttpError#properties",
-    "member"
-  ],
-  [
-    "js/errors/httperror.js~httperror#statuscode",
-    "class/js/errors/HttpError.js~HttpError.html#instance-get-statusCode",
-    "js/errors/HttpError.js~HttpError#statusCode",
-    "member"
-  ],
-  [
-    "js/errors/httperror.js~httperror#tojson",
-    "class/js/errors/HttpError.js~HttpError.html#instance-method-toJSON",
-    "js/errors/HttpError.js~HttpError#toJSON",
-    "method"
-  ],
-  [
     "js/errors/notimplementederror.js",
     "file/js/errors/NotImplementedError.js.html",
     "js/errors/NotImplementedError.js",
     "file"
   ],
   [
-    "js/errors/notimplementederror.js~notimplementederror#constructor",
-    "class/js/errors/NotImplementedError.js~NotImplementedError.html#instance-constructor-constructor",
-    "js/errors/NotImplementedError.js~NotImplementedError#constructor",
-    "method"
-  ],
-  [
-    "js/errors/notimplementederror.js~notimplementederror.tostring",
-    "class/js/errors/NotImplementedError.js~NotImplementedError.html#static-method-toString",
-    "js/errors/NotImplementedError.js~NotImplementedError.toString",
-    "method"
-  ],
-  [
     "js/errors/preconditionserror.js",
     "file/js/errors/PreconditionsError.js.html",
     "js/errors/PreconditionsError.js",
     "file"
-  ],
-  [
-    "js/errors/preconditionserror.js~preconditionserror#actualvalue",
-    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-get-actualValue",
-    "js/errors/PreconditionsError.js~PreconditionsError#actualValue",
-    "member"
-  ],
-  [
-    "js/errors/preconditionserror.js~preconditionserror#cause",
-    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-get-cause",
-    "js/errors/PreconditionsError.js~PreconditionsError#cause",
-    "member"
-  ],
-  [
-    "js/errors/preconditionserror.js~preconditionserror#constructor",
-    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-constructor-constructor",
-    "js/errors/PreconditionsError.js~PreconditionsError#constructor",
-    "method"
-  ],
-  [
-    "js/errors/preconditionserror.js~preconditionserror#expectedvalue",
-    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-get-expectedValue",
-    "js/errors/PreconditionsError.js~PreconditionsError#expectedValue",
-    "member"
-  ],
-  [
-    "js/errors/preconditionserror.js~preconditionserror#innermessage",
-    "class/js/errors/PreconditionsError.js~PreconditionsError.html#instance-get-innerMessage",
-    "js/errors/PreconditionsError.js~PreconditionsError#innerMessage",
-    "member"
-  ],
-  [
-    "js/errors/preconditionserror.js~preconditionserror.tostring",
-    "class/js/errors/PreconditionsError.js~PreconditionsError.html#static-method-toString",
-    "js/errors/PreconditionsError.js~PreconditionsError.toString",
-    "method"
   ],
   [
     "js/errors/index.js",
@@ -2088,130 +660,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/money/bitcoin.js~bitcoin.bitcoin_per_satoshi",
-    "class/js/money/Bitcoin.js~Bitcoin.html#static-get-BITCOIN_PER_SATOSHI",
-    "js/money/Bitcoin.js~Bitcoin.BITCOIN_PER_SATOSHI",
-    "member"
-  ],
-  [
-    "js/money/bitcoin.js~bitcoin.satoshis_per_bitcoin",
-    "class/js/money/Bitcoin.js~Bitcoin.html#static-get-SATOSHIS_PER_BITCOIN",
-    "js/money/Bitcoin.js~Bitcoin.SATOSHIS_PER_BITCOIN",
-    "member"
-  ],
-  [
-    "js/money/bitcoin.js~bitcoin.frombitcoin",
-    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-fromBitcoin",
-    "js/money/Bitcoin.js~Bitcoin.fromBitcoin",
-    "method"
-  ],
-  [
-    "js/money/bitcoin.js~bitcoin.fromsatoshi",
-    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-fromSatoshi",
-    "js/money/Bitcoin.js~Bitcoin.fromSatoshi",
-    "method"
-  ],
-  [
-    "js/money/bitcoin.js~bitcoin.isbitcoin",
-    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-isBitcoin",
-    "js/money/Bitcoin.js~Bitcoin.isBitcoin",
-    "method"
-  ],
-  [
-    "js/money/bitcoin.js~bitcoin.shouldbebitcoin",
-    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-shouldBeBitcoin",
-    "js/money/Bitcoin.js~Bitcoin.shouldBeBitcoin",
-    "method"
-  ],
-  [
-    "js/money/bitcoin.js~bitcoin.toclass",
-    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-toClass",
-    "js/money/Bitcoin.js~Bitcoin.toClass",
-    "method"
-  ],
-  [
-    "js/money/bitcoin.js~bitcoin.tostring",
-    "class/js/money/Bitcoin.js~Bitcoin.html#static-method-toString",
-    "js/money/Bitcoin.js~Bitcoin.toString",
-    "method"
-  ],
-  [
     "js/money/currency.js",
     "file/js/money/Currency.js.html",
     "js/money/Currency.js",
     "file"
-  ],
-  [
-    "js/money/currency.js~currency#constructor",
-    "class/js/money/Currency.js~Currency.html#instance-constructor-constructor",
-    "js/money/Currency.js~Currency#constructor",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency#tostring",
-    "class/js/money/Currency.js~Currency.html#instance-method-toString",
-    "js/money/Currency.js~Currency#toString",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.create",
-    "class/js/money/Currency.js~Currency.html#static-method-create",
-    "js/money/Currency.js~Currency.create",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.equals",
-    "class/js/money/Currency.js~Currency.html#static-method-equals",
-    "js/money/Currency.js~Currency.equals",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.getcurrency",
-    "class/js/money/Currency.js~Currency.html#static-method-getCurrency",
-    "js/money/Currency.js~Currency.getCurrency",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.iscurrency",
-    "class/js/money/Currency.js~Currency.html#static-method-isCurrency",
-    "js/money/Currency.js~Currency.isCurrency",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.optcurrency",
-    "class/js/money/Currency.js~Currency.html#static-method-optCurrency",
-    "js/money/Currency.js~Currency.optCurrency",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.optvalue",
-    "class/js/money/Currency.js~Currency.html#static-method-optValue",
-    "js/money/Currency.js~Currency.optValue",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.shouldbecurrency",
-    "class/js/money/Currency.js~Currency.html#static-method-shouldBeCurrency",
-    "js/money/Currency.js~Currency.shouldBeCurrency",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.tomoney",
-    "class/js/money/Currency.js~Currency.html#static-method-toMoney",
-    "js/money/Currency.js~Currency.toMoney",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.tostring",
-    "class/js/money/Currency.js~Currency.html#static-method-toString",
-    "js/money/Currency.js~Currency.toString",
-    "method"
-  ],
-  [
-    "js/money/currency.js~currency.tovalueorfail",
-    "class/js/money/Currency.js~Currency.html#static-method-toValueOrFail",
-    "js/money/Currency.js~Currency.toValueOrFail",
-    "method"
   ],
   [
     "js/money/currencyadapter.js",
@@ -2220,46 +672,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/money/currencyadapter.js~currencyadapter#adapt",
-    "class/js/money/CurrencyAdapter.js~CurrencyAdapter.html#instance-method-adapt",
-    "js/money/CurrencyAdapter.js~CurrencyAdapter#adapt",
-    "method"
-  ],
-  [
-    "js/money/currencyadapter.js~currencyadapter#supports",
-    "class/js/money/CurrencyAdapter.js~CurrencyAdapter.html#instance-method-supports",
-    "js/money/CurrencyAdapter.js~CurrencyAdapter#supports",
-    "method"
-  ],
-  [
     "js/money/ethereum.js",
     "file/js/money/Ethereum.js.html",
     "js/money/Ethereum.js",
     "file"
-  ],
-  [
-    "js/money/ethereum.js~ethereum.fromethereum",
-    "class/js/money/Ethereum.js~Ethereum.html#static-method-fromEthereum",
-    "js/money/Ethereum.js~Ethereum.fromEthereum",
-    "method"
-  ],
-  [
-    "js/money/ethereum.js~ethereum.isethereum",
-    "class/js/money/Ethereum.js~Ethereum.html#static-method-isEthereum",
-    "js/money/Ethereum.js~Ethereum.isEthereum",
-    "method"
-  ],
-  [
-    "js/money/ethereum.js~ethereum.shouldbeethereum",
-    "class/js/money/Ethereum.js~Ethereum.html#static-method-shouldBeEthereum",
-    "js/money/Ethereum.js~Ethereum.shouldBeEthereum",
-    "method"
-  ],
-  [
-    "js/money/ethereum.js~ethereum.tostring",
-    "class/js/money/Ethereum.js~Ethereum.html#static-method-toString",
-    "js/money/Ethereum.js~Ethereum.toString",
-    "method"
   ],
   [
     "js/money/exchange.js",
@@ -2274,142 +690,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/money/money.js~money#constructor",
-    "class/js/money/Money.js~Money.html#instance-constructor-constructor",
-    "js/money/Money.js~Money#constructor",
-    "method"
-  ],
-  [
-    "js/money/money.js~money#currency",
-    "class/js/money/Money.js~Money.html#instance-get-currency",
-    "js/money/Money.js~Money#currency",
-    "member"
-  ],
-  [
-    "js/money/money.js~money#equals",
-    "class/js/money/Money.js~Money.html#instance-method-equals",
-    "js/money/Money.js~Money#equals",
-    "method"
-  ],
-  [
-    "js/money/money.js~money#issamecurrency",
-    "class/js/money/Money.js~Money.html#instance-method-isSameCurrency",
-    "js/money/Money.js~Money#isSameCurrency",
-    "method"
-  ],
-  [
-    "js/money/money.js~money#minus",
-    "class/js/money/Money.js~Money.html#instance-method-minus",
-    "js/money/Money.js~Money#minus",
-    "method"
-  ],
-  [
-    "js/money/money.js~money#plus",
-    "class/js/money/Money.js~Money.html#instance-method-plus",
-    "js/money/Money.js~Money#plus",
-    "method"
-  ],
-  [
-    "js/money/money.js~money#tojson",
-    "class/js/money/Money.js~Money.html#instance-method-toJSON",
-    "js/money/Money.js~Money#toJSON",
-    "method"
-  ],
-  [
-    "js/money/money.js~money#tojson",
-    "class/js/money/Money.js~Money.html#instance-method-toJson",
-    "js/money/Money.js~Money#toJson",
-    "method"
-  ],
-  [
-    "js/money/money.js~money#tostring",
-    "class/js/money/Money.js~Money.html#instance-method-toString",
-    "js/money/Money.js~Money#toString",
-    "method"
-  ],
-  [
-    "js/money/money.js~money#value",
-    "class/js/money/Money.js~Money.html#instance-get-value",
-    "js/money/Money.js~Money#value",
-    "member"
-  ],
-  [
-    "js/money/money.js~money#valueof",
-    "class/js/money/Money.js~Money.html#instance-method-valueOf",
-    "js/money/Money.js~Money#valueOf",
-    "method"
-  ],
-  [
-    "js/money/money.js~money.isinstance",
-    "class/js/money/Money.js~Money.html#static-method-isInstance",
-    "js/money/Money.js~Money.isInstance",
-    "method"
-  ],
-  [
-    "js/money/money.js~money.optmoney",
-    "class/js/money/Money.js~Money.html#static-method-optMoney",
-    "js/money/Money.js~Money.optMoney",
-    "method"
-  ],
-  [
-    "js/money/money.js~money.optvalue",
-    "class/js/money/Money.js~Money.html#static-method-optValue",
-    "js/money/Money.js~Money.optValue",
-    "method"
-  ],
-  [
-    "js/money/money.js~money.shouldbemoney",
-    "class/js/money/Money.js~Money.html#static-method-shouldBeMoney",
-    "js/money/Money.js~Money.shouldBeMoney",
-    "method"
-  ],
-  [
-    "js/money/money.js~money.tocurrency",
-    "class/js/money/Money.js~Money.html#static-method-toCurrency",
-    "js/money/Money.js~Money.toCurrency",
-    "method"
-  ],
-  [
-    "js/money/money.js~money.tostring",
-    "class/js/money/Money.js~Money.html#static-method-toString",
-    "js/money/Money.js~Money.toString",
-    "method"
-  ],
-  [
     "js/money/moneyconverter.js",
     "file/js/money/MoneyConverter.js.html",
     "js/money/MoneyConverter.js",
     "file"
-  ],
-  [
-    "js/money/moneyconverter.js~moneyconverter#constructor",
-    "class/js/money/MoneyConverter.js~MoneyConverter.html#instance-constructor-constructor",
-    "js/money/MoneyConverter.js~MoneyConverter#constructor",
-    "method"
-  ],
-  [
-    "js/money/moneyconverter.js~moneyconverter#convert",
-    "class/js/money/MoneyConverter.js~MoneyConverter.html#instance-method-convert",
-    "js/money/MoneyConverter.js~MoneyConverter#convert",
-    "method"
-  ],
-  [
-    "js/money/moneyconverter.js~moneyconverter#optconversion",
-    "class/js/money/MoneyConverter.js~MoneyConverter.html#instance-method-optConversion",
-    "js/money/MoneyConverter.js~MoneyConverter#optConversion",
-    "method"
-  ],
-  [
-    "js/money/moneyconverter.js~moneyconverter#register",
-    "class/js/money/MoneyConverter.js~MoneyConverter.html#instance-method-register",
-    "js/money/MoneyConverter.js~MoneyConverter#register",
-    "method"
-  ],
-  [
-    "js/money/moneyconverter.js~moneyconverter#supports",
-    "class/js/money/MoneyConverter.js~MoneyConverter.html#instance-method-supports",
-    "js/money/MoneyConverter.js~MoneyConverter#supports",
-    "method"
   ],
   [
     "js/money/satoshi.js",
@@ -2418,63 +702,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/money/satoshi.js~satoshi.create",
-    "class/js/money/Satoshi.js~Satoshi.html#static-method-create",
-    "js/money/Satoshi.js~Satoshi.create",
-    "method"
-  ],
-  [
-    "js/money/satoshi.js~satoshi.frombitcoin",
-    "class/js/money/Satoshi.js~Satoshi.html#static-method-fromBitcoin",
-    "js/money/Satoshi.js~Satoshi.fromBitcoin",
-    "method"
-  ],
-  [
-    "js/money/satoshi.js~satoshi.fromsatoshis",
-    "class/js/money/Satoshi.js~Satoshi.html#static-method-fromSatoshis",
-    "js/money/Satoshi.js~Satoshi.fromSatoshis",
-    "method"
-  ],
-  [
-    "js/money/satoshi.js~satoshi.tostring",
-    "class/js/money/Satoshi.js~Satoshi.html#static-method-toString",
-    "js/money/Satoshi.js~Satoshi.toString",
-    "method"
-  ],
-  [
     "js/money/usd.js",
     "file/js/money/USD.js.html",
     "js/money/USD.js",
     "file"
   ],
   [
-    "js/money/usd.js~usd.isusd",
-    "class/js/money/USD.js~USD.html#static-method-isUSD",
-    "js/money/USD.js~USD.isUSD",
-    "method"
-  ],
-  [
-    "js/money/usd.js~usd.shouldbeusd",
-    "class/js/money/USD.js~USD.html#static-method-shouldBeUSD",
-    "js/money/USD.js~USD.shouldBeUSD",
-    "method"
-  ],
-  [
-    "js/money/usd.js~usd.toclass",
-    "class/js/money/USD.js~USD.html#static-method-toClass",
-    "js/money/USD.js~USD.toClass",
-    "method"
-  ],
-  [
-    "js/money/usd.js~usd.tostring",
-    "class/js/money/USD.js~USD.html#static-method-toString",
-    "js/money/USD.js~USD.toString",
-    "method"
-  ],
-  [
     "js/money/index.js",
     "file/js/money/index.js.html",
     "js/money/index.js",
+    "file"
+  ],
+  [
+    "js/net/coinmewalletclient.js",
+    "file/js/net/CoinmeWalletClient.js.html",
+    "js/net/CoinmeWalletClient.js",
     "file"
   ],
   [
@@ -2484,40 +726,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/slack/abstractbuilder.js~abstractbuilder#constructor",
-    "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-constructor-constructor",
-    "js/slack/AbstractBuilder.js~AbstractBuilder#constructor",
-    "method"
-  ],
-  [
-    "js/slack/abstractbuilder.js~abstractbuilder#mergeintopayload",
-    "class/js/slack/AbstractBuilder.js~AbstractBuilder.html#instance-method-mergeIntoPayload",
-    "js/slack/AbstractBuilder.js~AbstractBuilder#mergeIntoPayload",
-    "method"
-  ],
-  [
     "js/slack/abstractnotificationtemplate.js",
     "file/js/slack/AbstractNotificationTemplate.js.html",
     "js/slack/AbstractNotificationTemplate.js",
     "file"
-  ],
-  [
-    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#applytemplate",
-    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-method-applyTemplate",
-    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#applyTemplate",
-    "method"
-  ],
-  [
-    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#constructor",
-    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-constructor-constructor",
-    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#constructor",
-    "method"
-  ],
-  [
-    "js/slack/abstractnotificationtemplate.js~abstractnotificationtemplate#render",
-    "class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html#instance-method-render",
-    "js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate#render",
-    "method"
   ],
   [
     "js/slack/attachmentbuilder.js",
@@ -2526,94 +738,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/slack/attachmentbuilder.js~attachmentbuilder#color",
-    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-method-color",
-    "js/slack/AttachmentBuilder.js~AttachmentBuilder#color",
-    "method"
-  ],
-  [
-    "js/slack/attachmentbuilder.js~attachmentbuilder#constructor",
-    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-constructor-constructor",
-    "js/slack/AttachmentBuilder.js~AttachmentBuilder#constructor",
-    "method"
-  ],
-  [
-    "js/slack/attachmentbuilder.js~attachmentbuilder#field",
-    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-method-field",
-    "js/slack/AttachmentBuilder.js~AttachmentBuilder#field",
-    "method"
-  ],
-  [
-    "js/slack/attachmentbuilder.js~attachmentbuilder#fields",
-    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-method-fields",
-    "js/slack/AttachmentBuilder.js~AttachmentBuilder#fields",
-    "method"
-  ],
-  [
-    "js/slack/attachmentbuilder.js~attachmentbuilder#parent",
-    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-get-parent",
-    "js/slack/AttachmentBuilder.js~AttachmentBuilder#parent",
-    "member"
-  ],
-  [
-    "js/slack/attachmentbuilder.js~attachmentbuilder#text",
-    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-method-text",
-    "js/slack/AttachmentBuilder.js~AttachmentBuilder#text",
-    "method"
-  ],
-  [
-    "js/slack/attachmentbuilder.js~attachmentbuilder#title",
-    "class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html#instance-method-title",
-    "js/slack/AttachmentBuilder.js~AttachmentBuilder#title",
-    "method"
-  ],
-  [
     "js/slack/fieldbuilder.js",
     "file/js/slack/FieldBuilder.js.html",
     "js/slack/FieldBuilder.js",
     "file"
-  ],
-  [
-    "js/slack/fieldbuilder.js~fieldbuilder#add",
-    "class/js/slack/FieldBuilder.js~FieldBuilder.html#instance-method-add",
-    "js/slack/FieldBuilder.js~FieldBuilder#add",
-    "method"
-  ],
-  [
-    "js/slack/fieldbuilder.js~fieldbuilder#addkeyvaluepair",
-    "class/js/slack/FieldBuilder.js~FieldBuilder.html#instance-method-addKeyValuePair",
-    "js/slack/FieldBuilder.js~FieldBuilder#addKeyValuePair",
-    "method"
-  ],
-  [
-    "js/slack/fieldbuilder.js~fieldbuilder#constructor",
-    "class/js/slack/FieldBuilder.js~FieldBuilder.html#instance-constructor-constructor",
-    "js/slack/FieldBuilder.js~FieldBuilder#constructor",
-    "method"
-  ],
-  [
-    "js/slack/fieldbuilder.js~fieldbuilder#parent",
-    "class/js/slack/FieldBuilder.js~FieldBuilder.html#instance-get-parent",
-    "js/slack/FieldBuilder.js~FieldBuilder#parent",
-    "member"
-  ],
-  [
-    "js/slack/fieldbuilder.js~fieldbuilder#small",
-    "class/js/slack/FieldBuilder.js~FieldBuilder.html#instance-method-small",
-    "js/slack/FieldBuilder.js~FieldBuilder#small",
-    "method"
-  ],
-  [
-    "js/slack/fieldbuilder.js~fieldbuilder#text",
-    "class/js/slack/FieldBuilder.js~FieldBuilder.html#instance-method-text",
-    "js/slack/FieldBuilder.js~FieldBuilder#text",
-    "method"
-  ],
-  [
-    "js/slack/fieldbuilder.js~fieldbuilder#title",
-    "class/js/slack/FieldBuilder.js~FieldBuilder.html#instance-method-title",
-    "js/slack/FieldBuilder.js~FieldBuilder#title",
-    "method"
   ],
   [
     "js/slack/inlinenotificationtemplate.js",
@@ -2622,76 +750,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/slack/inlinenotificationtemplate.js~inlinenotificationtemplate#applytemplate",
-    "class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html#instance-method-applyTemplate",
-    "js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate#applyTemplate",
-    "method"
-  ],
-  [
     "js/slack/notificationbuilder.js",
     "file/js/slack/NotificationBuilder.js.html",
     "js/slack/NotificationBuilder.js",
     "file"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#attachment",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-attachment",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#attachment",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#attachments",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-attachments",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#attachments",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#channel",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-channel",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#channel",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#execute",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-execute",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#execute",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#icon",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-icon",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#icon",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#text",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-text",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#text",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#tojson",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-toJson",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#toJson",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#topayload",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-toPayload",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#toPayload",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder#username",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#instance-method-username",
-    "js/slack/NotificationBuilder.js~NotificationBuilder#username",
-    "method"
-  ],
-  [
-    "js/slack/notificationbuilder.js~notificationbuilder.innercast",
-    "class/js/slack/NotificationBuilder.js~NotificationBuilder.html#static-method-innerCast",
-    "js/slack/NotificationBuilder.js~NotificationBuilder.innerCast",
-    "method"
   ],
   [
     "js/slack/notificationservice.js",
@@ -2700,52 +762,16 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/slack/notificationservice.js~notificationservice#builder",
-    "class/js/slack/NotificationService.js~NotificationService.html#instance-method-builder",
-    "js/slack/NotificationService.js~NotificationService#builder",
-    "method"
-  ],
-  [
-    "js/slack/notificationservice.js~notificationservice#constructor",
-    "class/js/slack/NotificationService.js~NotificationService.html#instance-constructor-constructor",
-    "js/slack/NotificationService.js~NotificationService#constructor",
-    "method"
-  ],
-  [
     "js/slack/notificationservice.js~notificationservice#mappings",
     "class/js/slack/NotificationService.js~NotificationService.html#instance-member-mappings",
     "js/slack/NotificationService.js~NotificationService#mappings",
     "member"
   ],
   [
-    "js/slack/notificationservice.js~notificationservice#mergeintopayload",
-    "class/js/slack/NotificationService.js~NotificationService.html#instance-method-mergeIntoPayload",
-    "js/slack/NotificationService.js~NotificationService#mergeIntoPayload",
-    "method"
-  ],
-  [
-    "js/slack/notificationservice.js~notificationservice#notificationtemplate",
-    "class/js/slack/NotificationService.js~NotificationService.html#instance-method-notificationTemplate",
-    "js/slack/NotificationService.js~NotificationService#notificationTemplate",
-    "method"
-  ],
-  [
-    "js/slack/notificationservice.js~notificationservice#notify",
-    "class/js/slack/NotificationService.js~NotificationService.html#instance-method-notify",
-    "js/slack/NotificationService.js~NotificationService#notify",
-    "method"
-  ],
-  [
     "js/slack/notificationservice.js~notificationservice#payload",
     "class/js/slack/NotificationService.js~NotificationService.html#instance-member-payload",
     "js/slack/NotificationService.js~NotificationService#payload",
     "member"
-  ],
-  [
-    "js/slack/notificationservice.js~notificationservice#register",
-    "class/js/slack/NotificationService.js~NotificationService.html#instance-method-register",
-    "js/slack/NotificationService.js~NotificationService#register",
-    "method"
   ],
   [
     "js/slack/notificationservice.js~notificationservice#templates",
@@ -2760,28 +786,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/slack/notificationtemplate.js~notificationtemplate#applytemplate",
-    "class/js/slack/NotificationTemplate.js~NotificationTemplate.html#instance-method-applyTemplate",
-    "js/slack/NotificationTemplate.js~NotificationTemplate#applyTemplate",
-    "method"
-  ],
-  [
-    "js/slack/notificationtemplate.js~notificationtemplate#constructor",
-    "class/js/slack/NotificationTemplate.js~NotificationTemplate.html#instance-constructor-constructor",
-    "js/slack/NotificationTemplate.js~NotificationTemplate#constructor",
-    "method"
-  ],
-  [
     "js/slack/usernotificationtemplate.js",
     "file/js/slack/UserNotificationTemplate.js.html",
     "js/slack/UserNotificationTemplate.js",
     "file"
-  ],
-  [
-    "js/slack/usernotificationtemplate.js~usernotificationtemplate#applytemplate",
-    "class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html#instance-method-applyTemplate",
-    "js/slack/UserNotificationTemplate.js~UserNotificationTemplate#applyTemplate",
-    "method"
   ],
   [
     "js/slack/index.js",

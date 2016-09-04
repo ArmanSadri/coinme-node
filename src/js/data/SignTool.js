@@ -5,8 +5,16 @@ import Preconditions from "../Preconditions";
 import Utility from '../Utility';
 import CoreObject from '../CoreObject'
 
+/**
+ * @class SignTool
+ */
 class SignTool extends CoreObject {
 
+    /**
+     *
+     * @param {Object} options
+     * @param {String} options.secret
+     */
     constructor(options) {
         let secret = Utility.take(options, 'secret', {
             required: true,
