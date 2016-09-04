@@ -10,14 +10,16 @@
     "test:cover": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha",
     "test:coveralls": "cat ./cove rage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "watch:jshint": "watch 'jshint src/js --reporter=./node_modules/jshint-stylish/index.js' src/js/",
-    "mocha": "mocha test --compilers js:babel-core/register --watch",
-    "mocha:once": "mocha test --compilers js:babel-core/register",
+    "mocha": "./node_modules/.bin/mocha test --compilers js:babel-core/register --watch",
+    "mocha:once": "./node_modules/.bin/mocha test --compilers js:babel-core/register",
     "ci": "npm run test:cover && npm run test:coveralls",
     "relink": "npm unlink && npm link",
     "clean": "rm -rf dist/*",
     "copy:others": "rsync -avm --exclude='*.js' ./src/js/* ./dist/js",
     "babel": "./node_modules/.bin/babel src/js --out-dir dist/js -s",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
+    "get-version": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[ \",]//g'",
+    "upload-docs": "scp -r ./dist/docs docs.coinme.org:/var/lib/coinme-docs/coinme-node/$(npm run get-version | tail -n 1)",
     "build": "npm run clean && npm run copy:others && npm run babel && npm run test:once && npm run docs && npm run relink"
   },
   "repository": {
