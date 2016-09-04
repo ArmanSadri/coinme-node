@@ -39,9 +39,6 @@ describe('TimeUnit', () => {
         assert.equal(TimeUnit.DAYS.convert(1, TimeUnit.SECONDS), 0.000011574074074074073);
     });
 
-    console.log(TimeUnit.SECONDS);
-    console.log(TimeUnit.SECONDS.toString());
-
     it('Stopwatch', (cb) => {
         let rateLimiter = new SmoothWarmingUpRateLimiter({
             maxBurstSeconds: 3,

@@ -43,7 +43,6 @@ class Utility {
         // Indirect Subclass:
         //     LocalDate, LocalDateTime, ZonedDateTime
 
-        // console.log(value);
         // console.log(value.toString());
         // console.log(value.prototype);
         // console.log(value.__proto__);
@@ -1412,6 +1411,22 @@ class Utility {
      */
     static now() {
         return ZonedDateTime.now();
+    }
+
+    /**
+     * @param args
+     * @return value
+     */
+    static defaultValue(...args) {
+        let result = null;
+
+        Lodash.each(arguments, function (object) {
+            if (Utility.isDefined(object)) {
+                result = object;
+            }
+        });
+
+        return result;
     }
 
     /**
