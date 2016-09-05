@@ -78,8 +78,8 @@ describe('HttpError', () => {
         assert.isFalse(HttpError.isClass(undefined));
     });
 
-    it('Errors.badRequest(string, properties)', () => {
-        let error = Errors.badRequest('blah', {
+    it('Errors.createBadRequestInstance(string, properties)', () => {
+        let error = Errors.createBadRequestInstance('blah', {
             propertyName: 'propertyValue'
         });
 

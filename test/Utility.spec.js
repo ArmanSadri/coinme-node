@@ -15,6 +15,21 @@ import {Instant, ZonedDateTime, ZoneOffset, LocalDateTime, LocalTime, TemporalQu
 
 describe('Utility', function () {
 
+    it('Utility.getPath()', () => {
+        assert.equal('/home/michael/.coinme-node', Utility.getPath({
+            baseUri: '/home/michael',
+            uri: '.coinme-node'
+        }));
+        assert.equal('/home/michael/.coinme-node/test', Utility.getPath({
+            baseUri: '/home/michael',
+            uri: '.coinme-node/test'
+        }));
+        assert.equal('/.coinme-node/test', Utility.getPath({
+            baseUri: '/home/michael',
+            uri: '/.coinme-node/test'
+        }));
+    });
+
     it('toInstant(LocalTime)', () => {
         let time = LocalTime.now(ZoneOffset.UTC);
 
