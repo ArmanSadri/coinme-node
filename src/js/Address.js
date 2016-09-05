@@ -247,8 +247,6 @@ class Address extends CoreObject {
             let protocol = stringOrAddressOrUri.substring(0, index);
             let rest = stringOrAddressOrUri.substring(index + 2);
 
-            console.log('test', stringOrAddressOrUri, protocol, rest);
-
             return new URI(protocol + "://" + rest);
         } else {
             throw new NotImplementedError('Do not know how to handle: ' + stringOrAddressOrUri);
