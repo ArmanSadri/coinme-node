@@ -8,6 +8,10 @@ import Ember from "~/Ember";
 import CoreObject from "~/CoreObject";
 import {Errors} from "./errors";
 import Big from "big.js/big";
+import URI from "urijs";
+import Promise from "bluebird";
+import osenv from "osenv";
+
 import {
     Instant,
     LocalDate,
@@ -36,6 +40,48 @@ let EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
  * @singleton
  */
 class Utility {
+
+    /**
+     *
+     * @param {URI|String|{baseUri:URI|String, uri:URI|String}} path
+     * @return {URI}
+     */
+    static getPath(path) {
+        const input = path;
+        let output;
+
+        if (Utility.isNotExisting(path)) {
+            output = undefined;
+        } else if (Utility.isString(path)) {
+            path = path.trim();
+
+            if (path.startsWith('~/')) {
+                path = path.substring(2);
+
+                output = URI.joinPaths(osenv.home(), path);
+            } else {
+                output = URI(path);
+            }
+        } else if (path instanceof URI) {
+            output = path;
+        } else if (path.uri || path.baseUri) {
+            let baseUri = Utility.getPath(path.baseUri) || '';
+            let uri = Utility.getPath(path.uri) || '';
+
+            if (uri.toString().startsWith('/')) {
+                // absolute uri
+                output = uri;
+            } else {
+                output = URI.joinPaths(baseUri, uri).toString();
+            }
+        }
+
+        if (output) {
+            return output;
+        }
+
+        throw new Error(`I don't know what to do here: ${input}`);
+    }
 
     static isTemporal(value) {
         // Direct Subclass:
@@ -250,7 +296,7 @@ class Utility {
 
             if (fn) {
                 Preconditions.shouldBeFunction(fn, 'validator must be type of function');
-                Preconditions.shouldNotBeFalsey(fn.call(scope, value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
+                Preconditions.shouldBeTrue(false !== fn.call(scope, value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
             }
 
             return value;
@@ -269,16 +315,11 @@ class Utility {
             let fn = Lodash.get(ruleset, 'adapter');
             let scope = Lodash.get(ruleset, 'scope') || this;
 
-            // console.log(`adapter: (key:${key}) (fn:${fn})`);
 
             if (fn) {
                 Preconditions.shouldBeFunction(fn, 'Validator must be a function');
 
-                let source = value;
-
                 value = fn.call(scope, value);
-
-                // console.log(`adapted (value:${source}) (type:${Utility.typeOf(source)}) to (value:${value}) (type: ${Utility.typeOf(value)}`);
             }
 
             return value;
@@ -1094,6 +1135,10 @@ class Utility {
      * @return {boolean}
      */
     static isBlank(stringOrArrayOrNumber) {
+        if (!stringOrArrayOrNumber) {
+            return true;
+        }
+
         if (Utility.isNotExisting(stringOrArrayOrNumber)) {
             return true;
         }
@@ -1104,7 +1149,7 @@ class Utility {
         }
 
         if (!('array' === type || 'string' === type || 'number' === type)) {
-            Preconditions.fail('type|array', type);
+            Preconditions.fail('type|array', type, `isBlank does not support ${type}`);
         }
 
         return Ember.isBlank(stringOrArrayOrNumber);
