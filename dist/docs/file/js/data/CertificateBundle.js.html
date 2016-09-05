@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/data/CertificateBundle.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/coinme/coinme-node.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Environment.js~Environment.html">Environment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~RateLimiter.html">RateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothBurstyRateLimiter.html">SmoothBurstyRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothRateLimiter.html">SmoothRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html">SmoothWarmingUpRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Stopwatch.js~Stopwatch.html">Stopwatch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Ticker.js~Ticker.html">Ticker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/TimeUnit.js~TimeUnit.html">TimeUnit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">cache</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/Cache.js~Cache.html">Cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/LocalFileCache.js~LocalFileCache.html">LocalFileCache</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Adapter.js~Adapter.html">Adapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CachedResourceLoader.js~CachedResourceLoader.html">CachedResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~Certificate.html">Certificate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~CertificateBundle.html">CertificateBundle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Conversion.js~Conversion.html">Conversion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/DelegatedConverter.js~CoreObjectAdapter.html">CoreObjectAdapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/DelegatedConverter.js~DelegatedConverter.html">DelegatedConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/FileResourceLoader.js~FileResourceLoader.html">FileResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Identity.js~Identity.html">Identity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointType.html">EndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointTypes.html">EndpointTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~KioskEndpointType.html">KioskEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~Receipt.html">Receipt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptBuilder.html">ReceiptBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptEndpoint.html">ReceiptEndpoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~WalletEndpointType.html">WalletEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/ResourceLoader.js~ResourceLoader.html">ResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/SignTool.js~SignTool.html">SignTool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserExistenceToken.js~UserExistenceToken.html">UserExistenceToken</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/NotImplementedError.js~NotImplementedError.html">NotImplementedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/CurrencyAdapter.js~CurrencyAdapter.html">CurrencyAdapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Ethereum.js~Ethereum.html">Ethereum</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/MoneyConverter.js~MoneyConverter.html">MoneyConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">net</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClient.html">CoinmeWalletClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClientConfiguration.html">CoinmeWalletClientConfiguration</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/FieldBuilder.js~FieldBuilder.html">FieldBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html">InlineNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationBuilder.js~NotificationBuilder.html">NotificationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationService.js~NotificationService.html">NotificationService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationTemplate.js~NotificationTemplate.html">NotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html">UserNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notificationService">notificationService</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/data/CertificateBundle.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&quot;use strict&quot;;
+
+import fs from &quot;fs&quot;;
+import Preconditions from &quot;../Preconditions&quot;;
+import Utility from &quot;../Utility&quot;;
+import CoreObject from &quot;../CoreObject&quot;;
+import URI from &quot;urijs&quot;;
+import osenv from &quot;osenv&quot;;
+import {ResourceLoader, FileResourceLoader, CachedResourceLoader} from &quot;./&quot;;
+import {LocalFileCache} from &quot;../cache&quot;;
+import Promise from &quot;bluebird&quot;;
+
+/**
+ * @class
+ */
+class Certificate extends CoreObject {
+
+    _started;
+    _startedLatch;
+
+    /**
+     *
+     * @param {Object} options
+     * @param {String|URI} options.path
+     */
+    constructor(options) {
+        //region let uri
+        /** @type {URI} */
+        let uri = Utility.take(options, &apos;path&apos;, {
+            required: true,
+            adapter(value) {
+                return Utility.getPath(value);
+            }
+        });
+        //endregion
+
+        //region let resourceLoader
+        /** @type {ResourceLoader} */
+        let resourceLoader = Utility.take(options, &apos;resourceLoader&apos;, {
+            adapter: function(value) {
+                if (!value) {
+                    let directoryPath = uri.clone().filename(&apos;&apos;);
+
+                    value = new CachedResourceLoader({
+                        resourceLoader: new FileResourceLoader({
+                            path: directoryPath,
+                            cache: new LocalFileCache({
+                                path: directoryPath
+                            })
+                        })
+                    });
+                }
+
+                return value;
+            }
+        });
+        //endregion
+
+        super(...arguments);
+
+        this._uri = uri;
+        this._path = this.uri.toString();
+        this._name = this.uri.filename();
+        this._resourceLoader = resourceLoader;
+
+        //region startedLatch
+        let scope = this;
+
+        this._startedLatch = new Promise((resolve, reject) =&gt; {
+            let promise = Promise.resolve();
+
+            promise = promise.then(() =&gt; resourceLoader.startedLatch);
+
+            promise = promise.then(() =&gt; {
+                return this
+                    .open()
+                    .then((value) =&gt; {
+                        scope._value = value;
+                    });
+            });
+
+            resolve(promise);
+        });
+
+        this._startedLatch.finally(() =&gt; scope._started = true);
+        //endregion
+    }
+
+    //region getters/setters
+    /**
+     * @property
+     * @readonly
+     * @type {Boolean}
+     * @return {Boolean}
+     */
+    get started() {
+        return this._started;
+    }
+    /**
+     * @property
+     * @readonly
+     * @type {Promise}
+     * @return {Promise}
+     */
+    get startedLatch() {
+        return this._startedLatch;
+    }
+
+    /**
+     * @property
+     * @readonly
+     * @type {ResourceLoader}
+     * @return {ResourceLoader}
+     */
+    get resourceLoader() {
+        return this._resourceLoader;
+    }
+
+    /**
+     * @readonly
+     * @property
+     * @type {URI}
+     * @return {URI}
+     */
+    get uri() {
+        return this._uri;
+    }
+
+    /**
+     * @readonly
+     * @property
+     * @type {String}
+     * @return {String}
+     */
+    get path() {
+        return this._path;
+    }
+
+    /**
+     * @readonly
+     * @property
+     * @type {String}
+     * @return {String}
+     */
+    get name() {
+        return this._name;
+    }
+
+    /**
+     * @readonly
+     * @property
+     * @throws {Error}
+     */
+    get value() {
+        Preconditions.shouldBeTrue(this._started, &apos;is not started yet&apos;);
+        Preconditions.shouldBeTrue(this.startedLatch.isFulfilled(), &apos;must be started&apos;);
+        Preconditions.shouldBeFalsey(this.startedLatch.isCancelled(), &apos;must be started&apos;);
+        Preconditions.shouldBeFalsey(this.startedLatch.isRejected(), &apos;must not be rejected&apos;);
+        Preconditions.shouldBeTrue(this.startedLatch.isResolved(), &apos;must be resolved&apos;);
+
+        return this._value;
+    }
+    //endregion
+
+    /**
+     * @return {Buffer}
+     */
+    open() {
+        let scope = this;
+
+        return this.resourceLoader.load(this.path)
+            .then((value) =&gt; {
+                scope._value = value;
+
+                return value;
+            });
+    }
+}
+
+/**
+ * System for bundling 3 keys together (key, cert, and ca)
+ *
+ * @class
+ */
+class CertificateBundle extends CoreObject {
+
+    /**
+     *
+     * @param {Object} options
+     * @param {Certificate} options.certificate
+     * @param {Certificate} options.key
+     * @param {Certificate} options.authority
+     */
+    constructor(options) {
+        function adapter(value) {
+            if (Utility.isString(value) || value instanceof URI) {
+                return new Certificate({path: value});
+            }
+
+            return value;
+        }
+
+        /** @type {Certificate} */
+        let certificate = Utility.take(options, &apos;certificate&apos;, {
+            required: true,
+            adapter: adapter
+        });
+
+        /** @type {Certificate} */
+        let key = Utility.take(options, &apos;key&apos;, {
+            required: true,
+            adapter: adapter
+        });
+
+        /** @type {Certificate} */
+        let authority = Utility.take(options, &apos;authority&apos;, {
+            required: true,
+            adapter: adapter
+        });
+
+        super(options);
+
+        this._authority = authority;
+        this._key = key;
+        this._certificate = certificate;
+
+        //region startedLatch
+        this._startedLatch = new Promise((resolve, reject) =&gt; {
+            let promise = Promise.resolve();
+
+            if (authority) {
+                promise = promise.then(() =&gt; authority.open())
+            }
+            if (key) {
+                promise = promise.then(() =&gt; key.open());
+            }
+
+            if (certificate) {
+                promise = promise.then(() =&gt; certificate.open());
+            }
+
+            resolve(promise);
+        });
+        //endregion
+    }
+
+    //region getters/setters
+    get startedLatch() {
+        return this._startedLatch;
+    }
+
+    /**
+     * @readonly
+     * @property
+     * @type {Certificate}
+     * @return {Certificate}
+     */
+    get certificate() {
+        return this._certificate;
+    }
+
+    /**
+     * @readonly
+     * @property
+     * @type {Certificate}
+     * @return {Certificate}
+     */
+    get key() {
+        return this._key;
+    }
+
+    /**
+     * @readonly
+     * @property
+     * @type {Certificate}
+     * @return {Certificate}
+     */
+    get authority() {
+        return this._authority;
+    }
+    //endregion
+
+    /**
+     * coinme-node-key.pem
+     * coinme-node-cert.pem
+     * coinme-wallet-ca-cert.pem
+     *
+     * @param {String} path example ~/.coinme-node
+     * @return {CertificateBundle}
+     */
+    static fromFolder(path) {
+        let uri = URI((Utility.getPath(path)).toString() + &apos;/&apos;); // fixes the bug when the folder has a leading dot.
+
+        return new CertificateBundle({
+            key: uri.filename(&apos;coinme-node-key.pem&apos;).clone(),
+            certificate: uri.filename(&apos;coinme-node-cert.pem&apos;).clone(),
+            authority: uri.filename(&apos;coinme-wallet-ca-cert.pem&apos;).clone()
+        });
+    }
+
+    static fromHome() {
+        return CertificateBundle.fromFolder(&apos;~/.coinme-node&apos;);
+    }
+}
+
+export {Certificate};
+export {CertificateBundle};
+
+export default CertificateBundle;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.0-alpha)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

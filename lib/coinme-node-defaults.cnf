@@ -1,0 +1,26 @@
+[ req ]
+default_bits           = 4096
+days                   = 9999
+distinguished_name     = req_distinguished_name
+attributes             = req_attributes
+prompt                 = no
+x509_extensions        = v3_ca
+
+[ req_distinguished_name ]
+C                      = US
+ST                     = WA
+L                      = Seattle
+O                      = Coinme
+OU                     = techops
+CN                     = coinme.com
+emailAddress           = certs@coinme.com
+
+[ req_attributes ]
+challengePassword      = 4e462781-3000-4394-93e8-c08b249dd2c2
+
+[ v3_ca ]
+authorityInfoAccess = @issuer_info
+
+[ issuer_info ]
+OCSP;URI.0 = http://ocsp.coinme.com/
+caIssuers;URI.0 = http://coinme.com/ca.cert
