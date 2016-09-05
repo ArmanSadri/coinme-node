@@ -2,16 +2,19 @@
 
 import CoreObject from "../CoreObject";
 import Promise from "bluebird";
-import retry from "retry";
 import request from "request-promise";
 import Receipt from "../data/Receipt";
 import Utility from "../Utility";
 import Preconditions from "../Preconditions";
 import URI from "urijs";
 import request_debug from "request-debug";
-/** @type {SignTool} */
 import SignTool from "../data/SignTool";
 import uuid from "node-uuid";
+import Identity from "../data/Identity";
+import Address from "../Address";
+import Lodash from "lodash";
+import UserExistenceToken from "../data/UserExistenceToken";
+import CertificateBundle from "../data/CertificateBundle";
 
 request_debug(request);
 
@@ -29,32 +32,60 @@ function customPromiseFactory(resolver) {
 
 //region class CoinmeWalletClientConfiguration
 /**
+ * Certificates are required!
  *
+ * The default value for certificates are found in CertificateBundle.fromHome()
  */
 class CoinmeWalletClientConfiguration extends CoreObject {
 
     //region constructor
     /**
      *
-     * @param {Object} [options]
+     * @param {CoinmeWalletClientConfiguration|Object} [options]
+     * @param {CertificateBundle} [options.certificate]
      * @param {String|URI} [options.baseUrl] defaults to https://www.coinmewallet.com
      * @param {String} [options.version] defaults to /api/v1
      * @param {SignTool} [options.signTool] defaults to null
+     * @param {String|Address|Identity} [options.identity] defaults to null
      */
     constructor(options) {
+        //region let certificate
+        /** @type {CertificateBundle} */
+        let certificate = Utility.take(options, 'certificate', {
+            type: CertificateBundle,
+            adapter: function (value) {
+                if (!value) {
+                    return CertificateBundle.fromHome();
+                } else if (Utility.isString(value)) {
+                    return CertificateBundle.fromFolder(value);
+                }
+
+                return value;
+            }
+        });
+        //endregion
+
+        //region let timeout
+        let timeout = Utility.take(options, 'timeout', {
+            type: 'number',
+            defaultValue: 30000
+        });
+        //endregion
+
         //region let baseUrl
+        /** @type {URI} */
         let baseUrl = Utility.take(options, 'baseUrl', {
             required: false,
             defaultValue: URI('https://www.coinmewallet.com/'),
             // adapter goes first.
-            adapter: function(value) {
+            adapter: function (value) {
                 if (Utility.isString(value)) {
                     return URI(value);
                 }
 
                 return value;
             },
-            validator: function(uri) {
+            validator: function (uri) {
                 Preconditions.shouldBeInstanceOf(uri, URI, `value must be string or URI. (value:${uri}) (type:${Utility.typeOf(uri)})`);
                 Preconditions.shouldBeTrue(uri.is('absolute'), 'uri must be absolute');
 
@@ -68,7 +99,7 @@ class CoinmeWalletClientConfiguration extends CoreObject {
             type: 'string',
             defaultValue: '/api/v1',
             required: false,
-            validator: function(value) {
+            validator: function (value) {
                 Preconditions.shouldBeString(value, 'version must be a string');
                 Preconditions.shouldMatchRegexp(value, VERSION_REGEXP, `version must match pattern: ${VERSION_REGEXP}. Was ${value}`);
 
@@ -77,20 +108,98 @@ class CoinmeWalletClientConfiguration extends CoreObject {
         });
         //endregion
 
-        let signTool = Utility.take(options, 'signTool', SignTool, false);
+        //region let sessionId
+        let sessionId = Utility.take(options, 'sessionId', 'string', false);
+        //endregion
+
+        //region let identity
+        let identity = Utility.take(options, 'identity', {
+            defaultValue: new Identity('library:/coinme-node'),
+            adapter(value) {
+                if (Utility.isString(value)) {
+                    return new Identity(value);
+                } else if (Address.isInstance(value)) {
+                    return new Identity(value);
+                } else {
+                    return value;
+                }
+            },
+            validator(value) {
+                Preconditions.shouldBeInstance(value, Identity, `identity ${JSON.stringify(value)}`);
+            }
+        });
+        //endregion
+
+        //region let signTool
+        let signTool = Utility.take(options, 'signTool', {
+            type: SignTool,
+            defaultValue: new SignTool({
+                secret: identity.toString(),
+                issuer: identity.toString()
+            })
+        });
+        //endregion
 
         super(...arguments);
 
+        this._identity = identity;
+        this._sessionId = sessionId;
         this._baseUrl = baseUrl;
         this._version = version;
-        this._identity = identity;
-        this._signTool = Utility.defaultObject(signTool, new SignTool({
-            secret: 'I do not know'
-        }));
+        this._signTool = signTool;
+        this._certificate = certificate;
+
+        this._startedLatch = new Promise((resolve, reject) => {
+            let promise = Promise.resolve();
+
+            promise = promise.then(() => certificate.startedLatch);
+
+            resolve(promise);
+        });
     }
+
     //endregion
 
     //region properties
+    /**
+     * @return {Promise}
+     */
+    get startedLatch() {
+        return this._startedLatch;
+    }
+
+    /**
+     * @readonly
+     * @property
+     * @type {CertificateBundle}
+     * @return {CertificateBundle}
+     */
+    get certificate() {
+        return this._certificate;
+    }
+
+    /**
+     *
+     * @readonly
+     * @property
+     * @type {Identity}
+     * @return {Identity}
+     */
+    get identity() {
+        return this._identity;
+    }
+
+
+    /**
+     * @readonly
+     * @property
+     * @type {String|undefined}
+     * @return {String|undefined}
+     */
+    get sessionId() {
+        return this._sessionId;
+    }
+
     /**
      * Example: /api/v1
      *
@@ -101,6 +210,16 @@ class CoinmeWalletClientConfiguration extends CoreObject {
      */
     get version() {
         return this._version;
+    }
+
+    /**
+     * @property
+     * @readonly
+     * @type {Number}
+     * @return {Number}
+     */
+    get timeout() {
+        return this._timeout;
     }
 
     /**
@@ -124,7 +243,40 @@ class CoinmeWalletClientConfiguration extends CoreObject {
     get signTool() {
         return this._signTool;
     }
+
     //endregion
+
+    toJson() {
+        return super.toJson({
+            identity: Utility.optJson(this.identity.toJson()),
+            signTool: Utility.optJson(this.signTool),
+            sessionId: this.sessionId,
+            version: this.version,
+            baseUrl: Utility.optString(this.baseUrl)
+        });
+    }
+
+    /**
+     *
+     * @param {String} sessionId
+     * @return {CoinmeWalletClientConfiguration}
+     */
+    withSessionId(sessionId) {
+        Preconditions.shouldBeString(sessionId, 'sessionId');
+
+        return new CoinmeWalletClientConfiguration(this.clone({
+            sessionId: sessionId
+        }));
+    }
+
+    /**
+     *
+     * @param {Object} overrides
+     * @return {CoinmeWalletClientConfiguration}
+     */
+    clone(overrides) {
+        return new CoinmeWalletClientConfiguration(Lodash.assign({}, this, overrides));
+    }
 }
 //endregion
 
@@ -132,7 +284,7 @@ class CoinmeWalletClientConfiguration extends CoreObject {
 /**
  *
  */
-class CoinmeWalletClient  extends CoreObject {
+class CoinmeWalletClient extends CoreObject {
 
     //region constructor
     /**
@@ -141,23 +293,57 @@ class CoinmeWalletClient  extends CoreObject {
      * @param {CoinmeWalletClientConfiguration} options.configuration
      */
     constructor(options) {
+        /** @type {CoinmeWalletClientConfiguration} */
         let configuration = Utility.take(options, 'configuration', CoinmeWalletClientConfiguration, true);
 
         super(...arguments);
 
         this._configuration = configuration;
+
+        this._startedLatch = new Promise((resolve, reject) => {
+            let promise = Promise.resolve();
+
+            promise = promise.then(() => configuration.startedLatch);
+
+            resolve(promise);
+        });
     }
+
     //endregion
 
     //region properties
     /**
-     *
+     * @property
+     * @readonly
+     * @type {Promise}
+     * @return {Promise}
+     */
+    get startedLatch() {
+        return this._startedLatch;
+    }
+
+    /**
+     * @property
+     * @readonly
      * @return {CoinmeWalletClientConfiguration}
      */
     get configuration() {
         return this._configuration;
     }
+
     //endregion
+
+    /**
+     * Creates a brand new copy/clone of this client with a sessionId attached.
+     *
+     * @param {String} sessionId
+     * @return {CoinmeWalletClient}
+     */
+    withSession(sessionId) {
+        return new CoinmeWalletClient({
+            configuration: this.configuration.withSessionId(sessionId)
+        });
+    }
 
     /**
      *
@@ -166,26 +352,18 @@ class CoinmeWalletClient  extends CoreObject {
      */
     notifyReceipt(receipt) {
         let json = receipt.toJson();
-        let uri = this.getUrl('/user/receipt');
 
         return this._execute({
-            uri: uri,
-            method: 'GET',
+            uri: '/receipt',
+            method: 'POST',
             data: json
-        });
-    }
-
-    getMyself() {
-        return this._execute({
-            uri: '/user/me',
-            method: 'GET'
         });
     }
 
     /**
      *
      * @param {String} username
-     * @return {Promise}
+     * @return {Promise<UserExistenceToken>|Promise}
      */
     peek(username) {
         Preconditions.shouldNotBeBlank(username, 'username');
@@ -195,8 +373,10 @@ class CoinmeWalletClient  extends CoreObject {
             method: 'GET',
             data: {
                 username: username
-            }
-        })
+            },
+
+            type: UserExistenceToken
+        });
     }
 
     /**
@@ -205,46 +385,78 @@ class CoinmeWalletClient  extends CoreObject {
      *
      * @param {Object} options
      * @param {String|URI} options.uri
-     * @param {Object} [options.data]
      * @param {String} options.method
+     * @param {Object} [options.data]
+     * @param {Function} [options.adapter]
+     * @param {Class} [options.type]
      *
      * @return {Promise}
      */
     _execute(options) {
-        let method = Preconditions.shouldMatchRegexp(options.method, METHOD_REGEXP, 'Must be GET|POST|PUT|DELETE');
-        /**
-         * @type {URI}
-         */
-        let uri = this._getUrl(options.uri);
-        let data = options.data || {};
+        var scope = this;
 
-        data.transactionId = uuid.v1();
-        data.timestamp = (new Date()).getTime();
-        data.signature = this._sign(uri.path(), data);
+        return Promise.resolve()
+            .then(() => this.startedLatch)
+            .then(function () {
+                let configuration = scope.configuration;
 
-        let request_args = {
-            url: uri.toString(),
-            method: method,
-            json:true,
+                /**
+                 * @type {String}
+                 */
+                let method = Preconditions.shouldMatchRegexp(options.method, METHOD_REGEXP, 'Must be GET|POST|PUT|DELETE');
 
-            promiseFactory: customPromiseFactory,
-            fullResponse: true, // (default) To resolve the promise with the full response or just the body
-            headers: {
-                'X-Transaction-ID': data.transactionId,
-                'X-Timestamp': data.timestamp,
-                'X-Signature': data.signature
-            }
-        };
+                /**
+                 * @type {URI}
+                 */
+                let uri = scope._getUrl(options.uri);
 
-        if ('GET' === method && data) {
-            request_args.qs = data;
-        } else if ('POST' === method) {
-            request_args.formData = data;
-        }
+                /**
+                 * @type {Object}
+                 */
+                let data = options.data || {};
 
-        return request(request_args, function(err, res, body) {
-            console.log('REQUEST RESULTS:', err, res.statusCode, body);
-        });
+                data.transactionId = uuid.v1();
+                data.timestamp = (new Date()).getTime();
+                data.signature = scope._sign(uri.path(), data);
+
+                let request_args = {
+                    url: uri.toString(),
+                    method: method,
+                    json: true,
+
+                    httpSignature: {
+                        keyId: configuration.certificate.key.name,
+                        key: configuration.certificate.key.value
+                    },
+                    timeout: scope.configuration.timeout,
+                    promiseFactory: customPromiseFactory,
+                    fullResponse: true, // (default) To resolve the promise with the full response or just the body
+                    headers: {
+                        'X-Transaction-ID': data.transactionId,
+                        'X-Timestamp': data.timestamp,
+                        'X-Signature': data.signature
+                    }
+                };
+
+                if ('GET' === method && data) {
+                    request_args.qs = data;
+                } else if ('POST' === method) {
+                    request_args.data = data;
+                }
+
+                return request(request_args, function (err, res, body) {
+                    // console.log('REQUEST RESULTS:', err, res.statusCode, body);
+                })
+                    .then((result) => {
+                        if (options.adapter) {
+                            return options.adapter.call(scope, result);
+                        } else if (options.type) {
+                            return new options.type(result)
+                        } else {
+                            return result;
+                        }
+                    });
+            });
     }
 
     /**
