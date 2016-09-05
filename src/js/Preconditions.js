@@ -20,8 +20,7 @@ import {ZonedDateTime} from 'js-joda';
 //     constructor(expectedValue, actualValue, message, optionalCause) {
 //         super(message);
 //
-//         console.log('capture stack A');
-//
+ //
 //         this.name = 'PreconditionsError';
 //         // this.stack = error.stack;
 //         this.cause = optionalCause;
@@ -451,13 +450,26 @@ export default class Preconditions {
      * @return {boolean}
      */
     static shouldBeTrue(boolean, message) {
-        Preconditions.shouldBeBoolean(boolean, message);
+        Preconditions.shouldBeBoolean(boolean, message || 'should be true');
 
         if (true === boolean) {
             return boolean;
         }
 
         Preconditions.fail(boolean, true, message || 'was not true');
+    }
+
+    /**
+     * @param {*} target (pass this in exactly "new.target")
+     * @param {Class} clazz
+     * @return {*}
+     */
+    static shouldBeAbstract(target, clazz) {
+        if (new.target === clazz) {
+            Errors.throwMustBeAbstract(clazz);
+        }
+
+        return target;
     }
 
     /**
@@ -483,7 +495,7 @@ export default class Preconditions {
      * @param {String} [message]
      */
     static shouldBeBoolean(boolean, message) {
-        Preconditions.shouldBeDefined(boolean);
+        Preconditions.shouldBeDefined(boolean, message || 'should be boolean');
 
         if (!Utility.isBoolean(boolean)) {
             Preconditions.fail('boolean', boolean, message || 'was not boolean');
