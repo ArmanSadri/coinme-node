@@ -51,8 +51,6 @@ class EndpointType extends CoreObject {
 
         let address = Address.toAddressWithDefaultScheme(stringOrAddressOrUri, this.name);
 
-        console.log('thing', this.name, address);
-
         Preconditions.shouldBeInstance(address, Address, 'Wrong type');
 
         Preconditions.shouldBeTrue(
