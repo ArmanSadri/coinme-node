@@ -71,7 +71,6 @@ describe('CoinmeWalletClient', () => {
     });
 
     it('CoinmeWalletClient.myself', (done) => {
-
         let client = new CoinmeWalletClient({
             configuration: new CoinmeWalletClientConfiguration({
                 certificate: CertificateBundle.fromFolder('~/.coinme-node'),

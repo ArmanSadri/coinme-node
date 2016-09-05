@@ -10,12 +10,15 @@ import {ResourceLoader, FileResourceLoader, CachedResourceLoader} from "./";
 import {LocalFileCache} from "../cache";
 import Promise from "bluebird";
 
+//region class Certificate extends CoreObject
 /**
  * @class
  */
 class Certificate extends CoreObject {
 
-    _started;
+    /**
+     * @type {Promise|bluebird}
+     */
     _startedLatch;
 
     /**
@@ -69,20 +72,10 @@ class Certificate extends CoreObject {
         this._startedLatch = new Promise((resolve, reject) => {
             let promise = Promise.resolve();
 
-            promise = promise.then(() => resourceLoader.startedLatch);
-
-            promise = promise.then(() => {
-                return this
-                    .open()
-                    .then((value) => {
-                        scope._value = value;
-                    });
-            });
+            promise = promise.then(() => this.open());
 
             resolve(promise);
         });
-
-        this._startedLatch.finally(() => scope._started = true);
         //endregion
     }
 
@@ -94,7 +87,7 @@ class Certificate extends CoreObject {
      * @return {Boolean}
      */
     get started() {
-        return this._started;
+        return this._startedLatch.isFulfilled();
     }
     /**
      * @property
@@ -176,7 +169,9 @@ class Certificate extends CoreObject {
             });
     }
 }
+//endregion
 
+//region class CertificateBundle extends CoreObject
 /**
  * System for bundling 3 keys together (key, cert, and ca)
  *
@@ -231,6 +226,7 @@ class CertificateBundle extends CoreObject {
             if (authority) {
                 promise = promise.then(() => authority.open())
             }
+
             if (key) {
                 promise = promise.then(() => key.open());
             }
@@ -302,6 +298,7 @@ class CertificateBundle extends CoreObject {
         return CertificateBundle.fromFolder('~/.coinme-node');
     }
 }
+//endregion
 
 export {Certificate};
 export {CertificateBundle};

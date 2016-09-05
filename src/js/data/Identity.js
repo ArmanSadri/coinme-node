@@ -13,8 +13,14 @@ import Lodash from "lodash";
  */
 class Identity extends CoreObject {
 
+    /**
+     * @type {Address}
+     */
     _address;
 
+    /**
+     * @type {Object}
+     */
     _attributes;
 
     //region constructor
