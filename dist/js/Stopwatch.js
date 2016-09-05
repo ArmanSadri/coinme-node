@@ -62,7 +62,6 @@ var Stopwatch = function (_CoreObject) {
      * @param {Ticker} [options.ticker]
      * @param {boolean} [options.start]
      */
-
     function Stopwatch(options) {
         _classCallCheck(this, Stopwatch);
 
@@ -74,7 +73,7 @@ var Stopwatch = function (_CoreObject) {
 
         // options = options || {};
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Stopwatch).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Stopwatch.__proto__ || Object.getPrototypeOf(Stopwatch)).apply(this, arguments));
 
         _this._ticker = ticker;
 

@@ -37,7 +37,7 @@ var Adapter = function (_CoreObject) {
     function Adapter() {
         _classCallCheck(this, Adapter);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Adapter).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Adapter.__proto__ || Object.getPrototypeOf(Adapter)).apply(this, arguments));
     }
 
     _createClass(Adapter, [{

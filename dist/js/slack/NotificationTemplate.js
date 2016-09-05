@@ -14,7 +14,7 @@ var _winston = require('winston');
 
 var _winston2 = _interopRequireDefault(_winston);
 
-var _Preconditions = require('./../Preconditions');
+var _Preconditions = require('../Preconditions');
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
@@ -40,7 +40,7 @@ var NotificationTemplate = function (_AbstractNotification) {
     function NotificationTemplate(options) {
         _classCallCheck(this, NotificationTemplate);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationTemplate).call(this, options));
+        var _this = _possibleConstructorReturn(this, (NotificationTemplate.__proto__ || Object.getPrototypeOf(NotificationTemplate)).call(this, options));
 
         _index2.default.defaults(_this, {
             name: 'NotificationTemplate'

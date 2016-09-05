@@ -28,7 +28,7 @@ var UserNotificationTemplate = function (_NotificationTemplate) {
     function UserNotificationTemplate() {
         _classCallCheck(this, UserNotificationTemplate);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(UserNotificationTemplate).apply(this, arguments));
+        return _possibleConstructorReturn(this, (UserNotificationTemplate.__proto__ || Object.getPrototypeOf(UserNotificationTemplate)).apply(this, arguments));
     }
 
     _createClass(UserNotificationTemplate, [{

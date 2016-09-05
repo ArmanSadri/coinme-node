@@ -37,7 +37,6 @@ var FieldBuilder = function (_AbstractBuilder) {
      *
      * @param {{parent: AttachmentBuilder}} options
      */
-
     function FieldBuilder(options) {
         _classCallCheck(this, FieldBuilder);
 
@@ -51,7 +50,7 @@ var FieldBuilder = function (_AbstractBuilder) {
             required: true
         });
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FieldBuilder).call(this, options));
+        var _this = _possibleConstructorReturn(this, (FieldBuilder.__proto__ || Object.getPrototypeOf(FieldBuilder)).call(this, options));
 
         _this._parent = parent;
 

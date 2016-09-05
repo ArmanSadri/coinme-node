@@ -42,6 +42,30 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/cache/cache.js~cache",
+    "class/js/cache/Cache.js~Cache.html",
+    "<span>Cache</span> <span class=\"search-result-import-path\">coinme-node/js/cache/Cache.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/cachedresourceloader.js~cachedresourceloader",
+    "class/js/data/CachedResourceLoader.js~CachedResourceLoader.html",
+    "<span>CachedResourceLoader</span> <span class=\"search-result-import-path\">coinme-node/js/data/CachedResourceLoader.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/certificatebundle.js~certificate",
+    "class/js/data/CertificateBundle.js~Certificate.html",
+    "<span>Certificate</span> <span class=\"search-result-import-path\">coinme-node/js/data/CertificateBundle.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/certificatebundle.js~certificatebundle",
+    "class/js/data/CertificateBundle.js~CertificateBundle.html",
+    "<span>CertificateBundle</span> <span class=\"search-result-import-path\">coinme-node/js/data/CertificateBundle.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/coinme.js~coinme",
     "class/js/Coinme.js~Coinme.html",
     "<span>Coinme</span> <span class=\"search-result-import-path\">coinme-node/js/Coinme.js</span>",
@@ -114,6 +138,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/environment.js~environment",
+    "class/js/Environment.js~Environment.html",
+    "<span>Environment</span> <span class=\"search-result-import-path\">coinme-node/js/Environment.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/errors/errors.js~errors",
     "class/js/errors/Errors.js~Errors.html",
     "<span>Errors</span> <span class=\"search-result-import-path\">coinme-node/js/errors/Errors.js</span>",
@@ -135,6 +165,12 @@ window.esdocSearchIndex = [
     "coinme-node/js/slack/fieldbuilder.js~fieldbuilder",
     "class/js/slack/FieldBuilder.js~FieldBuilder.html",
     "<span>FieldBuilder</span> <span class=\"search-result-import-path\">coinme-node/js/slack/FieldBuilder.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/data/fileresourceloader.js~fileresourceloader",
+    "class/js/data/FileResourceLoader.js~FileResourceLoader.html",
+    "<span>FileResourceLoader</span> <span class=\"search-result-import-path\">coinme-node/js/data/FileResourceLoader.js</span>",
     "class"
   ],
   [
@@ -165,6 +201,12 @@ window.esdocSearchIndex = [
     "coinme-node/js/data/receipt.js~kioskendpointtype",
     "class/js/data/Receipt.js~KioskEndpointType.html",
     "<span>KioskEndpointType</span> <span class=\"search-result-import-path\">coinme-node/js/data/Receipt.js</span>",
+    "class"
+  ],
+  [
+    "coinme-node/js/cache/localfilecache.js~localfilecache",
+    "class/js/cache/LocalFileCache.js~LocalFileCache.html",
+    "<span>LocalFileCache</span> <span class=\"search-result-import-path\">coinme-node/js/cache/LocalFileCache.js</span>",
     "class"
   ],
   [
@@ -240,6 +282,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "coinme-node/js/data/resourceloader.js~resourceloader",
+    "class/js/data/ResourceLoader.js~ResourceLoader.html",
+    "<span>ResourceLoader</span> <span class=\"search-result-import-path\">coinme-node/js/data/ResourceLoader.js</span>",
+    "class"
+  ],
+  [
     "coinme-node/js/money/satoshi.js~satoshi",
     "class/js/money/Satoshi.js~Satoshi.html",
     "<span>Satoshi</span> <span class=\"search-result-import-path\">coinme-node/js/money/Satoshi.js</span>",
@@ -306,9 +354,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "coinme-node/js/data/userdescriptor.js~userdescriptor",
-    "class/js/data/UserDescriptor.js~UserDescriptor.html",
-    "<span>UserDescriptor</span> <span class=\"search-result-import-path\">coinme-node/js/data/UserDescriptor.js</span>",
+    "coinme-node/js/data/userexistencetoken.js~userexistencetoken",
+    "class/js/data/UserExistenceToken.js~UserExistenceToken.html",
+    "<span>UserExistenceToken</span> <span class=\"search-result-import-path\">coinme-node/js/data/UserExistenceToken.js</span>",
     "class"
   ],
   [
@@ -357,6 +405,12 @@ window.esdocSearchIndex = [
     "js/ember.js",
     "file/js/Ember.js.html",
     "js/Ember.js",
+    "file"
+  ],
+  [
+    "js/environment.js",
+    "file/js/Environment.js.html",
+    "js/Environment.js",
     "file"
   ],
   [
@@ -432,9 +486,39 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/cache/cache.js",
+    "file/js/cache/Cache.js.html",
+    "js/cache/Cache.js",
+    "file"
+  ],
+  [
+    "js/cache/localfilecache.js",
+    "file/js/cache/LocalFileCache.js.html",
+    "js/cache/LocalFileCache.js",
+    "file"
+  ],
+  [
+    "js/cache/index.js",
+    "file/js/cache/index.js.html",
+    "js/cache/index.js",
+    "file"
+  ],
+  [
     "js/data/adapter.js",
     "file/js/data/Adapter.js.html",
     "js/data/Adapter.js",
+    "file"
+  ],
+  [
+    "js/data/cachedresourceloader.js",
+    "file/js/data/CachedResourceLoader.js.html",
+    "js/data/CachedResourceLoader.js",
+    "file"
+  ],
+  [
+    "js/data/certificatebundle.js",
+    "file/js/data/CertificateBundle.js.html",
+    "js/data/CertificateBundle.js",
     "file"
   ],
   [
@@ -456,6 +540,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/data/fileresourceloader.js",
+    "file/js/data/FileResourceLoader.js.html",
+    "js/data/FileResourceLoader.js",
+    "file"
+  ],
+  [
     "js/data/identity.js",
     "file/js/data/Identity.js.html",
     "js/data/Identity.js",
@@ -471,6 +561,12 @@ window.esdocSearchIndex = [
     "js/data/receipt.js",
     "file/js/data/Receipt.js.html",
     "js/data/Receipt.js",
+    "file"
+  ],
+  [
+    "js/data/resourceloader.js",
+    "file/js/data/ResourceLoader.js.html",
+    "js/data/ResourceLoader.js",
     "file"
   ],
   [
@@ -582,9 +678,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/data/userdescriptor.js",
-    "file/js/data/UserDescriptor.js.html",
-    "js/data/UserDescriptor.js",
+    "js/data/userexistencetoken.js",
+    "file/js/data/UserExistenceToken.js.html",
+    "js/data/UserExistenceToken.js",
     "file"
   ],
   [

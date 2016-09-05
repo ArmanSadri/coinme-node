@@ -1,6 +1,6 @@
 {
   "coverage": "0%",
-  "expectCount": 82,
+  "expectCount": 90,
   "actualCount": 0,
   "files": {
     "js/slack/AbstractBuilder.js": {
@@ -56,6 +56,28 @@
         58
       ]
     },
+    "js/cache/Cache.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "js/data/CachedResourceLoader.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        10
+      ]
+    },
+    "js/data/CertificateBundle.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        16,
+        185
+      ]
+    },
     "js/Coinme.js": {
       "expectCount": 1,
       "actualCount": 0,
@@ -67,8 +89,8 @@
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
-        135,
-        34
+        287,
+        39
       ]
     },
     "js/data/Conversion.js": {
@@ -89,7 +111,7 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        15
+        18
       ]
     },
     "js/data/DelegatedConverter.js": {
@@ -119,12 +141,19 @@
       "actualCount": 0,
       "undocumentLines": [
         13,
-        155,
-        90,
-        311,
-        401,
-        198,
-        128
+        153,
+        88,
+        309,
+        399,
+        196,
+        126
+      ]
+    },
+    "js/Environment.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        10
       ]
     },
     "js/errors/Errors.js": {
@@ -146,6 +175,13 @@
       "actualCount": 0,
       "undocumentLines": [
         8
+      ]
+    },
+    "js/data/FileResourceLoader.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        10
       ]
     },
     "js/Functions.js": {
@@ -176,6 +212,13 @@
         3
       ]
     },
+    "js/cache/LocalFileCache.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
     "js/money/Money.js": {
       "expectCount": 1,
       "actualCount": 0,
@@ -201,7 +244,7 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        13
+        17
       ]
     },
     "js/slack/NotificationService.js": {
@@ -226,7 +269,7 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        64
+        63
       ]
     },
     "js/errors/PreconditionsError.js": {
@@ -241,13 +284,20 @@
       "actualCount": 0,
       "undocumentLines": [
         9,
-        347,
-        232,
-        401,
-        430,
-        363,
-        434,
-        419
+        345,
+        230,
+        399,
+        428,
+        361,
+        432,
+        417
+      ]
+    },
+    "js/data/ResourceLoader.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        11
       ]
     },
     "js/money/Satoshi.js": {
@@ -322,7 +372,7 @@
         22
       ]
     },
-    "js/data/UserDescriptor.js": {
+    "js/data/UserExistenceToken.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
@@ -340,7 +390,7 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        38
+        42
       ]
     }
   }

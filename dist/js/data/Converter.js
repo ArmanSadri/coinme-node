@@ -44,7 +44,6 @@ var ConverterAdapter = function (_Adapter) {
      * @param {Converter} options.converter
      * @param {Class|Class<CoreObject>|*} options.outputClass
      */
-
     function ConverterAdapter(options) {
         _classCallCheck(this, ConverterAdapter);
 
@@ -56,8 +55,7 @@ var ConverterAdapter = function (_Adapter) {
          * @type {Converter}
          * @private
          */
-
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ConverterAdapter).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (ConverterAdapter.__proto__ || Object.getPrototypeOf(ConverterAdapter)).apply(this, arguments));
 
         _this._converter = converter;
         _this._outputClass = outputClass;
@@ -139,7 +137,7 @@ var Converter = function (_CoreObject) {
     function Converter() {
         _classCallCheck(this, Converter);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Converter).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Converter.__proto__ || Object.getPrototypeOf(Converter)).apply(this, arguments));
     }
 
     _createClass(Converter, [{

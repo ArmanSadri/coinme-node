@@ -87,7 +87,7 @@ var Bitcoin = function (_Currency) {
   function Bitcoin() {
     _classCallCheck(this, Bitcoin);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Bitcoin).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Bitcoin.__proto__ || Object.getPrototypeOf(Bitcoin)).apply(this, arguments));
   }
 
   _createClass(Bitcoin, null, [{

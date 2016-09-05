@@ -43,7 +43,6 @@ var Money = function (_CoreObject) {
      * @param {Object} options
      * @param {BigJsLibrary.BigJS} options.value
      */
-
     function Money(options) {
         _classCallCheck(this, Money);
 
@@ -56,8 +55,7 @@ var Money = function (_CoreObject) {
          * @type {BigJsLibrary.BigJS}
          * @private
          */
-
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Money).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Money.__proto__ || Object.getPrototypeOf(Money)).apply(this, arguments));
 
         _Preconditions2.default.shouldBe(function () {
             return value instanceof _big2.default;
@@ -97,7 +95,7 @@ var Money = function (_CoreObject) {
     }, {
         key: "toJson",
         value: function toJson() {
-            return _get(Object.getPrototypeOf(Money.prototype), "toJson", this).call(this, {
+            return _get(Money.prototype.__proto__ || Object.getPrototypeOf(Money.prototype), "toJson", this).call(this, {
                 value: _Utility2.default.optString(this.value),
                 currency: this.currency.toString()
             });
@@ -335,7 +333,7 @@ var Money = function (_CoreObject) {
     }, {
         key: "isInstance",
         value: function isInstance(money, destinationCurrency) {
-            if (!_get(Object.getPrototypeOf(Money), "isInstance", this).call(this, money)) {
+            if (!_get(Money.__proto__ || Object.getPrototypeOf(Money), "isInstance", this).call(this, money)) {
                 return false;
             }
 

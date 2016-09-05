@@ -34,7 +34,6 @@ var Ticker = function () {
     /**
      * Constructor for use by subclasses.
      */
-
     function Ticker(options) {
         _classCallCheck(this, Ticker);
 
@@ -78,13 +77,11 @@ var Ticker = function () {
         value: function wait(value, timeUnit) {
             var scope = this;
 
-            console.log('wait!', value, timeUnit);
             return new _bluebird2.default(function (resolve, reject) {
                 var numberOfNanos = _TimeUnit2.default.NANOSECONDS.convert(value, timeUnit);
 
                 //.setTimeout(task, args, timeout, [callback])
                 scope.timer.setTimeout(function () {
-                    console.log('waited!', value, timeUnit);
 
                     resolve();
                 }, null, numberOfNanos + 'n');

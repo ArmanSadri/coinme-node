@@ -29,14 +29,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * @class Satoshi
  */
-
 var Satoshi = function (_Currency) {
     _inherits(Satoshi, _Currency);
 
     function Satoshi() {
         _classCallCheck(this, Satoshi);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Satoshi).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Satoshi.__proto__ || Object.getPrototypeOf(Satoshi)).apply(this, arguments));
     }
 
     _createClass(Satoshi, null, [{

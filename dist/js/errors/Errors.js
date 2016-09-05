@@ -46,82 +46,16 @@ var Errors = function () {
     }
 
     _createClass(Errors, null, [{
-        key: 'errorIf',
+        key: 'isErrorClass',
 
 
-        /**
-         *
-         * @param {function} errorFactory
-         * @param {*} value
-         * @param {*|Function} predicateFn
-         * @param {Object} [options]
-         * @param {String} [options.message]
-         * @param {Number} [options.statusCode]
-         * @param {Object|undefined} [options.properties]
-         * @returns {*}
-         */
-        value: function errorIf(errorFactory, value, predicateFn, options) {
-            _Preconditions2.default.shouldBeFunction(errorFactory);
-            _Preconditions2.default.shouldBeFunction(predicateFn);
-
-            if (!_Utility2.default.isNullOrUndefined(options)) {
-                _Preconditions2.default.shouldBeObject(options);
-            }
-
-            var result = predicateFn(value);
-
-            if (false === result || _Utility2.default.isNullOrUndefined(result)) {
-                return value;
-            } else {
-                result = _lodash2.default.defaultsDeep(result, options || {}, defaults);
-
-                throw errorFactory(result.message, result.properties);
-            }
-        }
-
-        /**
-         *
-         * @param {*} value
-         * @param {*|Function} predicateFn
-         * @param {Object} [options]
-         * @param {String} [options.message]
-         * @param {Number} [options.statusCode]
-         * @param {Object|undefined} [options.properties]
-         * @returns {*}
-         */
-
-    }, {
-        key: 'notFoundIf',
-        value: function notFoundIf(value, predicateFn, options) {
-            this.errorIf(this.notFound, value, predicateFn, options);
-        }
-
-        /**
-         *
-         * @param {*} value
-         * @param {*|Function} predicateFn
-         * @param {Object} [options]
-         * @param {String} [options.message]
-         * @param {Number} [options.statusCode]
-         * @param {Object|undefined} [options.properties]
-         * @returns {*}
-         */
-
-    }, {
-        key: 'badRequestIf',
-        value: function badRequestIf(value, predicateFn, options) {
-            this.errorIf(this.badRequest, value, predicateFn, options);
-        }
-
+        //region detection
         /**
          * Determines if the given err object is an error class
          *
          * @param {*} clazz
          * @returns {boolean}
          */
-
-    }, {
-        key: 'isErrorClass',
         value: function isErrorClass(clazz) {
             if (_AbstractError2.default.isClass(clazz)) {
                 return true;
@@ -170,7 +104,9 @@ var Errors = function () {
         value: function isHttpError(instanceOrClass) {
             return _HttpError2.default.isInstanceOrClass(instanceOrClass);
         }
+        //endregion
 
+        //region createInstance
         /**
          *
          * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} [messageOrSpecOrError]
@@ -179,9 +115,9 @@ var Errors = function () {
          */
 
     }, {
-        key: 'badRequest',
-        value: function badRequest(messageOrSpecOrError, properties) {
-            return Errors.httpError(400, messageOrSpecOrError, properties);
+        key: 'createBadRequestInstance',
+        value: function createBadRequestInstance(messageOrSpecOrError, properties) {
+            return Errors.createHttpErrorInstance(400, messageOrSpecOrError, properties);
         }
 
         /**
@@ -191,9 +127,9 @@ var Errors = function () {
          */
 
     }, {
-        key: 'notFound',
-        value: function notFound(messageOrSpecOrError, properties) {
-            return Errors.httpError(404, messageOrSpecOrError, properties);
+        key: 'createNotFoundInstance',
+        value: function createNotFoundInstance(messageOrSpecOrError, properties) {
+            return Errors.createHttpErrorInstance(404, messageOrSpecOrError, properties);
         }
 
         /**
@@ -204,9 +140,21 @@ var Errors = function () {
          */
 
     }, {
-        key: 'serverError',
-        value: function serverError(messageOrSpecOrError, properties) {
-            return Errors.httpError(500, messageOrSpecOrError, properties);
+        key: 'createServerErrorInstance',
+        value: function createServerErrorInstance(messageOrSpecOrError, properties) {
+            return Errors.createHttpErrorInstance(500, messageOrSpecOrError, properties);
+        }
+        /**
+         *
+         * @param {String} [message]
+         * @param {Object} [properties]
+         * @returns {Error}
+         */
+
+    }, {
+        key: 'createForbiddenErrorInstance',
+        value: function createForbiddenErrorInstance(message, properties) {
+            return Errors.createHttpErrorInstance(403, message, properties);
         }
 
         /**
@@ -218,8 +166,8 @@ var Errors = function () {
          */
 
     }, {
-        key: 'httpError',
-        value: function httpError(statusCode, messageOrSpecOrError, properties) {
+        key: 'createHttpErrorInstance',
+        value: function createHttpErrorInstance(statusCode, messageOrSpecOrError, properties) {
             var stack = null;
             var message = null;
             var cause = null;
@@ -227,16 +175,16 @@ var Errors = function () {
             if (_Utility2.default.isNullOrUndefined(messageOrSpecOrError)) {
                 // I guess this is ok..
             } else if (this.isError(messageOrSpecOrError)) {
-                    message = messageOrSpecOrError.message;
-                    stack = messageOrSpecOrError.stack;
-                } else if (_Utility2.default.isString(messageOrSpecOrError)) {
-                    message = messageOrSpecOrError;
-                } else if (_Utility2.default.isObject(messageOrSpecOrError)) {
-                    statusCode = _lodash2.default.result(messageOrSpecOrError, 'statusCode') || statusCode;
-                    message = _lodash2.default.result(messageOrSpecOrError, 'message');
-                    cause = _lodash2.default.result(messageOrSpecOrError, 'cause');
-                    properties = _lodash2.default.result(messageOrSpecOrError, 'properties');
-                }
+                message = messageOrSpecOrError.message;
+                stack = messageOrSpecOrError.stack;
+            } else if (_Utility2.default.isString(messageOrSpecOrError)) {
+                message = messageOrSpecOrError;
+            } else if (_Utility2.default.isObject(messageOrSpecOrError)) {
+                statusCode = _lodash2.default.result(messageOrSpecOrError, 'statusCode') || statusCode;
+                message = _lodash2.default.result(messageOrSpecOrError, 'message');
+                cause = _lodash2.default.result(messageOrSpecOrError, 'cause');
+                properties = _lodash2.default.result(messageOrSpecOrError, 'properties');
+            }
 
             if (statusCode) {
                 _Preconditions2.default.shouldBeNumber(statusCode);
@@ -276,19 +224,7 @@ var Errors = function () {
 
             return error;
         }
-
-        /**
-         *
-         * @param {String} [message]
-         * @param {Object} [properties]
-         * @returns {Error}
-         */
-
-    }, {
-        key: 'forbidden',
-        value: function forbidden(message, properties) {
-            return Errors.httpError(403, message, properties);
-        }
+        //endregion
 
         /**
          * @param {Error|AbstractError|null|undefined} error
@@ -329,6 +265,85 @@ var Errors = function () {
             } else {
                 return error.toJSON();
             }
+        }
+
+        /**
+         *
+         * @param {function} errorFactory
+         * @param {*} value
+         * @param {*|Function} predicateFn
+         * @param {Object} [options]
+         * @param {String} [options.message]
+         * @param {Number} [options.statusCode]
+         * @param {Object|undefined} [options.properties]
+         * @returns {*}
+         */
+
+    }, {
+        key: 'throwErrorIf',
+        value: function throwErrorIf(errorFactory, value, predicateFn, options) {
+            _Preconditions2.default.shouldBeFunction(errorFactory);
+            _Preconditions2.default.shouldBeFunction(predicateFn);
+
+            if (!_Utility2.default.isNullOrUndefined(options)) {
+                _Preconditions2.default.shouldBeObject(options);
+            }
+
+            var result = predicateFn(value);
+
+            if (false === result || _Utility2.default.isNullOrUndefined(result)) {
+                return value;
+            } else {
+                result = _lodash2.default.defaultsDeep(result, options || {}, defaults);
+
+                throw errorFactory(result.message, result.properties);
+            }
+        }
+
+        /**
+         *
+         * @param {*} value
+         * @param {*|Function} predicateFn
+         * @param {Object} [options]
+         * @param {String} [options.message]
+         * @param {Number} [options.statusCode]
+         * @param {Object|undefined} [options.properties]
+         * @returns {*}
+         */
+
+    }, {
+        key: 'throwNotFoundIf',
+        value: function throwNotFoundIf(value, predicateFn, options) {
+            this.throwErrorIf(this.createNotFoundInstance, value, predicateFn, options);
+        }
+
+        /**
+         *
+         * @param {*} value
+         * @param {*|Function} predicateFn
+         * @param {Object} [options]
+         * @param {String} [options.message]
+         * @param {Number} [options.statusCode]
+         * @param {Object|undefined} [options.properties]
+         * @returns {*}
+         */
+
+    }, {
+        key: 'throwBadRequestIf',
+        value: function throwBadRequestIf(value, predicateFn, options) {
+            this.throwErrorIf(this.createBadRequestInstance, value, predicateFn, options);
+        }
+
+        /**
+         * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} [messageOrSpecOrError]
+         * @param {Object} [properties]
+         * @return {Error}
+         */
+
+    }, {
+        key: 'throwBadRequest',
+        value: function throwBadRequest(messageOrSpecOrError, properties) {
+            throw Errors.createBadRequestInstance(messageOrSpecOrError, properties);
         }
 
         /**

@@ -41,14 +41,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @private
  */
-
 var CoreObjectAdapter = function (_Adapter) {
     _inherits(CoreObjectAdapter, _Adapter);
 
     function CoreObjectAdapter() {
         _classCallCheck(this, CoreObjectAdapter);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObjectAdapter).apply(this, arguments));
+        return _possibleConstructorReturn(this, (CoreObjectAdapter.__proto__ || Object.getPrototypeOf(CoreObjectAdapter)).apply(this, arguments));
     }
 
     _createClass(CoreObjectAdapter, [{
@@ -104,7 +103,6 @@ var DelegatedConverter = function (_Converter) {
      * @param {Object} options.conversions
      * @param {Adapter} [options.adapter]
      */
-
     function DelegatedConverter(options) {
         _classCallCheck(this, DelegatedConverter);
 
@@ -119,8 +117,7 @@ var DelegatedConverter = function (_Converter) {
          * @type {Object}
          * @private
          */
-
-        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(DelegatedConverter).apply(this, arguments));
+        var _this2 = _possibleConstructorReturn(this, (DelegatedConverter.__proto__ || Object.getPrototypeOf(DelegatedConverter)).apply(this, arguments));
 
         _this2._conversions = conversions || {};
 

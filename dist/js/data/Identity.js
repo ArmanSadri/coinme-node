@@ -44,15 +44,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * It is best to use a Natural Key for an Identity
  */
-
 var Identity = function (_CoreObject) {
     _inherits(Identity, _CoreObject);
 
+    //region constructor
     /**
      *
      * @param {String|URI|{address:Address, attributes?:Object}} options
      */
-
     function Identity(options) {
         _classCallCheck(this, Identity);
 
@@ -66,13 +65,15 @@ var Identity = function (_CoreObject) {
             address = _Address2.default.toAddressWithDefaultScheme(options, 'identity');
         }
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Identity).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Identity.__proto__ || Object.getPrototypeOf(Identity)).apply(this, arguments));
 
         _this._address = _Address2.default.shouldBeInstance(address, 'address is required');
         _this._attributes = attributes; // this is optional
         return _this;
     }
+    //endregion
 
+    //region properties
     /**
      *
      * @return {Address}
@@ -81,6 +82,9 @@ var Identity = function (_CoreObject) {
 
     _createClass(Identity, [{
         key: "toString",
+
+        //endregion
+
         value: function toString() {
             /** @type {URI} */
             var uri = this.address.uri.clone();
@@ -94,7 +98,7 @@ var Identity = function (_CoreObject) {
     }, {
         key: "toJson",
         value: function toJson() {
-            return _get(Object.getPrototypeOf(Identity.prototype), "toJson", this).call(this, {
+            return _get(Identity.prototype.__proto__ || Object.getPrototypeOf(Identity.prototype), "toJson", this).call(this, {
                 address: this.toString()
             });
         }

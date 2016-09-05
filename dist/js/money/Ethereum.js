@@ -34,14 +34,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @beta
  * @class Ethereum
  */
-
 var Ethereum = function (_Currency) {
     _inherits(Ethereum, _Currency);
 
     function Ethereum() {
         _classCallCheck(this, Ethereum);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Ethereum).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Ethereum.__proto__ || Object.getPrototypeOf(Ethereum)).apply(this, arguments));
     }
 
     _createClass(Ethereum, null, [{

@@ -33,7 +33,6 @@ var NotImplementedError = function (_AbstractError) {
      * @param {Error} [options.cause]
      * @constructor
      */
-
     function NotImplementedError(options) {
         _classCallCheck(this, NotImplementedError);
 
@@ -44,7 +43,7 @@ var NotImplementedError = function (_AbstractError) {
         options = options || {};
         options.message = options.message || 'This method is not implemented';
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(NotImplementedError).call(this, options));
+        return _possibleConstructorReturn(this, (NotImplementedError.__proto__ || Object.getPrototypeOf(NotImplementedError)).call(this, options));
     }
 
     /**

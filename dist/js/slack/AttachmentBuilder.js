@@ -41,7 +41,6 @@ var AttachmentBuilder = function (_AbstractBuilder) {
      *
      * @param {{parent: NotificationBuilder}} options
      */
-
     function AttachmentBuilder(options) {
         _classCallCheck(this, AttachmentBuilder);
 
@@ -55,7 +54,7 @@ var AttachmentBuilder = function (_AbstractBuilder) {
             required: true
         });
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AttachmentBuilder).call(this, options));
+        var _this = _possibleConstructorReturn(this, (AttachmentBuilder.__proto__ || Object.getPrototypeOf(AttachmentBuilder)).call(this, options));
 
         _this._parent = parent;
 

@@ -24,7 +24,7 @@ var InlineNotificationTemplate = function (_NotificationTemplate) {
     function InlineNotificationTemplate() {
         _classCallCheck(this, InlineNotificationTemplate);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(InlineNotificationTemplate).apply(this, arguments));
+        return _possibleConstructorReturn(this, (InlineNotificationTemplate.__proto__ || Object.getPrototypeOf(InlineNotificationTemplate)).apply(this, arguments));
     }
 
     _createClass(InlineNotificationTemplate, [{

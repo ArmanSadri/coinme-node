@@ -41,15 +41,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//region EndpointType
-
+//region class EndpointType
 var EndpointType = function (_CoreObject) {
     _inherits(EndpointType, _CoreObject);
 
     function EndpointType() {
         _classCallCheck(this, EndpointType);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(EndpointType).apply(this, arguments));
+        return _possibleConstructorReturn(this, (EndpointType.__proto__ || Object.getPrototypeOf(EndpointType)).apply(this, arguments));
     }
 
     _createClass(EndpointType, [{
@@ -98,8 +97,6 @@ var EndpointType = function (_CoreObject) {
 
             var address = _Address.Address.toAddressWithDefaultScheme(stringOrAddressOrUri, this.name);
 
-            console.log('thing', this.name, address);
-
             _Preconditions2.default.shouldBeInstance(address, _Address.Address, 'Wrong type');
 
             _Preconditions2.default.shouldBeTrue(_Utility2.default.isStringEqualIgnoreCase(address.resource, this.name), "Wrong resource type. Actual:" + this.name + " Expected:" + address.resource);
@@ -112,7 +109,7 @@ var EndpointType = function (_CoreObject) {
     }, {
         key: "toJson",
         value: function toJson() {
-            return _get(Object.getPrototypeOf(EndpointType.prototype), "toJson", this).call(this, {
+            return _get(EndpointType.prototype.__proto__ || Object.getPrototypeOf(EndpointType.prototype), "toJson", this).call(this, {
                 currency: _Utility2.default.optString(this.currency),
                 name: this.name
             });
@@ -148,7 +145,7 @@ var KioskEndpointType = function (_EndpointType) {
     function KioskEndpointType() {
         _classCallCheck(this, KioskEndpointType);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(KioskEndpointType).apply(this, arguments));
+        return _possibleConstructorReturn(this, (KioskEndpointType.__proto__ || Object.getPrototypeOf(KioskEndpointType)).apply(this, arguments));
     }
 
     _createClass(KioskEndpointType, [{
@@ -204,7 +201,7 @@ var WalletEndpointType = function (_EndpointType2) {
     function WalletEndpointType() {
         _classCallCheck(this, WalletEndpointType);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(WalletEndpointType).apply(this, arguments));
+        return _possibleConstructorReturn(this, (WalletEndpointType.__proto__ || Object.getPrototypeOf(WalletEndpointType)).apply(this, arguments));
     }
 
     _createClass(WalletEndpointType, [{
@@ -239,6 +236,8 @@ var endpointTypes = {};
 
 endpointTypes[ENDPOINT_INSTANCE_WALLET.name] = ENDPOINT_INSTANCE_WALLET;
 endpointTypes[ENDPOINT_INSTANCE_KIOSK.name] = ENDPOINT_INSTANCE_KIOSK;
+
+//region class EndpointTypes
 
 var EndpointTypes = function () {
     function EndpointTypes() {
@@ -292,6 +291,10 @@ var EndpointTypes = function () {
 
     return EndpointTypes;
 }();
+//endregion
+
+//region class ReceiptEndpoint
+
 
 EndpointTypes.types = endpointTypes;
 
@@ -318,7 +321,6 @@ var ReceiptEndpoint = function (_CoreObject2) {
     /**
      * @type {Money}
      */
-
     function ReceiptEndpoint(options) {
         _classCallCheck(this, ReceiptEndpoint);
 
@@ -348,7 +350,7 @@ var ReceiptEndpoint = function (_CoreObject2) {
 
         var fee = _Utility2.default.take(options, 'fee', _money.Money, false);
 
-        var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(ReceiptEndpoint).apply(this, arguments));
+        var _this4 = _possibleConstructorReturn(this, (ReceiptEndpoint.__proto__ || Object.getPrototypeOf(ReceiptEndpoint)).apply(this, arguments));
 
         _this4._type = EndpointTypes.getEndpointTypeOrFail(address);
         _this4._address = address;
@@ -382,7 +384,7 @@ var ReceiptEndpoint = function (_CoreObject2) {
     _createClass(ReceiptEndpoint, [{
         key: "toJson",
         value: function toJson() {
-            return _get(Object.getPrototypeOf(ReceiptEndpoint.prototype), "toJson", this).call(this, {
+            return _get(ReceiptEndpoint.prototype.__proto__ || Object.getPrototypeOf(ReceiptEndpoint.prototype), "toJson", this).call(this, {
                 currency: _Utility2.default.optString(this.type.currency),
                 fee: _Utility2.default.optString(_money.Money.optValue(this.fee)),
                 amount: _Utility2.default.optJson(_money.Money.optValue(this.amount)),
@@ -428,6 +430,10 @@ var ReceiptEndpoint = function (_CoreObject2) {
 
     return ReceiptEndpoint;
 }(_CoreObject6.default);
+//endregion
+
+//region class Receipt
+
 
 var Receipt = function (_CoreObject3) {
     _inherits(Receipt, _CoreObject3);
@@ -448,7 +454,6 @@ var Receipt = function (_CoreObject3) {
     /**
      * @type Instant
      */
-
     function Receipt(options) {
         _classCallCheck(this, Receipt);
 
@@ -465,7 +470,7 @@ var Receipt = function (_CoreObject3) {
             }
         });
 
-        var _this5 = _possibleConstructorReturn(this, Object.getPrototypeOf(Receipt).apply(this, arguments));
+        var _this5 = _possibleConstructorReturn(this, (Receipt.__proto__ || Object.getPrototypeOf(Receipt)).apply(this, arguments));
 
         _this5._timestamp = timestamp;
         _this5._source = source;
@@ -492,7 +497,7 @@ var Receipt = function (_CoreObject3) {
     _createClass(Receipt, [{
         key: "toJson",
         value: function toJson() {
-            return _get(Object.getPrototypeOf(Receipt.prototype), "toJson", this).call(this, {
+            return _get(Receipt.prototype.__proto__ || Object.getPrototypeOf(Receipt.prototype), "toJson", this).call(this, {
                 identity: _Utility2.default.optString(this.identity),
                 timestamp: _Utility2.default.optString(this.timestamp),
                 source: _Utility2.default.optJson(this.source),
@@ -538,6 +543,10 @@ var Receipt = function (_CoreObject3) {
 
     return Receipt;
 }(_CoreObject6.default);
+//endregion
+
+//region class ReceiptBuilder (incomplete)
+
 
 var ReceiptBuilder = function (_CoreObject4) {
     _inherits(ReceiptBuilder, _CoreObject4);
@@ -545,7 +554,7 @@ var ReceiptBuilder = function (_CoreObject4) {
     function ReceiptBuilder(options) {
         _classCallCheck(this, ReceiptBuilder);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(ReceiptBuilder).apply(this, arguments));
+        return _possibleConstructorReturn(this, (ReceiptBuilder.__proto__ || Object.getPrototypeOf(ReceiptBuilder)).apply(this, arguments));
     }
 
     _createClass(ReceiptBuilder, [{
@@ -561,6 +570,7 @@ var ReceiptBuilder = function (_CoreObject4) {
 
     return ReceiptBuilder;
 }(_CoreObject6.default);
+//endregion
 
 exports.KioskEndpointType = KioskEndpointType;
 exports.WalletEndpointType = WalletEndpointType;

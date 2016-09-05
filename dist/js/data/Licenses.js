@@ -93,7 +93,7 @@ var Licenses = function (_CoreObject) {
     function Licenses() {
         _classCallCheck(this, Licenses);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Licenses).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Licenses.__proto__ || Object.getPrototypeOf(Licenses)).apply(this, arguments));
 
         throw new TypeError('Licenses is abstract');
 
