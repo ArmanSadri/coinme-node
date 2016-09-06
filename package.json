@@ -80,11 +80,12 @@
     "simple-dom": "^0.3.0",
     "source-map-support": "^0.4.0",
     "testem": "^1.5.0",
+    "typhonjs-node-esdoc": "https://github.com/coinme/typhonjs-node-esdoc",
+    "esdoc": "git+https://git@github.com/typhonjs-node-esdoc/esdoc.git",
     "watch": "^0.19.2"
   },
   "dependencies": {
     "altcoin-address": "^1.0.2",
-    "esdoc": "git+https://git@github.com/coinme/typhonjs-node-esdoc.git",
     "async": "^2.0.1",
     "big.js": "^3.1.3",
     "bluebird": "^3.3.4",
