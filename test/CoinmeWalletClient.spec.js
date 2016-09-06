@@ -18,23 +18,23 @@ import USD from '../src/js/money/USD';
 
 describe('CoinmeWalletClient', () => {
 
-    it('CertificateBundle', () => {
+    // it('CertificateBundle', () => {
+    //
+    //     CertificateBundle.fromHome();
+    //
+    //     CertificateBundle.fromFolder('~/.coinme-node');
+    //
+    // });
 
-        CertificateBundle.fromHome();
-
-        CertificateBundle.fromFolder('~/.coinme-node');
-
-    });
-
-    it('CoinmeWalletClientConfiguration.clone', () => {
-        let configuration = new CoinmeWalletClientConfiguration({
-            identity: new Identity('library:/coinme-node')
-        });
-
-        let configuration2 = configuration.clone();
-
-        assert.equal(configuration.identity.toString(), configuration2.identity.toString())
-    });
+    // it('CoinmeWalletClientConfiguration.clone', () => {
+    //     let configuration = new CoinmeWalletClientConfiguration({
+    //         identity: new Identity('library:/coinme-node')
+    //     });
+    //
+    //     let configuration2 = configuration.clone();
+    //
+    //     assert.equal(configuration.identity.toString(), configuration2.identity.toString())
+    // });
 
     // it('CoinmeWalletClient.notifyReceipt', (done) => {
     //     let source = new ReceiptEndpoint({
