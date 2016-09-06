@@ -12,19 +12,19 @@ import Utility from "../src/js/Utility";
 
 describe('ResourceLoader', () => {
 
-    it('load cert', (done) => {
-        let resourceLoader =
-            new CachedResourceLoader({
-                resourceLoader: new FileResourceLoader({
-                    path: '~/.coinme-node'
-                })
-            });
-
-        resourceLoader.load('coinme-node-key.pem')
-            .then((value) => {
-                done();
-            })
-            .catch(done);
-    })
+    // it('load cert', (done) => {
+    //     let resourceLoader =
+    //         new CachedResourceLoader({
+    //             resourceLoader: new FileResourceLoader({
+    //                 path: '~/.coinme-node'
+    //             })
+    //         });
+    //
+    //     resourceLoader.load('coinme-node-key.pem')
+    //         .then((value) => {
+    //             done();
+    //         })
+    //         .catch(done);
+    // })
 
 });
