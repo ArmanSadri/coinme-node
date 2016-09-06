@@ -1,6 +1,6 @@
 {
   "name": "coinme-node",
-  "version": "1.5.1",
+  "version": "1.5.2-alpha1",
   "description": "The common library for Coinme Node apps",
   "main": "dist/js/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
     "get-version": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[ \",]//g'",
     "upload-docs": "scp -r ./dist/docs docs.coinme.org:/var/lib/coinme-docs/coinme-node/$(npm run get-version | tail -n 1)",
-    "build": "npm run clean && npm run copy:others && npm run babel && npm run test:once && npm run docs && npm run relink"
+    "build": "npm run clean && npm run copy:others && npm run babel && npm run test:once && npm run docs && npm run upload-docs && npm run relink"
   },
   "repository": {
     "type": "git",

@@ -52,6 +52,11 @@ var Identity = function (_CoreObject) {
      *
      * @param {String|URI|{address:Address, attributes?:Object}} options
      */
+
+
+    /**
+     * @type {Address}
+     */
     function Identity(options) {
         _classCallCheck(this, Identity);
 
@@ -77,6 +82,11 @@ var Identity = function (_CoreObject) {
     /**
      *
      * @return {Address}
+     */
+
+
+    /**
+     * @type {Object}
      */
 
 

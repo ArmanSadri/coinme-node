@@ -82,6 +82,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var VERSION_REGEXP = /^\/api\/v(?:\d+\.?\d*)+$/;
 var METHOD_REGEXP = /(?:POST)|(?:GET)|(?:DELETE)|(?:PUT)/;
 
+//region function customPromiseFactory
 /**
  * @param  {Function} resolver The promise resolver function
  * @return {Object} The promise instance
@@ -89,6 +90,7 @@ var METHOD_REGEXP = /(?:POST)|(?:GET)|(?:DELETE)|(?:PUT)/;
 function customPromiseFactory(resolver) {
     return new _bluebird2.default(resolver);
 }
+//endregion
 
 //region class CoinmeWalletClientConfiguration
 /**
@@ -241,10 +243,10 @@ var CoinmeWalletClientConfiguration = function (_CoreObject) {
 
         value: function toJson() {
             return _get(CoinmeWalletClientConfiguration.prototype.__proto__ || Object.getPrototypeOf(CoinmeWalletClientConfiguration.prototype), "toJson", this).call(this, {
+                version: this.version,
                 identity: _Utility2.default.optJson(this.identity.toJson()),
                 signTool: _Utility2.default.optJson(this.signTool),
                 sessionId: this.sessionId,
-                version: this.version,
                 baseUrl: _Utility2.default.optString(this.baseUrl)
             });
         }
@@ -458,19 +460,17 @@ var CoinmeWalletClient = function (_CoreObject2) {
     }, {
         key: "notifyReceipt",
         value: function notifyReceipt(receipt) {
-            var json = receipt.toJson();
-
             return this._execute({
                 uri: '/receipt',
                 method: 'POST',
-                data: json
+                data: receipt.toJson()
             });
         }
 
         /**
          *
          * @param {String} username
-         * @return {Promise<UserExistenceToken>|Promise}
+         * @return {Promise.<UserExistenceToken>|Promise}
          */
 
     }, {
@@ -536,21 +536,27 @@ var CoinmeWalletClient = function (_CoreObject2) {
 
                 var request_args = {
                     url: uri.toString(),
+
                     method: method,
+
+                    headers: {
+                        'X-Transaction-ID': data.transactionId,
+                        'X-Timestamp': data.timestamp,
+                        'X-Signature': data.signature
+                    },
+
+                    // ---
+
                     json: true,
 
                     httpSignature: {
                         keyId: configuration.certificate.key.name,
                         key: configuration.certificate.key.value
                     },
+
                     timeout: scope.configuration.timeout,
                     promiseFactory: customPromiseFactory,
-                    fullResponse: true, // (default) To resolve the promise with the full response or just the body
-                    headers: {
-                        'X-Transaction-ID': data.transactionId,
-                        'X-Timestamp': data.timestamp,
-                        'X-Signature': data.signature
-                    }
+                    fullResponse: true // (default) To resolve the promise with the full response or just the body
                 };
 
                 if ('GET' === method && data) {

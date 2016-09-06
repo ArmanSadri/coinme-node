@@ -113,12 +113,15 @@ import {ResourceLoader, FileResourceLoader, CachedResourceLoader} from &quot;./&
 import {LocalFileCache} from &quot;../cache&quot;;
 import Promise from &quot;bluebird&quot;;
 
+//region class Certificate extends CoreObject
 /**
  * @class
  */
 class Certificate extends CoreObject {
 
-    _started;
+    /**
+     * @type {Promise|bluebird}
+     */
     _startedLatch;
 
     /**
@@ -172,20 +175,10 @@ class Certificate extends CoreObject {
         this._startedLatch = new Promise((resolve, reject) =&gt; {
             let promise = Promise.resolve();
 
-            promise = promise.then(() =&gt; resourceLoader.startedLatch);
-
-            promise = promise.then(() =&gt; {
-                return this
-                    .open()
-                    .then((value) =&gt; {
-                        scope._value = value;
-                    });
-            });
+            promise = promise.then(() =&gt; this.open());
 
             resolve(promise);
         });
-
-        this._startedLatch.finally(() =&gt; scope._started = true);
         //endregion
     }
 
@@ -197,7 +190,7 @@ class Certificate extends CoreObject {
      * @return {Boolean}
      */
     get started() {
-        return this._started;
+        return this._startedLatch.isFulfilled();
     }
     /**
      * @property
@@ -279,7 +272,9 @@ class Certificate extends CoreObject {
             });
     }
 }
+//endregion
 
+//region class CertificateBundle extends CoreObject
 /**
  * System for bundling 3 keys together (key, cert, and ca)
  *
@@ -334,6 +329,7 @@ class CertificateBundle extends CoreObject {
             if (authority) {
                 promise = promise.then(() =&gt; authority.open())
             }
+
             if (key) {
                 promise = promise.then(() =&gt; key.open());
             }
@@ -405,6 +401,7 @@ class CertificateBundle extends CoreObject {
         return CertificateBundle.fromFolder(&apos;~/.coinme-node&apos;);
     }
 }
+//endregion
 
 export {Certificate};
 export {CertificateBundle};

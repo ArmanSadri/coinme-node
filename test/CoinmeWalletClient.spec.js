@@ -36,62 +36,62 @@ describe('CoinmeWalletClient', () => {
         assert.equal(configuration.identity.toString(), configuration2.identity.toString())
     });
 
-    it('CoinmeWalletClient.notifyReceipt', (done) => {
-        let source = new ReceiptEndpoint({
-            timestamp: Instant.now(),
-            address: EndpointTypes.KIOSK.toAddress('kiosk:/southcenter'),
-            amount: USD.create('10000')
-        });
-
-        let destination = new ReceiptEndpoint({
-            timestamp: Instant.now(),
-            address: 'bitcoin:/1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX',
-            amount: EndpointTypes.WALLET.toMoney('10'),
-            fee: null
-        });
-
-        let receipt = new Receipt({
-            identity: 'user:/SMYERMA170QE',
-            timestamp: Instant.now(),
-            source: source,
-            destination: destination
-        });
-
-        let client = new CoinmeWalletClient({
-            configuration: new CoinmeWalletClientConfiguration({
-                baseUrl: 'http://localhost:1339',
-                identity: new Identity('library:/coinme-node')
-            })
-        });
-
-        client.notifyReceipt(receipt)
-            .then(() => { done(null) })
-            .catch(done)
-        ;
-    });
-
-    it('CoinmeWalletClient.myself', (done) => {
-        let client = new CoinmeWalletClient({
-            configuration: new CoinmeWalletClientConfiguration({
-                certificate: CertificateBundle.fromFolder('~/.coinme-node'),
-                identity: new Identity('library:/coinme-node')
-            })
-        });
-
-        client
-            .peek('SMYERMA170QE')
-            .then((/** @type {UserExistenceToken} */ user) => {
-
-                assert.equal(user.username, 'SMYERMA170QE');
-                assert.isTrue(user.exists);
-
-                return user;
-            })
-            .then(() => {
-                done();
-            })
-            .catch((err) => {
-                done(err);
-            });
-    });
+    // it('CoinmeWalletClient.notifyReceipt', (done) => {
+    //     let source = new ReceiptEndpoint({
+    //         timestamp: Instant.now(),
+    //         address: EndpointTypes.KIOSK.toAddress('kiosk:/southcenter'),
+    //         amount: USD.create('10000')
+    //     });
+    //
+    //     let destination = new ReceiptEndpoint({
+    //         timestamp: Instant.now(),
+    //         address: 'bitcoin:/1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX',
+    //         amount: EndpointTypes.WALLET.toMoney('10'),
+    //         fee: null
+    //     });
+    //
+    //     let receipt = new Receipt({
+    //         identity: 'user:/SMYERMA170QE',
+    //         timestamp: Instant.now(),
+    //         source: source,
+    //         destination: destination
+    //     });
+    //
+    //     let client = new CoinmeWalletClient({
+    //         configuration: new CoinmeWalletClientConfiguration({
+    //             baseUrl: 'http://localhost:1339',
+    //             identity: new Identity('library:/coinme-node')
+    //         })
+    //     });
+    //
+    //     client.notifyReceipt(receipt)
+    //         .then(() => { done(null) })
+    //         .catch(done)
+    //     ;
+    // });
+    //
+    // it('CoinmeWalletClient.myself', (done) => {
+    //     let client = new CoinmeWalletClient({
+    //         configuration: new CoinmeWalletClientConfiguration({
+    //             certificate: CertificateBundle.fromFolder('~/.coinme-node'),
+    //             identity: new Identity('library:/coinme-node')
+    //         })
+    //     });
+    //
+    //     client
+    //         .peek('SMYERMA170QE')
+    //         .then((/** @type {UserExistenceToken} */ user) => {
+    //
+    //             assert.equal(user.username, 'SMYERMA170QE');
+    //             assert.isTrue(user.exists);
+    //
+    //             return user;
+    //         })
+    //         .then(() => {
+    //             done();
+    //         })
+    //         .catch((err) => {
+    //             done(err);
+    //         });
+    // });
 });

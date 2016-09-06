@@ -47,6 +47,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//region class Certificate extends CoreObject
 /**
  * @class
  */
@@ -107,20 +108,10 @@ var Certificate = function (_CoreObject) {
             var promise = _bluebird2.default.resolve();
 
             promise = promise.then(function () {
-                return resourceLoader.startedLatch;
-            });
-
-            promise = promise.then(function () {
-                return _this.open().then(function (value) {
-                    scope._value = value;
-                });
+                return _this.open();
             });
 
             resolve(promise);
-        });
-
-        _this._startedLatch.finally(function () {
-            return scope._started = true;
         });
         //endregion
         return _this;
@@ -132,6 +123,11 @@ var Certificate = function (_CoreObject) {
      * @readonly
      * @type {Boolean}
      * @return {Boolean}
+     */
+
+
+    /**
+     * @type {Promise|bluebird}
      */
 
 
@@ -155,7 +151,7 @@ var Certificate = function (_CoreObject) {
     }, {
         key: "started",
         get: function get() {
-            return this._started;
+            return this._startedLatch.isFulfilled();
         }
         /**
          * @property
@@ -243,7 +239,9 @@ var Certificate = function (_CoreObject) {
 
     return Certificate;
 }(_CoreObject4.default);
+//endregion
 
+//region class CertificateBundle extends CoreObject
 /**
  * System for bundling 3 keys together (key, cert, and ca)
  *
@@ -305,6 +303,7 @@ var CertificateBundle = function (_CoreObject2) {
                     return authority.open();
                 });
             }
+
             if (key) {
                 promise = promise.then(function () {
                     return key.open();
@@ -401,6 +400,7 @@ var CertificateBundle = function (_CoreObject2) {
 
     return CertificateBundle;
 }(_CoreObject4.default);
+//endregion
 
 exports.Certificate = Certificate;
 exports.CertificateBundle = CertificateBundle;
