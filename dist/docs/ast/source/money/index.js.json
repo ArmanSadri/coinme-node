@@ -1,5 +1,5 @@
 {
-  "type": "Program",
+  "type": "File",
   "start": 0,
   "end": 363,
   "loc": {
@@ -12,72 +12,39 @@
       "column": 13
     }
   },
-  "sourceType": "module",
-  "body": [
-    {
-      "type": "ExpressionStatement",
-      "start": 0,
-      "end": 13,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 13
-        }
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 363,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
       },
-      "expression": {
-        "type": "Literal",
-        "start": 0,
-        "end": 12,
+      "end": {
+        "line": 17,
+        "column": 13
+      }
+    },
+    "sourceType": "module",
+    "body": [
+      {
+        "type": "ImportDeclaration",
+        "start": 15,
+        "end": 43,
         "loc": {
           "start": {
-            "line": 1,
+            "line": 3,
             "column": 0
           },
           "end": {
-            "line": 1,
-            "column": 12
+            "line": 3,
+            "column": 28
           }
         },
-        "value": "use strict",
-        "rawValue": "use strict",
-        "raw": "'use strict'"
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "start": 15,
-      "end": 43,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 0
-        },
-        "end": {
-          "line": 3,
-          "column": 28
-        }
-      },
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "start": 22,
-          "end": 27,
-          "loc": {
-            "start": {
-              "line": 3,
-              "column": 7
-            },
-            "end": {
-              "line": 3,
-              "column": 12
-            }
-          },
-          "local": {
-            "type": "Identifier",
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
             "start": 22,
             "end": 27,
             "loc": {
@@ -90,61 +57,64 @@
                 "column": 12
               }
             },
-            "name": "Money"
+            "local": {
+              "type": "Identifier",
+              "start": 22,
+              "end": 27,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 7
+                },
+                "end": {
+                  "line": 3,
+                  "column": 12
+                },
+                "identifierName": "Money"
+              },
+              "name": "Money"
+            }
           }
-        }
-      ],
-      "importKind": "value",
-      "source": {
-        "type": "Literal",
-        "start": 33,
-        "end": 42,
-        "loc": {
-          "start": {
-            "line": 3,
-            "column": 18
-          },
-          "end": {
-            "line": 3,
-            "column": 27
-          }
-        },
-        "value": "./Money",
-        "rawValue": "./Money",
-        "raw": "\"./Money\""
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "start": 44,
-      "end": 76,
-      "loc": {
-        "start": {
-          "line": 4,
-          "column": 0
-        },
-        "end": {
-          "line": 4,
-          "column": 32
-        }
-      },
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "start": 51,
-          "end": 58,
+        ],
+        "importKind": "value",
+        "source": {
+          "type": "StringLiteral",
+          "start": 33,
+          "end": 42,
           "loc": {
             "start": {
-              "line": 4,
-              "column": 7
+              "line": 3,
+              "column": 18
             },
             "end": {
-              "line": 4,
-              "column": 14
+              "line": 3,
+              "column": 27
             }
           },
-          "local": {
-            "type": "Identifier",
+          "extra": {
+            "rawValue": "./Money",
+            "raw": "\"./Money\""
+          },
+          "value": "./Money"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 44,
+        "end": 76,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 32
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
             "start": 51,
             "end": 58,
             "loc": {
@@ -157,61 +127,64 @@
                 "column": 14
               }
             },
-            "name": "Bitcoin"
+            "local": {
+              "type": "Identifier",
+              "start": 51,
+              "end": 58,
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 7
+                },
+                "end": {
+                  "line": 4,
+                  "column": 14
+                },
+                "identifierName": "Bitcoin"
+              },
+              "name": "Bitcoin"
+            }
           }
-        }
-      ],
-      "importKind": "value",
-      "source": {
-        "type": "Literal",
-        "start": 64,
-        "end": 75,
-        "loc": {
-          "start": {
-            "line": 4,
-            "column": 20
-          },
-          "end": {
-            "line": 4,
-            "column": 31
-          }
-        },
-        "value": "./Bitcoin",
-        "rawValue": "./Bitcoin",
-        "raw": "\"./Bitcoin\""
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "start": 77,
-      "end": 111,
-      "loc": {
-        "start": {
-          "line": 5,
-          "column": 0
-        },
-        "end": {
-          "line": 5,
-          "column": 34
-        }
-      },
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "start": 84,
-          "end": 92,
+        ],
+        "importKind": "value",
+        "source": {
+          "type": "StringLiteral",
+          "start": 64,
+          "end": 75,
           "loc": {
             "start": {
-              "line": 5,
-              "column": 7
+              "line": 4,
+              "column": 20
             },
             "end": {
-              "line": 5,
-              "column": 15
+              "line": 4,
+              "column": 31
             }
           },
-          "local": {
-            "type": "Identifier",
+          "extra": {
+            "rawValue": "./Bitcoin",
+            "raw": "\"./Bitcoin\""
+          },
+          "value": "./Bitcoin"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 77,
+        "end": 111,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 34
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
             "start": 84,
             "end": 92,
             "loc": {
@@ -224,61 +197,64 @@
                 "column": 15
               }
             },
-            "name": "Currency"
+            "local": {
+              "type": "Identifier",
+              "start": 84,
+              "end": 92,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 7
+                },
+                "end": {
+                  "line": 5,
+                  "column": 15
+                },
+                "identifierName": "Currency"
+              },
+              "name": "Currency"
+            }
           }
-        }
-      ],
-      "importKind": "value",
-      "source": {
-        "type": "Literal",
-        "start": 98,
-        "end": 110,
-        "loc": {
-          "start": {
-            "line": 5,
-            "column": 21
-          },
-          "end": {
-            "line": 5,
-            "column": 33
-          }
-        },
-        "value": "./Currency",
-        "rawValue": "./Currency",
-        "raw": "\"./Currency\""
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "start": 112,
-      "end": 144,
-      "loc": {
-        "start": {
-          "line": 6,
-          "column": 0
-        },
-        "end": {
-          "line": 6,
-          "column": 32
-        }
-      },
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "start": 119,
-          "end": 126,
+        ],
+        "importKind": "value",
+        "source": {
+          "type": "StringLiteral",
+          "start": 98,
+          "end": 110,
           "loc": {
             "start": {
-              "line": 6,
-              "column": 7
+              "line": 5,
+              "column": 21
             },
             "end": {
-              "line": 6,
-              "column": 14
+              "line": 5,
+              "column": 33
             }
           },
-          "local": {
-            "type": "Identifier",
+          "extra": {
+            "rawValue": "./Currency",
+            "raw": "\"./Currency\""
+          },
+          "value": "./Currency"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 112,
+        "end": 144,
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 32
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
             "start": 119,
             "end": 126,
             "loc": {
@@ -291,61 +267,64 @@
                 "column": 14
               }
             },
-            "name": "Satoshi"
+            "local": {
+              "type": "Identifier",
+              "start": 119,
+              "end": 126,
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 7
+                },
+                "end": {
+                  "line": 6,
+                  "column": 14
+                },
+                "identifierName": "Satoshi"
+              },
+              "name": "Satoshi"
+            }
           }
-        }
-      ],
-      "importKind": "value",
-      "source": {
-        "type": "Literal",
-        "start": 132,
-        "end": 143,
-        "loc": {
-          "start": {
-            "line": 6,
-            "column": 20
-          },
-          "end": {
-            "line": 6,
-            "column": 31
-          }
-        },
-        "value": "./Satoshi",
-        "rawValue": "./Satoshi",
-        "raw": "\"./Satoshi\""
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "start": 145,
-      "end": 169,
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 0
-        },
-        "end": {
-          "line": 7,
-          "column": 24
-        }
-      },
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "start": 152,
-          "end": 155,
+        ],
+        "importKind": "value",
+        "source": {
+          "type": "StringLiteral",
+          "start": 132,
+          "end": 143,
           "loc": {
             "start": {
-              "line": 7,
-              "column": 7
+              "line": 6,
+              "column": 20
             },
             "end": {
-              "line": 7,
-              "column": 10
+              "line": 6,
+              "column": 31
             }
           },
-          "local": {
-            "type": "Identifier",
+          "extra": {
+            "rawValue": "./Satoshi",
+            "raw": "\"./Satoshi\""
+          },
+          "value": "./Satoshi"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 145,
+        "end": 169,
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 0
+          },
+          "end": {
+            "line": 7,
+            "column": 24
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
             "start": 152,
             "end": 155,
             "loc": {
@@ -358,61 +337,64 @@
                 "column": 10
               }
             },
-            "name": "USD"
+            "local": {
+              "type": "Identifier",
+              "start": 152,
+              "end": 155,
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 7
+                },
+                "end": {
+                  "line": 7,
+                  "column": 10
+                },
+                "identifierName": "USD"
+              },
+              "name": "USD"
+            }
           }
-        }
-      ],
-      "importKind": "value",
-      "source": {
-        "type": "Literal",
-        "start": 161,
-        "end": 168,
-        "loc": {
-          "start": {
-            "line": 7,
-            "column": 16
-          },
-          "end": {
-            "line": 7,
-            "column": 23
-          }
-        },
-        "value": "./USD",
-        "rawValue": "./USD",
-        "raw": "\"./USD\""
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "start": 170,
-      "end": 204,
-      "loc": {
-        "start": {
-          "line": 8,
-          "column": 0
-        },
-        "end": {
-          "line": 8,
-          "column": 34
-        }
-      },
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "start": 177,
-          "end": 185,
+        ],
+        "importKind": "value",
+        "source": {
+          "type": "StringLiteral",
+          "start": 161,
+          "end": 168,
           "loc": {
             "start": {
-              "line": 8,
-              "column": 7
+              "line": 7,
+              "column": 16
             },
             "end": {
-              "line": 8,
-              "column": 15
+              "line": 7,
+              "column": 23
             }
           },
-          "local": {
-            "type": "Identifier",
+          "extra": {
+            "rawValue": "./USD",
+            "raw": "\"./USD\""
+          },
+          "value": "./USD"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 170,
+        "end": 204,
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 34
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
             "start": 177,
             "end": 185,
             "loc": {
@@ -425,61 +407,64 @@
                 "column": 15
               }
             },
-            "name": "Ethereum"
+            "local": {
+              "type": "Identifier",
+              "start": 177,
+              "end": 185,
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 7
+                },
+                "end": {
+                  "line": 8,
+                  "column": 15
+                },
+                "identifierName": "Ethereum"
+              },
+              "name": "Ethereum"
+            }
           }
-        }
-      ],
-      "importKind": "value",
-      "source": {
-        "type": "Literal",
-        "start": 191,
-        "end": 203,
-        "loc": {
-          "start": {
-            "line": 8,
-            "column": 21
-          },
-          "end": {
-            "line": 8,
-            "column": 33
-          }
-        },
-        "value": "./Ethereum",
-        "rawValue": "./Ethereum",
-        "raw": "\"./Ethereum\""
-      }
-    },
-    {
-      "type": "ImportDeclaration",
-      "start": 205,
-      "end": 239,
-      "loc": {
-        "start": {
-          "line": 9,
-          "column": 0
-        },
-        "end": {
-          "line": 9,
-          "column": 34
-        }
-      },
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "start": 212,
-          "end": 220,
+        ],
+        "importKind": "value",
+        "source": {
+          "type": "StringLiteral",
+          "start": 191,
+          "end": 203,
           "loc": {
             "start": {
-              "line": 9,
-              "column": 7
+              "line": 8,
+              "column": 21
             },
             "end": {
-              "line": 9,
-              "column": 15
+              "line": 8,
+              "column": 33
             }
           },
-          "local": {
-            "type": "Identifier",
+          "extra": {
+            "rawValue": "./Ethereum",
+            "raw": "\"./Ethereum\""
+          },
+          "value": "./Ethereum"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 205,
+        "end": 239,
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 0
+          },
+          "end": {
+            "line": 9,
+            "column": 34
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportDefaultSpecifier",
             "start": 212,
             "end": 220,
             "loc": {
@@ -492,100 +477,1702 @@
                 "column": 15
               }
             },
-            "name": "Exchange"
+            "local": {
+              "type": "Identifier",
+              "start": 212,
+              "end": 220,
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 7
+                },
+                "end": {
+                  "line": 9,
+                  "column": 15
+                },
+                "identifierName": "Exchange"
+              },
+              "name": "Exchange"
+            }
           }
+        ],
+        "importKind": "value",
+        "source": {
+          "type": "StringLiteral",
+          "start": 226,
+          "end": 238,
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 21
+            },
+            "end": {
+              "line": 9,
+              "column": 33
+            }
+          },
+          "extra": {
+            "rawValue": "./Exchange",
+            "raw": "\"./Exchange\""
+          },
+          "value": "./Exchange"
         }
-      ],
-      "importKind": "value",
-      "source": {
-        "type": "Literal",
-        "start": 226,
-        "end": 238,
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 241,
+        "end": 259,
         "loc": {
           "start": {
-            "line": 9,
-            "column": 21
+            "line": 11,
+            "column": 0
           },
           "end": {
-            "line": 9,
-            "column": 33
+            "line": 11,
+            "column": 18
           }
         },
-        "value": "./Exchange",
-        "rawValue": "./Exchange",
-        "raw": "\"./Exchange\""
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 249,
+            "end": 257,
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 8
+              },
+              "end": {
+                "line": 11,
+                "column": 16
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 249,
+              "end": 257,
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 8
+                },
+                "end": {
+                  "line": 11,
+                  "column": 16
+                },
+                "identifierName": "Currency"
+              },
+              "name": "Currency"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 249,
+              "end": 257,
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 8
+                },
+                "end": {
+                  "line": 11,
+                  "column": 16
+                },
+                "identifierName": "Currency"
+              },
+              "name": "Currency"
+            }
+          }
+        ],
+        "source": null,
+        "exportKind": "value"
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 260,
+        "end": 278,
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 0
+          },
+          "end": {
+            "line": 12,
+            "column": 18
+          }
+        },
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 268,
+            "end": 276,
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 8
+              },
+              "end": {
+                "line": 12,
+                "column": 16
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 268,
+              "end": 276,
+              "loc": {
+                "start": {
+                  "line": 12,
+                  "column": 8
+                },
+                "end": {
+                  "line": 12,
+                  "column": 16
+                },
+                "identifierName": "Exchange"
+              },
+              "name": "Exchange"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 268,
+              "end": 276,
+              "loc": {
+                "start": {
+                  "line": 12,
+                  "column": 8
+                },
+                "end": {
+                  "line": 12,
+                  "column": 16
+                },
+                "identifierName": "Exchange"
+              },
+              "name": "Exchange"
+            }
+          }
+        ],
+        "source": null,
+        "exportKind": "value"
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 279,
+        "end": 294,
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 0
+          },
+          "end": {
+            "line": 13,
+            "column": 15
+          }
+        },
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 287,
+            "end": 292,
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 8
+              },
+              "end": {
+                "line": 13,
+                "column": 13
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 287,
+              "end": 292,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 8
+                },
+                "end": {
+                  "line": 13,
+                  "column": 13
+                },
+                "identifierName": "Money"
+              },
+              "name": "Money"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 287,
+              "end": 292,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 8
+                },
+                "end": {
+                  "line": 13,
+                  "column": 13
+                },
+                "identifierName": "Money"
+              },
+              "name": "Money"
+            }
+          }
+        ],
+        "source": null,
+        "exportKind": "value"
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 295,
+        "end": 312,
+        "loc": {
+          "start": {
+            "line": 14,
+            "column": 0
+          },
+          "end": {
+            "line": 14,
+            "column": 17
+          }
+        },
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 303,
+            "end": 310,
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 8
+              },
+              "end": {
+                "line": 14,
+                "column": 15
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 303,
+              "end": 310,
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 8
+                },
+                "end": {
+                  "line": 14,
+                  "column": 15
+                },
+                "identifierName": "Bitcoin"
+              },
+              "name": "Bitcoin"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 303,
+              "end": 310,
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 8
+                },
+                "end": {
+                  "line": 14,
+                  "column": 15
+                },
+                "identifierName": "Bitcoin"
+              },
+              "name": "Bitcoin"
+            }
+          }
+        ],
+        "source": null,
+        "exportKind": "value"
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 313,
+        "end": 331,
+        "loc": {
+          "start": {
+            "line": 15,
+            "column": 0
+          },
+          "end": {
+            "line": 15,
+            "column": 18
+          }
+        },
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 321,
+            "end": 329,
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 8
+              },
+              "end": {
+                "line": 15,
+                "column": 16
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 321,
+              "end": 329,
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 8
+                },
+                "end": {
+                  "line": 15,
+                  "column": 16
+                },
+                "identifierName": "Ethereum"
+              },
+              "name": "Ethereum"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 321,
+              "end": 329,
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 8
+                },
+                "end": {
+                  "line": 15,
+                  "column": 16
+                },
+                "identifierName": "Ethereum"
+              },
+              "name": "Ethereum"
+            }
+          }
+        ],
+        "source": null,
+        "exportKind": "value"
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 332,
+        "end": 349,
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 0
+          },
+          "end": {
+            "line": 16,
+            "column": 17
+          }
+        },
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 340,
+            "end": 347,
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 8
+              },
+              "end": {
+                "line": 16,
+                "column": 15
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 340,
+              "end": 347,
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 8
+                },
+                "end": {
+                  "line": 16,
+                  "column": 15
+                },
+                "identifierName": "Satoshi"
+              },
+              "name": "Satoshi"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 340,
+              "end": 347,
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 8
+                },
+                "end": {
+                  "line": 16,
+                  "column": 15
+                },
+                "identifierName": "Satoshi"
+              },
+              "name": "Satoshi"
+            }
+          }
+        ],
+        "source": null,
+        "exportKind": "value"
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 350,
+        "end": 363,
+        "loc": {
+          "start": {
+            "line": 17,
+            "column": 0
+          },
+          "end": {
+            "line": 17,
+            "column": 13
+          }
+        },
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 358,
+            "end": 361,
+            "loc": {
+              "start": {
+                "line": 17,
+                "column": 8
+              },
+              "end": {
+                "line": 17,
+                "column": 11
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 358,
+              "end": 361,
+              "loc": {
+                "start": {
+                  "line": 17,
+                  "column": 8
+                },
+                "end": {
+                  "line": 17,
+                  "column": 11
+                },
+                "identifierName": "USD"
+              },
+              "name": "USD"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 358,
+              "end": 361,
+              "loc": {
+                "start": {
+                  "line": 17,
+                  "column": 8
+                },
+                "end": {
+                  "line": 17,
+                  "column": 11
+                },
+                "identifierName": "USD"
+              },
+              "name": "USD"
+            }
+          }
+        ],
+        "source": null,
+        "exportKind": "value"
+      }
+    ],
+    "directives": [
+      {
+        "type": "Directive",
+        "start": 0,
+        "end": 13,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 13
+          }
+        },
+        "value": {
+          "type": "DirectiveLiteral",
+          "start": 0,
+          "end": 12,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          },
+          "value": "use strict",
+          "extra": {
+            "raw": "'use strict'",
+            "rawValue": "use strict"
+          }
+        }
+      }
+    ]
+  },
+  "comments": [],
+  "tokens": [
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "use strict",
+      "start": 0,
+      "end": 12,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 12
+        }
       }
     },
     {
-      "type": "ExportNamedDeclaration",
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 12,
+      "end": 13,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 12
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 15,
+      "end": 21,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Money",
+      "start": 22,
+      "end": 27,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 7
+        },
+        "end": {
+          "line": 3,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 28,
+      "end": 32,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 13
+        },
+        "end": {
+          "line": 3,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./Money",
+      "start": 33,
+      "end": 42,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 18
+        },
+        "end": {
+          "line": 3,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 42,
+      "end": 43,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 27
+        },
+        "end": {
+          "line": 3,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 44,
+      "end": 50,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Bitcoin",
+      "start": 51,
+      "end": 58,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 7
+        },
+        "end": {
+          "line": 4,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 59,
+      "end": 63,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 15
+        },
+        "end": {
+          "line": 4,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./Bitcoin",
+      "start": 64,
+      "end": 75,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 20
+        },
+        "end": {
+          "line": 4,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 75,
+      "end": 76,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 31
+        },
+        "end": {
+          "line": 4,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 77,
+      "end": 83,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Currency",
+      "start": 84,
+      "end": 92,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 7
+        },
+        "end": {
+          "line": 5,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 93,
+      "end": 97,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 16
+        },
+        "end": {
+          "line": 5,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./Currency",
+      "start": 98,
+      "end": 110,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 21
+        },
+        "end": {
+          "line": 5,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 110,
+      "end": 111,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 33
+        },
+        "end": {
+          "line": 5,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 112,
+      "end": 118,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Satoshi",
+      "start": 119,
+      "end": 126,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 7
+        },
+        "end": {
+          "line": 6,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 127,
+      "end": 131,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 15
+        },
+        "end": {
+          "line": 6,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./Satoshi",
+      "start": 132,
+      "end": 143,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 20
+        },
+        "end": {
+          "line": 6,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 143,
+      "end": 144,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 31
+        },
+        "end": {
+          "line": 6,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 145,
+      "end": 151,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "USD",
+      "start": 152,
+      "end": 155,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 7
+        },
+        "end": {
+          "line": 7,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 156,
+      "end": 160,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 11
+        },
+        "end": {
+          "line": 7,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./USD",
+      "start": 161,
+      "end": 168,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 16
+        },
+        "end": {
+          "line": 7,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 168,
+      "end": 169,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 23
+        },
+        "end": {
+          "line": 7,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 170,
+      "end": 176,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Ethereum",
+      "start": 177,
+      "end": 185,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 7
+        },
+        "end": {
+          "line": 8,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 186,
+      "end": 190,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 16
+        },
+        "end": {
+          "line": 8,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./Ethereum",
+      "start": 191,
+      "end": 203,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 21
+        },
+        "end": {
+          "line": 8,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 203,
+      "end": 204,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 33
+        },
+        "end": {
+          "line": 8,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 205,
+      "end": 211,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Exchange",
+      "start": 212,
+      "end": 220,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 7
+        },
+        "end": {
+          "line": 9,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 221,
+      "end": 225,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 16
+        },
+        "end": {
+          "line": 9,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./Exchange",
+      "start": 226,
+      "end": 238,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 21
+        },
+        "end": {
+          "line": 9,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 238,
+      "end": 239,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 33
+        },
+        "end": {
+          "line": 9,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
       "start": 241,
+      "end": 247,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 248,
+      "end": 249,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 7
+        },
+        "end": {
+          "line": 11,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Currency",
+      "start": 249,
+      "end": 257,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 8
+        },
+        "end": {
+          "line": 11,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 257,
+      "end": 258,
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 16
+        },
+        "end": {
+          "line": 11,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 258,
       "end": 259,
       "loc": {
         "start": {
           "line": 11,
-          "column": 0
+          "column": 17
         },
         "end": {
           "line": 11,
           "column": 18
         }
-      },
-      "declaration": null,
-      "specifiers": [
-        {
-          "type": "ExportSpecifier",
-          "start": 249,
-          "end": 257,
-          "loc": {
-            "start": {
-              "line": 11,
-              "column": 8
-            },
-            "end": {
-              "line": 11,
-              "column": 16
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 249,
-            "end": 257,
-            "loc": {
-              "start": {
-                "line": 11,
-                "column": 8
-              },
-              "end": {
-                "line": 11,
-                "column": 16
-              }
-            },
-            "name": "Currency"
-          },
-          "exported": {
-            "type": "Identifier",
-            "start": 249,
-            "end": 257,
-            "loc": {
-              "start": {
-                "line": 11,
-                "column": 8
-              },
-              "end": {
-                "line": 11,
-                "column": 16
-              }
-            },
-            "name": "Currency"
-          }
-        }
-      ],
-      "source": null
+      }
     },
     {
-      "type": "ExportNamedDeclaration",
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
       "start": 260,
-      "end": 278,
+      "end": 266,
       "loc": {
         "start": {
           "line": 12,
@@ -593,131 +2180,259 @@
         },
         "end": {
           "line": 12,
-          "column": 18
+          "column": 6
         }
-      },
-      "declaration": null,
-      "specifiers": [
-        {
-          "type": "ExportSpecifier",
-          "start": 268,
-          "end": 276,
-          "loc": {
-            "start": {
-              "line": 12,
-              "column": 8
-            },
-            "end": {
-              "line": 12,
-              "column": 16
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 268,
-            "end": 276,
-            "loc": {
-              "start": {
-                "line": 12,
-                "column": 8
-              },
-              "end": {
-                "line": 12,
-                "column": 16
-              }
-            },
-            "name": "Exchange"
-          },
-          "exported": {
-            "type": "Identifier",
-            "start": 268,
-            "end": 276,
-            "loc": {
-              "start": {
-                "line": 12,
-                "column": 8
-              },
-              "end": {
-                "line": 12,
-                "column": 16
-              }
-            },
-            "name": "Exchange"
-          }
-        }
-      ],
-      "source": null
+      }
     },
     {
-      "type": "ExportNamedDeclaration",
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 267,
+      "end": 268,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 7
+        },
+        "end": {
+          "line": 12,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Exchange",
+      "start": 268,
+      "end": 276,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 8
+        },
+        "end": {
+          "line": 12,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 276,
+      "end": 277,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 16
+        },
+        "end": {
+          "line": 12,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 277,
+      "end": 278,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 17
+        },
+        "end": {
+          "line": 12,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
       "start": 279,
-      "end": 294,
+      "end": 285,
       "loc": {
         "start": {
           "line": 13,
           "column": 0
+        },
+        "end": {
+          "line": 13,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 286,
+      "end": 287,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 7
+        },
+        "end": {
+          "line": 13,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Money",
+      "start": 287,
+      "end": 292,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 8
+        },
+        "end": {
+          "line": 13,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 292,
+      "end": 293,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 13
+        },
+        "end": {
+          "line": 13,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 293,
+      "end": 294,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 14
         },
         "end": {
           "line": 13,
           "column": 15
         }
-      },
-      "declaration": null,
-      "specifiers": [
-        {
-          "type": "ExportSpecifier",
-          "start": 287,
-          "end": 292,
-          "loc": {
-            "start": {
-              "line": 13,
-              "column": 8
-            },
-            "end": {
-              "line": 13,
-              "column": 13
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 287,
-            "end": 292,
-            "loc": {
-              "start": {
-                "line": 13,
-                "column": 8
-              },
-              "end": {
-                "line": 13,
-                "column": 13
-              }
-            },
-            "name": "Money"
-          },
-          "exported": {
-            "type": "Identifier",
-            "start": 287,
-            "end": 292,
-            "loc": {
-              "start": {
-                "line": 13,
-                "column": 8
-              },
-              "end": {
-                "line": 13,
-                "column": 13
-              }
-            },
-            "name": "Money"
-          }
-        }
-      ],
-      "source": null
+      }
     },
     {
-      "type": "ExportNamedDeclaration",
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
       "start": 295,
-      "end": 312,
+      "end": 301,
       "loc": {
         "start": {
           "line": 14,
@@ -725,197 +2440,389 @@
         },
         "end": {
           "line": 14,
-          "column": 17
+          "column": 6
         }
-      },
-      "declaration": null,
-      "specifiers": [
-        {
-          "type": "ExportSpecifier",
-          "start": 303,
-          "end": 310,
-          "loc": {
-            "start": {
-              "line": 14,
-              "column": 8
-            },
-            "end": {
-              "line": 14,
-              "column": 15
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 303,
-            "end": 310,
-            "loc": {
-              "start": {
-                "line": 14,
-                "column": 8
-              },
-              "end": {
-                "line": 14,
-                "column": 15
-              }
-            },
-            "name": "Bitcoin"
-          },
-          "exported": {
-            "type": "Identifier",
-            "start": 303,
-            "end": 310,
-            "loc": {
-              "start": {
-                "line": 14,
-                "column": 8
-              },
-              "end": {
-                "line": 14,
-                "column": 15
-              }
-            },
-            "name": "Bitcoin"
-          }
-        }
-      ],
-      "source": null
+      }
     },
     {
-      "type": "ExportNamedDeclaration",
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 302,
+      "end": 303,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 7
+        },
+        "end": {
+          "line": 14,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Bitcoin",
+      "start": 303,
+      "end": 310,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 8
+        },
+        "end": {
+          "line": 14,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 310,
+      "end": 311,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 15
+        },
+        "end": {
+          "line": 14,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 311,
+      "end": 312,
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 16
+        },
+        "end": {
+          "line": 14,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
       "start": 313,
-      "end": 331,
+      "end": 319,
       "loc": {
         "start": {
           "line": 15,
           "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 320,
+      "end": 321,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 7
+        },
+        "end": {
+          "line": 15,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Ethereum",
+      "start": 321,
+      "end": 329,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 8
+        },
+        "end": {
+          "line": 15,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 329,
+      "end": 330,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 16
+        },
+        "end": {
+          "line": 15,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 330,
+      "end": 331,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 17
         },
         "end": {
           "line": 15,
           "column": 18
         }
-      },
-      "declaration": null,
-      "specifiers": [
-        {
-          "type": "ExportSpecifier",
-          "start": 321,
-          "end": 329,
-          "loc": {
-            "start": {
-              "line": 15,
-              "column": 8
-            },
-            "end": {
-              "line": 15,
-              "column": 16
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 321,
-            "end": 329,
-            "loc": {
-              "start": {
-                "line": 15,
-                "column": 8
-              },
-              "end": {
-                "line": 15,
-                "column": 16
-              }
-            },
-            "name": "Ethereum"
-          },
-          "exported": {
-            "type": "Identifier",
-            "start": 321,
-            "end": 329,
-            "loc": {
-              "start": {
-                "line": 15,
-                "column": 8
-              },
-              "end": {
-                "line": 15,
-                "column": 16
-              }
-            },
-            "name": "Ethereum"
-          }
-        }
-      ],
-      "source": null
+      }
     },
     {
-      "type": "ExportNamedDeclaration",
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
       "start": 332,
-      "end": 349,
+      "end": 338,
       "loc": {
         "start": {
           "line": 16,
           "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 339,
+      "end": 340,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 7
+        },
+        "end": {
+          "line": 16,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Satoshi",
+      "start": 340,
+      "end": 347,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 8
+        },
+        "end": {
+          "line": 16,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 347,
+      "end": 348,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 15
+        },
+        "end": {
+          "line": 16,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 348,
+      "end": 349,
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 16
         },
         "end": {
           "line": 16,
           "column": 17
         }
-      },
-      "declaration": null,
-      "specifiers": [
-        {
-          "type": "ExportSpecifier",
-          "start": 340,
-          "end": 347,
-          "loc": {
-            "start": {
-              "line": 16,
-              "column": 8
-            },
-            "end": {
-              "line": 16,
-              "column": 15
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 340,
-            "end": 347,
-            "loc": {
-              "start": {
-                "line": 16,
-                "column": 8
-              },
-              "end": {
-                "line": 16,
-                "column": 15
-              }
-            },
-            "name": "Satoshi"
-          },
-          "exported": {
-            "type": "Identifier",
-            "start": 340,
-            "end": 347,
-            "loc": {
-              "start": {
-                "line": 16,
-                "column": 8
-              },
-              "end": {
-                "line": 16,
-                "column": 15
-              }
-            },
-            "name": "Satoshi"
-          }
-        }
-      ],
-      "source": null
+      }
     },
     {
-      "type": "ExportNamedDeclaration",
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
       "start": 350,
-      "end": 363,
+      "end": 356,
       "loc": {
         "start": {
           "line": 17,
@@ -923,60 +2830,137 @@
         },
         "end": {
           "line": 17,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 357,
+      "end": 358,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 7
+        },
+        "end": {
+          "line": 17,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "USD",
+      "start": 358,
+      "end": 361,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 8
+        },
+        "end": {
+          "line": 17,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 361,
+      "end": 362,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 11
+        },
+        "end": {
+          "line": 17,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 362,
+      "end": 363,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 12
+        },
+        "end": {
+          "line": 17,
           "column": 13
         }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
       },
-      "declaration": null,
-      "specifiers": [
-        {
-          "type": "ExportSpecifier",
-          "start": 358,
-          "end": 361,
-          "loc": {
-            "start": {
-              "line": 17,
-              "column": 8
-            },
-            "end": {
-              "line": 17,
-              "column": 11
-            }
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 358,
-            "end": 361,
-            "loc": {
-              "start": {
-                "line": 17,
-                "column": 8
-              },
-              "end": {
-                "line": 17,
-                "column": 11
-              }
-            },
-            "name": "USD"
-          },
-          "exported": {
-            "type": "Identifier",
-            "start": 358,
-            "end": 361,
-            "loc": {
-              "start": {
-                "line": 17,
-                "column": 8
-              },
-              "end": {
-                "line": 17,
-                "column": 11
-              }
-            },
-            "name": "USD"
-          }
+      "start": 363,
+      "end": 363,
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 13
+        },
+        "end": {
+          "line": 17,
+          "column": 13
         }
-      ],
-      "source": null
+      }
     }
   ]
 }
