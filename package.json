@@ -1,6 +1,6 @@
 {
   "name": "coinme-node",
-  "version": "1.5.2-alpha2",
+  "version": "1.5.2-alpha333",
   "description": "The common library for Coinme Node apps",
   "main": "dist/js/index.js",
   "scripts": {
@@ -21,8 +21,9 @@
     "babel": "./node_modules/.bin/babel src/js --out-dir dist/js -s",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
     "get-version": "cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[ \",]//g'",
-    "upload-docs": "rsync -av ./dist/docs/ docs.coinme.org:/var/lib/coinme-docs/coinme-node/$(npm run get-version | tail -n 1)",
-    "build": "npm run clean && npm run copy:others && npm run babel && npm run test:once && npm run docs && npm run upload-docs && npm run relink"
+    "upload-docs": "rsync -arvce 'ssh -o StrictHostKeyChecking=no' ./dist/docs/ docs.coinme.org:/var/lib/coinme-docs/coinme-node/$(npm run get-version | tail -n 1)",
+    "build": "npm run clean && npm run copy:others && npm run babel && npm run test:once && npm run docs && npm run relink",
+    "deploy": "npm run build && npm run upload-docs"
   },
   "repository": {
     "type": "git",
@@ -63,7 +64,6 @@
     "babel-root-import": "^4.1.1",
     "chai": "^3.4.1",
     "coveralls": "^2.11.6",
-    "esdoc": "git+https://git@github.com/coinme/typhonjs-node-esdoc.git",
     "isparta": "^4.0.0",
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.1.0",
@@ -80,6 +80,7 @@
     "simple-dom": "^0.3.0",
     "source-map-support": "^0.4.0",
     "testem": "^1.5.0",
+    "typhonjs-node-esdoc": "git+https://github.com/coinme/typhonjs-node-esdoc.git#master",
     "watch": "^0.19.2"
   },
   "dependencies": {
@@ -94,7 +95,6 @@
     "ember-cli-string-utils": "^1.0.0",
     "ember-cli-test-info": "^1.0.0",
     "ember-cli-valid-component-name": "^1.0.0",
-    "esdoc-es7-plugin": "0.0.3",
     "filecache": "git+https://git@github.com/coinme/node-filecache.git",
     "google-libphonenumber": "^1.1.0",
     "http-errors": "^1.5.0",
