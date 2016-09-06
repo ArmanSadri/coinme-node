@@ -124,7 +124,7 @@ request_debug(request);
 const VERSION_REGEXP = /^\/api\/v(?:\d+\.?\d*)+$/;
 const METHOD_REGEXP = /(?:POST)|(?:GET)|(?:DELETE)|(?:PUT)/;
 
-
+//region function customPromiseFactory
 /**
  * @param  {Function} resolver The promise resolver function
  * @return {Object} The promise instance
@@ -132,6 +132,7 @@ const METHOD_REGEXP = /(?:POST)|(?:GET)|(?:DELETE)|(?:PUT)/;
 function customPromiseFactory(resolver) {
     return new Promise(resolver);
 }
+//endregion
 
 //region class CoinmeWalletClientConfiguration
 /**
@@ -351,10 +352,10 @@ class CoinmeWalletClientConfiguration extends CoreObject {
 
     toJson() {
         return super.toJson({
+            version: this.version,
             identity: Utility.optJson(this.identity.toJson()),
             signTool: Utility.optJson(this.signTool),
             sessionId: this.sessionId,
-            version: this.version,
             baseUrl: Utility.optString(this.baseUrl)
         });
     }
@@ -454,19 +455,17 @@ class CoinmeWalletClient extends CoreObject {
      * @return {Promise}
      */
     notifyReceipt(receipt) {
-        let json = receipt.toJson();
-
         return this._execute({
             uri: &apos;/receipt&apos;,
             method: &apos;POST&apos;,
-            data: json
+            data: receipt.toJson()
         });
     }
 
     /**
      *
      * @param {String} username
-     * @return {Promise&lt;UserExistenceToken&gt;|Promise}
+     * @return {Promise.&lt;UserExistenceToken&gt;|Promise}
      */
     peek(username) {
         Preconditions.shouldNotBeBlank(username, &apos;username&apos;);
@@ -524,21 +523,27 @@ class CoinmeWalletClient extends CoreObject {
 
                 let request_args = {
                     url: uri.toString(),
+
                     method: method,
+
+                    headers: {
+                        &apos;X-Transaction-ID&apos;: data.transactionId,
+                        &apos;X-Timestamp&apos;: data.timestamp,
+                        &apos;X-Signature&apos;: data.signature
+                    },
+
+                    // ---
+
                     json: true,
 
                     httpSignature: {
                         keyId: configuration.certificate.key.name,
                         key: configuration.certificate.key.value
                     },
+
                     timeout: scope.configuration.timeout,
                     promiseFactory: customPromiseFactory,
-                    fullResponse: true, // (default) To resolve the promise with the full response or just the body
-                    headers: {
-                        &apos;X-Transaction-ID&apos;: data.transactionId,
-                        &apos;X-Timestamp&apos;: data.timestamp,
-                        &apos;X-Signature&apos;: data.signature
-                    }
+                    fullResponse: true // (default) To resolve the promise with the full response or just the body
                 };
 
                 if (&apos;GET&apos; === method &amp;&amp; data) {
@@ -590,7 +595,9 @@ class CoinmeWalletClient extends CoreObject {
 
         Preconditions.shouldBeTrue(uri.is(&apos;relative&apos;), `Must be relative. Was ${stringOrUri}`);
 
-        return URI.joinPaths(baseUrl, version, uri).absoluteTo(baseUrl);
+        return URI
+            .joinPaths(baseUrl, version, uri)
+            .absoluteTo(baseUrl);
     }
 
 }
