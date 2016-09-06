@@ -64,7 +64,6 @@
     "babel-root-import": "^4.1.1",
     "chai": "^3.4.1",
     "coveralls": "^2.11.6",
-    "esdoc": "git+https://git@github.com/coinme/typhonjs-node-esdoc.git",
     "isparta": "^4.0.0",
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.1.0",
@@ -85,6 +84,7 @@
   },
   "dependencies": {
     "altcoin-address": "^1.0.2",
+    "esdoc": "git+https://git@github.com/coinme/typhonjs-node-esdoc.git",
     "async": "^2.0.1",
     "big.js": "^3.1.3",
     "bluebird": "^3.3.4",
@@ -95,7 +95,6 @@
     "ember-cli-string-utils": "^1.0.0",
     "ember-cli-test-info": "^1.0.0",
     "ember-cli-valid-component-name": "^1.0.0",
-    "esdoc-es7-plugin": "0.0.3",
     "filecache": "git+https://git@github.com/coinme/node-filecache.git",
     "google-libphonenumber": "^1.1.0",
     "http-errors": "^1.5.0",
