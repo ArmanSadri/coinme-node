@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _CoreObject2 = require("./../CoreObject");
+var _CoreObject2 = require("../CoreObject");
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
@@ -22,7 +22,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @abstract
  * @class
  */
-
 var User = function (_CoreObject) {
     _inherits(User, _CoreObject);
 
@@ -45,13 +44,11 @@ var User = function (_CoreObject) {
      * @param {String} config.birthDate
      * @param {String} config.expirationDate
      */
-
     function User(config) {
         _classCallCheck(this, User);
 
         /** @type {String} */
-
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(User).call(this, config));
+        var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, config));
 
         _this.firstName = config.firstName;
 

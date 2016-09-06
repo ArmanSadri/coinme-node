@@ -15,7 +15,7 @@ var _index = require('lodash/index');
 
 var _index2 = _interopRequireDefault(_index);
 
-var _Preconditions = require('./../Preconditions');
+var _Preconditions = require('../Preconditions');
 
 var _Preconditions2 = _interopRequireDefault(_Preconditions);
 
@@ -27,7 +27,7 @@ var _NotificationBuilder = require('./NotificationBuilder');
 
 var _NotificationBuilder2 = _interopRequireDefault(_NotificationBuilder);
 
-var _CoreObject2 = require('./../CoreObject');
+var _CoreObject2 = require('../CoreObject');
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
@@ -50,11 +50,10 @@ var NotificationService = function (_CoreObject) {
      *
      * @param {Object} options
      */
-
     function NotificationService(options) {
         _classCallCheck(this, NotificationService);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationService).call(this, options));
+        var _this = _possibleConstructorReturn(this, (NotificationService.__proto__ || Object.getPrototypeOf(NotificationService)).call(this, options));
 
         if (!_this.templates) {
             _this.templates = {};
@@ -155,7 +154,7 @@ var NotificationService = function (_CoreObject) {
             var notificationTemplate = this.notificationTemplate(type);
             var promise = notificationTemplate.render(this.builder(), data);
 
-            return promise.then(function (builder) {
+            return promise.then(function ( /** @type {NotificationBuilder}*/builder) {
                 _Preconditions2.default.shouldBeDefined(builder, 'No builder for ' + type);
 
                 if (!builder.url) {

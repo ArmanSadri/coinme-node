@@ -55,7 +55,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @class
  */
-
 var MoneyConverter = function (_DelegatedConverter) {
     _inherits(MoneyConverter, _DelegatedConverter);
 
@@ -63,7 +62,6 @@ var MoneyConverter = function (_DelegatedConverter) {
      * @param {Object} options
      * @param {Object} options.conversions
      */
-
     function MoneyConverter(options) {
         _classCallCheck(this, MoneyConverter);
 
@@ -71,7 +69,7 @@ var MoneyConverter = function (_DelegatedConverter) {
             adapter: new _CurrencyAdapter2.default()
         });
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(MoneyConverter).apply(this, arguments));
+        return _possibleConstructorReturn(this, (MoneyConverter.__proto__ || Object.getPrototypeOf(MoneyConverter)).apply(this, arguments));
     }
 
     /**
@@ -110,7 +108,7 @@ var MoneyConverter = function (_DelegatedConverter) {
     }, {
         key: "convert",
         value: function convert(sourceMoney, destinationCurrency) {
-            return _Money2.default.shouldBeMoney(_get(Object.getPrototypeOf(MoneyConverter.prototype), "convert", this).call(this, sourceMoney, destinationCurrency), destinationCurrency);
+            return _Money2.default.shouldBeMoney(_get(MoneyConverter.prototype.__proto__ || Object.getPrototypeOf(MoneyConverter.prototype), "convert", this).call(this, sourceMoney, destinationCurrency), destinationCurrency);
         }
 
         /**

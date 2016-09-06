@@ -36,7 +36,6 @@ var HttpError = function (_AbstractError) {
      *
      * @param {String|Object} options
      */
-
     function HttpError(options) {
         _classCallCheck(this, HttpError);
 
@@ -52,8 +51,7 @@ var HttpError = function (_AbstractError) {
         var message = _Utility2.default.take(options, 'message', _Utility2.default.isString);
 
         // optional
-
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(HttpError).call(this, message));
+        var _this = _possibleConstructorReturn(this, (HttpError.__proto__ || Object.getPrototypeOf(HttpError)).call(this, message));
 
         _this._statusCode = _Utility2.default.take(options, 'statusCode', _Utility2.default.isNumber);
         _this._properties = _Utility2.default.take(options, 'properties', _Utility2.default.isNotFunction);
@@ -63,7 +61,7 @@ var HttpError = function (_AbstractError) {
     _createClass(HttpError, [{
         key: "toJSON",
         value: function toJSON() {
-            return _lodash2.default.assign(_get(Object.getPrototypeOf(HttpError.prototype), "toJSON", this).call(this), {
+            return _lodash2.default.assign(_get(HttpError.prototype.__proto__ || Object.getPrototypeOf(HttpError.prototype), "toJSON", this).call(this), {
                 statusCode: this.statusCode,
                 message: this.message,
                 name: this.name,

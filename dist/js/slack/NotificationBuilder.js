@@ -22,7 +22,7 @@ var _requestPromise = require('request-promise');
 
 var _requestPromise2 = _interopRequireDefault(_requestPromise);
 
-var _CoreObject = require('./../CoreObject');
+var _CoreObject = require('../CoreObject');
 
 var _CoreObject2 = _interopRequireDefault(_CoreObject);
 
@@ -34,7 +34,7 @@ var _AttachmentBuilder = require('./AttachmentBuilder');
 
 var _AttachmentBuilder2 = _interopRequireDefault(_AttachmentBuilder);
 
-var _Ember = require('./../Ember');
+var _Ember = require('../Ember');
 
 var _Ember2 = _interopRequireDefault(_Ember);
 
@@ -46,13 +46,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * @class NotificationBuilder
+ * @extends AbstractBuilder
+ */
 var NotificationBuilder = function (_AbstractBuilder) {
     _inherits(NotificationBuilder, _AbstractBuilder);
 
     function NotificationBuilder() {
         _classCallCheck(this, NotificationBuilder);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(NotificationBuilder).apply(this, arguments));
+        return _possibleConstructorReturn(this, (NotificationBuilder.__proto__ || Object.getPrototypeOf(NotificationBuilder)).apply(this, arguments));
     }
 
     _createClass(NotificationBuilder, [{

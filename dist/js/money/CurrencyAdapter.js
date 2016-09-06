@@ -33,7 +33,7 @@ var CurrencyAdapter = function (_Adapter) {
     function CurrencyAdapter() {
         _classCallCheck(this, CurrencyAdapter);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(CurrencyAdapter).apply(this, arguments));
+        return _possibleConstructorReturn(this, (CurrencyAdapter.__proto__ || Object.getPrototypeOf(CurrencyAdapter)).apply(this, arguments));
     }
 
     _createClass(CurrencyAdapter, [{

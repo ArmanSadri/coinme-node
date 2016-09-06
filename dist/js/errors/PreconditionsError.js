@@ -35,7 +35,6 @@ var PreconditionsError = function (_AbstractError) {
      * @param {Error} [options.optionalCause]
      * @constructor
      */
-
     function PreconditionsError(options) {
         _classCallCheck(this, PreconditionsError);
 
@@ -46,7 +45,7 @@ var PreconditionsError = function (_AbstractError) {
         var actualValue = options.actualValue;
         var message = options.message;
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(PreconditionsError).call(this, 'failure (expected: \'' + expectedValue + '\' [' + _Utility2.default.typeOf(expectedValue) + ']) (actual: \'' + actualValue + '\' [' + _Utility2.default.typeOf(actualValue) + ']) (message: ' + message + ')'));
+        var _this = _possibleConstructorReturn(this, (PreconditionsError.__proto__ || Object.getPrototypeOf(PreconditionsError)).call(this, 'failure (expected: \'' + expectedValue + '\' [' + _Utility2.default.typeOf(expectedValue) + ']) (actual: \'' + actualValue + '\' [' + _Utility2.default.typeOf(actualValue) + ']) (message: ' + message + ')'));
 
         _this._innerMessage = message;
         _this._cause = cause;

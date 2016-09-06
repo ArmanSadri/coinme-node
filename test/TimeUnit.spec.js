@@ -6,7 +6,7 @@
  */
 import {expect, assert} from "chai";
 import TimeUnit from "../src/js/TimeUnit";
-import {Errors, AbstractError, PreconditionsError} from "~/errors";
+import {Errors, AbstractError, PreconditionsError} from "../src/js/errors";
 import {Stopwatch} from "../src/js/Stopwatch";
 import {SmoothBurstyRateLimiter, SmoothWarmingUpRateLimiter} from "../src/js/RateLimiter";
 
@@ -38,9 +38,6 @@ describe('TimeUnit', () => {
     it('Seconds -> Days', () => {
         assert.equal(TimeUnit.DAYS.convert(1, TimeUnit.SECONDS), 0.000011574074074074073);
     });
-
-    console.log(TimeUnit.SECONDS);
-    console.log(TimeUnit.SECONDS.toString());
 
     it('Stopwatch', (cb) => {
         let rateLimiter = new SmoothWarmingUpRateLimiter({

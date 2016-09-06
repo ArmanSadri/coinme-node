@@ -1,31 +1,23 @@
 {
   "type": "Program",
+  "start": 0,
+  "end": 932,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 31,
+      "column": 0
+    }
+  },
+  "sourceType": "module",
   "body": [
     {
       "type": "ExpressionStatement",
-      "expression": {
-        "type": "Literal",
-        "value": "use strict",
-        "raw": "'use strict'",
-        "range": [
-          0,
-          12
-        ],
-        "loc": {
-          "start": {
-            "line": 1,
-            "column": 0
-          },
-          "end": {
-            "line": 1,
-            "column": 12
-          }
-        }
-      },
-      "range": [
-        0,
-        13
-      ],
+      "start": 0,
+      "end": 13,
       "loc": {
         "start": {
           "line": 1,
@@ -35,70 +27,30 @@
           "line": 1,
           "column": 13
         }
+      },
+      "expression": {
+        "type": "Literal",
+        "start": 0,
+        "end": 12,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        },
+        "value": "use strict",
+        "rawValue": "use strict",
+        "raw": "'use strict'"
       }
     },
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "AbstractBuilder",
-            "range": [
-              22,
-              37
-            ],
-            "loc": {
-              "start": {
-                "line": 3,
-                "column": 7
-              },
-              "end": {
-                "line": 3,
-                "column": 22
-              }
-            }
-          },
-          "range": [
-            22,
-            37
-          ],
-          "loc": {
-            "start": {
-              "line": 3,
-              "column": 7
-            },
-            "end": {
-              "line": 3,
-              "column": 22
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "./AbstractBuilder",
-        "raw": "\"./AbstractBuilder\"",
-        "range": [
-          43,
-          62
-        ],
-        "loc": {
-          "start": {
-            "line": 3,
-            "column": 28
-          },
-          "end": {
-            "line": 3,
-            "column": 47
-          }
-        }
-      },
-      "range": [
-        15,
-        63
-      ],
+      "start": 15,
+      "end": 63,
       "loc": {
         "start": {
           "line": 3,
@@ -108,70 +60,64 @@
           "line": 3,
           "column": 48
         }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 22,
+          "end": 37,
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 22
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 22,
+            "end": 37,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 22
+              }
+            },
+            "name": "AbstractBuilder"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 43,
+        "end": 62,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 28
+          },
+          "end": {
+            "line": 3,
+            "column": 47
+          }
+        },
+        "value": "./AbstractBuilder",
+        "rawValue": "./AbstractBuilder",
+        "raw": "\"./AbstractBuilder\""
       }
     },
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "FieldBuilder",
-            "range": [
-              71,
-              83
-            ],
-            "loc": {
-              "start": {
-                "line": 4,
-                "column": 7
-              },
-              "end": {
-                "line": 4,
-                "column": 19
-              }
-            }
-          },
-          "range": [
-            71,
-            83
-          ],
-          "loc": {
-            "start": {
-              "line": 4,
-              "column": 7
-            },
-            "end": {
-              "line": 4,
-              "column": 19
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "./FieldBuilder",
-        "raw": "\"./FieldBuilder\"",
-        "range": [
-          89,
-          105
-        ],
-        "loc": {
-          "start": {
-            "line": 4,
-            "column": 25
-          },
-          "end": {
-            "line": 4,
-            "column": 41
-          }
-        }
-      },
-      "range": [
-        64,
-        106
-      ],
+      "start": 64,
+      "end": 106,
       "loc": {
         "start": {
           "line": 4,
@@ -181,70 +127,64 @@
           "line": 4,
           "column": 42
         }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 71,
+          "end": 83,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 7
+            },
+            "end": {
+              "line": 4,
+              "column": 19
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 71,
+            "end": 83,
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 7
+              },
+              "end": {
+                "line": 4,
+                "column": 19
+              }
+            },
+            "name": "FieldBuilder"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 89,
+        "end": 105,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 25
+          },
+          "end": {
+            "line": 4,
+            "column": 41
+          }
+        },
+        "value": "./FieldBuilder",
+        "rawValue": "./FieldBuilder",
+        "raw": "\"./FieldBuilder\""
       }
     },
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "AttachmentBuilder",
-            "range": [
-              114,
-              131
-            ],
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 7
-              },
-              "end": {
-                "line": 5,
-                "column": 24
-              }
-            }
-          },
-          "range": [
-            114,
-            131
-          ],
-          "loc": {
-            "start": {
-              "line": 5,
-              "column": 7
-            },
-            "end": {
-              "line": 5,
-              "column": 24
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "./AttachmentBuilder",
-        "raw": "\"./AttachmentBuilder\"",
-        "range": [
-          137,
-          158
-        ],
-        "loc": {
-          "start": {
-            "line": 5,
-            "column": 30
-          },
-          "end": {
-            "line": 5,
-            "column": 51
-          }
-        }
-      },
-      "range": [
-        107,
-        159
-      ],
+      "start": 107,
+      "end": 159,
       "loc": {
         "start": {
           "line": 5,
@@ -254,35 +194,79 @@
           "line": 5,
           "column": 52
         }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 114,
+          "end": 131,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 24
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 114,
+            "end": 131,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 7
+              },
+              "end": {
+                "line": 5,
+                "column": 24
+              }
+            },
+            "name": "AttachmentBuilder"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 137,
+        "end": 158,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 30
+          },
+          "end": {
+            "line": 5,
+            "column": 51
+          }
+        },
+        "value": "./AttachmentBuilder",
+        "rawValue": "./AttachmentBuilder",
+        "raw": "\"./AttachmentBuilder\""
       }
     },
     {
       "type": "ImportDeclaration",
+      "start": 160,
+      "end": 216,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 56
+        }
+      },
       "specifiers": [
         {
           "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "NotificationBuilder",
-            "range": [
-              167,
-              186
-            ],
-            "loc": {
-              "start": {
-                "line": 6,
-                "column": 7
-              },
-              "end": {
-                "line": 6,
-                "column": 26
-              }
-            }
-          },
-          "range": [
-            167,
-            186
-          ],
+          "start": 167,
+          "end": 186,
           "loc": {
             "start": {
               "line": 6,
@@ -292,70 +276,64 @@
               "line": 6,
               "column": 26
             }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 167,
+            "end": 186,
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 7
+              },
+              "end": {
+                "line": 6,
+                "column": 26
+              }
+            },
+            "name": "NotificationBuilder"
           }
         }
       ],
+      "importKind": "value",
       "source": {
         "type": "Literal",
+        "start": 192,
+        "end": 215,
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 32
+          },
+          "end": {
+            "line": 6,
+            "column": 55
+          }
+        },
         "value": "./NotificationBuilder",
-        "raw": "\"./NotificationBuilder\"",
-        "range": [
-          192,
-          215
-        ],
-        "loc": {
-          "start": {
-            "line": 6,
-            "column": 32
-          },
-          "end": {
-            "line": 6,
-            "column": 55
-          }
-        }
-      },
-      "range": [
-        160,
-        216
-      ],
-      "loc": {
-        "start": {
-          "line": 6,
-          "column": 0
-        },
-        "end": {
-          "line": 6,
-          "column": 56
-        }
+        "rawValue": "./NotificationBuilder",
+        "raw": "\"./NotificationBuilder\""
       }
     },
     {
       "type": "ImportDeclaration",
+      "start": 217,
+      "end": 273,
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 56
+        }
+      },
       "specifiers": [
         {
           "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "NotificationService",
-            "range": [
-              224,
-              243
-            ],
-            "loc": {
-              "start": {
-                "line": 7,
-                "column": 7
-              },
-              "end": {
-                "line": 7,
-                "column": 26
-              }
-            }
-          },
-          "range": [
-            224,
-            243
-          ],
+          "start": 224,
+          "end": 243,
           "loc": {
             "start": {
               "line": 7,
@@ -365,17 +343,30 @@
               "line": 7,
               "column": 26
             }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 224,
+            "end": 243,
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 7
+              },
+              "end": {
+                "line": 7,
+                "column": 26
+              }
+            },
+            "name": "NotificationService"
           }
         }
       ],
+      "importKind": "value",
       "source": {
         "type": "Literal",
-        "value": "./NotificationService",
-        "raw": "\"./NotificationService\"",
-        "range": [
-          249,
-          272
-        ],
+        "start": 249,
+        "end": 272,
         "loc": {
           "start": {
             "line": 7,
@@ -385,85 +376,16 @@
             "line": 7,
             "column": 55
           }
-        }
-      },
-      "range": [
-        217,
-        273
-      ],
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 0
         },
-        "end": {
-          "line": 7,
-          "column": 56
-        }
+        "value": "./NotificationService",
+        "rawValue": "./NotificationService",
+        "raw": "\"./NotificationService\""
       }
     },
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "NotificationTemplate",
-            "range": [
-              281,
-              301
-            ],
-            "loc": {
-              "start": {
-                "line": 8,
-                "column": 7
-              },
-              "end": {
-                "line": 8,
-                "column": 27
-              }
-            }
-          },
-          "range": [
-            281,
-            301
-          ],
-          "loc": {
-            "start": {
-              "line": 8,
-              "column": 7
-            },
-            "end": {
-              "line": 8,
-              "column": 27
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "./NotificationTemplate",
-        "raw": "\"./NotificationTemplate\"",
-        "range": [
-          307,
-          331
-        ],
-        "loc": {
-          "start": {
-            "line": 8,
-            "column": 33
-          },
-          "end": {
-            "line": 8,
-            "column": 57
-          }
-        }
-      },
-      "range": [
-        274,
-        332
-      ],
+      "start": 274,
+      "end": 332,
       "loc": {
         "start": {
           "line": 8,
@@ -473,70 +395,64 @@
           "line": 8,
           "column": 58
         }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 281,
+          "end": 301,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 7
+            },
+            "end": {
+              "line": 8,
+              "column": 27
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 281,
+            "end": 301,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 7
+              },
+              "end": {
+                "line": 8,
+                "column": 27
+              }
+            },
+            "name": "NotificationTemplate"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 307,
+        "end": 331,
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 33
+          },
+          "end": {
+            "line": 8,
+            "column": 57
+          }
+        },
+        "value": "./NotificationTemplate",
+        "rawValue": "./NotificationTemplate",
+        "raw": "\"./NotificationTemplate\""
       }
     },
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "InlineNotificationTemplate",
-            "range": [
-              340,
-              366
-            ],
-            "loc": {
-              "start": {
-                "line": 9,
-                "column": 7
-              },
-              "end": {
-                "line": 9,
-                "column": 33
-              }
-            }
-          },
-          "range": [
-            340,
-            366
-          ],
-          "loc": {
-            "start": {
-              "line": 9,
-              "column": 7
-            },
-            "end": {
-              "line": 9,
-              "column": 33
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "./InlineNotificationTemplate",
-        "raw": "\"./InlineNotificationTemplate\"",
-        "range": [
-          372,
-          402
-        ],
-        "loc": {
-          "start": {
-            "line": 9,
-            "column": 39
-          },
-          "end": {
-            "line": 9,
-            "column": 69
-          }
-        }
-      },
-      "range": [
-        333,
-        403
-      ],
+      "start": 333,
+      "end": 403,
       "loc": {
         "start": {
           "line": 9,
@@ -546,70 +462,64 @@
           "line": 9,
           "column": 70
         }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 340,
+          "end": 366,
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 7
+            },
+            "end": {
+              "line": 9,
+              "column": 33
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 340,
+            "end": 366,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 7
+              },
+              "end": {
+                "line": 9,
+                "column": 33
+              }
+            },
+            "name": "InlineNotificationTemplate"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 372,
+        "end": 402,
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 39
+          },
+          "end": {
+            "line": 9,
+            "column": 69
+          }
+        },
+        "value": "./InlineNotificationTemplate",
+        "rawValue": "./InlineNotificationTemplate",
+        "raw": "\"./InlineNotificationTemplate\""
       }
     },
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "UserNotificationTemplate",
-            "range": [
-              411,
-              435
-            ],
-            "loc": {
-              "start": {
-                "line": 10,
-                "column": 7
-              },
-              "end": {
-                "line": 10,
-                "column": 31
-              }
-            }
-          },
-          "range": [
-            411,
-            435
-          ],
-          "loc": {
-            "start": {
-              "line": 10,
-              "column": 7
-            },
-            "end": {
-              "line": 10,
-              "column": 31
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "./UserNotificationTemplate",
-        "raw": "\"./UserNotificationTemplate\"",
-        "range": [
-          441,
-          469
-        ],
-        "loc": {
-          "start": {
-            "line": 10,
-            "column": 37
-          },
-          "end": {
-            "line": 10,
-            "column": 65
-          }
-        }
-      },
-      "range": [
-        404,
-        470
-      ],
+      "start": 404,
+      "end": 470,
       "loc": {
         "start": {
           "line": 10,
@@ -619,71 +529,64 @@
           "line": 10,
           "column": 66
         }
-      }
-    },
-    {
-      "type": "ExportNamedDeclaration",
-      "declaration": null,
+      },
       "specifiers": [
         {
-          "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "AbstractBuilder",
-            "range": [
-              480,
-              495
-            ],
-            "loc": {
-              "start": {
-                "line": 12,
-                "column": 8
-              },
-              "end": {
-                "line": 12,
-                "column": 23
-              }
+          "type": "ImportDefaultSpecifier",
+          "start": 411,
+          "end": 435,
+          "loc": {
+            "start": {
+              "line": 10,
+              "column": 7
+            },
+            "end": {
+              "line": 10,
+              "column": 31
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "AbstractBuilder",
-            "range": [
-              480,
-              495
-            ],
+            "start": 411,
+            "end": 435,
             "loc": {
               "start": {
-                "line": 12,
-                "column": 8
+                "line": 10,
+                "column": 7
               },
               "end": {
-                "line": 12,
-                "column": 23
+                "line": 10,
+                "column": 31
               }
-            }
-          },
-          "range": [
-            480,
-            495
-          ],
-          "loc": {
-            "start": {
-              "line": 12,
-              "column": 8
             },
-            "end": {
-              "line": 12,
-              "column": 23
-            }
+            "name": "UserNotificationTemplate"
           }
         }
       ],
-      "source": null,
-      "range": [
-        472,
-        497
-      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 441,
+        "end": 469,
+        "loc": {
+          "start": {
+            "line": 10,
+            "column": 37
+          },
+          "end": {
+            "line": 10,
+            "column": 65
+          }
+        },
+        "value": "./UserNotificationTemplate",
+        "rawValue": "./UserNotificationTemplate",
+        "raw": "\"./UserNotificationTemplate\""
+      }
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 472,
+      "end": 497,
       "loc": {
         "start": {
           "line": 12,
@@ -693,71 +596,63 @@
           "line": 12,
           "column": 25
         }
-      }
-    },
-    {
-      "type": "ExportNamedDeclaration",
+      },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "FieldBuilder",
-            "range": [
-              506,
-              518
-            ],
-            "loc": {
-              "start": {
-                "line": 13,
-                "column": 8
-              },
-              "end": {
-                "line": 13,
-                "column": 20
-              }
+          "start": 480,
+          "end": 495,
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 8
+            },
+            "end": {
+              "line": 12,
+              "column": 23
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "FieldBuilder",
-            "range": [
-              506,
-              518
-            ],
+            "start": 480,
+            "end": 495,
             "loc": {
               "start": {
-                "line": 13,
+                "line": 12,
                 "column": 8
               },
               "end": {
-                "line": 13,
-                "column": 20
+                "line": 12,
+                "column": 23
               }
-            }
-          },
-          "range": [
-            506,
-            518
-          ],
-          "loc": {
-            "start": {
-              "line": 13,
-              "column": 8
             },
-            "end": {
-              "line": 13,
-              "column": 20
-            }
+            "name": "AbstractBuilder"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 480,
+            "end": 495,
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 8
+              },
+              "end": {
+                "line": 12,
+                "column": 23
+              }
+            },
+            "name": "AbstractBuilder"
           }
         }
       ],
-      "source": null,
-      "range": [
-        498,
-        520
-      ],
+      "source": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 498,
+      "end": 520,
       "loc": {
         "start": {
           "line": 13,
@@ -767,71 +662,63 @@
           "line": 13,
           "column": 22
         }
-      }
-    },
-    {
-      "type": "ExportNamedDeclaration",
+      },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "AttachmentBuilder",
-            "range": [
-              529,
-              546
-            ],
-            "loc": {
-              "start": {
-                "line": 14,
-                "column": 8
-              },
-              "end": {
-                "line": 14,
-                "column": 25
-              }
+          "start": 506,
+          "end": 518,
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 8
+            },
+            "end": {
+              "line": 13,
+              "column": 20
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "AttachmentBuilder",
-            "range": [
-              529,
-              546
-            ],
+            "start": 506,
+            "end": 518,
             "loc": {
               "start": {
-                "line": 14,
+                "line": 13,
                 "column": 8
               },
               "end": {
-                "line": 14,
-                "column": 25
+                "line": 13,
+                "column": 20
               }
-            }
-          },
-          "range": [
-            529,
-            546
-          ],
-          "loc": {
-            "start": {
-              "line": 14,
-              "column": 8
             },
-            "end": {
-              "line": 14,
-              "column": 25
-            }
+            "name": "FieldBuilder"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 506,
+            "end": 518,
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 8
+              },
+              "end": {
+                "line": 13,
+                "column": 20
+              }
+            },
+            "name": "FieldBuilder"
           }
         }
       ],
-      "source": null,
-      "range": [
-        521,
-        548
-      ],
+      "source": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 521,
+      "end": 548,
       "loc": {
         "start": {
           "line": 14,
@@ -841,71 +728,63 @@
           "line": 14,
           "column": 27
         }
-      }
-    },
-    {
-      "type": "ExportNamedDeclaration",
+      },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "NotificationBuilder",
-            "range": [
-              557,
-              576
-            ],
-            "loc": {
-              "start": {
-                "line": 15,
-                "column": 8
-              },
-              "end": {
-                "line": 15,
-                "column": 27
-              }
+          "start": 529,
+          "end": 546,
+          "loc": {
+            "start": {
+              "line": 14,
+              "column": 8
+            },
+            "end": {
+              "line": 14,
+              "column": 25
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "NotificationBuilder",
-            "range": [
-              557,
-              576
-            ],
+            "start": 529,
+            "end": 546,
             "loc": {
               "start": {
-                "line": 15,
+                "line": 14,
                 "column": 8
               },
               "end": {
-                "line": 15,
-                "column": 27
+                "line": 14,
+                "column": 25
               }
-            }
-          },
-          "range": [
-            557,
-            576
-          ],
-          "loc": {
-            "start": {
-              "line": 15,
-              "column": 8
             },
-            "end": {
-              "line": 15,
-              "column": 27
-            }
+            "name": "AttachmentBuilder"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 529,
+            "end": 546,
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 8
+              },
+              "end": {
+                "line": 14,
+                "column": 25
+              }
+            },
+            "name": "AttachmentBuilder"
           }
         }
       ],
-      "source": null,
-      "range": [
-        549,
-        578
-      ],
+      "source": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 549,
+      "end": 578,
       "loc": {
         "start": {
           "line": 15,
@@ -915,71 +794,63 @@
           "line": 15,
           "column": 29
         }
-      }
-    },
-    {
-      "type": "ExportNamedDeclaration",
+      },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "NotificationTemplate",
-            "range": [
-              587,
-              607
-            ],
-            "loc": {
-              "start": {
-                "line": 16,
-                "column": 8
-              },
-              "end": {
-                "line": 16,
-                "column": 28
-              }
+          "start": 557,
+          "end": 576,
+          "loc": {
+            "start": {
+              "line": 15,
+              "column": 8
+            },
+            "end": {
+              "line": 15,
+              "column": 27
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "NotificationTemplate",
-            "range": [
-              587,
-              607
-            ],
+            "start": 557,
+            "end": 576,
             "loc": {
               "start": {
-                "line": 16,
+                "line": 15,
                 "column": 8
               },
               "end": {
-                "line": 16,
-                "column": 28
+                "line": 15,
+                "column": 27
               }
-            }
-          },
-          "range": [
-            587,
-            607
-          ],
-          "loc": {
-            "start": {
-              "line": 16,
-              "column": 8
             },
-            "end": {
-              "line": 16,
-              "column": 28
-            }
+            "name": "NotificationBuilder"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 557,
+            "end": 576,
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 8
+              },
+              "end": {
+                "line": 15,
+                "column": 27
+              }
+            },
+            "name": "NotificationBuilder"
           }
         }
       ],
-      "source": null,
-      "range": [
-        579,
-        609
-      ],
+      "source": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 579,
+      "end": 609,
       "loc": {
         "start": {
           "line": 16,
@@ -989,71 +860,63 @@
           "line": 16,
           "column": 30
         }
-      }
-    },
-    {
-      "type": "ExportNamedDeclaration",
+      },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "NotificationService",
-            "range": [
-              618,
-              637
-            ],
-            "loc": {
-              "start": {
-                "line": 17,
-                "column": 8
-              },
-              "end": {
-                "line": 17,
-                "column": 27
-              }
+          "start": 587,
+          "end": 607,
+          "loc": {
+            "start": {
+              "line": 16,
+              "column": 8
+            },
+            "end": {
+              "line": 16,
+              "column": 28
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "NotificationService",
-            "range": [
-              618,
-              637
-            ],
+            "start": 587,
+            "end": 607,
             "loc": {
               "start": {
-                "line": 17,
+                "line": 16,
                 "column": 8
               },
               "end": {
-                "line": 17,
-                "column": 27
+                "line": 16,
+                "column": 28
               }
-            }
-          },
-          "range": [
-            618,
-            637
-          ],
-          "loc": {
-            "start": {
-              "line": 17,
-              "column": 8
             },
-            "end": {
-              "line": 17,
-              "column": 27
-            }
+            "name": "NotificationTemplate"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 587,
+            "end": 607,
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 8
+              },
+              "end": {
+                "line": 16,
+                "column": 28
+              }
+            },
+            "name": "NotificationTemplate"
           }
         }
       ],
-      "source": null,
-      "range": [
-        610,
-        639
-      ],
+      "source": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 610,
+      "end": 639,
       "loc": {
         "start": {
           "line": 17,
@@ -1063,71 +926,63 @@
           "line": 17,
           "column": 29
         }
-      }
-    },
-    {
-      "type": "ExportNamedDeclaration",
+      },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "InlineNotificationTemplate",
-            "range": [
-              648,
-              674
-            ],
-            "loc": {
-              "start": {
-                "line": 18,
-                "column": 8
-              },
-              "end": {
-                "line": 18,
-                "column": 34
-              }
+          "start": 618,
+          "end": 637,
+          "loc": {
+            "start": {
+              "line": 17,
+              "column": 8
+            },
+            "end": {
+              "line": 17,
+              "column": 27
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "InlineNotificationTemplate",
-            "range": [
-              648,
-              674
-            ],
+            "start": 618,
+            "end": 637,
             "loc": {
               "start": {
-                "line": 18,
+                "line": 17,
                 "column": 8
               },
               "end": {
-                "line": 18,
-                "column": 34
+                "line": 17,
+                "column": 27
               }
-            }
-          },
-          "range": [
-            648,
-            674
-          ],
-          "loc": {
-            "start": {
-              "line": 18,
-              "column": 8
             },
-            "end": {
-              "line": 18,
-              "column": 34
-            }
+            "name": "NotificationService"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 618,
+            "end": 637,
+            "loc": {
+              "start": {
+                "line": 17,
+                "column": 8
+              },
+              "end": {
+                "line": 17,
+                "column": 27
+              }
+            },
+            "name": "NotificationService"
           }
         }
       ],
-      "source": null,
-      "range": [
-        640,
-        676
-      ],
+      "source": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 640,
+      "end": 676,
       "loc": {
         "start": {
           "line": 18,
@@ -1137,71 +992,63 @@
           "line": 18,
           "column": 36
         }
-      }
-    },
-    {
-      "type": "ExportNamedDeclaration",
+      },
       "declaration": null,
       "specifiers": [
         {
           "type": "ExportSpecifier",
-          "exported": {
-            "type": "Identifier",
-            "name": "UserNotificationTemplate",
-            "range": [
-              685,
-              709
-            ],
-            "loc": {
-              "start": {
-                "line": 19,
-                "column": 8
-              },
-              "end": {
-                "line": 19,
-                "column": 32
-              }
+          "start": 648,
+          "end": 674,
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 8
+            },
+            "end": {
+              "line": 18,
+              "column": 34
             }
           },
           "local": {
             "type": "Identifier",
-            "name": "UserNotificationTemplate",
-            "range": [
-              685,
-              709
-            ],
+            "start": 648,
+            "end": 674,
             "loc": {
               "start": {
-                "line": 19,
+                "line": 18,
                 "column": 8
               },
               "end": {
-                "line": 19,
-                "column": 32
+                "line": 18,
+                "column": 34
               }
-            }
-          },
-          "range": [
-            685,
-            709
-          ],
-          "loc": {
-            "start": {
-              "line": 19,
-              "column": 8
             },
-            "end": {
-              "line": 19,
-              "column": 32
-            }
+            "name": "InlineNotificationTemplate"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 648,
+            "end": 674,
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 8
+              },
+              "end": {
+                "line": 18,
+                "column": 34
+              }
+            },
+            "name": "InlineNotificationTemplate"
           }
         }
       ],
-      "source": null,
-      "range": [
-        677,
-        711
-      ],
+      "source": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "start": 677,
+      "end": 711,
       "loc": {
         "start": {
           "line": 19,
@@ -1211,474 +1058,77 @@
           "line": 19,
           "column": 34
         }
-      }
+      },
+      "declaration": null,
+      "specifiers": [
+        {
+          "type": "ExportSpecifier",
+          "start": 685,
+          "end": 709,
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 8
+            },
+            "end": {
+              "line": 19,
+              "column": 32
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 685,
+            "end": 709,
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 8
+              },
+              "end": {
+                "line": 19,
+                "column": 32
+              }
+            },
+            "name": "UserNotificationTemplate"
+          },
+          "exported": {
+            "type": "Identifier",
+            "start": 685,
+            "end": 709,
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 8
+              },
+              "end": {
+                "line": 19,
+                "column": 32
+              }
+            },
+            "name": "UserNotificationTemplate"
+          }
+        }
+      ],
+      "source": null
     },
     {
       "type": "ExportDefaultDeclaration",
+      "start": 713,
+      "end": 931,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 30,
+          "column": 2
+        }
+      },
       "declaration": {
         "type": "ObjectExpression",
-        "properties": [
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
-              "name": "AbstractBuilder",
-              "range": [
-                734,
-                749
-              ],
-              "loc": {
-                "start": {
-                  "line": 22,
-                  "column": 4
-                },
-                "end": {
-                  "line": 22,
-                  "column": 19
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "AbstractBuilder",
-              "range": [
-                734,
-                749
-              ],
-              "loc": {
-                "start": {
-                  "line": 22,
-                  "column": 4
-                },
-                "end": {
-                  "line": 22,
-                  "column": 19
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              734,
-              749
-            ],
-            "loc": {
-              "start": {
-                "line": 22,
-                "column": 4
-              },
-              "end": {
-                "line": 22,
-                "column": 19
-              }
-            }
-          },
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
-              "name": "FieldBuilder",
-              "range": [
-                755,
-                767
-              ],
-              "loc": {
-                "start": {
-                  "line": 23,
-                  "column": 4
-                },
-                "end": {
-                  "line": 23,
-                  "column": 16
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "FieldBuilder",
-              "range": [
-                755,
-                767
-              ],
-              "loc": {
-                "start": {
-                  "line": 23,
-                  "column": 4
-                },
-                "end": {
-                  "line": 23,
-                  "column": 16
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              755,
-              767
-            ],
-            "loc": {
-              "start": {
-                "line": 23,
-                "column": 4
-              },
-              "end": {
-                "line": 23,
-                "column": 16
-              }
-            }
-          },
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
-              "name": "AttachmentBuilder",
-              "range": [
-                773,
-                790
-              ],
-              "loc": {
-                "start": {
-                  "line": 24,
-                  "column": 4
-                },
-                "end": {
-                  "line": 24,
-                  "column": 21
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "AttachmentBuilder",
-              "range": [
-                773,
-                790
-              ],
-              "loc": {
-                "start": {
-                  "line": 24,
-                  "column": 4
-                },
-                "end": {
-                  "line": 24,
-                  "column": 21
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              773,
-              790
-            ],
-            "loc": {
-              "start": {
-                "line": 24,
-                "column": 4
-              },
-              "end": {
-                "line": 24,
-                "column": 21
-              }
-            }
-          },
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
-              "name": "NotificationBuilder",
-              "range": [
-                796,
-                815
-              ],
-              "loc": {
-                "start": {
-                  "line": 25,
-                  "column": 4
-                },
-                "end": {
-                  "line": 25,
-                  "column": 23
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "NotificationBuilder",
-              "range": [
-                796,
-                815
-              ],
-              "loc": {
-                "start": {
-                  "line": 25,
-                  "column": 4
-                },
-                "end": {
-                  "line": 25,
-                  "column": 23
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              796,
-              815
-            ],
-            "loc": {
-              "start": {
-                "line": 25,
-                "column": 4
-              },
-              "end": {
-                "line": 25,
-                "column": 23
-              }
-            }
-          },
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
-              "name": "NotificationTemplate",
-              "range": [
-                821,
-                841
-              ],
-              "loc": {
-                "start": {
-                  "line": 26,
-                  "column": 4
-                },
-                "end": {
-                  "line": 26,
-                  "column": 24
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "NotificationTemplate",
-              "range": [
-                821,
-                841
-              ],
-              "loc": {
-                "start": {
-                  "line": 26,
-                  "column": 4
-                },
-                "end": {
-                  "line": 26,
-                  "column": 24
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              821,
-              841
-            ],
-            "loc": {
-              "start": {
-                "line": 26,
-                "column": 4
-              },
-              "end": {
-                "line": 26,
-                "column": 24
-              }
-            }
-          },
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
-              "name": "NotificationService",
-              "range": [
-                847,
-                866
-              ],
-              "loc": {
-                "start": {
-                  "line": 27,
-                  "column": 4
-                },
-                "end": {
-                  "line": 27,
-                  "column": 23
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "NotificationService",
-              "range": [
-                847,
-                866
-              ],
-              "loc": {
-                "start": {
-                  "line": 27,
-                  "column": 4
-                },
-                "end": {
-                  "line": 27,
-                  "column": 23
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              847,
-              866
-            ],
-            "loc": {
-              "start": {
-                "line": 27,
-                "column": 4
-              },
-              "end": {
-                "line": 27,
-                "column": 23
-              }
-            }
-          },
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
-              "name": "InlineNotificationTemplate",
-              "range": [
-                872,
-                898
-              ],
-              "loc": {
-                "start": {
-                  "line": 28,
-                  "column": 4
-                },
-                "end": {
-                  "line": 28,
-                  "column": 30
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "InlineNotificationTemplate",
-              "range": [
-                872,
-                898
-              ],
-              "loc": {
-                "start": {
-                  "line": 28,
-                  "column": 4
-                },
-                "end": {
-                  "line": 28,
-                  "column": 30
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              872,
-              898
-            ],
-            "loc": {
-              "start": {
-                "line": 28,
-                "column": 4
-              },
-              "end": {
-                "line": 28,
-                "column": 30
-              }
-            }
-          },
-          {
-            "type": "Property",
-            "key": {
-              "type": "Identifier",
-              "name": "UserNotificationTemplate",
-              "range": [
-                904,
-                928
-              ],
-              "loc": {
-                "start": {
-                  "line": 29,
-                  "column": 4
-                },
-                "end": {
-                  "line": 29,
-                  "column": 28
-                }
-              }
-            },
-            "value": {
-              "type": "Identifier",
-              "name": "UserNotificationTemplate",
-              "range": [
-                904,
-                928
-              ],
-              "loc": {
-                "start": {
-                  "line": 29,
-                  "column": 4
-                },
-                "end": {
-                  "line": 29,
-                  "column": 28
-                }
-              }
-            },
-            "kind": "init",
-            "method": false,
-            "shorthand": true,
-            "computed": false,
-            "range": [
-              904,
-              928
-            ],
-            "loc": {
-              "start": {
-                "line": 29,
-                "column": 4
-              },
-              "end": {
-                "line": 29,
-                "column": 28
-              }
-            }
-          }
-        ],
-        "range": [
-          728,
-          930
-        ],
+        "start": 728,
+        "end": 930,
         "loc": {
           "start": {
             "line": 21,
@@ -1689,39 +1139,419 @@
             "column": 1
           }
         },
+        "properties": [
+          {
+            "type": "Property",
+            "start": 734,
+            "end": 749,
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 4
+              },
+              "end": {
+                "line": 22,
+                "column": 19
+              }
+            },
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 734,
+              "end": 749,
+              "loc": {
+                "start": {
+                  "line": 22,
+                  "column": 4
+                },
+                "end": {
+                  "line": 22,
+                  "column": 19
+                }
+              },
+              "name": "AbstractBuilder"
+            },
+            "kind": "init",
+            "value": {
+              "type": "Identifier",
+              "start": 734,
+              "end": 749,
+              "loc": {
+                "start": {
+                  "line": 22,
+                  "column": 4
+                },
+                "end": {
+                  "line": 22,
+                  "column": 19
+                }
+              },
+              "name": "AbstractBuilder"
+            }
+          },
+          {
+            "type": "Property",
+            "start": 755,
+            "end": 767,
+            "loc": {
+              "start": {
+                "line": 23,
+                "column": 4
+              },
+              "end": {
+                "line": 23,
+                "column": 16
+              }
+            },
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 755,
+              "end": 767,
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 4
+                },
+                "end": {
+                  "line": 23,
+                  "column": 16
+                }
+              },
+              "name": "FieldBuilder"
+            },
+            "kind": "init",
+            "value": {
+              "type": "Identifier",
+              "start": 755,
+              "end": 767,
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 4
+                },
+                "end": {
+                  "line": 23,
+                  "column": 16
+                }
+              },
+              "name": "FieldBuilder"
+            }
+          },
+          {
+            "type": "Property",
+            "start": 773,
+            "end": 790,
+            "loc": {
+              "start": {
+                "line": 24,
+                "column": 4
+              },
+              "end": {
+                "line": 24,
+                "column": 21
+              }
+            },
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 773,
+              "end": 790,
+              "loc": {
+                "start": {
+                  "line": 24,
+                  "column": 4
+                },
+                "end": {
+                  "line": 24,
+                  "column": 21
+                }
+              },
+              "name": "AttachmentBuilder"
+            },
+            "kind": "init",
+            "value": {
+              "type": "Identifier",
+              "start": 773,
+              "end": 790,
+              "loc": {
+                "start": {
+                  "line": 24,
+                  "column": 4
+                },
+                "end": {
+                  "line": 24,
+                  "column": 21
+                }
+              },
+              "name": "AttachmentBuilder"
+            }
+          },
+          {
+            "type": "Property",
+            "start": 796,
+            "end": 815,
+            "loc": {
+              "start": {
+                "line": 25,
+                "column": 4
+              },
+              "end": {
+                "line": 25,
+                "column": 23
+              }
+            },
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 796,
+              "end": 815,
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 23
+                }
+              },
+              "name": "NotificationBuilder"
+            },
+            "kind": "init",
+            "value": {
+              "type": "Identifier",
+              "start": 796,
+              "end": 815,
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 23
+                }
+              },
+              "name": "NotificationBuilder"
+            }
+          },
+          {
+            "type": "Property",
+            "start": 821,
+            "end": 841,
+            "loc": {
+              "start": {
+                "line": 26,
+                "column": 4
+              },
+              "end": {
+                "line": 26,
+                "column": 24
+              }
+            },
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 821,
+              "end": 841,
+              "loc": {
+                "start": {
+                  "line": 26,
+                  "column": 4
+                },
+                "end": {
+                  "line": 26,
+                  "column": 24
+                }
+              },
+              "name": "NotificationTemplate"
+            },
+            "kind": "init",
+            "value": {
+              "type": "Identifier",
+              "start": 821,
+              "end": 841,
+              "loc": {
+                "start": {
+                  "line": 26,
+                  "column": 4
+                },
+                "end": {
+                  "line": 26,
+                  "column": 24
+                }
+              },
+              "name": "NotificationTemplate"
+            }
+          },
+          {
+            "type": "Property",
+            "start": 847,
+            "end": 866,
+            "loc": {
+              "start": {
+                "line": 27,
+                "column": 4
+              },
+              "end": {
+                "line": 27,
+                "column": 23
+              }
+            },
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 847,
+              "end": 866,
+              "loc": {
+                "start": {
+                  "line": 27,
+                  "column": 4
+                },
+                "end": {
+                  "line": 27,
+                  "column": 23
+                }
+              },
+              "name": "NotificationService"
+            },
+            "kind": "init",
+            "value": {
+              "type": "Identifier",
+              "start": 847,
+              "end": 866,
+              "loc": {
+                "start": {
+                  "line": 27,
+                  "column": 4
+                },
+                "end": {
+                  "line": 27,
+                  "column": 23
+                }
+              },
+              "name": "NotificationService"
+            }
+          },
+          {
+            "type": "Property",
+            "start": 872,
+            "end": 898,
+            "loc": {
+              "start": {
+                "line": 28,
+                "column": 4
+              },
+              "end": {
+                "line": 28,
+                "column": 30
+              }
+            },
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 872,
+              "end": 898,
+              "loc": {
+                "start": {
+                  "line": 28,
+                  "column": 4
+                },
+                "end": {
+                  "line": 28,
+                  "column": 30
+                }
+              },
+              "name": "InlineNotificationTemplate"
+            },
+            "kind": "init",
+            "value": {
+              "type": "Identifier",
+              "start": 872,
+              "end": 898,
+              "loc": {
+                "start": {
+                  "line": 28,
+                  "column": 4
+                },
+                "end": {
+                  "line": 28,
+                  "column": 30
+                }
+              },
+              "name": "InlineNotificationTemplate"
+            }
+          },
+          {
+            "type": "Property",
+            "start": 904,
+            "end": 928,
+            "loc": {
+              "start": {
+                "line": 29,
+                "column": 4
+              },
+              "end": {
+                "line": 29,
+                "column": 28
+              }
+            },
+            "method": false,
+            "shorthand": true,
+            "computed": false,
+            "key": {
+              "type": "Identifier",
+              "start": 904,
+              "end": 928,
+              "loc": {
+                "start": {
+                  "line": 29,
+                  "column": 4
+                },
+                "end": {
+                  "line": 29,
+                  "column": 28
+                }
+              },
+              "name": "UserNotificationTemplate"
+            },
+            "kind": "init",
+            "value": {
+              "type": "Identifier",
+              "start": 904,
+              "end": 928,
+              "loc": {
+                "start": {
+                  "line": 29,
+                  "column": 4
+                },
+                "end": {
+                  "line": 29,
+                  "column": 28
+                }
+              },
+              "name": "UserNotificationTemplate"
+            }
+          }
+        ],
         "leadingComments": [],
         "trailingComments": []
-      },
-      "range": [
-        713,
-        931
-      ],
-      "loc": {
-        "start": {
-          "line": 21,
-          "column": 0
-        },
-        "end": {
-          "line": 30,
-          "column": 2
-        }
       }
     }
-  ],
-  "sourceType": "module",
-  "range": [
-    0,
-    931
-  ],
-  "loc": {
-    "start": {
-      "line": 1,
-      "column": 0
-    },
-    "end": {
-      "line": 30,
-      "column": 2
-    }
-  },
-  "comments": []
+  ]
 }

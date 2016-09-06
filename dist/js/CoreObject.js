@@ -22,6 +22,10 @@ var _Utility = require("./Utility");
 
 var _Utility2 = _interopRequireDefault(_Utility);
 
+var _winston = require("winston");
+
+var _winston2 = _interopRequireDefault(_winston);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29,6 +33,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Logger = _winston2.default.Logger;
 
 /**
  * This is the base class for all classes in our architecture.
@@ -44,25 +50,36 @@ var CoreObject = function (_Ember$Object) {
     function CoreObject(options) {
         _classCallCheck(this, CoreObject);
 
+        var logger = void 0;
+
         if (_Utility2.default.isNotExisting(options) || _Utility2.default.isObject(options)) {
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).apply(this, arguments));
+            var _this = _possibleConstructorReturn(this, (CoreObject.__proto__ || Object.getPrototypeOf(CoreObject)).apply(this, arguments));
+
+            logger = _Utility2.default.take(options, 'logger');
 
             _lodash2.default.merge(_this, options);
         } else {
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CoreObject).call(this, {}));
+            var _this = _possibleConstructorReturn(this, (CoreObject.__proto__ || Object.getPrototypeOf(CoreObject)).call(this, {}));
         }
+
+        _this._logger = logger || new Logger();
         return _possibleConstructorReturn(_this);
     }
 
     /**
-     *
-     * @param {string} key
-     * @returns {*|Object}
+     * @return {winston.Logger|Logger}
      */
 
 
     _createClass(CoreObject, [{
         key: "get",
+
+
+        /**
+         *
+         * @param {string} key
+         * @returns {*|Object}
+         */
         value: function get(key) {
             return _Ember2.default.get(this, key);
         }
@@ -115,6 +132,11 @@ var CoreObject = function (_Ember$Object) {
          * @returns {Class<CoreObject>}
          */
 
+    }, {
+        key: "logger",
+        get: function get() {
+            return this._logger;
+        }
     }], [{
         key: "toClass",
         value: function toClass() {

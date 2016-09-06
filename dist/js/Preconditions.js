@@ -43,7 +43,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //     constructor(expectedValue, actualValue, message, optionalCause) {
 //         super(message);
 //
-//         console.log('capture stack A');
 //
 //         this.name = 'PreconditionsError';
 //         // this.stack = error.stack;
@@ -84,7 +83,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @singleton
  * @class Preconditions
  */
-
 var Preconditions = function () {
     function Preconditions() {
         _classCallCheck(this, Preconditions);
@@ -366,6 +364,28 @@ var Preconditions = function () {
         }
 
         /**
+         * Less strict version of "shouldBeInstance"
+         *
+         * @param {*} object
+         * @param {*} clazz
+         * @param {String} [message]
+         * @return {*}
+         */
+
+    }, {
+        key: "shouldBeInstanceOf",
+        value: function shouldBeInstanceOf(object, clazz, message) {
+            Preconditions.shouldBeDefined(object, message);
+            Preconditions.shouldBeDefined(clazz, message);
+
+            if (object instanceof clazz) {
+                return object;
+            }
+
+            Preconditions.fail(true, false, message);
+        }
+
+        /**
          *
          * @param {*} object
          * @param {Class<CoreObject>|String} [classOrString]
@@ -453,6 +473,39 @@ var Preconditions = function () {
 
         /**
          *
+         * @param {String} string
+         * @param {RegExp} regexp
+         * @param {String} [message]
+         */
+
+    }, {
+        key: "shouldMatchRegexp",
+        value: function shouldMatchRegexp(string, regexp, message) {
+            Preconditions.shouldBeString(string, message);
+            Preconditions.shouldBeRegExp(regexp, message);
+
+            if (!string.match(regexp)) {
+                Preconditions.fail(true, false, message);
+            }
+
+            return string;
+        }
+
+        /**
+         *
+         * @param {RegExp} regexp
+         * @param {String} [message]
+         * @return {RegExp}
+         */
+
+    }, {
+        key: "shouldBeRegExp",
+        value: function shouldBeRegExp(regexp, message) {
+            return Preconditions.shouldBeType('regexp', regexp, message);
+        }
+
+        /**
+         *
          * @param {*} object
          * @param {AbstractError} [clazz]
          * @param {String} [message]
@@ -501,13 +554,29 @@ var Preconditions = function () {
     }, {
         key: "shouldBeTrue",
         value: function shouldBeTrue(boolean, message) {
-            Preconditions.shouldBeBoolean(boolean, message);
+            Preconditions.shouldBeBoolean(boolean, message || 'should be true');
 
             if (true === boolean) {
                 return boolean;
             }
 
             Preconditions.fail(boolean, true, message || 'was not true');
+        }
+
+        /**
+         * @param {*} target (pass this in exactly "new.target")
+         * @param {Class} clazz
+         * @return {*}
+         */
+
+    }, {
+        key: "shouldBeAbstract",
+        value: function shouldBeAbstract(target, clazz) {
+            if (new.target === clazz) {
+                _errors.Errors.throwMustBeAbstract(clazz);
+            }
+
+            return target;
         }
 
         /**
@@ -539,7 +608,7 @@ var Preconditions = function () {
     }, {
         key: "shouldBeBoolean",
         value: function shouldBeBoolean(boolean, message) {
-            Preconditions.shouldBeDefined(boolean);
+            Preconditions.shouldBeDefined(boolean, message || 'should be boolean');
 
             if (!_Utility2.default.isBoolean(boolean)) {
                 Preconditions.fail('boolean', boolean, message || 'was not boolean');

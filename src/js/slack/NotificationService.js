@@ -104,7 +104,7 @@ class NotificationService extends CoreObject {
         let promise = notificationTemplate.render(this.builder(), data);
 
         return promise
-            .then((builder) => {
+            .then((/** @type {NotificationBuilder}*/ builder) => {
                 Preconditions.shouldBeDefined(builder, 'No builder for ' + type);
 
                 if (!builder.url) {

@@ -131,8 +131,6 @@ class RateLimiter extends CoreObject {
         let momentAvailable = this.reserveEarliestAvailable(permits, nowMicros);
         let waitLength = Math.max(momentAvailable - nowMicros, 0);
 
-        console.log(`${this}.reserveAndGetWaitLength(${permits}, ${nowMicros}) ==> ${waitLength}`);
-        // Logger.debug(`${this}.reserveAndGetWaitLength(${permits}, ${nowMicros}) ==> ${waitLength}`);
 
         return waitLength;
     }

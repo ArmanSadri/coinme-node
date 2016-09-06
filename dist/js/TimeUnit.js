@@ -461,7 +461,6 @@ var TimeUnit = function (_CoreObject) {
     /**
      * @return {TimeUnit}
      */
-
     function TimeUnit(spec) {
         _classCallCheck(this, TimeUnit);
 
@@ -469,8 +468,7 @@ var TimeUnit = function (_CoreObject) {
          * @type {{unit: ChronoUnit, toString:function, equals:function, excessNanos:function, shortName:String, longName:String, toNumber:function}}
          * @private
          */
-
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TimeUnit).call(this));
+        var _this = _possibleConstructorReturn(this, (TimeUnit.__proto__ || Object.getPrototypeOf(TimeUnit)).call(this));
 
         _this.spec = spec;
         return _this;

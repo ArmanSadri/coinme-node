@@ -46,7 +46,7 @@ var AbstractBuilder = function (_CoreObject) {
     function AbstractBuilder() {
         _classCallCheck(this, AbstractBuilder);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractBuilder).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (AbstractBuilder.__proto__ || Object.getPrototypeOf(AbstractBuilder)).apply(this, arguments));
 
         _Utility2.default.defaults(_this, {
             name: _this.toClass().toString(),

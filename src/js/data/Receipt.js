@@ -9,7 +9,7 @@ import {Currency, USD, Money, Bitcoin} from "../money";
 import {Address} from "../Address";
 import Identity from "./Identity";
 
-//region EndpointType
+//region class EndpointType
 class EndpointType extends CoreObject {
 
     /**
@@ -50,8 +50,6 @@ class EndpointType extends CoreObject {
         }
 
         let address = Address.toAddressWithDefaultScheme(stringOrAddressOrUri, this.name);
-
-        console.log('thing', this.name, address);
 
         Preconditions.shouldBeInstance(address, Address, 'Wrong type');
 
@@ -151,6 +149,7 @@ let endpointTypes = {};
 endpointTypes[ENDPOINT_INSTANCE_WALLET.name] = ENDPOINT_INSTANCE_WALLET;
 endpointTypes[ENDPOINT_INSTANCE_KIOSK.name] = ENDPOINT_INSTANCE_KIOSK;
 
+//region class EndpointTypes
 class EndpointTypes {
 
     static types = endpointTypes;
@@ -191,7 +190,9 @@ class EndpointTypes {
         return type;
     }
 }
+//endregion
 
+//region class ReceiptEndpoint
 class ReceiptEndpoint extends CoreObject {
 
     //region fields
@@ -302,7 +303,9 @@ class ReceiptEndpoint extends CoreObject {
         });
     }
 }
+//endregion
 
+//region class Receipt
 class Receipt extends CoreObject {
 
     /**
@@ -390,7 +393,9 @@ class Receipt extends CoreObject {
         });
     }
 }
+//endregion
 
+//region class ReceiptBuilder (incomplete)
 class ReceiptBuilder extends CoreObject {
 
     constructor(options) {
@@ -412,6 +417,7 @@ class ReceiptBuilder extends CoreObject {
     }
 
 }
+//endregion
 
 export {KioskEndpointType};
 export {WalletEndpointType};

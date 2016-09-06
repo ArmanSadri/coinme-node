@@ -13,11 +13,6 @@ let VALIDATORS = {
     'general': function (address) {
         Preconditions.shouldBeInstance(address, Address);
 
-        let resource = address.resource;
-        let value = address.value;
-
-        console.log(resource, value);
-
         return !(Utility.isBlank(address.resource) || Utility.isBlank(address.value));
     },
 
@@ -251,8 +246,6 @@ class Address extends CoreObject {
 
             let protocol = stringOrAddressOrUri.substring(0, index);
             let rest = stringOrAddressOrUri.substring(index + 2);
-
-            console.log('test', stringOrAddressOrUri, protocol, rest);
 
             return new URI(protocol + "://" + rest);
         } else {

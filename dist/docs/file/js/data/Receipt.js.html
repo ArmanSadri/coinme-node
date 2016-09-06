@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/data/Receipt.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/coinme/coinme-node.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Environment.js~Environment.html">Environment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~RateLimiter.html">RateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothBurstyRateLimiter.html">SmoothBurstyRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothRateLimiter.html">SmoothRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html">SmoothWarmingUpRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Stopwatch.js~Stopwatch.html">Stopwatch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Ticker.js~Ticker.html">Ticker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/TimeUnit.js~TimeUnit.html">TimeUnit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">cache</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/Cache.js~Cache.html">Cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/LocalFileCache.js~LocalFileCache.html">LocalFileCache</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Adapter.js~Adapter.html">Adapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CachedResourceLoader.js~CachedResourceLoader.html">CachedResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~Certificate.html">Certificate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~CertificateBundle.html">CertificateBundle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Conversion.js~Conversion.html">Conversion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/DelegatedConverter.js~CoreObjectAdapter.html">CoreObjectAdapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/DelegatedConverter.js~DelegatedConverter.html">DelegatedConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/FileResourceLoader.js~FileResourceLoader.html">FileResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Identity.js~Identity.html">Identity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointType.html">EndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointTypes.html">EndpointTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~KioskEndpointType.html">KioskEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~Receipt.html">Receipt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptBuilder.html">ReceiptBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptEndpoint.html">ReceiptEndpoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~WalletEndpointType.html">WalletEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/ResourceLoader.js~ResourceLoader.html">ResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/SignTool.js~SignTool.html">SignTool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserExistenceToken.js~UserExistenceToken.html">UserExistenceToken</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/NotImplementedError.js~NotImplementedError.html">NotImplementedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/CurrencyAdapter.js~CurrencyAdapter.html">CurrencyAdapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Ethereum.js~Ethereum.html">Ethereum</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/MoneyConverter.js~MoneyConverter.html">MoneyConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">net</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClient.html">CoinmeWalletClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClientConfiguration.html">CoinmeWalletClientConfiguration</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/FieldBuilder.js~FieldBuilder.html">FieldBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html">InlineNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationBuilder.js~NotificationBuilder.html">NotificationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationService.js~NotificationService.html">NotificationService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationTemplate.js~NotificationTemplate.html">NotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html">UserNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notificationService">notificationService</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/data/Receipt.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import CoreObject from &quot;../CoreObject&quot;;
+import Preconditions from &quot;../Preconditions&quot;;
+import Utility from &quot;../Utility&quot;;
+import {NotImplementedError} from &quot;../errors/NotImplementedError&quot;;
+import {Instant} from &quot;js-joda/dist/js-joda&quot;;
+import {Currency, USD, Money, Bitcoin} from &quot;../money&quot;;
+import {Address} from &quot;../Address&quot;;
+import Identity from &quot;./Identity&quot;;
+
+//region class EndpointType
+class EndpointType extends CoreObject {
+
+    /**
+     *
+     * @param {String|Money} stringOrMoney
+     * @return {Money}
+     */
+    toMoney(stringOrMoney) {
+        if (!stringOrMoney) {
+            stringOrMoney = &apos;0&apos;;
+        }
+
+        Currency.shouldBeCurrency(this.currency);
+
+        let money = Currency.toMoney(stringOrMoney, this.currency);
+
+        let currencyClass1 = this.currency.toClass();
+        let currencyClass2 = money.currency.toClass();
+
+        Preconditions.shouldBeClass(currencyClass2, currencyClass1);
+
+        return money;
+    }
+
+    /**
+     *
+     * @param {String|Address|URI|ReceiptEndpoint} stringOrAddressOrUri
+     * @return {Address}
+     */
+    toAddress(stringOrAddressOrUri) {
+        if (stringOrAddressOrUri instanceof ReceiptEndpoint) {
+            /**
+             * @type {ReceiptEndpoint}
+             */
+            let endpoint = stringOrAddressOrUri;
+
+            return endpoint.address;
+        }
+
+        let address = Address.toAddressWithDefaultScheme(stringOrAddressOrUri, this.name);
+
+        Preconditions.shouldBeInstance(address, Address, &apos;Wrong type&apos;);
+
+        Preconditions.shouldBeTrue(
+            Utility.isStringEqualIgnoreCase(address.resource, this.name),
+            `Wrong resource type. Actual:${this.name} Expected:${address.resource}`);
+
+        Preconditions.shouldBeDefined(address.valid);
+        Preconditions.shouldBeTrue(address.valid, &apos;Address is not valid: &apos; + address);
+
+        return address;
+    }
+
+    toJson() {
+        return super.toJson({
+            currency: Utility.optString(this.currency),
+            name: this.name
+        });
+    }
+
+    /**
+     * @return {Class&lt;Currency&gt;}
+     */
+    get currency() {
+        throw new NotImplementedError(&apos;type&apos;);
+    }
+
+    /**
+     * @return {String}
+     */
+    get name() {
+        throw new NotImplementedError(&apos;type&apos;);
+    }
+}
+
+class KioskEndpointType extends EndpointType {
+
+    /**
+     * @return {Currency}
+     */
+    get currency() {
+        return USD;
+    }
+
+    /**
+     * @return {String}
+     */
+    get name() {
+        return &apos;kiosk&apos;
+    }
+
+    static create(options) {
+        let fee = Utility.take(options, &apos;fee&apos;, {
+            validator: function (value) {
+                Preconditions.shouldBeNumber(value, &apos;Must be number&apos;);
+                Preconditions.shouldBeTrue(value &lt; 1, &apos;Fee should be less than 1&apos;);
+
+                return value;
+            }
+        });
+
+        let id = Utility.take(options, &apos;id&apos;, {
+            type: &apos;String&apos;,
+            required: true
+        });
+
+        return new KioskEndpointType({
+            fee: fee,
+            id: id
+        });
+    }
+}
+
+class WalletEndpointType extends EndpointType {
+
+
+    /**
+     * @return {Class&lt;Currency&gt;|Currency}
+     */
+    get currency() {
+        return Bitcoin;
+    }
+
+    /**
+     * @return {String}
+     */
+    get name() {
+        return &apos;bitcoin&apos;;
+    }
+}
+//endregion
+
+let ENDPOINT_INSTANCE_KIOSK = new KioskEndpointType();
+let ENDPOINT_INSTANCE_WALLET = new WalletEndpointType();
+let endpointTypes = {};
+
+endpointTypes[ENDPOINT_INSTANCE_WALLET.name] = ENDPOINT_INSTANCE_WALLET;
+endpointTypes[ENDPOINT_INSTANCE_KIOSK.name] = ENDPOINT_INSTANCE_KIOSK;
+
+//region class EndpointTypes
+class EndpointTypes {
+
+    static types = endpointTypes;
+
+    /**
+     * @return {KioskEndpointType}
+     */
+    static get KIOSK() {
+        return ENDPOINT_INSTANCE_KIOSK;
+    }
+
+    /**
+     * @return {WalletEndpointType}
+     */
+    static get WALLET() {
+        return ENDPOINT_INSTANCE_WALLET;
+    }
+
+    /**
+     * @param {Address|String|EndpointType} nameOrInstance
+     * @return {EndpointType}
+     */
+    static getEndpointTypeOrFail(nameOrInstance) {
+        if (Address.isInstance(nameOrInstance)) {
+            nameOrInstance = Preconditions.shouldNotBeBlank(nameOrInstance.resource, `Name suspiciously blank ${nameOrInstance}`);
+        } else if (EndpointType.isInstance(nameOrInstance)) {
+            return nameOrInstance;
+        } else if (Utility.isString(nameOrInstance)) {
+
+        } else {
+            throw new NotImplementedError(`Cannot work with ${nameOrInstance}`);
+        }
+
+        let type = EndpointTypes.types[nameOrInstance];
+
+        Preconditions.shouldBeInstance(type, EndpointType, `EndpointType not found with name: &apos;${nameOrInstance}&apos;`);
+
+        return type;
+    }
+}
+//endregion
+
+//region class ReceiptEndpoint
+class ReceiptEndpoint extends CoreObject {
+
+    //region fields
+    /**
+     * @type {Money}
+     */
+    _amount;
+
+    /**
+     * @type {Money}
+     */
+    _fee;
+
+    /**
+     * @type {Address}
+     */
+    _address;
+
+    /**
+     * @type {EndpointType}
+     */
+    _type;
+
+    /**
+     * @type {Instant}
+     */
+    _timestamp;
+    //endregion
+
+    /**
+     *
+     * @param {Object} options
+     * @param {Address|String} options.address
+     * @param {Money|String|Number|Big|BigJsLibrary.BigJS} options.amount
+     * @param {Money|String|Number|Big|BigJsLibrary.BigJS} [options.fee]
+     * @param {Instant|String|Number} options.timestamp If number, is assumed to be millis.
+     */
+    constructor(options) {
+        /**
+         * @type {Address}
+         */
+        let address = Address.toAddress(Utility.take(options, &apos;address&apos;, {
+            type: Address,
+            required: true,
+            adapter: Address.toAddressWithDefaultScheme
+        }));
+
+        /**
+         * @type {Instant}
+         */
+        let timestamp = Utility.take(options, &apos;timestamp&apos;, {
+            required: true,
+            validator: function (value) {
+                return value instanceof Instant;
+            }
+        });
+
+        /**
+         * @type {Money}
+         */
+        let amount = Utility.take(options, &apos;amount&apos;, Money, true);
+
+        let fee = Utility.take(options, &apos;fee&apos;, Money, false);
+
+        super(...arguments);
+
+        this._type = EndpointTypes.getEndpointTypeOrFail(address);
+        this._address = address;
+        this._amount = this.type.toMoney(amount);
+        this._fee = this.type.toMoney(fee);
+        this._timestamp = Utility.toDateTime(timestamp);
+    }
+
+    /**
+     * @type {Address}
+     */
+    get address() {
+        return this._address;
+    }
+
+    /**
+     * @type {EndpointType}
+     */
+    get type() {
+        return this._type;
+    }
+
+    /**
+     * @type {Money}
+     */
+    get amount() {
+        return this._amount;
+    }
+
+    /**
+     * @return {Money}
+     */
+    get fee() {
+        return this._fee;
+    }
+
+    toJson() {
+        return super.toJson({
+            currency: Utility.optString(this.type.currency),
+            fee: Utility.optString(Money.optValue(this.fee)),
+            amount: Utility.optJson(Money.optValue(this.amount)),
+            address: Utility.optString(this.address),
+        });
+    }
+}
+//endregion
+
+//region class Receipt
+class Receipt extends CoreObject {
+
+    /**
+     * @type Instant
+     */
+    _timestamp;
+
+    /**
+     * @type {ReceiptEndpoint}
+     */
+    _source;
+
+    /**
+     * @type {ReceiptEndpoint}
+     */
+    _destination;
+
+    /**
+     * @type {Identity}
+     */
+    _identity;
+
+    /**
+     * @param {Object} options
+     * @param {ReceiptEndpoint} options.source
+     * @param {ReceiptEndpoint} options.destination
+     * @param {Instant} options.timestamp
+     */
+    constructor(options) {
+        let source = Utility.take(options, &apos;source&apos;, ReceiptEndpoint, true);
+        let destination = Utility.take(options, &apos;destination&apos;, ReceiptEndpoint, true);
+        let identity = Utility.take(options, &apos;identity&apos;, Identity, true);
+        let timestamp = Utility.take(options, &apos;timestamp&apos;, {
+            required: true,
+            adapter: function(value) {
+                return Utility.optInstant(Utility.optDateTime(value));
+            },
+            validator: function (value) {
+                return value instanceof Instant;
+            }
+        });
+
+        super(...arguments);
+
+        this._timestamp = timestamp;
+        this._source = source;
+        this._destination = destination;
+        this._identity = identity;
+    }
+
+    /**
+     * @return {Instant}
+     */
+    get timestamp() {
+        return this._timestamp;
+    }
+
+    /**
+     * @type {ReceiptEndpoint}
+     */
+    get source() {
+        return this._source;
+    }
+
+    /**
+     * @type {ReceiptEndpoint}
+     */
+    get destination() {
+        return this._destination;
+    }
+
+    /**
+     * @return {Identity}
+     */
+    get identity() {
+        return this._identity;
+    }
+
+    toJson() {
+        return super.toJson({
+            identity: Utility.optString(this.identity),
+            timestamp: Utility.optString(this.timestamp),
+            source: Utility.optJson(this.source),
+            destination: Utility.optJson(this.destination)
+        });
+    }
+}
+//endregion
+
+//region class ReceiptBuilder (incomplete)
+class ReceiptBuilder extends CoreObject {
+
+    constructor(options) {
+        super(...arguments);
+
+
+    }
+
+    from(kioskName, money) {
+
+    }
+
+    to() {
+
+    }
+
+    at() {
+
+    }
+
+}
+//endregion
+
+export {KioskEndpointType};
+export {WalletEndpointType};
+export {ReceiptBuilder};
+export {EndpointTypes};
+export {EndpointType};
+export {ReceiptEndpoint};
+export {Receipt};
+
+export default Receipt;
+
+
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.0-alpha)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

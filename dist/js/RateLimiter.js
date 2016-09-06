@@ -53,8 +53,7 @@ var RateLimiter = function (_CoreObject) {
          * @type {Stopwatch}
          * @private
          */
-
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(RateLimiter).call(this, options));
+        var _this = _possibleConstructorReturn(this, (RateLimiter.__proto__ || Object.getPrototypeOf(RateLimiter)).call(this, options));
 
         _this._stopwatch = new _Stopwatch2.default({ start: true });
 
@@ -128,9 +127,6 @@ var RateLimiter = function (_CoreObject) {
         value: function reserveAndGetWaitLength(permits, nowMicros) {
             var momentAvailable = this.reserveEarliestAvailable(permits, nowMicros);
             var waitLength = Math.max(momentAvailable - nowMicros, 0);
-
-            console.log(this + ".reserveAndGetWaitLength(" + permits + ", " + nowMicros + ") ==> " + waitLength);
-            // Logger.debug(`${this}.reserveAndGetWaitLength(${permits}, ${nowMicros}) ==> ${waitLength}`);
 
             return waitLength;
         }
@@ -317,8 +313,7 @@ var SmoothRateLimiter = function (_RateLimiter) {
         /**
          * The currently stored permits.
          */
-
-        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(SmoothRateLimiter).call(this, options));
+        var _this2 = _possibleConstructorReturn(this, (SmoothRateLimiter.__proto__ || Object.getPrototypeOf(SmoothRateLimiter)).call(this, options));
 
         _this2._storedPermits = 0;
 
@@ -456,7 +451,6 @@ var SmoothBurstyRateLimiter = function (_SmoothRateLimiter) {
      * @param {Number} options.maxBurstSeconds
      * @param {Stopwatch} [options.stopwatch]
      */
-
     function SmoothBurstyRateLimiter(options) {
         _classCallCheck(this, SmoothBurstyRateLimiter);
 
@@ -464,7 +458,7 @@ var SmoothBurstyRateLimiter = function (_SmoothRateLimiter) {
 
         // SleepingStopwatch stopwatch, double maxBurstSeconds
 
-        var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(SmoothBurstyRateLimiter).apply(this, arguments));
+        var _this3 = _possibleConstructorReturn(this, (SmoothBurstyRateLimiter.__proto__ || Object.getPrototypeOf(SmoothBurstyRateLimiter)).apply(this, arguments));
 
         _this3.maxBurstSeconds = maxBurstSeconds;
         return _this3;
@@ -524,7 +518,6 @@ var SmoothWarmingUpRateLimiter = function (_SmoothRateLimiter2) {
      * The slope of the line from the stable interval (when permits == 0), to the cold interval
      * (when permits == maxPermits)
      */
-
     function SmoothWarmingUpRateLimiter(options) {
         _classCallCheck(this, SmoothWarmingUpRateLimiter);
 
@@ -532,7 +525,7 @@ var SmoothWarmingUpRateLimiter = function (_SmoothRateLimiter2) {
         var timeUnit = _Utility2.default.take(options, 'timeUnit', _TimeUnit2.default, true);
         var warmupPeriod = _Utility2.default.take(options, 'warmupPeriod', 'number', true);
 
-        var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(SmoothWarmingUpRateLimiter).apply(this, arguments));
+        var _this4 = _possibleConstructorReturn(this, (SmoothWarmingUpRateLimiter.__proto__ || Object.getPrototypeOf(SmoothWarmingUpRateLimiter)).apply(this, arguments));
 
         _this4.warmupPeriodMicros = timeUnit.toMicros(warmupPeriod);
         return _this4;

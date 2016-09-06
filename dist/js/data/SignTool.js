@@ -31,27 +31,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * @class SignTool
+ */
 var SignTool = function (_CoreObject) {
     _inherits(SignTool, _CoreObject);
 
+    /**
+     *
+     * @param {Object} options
+     * @param {String} [options.secret]
+     * @param {String} [options.issuer]
+     */
     function SignTool(options) {
         _classCallCheck(this, SignTool);
 
-        var secret = _Utility2.default.take(options, 'secret', {
-            required: true,
-            type: 'string'
-        });
+        var secret = _Utility2.default.take(options, 'secret', 'string', false);
+        var issuer = _Utility2.default.take(options, 'issuer', 'string', false);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SignTool).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (SignTool.__proto__ || Object.getPrototypeOf(SignTool)).apply(this, arguments));
 
+        _this._issuer = issuer;
         _this._secret = secret;
         return _this;
     }
 
     /**
+     * @readonly
+     * @property
      * @type {String}
-     * @returns {String}
-     * @private
+     * @return {String}
      */
 
 
@@ -138,6 +147,7 @@ var SignTool = function (_CoreObject) {
          * @param {String} [options.issuer]
          * @param {String} [options.subject]
          * @param {String} [options.audience]
+         * @param {String} [options.secret]
          * @return {String} token
          * @static
          */
@@ -145,12 +155,25 @@ var SignTool = function (_CoreObject) {
     }, {
         key: "write",
         value: function write(object, options) {
-            var secret = this.secret;
+            var secret = _Utility2.default.defaultValue(options.secret, this.secret);
 
             _Preconditions2.default.shouldBeObject(object);
 
             return _jsonwebtoken2.default.sign(object, secret, options);
         }
+    }, {
+        key: "issuer",
+        get: function get() {
+            return this._issuer;
+        }
+
+        /**
+         * @readonly
+         * @property
+         * @type {String}
+         * @returns {String}
+         */
+
     }, {
         key: "secret",
         get: function get() {

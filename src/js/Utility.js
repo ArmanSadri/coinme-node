@@ -1,11 +1,17 @@
 'use strict';
 
 import Lodash from "lodash";
+/** @type {Preconditions} */
 import Preconditions from "~/Preconditions";
+/** @type {Ember} **/
 import Ember from "~/Ember";
 import CoreObject from "~/CoreObject";
 import {Errors} from "./errors";
 import Big from "big.js/big";
+import URI from "urijs";
+import Promise from "bluebird";
+import osenv from "osenv";
+
 import {
     Instant,
     LocalDate,
@@ -35,13 +41,54 @@ let EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
  */
 class Utility {
 
+    /**
+     *
+     * @param {URI|String|{baseUri:URI|String, uri:URI|String}} path
+     * @return {URI}
+     */
+    static getPath(path) {
+        const input = path;
+        let output;
+
+        if (Utility.isNotExisting(path)) {
+            output = undefined;
+        } else if (Utility.isString(path)) {
+            path = path.trim();
+
+            if (path.startsWith('~/')) {
+                path = path.substring(2);
+
+                output = URI.joinPaths(osenv.home(), path);
+            } else {
+                output = URI(path);
+            }
+        } else if (path instanceof URI) {
+            output = path;
+        } else if (path.uri || path.baseUri) {
+            let baseUri = Utility.getPath(path.baseUri) || '';
+            let uri = Utility.getPath(path.uri) || '';
+
+            if (uri.toString().startsWith('/')) {
+                // absolute uri
+                output = uri;
+            } else {
+                output = URI.joinPaths(baseUri, uri).toString();
+            }
+        }
+
+        if (output) {
+            return output;
+        }
+
+        throw new Error(`I don't know what to do here: ${input}`);
+    }
+
     static isTemporal(value) {
         // Direct Subclass:
         //     ChronoLocalDate, ChronoLocalDateTime, ChronoZonedDateTime, DateTimeBuilder, DayOfWeek, Instant, LocalTime, Month, MonthDay, src/format/DateTimeParseContext.js~Parsed, Year, YearMonth
         // Indirect Subclass:
         //     LocalDate, LocalDateTime, ZonedDateTime
 
-        // console.log(value);
         // console.log(value.toString());
         // console.log(value.prototype);
         // console.log(value.__proto__);
@@ -222,7 +269,7 @@ class Utility {
      *
      * @param {Object} object
      * @param {String|Object|Array} keyAsStringObjectArray
-     * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
+     * @param {String|Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
      * @param {Boolean} [requiredByDefault] Default value for required.
      * @throws PreconditionsError
      *
@@ -249,7 +296,7 @@ class Utility {
 
             if (fn) {
                 Preconditions.shouldBeFunction(fn, 'validator must be type of function');
-                Preconditions.shouldNotBeFalsey(fn.call(scope, value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
+                Preconditions.shouldBeTrue(false !== fn.call(scope, value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
             }
 
             return value;
@@ -267,6 +314,7 @@ class Utility {
         function executeAdapter(ruleset, key, value) {
             let fn = Lodash.get(ruleset, 'adapter');
             let scope = Lodash.get(ruleset, 'scope') || this;
+
 
             if (fn) {
                 Preconditions.shouldBeFunction(fn, 'Validator must be a function');
@@ -378,6 +426,10 @@ class Utility {
             optionalTypeDeclarationOrDefaults = null;
 
             Preconditions.shouldBeUndefined(requiredByDefault, 'You provided two booleans. That\'s strange.');
+        } else if (Utility.isString(optionalTypeDeclarationOrDefaults)) {
+            global_defaults = {
+                type: optionalTypeDeclarationOrDefaults
+            };
         }
 
         if (Utility.isBoolean(requiredByDefault)) {
@@ -1083,6 +1135,10 @@ class Utility {
      * @return {boolean}
      */
     static isBlank(stringOrArrayOrNumber) {
+        if (!stringOrArrayOrNumber) {
+            return true;
+        }
+
         if (Utility.isNotExisting(stringOrArrayOrNumber)) {
             return true;
         }
@@ -1093,7 +1149,7 @@ class Utility {
         }
 
         if (!('array' === type || 'string' === type || 'number' === type)) {
-            Preconditions.fail('type|array', type);
+            Preconditions.fail('type|array', type, `isBlank does not support ${type}`);
         }
 
         return Ember.isBlank(stringOrArrayOrNumber);
@@ -1403,6 +1459,22 @@ class Utility {
     }
 
     /**
+     * @param args
+     * @return value
+     */
+    static defaultValue(...args) {
+        let result = null;
+
+        Lodash.each(arguments, function (object) {
+            if (Utility.isDefined(object)) {
+                result = object;
+            }
+        });
+
+        return result;
+    }
+
+    /**
      * @returns {*|Object}
      */
     static defaultObject() {
@@ -1466,6 +1538,40 @@ class Utility {
         }
 
         return object;
+    }
+
+    /**
+     *
+     * @param {Object} object
+     * @param {String|Array} stringOrArray
+     * @param {String|Object} [defaults]
+     */
+    static get(object, stringOrArray, defaults) {
+        defaults = defaults || {};
+
+        let mode = Utility.isString(stringOrArray) ? 'single' : (Utility.isArray(stringOrArray) ? 'multiple' : 'error');
+
+        Preconditions.shouldBeTrue(mode != 'error', `I do not know what to do with ${stringOrArray}`);
+        Preconditions.shouldBeObject(object, 'target object must be object.');
+
+        if ('single' === mode) {
+            //noinspection UnnecessaryLocalVariableJS
+            let path = stringOrArray;
+
+            return Ember.getWithDefault(object, path, defaults);
+        } else if ('multiple' === mode) {
+            //noinspection UnnecessaryLocalVariableJS
+            let array = stringOrArray;
+            let result = Ember.getProperties(array);
+
+            if (Utility.isDefined(defaults)) {
+                return Utility.defaults(result, defaults);
+            } else {
+                return result;
+            }
+        }
+
+        throw new Error(`Not sure what to do here`);
     }
 
     /**

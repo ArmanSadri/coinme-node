@@ -20,8 +20,7 @@ import {ZonedDateTime} from 'js-joda';
 //     constructor(expectedValue, actualValue, message, optionalCause) {
 //         super(message);
 //
-//         console.log('capture stack A');
-//
+ //
 //         this.name = 'PreconditionsError';
 //         // this.stack = error.stack;
 //         this.cause = optionalCause;
@@ -291,6 +290,25 @@ export default class Preconditions {
     }
 
     /**
+     * Less strict version of "shouldBeInstance"
+     *
+     * @param {*} object
+     * @param {*} clazz
+     * @param {String} [message]
+     * @return {*}
+     */
+    static shouldBeInstanceOf(object, clazz, message) {
+        Preconditions.shouldBeDefined(object, message);
+        Preconditions.shouldBeDefined(clazz, message);
+
+        if (object instanceof clazz) {
+            return object;
+        }
+
+        Preconditions.fail(true, false, message);
+    }
+
+    /**
      *
      * @param {*} object
      * @param {Class<CoreObject>|String} [classOrString]
@@ -366,6 +384,33 @@ export default class Preconditions {
 
     /**
      *
+     * @param {String} string
+     * @param {RegExp} regexp
+     * @param {String} [message]
+     */
+    static shouldMatchRegexp(string, regexp, message) {
+        Preconditions.shouldBeString(string, message);
+        Preconditions.shouldBeRegExp(regexp, message);
+
+        if (!string.match(regexp)) {
+            Preconditions.fail(true, false, message);
+        }
+
+        return string;
+    }
+
+    /**
+     *
+     * @param {RegExp} regexp
+     * @param {String} [message]
+     * @return {RegExp}
+     */
+    static shouldBeRegExp(regexp, message) {
+        return Preconditions.shouldBeType('regexp', regexp, message);
+    }
+
+    /**
+     *
      * @param {*} object
      * @param {AbstractError} [clazz]
      * @param {String} [message]
@@ -405,13 +450,26 @@ export default class Preconditions {
      * @return {boolean}
      */
     static shouldBeTrue(boolean, message) {
-        Preconditions.shouldBeBoolean(boolean, message);
+        Preconditions.shouldBeBoolean(boolean, message || 'should be true');
 
         if (true === boolean) {
             return boolean;
         }
 
         Preconditions.fail(boolean, true, message || 'was not true');
+    }
+
+    /**
+     * @param {*} target (pass this in exactly "new.target")
+     * @param {Class} clazz
+     * @return {*}
+     */
+    static shouldBeAbstract(target, clazz) {
+        if (new.target === clazz) {
+            Errors.throwMustBeAbstract(clazz);
+        }
+
+        return target;
     }
 
     /**
@@ -437,7 +495,7 @@ export default class Preconditions {
      * @param {String} [message]
      */
     static shouldBeBoolean(boolean, message) {
-        Preconditions.shouldBeDefined(boolean);
+        Preconditions.shouldBeDefined(boolean, message || 'should be boolean');
 
         if (!Utility.isBoolean(boolean)) {
             Preconditions.fail('boolean', boolean, message || 'was not boolean');

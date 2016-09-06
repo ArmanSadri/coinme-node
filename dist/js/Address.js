@@ -47,11 +47,6 @@ var VALIDATORS = {
     'general': function general(address) {
         _Preconditions2.default.shouldBeInstance(address, Address);
 
-        var resource = address.resource;
-        var value = address.value;
-
-        console.log(resource, value);
-
         return !(_Utility2.default.isBlank(address.resource) || _Utility2.default.isBlank(address.value));
     },
 
@@ -84,7 +79,6 @@ var Address = function (_CoreObject) {
      * @param {Function} [options.validator]
      * @param {Boolean} [options.strict] Set to false to skip validation.
      */
-
     function Address(options) {
         _classCallCheck(this, Address);
 
@@ -114,7 +108,7 @@ var Address = function (_CoreObject) {
 
         _Preconditions2.default.shouldBeDefined(value, 'Cannot construct an empty Address.');
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Address).call(this, options));
+        var _this = _possibleConstructorReturn(this, (Address.__proto__ || Object.getPrototypeOf(Address)).call(this, options));
 
         _this._uri = Address.toUri(value);
         _this._validator = validator || VALIDATORS[_Utility2.default.toLowerCase(_this.resource)];
@@ -163,7 +157,7 @@ var Address = function (_CoreObject) {
     }, {
         key: "toJson",
         value: function toJson() {
-            return _get(Object.getPrototypeOf(Address.prototype), "toJson", this).call(this, {
+            return _get(Address.prototype.__proto__ || Object.getPrototypeOf(Address.prototype), "toJson", this).call(this, {
                 value: _Utility2.default.optString(this)
             });
         }
@@ -332,8 +326,6 @@ var Address = function (_CoreObject) {
 
                 var protocol = stringOrAddressOrUri.substring(0, index);
                 var rest = stringOrAddressOrUri.substring(index + 2);
-
-                console.log('test', stringOrAddressOrUri, protocol, rest);
 
                 return new _urijs2.default(protocol + "://" + rest);
             } else {

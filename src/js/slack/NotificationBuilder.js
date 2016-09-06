@@ -10,6 +10,10 @@ import AbstractBuilder from './AbstractBuilder';
 import AttachmentBuilder from './AttachmentBuilder';
 import Ember from '~/Ember';
 
+/**
+ * @class NotificationBuilder
+ * @extends AbstractBuilder
+ */
 class NotificationBuilder extends AbstractBuilder {
 
     /**

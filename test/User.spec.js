@@ -5,17 +5,17 @@
  * @see http://chaijs.com/api/assert/
  */
 import {expect, assert} from "chai";
-import Utility from "~/Utility";
-import Ember from "~/Ember";
-import Preconditions from "~/Preconditions";
-import Functions from "~/Functions";
-import UserBuilder from "~/data/UserBuilder";
-import CoreObject from "~/CoreObject";
-import {Errors, AbstractError, PreconditionsError} from "~/errors";
-import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
+import Utility from "../src/js/Utility";
+import Ember from "../src/js/Ember";
+import Preconditions from "../src/js/Preconditions";
+import Functions from "../src/js/Functions";
+import UserBuilder from "../src/js/data/UserBuilder";
+import CoreObject from "../src/js/CoreObject";
+import {Errors, AbstractError, PreconditionsError} from "../src/js/errors";
+import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "../src/js/money";
 import "source-map-support/register";
 
-// import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '~/slack';
+// import { NotificationService, NotificationBuilder, NotificationTemplate, InlineNotificationTemplate, UserNotificationTemplate } from '../src/js/slack';
 
 //sadf
 // Preconditions.shouldBe(function() { return true; }, 'expected', 'actual', 'message');

@@ -42,7 +42,6 @@ var Conversion = function (_CoreObject) {
      * @param {Stopwatch} options.stopwatch
      * @param {Converter} options.converter
      */
-
     function Conversion(options) {
         _classCallCheck(this, Conversion);
 
@@ -53,7 +52,7 @@ var Conversion = function (_CoreObject) {
         var converter = _Utility2.default.take(options, 'converter', _Converter2.default, true);
         var requestor = _Utility2.default.take(options, 'requestor');
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Conversion).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Conversion.__proto__ || Object.getPrototypeOf(Conversion)).apply(this, arguments));
 
         _this._input = input;
         _this._output = output;

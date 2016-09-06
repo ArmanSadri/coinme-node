@@ -7,6 +7,10 @@ Object.defineProperty(exports, "__esModule", {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+/** @type {Preconditions} */
+
+/** @type {Ember} **/
+
 
 var _lodash = require("lodash");
 
@@ -29,6 +33,18 @@ var _errors = require("./errors");
 var _big = require("big.js/big");
 
 var _big2 = _interopRequireDefault(_big);
+
+var _urijs = require("urijs");
+
+var _urijs2 = _interopRequireDefault(_urijs);
+
+var _bluebird = require("bluebird");
+
+var _bluebird2 = _interopRequireDefault(_bluebird);
+
+var _osenv = require("osenv");
+
+var _osenv2 = _interopRequireDefault(_osenv);
 
 var _jsJoda = require("js-joda");
 
@@ -97,6 +113,51 @@ var Utility = function () {
          */
 
     }], [{
+        key: "getPath",
+
+
+        /**
+         *
+         * @param {URI|String|{baseUri:URI|String, uri:URI|String}} path
+         * @return {URI}
+         */
+        value: function getPath(path) {
+            var input = path;
+            var output = void 0;
+
+            if (Utility.isNotExisting(path)) {
+                output = undefined;
+            } else if (Utility.isString(path)) {
+                path = path.trim();
+
+                if (path.startsWith('~/')) {
+                    path = path.substring(2);
+
+                    output = _urijs2.default.joinPaths(_osenv2.default.home(), path);
+                } else {
+                    output = (0, _urijs2.default)(path);
+                }
+            } else if (path instanceof _urijs2.default) {
+                output = path;
+            } else if (path.uri || path.baseUri) {
+                var baseUri = Utility.getPath(path.baseUri) || '';
+                var uri = Utility.getPath(path.uri) || '';
+
+                if (uri.toString().startsWith('/')) {
+                    // absolute uri
+                    output = uri;
+                } else {
+                    output = _urijs2.default.joinPaths(baseUri, uri).toString();
+                }
+            }
+
+            if (output) {
+                return output;
+            }
+
+            throw new Error("I don't know what to do here: " + input);
+        }
+    }, {
         key: "isTemporal",
         value: function isTemporal(value) {
             // Direct Subclass:
@@ -104,7 +165,6 @@ var Utility = function () {
             // Indirect Subclass:
             //     LocalDate, LocalDateTime, ZonedDateTime
 
-            // console.log(value);
             // console.log(value.toString());
             // console.log(value.prototype);
             // console.log(value.__proto__);
@@ -310,7 +370,7 @@ var Utility = function () {
          *
          * @param {Object} object
          * @param {String|Object|Array} keyAsStringObjectArray
-         * @param {Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
+         * @param {String|Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
          * @param {Boolean} [requiredByDefault] Default value for required.
          * @throws PreconditionsError
          *
@@ -340,7 +400,7 @@ var Utility = function () {
 
                 if (fn) {
                     _Preconditions2.default.shouldBeFunction(fn, 'validator must be type of function');
-                    _Preconditions2.default.shouldNotBeFalsey(fn.call(scope, value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
+                    _Preconditions2.default.shouldBeTrue(false !== fn.call(scope, value), 'Failed validation: {key:\'' + key + '\' value:\'' + value + '\'');
                 }
 
                 return value;
@@ -468,6 +528,10 @@ var Utility = function () {
                 optionalTypeDeclarationOrDefaults = null;
 
                 _Preconditions2.default.shouldBeUndefined(requiredByDefault, 'You provided two booleans. That\'s strange.');
+            } else if (Utility.isString(optionalTypeDeclarationOrDefaults)) {
+                global_defaults = {
+                    type: optionalTypeDeclarationOrDefaults
+                };
             }
 
             if (Utility.isBoolean(requiredByDefault)) {
@@ -587,18 +651,18 @@ var Utility = function () {
                                 //     ruleset = Lodash.defaults(ruleset, optionalTypeDeclarationOrDefaults);
                                 // }
                             } else if (Utility.isObject(rulesetOrObject)) {
-                                    /**
-                                     * @type {String}
-                                     */
-                                    key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
-                                    ruleset = rulesetOrObject;
-                                } else if (Utility.isFunction(rulesetOrObject)) {
-                                    ruleset = {
-                                        validator: rulesetOrObject
-                                    };
-                                } else {
-                                    throw new Error('Dont know what to do: ' + rulesetOrObject);
-                                }
+                                /**
+                                 * @type {String}
+                                 */
+                                key = _Preconditions2.default.shouldBeString(Utility.result(rulesetOrObject, 'key'), 'key not defined');
+                                ruleset = rulesetOrObject;
+                            } else if (Utility.isFunction(rulesetOrObject)) {
+                                ruleset = {
+                                    validator: rulesetOrObject
+                                };
+                            } else {
+                                throw new Error('Dont know what to do: ' + rulesetOrObject);
+                            }
                         } else if ('object' === mode) {
                             key = keyOrIndex;
 
@@ -961,7 +1025,7 @@ var Utility = function () {
     }, {
         key: "isPromise",
         value: function isPromise(object) {
-            return Promise.is(object);
+            return _bluebird2.default.is(object);
         }
 
         /**
@@ -1261,6 +1325,10 @@ var Utility = function () {
     }, {
         key: "isBlank",
         value: function isBlank(stringOrArrayOrNumber) {
+            if (!stringOrArrayOrNumber) {
+                return true;
+            }
+
             if (Utility.isNotExisting(stringOrArrayOrNumber)) {
                 return true;
             }
@@ -1271,7 +1339,7 @@ var Utility = function () {
             }
 
             if (!('array' === type || 'string' === type || 'number' === type)) {
-                _Preconditions2.default.fail('type|array', type);
+                _Preconditions2.default.fail('type|array', type, "isBlank does not support " + type);
             }
 
             return _Ember2.default.isBlank(stringOrArrayOrNumber);
@@ -1606,6 +1674,29 @@ var Utility = function () {
         }
 
         /**
+         * @param args
+         * @return value
+         */
+
+    }, {
+        key: "defaultValue",
+        value: function defaultValue() {
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+            }
+
+            var result = null;
+
+            _lodash2.default.each(arguments, function (object) {
+                if (Utility.isDefined(object)) {
+                    result = object;
+                }
+            });
+
+            return result;
+        }
+
+        /**
          * @returns {*|Object}
          */
 
@@ -1638,6 +1729,43 @@ var Utility = function () {
             }
 
             return object;
+        }
+
+        /**
+         *
+         * @param {Object} object
+         * @param {String|Array} stringOrArray
+         * @param {String|Object} [defaults]
+         */
+
+    }, {
+        key: "get",
+        value: function get(object, stringOrArray, defaults) {
+            defaults = defaults || {};
+
+            var mode = Utility.isString(stringOrArray) ? 'single' : Utility.isArray(stringOrArray) ? 'multiple' : 'error';
+
+            _Preconditions2.default.shouldBeTrue(mode != 'error', "I do not know what to do with " + stringOrArray);
+            _Preconditions2.default.shouldBeObject(object, 'target object must be object.');
+
+            if ('single' === mode) {
+                //noinspection UnnecessaryLocalVariableJS
+                var path = stringOrArray;
+
+                return _Ember2.default.getWithDefault(object, path, defaults);
+            } else if ('multiple' === mode) {
+                //noinspection UnnecessaryLocalVariableJS
+                var array = stringOrArray;
+                var result = _Ember2.default.getProperties(array);
+
+                if (Utility.isDefined(defaults)) {
+                    return Utility.defaults(result, defaults);
+                } else {
+                    return result;
+                }
+            }
+
+            throw new Error("Not sure what to do here");
         }
 
         /**

@@ -51,13 +51,11 @@ class Ticker {
     wait(value, timeUnit) {
         let scope = this;
 
-        console.log('wait!', value, timeUnit);
         return new Promise((resolve, reject) => {
             let numberOfNanos = TimeUnit.NANOSECONDS.convert(value, timeUnit);
 
             //.setTimeout(task, args, timeout, [callback])
             scope.timer.setTimeout(function() {
-                console.log('waited!', value, timeUnit);
 
                 resolve();
             }, null, numberOfNanos + 'n');

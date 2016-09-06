@@ -4,6 +4,9 @@ import Ember from "./Ember";
 import Lodash from "lodash";
 import Preconditions from "./Preconditions";
 import Utility from "./Utility";
+import winston from "winston";
+
+const Logger = winston.Logger;
 
 /**
  * This is the base class for all classes in our architecture.
@@ -15,13 +18,26 @@ import Utility from "./Utility";
 export default class CoreObject extends Ember.Object {
 
     constructor(options) {
+        let logger;
+
         if (Utility.isNotExisting(options) || Utility.isObject(options)) {
             super(...arguments);
+
+            logger = Utility.take(options, 'logger');
 
             Lodash.merge(this, options);
         } else {
             super({});
         }
+
+        this._logger = logger || new Logger();
+    }
+
+    /**
+     * @return {winston.Logger|Logger}
+     */
+    get logger() {
+        return this._logger;
     }
 
     /**

@@ -5,23 +5,42 @@ import Preconditions from "../Preconditions";
 import Utility from '../Utility';
 import CoreObject from '../CoreObject'
 
+/**
+ * @class SignTool
+ */
 class SignTool extends CoreObject {
 
+    /**
+     *
+     * @param {Object} options
+     * @param {String} [options.secret]
+     * @param {String} [options.issuer]
+     */
     constructor(options) {
-        let secret = Utility.take(options, 'secret', {
-            required: true,
-            type: 'string'
-        });
+        let secret = Utility.take(options, 'secret', 'string', false);
+        let issuer = Utility.take(options, 'issuer', 'string', false);
 
         super(...arguments);
 
+        this._issuer = issuer;
         this._secret = secret;
     }
 
     /**
+     * @readonly
+     * @property
+     * @type {String}
+     * @return {String}
+     */
+    get issuer() {
+        return this._issuer;
+    }
+
+    /**
+     * @readonly
+     * @property
      * @type {String}
      * @returns {String}
-     * @private
      */
     get secret() {
         return this._secret;
@@ -103,11 +122,12 @@ class SignTool extends CoreObject {
      * @param {String} [options.issuer]
      * @param {String} [options.subject]
      * @param {String} [options.audience]
+     * @param {String} [options.secret]
      * @return {String} token
      * @static
      */
     write(object, options) {
-        let secret = this.secret;
+        let secret = Utility.defaultValue(options.secret, this.secret);
 
         Preconditions.shouldBeObject(object);
 

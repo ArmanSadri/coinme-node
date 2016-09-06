@@ -66,7 +66,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * @class
  */
-
 var Currency = function (_CoreObject) {
     _inherits(Currency, _CoreObject);
 
@@ -74,7 +73,7 @@ var Currency = function (_CoreObject) {
         _classCallCheck(this, Currency);
 
         // if (this.constructor === Currency) {
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Currency).call(this));
+        var _this = _possibleConstructorReturn(this, (Currency.__proto__ || Object.getPrototypeOf(Currency)).call(this));
 
         throw new TypeError('Cannot construct Currency instances directly');
         // }

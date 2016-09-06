@@ -12,64 +12,7 @@ let defaults = {
 
 class Errors {
 
-    /**
-     *
-     * @param {function} errorFactory
-     * @param {*} value
-     * @param {*|Function} predicateFn
-     * @param {Object} [options]
-     * @param {String} [options.message]
-     * @param {Number} [options.statusCode]
-     * @param {Object|undefined} [options.properties]
-     * @returns {*}
-     */
-    static errorIf(errorFactory, value, predicateFn, options) {
-        Preconditions.shouldBeFunction(errorFactory);
-        Preconditions.shouldBeFunction(predicateFn);
-
-        if (!Utility.isNullOrUndefined(options)) {
-            Preconditions.shouldBeObject(options);
-        }
-
-        let result = predicateFn(value);
-
-        if (false === result || Utility.isNullOrUndefined(result)) {
-            return value;
-        } else {
-            result = Lodash.defaultsDeep(result, options || {}, defaults);
-
-            throw errorFactory(result.message, result.properties);
-        }
-    }
-
-    /**
-     *
-     * @param {*} value
-     * @param {*|Function} predicateFn
-     * @param {Object} [options]
-     * @param {String} [options.message]
-     * @param {Number} [options.statusCode]
-     * @param {Object|undefined} [options.properties]
-     * @returns {*}
-     */
-    static notFoundIf(value, predicateFn, options) {
-        this.errorIf(this.notFound, value, predicateFn, options);
-    }
-
-    /**
-     *
-     * @param {*} value
-     * @param {*|Function} predicateFn
-     * @param {Object} [options]
-     * @param {String} [options.message]
-     * @param {Number} [options.statusCode]
-     * @param {Object|undefined} [options.properties]
-     * @returns {*}
-     */
-    static badRequestIf(value, predicateFn, options) {
-        this.errorIf(this.badRequest, value, predicateFn, options);
-    }
-
+    //region detection
     /**
      * Determines if the given err object is an error class
      *
@@ -117,15 +60,17 @@ class Errors {
     static isHttpError(instanceOrClass) {
         return HttpError.isInstanceOrClass(instanceOrClass);
     }
+    //endregion
 
+    //region createInstance
     /**
      *
      * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} [messageOrSpecOrError]
      * @param {Object} [properties]
      * @return {Error}
      */
-    static badRequest(messageOrSpecOrError, properties) {
-        return Errors.httpError(400, messageOrSpecOrError, properties);
+    static createBadRequestInstance(messageOrSpecOrError, properties) {
+        return Errors.createHttpErrorInstance(400, messageOrSpecOrError, properties);
     }
 
     /**
@@ -133,8 +78,8 @@ class Errors {
      * @param {Object} [properties]
      * @return {Error}
      */
-    static notFound(messageOrSpecOrError, properties) {
-        return Errors.httpError(404, messageOrSpecOrError, properties);
+    static createNotFoundInstance(messageOrSpecOrError, properties) {
+        return Errors.createHttpErrorInstance(404, messageOrSpecOrError, properties);
     }
 
     /**
@@ -143,8 +88,17 @@ class Errors {
      * @param {Object} [properties]
      * @returns {Error}
      */
-    static serverError(messageOrSpecOrError, properties) {
-        return Errors.httpError(500, messageOrSpecOrError, properties);
+    static createServerErrorInstance(messageOrSpecOrError, properties) {
+        return Errors.createHttpErrorInstance(500, messageOrSpecOrError, properties);
+    }
+    /**
+     *
+     * @param {String} [message]
+     * @param {Object} [properties]
+     * @returns {Error}
+     */
+    static createForbiddenErrorInstance(message, properties) {
+        return Errors.createHttpErrorInstance(403, message, properties);
     }
 
     /**
@@ -154,7 +108,7 @@ class Errors {
      * @param {Object} [properties]
      * @return {Error}
      */
-    static httpError(statusCode, messageOrSpecOrError, properties) {
+    static createHttpErrorInstance(statusCode, messageOrSpecOrError, properties) {
         let stack = null;
         let message = null;
         let cause = null;
@@ -211,16 +165,7 @@ class Errors {
 
         return error;
     }
-
-    /**
-     *
-     * @param {String} [message]
-     * @param {Object} [properties]
-     * @returns {Error}
-     */
-    static forbidden(message, properties) {
-        return Errors.httpError(403, message, properties);
-    }
+    //endregion
 
     /**
      * @param {Error|AbstractError|null|undefined} error
@@ -255,6 +200,73 @@ class Errors {
         } else {
             return error.toJSON();
         }
+    }
+
+    /**
+     *
+     * @param {function} errorFactory
+     * @param {*} value
+     * @param {*|Function} predicateFn
+     * @param {Object} [options]
+     * @param {String} [options.message]
+     * @param {Number} [options.statusCode]
+     * @param {Object|undefined} [options.properties]
+     * @returns {*}
+     */
+    static throwErrorIf(errorFactory, value, predicateFn, options) {
+        Preconditions.shouldBeFunction(errorFactory);
+        Preconditions.shouldBeFunction(predicateFn);
+
+        if (!Utility.isNullOrUndefined(options)) {
+            Preconditions.shouldBeObject(options);
+        }
+
+        let result = predicateFn(value);
+
+        if (false === result || Utility.isNullOrUndefined(result)) {
+            return value;
+        } else {
+            result = Lodash.defaultsDeep(result, options || {}, defaults);
+
+            throw errorFactory(result.message, result.properties);
+        }
+    }
+
+    /**
+     *
+     * @param {*} value
+     * @param {*|Function} predicateFn
+     * @param {Object} [options]
+     * @param {String} [options.message]
+     * @param {Number} [options.statusCode]
+     * @param {Object|undefined} [options.properties]
+     * @returns {*}
+     */
+    static throwNotFoundIf(value, predicateFn, options) {
+        this.throwErrorIf(this.createNotFoundInstance, value, predicateFn, options);
+    }
+
+    /**
+     *
+     * @param {*} value
+     * @param {*|Function} predicateFn
+     * @param {Object} [options]
+     * @param {String} [options.message]
+     * @param {Number} [options.statusCode]
+     * @param {Object|undefined} [options.properties]
+     * @returns {*}
+     */
+    static throwBadRequestIf(value, predicateFn, options) {
+        this.throwErrorIf(this.createBadRequestInstance, value, predicateFn, options);
+    }
+
+    /**
+     * @param {{[cause]: Error, message: String, [properties]:Object}|String|Error} [messageOrSpecOrError]
+     * @param {Object} [properties]
+     * @return {Error}
+     */
+    static throwBadRequest(messageOrSpecOrError, properties) {
+        throw Errors.createBadRequestInstance(messageOrSpecOrError, properties);
     }
 
     /**

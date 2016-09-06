@@ -10,7 +10,7 @@ var _winston = require("winston");
 
 var _winston2 = _interopRequireDefault(_winston);
 
-var _CoreObject2 = require("./../CoreObject");
+var _CoreObject2 = require("../CoreObject");
 
 var _CoreObject3 = _interopRequireDefault(_CoreObject2);
 
@@ -34,14 +34,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * This class is intended to be instantiated early and (generally) once in your app.
  */
-
 var AbstractNotificationTemplate = function (_CoreObject) {
     _inherits(AbstractNotificationTemplate, _CoreObject);
 
     function AbstractNotificationTemplate() {
         _classCallCheck(this, AbstractNotificationTemplate);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractNotificationTemplate).apply(this, arguments));
+        return _possibleConstructorReturn(this, (AbstractNotificationTemplate.__proto__ || Object.getPrototypeOf(AbstractNotificationTemplate)).apply(this, arguments));
 
         // Utility.defaults(this, {
         //     name: 'NotificationTemplate'

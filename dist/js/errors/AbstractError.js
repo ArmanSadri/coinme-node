@@ -66,7 +66,6 @@ var AbstractError = function (_ExtendableBuiltin) {
      *
      * @param {String|Object} options
      */
-
     function AbstractError(options) {
         _classCallCheck(this, AbstractError);
 
@@ -88,7 +87,7 @@ var AbstractError = function (_ExtendableBuiltin) {
         var cause = _Utility2.default.take(options, 'cause');
         // let message = Utility.take(options, 'message', Utility.isString);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AbstractError).call(this, message));
+        var _this = _possibleConstructorReturn(this, (AbstractError.__proto__ || Object.getPrototypeOf(AbstractError)).call(this, message));
 
         var error = Error.call(_this, message);
         // if (typeof Error.captureStackTrace === 'function') {

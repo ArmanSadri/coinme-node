@@ -6,12 +6,13 @@
  */
 import {expect, assert} from "chai";
 import Promise from "bluebird";
-import Ember from "~/Ember";
+import Ember from "../src/js/Ember";
 import Preconditions from "../src/js/Preconditions";
 import Utility from "../src/js/Utility";
-import {Errors, AbstractError, PreconditionsError} from "~/errors";
-import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "~/money";
+import {Errors, AbstractError, PreconditionsError} from "../src/js/errors";
+import {Currency, Bitcoin, Money, Satoshi, USD, Converter} from "../src/js/money";
 import "source-map-support/register";
+
 import {
     NotificationService,
     FieldBuilder,

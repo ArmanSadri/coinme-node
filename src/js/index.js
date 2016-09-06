@@ -7,13 +7,16 @@ import Functions from "./Functions";
 import Preconditions from "./Preconditions";
 import Utility from "./Utility";
 import Address from "./Address";
+
 import errors from "./errors/index";
 import slack from "./slack/index";
 import data from "./data/index";
+import cache from "./cache/index";
 
 export {slack}
 export {data}
 export {errors}
+export {cache}
 
 export {Ember};
 export {Coinme};
@@ -27,6 +30,7 @@ export default {
     slack,
     data,
     errors,
+    cache,
 
     Ember,
     Coinme,
