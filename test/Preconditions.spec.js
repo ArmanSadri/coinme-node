@@ -14,6 +14,40 @@ import CoreObject from "../src/js/CoreObject";
 
 describe('Preconditions', () => {
 
+    it('should notice abstract', () => {
+        class Abstract extends CoreObject {
+            constructor() {
+                super(...arguments);
+
+                // if (this.constructor === Abstract) {
+                //
+                // }
+                Preconditions.shouldBeAbstract(this, Abstract);
+            }
+        }
+
+        class Concrete extends Abstract {
+            constructor() {
+                super(...arguments);
+
+
+            }
+        }
+
+        // should not crash.
+        new Concrete({});
+
+        // should crash.
+        let failed = false;
+        try {
+            new Abstract({});
+            failed = true;
+        } catch(e) {
+        }
+
+        assert.isFalse(failed);
+    });
+
     it('Should be undefined', () => {
         Preconditions.shouldBeUndefined(undefined);
     });
