@@ -465,7 +465,7 @@ export default class Preconditions {
      * @return {*}
      */
     static shouldBeAbstract(target, clazz) {
-        if (new.target === clazz) {
+        if (target.constructor === clazz) {
             Errors.throwMustBeAbstract(clazz);
         }
 

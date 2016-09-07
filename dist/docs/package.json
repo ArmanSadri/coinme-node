@@ -1,6 +1,6 @@
 {
   "name": "coinme-node",
-  "version": "1.5.2-alpha2",
+  "version": "1.5.2-alpha333",
   "description": "The common library for Coinme Node apps",
   "main": "dist/js/index.js",
   "scripts": {
@@ -52,6 +52,7 @@
     "babel-plugin-transform-async-to-module-method": "^6.7.0",
     "babel-plugin-transform-class-constructor-call": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-plugin-transform-es2015-newtarget": "git://github.com/vbarbarosh/babel_plugin_transform_es2015_newtarget.git",
     "babel-plugin-transform-es2015-parameters": "^6.11.4",
     "babel-plugin-transform-remove-console": "^6.5.0",
     "babel-plugin-transform-remove-debugger": "^6.5.0",
@@ -127,6 +128,7 @@
     "plugins": [
       "transform-es2015-parameters",
       "transform-class-properties",
+      "transform-es2015-newtarget",
       "transform-class-constructor-call",
       "transform-remove-debugger",
       [

@@ -1,5 +1,6 @@
 import CoreObject from "../CoreObject";
 import Errors from "../errors/Errors";
+import Preconditions from "../Preconditions";
 
 /********************************************************
  * @DESCRIPTION: validation for the format of a driver's
@@ -75,9 +76,9 @@ class Licenses extends CoreObject {
     constructor() {
         super(...arguments);
 
-        throw new TypeError('Licenses is abstract');
+        // throw new TypeError('Licenses is abstract');
 
-        Errors.mustBeAbstract(Licenses);
+        Preconditions.shouldBeAbstract(Licenses);
     }
 
     static detectStateFromDriverLicense(string) {
