@@ -102,6 +102,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">js/data/Licenses.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import CoreObject from &quot;../CoreObject&quot;;
 import Errors from &quot;../errors/Errors&quot;;
+import Preconditions from &quot;../Preconditions&quot;;
 
 /********************************************************
  * @DESCRIPTION: validation for the format of a driver&apos;s
@@ -177,9 +178,9 @@ class Licenses extends CoreObject {
     constructor() {
         super(...arguments);
 
-        throw new TypeError(&apos;Licenses is abstract&apos;);
+        // throw new TypeError(&apos;Licenses is abstract&apos;);
 
-        Errors.mustBeAbstract(Licenses);
+        Preconditions.shouldBeAbstract(Licenses);
     }
 
     static detectStateFromDriverLicense(string) {
