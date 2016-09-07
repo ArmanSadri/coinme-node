@@ -10,6 +10,10 @@ var _Errors = require("../errors/Errors");
 
 var _Errors2 = _interopRequireDefault(_Errors);
 
+var _Preconditions = require("../Preconditions");
+
+var _Preconditions2 = _interopRequireDefault(_Preconditions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -93,11 +97,11 @@ var Licenses = function (_CoreObject) {
     function Licenses() {
         _classCallCheck(this, Licenses);
 
+        // throw new TypeError('Licenses is abstract');
+
         var _this = _possibleConstructorReturn(this, (Licenses.__proto__ || Object.getPrototypeOf(Licenses)).apply(this, arguments));
 
-        throw new TypeError('Licenses is abstract');
-
-        _Errors2.default.mustBeAbstract(Licenses);
+        _Preconditions2.default.shouldBeAbstract(Licenses);
         return _this;
     }
 

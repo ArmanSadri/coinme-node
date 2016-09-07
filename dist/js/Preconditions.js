@@ -572,7 +572,7 @@ var Preconditions = function () {
     }, {
         key: "shouldBeAbstract",
         value: function shouldBeAbstract(target, clazz) {
-            if (new.target === clazz) {
+            if (target.constructor === clazz) {
                 _errors.Errors.throwMustBeAbstract(clazz);
             }
 
