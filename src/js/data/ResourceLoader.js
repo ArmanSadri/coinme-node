@@ -15,7 +15,7 @@ class ResourceLoader extends CoreObject {
     constructor(options) {
         super(options);
 
-        Preconditions.shouldBeAbstract(new.target, ResourceLoader);
+        Preconditions.shouldBeAbstract(this, ResourceLoader);
     }
 
     /**
