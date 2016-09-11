@@ -47,7 +47,7 @@ var ResourceLoader = function (_CoreObject) {
 
         var _this = _possibleConstructorReturn(this, (ResourceLoader.__proto__ || Object.getPrototypeOf(ResourceLoader)).call(this, options));
 
-        _Preconditions2.default.shouldBeAbstract(new.target, ResourceLoader);
+        _Preconditions2.default.shouldBeAbstract(_this, ResourceLoader);
         return _this;
     }
 
