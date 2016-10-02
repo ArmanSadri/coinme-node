@@ -1,29 +1,29 @@
 {
   "type": "File",
   "start": 0,
-  "end": 363,
+  "end": 480,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 17,
-      "column": 13
+      "line": 27,
+      "column": 2
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 363,
+    "end": 480,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 17,
-        "column": 13
+        "line": 27,
+        "column": 2
       }
     },
     "sourceType": "module",
@@ -446,82 +446,30 @@
             "raw": "\"./Ethereum\""
           },
           "value": "./Ethereum"
-        }
-      },
-      {
-        "type": "ImportDeclaration",
-        "start": 205,
-        "end": 239,
-        "loc": {
-          "start": {
-            "line": 9,
-            "column": 0
-          },
-          "end": {
-            "line": 9,
-            "column": 34
-          }
         },
-        "specifiers": [
+        "trailingComments": [
           {
-            "type": "ImportDefaultSpecifier",
-            "start": 212,
-            "end": 220,
+            "type": "CommentLine",
+            "value": " import Exchange from \"./Exchange\";",
+            "start": 205,
+            "end": 242,
             "loc": {
               "start": {
                 "line": 9,
-                "column": 7
+                "column": 0
               },
               "end": {
                 "line": 9,
-                "column": 15
+                "column": 37
               }
-            },
-            "local": {
-              "type": "Identifier",
-              "start": 212,
-              "end": 220,
-              "loc": {
-                "start": {
-                  "line": 9,
-                  "column": 7
-                },
-                "end": {
-                  "line": 9,
-                  "column": 15
-                },
-                "identifierName": "Exchange"
-              },
-              "name": "Exchange"
             }
           }
-        ],
-        "importKind": "value",
-        "source": {
-          "type": "StringLiteral",
-          "start": 226,
-          "end": 238,
-          "loc": {
-            "start": {
-              "line": 9,
-              "column": 21
-            },
-            "end": {
-              "line": 9,
-              "column": 33
-            }
-          },
-          "extra": {
-            "rawValue": "./Exchange",
-            "raw": "\"./Exchange\""
-          },
-          "value": "./Exchange"
-        }
+        ]
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 241,
-        "end": 259,
+        "start": 244,
+        "end": 262,
         "loc": {
           "start": {
             "line": 11,
@@ -536,8 +484,8 @@
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 249,
-            "end": 257,
+            "start": 252,
+            "end": 260,
             "loc": {
               "start": {
                 "line": 11,
@@ -550,8 +498,26 @@
             },
             "local": {
               "type": "Identifier",
-              "start": 249,
-              "end": 257,
+              "start": 252,
+              "end": 260,
+              "loc": {
+                "start": {
+                  "line": 11,
+                  "column": 8
+                },
+                "end": {
+                  "line": 11,
+                  "column": 16
+                },
+                "identifierName": "Currency"
+              },
+              "name": "Currency",
+              "leadingComments": null
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 252,
+              "end": 260,
               "loc": {
                 "start": {
                   "line": 11,
@@ -565,101 +531,52 @@
               },
               "name": "Currency"
             },
-            "exported": {
-              "type": "Identifier",
-              "start": 249,
-              "end": 257,
-              "loc": {
-                "start": {
-                  "line": 11,
-                  "column": 8
-                },
-                "end": {
-                  "line": 11,
-                  "column": 16
-                },
-                "identifierName": "Currency"
-              },
-              "name": "Currency"
-            }
+            "leadingComments": null
           }
         ],
         "source": null,
-        "exportKind": "value"
-      },
-      {
-        "type": "ExportNamedDeclaration",
-        "start": 260,
-        "end": 278,
-        "loc": {
-          "start": {
-            "line": 12,
-            "column": 0
-          },
-          "end": {
-            "line": 12,
-            "column": 18
-          }
-        },
-        "declaration": null,
-        "specifiers": [
+        "leadingComments": [
           {
-            "type": "ExportSpecifier",
-            "start": 268,
-            "end": 276,
+            "type": "CommentLine",
+            "value": " import Exchange from \"./Exchange\";",
+            "start": 205,
+            "end": 242,
             "loc": {
               "start": {
-                "line": 12,
-                "column": 8
+                "line": 9,
+                "column": 0
               },
               "end": {
-                "line": 12,
-                "column": 16
+                "line": 9,
+                "column": 37
               }
-            },
-            "local": {
-              "type": "Identifier",
-              "start": 268,
-              "end": 276,
-              "loc": {
-                "start": {
-                  "line": 12,
-                  "column": 8
-                },
-                "end": {
-                  "line": 12,
-                  "column": 16
-                },
-                "identifierName": "Exchange"
-              },
-              "name": "Exchange"
-            },
-            "exported": {
-              "type": "Identifier",
-              "start": 268,
-              "end": 276,
-              "loc": {
-                "start": {
-                  "line": 12,
-                  "column": 8
-                },
-                "end": {
-                  "line": 12,
-                  "column": 16
-                },
-                "identifierName": "Exchange"
-              },
-              "name": "Exchange"
             }
           }
         ],
-        "source": null,
+        "trailingComments": [
+          {
+            "type": "CommentLine",
+            "value": " export {Exchange};",
+            "start": 263,
+            "end": 284,
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 0
+              },
+              "end": {
+                "line": 12,
+                "column": 21
+              }
+            }
+          }
+        ],
         "exportKind": "value"
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 279,
-        "end": 294,
+        "start": 285,
+        "end": 300,
         "loc": {
           "start": {
             "line": 13,
@@ -674,8 +591,8 @@
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 287,
-            "end": 292,
+            "start": 293,
+            "end": 298,
             "loc": {
               "start": {
                 "line": 13,
@@ -688,8 +605,26 @@
             },
             "local": {
               "type": "Identifier",
-              "start": 287,
-              "end": 292,
+              "start": 293,
+              "end": 298,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 8
+                },
+                "end": {
+                  "line": 13,
+                  "column": 13
+                },
+                "identifierName": "Money"
+              },
+              "name": "Money",
+              "leadingComments": null
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 293,
+              "end": 298,
               "loc": {
                 "start": {
                   "line": 13,
@@ -703,32 +638,34 @@
               },
               "name": "Money"
             },
-            "exported": {
-              "type": "Identifier",
-              "start": 287,
-              "end": 292,
-              "loc": {
-                "start": {
-                  "line": 13,
-                  "column": 8
-                },
-                "end": {
-                  "line": 13,
-                  "column": 13
-                },
-                "identifierName": "Money"
-              },
-              "name": "Money"
-            }
+            "leadingComments": null
           }
         ],
         "source": null,
+        "leadingComments": [
+          {
+            "type": "CommentLine",
+            "value": " export {Exchange};",
+            "start": 263,
+            "end": 284,
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 0
+              },
+              "end": {
+                "line": 12,
+                "column": 21
+              }
+            }
+          }
+        ],
         "exportKind": "value"
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 295,
-        "end": 312,
+        "start": 301,
+        "end": 318,
         "loc": {
           "start": {
             "line": 14,
@@ -743,8 +680,8 @@
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 303,
-            "end": 310,
+            "start": 309,
+            "end": 316,
             "loc": {
               "start": {
                 "line": 14,
@@ -757,8 +694,8 @@
             },
             "local": {
               "type": "Identifier",
-              "start": 303,
-              "end": 310,
+              "start": 309,
+              "end": 316,
               "loc": {
                 "start": {
                   "line": 14,
@@ -774,8 +711,8 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 303,
-              "end": 310,
+              "start": 309,
+              "end": 316,
               "loc": {
                 "start": {
                   "line": 14,
@@ -796,8 +733,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 313,
-        "end": 331,
+        "start": 319,
+        "end": 337,
         "loc": {
           "start": {
             "line": 15,
@@ -812,8 +749,8 @@
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 321,
-            "end": 329,
+            "start": 327,
+            "end": 335,
             "loc": {
               "start": {
                 "line": 15,
@@ -826,8 +763,8 @@
             },
             "local": {
               "type": "Identifier",
-              "start": 321,
-              "end": 329,
+              "start": 327,
+              "end": 335,
               "loc": {
                 "start": {
                   "line": 15,
@@ -843,8 +780,8 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 321,
-              "end": 329,
+              "start": 327,
+              "end": 335,
               "loc": {
                 "start": {
                   "line": 15,
@@ -865,8 +802,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 332,
-        "end": 349,
+        "start": 338,
+        "end": 355,
         "loc": {
           "start": {
             "line": 16,
@@ -881,8 +818,8 @@
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 340,
-            "end": 347,
+            "start": 346,
+            "end": 353,
             "loc": {
               "start": {
                 "line": 16,
@@ -895,8 +832,8 @@
             },
             "local": {
               "type": "Identifier",
-              "start": 340,
-              "end": 347,
+              "start": 346,
+              "end": 353,
               "loc": {
                 "start": {
                   "line": 16,
@@ -912,8 +849,8 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 340,
-              "end": 347,
+              "start": 346,
+              "end": 353,
               "loc": {
                 "start": {
                   "line": 16,
@@ -934,8 +871,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 350,
-        "end": 363,
+        "start": 356,
+        "end": 369,
         "loc": {
           "start": {
             "line": 17,
@@ -950,8 +887,8 @@
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 358,
-            "end": 361,
+            "start": 364,
+            "end": 367,
             "loc": {
               "start": {
                 "line": 17,
@@ -964,8 +901,8 @@
             },
             "local": {
               "type": "Identifier",
-              "start": 358,
-              "end": 361,
+              "start": 364,
+              "end": 367,
               "loc": {
                 "start": {
                   "line": 17,
@@ -981,8 +918,8 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 358,
-              "end": 361,
+              "start": 364,
+              "end": 367,
               "loc": {
                 "start": {
                   "line": 17,
@@ -1000,6 +937,389 @@
         ],
         "source": null,
         "exportKind": "value"
+      },
+      {
+        "type": "ExportDefaultDeclaration",
+        "start": 371,
+        "end": 480,
+        "loc": {
+          "start": {
+            "line": 19,
+            "column": 0
+          },
+          "end": {
+            "line": 27,
+            "column": 2
+          }
+        },
+        "declaration": {
+          "type": "ObjectExpression",
+          "start": 386,
+          "end": 479,
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 15
+            },
+            "end": {
+              "line": 27,
+              "column": 1
+            }
+          },
+          "properties": [
+            {
+              "type": "ObjectProperty",
+              "start": 392,
+              "end": 400,
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 4
+                },
+                "end": {
+                  "line": 20,
+                  "column": 12
+                }
+              },
+              "method": false,
+              "shorthand": true,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 392,
+                "end": 400,
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 12
+                  },
+                  "identifierName": "Currency"
+                },
+                "name": "Currency"
+              },
+              "value": {
+                "type": "Identifier",
+                "start": 392,
+                "end": 400,
+                "loc": {
+                  "start": {
+                    "line": 20,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 12
+                  },
+                  "identifierName": "Currency"
+                },
+                "name": "Currency"
+              },
+              "extra": {
+                "shorthand": true
+              }
+            },
+            {
+              "type": "ObjectProperty",
+              "start": 423,
+              "end": 428,
+              "loc": {
+                "start": {
+                  "line": 22,
+                  "column": 4
+                },
+                "end": {
+                  "line": 22,
+                  "column": 9
+                }
+              },
+              "method": false,
+              "shorthand": true,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 423,
+                "end": 428,
+                "loc": {
+                  "start": {
+                    "line": 22,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 9
+                  },
+                  "identifierName": "Money"
+                },
+                "name": "Money",
+                "leadingComments": null
+              },
+              "value": {
+                "type": "Identifier",
+                "start": 423,
+                "end": 428,
+                "loc": {
+                  "start": {
+                    "line": 22,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 9
+                  },
+                  "identifierName": "Money"
+                },
+                "name": "Money"
+              },
+              "leadingComments": [
+                {
+                  "type": "CommentLine",
+                  "value": " Exchange,",
+                  "start": 406,
+                  "end": 418,
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 16
+                    }
+                  }
+                }
+              ],
+              "extra": {
+                "shorthand": true
+              }
+            },
+            {
+              "type": "ObjectProperty",
+              "start": 434,
+              "end": 441,
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 4
+                },
+                "end": {
+                  "line": 23,
+                  "column": 11
+                }
+              },
+              "method": false,
+              "shorthand": true,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 434,
+                "end": 441,
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 11
+                  },
+                  "identifierName": "Bitcoin"
+                },
+                "name": "Bitcoin"
+              },
+              "value": {
+                "type": "Identifier",
+                "start": 434,
+                "end": 441,
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 11
+                  },
+                  "identifierName": "Bitcoin"
+                },
+                "name": "Bitcoin"
+              },
+              "extra": {
+                "shorthand": true
+              }
+            },
+            {
+              "type": "ObjectProperty",
+              "start": 447,
+              "end": 455,
+              "loc": {
+                "start": {
+                  "line": 24,
+                  "column": 4
+                },
+                "end": {
+                  "line": 24,
+                  "column": 12
+                }
+              },
+              "method": false,
+              "shorthand": true,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 447,
+                "end": 455,
+                "loc": {
+                  "start": {
+                    "line": 24,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 12
+                  },
+                  "identifierName": "Ethereum"
+                },
+                "name": "Ethereum"
+              },
+              "value": {
+                "type": "Identifier",
+                "start": 447,
+                "end": 455,
+                "loc": {
+                  "start": {
+                    "line": 24,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 12
+                  },
+                  "identifierName": "Ethereum"
+                },
+                "name": "Ethereum"
+              },
+              "extra": {
+                "shorthand": true
+              }
+            },
+            {
+              "type": "ObjectProperty",
+              "start": 461,
+              "end": 468,
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 11
+                }
+              },
+              "method": false,
+              "shorthand": true,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 461,
+                "end": 468,
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 11
+                  },
+                  "identifierName": "Satoshi"
+                },
+                "name": "Satoshi"
+              },
+              "value": {
+                "type": "Identifier",
+                "start": 461,
+                "end": 468,
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 11
+                  },
+                  "identifierName": "Satoshi"
+                },
+                "name": "Satoshi"
+              },
+              "extra": {
+                "shorthand": true
+              }
+            },
+            {
+              "type": "ObjectProperty",
+              "start": 474,
+              "end": 477,
+              "loc": {
+                "start": {
+                  "line": 26,
+                  "column": 4
+                },
+                "end": {
+                  "line": 26,
+                  "column": 7
+                }
+              },
+              "method": false,
+              "shorthand": true,
+              "computed": false,
+              "key": {
+                "type": "Identifier",
+                "start": 474,
+                "end": 477,
+                "loc": {
+                  "start": {
+                    "line": 26,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 7
+                  },
+                  "identifierName": "USD"
+                },
+                "name": "USD"
+              },
+              "value": {
+                "type": "Identifier",
+                "start": 474,
+                "end": 477,
+                "loc": {
+                  "start": {
+                    "line": 26,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 7
+                  },
+                  "identifierName": "USD"
+                },
+                "name": "USD"
+              },
+              "extra": {
+                "shorthand": true
+              }
+            }
+          ],
+          "leadingComments": [],
+          "trailingComments": []
+        }
       }
     ],
     "directives": [
@@ -1040,7 +1360,56 @@
       }
     ]
   },
-  "comments": [],
+  "comments": [
+    {
+      "type": "CommentLine",
+      "value": " import Exchange from \"./Exchange\";",
+      "start": 205,
+      "end": 242,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " export {Exchange};",
+      "start": 263,
+      "end": 284,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 12,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Exchange,",
+      "start": 406,
+      "end": 418,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 16
+        }
+      }
+    }
+  ],
   "tokens": [
     {
       "type": {
@@ -1894,22 +2263,10 @@
       }
     },
     {
-      "type": {
-        "label": "import",
-        "keyword": "import",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "import",
+      "type": "CommentLine",
+      "value": " import Exchange from \"./Exchange\";",
       "start": 205,
-      "end": 211,
+      "end": 242,
       "loc": {
         "start": {
           "line": 9,
@@ -1917,112 +2274,7 @@
         },
         "end": {
           "line": 9,
-          "column": 6
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "Exchange",
-      "start": 212,
-      "end": 220,
-      "loc": {
-        "start": {
-          "line": 9,
-          "column": 7
-        },
-        "end": {
-          "line": 9,
-          "column": 15
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "from",
-      "start": 221,
-      "end": 225,
-      "loc": {
-        "start": {
-          "line": 9,
-          "column": 16
-        },
-        "end": {
-          "line": 9,
-          "column": 20
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "string",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "./Exchange",
-      "start": 226,
-      "end": 238,
-      "loc": {
-        "start": {
-          "line": 9,
-          "column": 21
-        },
-        "end": {
-          "line": 9,
-          "column": 33
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 238,
-      "end": 239,
-      "loc": {
-        "start": {
-          "line": 9,
-          "column": 33
-        },
-        "end": {
-          "line": 9,
-          "column": 34
+          "column": 37
         }
       }
     },
@@ -2041,8 +2293,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 241,
-      "end": 247,
+      "start": 244,
+      "end": 250,
       "loc": {
         "start": {
           "line": 11,
@@ -2066,8 +2318,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 248,
-      "end": 249,
+      "start": 251,
+      "end": 252,
       "loc": {
         "start": {
           "line": 11,
@@ -2092,8 +2344,8 @@
         "binop": null
       },
       "value": "Currency",
-      "start": 249,
-      "end": 257,
+      "start": 252,
+      "end": 260,
       "loc": {
         "start": {
           "line": 11,
@@ -2117,145 +2369,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 257,
-      "end": 258,
-      "loc": {
-        "start": {
-          "line": 11,
-          "column": 16
-        },
-        "end": {
-          "line": 11,
-          "column": 17
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 258,
-      "end": 259,
-      "loc": {
-        "start": {
-          "line": 11,
-          "column": 17
-        },
-        "end": {
-          "line": 11,
-          "column": 18
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "export",
-        "keyword": "export",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "export",
       "start": 260,
-      "end": 266,
+      "end": 261,
       "loc": {
         "start": {
-          "line": 12,
-          "column": 0
-        },
-        "end": {
-          "line": 12,
-          "column": 6
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "{",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 267,
-      "end": 268,
-      "loc": {
-        "start": {
-          "line": 12,
-          "column": 7
-        },
-        "end": {
-          "line": 12,
-          "column": 8
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "Exchange",
-      "start": 268,
-      "end": 276,
-      "loc": {
-        "start": {
-          "line": 12,
-          "column": 8
-        },
-        "end": {
-          "line": 12,
-          "column": 16
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "}",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 276,
-      "end": 277,
-      "loc": {
-        "start": {
-          "line": 12,
+          "line": 11,
           "column": 16
         },
         "end": {
-          "line": 12,
+          "line": 11,
           "column": 17
         }
       }
@@ -2273,16 +2395,32 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 277,
-      "end": 278,
+      "start": 261,
+      "end": 262,
       "loc": {
         "start": {
-          "line": 12,
+          "line": 11,
           "column": 17
         },
         "end": {
-          "line": 12,
+          "line": 11,
           "column": 18
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " export {Exchange};",
+      "start": 263,
+      "end": 284,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 12,
+          "column": 21
         }
       }
     },
@@ -2301,8 +2439,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 279,
-      "end": 285,
+      "start": 285,
+      "end": 291,
       "loc": {
         "start": {
           "line": 13,
@@ -2326,8 +2464,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 286,
-      "end": 287,
+      "start": 292,
+      "end": 293,
       "loc": {
         "start": {
           "line": 13,
@@ -2352,8 +2490,8 @@
         "binop": null
       },
       "value": "Money",
-      "start": 287,
-      "end": 292,
+      "start": 293,
+      "end": 298,
       "loc": {
         "start": {
           "line": 13,
@@ -2377,8 +2515,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 292,
-      "end": 293,
+      "start": 298,
+      "end": 299,
       "loc": {
         "start": {
           "line": 13,
@@ -2403,8 +2541,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 293,
-      "end": 294,
+      "start": 299,
+      "end": 300,
       "loc": {
         "start": {
           "line": 13,
@@ -2431,8 +2569,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 295,
-      "end": 301,
+      "start": 301,
+      "end": 307,
       "loc": {
         "start": {
           "line": 14,
@@ -2456,8 +2594,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 302,
-      "end": 303,
+      "start": 308,
+      "end": 309,
       "loc": {
         "start": {
           "line": 14,
@@ -2482,8 +2620,8 @@
         "binop": null
       },
       "value": "Bitcoin",
-      "start": 303,
-      "end": 310,
+      "start": 309,
+      "end": 316,
       "loc": {
         "start": {
           "line": 14,
@@ -2507,8 +2645,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 310,
-      "end": 311,
+      "start": 316,
+      "end": 317,
       "loc": {
         "start": {
           "line": 14,
@@ -2533,8 +2671,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 311,
-      "end": 312,
+      "start": 317,
+      "end": 318,
       "loc": {
         "start": {
           "line": 14,
@@ -2561,8 +2699,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 313,
-      "end": 319,
+      "start": 319,
+      "end": 325,
       "loc": {
         "start": {
           "line": 15,
@@ -2586,8 +2724,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 320,
-      "end": 321,
+      "start": 326,
+      "end": 327,
       "loc": {
         "start": {
           "line": 15,
@@ -2612,8 +2750,8 @@
         "binop": null
       },
       "value": "Ethereum",
-      "start": 321,
-      "end": 329,
+      "start": 327,
+      "end": 335,
       "loc": {
         "start": {
           "line": 15,
@@ -2637,8 +2775,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 329,
-      "end": 330,
+      "start": 335,
+      "end": 336,
       "loc": {
         "start": {
           "line": 15,
@@ -2663,8 +2801,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 330,
-      "end": 331,
+      "start": 336,
+      "end": 337,
       "loc": {
         "start": {
           "line": 15,
@@ -2691,8 +2829,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 332,
-      "end": 338,
+      "start": 338,
+      "end": 344,
       "loc": {
         "start": {
           "line": 16,
@@ -2716,8 +2854,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 339,
-      "end": 340,
+      "start": 345,
+      "end": 346,
       "loc": {
         "start": {
           "line": 16,
@@ -2742,8 +2880,8 @@
         "binop": null
       },
       "value": "Satoshi",
-      "start": 340,
-      "end": 347,
+      "start": 346,
+      "end": 353,
       "loc": {
         "start": {
           "line": 16,
@@ -2767,8 +2905,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 347,
-      "end": 348,
+      "start": 353,
+      "end": 354,
       "loc": {
         "start": {
           "line": 16,
@@ -2793,8 +2931,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 348,
-      "end": 349,
+      "start": 354,
+      "end": 355,
       "loc": {
         "start": {
           "line": 16,
@@ -2821,8 +2959,8 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 350,
-      "end": 356,
+      "start": 356,
+      "end": 362,
       "loc": {
         "start": {
           "line": 17,
@@ -2846,8 +2984,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 357,
-      "end": 358,
+      "start": 363,
+      "end": 364,
       "loc": {
         "start": {
           "line": 17,
@@ -2872,8 +3010,8 @@
         "binop": null
       },
       "value": "USD",
-      "start": 358,
-      "end": 361,
+      "start": 364,
+      "end": 367,
       "loc": {
         "start": {
           "line": 17,
@@ -2897,8 +3035,8 @@
         "postfix": false,
         "binop": null
       },
-      "start": 361,
-      "end": 362,
+      "start": 367,
+      "end": 368,
       "loc": {
         "start": {
           "line": 17,
@@ -2923,8 +3061,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 362,
-      "end": 363,
+      "start": 368,
+      "end": 369,
       "loc": {
         "start": {
           "line": 17,
@@ -2933,6 +3071,440 @@
         "end": {
           "line": 17,
           "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 371,
+      "end": 377,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "default",
+        "keyword": "default",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "default",
+      "start": 378,
+      "end": 385,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 7
+        },
+        "end": {
+          "line": 19,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 386,
+      "end": 387,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 15
+        },
+        "end": {
+          "line": 19,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Currency",
+      "start": 392,
+      "end": 400,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 4
+        },
+        "end": {
+          "line": 20,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 400,
+      "end": 401,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 12
+        },
+        "end": {
+          "line": 20,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " Exchange,",
+      "start": 406,
+      "end": 418,
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 16
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Money",
+      "start": 423,
+      "end": 428,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 4
+        },
+        "end": {
+          "line": 22,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 428,
+      "end": 429,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 9
+        },
+        "end": {
+          "line": 22,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Bitcoin",
+      "start": 434,
+      "end": 441,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 4
+        },
+        "end": {
+          "line": 23,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 441,
+      "end": 442,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 11
+        },
+        "end": {
+          "line": 23,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Ethereum",
+      "start": 447,
+      "end": 455,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 4
+        },
+        "end": {
+          "line": 24,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 455,
+      "end": 456,
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 12
+        },
+        "end": {
+          "line": 24,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "Satoshi",
+      "start": 461,
+      "end": 468,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 4
+        },
+        "end": {
+          "line": 25,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 468,
+      "end": 469,
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 11
+        },
+        "end": {
+          "line": 25,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "USD",
+      "start": 474,
+      "end": 477,
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 4
+        },
+        "end": {
+          "line": 26,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 478,
+      "end": 479,
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 0
+        },
+        "end": {
+          "line": 27,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 479,
+      "end": 480,
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 1
+        },
+        "end": {
+          "line": 27,
+          "column": 2
         }
       }
     },
@@ -2949,16 +3521,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 363,
-      "end": 363,
+      "start": 480,
+      "end": 480,
       "loc": {
         "start": {
-          "line": 17,
-          "column": 13
+          "line": 27,
+          "column": 2
         },
         "end": {
-          "line": 17,
-          "column": 13
+          "line": 27,
+          "column": 2
         }
       }
     }

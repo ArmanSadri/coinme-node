@@ -21,7 +21,7 @@ class Cache extends CoreObject {
     constructor(options) {
         super(options);
 
-        Preconditions.shouldBeAbstract(new.target, Cache);
+        Preconditions.shouldBeAbstract(this, Cache);
     }
 
     //endregion

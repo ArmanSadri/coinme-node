@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Address = exports.Utility = exports.Preconditions = exports.Functions = exports.CoreObject = exports.Coinme = exports.Ember = exports.cache = exports.errors = exports.data = exports.slack = undefined;
+exports.Address = exports.Utility = exports.Preconditions = exports.Functions = exports.CoreObject = exports.Coinme = exports.Ember = exports.money = exports.cache = exports.errors = exports.data = exports.slack = undefined;
 
 var _Coinme = require("./Coinme");
 
@@ -49,12 +49,17 @@ var _index7 = require("./cache/index");
 
 var _index8 = _interopRequireDefault(_index7);
 
+var _index9 = require("./money/index");
+
+var _index10 = _interopRequireDefault(_index9);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.slack = _index4.default;
 exports.data = _index6.default;
 exports.errors = _index2.default;
 exports.cache = _index8.default;
+exports.money = _index10.default;
 exports.Ember = _Ember2.default;
 exports.Coinme = _Coinme2.default;
 exports.CoreObject = _CoreObject2.default;
@@ -67,6 +72,7 @@ exports.default = {
     data: _index6.default,
     errors: _index2.default,
     cache: _index8.default,
+    money: _index10.default,
 
     Ember: _Ember2.default,
     Coinme: _Coinme2.default,

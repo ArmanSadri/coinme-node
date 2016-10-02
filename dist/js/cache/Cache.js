@@ -49,7 +49,7 @@ var Cache = function (_CoreObject) {
 
         var _this = _possibleConstructorReturn(this, (Cache.__proto__ || Object.getPrototypeOf(Cache)).call(this, options));
 
-        _Preconditions2.default.shouldBeAbstract(new.target, Cache);
+        _Preconditions2.default.shouldBeAbstract(_this, Cache);
         return _this;
     }
 
