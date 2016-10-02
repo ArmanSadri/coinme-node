@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/TimeUnit.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/coinme/coinme-node.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Environment.js~Environment.html">Environment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~RateLimiter.html">RateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothBurstyRateLimiter.html">SmoothBurstyRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothRateLimiter.html">SmoothRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html">SmoothWarmingUpRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Stopwatch.js~Stopwatch.html">Stopwatch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Ticker.js~Ticker.html">Ticker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/TimeUnit.js~TimeUnit.html">TimeUnit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">cache</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/Cache.js~Cache.html">Cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/LocalFileCache.js~LocalFileCache.html">LocalFileCache</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Adapter.js~Adapter.html">Adapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CachedResourceLoader.js~CachedResourceLoader.html">CachedResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~Certificate.html">Certificate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~CertificateBundle.html">CertificateBundle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Conversion.js~Conversion.html">Conversion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/DelegatedConverter.js~DelegatedConverter.html">DelegatedConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/FileResourceLoader.js~FileResourceLoader.html">FileResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Identity.js~Identity.html">Identity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointType.html">EndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointTypes.html">EndpointTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~KioskEndpointType.html">KioskEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~Receipt.html">Receipt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptBuilder.html">ReceiptBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptEndpoint.html">ReceiptEndpoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~WalletEndpointType.html">WalletEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/ResourceLoader.js~ResourceLoader.html">ResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/SignTool.js~SignTool.html">SignTool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserExistenceToken.js~UserExistenceToken.html">UserExistenceToken</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/NotImplementedError.js~NotImplementedError.html">NotImplementedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/CurrencyAdapter.js~CurrencyAdapter.html">CurrencyAdapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Ethereum.js~Ethereum.html">Ethereum</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/MoneyConverter.js~MoneyConverter.html">MoneyConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">net</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClient.html">CoinmeWalletClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClientConfiguration.html">CoinmeWalletClientConfiguration</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/FieldBuilder.js~FieldBuilder.html">FieldBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html">InlineNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationBuilder.js~NotificationBuilder.html">NotificationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationService.js~NotificationService.html">NotificationService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationTemplate.js~NotificationTemplate.html">NotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html">UserNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notificationService">notificationService</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/TimeUnit.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import Utility from &quot;./Utility&quot;;
+import CoreObject from &quot;./CoreObject&quot;;
+
+import {ChronoUnit} from &apos;js-joda/dist/js-joda&apos;
+import {Duration} from &apos;js-joda/dist/js-joda&apos;
+import Preconditions from &quot;./Preconditions&quot;;
+import math from &apos;mathjs&apos;;
+
+Preconditions.shouldBeDefined(ChronoUnit);
+Preconditions.shouldBeDefined(Duration);
+
+// Handy constants for conversions
+const C0 = 1;
+const C1 = C0 * 1000;
+const C2 = C1 * 1000;
+const C3 = C2 * 1000;
+const C4 = C3 * 60;
+const C5 = C4 * 60;
+const C6 = C5 * 24;
+
+const MAX = Number.MAX_SAFE_INTEGER;
+const MIN = Number.MIN_SAFE_INTEGER;
+
+/**
+ * Scale value by m, checking for overflow.
+ * This has a short name to make above covaluee more reavalueable.
+ * @param {Number|String} value
+ * @param {Number} m
+ * @param {Number} over
+ * @return {Number}
+ */
+function x(value, m, over) {
+    value = Utility.toNumberOrFail(value);
+    if (value &gt; over) return MAX;
+    if (value &lt; -over) return MIN;
+
+    return value * m;
+}
+
+//region specs
+
+const SPEC_NANOSECONDS = {
+
+    /**
+     * @type {ChronoUnit}
+     */
+    unit: ChronoUnit.NANOS,
+
+    shortName: &apos;ns&apos;,
+
+    longName: &apos;nanos&apos;,
+
+    /**
+     * @param {Duration} duration
+     * @return {Number|number}
+     */
+    toNumber(duration) {
+        return this.fromNanos(duration.toNanos());
+    },
+
+    toNanos(valueInNanos)   {
+        return valueInNanos;
+    },
+
+    fromNanos(valueInNanos) {
+        return valueInNanos;
+    },
+
+    toMicros(valueInNanos)  {
+        return math.chain(valueInNanos)
+            .divide(
+                math.divide(C1, C0)
+            )
+            .done();
+        // return valueInNanos / (C1 / C0);
+    },
+
+    toMillis(valueInNanos)  {
+        return math.divide(valueInNanos, (math.divide(C2, C0)));
+        // return valueInNanos / (C2 / C0);
+    },
+
+    toSeconds(valueInNanos) {
+        return math.divide(valueInNanos, (math.divide(C3, C0)));
+        // return valueInNanos / (C3 / C0);
+    },
+
+    toMinutes(valueInNanos) {
+        return math.divide(valueInNanos, (math.divide(C4, C0)));
+        // return valueInNanos / (C4 / C0);
+    },
+
+    toHours(valueInNanos)   {
+        return math.divide(valueInNanos, (math.divide(C5, C0)));
+        // return valueInNanos / (C5 / C0);
+    },
+
+    toDays(valueInNanos)    {
+        return math.divide(valueInNanos, (math.divide(C6, C0)));
+        // return valueInNanos / (C6 / C0);
+    },
+
+    convert(value, timeUnit) {
+        return timeUnit.toNanos(value);
+    },
+
+    excessNanos(value, m) {
+        return (value - (m * C2));
+    }
+};
+
+const SPEC_MICROSECONDS = {
+
+    unit: ChronoUnit.MICROS,
+
+    shortName: &quot;\u03bcs&quot;, // &#x3BC;s
+
+    longName: &apos;micros&apos;,
+
+    /**
+     * @param {Duration} duration
+     * @return {Number|number}
+     */
+    toNumber(duration) {
+        return this.fromNanos(duration.toNanos());
+    },
+
+    fromNanos(valueInNanos) {
+        return SPEC_NANOSECONDS.toMicros(valueInNanos);
+    },
+
+    toNanos(valueInMicros)   {
+        return x(valueInMicros, math.divide(C1, C0), math.divide(MAX, math.divide(C1, C0)));
+        // return x(valueInMicros, C1 / C0, MAX / (C1 / C0));
+    },
+
+    // toMicros(valueInMicros)  {
+    //     return valueInMicros;
+    // },
+    // toMillis(valueInMicros)  {
+    //     return valueInMicros / (C2 / C1);
+    // },
+    // toSeconds(valueInMicros) {
+    //     return valueInMicros / (C3 / C1);
+    // },
+    // toMinutes(valueInMicros) {
+    //     return valueInMicros / (C4 / C1);
+    // },
+    // toHours(valueInMicros)   {
+    //     return valueInMicros / (C5 / C1);
+    // },
+    // toDays(valueInMicros)    {
+    //     return valueInMicros / (C6 / C1);
+    // },
+    // convert(value, timeUnit) {
+    //     return timeUnit.toMicros(value);
+    // },
+    excessNanos(value, m) {
+        return ((value * C1) - (m * C2));
+    }
+};
+
+const SPEC_MILLISECONDS = {
+
+    unit: ChronoUnit.MILLIS,
+
+    shortName: &quot;ms&quot;, // &#x3BC;s
+
+    longName: &apos;millis&apos;,
+
+    /**
+     * @param {Duration} duration
+     * @return {Number|number}
+     */
+    toNumber(duration) {
+        return this.fromNanos(duration.toNanos());
+    },
+
+    fromNanos(valueInNanos) {
+        return SPEC_NANOSECONDS.toMillis(valueInNanos);
+    },
+
+    toNanos(valueInMillis)   {
+        return x(valueInMillis, math.divide(C2, C0), math.divide(MAX, math.divide(C2, C0)));
+        // return x(valueInMillis, C2 / C0, MAX / (C2 / C0));
+    },
+
+    // toMicros(valueInMillis)  {
+    //     return x(valueInMillis, C2 / C1, MAX / (C2 / C1));
+    // },
+    // toMillis(valueInMillis)  {
+    //     return valueInMillis;
+    // },
+    // toSeconds(valueInMillis) {
+    //     return valueInMillis / (C3 / C2);
+    // },
+    // toMinutes(valueInMillis) {
+    //     return valueInMillis / (C4 / C2);
+    // },
+    // toHours(valueInMillis)   {
+    //     return valueInMillis / (C5 / C2);
+    // },
+    // toDays(valueInMillis)    {
+    //     return valueInMillis / (C6 / C2);
+    // },
+    // convert(value, timeUnit) {
+    //     return timeUnit.toMillis(value);
+    // },
+
+    excessNanos(value, m) {
+        return 0;
+    }
+};
+
+const SPEC_SECONDS = {
+
+    unit: ChronoUnit.SECONDS,
+
+    shortName: &quot;s&quot;,
+
+    longName: &apos;seconds&apos;,
+
+    /**
+     * @param {Duration} duration
+     * @return {Number|number}
+     */
+    toNumber(duration) {
+        return this.fromNanos(duration.toNanos());
+    },
+
+    fromNanos(valueInNanos) {
+        return SPEC_NANOSECONDS.toSeconds(valueInNanos);
+    },
+
+    toNanos(valueInSeconds)   {
+        return x(valueInSeconds, math.divide(C3, C0), math.divide(MAX, math.divide(C3 / C0)));
+        // return x(valueInSeconds, C3 / C0, MAX / (C3 / C0));
+    },
+
+    // toMicros(valueInSeconds)  {
+    //     return x(valueInSeconds, C3 / C1, MAX / (C3 / C1));
+    // },
+    // toMillis(valueInSeconds)  {
+    //     return x(valueInSeconds, C3 / C2, MAX / (C3 / C2));
+    // },
+    // toSeconds(valueInSeconds) {
+    //     return valueInSeconds;
+    // },
+    // toMinutes(valueInSeconds) {
+    //     return valueInSeconds / (C4 / C3);
+    // },
+    // toHours(valueInSeconds)   {
+    //     return valueInSeconds / (C5 / C3);
+    // },
+    // toDays(valueInSeconds)    {
+    //     return valueInSeconds / (C6 / C3);
+    // },
+    // convert(value, timeUnit) {
+    //     return timeUnit.toSeconds(value);
+    // },
+
+    excessNanos(value, m) {
+        return 0;
+    }
+};
+
+const SPEC_MINUTES = {
+
+    unit: ChronoUnit.MINUTES,
+
+    shortName: &apos;min&apos;,
+
+    longName: &apos;minutes&apos;,
+
+    /**
+     * @param {Duration} duration
+     * @return {Number|number}
+     */
+    toNumber(duration) {
+        return this.fromNanos(duration.toNanos());
+    },
+
+    fromNanos(valueInNanos) {
+        return SPEC_NANOSECONDS.toMinutes(valueInNanos);
+    },
+
+    toNanos(valueInMinutes)   {
+        return x(valueInMinutes, math.divide(C4, C0), math.divide(MAX, math.divide(C4 / C0)));
+        // return x(valueInMinutes, C4 / C0, MAX / (C4 / C0));
+    },
+
+    // toMicros(valueInMinutes)  {
+    //     return x(valueInMinutes, C4 / C1, MAX / (C4 / C1));
+    // },
+    // toMillis(valueInMinutes)  {
+    //     return x(valueInMinutes, C4 / C2, MAX / (C4 / C2));
+    // },
+    // toSeconds(valueInMinutes) {
+    //     return x(valueInMinutes, C4 / C3, MAX / (C4 / C3));
+    // },
+    // toMinutes(valueInMinutes) {
+    //     return valueInMinutes;
+    // },
+    // toHours(valueInMinutes)   {
+    //     return valueInMinutes / (C5 / C4);
+    // },
+    // toDays(valueInMinutes)    {
+    //     return valueInMinutes / (C6 / C4);
+    // },
+    // convert(value, timeUnit) {
+    //     return timeUnit.toMinutes(value);
+    // },
+
+    excessNanos(value, m) {
+        return 0;
+    }
+};
+
+const SPEC_HOURS = {
+
+    shortName: &quot;h&quot;,
+
+    longName: &apos;hours&apos;,
+
+    /**
+     * @param {Duration} duration
+     * @return {Number|number}
+     */
+    toNumber(duration) {
+        return this.fromNanos(duration.toNanos());
+    },
+
+    fromNanos(valueInNanos) {
+        return SPEC_NANOSECONDS.toHours(valueInNanos);
+    },
+
+    toNanos(valueInHours)   {
+        return x(valueInHours, C5 / C0, MAX / (C5 / C0));
+    },
+
+    // toMicros(valueInHours)  {
+    //     return x(valueInHours, C5 / C1, MAX / (C5 / C1));
+    // },
+    //
+    // toMillis(valueInHours)  {
+    //     return x(valueInHours, C5 / C2, MAX / (C5 / C2));
+    // },
+    //
+    // toSeconds(valueInHours) {
+    //     return x(valueInHours, C5 / C3, MAX / (C5 / C3));
+    // },
+    //
+    // toMinutes(valueInHours) {
+    //     return x(valueInHours, C5 / C4, MAX / (C5 / C4));
+    // },
+    //
+    // toHours(valueInHours)   {
+    //     return valueInHours;
+    // },
+    //
+    // toDays(valueInHours)    {
+    //     return valueInHours / (C6 / C5);
+    // },
+
+    // convert(value, timeUnit) {
+    //     return timeUnit.toHours(value);
+    // },
+
+    excessNanos(value, m) {
+        return 0;
+    }
+};
+
+const SPEC_DAYS = {
+
+    unit: ChronoUnit.DAYS,
+
+    shortName: &apos;d&apos;,
+
+    longName: &apos;days&apos;,
+
+    toNanos(valueInDays)   {
+        return x(valueInDays, C6 / C0, MAX / (C6 / C0));
+    },
+
+    fromNanos(valueInNanos) {
+        // TimeUnit.NANOS.toDays(valueInNanos)
+        return SPEC_NANOSECONDS.toDays(valueInNanos);
+    },
+
+    toMicros(valueInDays)  {
+        return x(valueInDays, C6 / C1, MAX / (C6 / C1));
+    },
+
+    toMillis(valueInDays)  {
+        return x(valueInDays, C6 / C2, MAX / (C6 / C2));
+    },
+
+    toSeconds(valueInDays) {
+        return x(valueInDays, C6 / C3, MAX / (C6 / C3));
+    },
+
+    toMinutes(valueInDays) {
+        return x(valueInDays, C6 / C4, MAX / (C6 / C4));
+    },
+
+    /**
+     * @param {Number} valueInDays
+     * @return {Number} hours
+     */
+    toHours(valueInDays)   {
+        return x(valueInDays, C6 / C5, MAX / (C6 / C5));
+    },
+
+    toDays(valueInDays)    {
+        return valueInDays;
+    },
+
+    /**
+     *
+     * @param {Number} value
+     * @param {TimeUnit} timeUnit
+     * @returns {Number|*} days
+     */
+    convert(value, timeUnit) {
+        return timeUnit.toDays(value);
+    },
+
+    excessNanos(value, m) {
+        return 0;
+    }
+};
+//endregion
+
+//region TimeUnit
+class TimeUnit extends CoreObject {
+
+    //region static TimeUnits
+    /**
+     * @return {TimeUnit}
+     */
+    static NANOSECONDS = new TimeUnit(SPEC_NANOSECONDS);
+
+    /**
+     * @return {TimeUnit}
+     */
+    static MICROSECONDS = new TimeUnit(SPEC_MICROSECONDS);
+
+    /**
+     * @return {TimeUnit}
+     */
+    static MILLISECONDS = new TimeUnit(SPEC_MILLISECONDS);
+
+    /**
+     * @return {TimeUnit}
+     */
+    static SECONDS = new TimeUnit(SPEC_SECONDS);
+
+    /**
+     * @return {TimeUnit}
+     */
+    static MINUTES = new TimeUnit(SPEC_MINUTES);
+
+    /**
+     * @return {TimeUnit}
+     */
+    static HOURS = new TimeUnit(SPEC_HOURS);
+
+    /**
+     * @return {TimeUnit}
+     */
+    static DAYS = new TimeUnit(SPEC_DAYS);
+    //endregion
+
+    /**
+     * @protected
+     * @param {Object} spec
+     */
+    constructor(spec) {
+        super();
+
+        /**
+         * @type {{unit: ChronoUnit, toString:function, equals:function, excessNanos:function, shortName:String, longName:String, toNumber:function}}
+         * @private
+         */
+        this.spec = spec;
+    }
+
+    /**
+     * @returns {string}
+     */
+    toString() {
+        return this.spec.shortName;
+    }
+
+    valueOf() {
+        return this.toString();
+    }
+
+    //region public methods
+    /**
+     *
+     * @returns {String}
+     */
+    get shortName() {
+        return this.spec.shortName;
+    }
+
+    /**
+     *
+     * @returns {String}
+     */
+    get longName() {
+        return this.spec.longName;
+    }
+
+    /**
+     * @return {ChronoUnit}
+     */
+    toChronoUnit() {
+        return this.spec.unit;
+    }
+
+    /**
+     *
+     * @param {Number} value - (the units of this number are assumed to be &apos;this.unit&apos;)
+     * @returns {Duration}
+     */
+    toDuration(value) {
+        value = Utility.toNumberOrFail(value, &apos;TimeUnit.toDuration(value) - value required&apos;);
+        return Duration.of(value, this.toChronoUnit());
+    }
+
+    //conversions
+
+    /**
+     * Converts from SOURCE value/units into DESTINATION (this) units.
+     *
+     * @param {Number} value The SOURCE value
+     * @param {TimeUnit} timeUnit  The SOURCE timeUnit
+     * @returns {Number} The destination value/units
+     */
+    convert(value, timeUnit) {
+        Preconditions.shouldBeNumber(value);
+        Preconditions.shouldBeInstance(timeUnit, TimeUnit);
+
+        let duration = Duration.of(value, timeUnit.toChronoUnit());
+
+        return this.spec.fromNanos(duration.toNanos());
+        // let numberOfNanos = sourceDuration.toNanos();
+        // let destinationDuration = this.toDuration(0);
+        //
+        // return destinationDuration.plusNanos(numberOfNanos);
+    }
+
+    /**
+     * @param {Number} value The value, in &quot;our&quot; units. If the unit is Millis, then your &apos;value&apos; should be units.
+     *
+     * @return {Number}
+     */
+    toValue(value) {
+        return this.spec.fromNanos(
+            this.toDuration(value)
+                .toNanos());
+    }
+
+    /**
+     * @param {Number} value
+     * @returns {Number}
+     */
+    toNanos(value) {
+        return SPEC_NANOSECONDS.toNumber(this.toDuration(value));
+    }
+
+    /**
+     * @param {Number} value
+     * @returns {Number}
+     */
+    toMicros(value) {
+        // This library does not have support for micro
+        return SPEC_MICROSECONDS.toNumber(this.toDuration(value));
+    }
+
+    /**
+     * @param {Number} value
+     * @returns {Number}
+     */
+    toMillis(value) {
+        return SPEC_MILLISECONDS.toNumber(this.toDuration(value));
+    }
+
+    /**
+     * @param {Number} value
+     * @returns {Number}
+     */
+    toSeconds(value) {
+        return SPEC_SECONDS.toNumber(this.toDuration(value));
+    }
+
+    /**
+     * @param {Number} value
+     * @returns {Number}
+     */
+    toMinutes(value) {
+        return SPEC_MINUTES.toNumber(this.toDuration(value));
+    }
+
+    /**
+     * @returns {Number}
+     */
+    toHours(value) {
+        return SPEC_HOURS.toNumber(this.toDuration(value));
+    }
+
+    /**
+     * @param {Number} value
+     * @returns {Number}
+     */
+    toDays(value) {
+        return SPEC_DAYS.toNumber(this.toDuration(value));
+    }
+
+    /**
+     *
+     * @param {TimeUnit} timeUnit
+     * @returns {boolean}
+     */
+    equals(timeUnit) {
+        if (!timeUnit) {
+            return false;
+        }
+
+        return timeUnit.toString() === this.toString();
+    }
+    //endregion
+
+}
+//endregion
+
+export {TimeUnit};
+export default TimeUnit;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.0-alpha)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
