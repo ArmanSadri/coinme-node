@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/Address.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/coinme/coinme-node.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Environment.js~Environment.html">Environment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~RateLimiter.html">RateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothBurstyRateLimiter.html">SmoothBurstyRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothRateLimiter.html">SmoothRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html">SmoothWarmingUpRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Stopwatch.js~Stopwatch.html">Stopwatch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Ticker.js~Ticker.html">Ticker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/TimeUnit.js~TimeUnit.html">TimeUnit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">cache</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/Cache.js~Cache.html">Cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/LocalFileCache.js~LocalFileCache.html">LocalFileCache</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Adapter.js~Adapter.html">Adapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CachedResourceLoader.js~CachedResourceLoader.html">CachedResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~Certificate.html">Certificate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~CertificateBundle.html">CertificateBundle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Conversion.js~Conversion.html">Conversion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/DelegatedConverter.js~DelegatedConverter.html">DelegatedConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/FileResourceLoader.js~FileResourceLoader.html">FileResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Identity.js~Identity.html">Identity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointType.html">EndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointTypes.html">EndpointTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~KioskEndpointType.html">KioskEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~Receipt.html">Receipt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptBuilder.html">ReceiptBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptEndpoint.html">ReceiptEndpoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~WalletEndpointType.html">WalletEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/ResourceLoader.js~ResourceLoader.html">ResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/SignTool.js~SignTool.html">SignTool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserExistenceToken.js~UserExistenceToken.html">UserExistenceToken</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/NotImplementedError.js~NotImplementedError.html">NotImplementedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/CurrencyAdapter.js~CurrencyAdapter.html">CurrencyAdapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Ethereum.js~Ethereum.html">Ethereum</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/MoneyConverter.js~MoneyConverter.html">MoneyConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">net</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClient.html">CoinmeWalletClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClientConfiguration.html">CoinmeWalletClientConfiguration</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/FieldBuilder.js~FieldBuilder.html">FieldBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html">InlineNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationBuilder.js~NotificationBuilder.html">NotificationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationService.js~NotificationService.html">NotificationService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationTemplate.js~NotificationTemplate.html">NotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html">UserNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notificationService">notificationService</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/Address.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Utility from &quot;./Utility&quot;;
+import CoreObject from &quot;./CoreObject&quot;;
+import URI from &quot;urijs&quot;;
+import altcoin from &quot;altcoin-address&quot;;
+import Preconditions from &quot;~/Preconditions&quot;;
+import {NotImplementedError} from &quot;./errors&quot;;
+
+let VALIDATORS = {
+
+    /**
+     * @param {Address} address
+     */
+    &apos;general&apos;: function (address) {
+        Preconditions.shouldBeInstance(address, Address);
+
+        return !(Utility.isBlank(address.resource) || Utility.isBlank(address.value));
+    },
+
+    /**
+     * @param {Address} address
+     * @returns {boolean}
+     */
+    &apos;bitcoin&apos;: function (address) {
+        Preconditions.shouldBeInstance(address, Address);
+
+        if (address.resource !== &apos;bitcoin&apos;) {
+            return false;
+        }
+
+        return altcoin.validate(address.value, &apos;bitcoin&apos;);
+    }
+};
+
+/**
+ * A class for uniquely identifying something.
+ */
+class Address extends CoreObject {
+
+    /**
+     *
+     * @param {URI|String|Object} options
+     * @param {String} [options.value]
+     * @param {Function} [options.validator]
+     * @param {Boolean} [options.strict] Set to false to skip validation.
+     */
+    constructor(options) {
+        if (Utility.isString(options)) {
+            options = {value: options};
+        } else if (options instanceof URI) {
+            options = {value: options};
+        } else if (options instanceof Address) {
+            /**
+             * @type {Address}
+             */
+            let address = options;
+
+            options = {
+                value: address.value,
+                validator: address.validator,
+                strict: address.strict
+            }
+        }
+
+        /**
+         * @type {String|URI}
+         */
+        let value = Utility.take(options, &apos;value&apos;);
+        let validator = Utility.take(options, &apos;validator&apos;);
+        let strict = Utility.take(options, &apos;strict&apos;);
+
+        Preconditions.shouldBeDefined(value, &apos;Cannot construct an empty Address.&apos;);
+
+        super(options);
+
+        this._uri = Address.toUri(value);
+        this._validator = validator || VALIDATORS[Utility.toLowerCase(this.resource)];
+        this._strict = (false === strict);
+
+        {
+            let generalValidator = Preconditions.shouldBeFunction(VALIDATORS[&apos;general&apos;], &apos;general validator is required&apos;);
+
+            Preconditions.shouldBeTrue(generalValidator(this), &apos;general validator failed for: &apos; + value);
+        }
+
+        if (this.strict) {
+            // Require Validation
+            Preconditions.shouldBeFunction(this.validator, &apos;validator not found for \&apos;&apos; + this.toString() + &apos;\&apos;&apos;);
+            Preconditions.shouldBeTrue(this.valid, &apos;not valid&apos;);
+        }
+    }
+
+    /**
+     * @return {boolean}
+     */
+    get strict() {
+        return this._strict;
+    }
+
+    /**
+     * [resource]:/[value]
+     *
+     * @return {String}
+     */
+    get value() {
+        return this.uri.host();
+    }
+
+    /**
+     * [resource]:/[value]
+     *
+     * @return {String}
+     */
+    get resource() {
+        return this.uri.scheme();
+    }
+
+    /**
+     * @returns {URI}
+     */
+    get uri() {
+        return this._uri;
+    }
+
+    /**
+     *
+     * @returns {Boolean}
+     */
+    get valid() {
+        if (Utility.isUndefined(this._valid)) {
+            if (this.validator) {
+                this._valid = this.validator(this);
+            } else {
+                this._valid = true; // because it passed general.
+            }
+        }
+
+        return this._valid;
+    }
+
+    /**
+     * @returns {Function}
+     */
+    get validator() {
+        return this._validator;
+    }
+
+    /**
+     *
+     * @returns {String}
+     */
+    toString() {
+        return this.valueOf();
+    }
+
+    /**
+     * @returns {String}
+     */
+    valueOf() {
+        return this._uri.toString();
+    }
+
+    toJson() {
+        return super.toJson({
+            value: Utility.optString(this)
+        })
+    }
+
+    /**
+     * @returns {String}
+     */
+    static toString() {
+        return &apos;Address&apos;;
+    }
+
+    /**
+     * @param {String} scheme
+     * @param {Function} validatorFn
+     */
+    static registerValidator(scheme, validatorFn) {
+        scheme = Preconditions.shouldNotBeBlank(Utility.toLowerCase(Preconditions.shouldBeString(scheme)));
+        validatorFn = Preconditions.shouldBeFunction(validatorFn);
+
+        VALIDATORS[Utility.toLowerCase(scheme)] = validatorFn;
+
+        return validatorFn;
+    }
+
+    /**
+     *
+     * @param {String|Address|URI} stringOrAddressOrUri
+     * @return {Address|null}
+     */
+    static toAddress(stringOrAddressOrUri) {
+        if (Utility.isString(stringOrAddressOrUri) || (stringOrAddressOrUri instanceof URI)) {
+            return new Address(stringOrAddressOrUri);
+        } else if (Address.isInstance(stringOrAddressOrUri)) {
+            return stringOrAddressOrUri;
+        } else {
+            throw new NotImplementedError(`Cannot handle ${stringOrAddressOrUri}`);
+        }
+    }
+
+    /**
+     *
+     * @param {String|Address|URI} stringOrAddressOrUri
+     * @param {String} [defaultScheme]
+     * @return {Address}
+     */
+    static toAddressWithDefaultScheme(stringOrAddressOrUri, defaultScheme) {
+        if (Utility.isString(stringOrAddressOrUri)) {
+            return new Address(Address.toUriWithDefaultScheme(stringOrAddressOrUri, defaultScheme));
+        } else {
+            return Address.toAddress(stringOrAddressOrUri);
+        }
+    }
+
+    /**
+     *
+     * @param {String|Address|URI} stringOrAddressOrUri
+     * @param {String} [defaultScheme]
+     * @return {URI}
+     */
+    static toUriWithDefaultScheme(stringOrAddressOrUri, defaultScheme) {
+        if (Utility.isNullOrUndefined(stringOrAddressOrUri)) {
+            return null;
+        } else if (stringOrAddressOrUri instanceof URI) {
+            return stringOrAddressOrUri;
+        } else if (Utility.isString(stringOrAddressOrUri)) {
+            if (~stringOrAddressOrUri.indexOf(&apos;://&apos;)) {
+                let u = new URI(stringOrAddressOrUri);
+
+                return new URI(u.scheme() + &quot;://&quot; + u.host());
+            }
+
+            let index = stringOrAddressOrUri.indexOf(&quot;:/&quot;);
+
+            if (-1 === index) {
+                if (!Utility.isBlank(defaultScheme)) {
+                    stringOrAddressOrUri = defaultScheme + &apos;:/&apos; + stringOrAddressOrUri;
+
+                    index = defaultScheme.length;
+                } else {
+                    return new URI(stringOrAddressOrUri);
+                }
+            }
+
+            let protocol = stringOrAddressOrUri.substring(0, index);
+            let rest = stringOrAddressOrUri.substring(index + 2);
+
+            return new URI(protocol + &quot;://&quot; + rest);
+        } else {
+            throw new NotImplementedError(&apos;Do not know how to handle: &apos; + stringOrAddressOrUri);
+        }
+    }
+
+    /**
+     *
+     * @param {String|URI|null|undefined} uri
+     * @return {URI}
+     */
+    static toUri(uri) {
+        return Address.toUriWithDefaultScheme(uri);
+    }
+}
+
+export {Address};
+export default Address;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.0-alpha)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

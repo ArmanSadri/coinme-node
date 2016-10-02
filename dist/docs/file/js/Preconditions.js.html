@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/Preconditions.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/coinme/coinme-node.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Environment.js~Environment.html">Environment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~RateLimiter.html">RateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothBurstyRateLimiter.html">SmoothBurstyRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothRateLimiter.html">SmoothRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html">SmoothWarmingUpRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Stopwatch.js~Stopwatch.html">Stopwatch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Ticker.js~Ticker.html">Ticker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/TimeUnit.js~TimeUnit.html">TimeUnit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">cache</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/Cache.js~Cache.html">Cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/LocalFileCache.js~LocalFileCache.html">LocalFileCache</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Adapter.js~Adapter.html">Adapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CachedResourceLoader.js~CachedResourceLoader.html">CachedResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~Certificate.html">Certificate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~CertificateBundle.html">CertificateBundle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Conversion.js~Conversion.html">Conversion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/DelegatedConverter.js~DelegatedConverter.html">DelegatedConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/FileResourceLoader.js~FileResourceLoader.html">FileResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Identity.js~Identity.html">Identity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointType.html">EndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointTypes.html">EndpointTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~KioskEndpointType.html">KioskEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~Receipt.html">Receipt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptBuilder.html">ReceiptBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptEndpoint.html">ReceiptEndpoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~WalletEndpointType.html">WalletEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/ResourceLoader.js~ResourceLoader.html">ResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/SignTool.js~SignTool.html">SignTool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserExistenceToken.js~UserExistenceToken.html">UserExistenceToken</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/NotImplementedError.js~NotImplementedError.html">NotImplementedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/CurrencyAdapter.js~CurrencyAdapter.html">CurrencyAdapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Ethereum.js~Ethereum.html">Ethereum</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/MoneyConverter.js~MoneyConverter.html">MoneyConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">net</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClient.html">CoinmeWalletClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClientConfiguration.html">CoinmeWalletClientConfiguration</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/FieldBuilder.js~FieldBuilder.html">FieldBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html">InlineNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationBuilder.js~NotificationBuilder.html">NotificationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationService.js~NotificationService.html">NotificationService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationTemplate.js~NotificationTemplate.html">NotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html">UserNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notificationService">notificationService</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/Preconditions.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import Utility from &quot;./Utility&quot;;
+import Lodash from &quot;lodash/index&quot;;
+import CoreObject from &quot;./CoreObject&quot;;
+import AbstractError from &quot;./errors/AbstractError&quot;;
+import {Errors, PreconditionsError} from &quot;./errors&quot;;
+import {ZonedDateTime} from &apos;js-joda&apos;;
+
+// class PreconditionsError extends AbstractError {
+//
+//     /**
+//      *
+//      * @param {*} actualValue
+//      * @param {*} expectedValue
+//      * @param {String} [message]
+//      * @param {Error} [optionalCause]
+//      * @constructor
+//      */
+//     constructor(expectedValue, actualValue, message, optionalCause) {
+//         super(message);
+//
+ //
+//         this.name = &apos;PreconditionsError&apos;;
+//         // this.stack = error.stack;
+//         this.cause = optionalCause;
+//
+//         this.expectedValue = expectedValue || &apos;&apos;;
+//         this.actualValue = actualValue || &apos;&apos;;
+//         this.message = `failure (expected: ${this.expectedValue}) (actual: ${this.actualValue}) (message: ${this.message})`;
+//     }
+// }
+
+// /**
+//  *
+//  * @param {*} expectedValue
+//  * @param {*} actualValue
+//  * @param {String} [message]
+//  * @param {Error} [optionalCause]
+//  * @constructor
+//  */
+// function PreconditionsError(expectedValue, actualValue, message, optionalCause) {
+//     var error = Error.call(this, message);
+//
+//     this.name = &apos;PreconditionsError&apos;;
+//     this.stack = error.stack;
+//     this.cause = optionalCause;
+//
+//     this.expectedValue = expectedValue;
+//     this.actualValue = actualValue;
+//     this.message = `failure (expected: &apos;${this.expectedValue}&apos; [${Utility.typeOf(this.expectedValue)}]) (actual: &apos;${this.actualValue}&apos; [${Utility.typeOf(this.actualValue)}]) (message: ${this.message})`;
+// }
+//
+// PreconditionsError.prototype = Object.create(Error.prototype);
+// PreconditionsError.prototype.constructor = PreconditionsError;
+//
+// export { PreconditionsError }
+
+/**
+ * @singleton
+ * @class Preconditions
+ */
+export default class Preconditions {
+
+    /**
+     *
+     * @param {*} expectedValue
+     * @param {*} actualValue
+     * @param {String} [message]
+     */
+    static fail(expectedValue, actualValue, message) {
+        throw new PreconditionsError({
+            expectedValue: expectedValue,
+            actualValue: actualValue,
+            message: message || &apos;Preconditions failure&apos;
+        });
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {String} [message]
+     * return {*} object
+     */
+    static shouldBeUndefined(object, message) {
+        return Preconditions.shouldBe(Utility.isUndefined, undefined, object, message || &apos;must be undefined&apos;);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {String} [message]
+     * @returns {*}
+     */
+    static shouldNotBeFalsey(object, message) {
+        return Preconditions.shouldBe(Utility.isNotFalsey, true, object, message || &apos;must not be falsey&apos;)
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {String} [message]
+     * @returns {*}
+     */
+    static shouldBeFalsey(object, message) {
+        return Preconditions.shouldBe(Utility.isFalsey, false, object, message || &apos;must be falsey&apos;)
+    }
+
+    /**
+     * This method checks for UNDEFINED, NAN, and NULL
+     *
+     * @param {*} object
+     * @param {String} [message]
+     * @return {*}
+     */
+    static shouldBeDefined(object, message) {
+        if (Utility.isUndefined(object)) {
+            Preconditions.fail(&apos;defined&apos;, undefined, message || &apos;must be defined.&apos;);
+        }
+
+        return object;
+    }
+
+    /**
+     * Make sure an object is not: undefined, null, NaN
+     *
+     * @param {*} object
+     * @param {String} [message]
+     */
+    static shouldBeExisting(object, message) {
+        return Preconditions.shouldBe(Utility.isExisting, &apos;exist&apos;, object, message || &apos;must exist.&apos;);
+    }
+
+    /**
+     *
+     * @param {*} string
+     * @param {String} [message]
+     * @return {String}
+     */
+    static shouldNotBeBlank(string, message) {
+        Preconditions.shouldBeString(string, message || &apos;not blank&apos;);
+
+        return Preconditions.shouldBe(Utility.isNotBlank, &apos;not blank&apos;, string, message || &apos;must not be blank.&apos;);
+    }
+
+    /**
+     *
+     * @param {*} fn
+     * @param {String} [message]
+     * @return {function}
+     */
+    static shouldBeFunction(fn, message) {
+        return Preconditions.shouldBeType(&apos;function&apos;, fn, message);
+    }
+
+    /**
+     *
+     * @param {*} number
+     * @param {String} [message]
+     * @return {Number}
+     */
+    static shouldBeNumber(number, message) {
+        Preconditions.shouldBeType(&apos;number&apos;, number, message);
+        Preconditions.shouldBeFinite(number, message);
+
+        return number;
+    }
+
+    /**
+     *
+     * @param {function} testFn
+     * @param {*} [expectedValue]
+     * @param {*} actualValue
+     * @param {String} [message]
+     * @returns {*}
+     */
+    static shouldBe(testFn, expectedValue, actualValue, message) {
+        if (!Utility.isFunction(testFn)) {
+            Preconditions.fail(&apos;function&apos;, testFn, `testFn must be function, but was ${Utility.typeOf(testFn)}.`);
+        }
+
+        if (!testFn.call(this, actualValue)) {
+            Preconditions.fail(expectedValue, actualValue, message || &apos;must pass test.&apos;);
+        }
+
+        return actualValue;
+    }
+
+    /**
+     * Execute a function. The function should fail with a preconditions error.
+     *
+     * @param {function} fn
+     * @param {*} [scope]
+     */
+    static shouldFailWithPreconditionsError(fn, scope) {
+        try {
+            fn.call(scope || this);
+
+            throw new Error(&apos;Did not crash&apos;);
+        } catch (e) {
+            Preconditions.shouldBePreconditionsError(e);
+        }
+    }
+
+    /**
+     *
+     *
+     * @param {Class|Object} actualClass
+     * @param {Class|String} [requiredClassOrMessage]
+     * @param {String} [message]
+     */
+    static shouldBeClass(actualClass, requiredClassOrMessage, message) {
+        Preconditions.shouldBeDefined(actualClass, message || &apos;object must be defined&apos;);
+
+        let requiredClass;
+        
+        if (Utility.isString(requiredClassOrMessage)) {
+            Preconditions.shouldBeUndefined(message);
+            message = requiredClassOrMessage;
+            requiredClassOrMessage = null;
+        } else {
+            requiredClass = requiredClassOrMessage;
+        }
+
+        if (!requiredClass) {
+            requiredClass = CoreObject;
+        }
+
+        if (!CoreObject.isClass(requiredClass)) {
+            Preconditions.fail(CoreObject, requiredClass, message || &apos;Class not a CoreObject class&apos;);
+        }
+
+        if (!requiredClass.isClass(actualClass)) {
+            Preconditions.fail(requiredClass, actualClass, message || `Class was of the wrong type.`);
+        }
+
+        return actualClass;
+    }
+
+    /**
+     *
+     * @param value
+     * @param message
+     * @return {*}
+     */
+    static shouldBeDateTime(value, message) {
+        Preconditions.shouldBeType(&apos;temporal&apos;, value, message);
+        Preconditions.shouldBe(() =&gt; { return value instanceof ZonedDateTime; }, ZonedDateTime, value, message || &apos;Must be ZonedDateTime&apos;);
+
+        return value;
+    }
+
+    /**
+     *
+     * @param {Temporal|ZonedDateTime|Instant} value
+     * @param {String} [message]
+     * @return {*}
+     */
+    static shouldBeTemporal(value, message) {
+        Preconditions.shouldBeType(&apos;temporal&apos;, value, message || &apos;must be temporal&apos;);
+
+        return value;
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {Class} [clazz]
+     * @param {String} [message]
+     * @returns {Object}
+     */
+    static shouldBeInstance(object, clazz, message) {
+        Preconditions.shouldBeDefined(object, message || &apos;object must be defined&apos;);
+
+        if (!Utility.isInstance(object)) {
+            Preconditions.fail(CoreObject, clazz, message || &apos;object not an instance&apos;);
+        }
+
+        if (clazz) {
+            if (!Utility.isClass(clazz)) {
+                Preconditions.fail(CoreObject, clazz, message || &apos;clazz not a class&apos;);
+            }
+
+            if (!clazz.isInstance(object)) {
+                Preconditions.fail(object, clazz, message || &apos;Class not an instance of &apos; + clazz);
+            }
+        }
+
+        return object;
+    }
+
+    /**
+     * Less strict version of &quot;shouldBeInstance&quot;
+     *
+     * @param {*} object
+     * @param {*} clazz
+     * @param {String} [message]
+     * @return {*}
+     */
+    static shouldBeInstanceOf(object, clazz, message) {
+        Preconditions.shouldBeDefined(object, message);
+        Preconditions.shouldBeDefined(clazz, message);
+
+        if (object instanceof clazz) {
+            return object;
+        }
+
+        Preconditions.fail(true, false, message);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {Class&lt;CoreObject&gt;|String} [classOrString]
+     * @param {String} [message]
+     * @returns {Object}
+     */
+    static shouldNotBeInstance(object, classOrString, message) {
+        if (!object) {
+            return object;
+        }
+
+        let clazz;
+
+        if (Utility.isString(classOrString)) {
+            Preconditions.shouldBeUndefined(message);
+            message = classOrString;
+        }
+
+        if (!clazz) {
+            clazz = CoreObject.toClass();
+        }
+
+        clazz = Preconditions.shouldBeClass(clazz);
+
+        if (clazz.isInstance(object)) {
+            Preconditions.fail(object, clazz, message || &apos;Class is an instance of &apos; + clazz);
+        }
+
+        return object;
+    }
+
+    /**
+     *
+     * @param {*} number
+     * @param {String} [message]
+     * @return {Number}
+     */
+    static shouldBeFinite(number, message) {
+        if (!Lodash.isFinite(number)) {
+            Preconditions.fail(&apos;finite&apos;, number, message || &apos;must be finite.&apos;);
+        }
+
+        return number;
+    }
+
+    /**
+     *
+     * @param {Object} object
+     * @param {String} [message]
+     * @return {Object}
+     */
+    static shouldBeObject(object, message) {
+        Preconditions.shouldBeExisting(object, message);
+
+        let fn = Utility.typeMatcher(&apos;object&apos;);
+
+        return Preconditions.shouldBe(fn, &apos;object&apos;, object, message || &apos;shouldBeObject&apos;);
+    }
+
+    /**
+     *
+     * @param {*} string
+     * @param {String} [message]
+     * @return {String}
+     */
+    static shouldBeString(string, message) {
+        Preconditions.shouldBeExisting(string);
+
+        let fn = Utility.typeMatcher(&apos;string&apos;);
+
+        return Preconditions.shouldBe(fn, &apos;object&apos;, string, message);
+    }
+
+    /**
+     *
+     * @param {String} string
+     * @param {RegExp} regexp
+     * @param {String} [message]
+     */
+    static shouldMatchRegexp(string, regexp, message) {
+        Preconditions.shouldBeString(string, message);
+        Preconditions.shouldBeRegExp(regexp, message);
+
+        if (!string.match(regexp)) {
+            Preconditions.fail(true, false, message);
+        }
+
+        return string;
+    }
+
+    /**
+     *
+     * @param {RegExp} regexp
+     * @param {String} [message]
+     * @return {RegExp}
+     */
+    static shouldBeRegExp(regexp, message) {
+        return Preconditions.shouldBeType(&apos;regexp&apos;, regexp, message);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {AbstractError} [clazz]
+     * @param {String} [message]
+     * @returns Error
+     */
+    static shouldBeError(object, clazz, message) {
+        Preconditions.shouldBeType(&apos;error&apos;, object, message || &apos;Should be error type&apos;);
+
+        if (clazz) {
+            if (!Errors.isErrorClass(clazz)) {
+                Preconditions.fail(Error, clazz, message || &apos;must be error class&apos;);
+            }
+
+            if (!clazz.isInstance(object)) {
+                Preconditions.fail(clazz, object, message || &apos;must be error instance.&apos;);
+            }
+        }
+
+        return object;
+    }
+
+    /**
+     *
+     * @param {String} typeName
+     * @param {*} value
+     * @param {String} [message]
+     * @returns {*}
+     */
+    static shouldBeType(typeName, value, message) {
+        return Preconditions.shouldBe(Utility.typeMatcher(typeName), typeName, value, message);
+    }
+
+    /**
+     *
+     * @param {*} boolean
+     * @param {String} [message]
+     * @return {boolean}
+     */
+    static shouldBeTrue(boolean, message) {
+        Preconditions.shouldBeBoolean(boolean, message || &apos;should be true&apos;);
+
+        if (true === boolean) {
+            return boolean;
+        }
+
+        Preconditions.fail(boolean, true, message || &apos;was not true&apos;);
+    }
+
+    /**
+     * @param {*} target (pass this in exactly &quot;new.target&quot;)
+     * @param {Class} clazz
+     * @return {*}
+     */
+    static shouldBeAbstract(target, clazz) {
+        if (target.constructor === clazz) {
+            Errors.throwMustBeAbstract(clazz);
+        }
+
+        return target;
+    }
+
+    /**
+     *
+     * @param {*} number
+     * @param {String} [message]
+     * @returns {Number}
+     */
+    static shouldNotBeNegativeNumber(number, message) {
+        Preconditions.shouldBeDefined(number, message);
+        Preconditions.shouldBeNumber(number, message);
+
+        if (number &lt; 0) {
+            Preconditions.fail(&apos;positive&apos;, number, message || &apos;Number should be positive. Was: &apos; + number);
+        }
+
+        return number;
+    }
+
+    /**
+     *
+     * @param {boolean} boolean
+     * @param {String} [message]
+     */
+    static shouldBeBoolean(boolean, message) {
+        Preconditions.shouldBeDefined(boolean, message || &apos;should be boolean&apos;);
+
+        if (!Utility.isBoolean(boolean)) {
+            Preconditions.fail(&apos;boolean&apos;, boolean, message || &apos;was not boolean&apos;);
+        }
+
+        return boolean;
+    }
+
+    /**
+     *
+     * @param {Array} array
+     * @param {String} [message]
+     */
+    static shouldBeArray(array, message) {
+        Preconditions.shouldBeDefined(array);
+
+        if (!Utility.isArray(array)) {
+            Preconditions.fail(&apos;array&apos;, array, message || &apos;was not array&apos;);
+        }
+
+        return array;
+    }
+
+    /**
+     *
+     * @param {*} number1
+     * @param {*} number2
+     * @param {String} [message]
+     */
+    static shouldBeGreaterThan(number1, number2, message) {
+        Preconditions.shouldBeNumber(number1, message);
+        Preconditions.shouldBeNumber(number2, message);
+
+        if (number1 &lt;= number2) {
+            Preconditions.fail(&apos;larger than &apos; + number2, number1, message);
+        }
+
+        return number1;
+    }
+
+    /**
+     *
+     * @param {*} number
+     * @param {String} [message]
+     * @return {Number}
+     */
+    static shouldBePositiveNumber(number, message) {
+        Preconditions.shouldBeNumber(number, message);
+
+        if (number &lt;= 0) {
+            Preconditions.fail(&apos;positive&apos;, number, message || &apos;Number should be positive. Was: &apos; + number);
+        }
+
+        return number;
+    }
+
+    /**
+     * @param {*|PreconditionsError} e
+     * @param {String} [message]
+     *
+     * @return {PreconditionsError}
+     */
+    static shouldBePreconditionsError(e, message) {
+        if (!PreconditionsError.isInstance(e)) {
+            Preconditions.fail(PreconditionsError, e, message || &apos;Should be a preconditions error. Was: &apos; + e);
+        }
+
+        return e;
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.0-alpha)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

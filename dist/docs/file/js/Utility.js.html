@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/Utility.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/coinme/coinme-node.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Address.js~Address.html">Address</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Coinme.js~Coinme.html">Coinme</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/CoreObject.js~CoreObject.html">CoreObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Environment.js~Environment.html">Environment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Functions.js~Functions.html">Functions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Preconditions.js~Preconditions.html">Preconditions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~RateLimiter.html">RateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothBurstyRateLimiter.html">SmoothBurstyRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothRateLimiter.html">SmoothRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/RateLimiter.js~SmoothWarmingUpRateLimiter.html">SmoothWarmingUpRateLimiter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Stopwatch.js~Stopwatch.html">Stopwatch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Ticker.js~Ticker.html">Ticker</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/TimeUnit.js~TimeUnit.html">TimeUnit</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/Utility.js~Utility.html">Utility</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">cache</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/Cache.js~Cache.html">Cache</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/cache/LocalFileCache.js~LocalFileCache.html">LocalFileCache</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">data</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Adapter.js~Adapter.html">Adapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CachedResourceLoader.js~CachedResourceLoader.html">CachedResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~Certificate.html">Certificate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/CertificateBundle.js~CertificateBundle.html">CertificateBundle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Conversion.js~Conversion.html">Conversion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Converter.js~Converter.html">Converter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/DelegatedConverter.js~DelegatedConverter.html">DelegatedConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/FileResourceLoader.js~FileResourceLoader.html">FileResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Identity.js~Identity.html">Identity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointType.html">EndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~EndpointTypes.html">EndpointTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~KioskEndpointType.html">KioskEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~Receipt.html">Receipt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptBuilder.html">ReceiptBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~ReceiptEndpoint.html">ReceiptEndpoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/Receipt.js~WalletEndpointType.html">WalletEndpointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/ResourceLoader.js~ResourceLoader.html">ResourceLoader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/SignTool.js~SignTool.html">SignTool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserBuilder.js~UserBuilder.html">UserBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/data/UserExistenceToken.js~UserExistenceToken.html">UserExistenceToken</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">errors</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/AbstractError.js~AbstractError.html">AbstractError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/Errors.js~Errors.html">Errors</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/HttpError.js~HttpError.html">HttpError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/NotImplementedError.js~NotImplementedError.html">NotImplementedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/errors/PreconditionsError.js~PreconditionsError.html">PreconditionsError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ExtendableBuiltin">ExtendableBuiltin</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">money</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Bitcoin.js~Bitcoin.html">Bitcoin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Currency.js~Currency.html">Currency</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/CurrencyAdapter.js~CurrencyAdapter.html">CurrencyAdapter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Ethereum.js~Ethereum.html">Ethereum</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Money.js~Money.html">Money</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/MoneyConverter.js~MoneyConverter.html">MoneyConverter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/Satoshi.js~Satoshi.html">Satoshi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/money/USD.js~USD.html">USD</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">net</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClient.html">CoinmeWalletClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/net/CoinmeWalletClient.js~CoinmeWalletClientConfiguration.html">CoinmeWalletClientConfiguration</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">slack</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractBuilder.js~AbstractBuilder.html">AbstractBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AbstractNotificationTemplate.js~AbstractNotificationTemplate.html">AbstractNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/AttachmentBuilder.js~AttachmentBuilder.html">AttachmentBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/FieldBuilder.js~FieldBuilder.html">FieldBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/InlineNotificationTemplate.js~InlineNotificationTemplate.html">InlineNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationBuilder.js~NotificationBuilder.html">NotificationBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationService.js~NotificationService.html">NotificationService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/NotificationTemplate.js~NotificationTemplate.html">NotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/slack/UserNotificationTemplate.js~UserNotificationTemplate.html">UserNotificationTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notificationService">notificationService</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/Utility.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import Lodash from &quot;lodash&quot;;
+/** @type {Preconditions} */
+import Preconditions from &quot;~/Preconditions&quot;;
+/** @type {Ember} **/
+import Ember from &quot;~/Ember&quot;;
+import CoreObject from &quot;~/CoreObject&quot;;
+import {Errors} from &quot;./errors&quot;;
+import Big from &quot;big.js/big&quot;;
+import URI from &quot;urijs&quot;;
+import Promise from &quot;bluebird&quot;;
+import osenv from &quot;osenv&quot;;
+
+import {
+    Instant,
+    LocalDate,
+    ZonedDateTime,
+    LocalDateTime,
+    DateTimeFormatter,
+    ZoneOffset,
+    nativeJs,
+    convert,
+    TemporalQueries,
+    LocalTime
+} from &quot;js-joda&quot;;
+
+let TEMPORALS = {
+    &apos;Instant&apos;: Instant,
+    &apos;LocalTime&apos;: LocalTime,
+    &apos;LocalDate&apos;: LocalDate,
+    &apos;LocalDateTime&apos;: LocalDateTime,
+    &apos;ZonedDateTime&apos;: ZonedDateTime
+};
+
+let EMAIL_PATTERN = /(?:\w)+(?:\w|-|\.|\+)*@(?:\w)+(?:\w|\.|-)*\.(?:\w|\.|-)+$/;
+
+/**
+ * @class
+ * @singleton
+ */
+class Utility {
+
+    /**
+     *
+     * @param {URI|String|{baseUri:URI|String, uri:URI|String}} path
+     * @return {URI}
+     */
+    static getPath(path) {
+        const input = path;
+        let output;
+
+        if (Utility.isNotExisting(path)) {
+            output = undefined;
+        } else if (Utility.isString(path)) {
+            path = path.trim();
+
+            if (path.startsWith(&apos;~/&apos;)) {
+                path = path.substring(2);
+
+                output = URI.joinPaths(osenv.home(), path);
+            } else {
+                output = URI(path);
+            }
+        } else if (path instanceof URI) {
+            output = path;
+        } else if (path.uri || path.baseUri) {
+            let baseUri = Utility.getPath(path.baseUri) || &apos;&apos;;
+            let uri = Utility.getPath(path.uri) || &apos;&apos;;
+
+            if (uri.toString().startsWith(&apos;/&apos;)) {
+                // absolute uri
+                output = uri;
+            } else {
+                output = URI.joinPaths(baseUri, uri).toString();
+            }
+        }
+
+        if (output) {
+            return output;
+        }
+
+        throw new Error(`I don&apos;t know what to do here: ${input}`);
+    }
+
+    static isTemporal(value) {
+        // Direct Subclass:
+        //     ChronoLocalDate, ChronoLocalDateTime, ChronoZonedDateTime, DateTimeBuilder, DayOfWeek, Instant, LocalTime, Month, MonthDay, src/format/DateTimeParseContext.js~Parsed, Year, YearMonth
+        // Indirect Subclass:
+        //     LocalDate, LocalDateTime, ZonedDateTime
+
+        // console.log(value.toString());
+        // console.log(value.prototype);
+        // console.log(value.__proto__);
+        // console.log(value.constructor);
+        return !!TEMPORALS[value.constructor.name];
+    }
+
+    /**
+     *
+     * @param {*} one
+     * @param {*} two
+     * @return {boolean}
+     */
+    static isSameType(one, two) {
+        let type1 = Utility.typeOf(one);
+        let type2 = Utility.typeOf(two);
+
+        return type1 === type2;
+    }
+
+    /**
+     *
+     * @param {String|null|undefined} string
+     * @return {String|undefined}
+     */
+    static optLowerCase(string) {
+        if (Utility.isNullOrUndefined(string)) {
+            return undefined;
+        }
+
+        return (Utility.optString(string) || &apos;&apos;).toLowerCase();
+    }
+
+    /**
+     *
+     * @param {String} string1
+     * @param {String} string2
+     * @return {Boolean}
+     */
+    static isStringEqualIgnoreCase(string1, string2) {
+        if (Utility.isNotExisting(string1) || Utility.isNotExisting(string2)) {
+            return Utility.isSameType(string1, string2);
+        }
+
+        return Utility.isStringEqual(
+            Utility.optLowerCase(string1),
+            Utility.optLowerCase(string2));
+    }
+
+    /**
+     * (null, null) -&gt; true
+     *
+     * @param {String|*} string1
+     * @param {String|*} string2
+     * @return {boolean}
+     */
+    static isStringEqual(string1, string2) {
+        if (Utility.isNotExisting(string1) || Utility.isNotExisting(string2)) {
+            return Utility.isSameType(string1, string2);
+        }
+
+        string1 = Utility.optString(string1);
+        string2 = Utility.optString(string2);
+
+        if (!Utility.isSameType(string1, string2)) {
+            return false;
+        } else if (!Utility.isExisting(string1)) {
+            return false;
+        }
+
+        return string1 === string2;
+    }
+
+    /**
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isObject(object) {
+        let type = Utility.typeOf(object);
+
+        return &apos;object&apos; === type || &apos;instance&apos; === type;
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {Class}
+     */
+    static toClass(object) {
+        if (Utility.isClass(object)) {
+            return object;
+        } else if (Utility.isObject(object)) {
+            return object.toClass();
+        }
+
+        Preconditions.fail(&apos;object|class&apos;, Utility.typeOf(object), &apos;Must be correct type&apos;);
+    }
+
+    static isNumber(object) {
+        return &apos;number&apos; === Utility.typeOf(object);
+    }
+
+    static isClass(object) {
+        return &apos;class&apos; === Utility.typeOf(object);
+    }
+
+    static isInstance(object) {
+        return &apos;instance&apos; === Utility.typeOf(object);
+    }
+
+    static isError(object) {
+        return &apos;error&apos; === Utility.typeOf(object);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @param {String} path
+     * @param {*} [defaultValue]
+     * @returns {*}
+     */
+    static result(object, path, defaultValue) {
+        return Lodash.get.apply(Lodash, arguments);
+    }
+
+    /**
+     * @param {CoreObject|Class&lt;CoreObject&gt;} instance - Must be an instance of CoreObject (or subclass)
+     */
+    static toClassOrFail(instance) {
+        if (Utility.isInstance(instance)) {
+
+        } else if (Utility.isClass(instance)) {
+
+        } else {
+            Preconditions.fail(CoreObject, instance, &apos;Was not an instance or class. Cannot continue&apos;);
+        }
+
+        return instance.toClass();
+    }
+
+    /**
+     *
+     * @param boolean
+     * @returns {*}
+     */
+    static ifBoolean(boolean) {
+        if (Utility.isBoolean(boolean)) {
+            return boolean;
+        }
+
+        return undefined;
+    }
+
+    /**
+     * Uses Lodash.get, but then removes the key from the parent object.
+     *
+     * It takes properties off of an object and optionally does validation.
+     *
+     * var value = Utility.take(object, key, type);
+     *
+     * var value = Utility.take(object, {
+     *                           key: String,
+     *                       });
+     *
+     * var {value1, value2} = Utility.take(object, [keyAsString1, keyAsString2]);
+     *
+     * var {value1} = Utility.take(object, [keyAsString1]);
+     *
+     * A ruleset is defined as:
+     *
+     *  {
+     *      // return true to pass. false to fail.
+     *      validator: function(value) { return boolean; } throws Error,
+     *      type: String,
+     *      adapter: function(value) { return new_value; },
+     *      required: true|false|undefined
+     *   }
+     *
+     * @param {Object} object
+     * @param {String|Object|Array} keyAsStringObjectArray
+     * @param {String|Function|Class|Object|{required:Boolean,type:String|Class,validator:Function,adapter:Function, [defaultValue]:*}} [optionalTypeDeclarationOrDefaults] - If you pass a function in, it must return true
+     * @param {Boolean} [requiredByDefault] Default value for required.
+     * @throws PreconditionsError
+     *
+     * @returns {*}
+     */
+    static take(object, keyAsStringObjectArray, optionalTypeDeclarationOrDefaults, requiredByDefault) {
+        if (!object) {
+            object = {};
+        }
+
+        Preconditions.shouldBeDefined(keyAsStringObjectArray, &apos;key must be defined&apos;);
+
+        //region utilities
+        /**
+         *
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeValidator(ruleset, key, value) {
+            let fn = Lodash.get(ruleset, &apos;validator&apos;);
+            let scope = Lodash.get(ruleset, &apos;scope&apos;) || this;
+
+            if (fn) {
+                Preconditions.shouldBeFunction(fn, &apos;validator must be type of function&apos;);
+                Preconditions.shouldBeTrue(false !== fn.call(scope, value), &apos;Failed validation: {key:\&apos;&apos; + key + &apos;\&apos; value:\&apos;&apos; + value + &apos;\&apos;&apos;);
+            }
+
+            return value;
+        }
+
+        /**
+         * If the ruleset requires, will throw.
+         *
+         * @throws PreconditionsError
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeAdapter(ruleset, key, value) {
+            let fn = Lodash.get(ruleset, &apos;adapter&apos;);
+            let scope = Lodash.get(ruleset, &apos;scope&apos;) || this;
+
+
+            if (fn) {
+                Preconditions.shouldBeFunction(fn, &apos;Validator must be a function&apos;);
+
+                value = fn.call(scope, value);
+            }
+
+            return value;
+        }
+
+        /**
+         * If the ruleset requires, will throw.
+         *
+         * @throws PreconditionsError
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function, [defaultValue]:*}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeRequired(ruleset, key, value) {
+            let required = Lodash.get(ruleset, &apos;required&apos;);
+
+            if (Utility.isDefined(ruleset.defaultValue)) {
+                if (!value) {
+                    value = ruleset.defaultValue;
+                }
+            }
+
+            if (true === required) {
+                if (Utility.isNullOrUndefined(value)) {
+                    Preconditions.shouldBeExisting(value, `Utility.take(). &apos;key=${key}&apos; is required`);
+                }
+            }
+
+
+            return value;
+        }
+
+        /**
+         * If the ruleset requires, will throw.
+         *
+         * @throws PreconditionsError
+         * @param {{[scope]: Object, [adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeType(ruleset, key, value) {
+            if (!ruleset.required &amp;&amp; Utility.isUndefined(value)) {
+                return;
+            }
+
+            let type = Lodash.get(ruleset, &apos;type&apos;);
+
+            if (type) {
+                Preconditions.shouldBeType(type, value, `${key} was wrong type.`);
+            }
+
+            return value;
+        }
+
+        /**
+         * Main entry point for checks.
+         *
+         * @param {{[adapter]: function, [validator]: function, [adapter]: function}}  ruleset
+         * @param {String} key
+         * @param {*} value
+         * @returns {*}
+         */
+        function executeChecks(ruleset, key, value) {
+            // console.log(`executeChecks with ruleset: ${JSON.stringify(ruleset)} and (key:${key}) (value:${value})`);
+
+            value = executeAdapter(ruleset, key, value);
+            value = executeRequired(ruleset, key, value);
+            value = executeType(ruleset, key, value);
+            value = executeValidator(ruleset, key, value);
+
+            return value;
+        }
+
+        //endregion
+
+        //region ruleset - defaults
+        let global_defaults = {};
+
+        Preconditions.shouldNotBeInstance(optionalTypeDeclarationOrDefaults, &apos;the 3rd parameter cannot be an instance of a CoreObject field.&apos;);
+
+        if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
+            if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
+                global_defaults = {
+                    type: optionalTypeDeclarationOrDefaults
+                };
+            } else {
+                global_defaults = Lodash.assign(global_defaults, optionalTypeDeclarationOrDefaults);
+            }
+
+            optionalTypeDeclarationOrDefaults = null;
+        } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
+            global_defaults = {
+                validator: optionalTypeDeclarationOrDefaults
+            };
+
+            optionalTypeDeclarationOrDefaults = null;
+        } else if (Utility.isBoolean(optionalTypeDeclarationOrDefaults)) {
+            global_defaults = {
+                required: optionalTypeDeclarationOrDefaults
+            };
+
+            optionalTypeDeclarationOrDefaults = null;
+
+            Preconditions.shouldBeUndefined(requiredByDefault, &apos;You provided two booleans. That\&apos;s strange.&apos;);
+        } else if (Utility.isString(optionalTypeDeclarationOrDefaults)) {
+            global_defaults = {
+                type: optionalTypeDeclarationOrDefaults
+            };
+        }
+
+        if (Utility.isBoolean(requiredByDefault)) {
+            // global_defaults.required =
+            global_defaults = Utility.defaults(global_defaults, {
+                required: requiredByDefault
+            });
+        }
+
+        // if (Utility.isDefined(global_defaults.defaultValue)) {
+        //     throw new Error(&apos;has default value global&apos;);
+        // }
+
+        /**
+         *
+         * @param {Object} [defaults]
+         * @returns {{required:Boolean, validator:Function, type:String|Object, adapter:Function}}
+         */
+        function toRuleset(defaults) {
+            let ruleset = {};
+
+            ruleset = Lodash.defaults(ruleset, defaults || {}, global_defaults, {
+                required: false,
+                validator: null
+            });
+
+            return ruleset;
+        }
+
+        //endregion
+
+        let mode = Utility.typeOf(keyAsStringObjectArray);
+
+        //region String Mode
+        if (&apos;string&apos; === mode) {
+            /** @type {String} */
+            let key = keyAsStringObjectArray;
+            keyAsStringObjectArray = null;
+
+            /** @type {*} */
+            let value = Utility.result(object, key);
+
+            /**
+             * @type {{validator?:function, required?:boolean, type?: string|object}}
+             */
+            let ruleset = toRuleset();
+
+            // if (Utility.isClass(optionalTypeDeclarationOrDefaults)) {
+            //     ruleset = {
+            //         validator: Utility.typeMatcher(optionalTypeDeclarationOrDefaults),
+            //         required: false
+            //     };
+            // } else if (Utility.isFunction(optionalTypeDeclarationOrDefaults)) {
+            //     ruleset = {
+            //         validator: optionalTypeDeclarationOrDefaults,
+            //         required: false
+            //     };
+            // } else if (Utility.isNullOrUndefined(optionalTypeDeclarationOrDefaults)) {
+            //     ruleset = {
+            //         validator: Utility.yes,
+            //         required: false
+            //     };
+            // } else if (Utility.isObject(optionalTypeDeclarationOrDefaults) &amp;&amp; !Utility.isInstance(optionalTypeDeclarationOrDefaults)) {
+            //     // TODO: apply global defaults.
+            //     ruleset = optionalTypeDeclarationOrDefaults;
+            // } else {
+            //     throw new TypeError(&apos;Not sure how to interpret the rules.&apos;)
+            // }
+
+            if (-1 != key.indexOf(&apos;.&apos;)) {
+                // It&apos;s an object path.
+                let parentPath = key.substring(0, key.lastIndexOf(&apos;.&apos;));
+                let itemKey = key.substring(key.lastIndexOf(&apos;.&apos;) + 1);
+                let parent = Utility.result(object, parentPath);
+
+                delete parent[itemKey];
+            } else {
+                delete object[key];
+            }
+
+            return executeChecks(ruleset, key, value);
+        }
+        //endregion
+
+        //region Array/Object mode
+        if (&apos;array&apos; === mode || &apos;object&apos; === mode) {
+            let result = {};
+
+            let defaults = toRuleset(Utility.result(keyAsStringObjectArray, &apos;defaults&apos;, {}));
+
+            Lodash.forEach(keyAsStringObjectArray,
+
+                /**
+                 *
+                 * @param {String|Object|Function} rulesetOrObject
+                 * @param {String} [rulesetOrObject.key]
+                 * @param {Number|String} keyOrIndex
+                 */
+                function (rulesetOrObject, keyOrIndex) {
+                    /**
+                     * @type {String}
+                     */
+                    let key;
+
+                    /**
+                     * @type {Object}
+                     */
+                    let ruleset;
+
+                    if (&apos;array&apos; === mode) {
+                        if (Utility.isString(rulesetOrObject)) {
+                            key = rulesetOrObject;
+                            ruleset = Lodash.defaults({}, defaults);
+
+                            // if (Utility.isObject(optionalTypeDeclarationOrDefaults)) {
+                            //     ruleset = Lodash.defaults(ruleset, optionalTypeDeclarationOrDefaults);
+                            // }
+                        } else if (Utility.isObject(rulesetOrObject)) {
+                            /**
+                             * @type {String}
+                             */
+                            key = Preconditions.shouldBeString(Utility.result(rulesetOrObject, &apos;key&apos;), &apos;key not defined&apos;);
+                            ruleset = rulesetOrObject;
+                        } else if (Utility.isFunction(rulesetOrObject)) {
+                            ruleset = {
+                                validator: rulesetOrObject
+                            };
+                        } else {
+                            throw new Error(&apos;Dont know what to do: &apos; + rulesetOrObject);
+                        }
+                    } else if (&apos;object&apos; === mode) {
+                        key = keyOrIndex;
+
+                        if (Utility.isString(rulesetOrObject)) {
+                            ruleset = {
+                                type: rulesetOrObject
+                            };
+                        } else if (Utility.isObject(rulesetOrObject)) {
+                            ruleset = rulesetOrObject;
+                        } else if (Utility.isFunction(rulesetOrObject)) {
+                            ruleset = {
+                                validator: rulesetOrObject
+                            };
+                        } else {
+                            throw new Error(&apos;Dont know what to do: &apos; + rulesetOrObject);
+                        }
+
+                    } else {
+                        Preconditions.fail(&apos;array|object&apos;, mode, &apos;Unknown mode&apos;);
+                    }
+
+                    Preconditions.shouldNotBeBlank(key, &apos;Key must be defined by here in all situations.&apos;);
+                    Preconditions.shouldBeObject(ruleset, &apos;Must have a valid ruleset: &apos; + ruleset);
+
+                    // if (Utility.isObject(ruleset)) {
+                    //     // this is a ruleset that overrides our ruleset.
+                    //     ruleset = Lodash.defaults({key: key}, ruleset, defaults);
+                    // } else if (Utility.isFunction(ruleset)) {
+                    //     let fn = ruleset;
+                    //
+                    //     ruleset = {
+                    //         key: key,
+                    //         validator: fn
+                    //     };
+                    // } else {
+                    //     throw new Error(&apos;Cannot determine what to do with: &apos; + typeOfRuleset + &apos;: &apos; + ruleset);
+                    // }
+
+                    ruleset = Lodash.defaults(ruleset, defaults);
+
+                    let requiredType = ruleset.type;
+
+                    // If we don&apos;t have a validator yet, check to see if we can get one.
+                    if (!ruleset.validator &amp;&amp; Utility.isNotBlank(requiredType)) {
+                        if (&apos;string&apos; === requiredType) {
+                            ruleset.validator = Utility.isString;
+                        } else if (&apos;number&apos; === requiredType) {
+                            ruleset.validator = Utility.isNumber;
+                        } else if (&apos;required&apos; === requiredType) {
+                            ruleset.validator = Utility.isExisting;
+                        } else {
+                            throw new Error(&apos;I should add more types: &apos; + requiredType);
+                        }
+                    }
+
+                    if (&apos;defaults&apos; === key) {
+                        return;
+                    }
+
+                    result[key] = executeChecks(ruleset, key, Utility.take(object, key));
+                });
+
+            return result;
+        } else {
+            throw new Error(&apos;Not sure how to handle this case: &apos; + Utility.typeOf(keyAsStringObjectArray));
+        }
+        //endregion
+
+    }
+
+    /**
+     * Creates a test method. Uses Utility.typeOf()
+     *
+     * @param {String|Class} type
+     * @return {function}
+     */
+    static typeMatcher(type) {
+        // Ember.typeOf();                       // &apos;undefined&apos;
+        // Ember.typeOf(null);                   // &apos;null&apos;
+        // Ember.typeOf(undefined);              // &apos;undefined&apos;
+        // Ember.typeOf(&apos;michael&apos;);              // &apos;string&apos;
+        // Ember.typeOf(new String(&apos;michael&apos;));  // &apos;string&apos;
+        // Ember.typeOf(101);                    // &apos;number&apos;
+        // Ember.typeOf(new Number(101));        // &apos;number&apos;
+        // Ember.typeOf(true);                   // &apos;boolean&apos;
+        // Ember.typeOf(new Boolean(true));      // &apos;boolean&apos;
+        // Ember.typeOf(Ember.makeArray);        // &apos;function&apos;
+        // Ember.typeOf([1, 2, 90]);             // &apos;array&apos;
+        // Ember.typeOf(/abc/);                  // &apos;regexp&apos;
+        // Ember.typeOf(new Date());             // &apos;date&apos;
+        // Ember.typeOf(Ember.Object.extend());  // &apos;class&apos;
+        // Ember.typeOf(Ember.Object.create());  // &apos;instance&apos;
+        // Ember.typeOf(new Error(&apos;teamocil&apos;));  // &apos;error&apos;
+        // // &apos;normal&apos; JavaScript object
+        // Ember.typeOf({ a: &apos;b&apos; });             // &apos;object&apos;
+
+        let knownTypes = {
+            &apos;undefined&apos;: true,
+            &apos;null&apos;: true,
+            &apos;string&apos;: true,
+            &apos;number&apos;: true,
+            &apos;boolean&apos;: true,
+            &apos;function&apos;: true,
+            &apos;array&apos;: true,
+            &apos;instance&apos;: true,
+            &apos;error&apos;: true,
+            &apos;object&apos;: true,
+            &apos;class&apos;: true,
+            &apos;regexp&apos;: true,
+            &apos;date&apos;: true
+        };
+
+        /**
+         * Should be string.
+         */
+        {
+            let typeOfType = Utility.typeOf(type);
+
+            if (!(&apos;string&apos; === typeOfType || &apos;class&apos; === typeOfType)) {
+                Preconditions.fail(&apos;string&apos;, type, `The type passed in was not a string|class. It was ${typeOfType}`);
+            }
+        }
+
+        /**
+         * Should be known type.
+         */
+        {
+            // This will cause an infinite loop.
+            // Preconditions.shouldNotBeBlank(type, &apos;type missing&apos;);
+            // type = Utility.toLowerCase(type);
+            if (Utility.isString(type)) {
+                type = type.toLowerCase();
+
+                Preconditions.shouldBeTrue(knownTypes[type], &apos;unknown type: &apos; + type);
+
+                return (function (/** @type {*} */ object) {
+                    let objectType = Utility.typeOf(object);
+
+                    if (&apos;object&apos; === type || &apos;instance&apos; === type) {
+                        return (&apos;object&apos; === objectType) || (&apos;instance&apos; === objectType);
+                    }
+
+                    return type === objectType;
+                });
+            } else if (Utility.isClass(type)) {
+                /**
+                 * @type {Class&lt;CoreObject&gt;}
+                 */
+                return function (/** @type {*} */object) {
+                    return (type.isInstance(object));
+                };
+            }
+        }
+
+
+    }
+
+    /**
+     * Returns a consistent type for the passed item.
+     *
+     * Use this instead of the built-in `typeof` to get the type of an item.
+     * It will return the same result across all browsers and includes a bit
+     * more detail. Here is what will be returned:
+     *
+     * | Return Value  | Meaning                                              |
+     * |---------------|------------------------------------------------------|
+     * | &apos;string&apos;      | String primitive or String object.                   |
+     * | &apos;number&apos;      | Number primitive or Number object.                   |
+     * | &apos;boolean&apos;     | Boolean primitive or Boolean object.                 |
+     * | &apos;null&apos;        | Null value                                           |
+     * | &apos;undefined&apos;   | Undefined value                                      |
+     * | &apos;function&apos;    | A function                                           |
+     * | &apos;array&apos;       | An instance of Array                                 |
+     * | &apos;regexp&apos;      | An instance of RegExp                                |
+     * | &apos;date&apos;        | An instance of Date                                  |
+     * | &apos;class&apos;       | An Ember class (created using Ember.Object.extend()) |
+     * | &apos;instance&apos;    | An Ember object instance                             |
+     * | &apos;error&apos;       | An instance of the Error object                      |
+     * | &apos;object&apos;      | A JavaScript object not inheriting from Ember.Object |
+     *
+     * Examples:
+     *
+     ```javascript
+     Ember.typeOf();                       // &apos;undefined&apos;
+     Ember.typeOf(null);                   // &apos;null&apos;
+     Ember.typeOf(undefined);              // &apos;undefined&apos;
+     Ember.typeOf(&apos;michael&apos;);              // &apos;string&apos;
+     Ember.typeOf(new String(&apos;michael&apos;));  // &apos;string&apos;
+     Ember.typeOf(101);                    // &apos;number&apos;
+     Ember.typeOf(new Number(101));        // &apos;number&apos;
+     Ember.typeOf(true);                   // &apos;boolean&apos;
+     Ember.typeOf(new Boolean(true));      // &apos;boolean&apos;
+     Ember.typeOf(Ember.makeArray);        // &apos;function&apos;
+     Ember.typeOf([1, 2, 90]);             // &apos;array&apos;
+     Ember.typeOf(/abc/);                  // &apos;regexp&apos;
+     Ember.typeOf(new Date());             // &apos;date&apos;
+     Ember.typeOf(Ember.Object.extend());  // &apos;class&apos;
+     Ember.typeOf(Ember.Object.create());  // &apos;instance&apos;
+     Ember.typeOf(new Error(&apos;teamocil&apos;));  // &apos;error&apos;
+
+     // &apos;normal&apos; JavaScript object
+     Ember.typeOf({ a: &apos;b&apos; });             // &apos;object&apos;
+     ```
+     *
+     * @method typeOf
+     * @for Ember
+     * @param {Object} object the item to check
+     * @return {String} the type
+     * @public
+     */
+    static typeOf(object) {
+        let type = Ember.typeOf(object);
+
+        if (&apos;function&apos; === type) {
+            // Let&apos;s isClass a bit further.
+
+            if (CoreObject.isClass(object) || Errors.isErrorClass(object)) {
+                return &apos;class&apos;;
+            } else if (Errors.isErrorInstance(object)) {
+                return &apos;error&apos;;
+            }
+        } else if (&apos;object&apos; === type) {
+            if (CoreObject.isInstance(object)) {
+                return &apos;instance&apos;;
+            } else if (Utility.isTemporal(object)) {
+                return &apos;temporal&apos;;
+            }
+        }
+
+        return type;
+    }
+
+    /**
+     * @param {Date|*} value
+     * @return {Boolean}
+     */
+    static isDate(value) {
+        return &apos;date&apos; === Utility.typeOf(value);
+    }
+
+    /**
+     *
+     * @param {String} string
+     * @returns {boolean}
+     */
+    static isEmail(string) {
+        Preconditions.shouldBeString(string, &apos;Should be string&apos;);
+
+        var type = Utility.typeOf(string);
+
+        if (type !== &apos;string&apos; || !string) {
+            return false;
+        }
+
+        return EMAIL_PATTERN.test(string);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isArray(object) {
+        return &apos;array&apos; === Utility.typeOf(object);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isBoolean(object) {
+        return &apos;boolean&apos; === Utility.typeOf(object);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @return {boolean}
+     */
+    static isUndefined(object) {
+        return &apos;undefined&apos; === Utility.typeOf(object);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isDefined(object) {
+        return !this.isUndefined(object);
+    }
+
+    /**
+     * Shorthand: Utility.typeOf() === string
+     *
+     * This is for functional programming.
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isString(object) {
+        return &apos;string&apos; === Utility.typeOf(object);
+    }
+
+    /**
+     * Determines if the argument is a Number, String, null, undefined
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isPrimitive(object) {
+        if (Utility.isNullOrUndefined(object)) {
+            return true;
+        }
+
+        let type = Utility.typeOf(object);
+        let primitives = [&apos;number&apos;, &apos;string&apos;];
+
+        return -1 !== primitives.indexOf(type);
+    }
+
+    /**
+     * Determine if something is a promise
+     *
+     * @param {*} object
+     * @return boolean
+     */
+    static isPromise(object) {
+        return Promise.is(object);
+    }
+
+    /**
+     *
+     * @param valueOrFn
+     */
+    static isTruthy(valueOrFn) {
+        let value;
+
+        if (Utility.isFunction(valueOrFn)) {
+            value = valueOrFn();
+        } else {
+            value = valueOrFn;
+        }
+
+        return !!value;
+    }
+
+    /**
+     *
+     * @param fn
+     * @returns {boolean}
+     */
+    static isFunction(fn) {
+        return &apos;function&apos; === Utility.typeOf(fn);
+    }
+
+    /**
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isNotFunction(object) {
+        return &apos;function&apos; !== Utility.typeOf(object);
+    }
+
+    /**
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isNaN(object) {
+        return Lodash.isNaN(object);
+    }
+
+    /**
+     *
+     * @param {*} anything
+     * @returns {boolean}
+     */
+    static isNull(anything) {
+        return &apos;null&apos; === Utility.typeOf(anything);
+    }
+
+    /**
+     *
+     * @param {CoreObject|Class} object
+     * @returns {Class|*|Class.&lt;CoreObject&gt;}
+     */
+    static getClass(object) {
+        if (Utility.isClass(object)) {
+            return object;
+        }
+
+        Preconditions.shouldBeInstance(object);
+
+        return object.toClass();
+    }
+
+    /**
+     * @param {String|Number|Big|null|NaN|undefined} numberOrStringOrBig
+     * @returns {Big}
+     */
+    static toBigNumber(numberOrStringOrBig) {
+        if (Utility.isNullOrUndefined(numberOrStringOrBig)) {
+            numberOrStringOrBig = 0;
+        }
+
+        if (numberOrStringOrBig instanceof Big) {
+            return numberOrStringOrBig;
+        } else if (Utility.isString(numberOrStringOrBig) || Utility.isNumber(numberOrStringOrBig)) {
+            return new Big(numberOrStringOrBig);
+        }
+
+        Preconditions.fail(&apos;Number|String|Big&apos;, numberOrStringOrBig, &apos;Unsupported type&apos;);
+    }
+
+    /**
+     *
+     * @param {Class|CoreObject|null|undefined} object
+     * @returns {Class|undefined}
+     */
+    static optClass(object) {
+        if (Utility.isInstance(object)) {
+            return Utility.getClass(object);
+        } else if (Utility.isClass(object)) {
+            return object;
+        }
+
+        return undefined;
+    }
+
+    /**
+     * Null-safe way to lowercase
+     * @param {String} string
+     * @returns {String}
+     */
+    static toLowerCase(string) {
+        if (Utility.isBlank(string)) {
+            return string;
+        }
+
+        Preconditions.shouldBeString(string);
+
+        return string.toLowerCase();
+    }
+
+    /**
+     * Null-safe way to uppercase.
+     *
+     * @param {String} string
+     * @returns {String}
+     */
+    static toUpperCase(string) {
+        if (Utility.isBlank(string)) {
+            return string;
+        }
+
+        Preconditions.shouldBeString(string);
+
+        return string.toUpperCase();
+    }
+
+    /**
+     *
+     * @param object
+     */
+    static optString(object) {
+        if (!Utility.isExisting(object)) {
+            return undefined;
+        } else {
+            if (Utility.isFunction(object.toString)) {
+                return object.toString();
+            } else {
+                return &apos;&apos; + object;
+            }
+        }
+    }
+
+    /**
+     * optJson(undefined) -&gt; undefined
+     * optJson(null) -&gt; undefined
+     * optJson(NaN) -&gt; undefined
+     * optJson(primitive) -&gt; primitive
+     * optJson(object) -&gt; object.toJSON
+     * optJson(object) -&gt; object.toJson
+     * optJson(object) -&gt; object
+     *
+     * @param object
+     * @return {*}
+     */
+    static optJson(object) {
+        if (!Utility.isExisting(object)) {
+            return undefined;
+        } else if (Utility.isPrimitive(object)) {
+            return object;
+        } else if (Utility.isFunction(object.toJson)) {
+            return object.toJson();
+        } else if (Utility.isFunction(object.toJSON)) {
+            return object.toJSON();
+        } else {
+            return object;
+        }
+    }
+
+    /**
+     * Determines if the input is NotNull, NotNaN, and NotUndefined.
+     *
+     * @param {*} anything
+     * @return {boolean}
+     */
+    static isExisting(anything) {
+        let u = Utility.isUndefined(anything);
+        let n = Utility.isNaN(anything);
+        let nu = Utility.isNull(anything);
+
+        return !(u || n || nu);
+    }
+
+    /**
+     * The opposite of existing.
+     *
+     * @param {*} anything
+     * @returns {boolean}
+     */
+    static isNotExisting(anything) {
+        return !Utility.isExisting(anything);
+    }
+
+    /**
+     *
+     * @param {*} object
+     * @returns {boolean}
+     */
+    static isFalsey(object) {
+        return !object;
+    }
+
+    /**
+     *
+     * @param object
+     */
+    static isNotFalsey(object) {
+        return !Utility.isFalsey(object);
+    }
+
+    /**
+     * Shorthand for value
+     *
+     * @param value
+     * @returns {boolean}
+     */
+    static isNullOrUndefined(value) {
+        return Utility.isNull(value) || Utility.isUndefined(value);
+    }
+
+    /**
+     * A value is blank if it is empty or a whitespace string.
+     *
+     * ```javascript
+     * Ember.isBlank();                // true
+     * Ember.isBlank(null);            // true
+     * Ember.isBlank(undefined);       // true
+     * Ember.isBlank(&apos;&apos;);              // true
+     * Ember.isBlank([]);              // true
+     * Ember.isBlank(&apos;\n\t&apos;);          // true
+     * Ember.isBlank(&apos;  &apos;);            // true
+     * Ember.isBlank({});              // false
+     * Ember.isBlank(&apos;\n\t Hello&apos;);    // false
+     * Ember.isBlank(&apos;Hello world&apos;);   // false
+     * Ember.isBlank([1,2,3]);         // false
+     * ```
+     * @param {String|Array|Number} stringOrArrayOrNumber
+     * @param {String|Array|Number} [stringOrArrayOrNumber.length]
+     * @return {boolean}
+     */
+    static isBlank(stringOrArrayOrNumber) {
+        if (!stringOrArrayOrNumber) {
+            return true;
+        }
+
+        if (Utility.isNotExisting(stringOrArrayOrNumber)) {
+            return true;
+        }
+
+        let type = Utility.typeOf(stringOrArrayOrNumber);
+        if (&apos;number&apos; === type) {
+            return (0 == stringOrArrayOrNumber);
+        }
+
+        if (!(&apos;array&apos; === type || &apos;string&apos; === type || &apos;number&apos; === type)) {
+            Preconditions.fail(&apos;type|array&apos;, type, `isBlank does not support ${type}`);
+        }
+
+        return Ember.isBlank(stringOrArrayOrNumber);
+    }
+
+    /**
+     *
+     * @param {String} string
+     * @return {boolean}
+     */
+    static isNotBlank(string) {
+        return !Utility.isBlank(string);
+    }
+
+    /**
+     * @returns {Number}
+     */
+    static defaultNumber() {
+        let result = 0;
+
+        Lodash.each(arguments, function (object) {
+            if (Utility.isNumber(object)) {
+                result = object;
+            }
+        });
+
+        return result;
+    }
+
+    /**
+     *
+     * @param {String|Number} value
+     * @return {boolean}
+     */
+    static isNumeric(value) {
+        if (typeof value === &apos;number&apos;) return true;
+        var str = (value || &apos;&apos;).toString();
+        if (!str) return false;
+        return !isNaN(str);
+    }
+
+    /**
+     *
+     * @param {*} value
+     * @returns {Number}
+     */
+    static toNumberOrFail(value) {
+        if (Utility.isNullOrUndefined(value)) {
+            return 0;
+        } else if (Utility.isNumber(value)) {
+            return value;
+        } else if (Utility.isString(value)) {
+            return Number.parseFloat(value);
+        } else if (value instanceof Big) {
+            // is this a risk?
+            return Number.parseFloat(value.toFixed());
+        }
+
+        throw new TypeError(&quot;unknown type: &quot; + Utility.typeOf(value));
+    }
+
+    /**
+     * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined|ZonedDateTime} numberOrStringOrBig
+     * @param {String|DateTimeFormatter} [optionalParserOrFormat]
+     *
+     * @return {Instant|undefined}
+     */
+    static optInstant(numberOrStringOrBig, optionalParserOrFormat) {
+        /**
+         * @type {ZonedDateTime}
+         */
+        let date = Utility.optDateTime(numberOrStringOrBig, optionalParserOrFormat);
+
+        if (!date) {
+            return undefined;
+        }
+
+        return date.toInstant();
+    }
+
+    /**
+     * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} numberOrStringOrBig
+     * @param {String|DateTimeFormatter} [optionalParserOrFormat]
+     *
+     * @return {Date|undefined}
+     */
+    static optDate(numberOrStringOrBig, optionalParserOrFormat) {
+        let date = Utility.optDateTime(numberOrStringOrBig, optionalParserOrFormat);
+
+        if (!date) {
+            return undefined;
+        }
+
+        return convert(date);
+    }
+
+    /**
+     *
+     * @param {String|ZoneOffset|undefined} value
+     * @return {ZoneOffset}
+     */
+    static toTimeZoneOffset(value) {
+        if (Utility.isNotExisting(value)) {
+            return ZoneOffset.UTC;
+        } else if (Utility.isString(value)) {
+            return ZoneOffset.of(value);
+        } else if (value instanceof ZoneOffset) {
+            return value;
+        }
+
+        Errors.throwNotSure(value);
+    }
+
+    /**
+     * @param {Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} numberOrStringOrBig
+     * @param {String|DateTimeFormatter|ZoneOffset} [optionalDateFormatStringOrDateFormatter]
+     *
+     * @return {ZonedDateTime|undefined}
+     */
+    static optDateTime(numberOrStringOrBig, optionalDateFormatStringOrDateFormatter) {
+        if (!numberOrStringOrBig) {
+            return Utility
+                .now()
+                .withZoneSameInstant(Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter));
+        }
+
+        if (Utility.isDate(numberOrStringOrBig)) {
+            return LocalDateTime
+                .from(nativeJs(numberOrStringOrBig))
+                .atZone(Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter));
+        }
+
+        if (Utility.isString(numberOrStringOrBig)) {
+            return ZonedDateTime
+                .parse(numberOrStringOrBig, Utility.toDateTimeFormatter(optionalDateFormatStringOrDateFormatter));
+        }
+
+        if (Utility.isTemporal(numberOrStringOrBig)) {
+            /** @type {ZoneOffset} */
+            let zone = numberOrStringOrBig.query(TemporalQueries.zone());
+
+            if (!zone) {
+                zone = Utility.toTimeZoneOffset(optionalDateFormatStringOrDateFormatter);
+            }
+
+            if (numberOrStringOrBig instanceof ZonedDateTime) {
+                return numberOrStringOrBig;
+            } else if (numberOrStringOrBig instanceof Instant) {
+                return ZonedDateTime.ofInstant(numberOrStringOrBig, zone);
+            }
+
+            /** @type {LocalTime} */
+            let localTime = numberOrStringOrBig.query(TemporalQueries.localTime());
+            /** @type {LocalDate} */
+            let localDate = numberOrStringOrBig.query(TemporalQueries.localDate());
+
+            if (!localTime) {
+                localTime = LocalTime.now(zone).toLocalTime();
+            }
+
+            if (!localDate) {
+                localDate = LocalDate.now(zone);
+            }
+
+            return localTime
+                .atDate(localDate)
+                .atZone(zone);
+        }
+    }
+
+
+    /**
+     *
+     * This is copied from https://js-joda.github.io/js-joda/esdoc/class/src/format/DateTimeFormatter.js~DateTimeFormatter.html
+     *
+     *  |Symbol  |Meaning                     |Presentation      |Examples
+     *  |--------|----------------------------|------------------|----------------------------------------------------
+     *  | G      | era                        | number/text      | 1; 01; AD; Anno Domini
+     *  | y      | year                       | year             | 2004; 04
+     *  | D      | day-of-year                | number           | 189
+     *  | M      | month-of-year              | number/text      | 7; 07; Jul; July; J
+     *  | d      | day-of-month               | number           | 10
+     *  |        |                            |                  |
+     *  | Q      | quarter-of-year            | number/text      | 3; 03; Q3
+     *  | Y      | week-based-year            | year             | 1996; 96
+     *  | w      | week-of-year               | number           | 27
+     *  | W      | week-of-month              | number           | 27
+     *  | e      | localized day-of-week      | number           | 2; Tue; Tuesday; T
+     *  | E      | day-of-week                | number/text      | 2; Tue; Tuesday; T
+     *  | F      | week-of-month              | number           | 3
+     *  |        |                            |                  |
+     *  | a      | am-pm-of-day               | text             | PM
+     *  | h      | clock-hour-of-am-pm (1-12) | number           | 12
+     *  | K      | hour-of-am-pm (0-11)       | number           | 0
+     *  | k      | clock-hour-of-am-pm (1-24) | number           | 0
+     *  |        |                            |                  |
+     *  | H      | hour-of-day (0-23)         | number           | 0
+     *  | m      | minute-of-hour             | number           | 30
+     *  | s      | second-of-minute           | number           | 55
+     *  | S      | fraction-of-second         | fraction         | 978
+     *  | A      | milli-of-day               | number           | 1234
+     *  | n      | nano-of-second             | number           | 987654321
+     *  | N      | nano-of-day                | number           | 1234000000
+     *  |        |                            |                  |
+     *  | V      | time-zone ID               | zone-id          | America/Los_Angeles; Z; -08:30
+     *  | z      | time-zone name             | zone-name        | Pacific Standard Time; PST
+     *  | X      | zone-offset &apos;Z&apos; for zero   | offset-X         | Z; -08; -0830; -08:30; -083015; -08:30:15;
+     *  | x      | zone-offset                | offset-x         | +0000; -08; -0830; -08:30; -083015; -08:30:15;
+     *  | Z      | zone-offset                | offset-Z         | +0000; -0800; -08:00;
+     *  |        |                            |                  |
+     *  | p      | pad next                   | pad modifier     | 1
+     *  |        |                            |                  |
+     *  | &apos;      | escape for text            | delimiter        |
+     *  | &apos;&apos;     | single quote               | literal          | &apos;
+     *  | [      | optional section start     |                  |
+     *  | ]      | optional section end       |                  |
+     *  | {}     | reserved for future use    |                  |
+     *
+     * @param {String|DateTimeFormatter|null} [stringOrFormatter]
+     * @throws {TypeError} if not sure what to do.
+     * @return {DateTimeFormatter}
+     */
+    static toDateTimeFormatter(stringOrFormatter) {
+        if (Utility.isNotExisting(stringOrFormatter)) {
+            return DateTimeFormatter.ISO_ZONED_DATE_TIME;
+        } else if (Utility.isString(stringOrFormatter)) {
+            Preconditions.shouldNotBeBlank(stringOrFormatter);
+
+            return DateTimeFormatter.ofPattern(stringOrFormatter);
+        }
+
+        Errors.throwNotSure(stringOrFormatter);
+    }
+
+    /**
+     * Proxies to Utility.now() if you pass no arguments.
+     *
+     * This is copied from https://js-joda.github.io/js-joda/esdoc/class/src/format/DateTimeFormatter.js~DateTimeFormatter.html
+     *
+     *  |Symbol  |Meaning                     |Presentation      |Examples
+     *  |--------|----------------------------|------------------|----------------------------------------------------
+     *  | G      | era                        | number/text      | 1; 01; AD; Anno Domini
+     *  | y      | year                       | year             | 2004; 04
+     *  | D      | day-of-year                | number           | 189
+     *  | M      | month-of-year              | number/text      | 7; 07; Jul; July; J
+     *  | d      | day-of-month               | number           | 10
+     *  |        |                            |                  |
+     *  | Q      | quarter-of-year            | number/text      | 3; 03; Q3
+     *  | Y      | week-based-year            | year             | 1996; 96
+     *  | w      | week-of-year               | number           | 27
+     *  | W      | week-of-month              | number           | 27
+     *  | e      | localized day-of-week      | number           | 2; Tue; Tuesday; T
+     *  | E      | day-of-week                | number/text      | 2; Tue; Tuesday; T
+     *  | F      | week-of-month              | number           | 3
+     *  |        |                            |                  |
+     *  | a      | am-pm-of-day               | text             | PM
+     *  | h      | clock-hour-of-am-pm (1-12) | number           | 12
+     *  | K      | hour-of-am-pm (0-11)       | number           | 0
+     *  | k      | clock-hour-of-am-pm (1-24) | number           | 0
+     *  |        |                            |                  |
+     *  | H      | hour-of-day (0-23)         | number           | 0
+     *  | m      | minute-of-hour             | number           | 30
+     *  | s      | second-of-minute           | number           | 55
+     *  | S      | fraction-of-second         | fraction         | 978
+     *  | A      | milli-of-day               | number           | 1234
+     *  | n      | nano-of-second             | number           | 987654321
+     *  | N      | nano-of-day                | number           | 1234000000
+     *  |        |                            |                  |
+     *  | V      | time-zone ID               | zone-id          | America/Los_Angeles; Z; -08:30
+     *  | z      | time-zone name             | zone-name        | Pacific Standard Time; PST
+     *  | X      | zone-offset &apos;Z&apos; for zero   | offset-X         | Z; -08; -0830; -08:30; -083015; -08:30:15;
+     *  | x      | zone-offset                | offset-x         | +0000; -08; -0830; -08:30; -083015; -08:30:15;
+     *  | Z      | zone-offset                | offset-Z         | +0000; -0800; -08:00;
+     *  |        |                            |                  |
+     *  | p      | pad next                   | pad modifier     | 1
+     *  |        |                            |                  |
+     *  | &apos;      | escape for text            | delimiter        |
+     *  | &apos;&apos;     | single quote               | literal          | &apos;
+     *  | [      | optional section start     |                  |
+     *  | ]      | optional section end       |                  |
+     *  | {}     | reserved for future use    |                  |
+     *
+     * @param {Temporal|LocalDateTime|ZonedDateTime|Number|String|Big|BigJsLibrary.BigJS|Instant|null|undefined} [value]
+     * @param {String|DateTimeFormatter} [optionalDateFormatStringOrDateFormatter]
+     * @return {ZonedDateTime}
+     */
+    static toDateTime(value, optionalDateFormatStringOrDateFormatter) {
+        if (Utility.isBlank(arguments.length)) {
+            return Utility.now();
+        }
+
+        let dateTime = Utility.optDateTime(value, optionalDateFormatStringOrDateFormatter);
+
+        if (dateTime) {
+            return dateTime;
+        }
+
+        Errors.throwNotSure(value);
+    }
+
+    /**
+     *
+     * @return {ZonedDateTime}
+     */
+    static now() {
+        return ZonedDateTime.now();
+    }
+
+    /**
+     * @param args
+     * @return value
+     */
+    static defaultValue(...args) {
+        let result = null;
+
+        Lodash.each(arguments, function (object) {
+            if (Utility.isDefined(object)) {
+                result = object;
+            }
+        });
+
+        return result;
+    }
+
+    /**
+     * @returns {*|Object}
+     */
+    static defaultObject() {
+        let result = null;
+
+        Lodash.each(arguments, function (object) {
+            if (Utility.isObject(object)) {
+                result = object;
+            }
+        });
+
+        return result;
+    }
+
+    /**
+     *
+     * @param {Object} target
+     * @param {String|{}} propertyNameOrObject
+     * @param {*} [propertyValueOrUndefined]
+     * @returns {Object}
+     */
+    set(target, propertyNameOrObject, propertyValueOrUndefined) {
+        Preconditions.shouldBeObject(target);
+
+        if (Utility.isString(propertyNameOrObject)) {
+            let propertyName = propertyNameOrObject;
+            let propertyValue = propertyValueOrUndefined;
+
+            Preconditions.shouldBeString(propertyName);
+            Preconditions.shouldNotBeBlank(propertyName);
+            Preconditions.shouldBeDefined(propertyValue);
+
+            return Ember.set(target, propertyName, propertyValue);
+        } else if (Utility.isObject(propertyNameOrObject)) {
+            Preconditions.shouldBeUndefined(propertyValueOrUndefined);
+
+            Lodash.each(propertyNameOrObject, function (value, key) {
+                Utility.set(target, key, value);
+            });
+        }
+    }
+
+    /**
+     * Applies all of the defaults onto the first object.
+     *
+     * @param {Object} object
+     * @param {Object} defaults
+     * @returns {Object} The original object.
+     */
+    static defaults(object, defaults) {
+        Preconditions.shouldBeObject(object, &apos;target object must be object.&apos;);
+        Preconditions.shouldBeObject(defaults, &apos;defaults object must be object.&apos;);
+
+        let updates = Object.keys(defaults);
+
+        for (let i = 0, l = updates.length; i &lt; l; i++) {
+            let prop = updates[i];
+            let value = Ember.get(defaults, prop);
+
+            Ember.set(object, prop, value);
+        }
+
+        return object;
+    }
+
+    /**
+     *
+     * @param {Object} object
+     * @param {String|Array} stringOrArray
+     * @param {String|Object} [defaults]
+     */
+    static get(object, stringOrArray, defaults) {
+        defaults = defaults || {};
+
+        let mode = Utility.isString(stringOrArray) ? &apos;single&apos; : (Utility.isArray(stringOrArray) ? &apos;multiple&apos; : &apos;error&apos;);
+
+        Preconditions.shouldBeTrue(mode != &apos;error&apos;, `I do not know what to do with ${stringOrArray}`);
+        Preconditions.shouldBeObject(object, &apos;target object must be object.&apos;);
+
+        if (&apos;single&apos; === mode) {
+            //noinspection UnnecessaryLocalVariableJS
+            let path = stringOrArray;
+
+            return Ember.getWithDefault(object, path, defaults);
+        } else if (&apos;multiple&apos; === mode) {
+            //noinspection UnnecessaryLocalVariableJS
+            let array = stringOrArray;
+            let result = Ember.getProperties(array);
+
+            if (Utility.isDefined(defaults)) {
+                return Utility.defaults(result, defaults);
+            } else {
+                return result;
+            }
+        }
+
+        throw new Error(`Not sure what to do here`);
+    }
+
+    /**
+     *
+     * @param {Class} clazz
+     * @return {String|undefined}
+     */
+    static optClassName(clazz) {
+        if (!clazz) {
+            return undefined;
+        }
+
+        if (Utility.isClass(clazz)) {
+            return clazz.toString() || clazz.constructor.name;
+        } else if (Utility.isInstance(clazz)) {
+            return Utility.optClassName(clazz.toClass());
+        }
+
+        Errors.throwNotSure(clazz);
+    }
+}
+
+export default Utility;</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.0-alpha)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
