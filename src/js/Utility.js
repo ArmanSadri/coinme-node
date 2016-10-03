@@ -1165,21 +1165,6 @@ class Utility {
     }
 
     /**
-     * @returns {Number}
-     */
-    static defaultNumber() {
-        let result = 0;
-
-        Lodash.each(arguments, function (object) {
-            if (Utility.isNumber(object)) {
-                result = object;
-            }
-        });
-
-        return result;
-    }
-
-    /**
      *
      * @param {String|Number} value
      * @return {boolean}
@@ -1451,7 +1436,6 @@ class Utility {
     }
 
     /**
-     *
      * @return {ZonedDateTime}
      */
     static now() {
@@ -1459,34 +1443,41 @@ class Utility {
     }
 
     /**
+     * Returns the first 'existing' value
+     *
      * @param args
      * @return value
      */
     static defaultValue(...args) {
-        let result = null;
-
-        Lodash.each(arguments, function (object) {
-            if (Utility.isDefined(object)) {
-                result = object;
-            }
+        // Lodash.find() "returns the first one that we return true for"
+        // https://lodash.com/docs/4.16.2#find
+        return Lodash.find(args, function (object) {
+            return (Utility.isExisting(object));
         });
-
-        return result;
     }
 
     /**
+     * @params {...args)
+     * @returns {Number}
+     */
+    static defaultNumber(...args) {
+        // Lodash.find() "returns the first one that we return true for"
+        // https://lodash.com/docs/4.16.2#find
+        return Lodash.find(args, function (object) {
+            return (Utility.isNumber(object));
+        });
+    }
+
+    /**
+     * Returns the first 'Object'
+     *
+     * @param {Array} args
      * @returns {*|Object}
      */
-    static defaultObject() {
-        let result = null;
-
-        Lodash.each(arguments, function (object) {
-            if (Utility.isObject(object)) {
-                result = object;
-            }
+    static defaultObject(...args) {
+        return Lodash.find(args, function (object) {
+            return (Utility.isObject(object));
         });
-
-        return result;
     }
 
     /**

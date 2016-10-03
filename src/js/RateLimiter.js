@@ -4,20 +4,41 @@ import Utility from "./Utility";
 import CoreObject from "./CoreObject";
 import Stopwatch from "./Stopwatch";
 import Errors from "./errors/Errors";
-import Logger from 'winston';
+import Coinme from "./Coinme";
+import Lodash from "lodash";
+import math from 'mathjs';
 
+//region class: RateLimiter
 class RateLimiter extends CoreObject {
 
+    /** @type {Rate} */
+    _rate;
+
+    /** @type {Number} */
     _permitsPerSecond;
 
-    constructor(options) {
-        super(options);
+    /** @type {Stopwatch} */
+    _stopwatch;
 
-        /**
-         * @type {Stopwatch}
-         * @private
-         */
-        this._stopwatch = new Stopwatch({ start: true });
+    /**
+     * @param {Object} options
+     * @param {Number} [options.stopwatch]
+     * @param {Number|TimeUnit|Rate|Object} [options.rate]
+     */
+    constructor(options) {
+        /** @type {Stopwatch} */
+        let stopwatch = Utility.take(options, 'stopwatch', {
+            defaultValue: new Stopwatch({start: true}),
+            type: Stopwatch
+        });
+
+        /** @type {Rate} */
+        let rate = Utility.take(options, 'rate', {
+            defaultValue: Rate.defaultRate,
+            adapter: Rate.getRate
+        });
+
+        super(options);
 
         // /**
         //  * @type {String}
@@ -28,6 +49,30 @@ class RateLimiter extends CoreObject {
         //         required: false,
         //         defaultValue: 'wait'
         //     });
+
+        this._rate = rate;
+        this._stopwatch = stopwatch;
+        this._permitsPerSecond = math.divide(1, rate.toSeconds().value);
+
+        this.doSetRate(this._permitsPerSecond, this.stopwatch.elapsedMicros());
+    }
+
+    /**
+     *
+     * @param {Number} [nowMicros]
+     */
+    debug(nowMicros) {
+        nowMicros = nowMicros || this.stopwatch.elapsedMicros();
+
+        console.log(`${this.toClass()}.debug() ${JSON.stringify(this.toState(nowMicros))}`);
+    }
+
+    // for debugging
+    toState(nowMicros) {
+        return {
+            nowMicros: nowMicros,
+            _permitsPerSecond: this._permitsPerSecond,
+        }
     }
 
     //region property: {Stopwatch} stopwatch
@@ -48,44 +93,15 @@ class RateLimiter extends CoreObject {
     get ticker() {
         return this.stopwatch.ticker;
     }
+
     //endregion
 
-    //region property: {Number} permitsPerSecond
-
+    //region property: {Rate} rate
     /**
-     * Updates the stable rate of this {@code RateLimiter}, that is, the
-     * {@code permitsPerSecond} argument provided in the factory method that
-     * constructed the {@code RateLimiter}. Currently throttled threads will <b>not</b>
-     * be awakened as a result of this invocation, thus they do not observe the new rate;
-     * only subsequent requests will.
-     *
-     * <p>Note though that, since each request repays (by waiting, if necessary) the cost
-     * of the <i>previous</i> request, this means that the very next request
-     * after an invocation to {@code setRate} will not be affected by the new rate;
-     * it will pay the cost of the previous request, which is in terms of the previous rate.
-     *
-     * <p>The behavior of the {@code RateLimiter} is not modified in any other way,
-     * e.g. if the {@code RateLimiter} was configured with a warmup period of 20 seconds,
-     * it still has a warmup period of 20 seconds after this method invocation.
-     *
-     * @param {Number} permitsPerSecond the new stable rate of this {@code RateLimiter}
-     * @throws IllegalArgumentException if {@code permitsPerSecond} is negative or zero
+     * @return {Rate}
      */
-    set permitsPerSecond(permitsPerSecond) {
-        Preconditions.shouldBeExisting(permitsPerSecond);
-        Preconditions.shouldBeTrue(permitsPerSecond > 0.0 && !Utility.isNaN(permitsPerSecond), "rate must be positive");
-
-        this._permitsPerSecond = Preconditions.shouldBePositiveNumber(permitsPerSecond, 'Rate must be positive');
-
-        this.doSetRate(permitsPerSecond, this.stopwatch.elapsedMicros());
-    }
-
-    /**
-     *
-     * @returns {Number}
-     */
-    get permitsPerSecond() {
-        return this._permitsPerSecond;
+    get rate() {
+        return this._rate;
     }
 
     //endregion
@@ -128,11 +144,14 @@ class RateLimiter extends CoreObject {
      * @return {Number} the required wait time, never negative
      */
     reserveAndGetWaitLength(permits, nowMicros) {
+        // GUAVA CODE:
+        //
+        // final long reserveAndGetWaitLength(int permits, long nowMicros) {
+        //     long momentAvailable = reserveEarliestAvailable(permits, nowMicros);
+        //     return max(momentAvailable - nowMicros, 0);
+        // }
         let momentAvailable = this.reserveEarliestAvailable(permits, nowMicros);
-        let waitLength = Math.max(momentAvailable - nowMicros, 0);
-
-
-        return waitLength;
+        return Math.max(momentAvailable - nowMicros, 0);
     }
 
     /**
@@ -142,6 +161,11 @@ class RateLimiter extends CoreObject {
      * @returns {boolean}
      */
     canAcquire(nowMicros, timeoutMicros) {
+        // GUAVA CODE:
+        //
+        // private boolean canAcquire(long nowMicros, long timeoutMicros) {
+        //     return queryEarliestAvailable(nowMicros) - timeoutMicros <= nowMicros;
+        // }
         return this.queryEarliestAvailable(nowMicros) - timeoutMicros <= nowMicros;
     }
 
@@ -158,26 +182,46 @@ class RateLimiter extends CoreObject {
      * @throws IllegalArgumentException if the requested number of permits is negative or zero
      */
     tryAcquire(permits, timeout, unit) {
-        Preconditions.shouldBeNumber(this.permitsPerSecond, 'Rate must be defined.');
+        // GUAVA CODE
+        //
+        // public boolean tryAcquire(int permits, long timeout, TimeUnit unit) {
+        //     long timeoutMicros = max(unit.toMicros(timeout), 0);
+        //     checkPermits(permits);
+        //     long microsToWait;
+        //     synchronized (mutex()) {
+        //         long nowMicros = stopwatch.readMicros();
+        //         if (!canAcquire(nowMicros, timeoutMicros)) {
+        //             return false;
+        //         } else {
+        //             microsToWait = reserveAndGetWaitLength(permits, nowMicros);
+        //         }
+        //     }
+        //     stopwatch.sleepMicrosUninterruptibly(microsToWait);
+        //     return true;
+        // }
 
         permits = RateLimiter.checkPermits(permits);
         timeout = Utility.defaultNumber(timeout, 30);
         unit = Utility.defaultObject(unit, TimeUnit.SECONDS);
 
-        let timeoutMicros = Math.max(unit.toMicros(timeout), 0);
-
         let microsToWait;
+        let timeoutMicros = Math.max(unit.toMicros(timeout), 0);
+        let permitsPerSecond = Preconditions.shouldBeNumber(this._permitsPerSecond, 'Rate must be defined.');
         let nowMicros = this.stopwatch.elapsedMicros();
         let goalMicros = this.queryEarliestAvailable(nowMicros);
+        let ticker = Preconditions.shouldBeExisting(this.ticker, 'ticker');
+
+        // console.log(`(timeout:${timeout})(timeoutMicros:${timeoutMicros})(goalMicros:${goalMicros})(nowMicros:${nowMicros})(diff:${goalMicros - nowMicros}`);
 
         if (!this.canAcquire(nowMicros, timeoutMicros)) {
-            return Promise.reject(new Error(`RateLimit exceeded: (rate:${this.permitsPerSecond}/sec) (timeoutMicros:${timeoutMicros}) (goalMicros: ${goalMicros}) (differenceMicros:${goalMicros - nowMicros})`));
+            console.log(`!this.canAcquire(${nowMicros}, ${timeoutMicros})`);
+            return Promise.reject(new Error(`RateLimit exceeded: (rate:${permitsPerSecond}/sec) (timeoutMicros:${timeoutMicros}) (goalMicros: ${goalMicros}) (differenceMicros:${goalMicros - nowMicros})`));
         } else {
             microsToWait = this.reserveAndGetWaitLength(permits, nowMicros);
+            console.log(`${microsToWait} = this.reserveAndGetWaitLength(${permits}, ${nowMicros});`);
         }
 
-        Preconditions.shouldBeExisting(this.ticker, 'ticker');
-        return this.ticker.wait(microsToWait, TimeUnit.MICROSECONDS);
+        return ticker.wait(microsToWait, TimeUnit.MICROSECONDS);
     }
 
     //region abstract
@@ -226,9 +270,15 @@ class RateLimiter extends CoreObject {
 
     //endregion
 }
+//endregion RateLimiter
 
+//region abstract class: SmoothRateLimiter
 class SmoothRateLimiter extends RateLimiter {
 
+    /**
+     *
+     * @param options
+     */
     constructor(options) {
         super(options);
 
@@ -261,6 +311,18 @@ class SmoothRateLimiter extends RateLimiter {
     }
 
     /**
+     * @param {Number} nowMicros
+     */
+    toState(nowMicros) {
+        return Lodash.assign({}, super.toState(nowMicros), {
+            _nextFreeTicketMicros: this._nextFreeTicketMicros,
+            _stableIntervalMicros: this._stableIntervalMicros,
+            _maxPermits: this._maxPermits,
+            _storedPermits: this._storedPermits
+        });
+    }
+
+    /**
      * @protected
      * @param permitsPerSecond
      * @param nowMicros
@@ -282,10 +344,33 @@ class SmoothRateLimiter extends RateLimiter {
     }
 
     queryEarliestAvailable(nowMicros) {
+        // GUAVA CODE:
+
+        // @Override
+        // final long queryEarliestAvailable(long nowMicros) {
+        //     return nextFreeTicketMicros;
+        // }
+        // console.log(`_nextFreeTicketMicros=${this._nextFreeTicketMicros}`);
         return Preconditions.shouldBeNumber(this._nextFreeTicketMicros);
     }
 
     reserveEarliestAvailable(requiredPermits, nowMicros) {
+        // GUAVA CODE
+        //
+        // @Override
+        // final long reserveEarliestAvailable(int requiredPermits, long nowMicros) {
+        //     resync(nowMicros);
+        //     long returnValue = nextFreeTicketMicros;
+        //     double storedPermitsToSpend = min(requiredPermits, this.storedPermits);
+        //     double freshPermits = requiredPermits - storedPermitsToSpend;
+        //
+        //     long waitMicros = storedPermitsToWaitTime(this.storedPermits, storedPermitsToSpend)
+        //         + (long) (freshPermits * stableIntervalMicros);
+        //
+        //     this.nextFreeTicketMicros = nextFreeTicketMicros + waitMicros;
+        //     this.storedPermits -= storedPermitsToSpend;
+        //     return returnValue;
+        // }
         this.resync(nowMicros);
         let nextFreeTicketMicros = this._nextFreeTicketMicros;
 
@@ -297,6 +382,9 @@ class SmoothRateLimiter extends RateLimiter {
 
         this._nextFreeTicketMicros = nextFreeTicketMicros + waitMicros;
         this._storedPermits -= storedPermitsToSpend;
+
+        this.debug(nowMicros);
+        console.log(`(returnValue:${returnValue}) = reserveEarliestAvailable(requiredPermits=${requiredPermits}, nowMicros=${nowMicros})  ---- (storedPermits:${this._storedPermits})(nextFreeTicketMicros:${this._nextFreeTicketMicros})(waitMicros:${waitMicros})`);
 
         return returnValue;
     }
@@ -316,26 +404,34 @@ class SmoothRateLimiter extends RateLimiter {
     /**
      *
      * @param {Number} nowMicros
-     * @return {Number}
      */
     resync(nowMicros) {
-        if (Utility.isNullOrUndefined(nowMicros)) {
-            nowMicros = this.stopwatch.elapsedMicros();
-        }
+        // GUAVA CODE
+        //
+        // private void resync(long nowMicros) {
+        //     // if nextFreeTicket is in the past, resync to now
+        //     if (nowMicros > nextFreeTicketMicros) {
+        //         storedPermits = min(maxPermits,
+        //             storedPermits + (nowMicros - nextFreeTicketMicros) / stableIntervalMicros);
+        //         nextFreeTicketMicros = nowMicros;
+        //     }
+        // }
+        Preconditions.shouldBeNumber(nowMicros, `nowMicros: ${nowMicros}`);
 
         // if nextFreeTicket is in the past, resync to now
         let nextFreeTicketMicros = this._nextFreeTicketMicros;
 
         if (nowMicros > nextFreeTicketMicros) {
             this._storedPermits = Math.min(this._maxPermits, this._storedPermits + (nowMicros - nextFreeTicketMicros) / this._stableIntervalMicros);
-
-            nextFreeTicketMicros = this._nextFreeTicketMicros = nowMicros;
+            this._nextFreeTicketMicros = nowMicros;
         }
 
-        return nextFreeTicketMicros;
+        console.log(`resync(nowMicros=${nowMicros}) -> (storedPermits:${this._storedPermits})(nextFreeTicketMicros:${this._nextFreeTicketMicros})(maxPermits:${this._maxPermits})`);
     }
 }
+//endregion SmoothRateLimiter
 
+//region class: SmoothBurstyRateLimiter
 /**
  * This implements a "bursty" RateLimiter, where storedPermits are translated to
  * zero throttling. The maximum number of permits that can be saved (when the RateLimiter is
@@ -359,6 +455,12 @@ class SmoothBurstyRateLimiter extends SmoothRateLimiter {
         super(...arguments);
 
         this.maxBurstSeconds = maxBurstSeconds;
+    }
+
+    toState(nowMicros) {
+        return Lodash.assign({}, super.toState(nowMicros), {
+            maxBurstSeconds: this.maxBurstSeconds
+        });
     }
 
     /**
@@ -395,49 +497,87 @@ class SmoothBurstyRateLimiter extends SmoothRateLimiter {
         return 0;
     }
 }
+//endregion SmoothBursty
 
+//region class: SmoothWarmingUpRateLimiter
 class SmoothWarmingUpRateLimiter extends SmoothRateLimiter {
 
-    warmupPeriodMicros;
+    /**
+     * @type {Rate}
+     */
+    _warmupRate = 0;
+    _warmupPeriodMicros = 0;
 
     /**
      * The slope of the line from the stable interval (when permits == 0), to the cold interval
      * (when permits == maxPermits)
+     *
+     * @type {Number}
      */
-    slope;
-    halfPermits;
+    _slope = 0;
 
+    /** @type {Number} */
+    _halfPermits = 0;
+
+    /**
+     *
+     * @param {Object} options
+     * @param {Rate} [options.warmupRate] defaults to 1 second
+     */
     constructor(options) {
-        //    SleepingStopwatch stopwatch, long warmupPeriod, TimeUnit timeUnit
-        let timeUnit = Utility.take(options, 'timeUnit', TimeUnit, true);
-        let warmupPeriod = Utility.take(options, 'warmupPeriod', 'number', true);
+        /** @type {Rate} */
+        let warmupRate = Utility.take(options, 'warmupRate', {
+            required: true,
+            adapter: Rate.getRate
+        });
 
         super(...arguments);
 
-        this.warmupPeriodMicros = timeUnit.toMicros(warmupPeriod);
+        this._warmupRate = warmupRate;
+        // we need to cache it (cpu performance)
+        this._warmupPeriodMicros = warmupRate.toMicros().value;
     }
 
+    toState(nowMicros) {
+        return Lodash.assign({}, super.toState(nowMicros), {
+            _slope: this._slope,
+            _warmupRate: this._warmupRate,
+            _warmupPeriodMicros: this._warmupPeriodMicros,
+            _halfPermits: this._halfPermits
+        });
+    }
+
+    //region property: warmupRate
     /**
-     * @private
+     * @property
+     * @return {Rate}
+     */
+    get warmupRate() {
+        return this._warmupRate;
+    }
+    //endregion
+
+    /**
+     * @protected
      * @param permitsPerSecond
      * @param stableIntervalMicros
      */
     doSetRate2(permitsPerSecond, stableIntervalMicros) {
         let oldMaxPermits = this._maxPermits;
-        this._maxPermits = this.warmupPeriodMicros / stableIntervalMicros;
-        this.halfPermits = this._maxPermits / 2.0;
+        this._maxPermits = this._warmupPeriodMicros / stableIntervalMicros;
+        this._halfPermits = this._maxPermits / 2.0;
 
         // Stable interval is x, cold is 3x, so on average it's 2x. Double the time -> halve the rate
         let coldIntervalMicros = stableIntervalMicros * 3.0;
-        this.slope = (coldIntervalMicros - stableIntervalMicros) / this.halfPermits;
+        this._slope = (coldIntervalMicros - stableIntervalMicros) / this._halfPermits;
 
         // if (oldMaxPermits == Number.POSITIVE_INFINITY) {
         //     // if we don't special-case this, we would get storedPermits == NaN, below
         //     this._storedPermits = 0.0;
         // } else {
-            this._storedPermits = (oldMaxPermits == 0.0)
-                ? this._maxPermits // initial state is cold
-                : this._storedPermits * this._maxPermits / oldMaxPermits;
+        this._storedPermits = (oldMaxPermits == 0.0)
+            ? this._maxPermits // initial state is cold
+            : this._storedPermits * this._maxPermits / oldMaxPermits;
         // }
     }
 
@@ -448,13 +588,13 @@ class SmoothWarmingUpRateLimiter extends SmoothRateLimiter {
      * @return {number}
      */
     storedPermitsToWaitTime(storedPermits, permitsToTake) {
-        let availablePermitsAboveHalf = storedPermits - this.halfPermits;
+        let availablePermitsAboveHalf = storedPermits - this._halfPermits;
         let micros = 0;
         // measuring the integral on the right part of the function (the climbing line)
         if (availablePermitsAboveHalf > 0.0) {
             let permitsAboveHalfToTake = Math.min(availablePermitsAboveHalf, permitsToTake);
             micros = (permitsAboveHalfToTake * (this.permitsToTime(availablePermitsAboveHalf)
-                + this.permitsToTime(availablePermitsAboveHalf - permitsAboveHalfToTake)) / 2.0);
+            + this.permitsToTime(availablePermitsAboveHalf - permitsAboveHalfToTake)) / 2.0);
             permitsToTake -= permitsAboveHalfToTake;
         }
         // measuring the integral on the left part of the function (the horizontal line)
@@ -471,7 +611,284 @@ class SmoothWarmingUpRateLimiter extends SmoothRateLimiter {
         return this._stableIntervalMicros + permits * this.slope;
     }
 }
+//endregion
 
+//region class: Rate
+class Rate extends CoreObject {
+
+    /** @type {TimeUnit} */
+    static DEFAULT_RATE_TIME_UNIT = TimeUnit.SECONDS;
+
+    /** @type {Number} */
+    static DEFAULT_RATE_VALUE = 1;
+
+    /** @type {Rate} */
+    static DEFAULT_RATE_INSTANCE = new Rate({value: 1, timeUnit: TimeUnit.SECONDS});
+
+    /** @type {Number} */
+    _value = Rate.DEFAULT_RATE_VALUE;
+
+    /** @type {TimeUnit} */
+    _timeUnit = Rate.DEFAULT_RATE_TIME_UNIT;
+
+    /**
+     *
+     * @param {Object} options
+     * @param {Number} options.value
+     * @param {TimeUnit} options.timeUnit
+     */
+    constructor(options) {
+        let value = Utility.take(options, 'value', 'number');
+        let timeUnit = Utility.take(options, 'timeUnit', TimeUnit);
+
+        super(options);
+
+        this._value = value;
+        this._timeUnit = timeUnit;
+    }
+
+    valueOf() {
+        return this.value;
+    }
+
+    toString() {
+        return `${this.value} ${this.timeUnit}`;
+    }
+
+    toJson(options) {
+        return super.toJson({
+            value: this._value,
+            timeUnit: this._timeUnit
+        })
+    }
+
+    //region property: {Number} value
+    /**
+     * @return {Number}
+     */
+    get value() {
+        return this._value;
+    }
+
+    //endregion
+
+    //region property: {TimeUnit} timeUnit
+    /**
+     * @return {TimeUnit}
+     */
+    get timeUnit() {
+        return this._timeUnit;
+    }
+
+    //endregion
+
+    //region methods: toSeconds,toTimeUnit,...
+    /**
+     * @return {Rate}
+     */
+    toSeconds() {
+        return this.toTimeUnit(TimeUnit.SECONDS);
+    }
+
+    /**
+     * @return {Rate}
+     */
+    toMillis() {
+        return this.toTimeUnit(TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * @return {Rate}
+     */
+    toMicros() {
+        return this.toTimeUnit(TimeUnit.MICROSECONDS);
+    }
+
+    /**
+     * @return {Rate}
+     */
+    toNanos() {
+        return this.toTimeUnit(TimeUnit.NANOSECONDS);
+    }
+
+    /**
+     * @return {Rate}
+     */
+    toMinutes() {
+        return this.toTimeUnit(TimeUnit.MINUTES);
+    }
+
+    /**
+     * @return {Rate}
+     */
+    toHours() {
+        return this.toTimeUnit(TimeUnit.HOURS);
+    }
+
+    /**
+     * @return {Rate}
+     */
+    toDays() {
+        return this.toTimeUnit(TimeUnit.DAYS);
+    }
+
+    /**
+     * Convert into the given timeUnit
+     *
+     * @param {TimeUnit} timeUnit
+     * @return {Rate}
+     */
+    toTimeUnit(timeUnit) {
+        TimeUnit.shouldBeInstance(timeUnit, "Must be timeUnit instance");
+
+        if (this.timeUnit.equals(timeUnit)) {
+            return this;
+        }
+
+        return Rate.getRate({
+            value: timeUnit.convert(this.value, this.timeUnit),
+            timeUnit
+        });
+    }
+
+    //endregion
+
+    //region statics
+
+    /**
+     * @return {Rate}
+     */
+    static get defaultRate() {
+        return Rate.getRate();
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Rate}
+     */
+    static perSeconds(value) {
+        Preconditions.shouldBeNumber(value, 'value must be number');
+
+        return Rate.getRate(value, TimeUnit.SECONDS);
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Rate}
+     */
+    static perNanos(value) {
+        Preconditions.shouldBeNumber(value, 'value must be number');
+
+        return Rate.getRate(value, TimeUnit.NANOSECONDS);
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Rate}
+     */
+    static perMicros(value) {
+        Preconditions.shouldBeNumber(value, 'value must be number');
+
+        return Rate.getRate(value, TimeUnit.MICROSECONDS);
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Rate}
+     */
+    static perMillis(value) {
+        Preconditions.shouldBeNumber(value, 'value must be number');
+
+        return Rate.getRate(value, TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Rate}
+     */
+    static perHours(value) {
+        Preconditions.shouldBeNumber(value, 'value must be number');
+
+        return Rate.getRate(value, TimeUnit.HOURS);
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Rate}
+     */
+    static perMinutes(value) {
+        Preconditions.shouldBeNumber(value, 'value must be number');
+
+        return Rate.getRate(value, TimeUnit.MINUTES);
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Rate}
+     */
+    static perDays(value) {
+        Preconditions.shouldBeNumber(value, 'value must be number');
+
+        return Rate.getRate(value, TimeUnit.DAYS);
+    }
+
+    /**
+     * Rate.getRate();  - timeUnit is defaulted to {@see Rate.DEFAULT_RATE_TIME_UNIT}, value is defaulted to {@see Rate.DEFAULT_RATE_VALUE}
+     * Rate.getRate(1); - timeUnit is defaulted to {@see Rate.DEFAULT_RATE_TIME_UNIT}
+     * Rate.getRate(1, TimeUnit.SECONDS);
+     * Rate.getRate({ value: 1 }); - timeUnit is defaulted to {@see Rate.DEFAULT_RATE_TIME_UNIT}
+     * Rate.getRate({ value: 1, timeUnit: TimeUnit.SECONDS });
+     * Rate.getRate(undefined, TimeUnit.SECONDS);
+     * Rate.getRate(new Rate(...)); -- just returns the same value, unmodified.
+     *
+     * @param {{value:Number,timeUnit:TimeUnit}|Number|Rate|TimeUnit} [objectOrRateOrNumberOrTimeUnit]
+     * @param {TimeUnit} [optionalDefaultTimeUnit]
+     */
+    static getRate(objectOrRateOrNumberOrTimeUnit, optionalDefaultTimeUnit) {
+        Preconditions.shouldBeTrue(TimeUnit.isInstance(TimeUnit.SECONDS)); // double check assumption.
+
+        if (Rate.isInstance(objectOrRateOrNumberOrTimeUnit)) {
+            return objectOrRateOrNumberOrTimeUnit;
+        } else if (Utility.isUndefined(objectOrRateOrNumberOrTimeUnit)) {
+            return Rate.DEFAULT_RATE_INSTANCE;
+        }
+
+        /** @type {Number} */
+        let defaultValue = Rate.DEFAULT_RATE_VALUE || 0;
+        /** @type {TimeUnit} */
+        let defaultTimeUnit = Utility.defaultValue(optionalDefaultTimeUnit, Rate.DEFAULT_RATE_TIME_UNIT, TimeUnit.SECONDS);
+
+        /** @type {Number} */
+        let value = defaultValue;
+        /** @type {TimeUnit} */
+        let timeUnit = defaultTimeUnit;
+
+        if (TimeUnit.isInstance(objectOrRateOrNumberOrTimeUnit)) {
+            timeUnit = objectOrRateOrNumberOrTimeUnit;
+        } else if (Utility.isNumber(objectOrRateOrNumberOrTimeUnit) || Utility.isNumeric(objectOrRateOrNumberOrTimeUnit)) {
+            value = Utility.toNumberOrFail(objectOrRateOrNumberOrTimeUnit);
+        } else if (Utility.isInstance(objectOrRateOrNumberOrTimeUnit) || Utility.isObject(objectOrRateOrNumberOrTimeUnit)) {
+            value = Coinme.get(objectOrRateOrNumberOrTimeUnit, 'value'); // optional
+            timeUnit = Coinme.get(objectOrRateOrNumberOrTimeUnit, 'timeUnit'); // optional
+        } else {
+            return Errors.throwNotSure(objectOrRateOrNumberOrTimeUnit);
+        }
+
+        value = Utility.defaultNumber(value, defaultValue);
+        timeUnit = Utility.defaultValue(timeUnit, defaultTimeUnit);
+
+        return new Rate({
+            value,
+            timeUnit
+        });
+    }
+
+    //endregion
+
+}
+//endregion
+
+export {Rate}
 export {RateLimiter};
 export {SmoothRateLimiter};
 export {SmoothBurstyRateLimiter};

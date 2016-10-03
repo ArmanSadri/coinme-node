@@ -39,8 +39,89 @@ function x(value, m, over) {
     return value * m;
 }
 
+class NameSet {
+
+    /** @type {String} */
+    _plural;
+    /** @type {String} */
+    _singular;
+
+    constructor(options) {
+        let plural = Utility.take(options, 'plural', 'string', true);
+        let singular = Utility.take(options, 'plural', 'string', true);
+
+        super(options);
+
+        this._plural = plural;
+        this._singular = singular;
+    }
+
+    /**
+     * @property
+     * @readonly
+     * @return {String}
+     */
+    get plural() {
+        return this._plural;
+    }
+
+    /**
+     * @property
+     * @readonly
+     * @return {String}
+     */
+    get singular() {
+        return this._singular;
+    }
+
+    /**
+     * @param value
+     * @return {String}
+     */
+    toFormat(value) {
+        return `${value} ${this.toName(value)}`;
+    }
+
+    /**
+     *
+     * @param value
+     * @return {String}
+     */
+    toName(value) {
+        if (!value) {
+            return this.plural;
+        }
+
+        return (1 === value) ? this.singular : this.plural;
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Boolean}
+     */
+    isPlural(value) {
+        return (1 > value);
+    }
+
+    /**
+     * @param {Number} value
+     * @return {Boolean}
+     */
+    isSingular(value) {
+        return (1 === value);
+    }
+
+    /**
+     * @return
+     */
+    static create() {
+
+    }
+}
+
 //region specs
 
+//region SPEC_NANOSECONDS
 const SPEC_NANOSECONDS = {
 
     /**
@@ -48,7 +129,9 @@ const SPEC_NANOSECONDS = {
      */
     unit: ChronoUnit.NANOS,
 
-    shortName: 'ns',
+    names: NameSet.create(),
+
+    abbreviation: 'ns',
 
     longName: 'nanos',
 
@@ -110,12 +193,14 @@ const SPEC_NANOSECONDS = {
         return (value - (m * C2));
     }
 };
+//endregion
 
+//region SPEC_MICROSECONDS
 const SPEC_MICROSECONDS = {
 
     unit: ChronoUnit.MICROS,
 
-    shortName: "\u03bcs", // μs
+    abbreviation: "\u03bcs", // μs
 
     longName: 'micros',
 
@@ -136,39 +221,20 @@ const SPEC_MICROSECONDS = {
         // return x(valueInMicros, C1 / C0, MAX / (C1 / C0));
     },
 
-    // toMicros(valueInMicros)  {
-    //     return valueInMicros;
-    // },
-    // toMillis(valueInMicros)  {
-    //     return valueInMicros / (C2 / C1);
-    // },
-    // toSeconds(valueInMicros) {
-    //     return valueInMicros / (C3 / C1);
-    // },
-    // toMinutes(valueInMicros) {
-    //     return valueInMicros / (C4 / C1);
-    // },
-    // toHours(valueInMicros)   {
-    //     return valueInMicros / (C5 / C1);
-    // },
-    // toDays(valueInMicros)    {
-    //     return valueInMicros / (C6 / C1);
-    // },
-    // convert(value, timeUnit) {
-    //     return timeUnit.toMicros(value);
-    // },
     excessNanos(value, m) {
         return ((value * C1) - (m * C2));
     }
 };
+//endregion
 
+//region SPEC_MILLISECONDS
 const SPEC_MILLISECONDS = {
 
     unit: ChronoUnit.MILLIS,
 
-    shortName: "ms", // μs
-
-    longName: 'millis',
+    abbreviation: "ms", // μs
+    shortName: { singular: '', plural: 'millis' },
+    longName: { singular: 'millisecond', plural: 'milliseconds' },
 
     /**
      * @param {Duration} duration
@@ -187,39 +253,18 @@ const SPEC_MILLISECONDS = {
         // return x(valueInMillis, C2 / C0, MAX / (C2 / C0));
     },
 
-    // toMicros(valueInMillis)  {
-    //     return x(valueInMillis, C2 / C1, MAX / (C2 / C1));
-    // },
-    // toMillis(valueInMillis)  {
-    //     return valueInMillis;
-    // },
-    // toSeconds(valueInMillis) {
-    //     return valueInMillis / (C3 / C2);
-    // },
-    // toMinutes(valueInMillis) {
-    //     return valueInMillis / (C4 / C2);
-    // },
-    // toHours(valueInMillis)   {
-    //     return valueInMillis / (C5 / C2);
-    // },
-    // toDays(valueInMillis)    {
-    //     return valueInMillis / (C6 / C2);
-    // },
-    // convert(value, timeUnit) {
-    //     return timeUnit.toMillis(value);
-    // },
-
     excessNanos(value, m) {
         return 0;
     }
 };
+//endregion
 
+//region SPEC_SECONDS
 const SPEC_SECONDS = {
 
     unit: ChronoUnit.SECONDS,
 
-    shortName: "s",
-
+    abbreviation: "s",
     longName: 'seconds',
 
     /**
@@ -239,38 +284,18 @@ const SPEC_SECONDS = {
         // return x(valueInSeconds, C3 / C0, MAX / (C3 / C0));
     },
 
-    // toMicros(valueInSeconds)  {
-    //     return x(valueInSeconds, C3 / C1, MAX / (C3 / C1));
-    // },
-    // toMillis(valueInSeconds)  {
-    //     return x(valueInSeconds, C3 / C2, MAX / (C3 / C2));
-    // },
-    // toSeconds(valueInSeconds) {
-    //     return valueInSeconds;
-    // },
-    // toMinutes(valueInSeconds) {
-    //     return valueInSeconds / (C4 / C3);
-    // },
-    // toHours(valueInSeconds)   {
-    //     return valueInSeconds / (C5 / C3);
-    // },
-    // toDays(valueInSeconds)    {
-    //     return valueInSeconds / (C6 / C3);
-    // },
-    // convert(value, timeUnit) {
-    //     return timeUnit.toSeconds(value);
-    // },
-
     excessNanos(value, m) {
         return 0;
     }
 };
+//endregion
 
+//region SPEC_MINUTES
 const SPEC_MINUTES = {
 
     unit: ChronoUnit.MINUTES,
 
-    shortName: 'min',
+    abbreviation: 'min',
 
     longName: 'minutes',
 
@@ -282,45 +307,33 @@ const SPEC_MINUTES = {
         return this.fromNanos(duration.toNanos());
     },
 
+    /**
+     * @param {Number} valueInNanos
+     * @return {Number}
+     */
     fromNanos(valueInNanos) {
         return SPEC_NANOSECONDS.toMinutes(valueInNanos);
     },
 
+    /**
+     * @param {Number} valueInMinutes
+     * @return {Number}
+     */
     toNanos(valueInMinutes)   {
         return x(valueInMinutes, math.divide(C4, C0), math.divide(MAX, math.divide(C4 / C0)));
         // return x(valueInMinutes, C4 / C0, MAX / (C4 / C0));
     },
 
-    // toMicros(valueInMinutes)  {
-    //     return x(valueInMinutes, C4 / C1, MAX / (C4 / C1));
-    // },
-    // toMillis(valueInMinutes)  {
-    //     return x(valueInMinutes, C4 / C2, MAX / (C4 / C2));
-    // },
-    // toSeconds(valueInMinutes) {
-    //     return x(valueInMinutes, C4 / C3, MAX / (C4 / C3));
-    // },
-    // toMinutes(valueInMinutes) {
-    //     return valueInMinutes;
-    // },
-    // toHours(valueInMinutes)   {
-    //     return valueInMinutes / (C5 / C4);
-    // },
-    // toDays(valueInMinutes)    {
-    //     return valueInMinutes / (C6 / C4);
-    // },
-    // convert(value, timeUnit) {
-    //     return timeUnit.toMinutes(value);
-    // },
-
     excessNanos(value, m) {
         return 0;
     }
 };
+//endregion
 
+//region SPEC_HOURS
 const SPEC_HOURS = {
 
-    shortName: "h",
+    abbreviation: "h",
 
     longName: 'hours',
 
@@ -340,44 +353,18 @@ const SPEC_HOURS = {
         return x(valueInHours, C5 / C0, MAX / (C5 / C0));
     },
 
-    // toMicros(valueInHours)  {
-    //     return x(valueInHours, C5 / C1, MAX / (C5 / C1));
-    // },
-    //
-    // toMillis(valueInHours)  {
-    //     return x(valueInHours, C5 / C2, MAX / (C5 / C2));
-    // },
-    //
-    // toSeconds(valueInHours) {
-    //     return x(valueInHours, C5 / C3, MAX / (C5 / C3));
-    // },
-    //
-    // toMinutes(valueInHours) {
-    //     return x(valueInHours, C5 / C4, MAX / (C5 / C4));
-    // },
-    //
-    // toHours(valueInHours)   {
-    //     return valueInHours;
-    // },
-    //
-    // toDays(valueInHours)    {
-    //     return valueInHours / (C6 / C5);
-    // },
-
-    // convert(value, timeUnit) {
-    //     return timeUnit.toHours(value);
-    // },
-
     excessNanos(value, m) {
         return 0;
     }
 };
+//endregion
 
+//region SPEC_DAYS
 const SPEC_DAYS = {
 
     unit: ChronoUnit.DAYS,
 
-    shortName: 'd',
+    abbreviation: 'd',
 
     longName: 'days',
 
@@ -434,6 +421,8 @@ const SPEC_DAYS = {
 };
 //endregion
 
+//endregion
+
 //region TimeUnit
 class TimeUnit extends CoreObject {
 
@@ -482,21 +471,30 @@ class TimeUnit extends CoreObject {
         super();
 
         /**
-         * @type {{unit: ChronoUnit, toString:function, equals:function, excessNanos:function, shortName:String, longName:String, toNumber:function}}
+         * @type {{unit: ChronoUnit, toString:function, equals:function, excessNanos:function, abbreviation:String, longName:String, toNumber:function}}
          * @private
          */
         this.spec = spec;
+
+
     }
 
     /**
      * @returns {string}
      */
     toString() {
-        return this.spec.shortName;
+        return this.spec.abbreviation;
     }
 
     valueOf() {
         return this.toString();
+    }
+
+    toJson() {
+        return super.toJson({
+            longName: this.spec.longName,
+            abbreviation: this.spec.abbreviation
+        });
     }
 
     //region public methods
@@ -504,8 +502,8 @@ class TimeUnit extends CoreObject {
      *
      * @returns {String}
      */
-    get shortName() {
-        return this.spec.shortName;
+    get abbreviation() {
+        return this.spec.abbreviation;
     }
 
     /**

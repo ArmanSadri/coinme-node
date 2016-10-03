@@ -76,6 +76,10 @@ export default class CoreObject extends Ember.Object {
         return this.constructor;
     }
 
+    toJSON() {
+        return this.toJson();
+    }
+
     toJson(options) {
         return Lodash.assign({
             _class: this.constructor.name

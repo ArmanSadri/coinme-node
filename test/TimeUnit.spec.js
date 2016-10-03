@@ -11,6 +11,14 @@ import {Stopwatch} from "../src/js/Stopwatch";
 import {SmoothBurstyRateLimiter, SmoothWarmingUpRateLimiter} from "../src/js/RateLimiter";
 
 describe('TimeUnit', () => {
+    it('TimeUnit.equals(TimeUnit)', () => {
+        assert.equal(TimeUnit.SECONDS, TimeUnit.SECONDS);
+        assert.equal(TimeUnit.MILLISECONDS, TimeUnit.MILLISECONDS);
+        assert.equal(TimeUnit.NANOSECONDS, TimeUnit.NANOSECONDS);
+
+        assert.notEqual(TimeUnit.SECONDS, TimeUnit.NANOSECONDS);
+    })
+
     it('Seconds -> Nanos', () => {
         assert.equal(TimeUnit.NANOSECONDS.convert(1, TimeUnit.SECONDS), 1000000000);
     });
@@ -38,19 +46,4 @@ describe('TimeUnit', () => {
     it('Seconds -> Days', () => {
         assert.equal(TimeUnit.DAYS.convert(1, TimeUnit.SECONDS), 0.000011574074074074073);
     });
-
-    it('Stopwatch', (cb) => {
-        let rateLimiter = new SmoothWarmingUpRateLimiter({
-            maxBurstSeconds: 3,
-            warmupPeriod: 2,
-            timeUnit: TimeUnit.SECONDS
-        });
-
-        rateLimiter.permitsPerSecond = .001;
-
-        rateLimiter
-            .acquire(10000, 0, TimeUnit.SECONDS)
-            .then(cb)
-
-    })
 });
